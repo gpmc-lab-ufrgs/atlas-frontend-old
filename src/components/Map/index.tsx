@@ -3,11 +3,13 @@ import mapboxgl from "mapbox-gl";
 //@ts-ignore
 import geojsonURL from "../../data/SP-districts-geojson.json";
 import { formatPopulationNumber } from "../../utils/population"
+import { useMapLayer } from "../../store"
 import "./styles.css"
 import * as turf from "@turf/turf";
 
 export const Map = () => {
   const [map, setMap] = useState<mapboxgl.Map>();
+  const { mapLayer } = useMapLayer();
   const mapContainer = useRef<any>();
   
   useEffect(() => {
@@ -127,12 +129,7 @@ export const Map = () => {
             "fill-color":
             {
               property: "PERSONS_NUM",
-              stops: [
-                [0, "#ADDC91"],
-                [55000, "#6CC24A"],
-                [110000, "#509E2F"],
-                [215000, "#4A7729"],
-              ],
+              stops: mapLayer.stops
             },
             "fill-opacity": [
               "case",
@@ -196,7 +193,7 @@ export const Map = () => {
     };
 
     if (!map) initializeMap({mapContainer});
-  }, [map]);
+  }, [map, mapLayer]);
 
   return <div id="map" ref={(el) => (mapContainer.current = el)} className="map" />;
 };

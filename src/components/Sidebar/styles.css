@@ -18,6 +18,7 @@
 
 .legend h4 {
   margin: 0;
+  margin-bottom: 15px;
 }
 
 .gradient-box {
@@ -38,6 +39,10 @@
   border-style: none dotted none none;
 }
 
+.recharts-wrapper {
+  height: 30px !important;
+}
+
 .labels {
   display: flex;
   justify-content: space-between;
@@ -48,4 +53,9 @@
   font-size: 10px;
   margin: 8px 0;
   margin-bottom: 0;
+}
+
+.labels p:not(:first-of-type) {
+  display: flex;
+  flex-direction: row-reverse;
 }
