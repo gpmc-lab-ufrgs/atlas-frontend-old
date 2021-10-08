@@ -4,7 +4,6 @@
   width: auto;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
   align-items: center;
   margin: 0px 20px;
   z-index: 2;

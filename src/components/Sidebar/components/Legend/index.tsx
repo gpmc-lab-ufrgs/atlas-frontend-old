@@ -59,7 +59,7 @@ export const Legend = () => {
   const legend = () => {
     return (
       <div className="legend">
-        <h4>Population</h4>
+        <h4>População</h4>
         { renderGradientBar({width: 276, height: 30}) }
         <div className="labels">
           {mapLayer.stops.map((value) => ( <p>{value[0]}</p> ))}

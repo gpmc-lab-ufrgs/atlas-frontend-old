@@ -1,35 +1,23 @@
 import { useState, useRef, useEffect } from "react";
 import mapboxgl from "mapbox-gl";
-//@ts-ignore
+
+import { useFeatures } from "../../store";
 import geojsonURL from "../../data/SP-districts-geojson.json";
-import { formatPopulationNumber } from "../../utils/population"
+import { clickFeature, highlightFeature, fitBounds, fitCenter } from "./featureActions"
 import { useMapLayer } from "../../store"
 import "./styles.css"
-import * as turf from "@turf/turf";
 
 export const Map = () => {
+  mapboxgl.accessToken =
+    "pk.eyJ1IjoibGVvc2lsdmFnb21lcyIsImEiOiJja2MwdmxhZjAwejdsMnlsbXFsYTV5ZmVsIn0.MyyvEV2SHjCbCkIUeL_9bA";
+  
   const [map, setMap] = useState<mapboxgl.Map>();
   const { mapLayer } = useMapLayer();
   const mapContainer = useRef<any>();
-  
-  useEffect(() => {
-    mapboxgl.accessToken =
-      "pk.eyJ1IjoibGVvc2lsdmFnb21lcyIsImEiOiJja2MwdmxhZjAwejdsMnlsbXFsYTV5ZmVsIn0.MyyvEV2SHjCbCkIUeL_9bA";
-    
-    const hoveredPopup = new mapboxgl.Popup({
-      closeButton: false,
-      closeOnClick: false,
-      className: "floating-popup",
-    });
-    const clickedPopup = new mapboxgl.Popup({
-      closeButton: false,
-      closeOnClick: false,
-      className: "floating-popup",
-    });
-    
+  const { selectedFeature,  highlightedFeature } = useFeatures();
+
+  useEffect(() => {   
     const initializeMap = ({mapContainer}: any) => {
-      var hoveredId : number
-      var clickedId : number
       
       const map = new mapboxgl.Map({
         container: mapContainer.current,
@@ -38,76 +26,6 @@ export const Map = () => {
         center: [-46.7,-23.68],
         zoom: 9.2,
       });
-
-      const clickFeature = (feature : any) => { 
-        
-        if (feature && feature.geometry) {
-          if(feature.properties.FEATID === clickedId) {
-            return;
-          }
-
-          var coordinates = turf.centerOfMass(feature).geometry.coordinates;
-          var regionName = feature.properties.NAME_DIST;
-          var regionPersonsNum = formatPopulationNumber(feature.properties.PERSONS_NUM);
-          clickedPopup
-            .setLngLat([coordinates[0], coordinates[1]])
-            .setHTML(`<h5>${regionName} - ${regionPersonsNum}</h5>`)
-            .addTo(map);
-
-          map.setFeatureState(
-            { source: "sp", id: feature.properties.FEATID },
-            { click: true }
-          );
-
-          map.setFeatureState(
-            { source: "sp", id: clickedId },
-            { click: false }
-          );
-
-          clickedId = feature.properties.FEATID
-        }
-      }
-
-      const highlightFeature = (feature : any) => { 
-        
-        if (feature && feature.geometry) {
-          
-          if(feature.properties.FEATID === hoveredId) {
-            return;
-          }
-
-          var coordinates = turf.centerOfMass(feature).geometry.coordinates;
-          var regionName = feature.properties.NAME_DIST;
-          var regionPersonsNum = formatPopulationNumber(feature.properties.PERSONS_NUM);
-          hoveredPopup
-            .setLngLat([coordinates[0], coordinates[1]])
-            .setHTML(`<h5>${regionName} - ${regionPersonsNum}</h5>`)
-            .addTo(map);
-
-          map.setFeatureState(
-            { source: "sp", id: feature.properties.FEATID },
-            { hover: true }
-          );
-
-          map.setFeatureState(
-            { source: "sp", id: hoveredId },
-            { hover: false }
-          );
-
-          hoveredId = feature.properties.FEATID
-        } else {
-          hoveredPopup.remove();
-          map.setFeatureState(
-            { source: "sp", id: hoveredId },
-            { hover: false }
-          );
-          hoveredId = 0
-        }
-      }
-
-      const clearFeatureHighlight = () => {
-        highlightFeature(null);
-      }
 
       map.on("load", () => {
         map.dragRotate.disable();
@@ -174,26 +92,45 @@ export const Map = () => {
         });
       });
 
+      map.on("click", "fill-sp", (e: any) => {
+        if (e.features.length > 0) {
+          clickFeature(e.features[0], map);
+        }
+      });
 
       map.on("mousemove", "fill-sp", (e: any) => {
         if (e.features.length > 0) {
-          highlightFeature(e.features[0]);
+          highlightFeature(e.features[0], map);
         }
       });
-
-      map.on("mouseleave", "fill-sp", clearFeatureHighlight);
-
-      map.on("click", "fill-sp", (e: any) => {
-        if (e.features.length > 0) {
-          clickFeature(e.features[0]);
-        }
-      });
+    
+      map.on("mouseleave", "fill-sp", () => {
+        highlightFeature(null, map)
+      })
 
       setMap(map)
     };
 
     if (!map) initializeMap({mapContainer});
   }, [map, mapLayer]);
+
+  useEffect(() => {
+    if(selectedFeature !== null && map) {
+      clickFeature(selectedFeature, map);
+      fitBounds(selectedFeature, map)
+    } else if (selectedFeature === null && map) {
+      clickFeature(null, map);
+      fitCenter(map)
+    }
+  }, [map, selectedFeature])
+
+  useEffect(() => {
+    if(highlightedFeature !== null && map) {
+      highlightFeature(highlightedFeature, map);
+    } else if (highlightedFeature === null && map) {
+      highlightFeature(null, map);
+    }
+  }, [map, highlightedFeature])
 
   return <div id="map" ref={(el) => (mapContainer.current = el)} className="map" />;
 };
