@@ -22,7 +22,6 @@ const clickedPopup = new mapboxgl.Popup({
 });
 
 export function clickFeature(feature: any, map: mapboxgl.Map) {
-  console.log(clickedId);
   if (feature && feature.geometry) {
     if (feature.properties.FEATID === clickedId) {
       return;

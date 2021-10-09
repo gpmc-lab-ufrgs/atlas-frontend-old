@@ -1,10 +1,12 @@
 
 import { BarChart, Bar, XAxis, YAxis } from 'recharts';
-import { useMapLayer } from "../../../../store"
+import { useMapLayer, useSidebar, useFeatures } from "../../../../store"
 import "./styles.css"
 
 export const Legend = () => {
   const { mapLayer } = useMapLayer();
+  const { sidebarIsOpen } = useSidebar();
+  const { selectedFeature } = useFeatures();
 
   const renderGradientBar = ({ width, height }: any) => {
     const stopsValue = mapLayer.stops.map(x => x[0]);
@@ -58,8 +60,8 @@ export const Legend = () => {
 
   const legend = () => {
     return (
-      <div className="legend">
-        <h4>População</h4>
+      <div className={ (selectedFeature === null || sidebarIsOpen) ? "legend" : "legend legendWithSidebar"} >
+        <h4>Population</h4>
         { renderGradientBar({width: 276, height: 30}) }
         <div className="labels">
           {mapLayer.stops.map((value) => ( <p>{value[0]}</p> ))}

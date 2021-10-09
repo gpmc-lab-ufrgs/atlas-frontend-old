@@ -2,10 +2,15 @@
   position: absolute;
   bottom: 0;
   left: 0;
-  margin-bottom: 20px;
   background-color: white;
+  margin-bottom: 40px;
   border-radius: 5px;
+  margin-left: 20px;
   padding: 15px;
+}
+
+.legendWithSidebar {
+  left: 340px !important;
 }
 
 .legend h4 {

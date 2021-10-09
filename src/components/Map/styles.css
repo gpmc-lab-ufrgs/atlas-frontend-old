@@ -4,10 +4,6 @@
   z-index: 1;
 }
 
-.mapboxgl-control-container {
-  display: none;
-}
-
 .mapboxgl-popup.floating-popup .mapboxgl-popup-content {
   background: #FFFFFFDD;
   padding: 2px 5px;

@@ -120,8 +120,8 @@ export const SearchBar = () => {
 
   return (
     //@ts-ignore
-    <div className="searchContainer" ref={setReferenceElement}>
-      <div {...getComboboxProps()} className="searchField">
+    <div className={selectedFeature !== null ? "searchContainer searchContainerSelected" : "searchContainer"} ref={setReferenceElement}>
+      <div {...getComboboxProps()} className={selectedFeature !== null ? "searchField searchFieldSelected" : "searchField"}>
         <input {...getInputProps({
           onFocus: () => {
             // Report out the focus event if the parent component cares
@@ -133,7 +133,7 @@ export const SearchBar = () => {
               openMenu()
             }
           },
-          placeholder: "Pesquise por distrito",
+          placeholder: "Search by suburb or region",
           spellCheck: "false",
           ref: inputRef,
           })}

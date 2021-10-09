@@ -4,8 +4,10 @@
     position: absolute;
     top: 0;
     left: 0;
+    margin-left: 20px;
     margin-top: 20px;
     width: 305px;
+    z-index: 2;
 }
 
 .searchContainer .searchField {
@@ -14,17 +16,17 @@
     height: 40px;
     background: white;
     pointer-events: auto;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25), 0px -1px 0px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
 }
 
 /* When the sidebar is visible, underline the search field */
-.searchContainer:after {
-    content: '';
-    width: 275px;
-    position: absolute;
-    top: 33px;
-    left: 15px;
+.searchContainerSelected {
+    border-bottom: 1px solid #ccc;
+}
+
+.searchContainer .searchFieldSelected input {
+    font-size: 18px !important;
+    font-weight: bold !important;
 }
 
 .searchContainer .searchField input {
@@ -45,8 +47,8 @@
 }
 
 .searchContainer .searchField button svg {
-  color: rgb(153, 153, 153);
-  font-size: 18px;
+    color: rgb(153, 153, 153);
+    font-size: 18px;
 }
 
 
@@ -70,12 +72,12 @@
 }
 
 .searchContainer .searchMenu li .primary {
-  font-size: 16px;
-  font-weight: 500;
+    font-size: 16px;
+    font-weight: 500;
 }
 
 .searchContainer .searchMenu li .secondary {
-  color: #333333;
-  font-size: 14px;
-  margin-top: 6px;
+    color: #333333;
+    font-size: 14px;
+    margin-top: 6px;
 }

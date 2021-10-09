@@ -1,0 +1,23 @@
+.toggleButton {
+  pointer-events: auto;
+  cursor: pointer;
+  top: 20px;
+  left: 340px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+
+  position: absolute;
+  width: 20px;
+  height: 40px;
+      
+  background: #FFFFFF;
+  /* Scratch/Standard Drop Shadow */
+  
+  border-radius: 0px 5px 5px 0px;
+}
+
+.toggleButtonClose {
+  left: 0 !important;
+}

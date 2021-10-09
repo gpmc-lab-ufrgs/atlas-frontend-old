@@ -1,0 +1,15 @@
+.title {
+  height: 10%;
+}
+
+.regionDetails {
+  position: absolute;
+  height: 100%;
+  width: 320px;
+  z-index: 1;
+  bottom: 0;
+  left: 0;
+  padding-left: 10px;
+  padding-right: 10px;
+  background-color: white;
+}

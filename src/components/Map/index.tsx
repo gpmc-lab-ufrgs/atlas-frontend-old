@@ -14,7 +14,7 @@ export const Map = () => {
   const [map, setMap] = useState<mapboxgl.Map>();
   const { mapLayer } = useMapLayer();
   const mapContainer = useRef<any>();
-  const { selectedFeature,  highlightedFeature } = useFeatures();
+  const { selectedFeature,  highlightedFeature, setSelectedFeature, setHighlightedFeature } = useFeatures();
 
   useEffect(() => {   
     const initializeMap = ({mapContainer}: any) => {
@@ -27,6 +27,9 @@ export const Map = () => {
         zoom: 9.2,
       });
 
+      // Add zoom and rotation controls to the map.
+      map.addControl(new mapboxgl.NavigationControl(), "bottom-right");
+      
       map.on("load", () => {
         map.dragRotate.disable();
         map.touchZoomRotate.disableRotation();
@@ -94,25 +97,25 @@ export const Map = () => {
 
       map.on("click", "fill-sp", (e: any) => {
         if (e.features.length > 0) {
-          clickFeature(e.features[0], map);
+          setSelectedFeature(e.features[0])
         }
       });
 
       map.on("mousemove", "fill-sp", (e: any) => {
         if (e.features.length > 0) {
-          highlightFeature(e.features[0], map);
+          setHighlightedFeature(e.features[0])
         }
       });
     
       map.on("mouseleave", "fill-sp", () => {
-        highlightFeature(null, map)
+        setHighlightedFeature(null)
       })
 
       setMap(map)
     };
 
     if (!map) initializeMap({mapContainer});
-  }, [map, mapLayer]);
+  }, [map, mapLayer, setSelectedFeature, setHighlightedFeature]);
 
   useEffect(() => {
     if(selectedFeature !== null && map) {
