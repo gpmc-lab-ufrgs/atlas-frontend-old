@@ -1,6 +1,7 @@
 import React, { useState, createContext,  useContext } from "react";
 
 type CollapsibleType = {
+  "Locations to Compare": boolean
   "Demographic Summary": boolean,
   "Economic Summary": boolean,
   "Growth Summary": boolean,
@@ -18,6 +19,7 @@ type CollapsibleContext = {
 
 const DEFAULT_VALUE = {
   collapsible: {
+    "Locations to Compare": true,
     "Demographic Summary": false,
     "Economic Summary": false,
     "Growth Summary": false,

@@ -1,7 +1,7 @@
 import React, { useState, createContext,  useContext } from "react";
 import geojsonURL from "../../data/SP-districts-geojson.json";
 
-type Feature = { 
+export type Feature = { 
   type: string,
   geometry: {
     type: string, 

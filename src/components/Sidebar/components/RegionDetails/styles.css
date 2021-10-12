@@ -13,3 +13,25 @@
   padding-right: 10px;
   background-color: white;
 }
+
+.closeIcon {
+  cursor: "pointer";
+  color: rgb(153, 153, 153)
+}
+
+.comparisonList {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 15px;
+  font-size: 15px;
+}
+
+.disclaimerText {
+  font-size: 14px;
+  font-weight: 400;
+  text-align: center;
+  color: #666666;
+  margin: 20px 0px 10px;
+}

@@ -5,3 +5,7 @@ export {
   CollapsibleProvider,
   useCollapsible,
 } from "./contexts/collapsibleContext";
+export {
+  ComparisonProvider,
+  useComparison,
+} from "./contexts/comparisonContext";
