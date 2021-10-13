@@ -2,7 +2,7 @@ import { useSidebar } from "../../../../store"
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import "./styles.css";
 
-export const SidebarButton = () => {
+export const MinimizerSidebarButton = () => {
   const { sidebarIsOpen, setSidebarIsOpen } = useSidebar()
 
   const toggleSidebar = () => {

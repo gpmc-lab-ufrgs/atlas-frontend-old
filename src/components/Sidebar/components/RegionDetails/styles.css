@@ -35,3 +35,26 @@
   color: #666666;
   margin: 20px 0px 10px;
 }
+
+.comparisonButton {
+  background: #FFFFFF;
+  border: 2px solid #000000;
+  font-weight: 500;
+  box-sizing: border-box;
+  border-radius: 100px;
+  display: flex;
+  color: #000000;
+  text-decoration: none;
+  align-items: center;
+  cursor: pointer;
+  text-align: center;
+  padding: 9px 14px;
+  font-size: 14px;
+  align-self: center;
+  margin-top: 20px;
+}
+
+.comparisonIcon {
+  color: #000000;
+  margin-left: 10px;
+}

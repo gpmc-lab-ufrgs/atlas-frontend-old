@@ -19,7 +19,7 @@ export const Legend = () => {
       { name: "empty", value: 0 },  // empty bar for ReferenceArea
     ];
     height = height * 2;
-  
+
     return (
       <BarChart 
         width={width}
@@ -44,7 +44,7 @@ export const Legend = () => {
         <defs>
           <linearGradient id={`legend-gradient`} x1="0" y1="0" x2="1" y2="0">
             {/* @ts-ignore */}
-            {colors.map((color, id) => (<stop offset={(id/(color.length - 1)) * 100} style={{ stopColor: color }} />))}
+            {colors.map((color, id) => (<stop key={id} offset={(id/(color.length - 1)) * 100} style={{ stopColor: color }} />))}
           </linearGradient>
         </defs>
         <rect width={width} height={height} fill={`url(#legend-gradient)`} />
@@ -52,7 +52,7 @@ export const Legend = () => {
           if(id > (colors.length - 3)) {
             return <></>;
           }
-          return <line x1={lineX * (id + 1)} y1={0} x2={lineX * (id + 1)} y2={height} stroke="white" strokeDasharray="1 1"/>
+          return <line key={id} x1={lineX * (id + 1)} y1={0} x2={lineX * (id + 1)} y2={height} stroke="white" strokeDasharray="1 1"/>
         })}
       </svg>
     );
@@ -64,7 +64,7 @@ export const Legend = () => {
         <h4>Population</h4>
         { renderGradientBar({width: 276, height: 30}) }
         <div className="labels">
-          {mapLayer.stops.map((value) => ( <p>{value[0]}</p> ))}
+          {mapLayer.stops.map((value, id) => ( <p key={id}>{value[0]}</p> ))}
         </div>
       </div>
     )

@@ -1,25 +1,58 @@
+import { useState, useEffect } from "react";
+import { useLocation, useHistory } from "react-router";
+import { useComparison, useFeatures } from "../../store"
+
 import { Map, Sidebar } from "../../components"
 import "./styles.css"
 
 export const Main = () => {
-  
-  // useEffect(() => {
+  const [ comparisonMode, setComparisonMode ] = useState(false);
+  const { comparison, addComparisonFeature } = useComparison();
+  const { features } = useFeatures();
+  const location = useLocation();
+  const history = useHistory();
 
-  //   for(var i = 1; i < 666; i++) {
-  //     axios.get(`http://api-perfil.seade.gov.br/v1/dados/tema/${i}/1`)
-  //     .then(function(res) {
-  //       console.log(res.data.infolocalidade.nome, ": ", res.data.tema[0].dados[1].mun)
-  //     })
-  //     .catch(function(error) {
-  //       console.log(error)
-  //     })
-  //   }
-  // }, [])
+  useEffect(() => {
+    setComparisonMode(location.pathname.startsWith('/comparison'));
+  }, [location]);
+
+  useEffect(() => {
+    if (!comparison.length && location.pathname.startsWith('/comparison/')) {
+      const pathIds = location.pathname.replace('/comparison/', '');
+      if (pathIds) {
+        const ids = pathIds.split('+');
+        const featuresFromUrl = features.filter((ft: any) => ids.includes(ft.properties["FEATID"].toString()));
+        featuresFromUrl.forEach(feature => {
+          addComparisonFeature(feature);
+        })
+      } else {
+        history.replace("/");
+      }
+    }
+  }, [features, location, history, comparison, addComparisonFeature]);
+
+  useEffect(() => {
+    if (location.pathname.startsWith('/comparison/') && features.length) {
+      const ids = comparison.map((feature: any) => feature.properties.FEATID);
+      const newPath = '/comparison/' + ids.join('+');
+      if (location.pathname !== newPath) {
+        history.replace(newPath);
+      }
+    }
+  }, [comparison, features, location, history]);
 
   return (
     <div className="main">
-      <Sidebar/>
-      <Map/>
+      { comparisonMode ?
+        <>
+          <Sidebar comparison/>
+        </>
+      :
+        <>
+          <Sidebar/>
+          <Map/>
+        </>
+      }
     </div>
   )
 }

@@ -1,4 +1,4 @@
-import { useCollapsible } from "../../../../../../store"
+import { useCollapsible } from "../../store"
 import Collapsible from "react-collapsible";
 import "./styles.css"
 

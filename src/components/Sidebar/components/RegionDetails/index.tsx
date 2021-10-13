@@ -1,12 +1,15 @@
-import { CollapsibleSection } from "./components"
-import { ComparisonButton } from "../ComparisonButton"
+import { FaTimes, FaChevronRight } from 'react-icons/fa';
+import { Link } from "react-router-dom";
+
+import { CollapsibleSection } from "../../../CollapsibleSection"
 import { useFeatures, useComparison } from "../../../../store"
-import { FaTimes } from 'react-icons/fa';
+import { ComparisonButton } from "../ComparisonButton"
 import "./styles.css"
 
 export const RegionDetails = () => {
   const { selectedFeature } = useFeatures();
   const { comparison, removeComparisonFeature } = useComparison();
+  const ids = comparison.map((feature: any) => feature.properties.FEATID);
 
   const collapsibleOptions = [
     "Demographic Summary",
@@ -18,6 +21,13 @@ export const RegionDetails = () => {
     "Turnover vs. Cost of Sales",
     "Business Rental Costs",
   ]
+
+  const ComparisonResult = () => (
+    <Link to={"/comparison/" + ids.join('+')} className="comparisonButton">
+      Show Comparison
+      <FaChevronRight className="comparisonIcon"/>
+    </Link>
+  )
   
 
   return (
@@ -29,7 +39,7 @@ export const RegionDetails = () => {
           <CollapsibleSection title="Locations to Compare">
             <>
               {comparison.map((feature: any) => (
-                <div className="comparisonList" key={feature.properties.SA2_MAIN16}>
+                <div className="comparisonList" key={feature.properties.FEATID}>
                   {feature.properties["NAME_DIST"]}
                   <FaTimes
                     className="closeIcon"
@@ -37,6 +47,7 @@ export const RegionDetails = () => {
                     />
                 </div>
               ))}
+              {comparison.length > 1 && ComparisonResult() }
               <div>
                 <p className="disclaimerText">Add up to 4 regions.</p>
               </div>
@@ -44,8 +55,8 @@ export const RegionDetails = () => {
           </CollapsibleSection>
         }
       </>
-      { collapsibleOptions.map((option) => (
-        <CollapsibleSection title={option}>
+      { collapsibleOptions.map((option, id) => (
+        <CollapsibleSection key={id} title={option}>
           <div className="metric" style={{padding: '10px 0'}}>No Data</div>
         </CollapsibleSection>
       ))}
