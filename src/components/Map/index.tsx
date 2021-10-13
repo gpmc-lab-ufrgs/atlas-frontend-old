@@ -101,6 +101,22 @@ export const Map = () => {
         }
       });
 
+      map.on("click", (e) => {
+        const bbox = [
+          [e.point.x - 5, e.point.y - 5],
+          [e.point.x + 5, e.point.y + 5]
+        ];
+
+        //@ts-ignore
+        const selectedFeatures = map.queryRenderedFeatures(bbox, {
+          layers: ['fill-sp']
+        });
+
+        if(selectedFeatures.length === 0) {
+          setSelectedFeature(null)
+        }
+      });
+
       map.on("mousemove", "fill-sp", (e: any) => {
         if (e.features.length > 0) {
           setHighlightedFeature(e.features[0])
