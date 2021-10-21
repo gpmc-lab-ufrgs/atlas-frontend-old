@@ -1,6 +1,6 @@
-import { useFeatures, useComparison } from "../../../../store"
-import { ReactComponent as ComparisonIcon } from "../../../../assets/compare.svg"
-import { Feature } from "../../../../store/contexts/featuresContext"
+import { useFeatures, useComparison } from "../../../../../../store"
+import { ReactComponent as ComparisonIcon } from "../../../../../../assets/compare.svg"
+import { Feature } from "../../../../../../store/contexts/featuresContext"
 import "./styles.css"
 
 export const ComparisonButton = () => {

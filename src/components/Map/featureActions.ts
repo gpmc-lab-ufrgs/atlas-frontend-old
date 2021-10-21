@@ -49,7 +49,9 @@ export function clickFeature(feature: any, map: mapboxgl.Map) {
     clickedId = feature.properties.FEATID;
   } else if (clickedId !== undefined && map) {
     clickedPopup.remove();
-    map.setFeatureState({ source: "sp", id: clickedId }, { click: false });
+    if (map.getSource("sp")) {
+      map.setFeatureState({ source: "sp", id: clickedId }, { click: false });
+    }
     clickedId = 0;
   }
 }
@@ -97,7 +99,8 @@ export function fitBounds(feature: any, map: mapboxgl.Map) {
         [maxX, maxY],
       ],
       {
-        padding: { top: 200, bottom: 200, left: 620, right: 200 },
+        padding: { top: 0, bottom: 0, left: 320, right: 0 },
+        zoom: 11,
       }
     );
   }
@@ -120,6 +123,7 @@ export function highlightComparisonFeature(features: any, map: mapboxgl.Map) {
     ],
     {
       padding: { top: 40, bottom: 40, left: 20, right: 20 },
+      animate: false,
     }
   );
 

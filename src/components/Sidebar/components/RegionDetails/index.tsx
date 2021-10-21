@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import { CollapsibleSection } from "../../../CollapsibleSection"
 import { useFeatures, useComparison } from "../../../../store"
-import { ComparisonButton } from "../ComparisonButton"
+import { ComparisonButton } from "./components"
 import propsMapping, { propsMappingSectionType, propsMappingContentType } from "../../../../config/propsMapping"
 import "./styles.css"
 
@@ -54,7 +54,7 @@ export const RegionDetails = () => {
                     />
                 </div>
               ))}
-              {comparison.length > 1 && ComparisonResult() }
+              {comparison.length > 0 && ComparisonResult() }
               <div>
                 <p className="disclaimerText">Add up to 4 regions.</p>
               </div>

@@ -1,19 +1,27 @@
+import { useHistory } from "react-router";
+
 import { CollapsibleSection } from "../../../CollapsibleSection"
-import { useComparison } from "../../../../store"
-import { Link } from "react-router-dom";
-import { Map } from "../../../index"
+import { useComparison, useFeatures } from "../../../../store"
 import { FaTimes, FaArrowLeft } from 'react-icons/fa';
+import { Map } from "../../../index"
 import "./styles.css"
 
 export const ComparisonDetails = () => {
   const { comparison, removeComparisonFeature } = useComparison();
+  const { setSelectedFeature } = useFeatures()
+  const history = useHistory();
   
+  const handleGoBack = () => {
+    history.replace("/")
+    setSelectedFeature(null)
+  }
+
   const Header = () => (
     <div className="comparisonHeader">
       <div className="comparisonHeaderContent">
-        <Link to="/" className="comparisonHeaderIcon">
+        <div onClick={handleGoBack} className="comparisonHeaderIcon">
           <FaArrowLeft />
-        </Link>
+        </div>
         Comparing Locations
       </div>
     </div>

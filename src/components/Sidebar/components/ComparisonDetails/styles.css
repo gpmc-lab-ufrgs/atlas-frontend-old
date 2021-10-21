@@ -6,12 +6,13 @@
   position: absolute;
   height: 100%;
   width: 320px;
-  z-index: 1;
+  z-index: 3;
   bottom: 0;
   left: 0;
   padding-left: 10px;
   padding-right: 10px;
   background-color: white;
+  box-shadow: 0 2px 4px rgba(0,0,0,.25),0 -1px 0 rgba(0,0,0,.1);
 }
 
 .closeIcon {
@@ -49,6 +50,7 @@
   align-items: center;
   display: flex;
   margin-right: 15px;
+  color: black;
 }
 
 .miniMap {

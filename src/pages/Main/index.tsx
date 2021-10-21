@@ -17,7 +17,7 @@ export const Main = () => {
   }, [location]);
 
   useEffect(() => {
-    if (!comparison.length && location.pathname.startsWith('/comparison/')) {
+    if (comparison.length === 0 && location.pathname.startsWith('/comparison/')) {
       const pathIds = location.pathname.replace('/comparison/', '');
       if (pathIds) {
         const ids = pathIds.split('+');
@@ -30,7 +30,7 @@ export const Main = () => {
   }, [features, location, history, comparison, addComparisonFeature]);
 
   useEffect(() => {
-    if (location.pathname.startsWith('/comparison/') && features.length) {
+    if (location.pathname.startsWith('/comparison/') && features.length !== 0) {
       const ids = comparison.map((feature: any) => feature.properties.FEATID);
       const newPath = '/comparison/' + ids.join('+');
       if (location.pathname !== newPath) {
