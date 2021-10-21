@@ -10,6 +10,7 @@ type CollapsibleType = {
   "Business Counts": boolean,
   "Turnover vs. Cost of Sales": boolean,
   "Business Rental Costs": boolean,
+  "Map": boolean,
 }
 
 type CollapsibleContext = {  
@@ -28,6 +29,7 @@ const DEFAULT_VALUE = {
     "Business Counts": false,
     "Turnover vs. Cost of Sales": false,
     "Business Rental Costs": false,
+    "Map": true
   },
   setCollapsible: () => {}
 }

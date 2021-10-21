@@ -42,7 +42,9 @@ export function clickFeature(feature: any, map: mapboxgl.Map) {
       { click: true }
     );
 
-    map.setFeatureState({ source: "sp", id: clickedId }, { click: false });
+    if (clickedId) {
+      map.setFeatureState({ source: "sp", id: clickedId }, { click: false });
+    }
 
     clickedId = feature.properties.FEATID;
   } else if (clickedId !== undefined && map) {
@@ -73,7 +75,9 @@ export function highlightFeature(feature: any, map: mapboxgl.Map) {
       { hover: true }
     );
 
-    map.setFeatureState({ source: "sp", id: hoveredId }, { hover: false });
+    if (hoveredId) {
+      map.setFeatureState({ source: "sp", id: hoveredId }, { hover: false });
+    }
 
     hoveredId = feature.properties.FEATID;
   } else if (hoveredId) {
@@ -86,16 +90,14 @@ export function highlightFeature(feature: any, map: mapboxgl.Map) {
 export function fitBounds(feature: any, map: mapboxgl.Map) {
   if (feature && (feature.geometry || feature._geometry)) {
     const [minX, minY, maxX, maxY] = turf.bbox(feature);
+
     map.fitBounds(
       [
         [minX, minY],
         [maxX, maxY],
       ],
       {
-        maxZoom: 12,
-        padding: 100,
-        bearing: map.getBearing(),
-        pitch: map.getPitch(),
+        padding: { top: 200, bottom: 200, left: 620, right: 200 },
       }
     );
   }
@@ -106,4 +108,24 @@ export function fitCenter(map: mapboxgl.Map) {
     center: [-46.7, -23.68],
     zoom: 9.2,
   });
+}
+
+export function highlightComparisonFeature(features: any, map: mapboxgl.Map) {
+  const [minX, minY, maxX, maxY] = turf.bbox(features);
+
+  map.fitBounds(
+    [
+      [minX, minY],
+      [maxX, maxY],
+    ],
+    {
+      padding: { top: 40, bottom: 40, left: 20, right: 20 },
+    }
+  );
+
+  const source = map.getSource("sp");
+  if (source) {
+    //@ts-ignore
+    source.setData(features);
+  }
 }

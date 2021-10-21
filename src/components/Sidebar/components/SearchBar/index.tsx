@@ -13,8 +13,8 @@ export const SearchBar = () => {
 
   const { features, setSelectedFeature, selectedFeature, setHighlightedFeature } = useFeatures();
   const [ localData, setLocalData ] = useState(features.map((feature) => feature))
-  const [referenceElement, setReferenceElement] = useState(null)
-  const [popperElement, setPopperElement] = useState(null)
+  const [ referenceElement, setReferenceElement ] = useState(null)
+  const [ popperElement, setPopperElement ] = useState(null)
   const { styles, attributes } = usePopper(referenceElement, popperElement, {
       //@ts-ignore
       modifiers: useMemo(
@@ -50,19 +50,19 @@ export const SearchBar = () => {
         // Clear the redux state tracking the selected feature and let this
         // component rerender based on that rather than calling
         // selectItem(null) here
-        setSelectedFeature(null)
-      // If inputValue changes while the search menu is closed, it's because 
-      // another component changed selectedFeature, and that should be
-      // reflected in the selectedItem of the search field.
-      } else if (isOpen && inputValue) {
-        const definiteMatch = localData.find(item => item.properties.NAME_DIST === inputValue)
-        if (definiteMatch) {
-          selectItem(definiteMatch)
+          setSelectedFeature(null)
+        // If inputValue changes while the search menu is closed, it's because 
+        // another component changed selectedFeature, and that should be
+        // reflected in the selectedItem of the search field.
+        } else if (isOpen && inputValue) {
+          const definiteMatch = localData.find(item => item.properties.NAME_DIST === inputValue)
+          if (definiteMatch) {
+            selectItem(definiteMatch)
+          }
         }
-      }
     },
 
-    onSelectedItemChange: (e) => setSelectedFeature(e.selectedItem),
+    onSelectedItemChange: (e: any) => setSelectedFeature(e.selectedItem),
 
     onHighlightedIndexChange: ({ highlightedIndex, type }) => {
       switch (type) {
@@ -124,11 +124,6 @@ export const SearchBar = () => {
       <div {...getComboboxProps()} className={selectedFeature !== null ? "searchField searchFieldSelected" : "searchField"}>
         <input {...getInputProps({
           onFocus: () => {
-            // Report out the focus event if the parent component cares
-            // if (onFocus) {
-            //   onFocus()
-            // }
-            // Open the menu if it's not already so
             if (!isOpen) {
               openMenu()
             }

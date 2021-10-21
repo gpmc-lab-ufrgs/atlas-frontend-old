@@ -1,6 +1,7 @@
 import { CollapsibleSection } from "../../../CollapsibleSection"
 import { useComparison } from "../../../../store"
 import { Link } from "react-router-dom";
+import { Map } from "../../../index"
 import { FaTimes, FaArrowLeft } from 'react-icons/fa';
 import "./styles.css"
 
@@ -23,20 +24,27 @@ export const ComparisonDetails = () => {
       <Header/>
       <div className="title"/>
       {comparison.length > 0 &&
-        <CollapsibleSection title="Locations to Compare">
-          <>
-            {comparison.map((feature: any) => (
-              <div className="comparisonList" key={feature.properties.FEATID}>
-                {feature.properties["NAME_DIST"]}
-                <FaTimes
-                  className="closeIcon"
-                  onClick={() => removeComparisonFeature(feature)}
-                  />
-              </div>
-            ))}
-          </>
-        </CollapsibleSection>
-      }
+        <>
+          <CollapsibleSection title="Locations to Compare">
+            <>
+              {comparison.map((feature: any) => (
+                <div className="comparisonList" key={feature.properties.FEATID}>
+                  {feature.properties["NAME_DIST"]}
+                  <FaTimes
+                    className="closeIcon"
+                    onClick={() => removeComparisonFeature(feature)}
+                    />
+                </div>
+              ))}
+            </>
+          </CollapsibleSection>
+          <CollapsibleSection title="Map">
+            <div className="miniMap">
+              <Map mini={true}/>
+            </div>
+          </CollapsibleSection>
+        </>
+        }
     </div>
   )
 }

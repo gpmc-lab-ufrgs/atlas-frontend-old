@@ -2,7 +2,7 @@ import { useState, createContext,  useContext } from "react";
 import { Feature } from "./featuresContext"
 
 type ComparisonContext = {  
-  comparison:Array<Feature>
+  comparison: Array<Feature>
   addComparisonFeature: React.Dispatch<React.SetStateAction<any>>
   removeComparisonFeature: React.Dispatch<React.SetStateAction<any>>
 }
@@ -18,8 +18,8 @@ const comparisonContext = createContext<ComparisonContext>(DEFAULT_VALUE);
 export function ComparisonProvider({ children }: any) {
   const [comparison, setComparison] = useState<Feature[]>(DEFAULT_VALUE.comparison) 
 
-  const addComparisonFeature = (addValue : Feature) => {
-    setComparison([...comparison, addValue])
+  const addComparisonFeature = (addValue : Feature[]) => {
+    setComparison([...comparison, ...addValue])
   }
   
   const removeComparisonFeature = (removeValue : Feature) => {

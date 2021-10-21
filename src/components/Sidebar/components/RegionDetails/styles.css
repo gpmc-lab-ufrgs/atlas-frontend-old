@@ -58,3 +58,14 @@
   color: #000000;
   margin-left: 10px;
 }
+
+.propsContent {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.propsContent p {
+  font-weight: 400;
+}

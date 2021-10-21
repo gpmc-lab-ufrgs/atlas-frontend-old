@@ -22,9 +22,7 @@ export const Main = () => {
       if (pathIds) {
         const ids = pathIds.split('+');
         const featuresFromUrl = features.filter((ft: any) => ids.includes(ft.properties["FEATID"].toString()));
-        featuresFromUrl.forEach(feature => {
-          addComparisonFeature(feature);
-        })
+        addComparisonFeature(featuresFromUrl);
       } else {
         history.replace("/");
       }
@@ -50,7 +48,7 @@ export const Main = () => {
       :
         <>
           <Sidebar/>
-          <Map/>
+          <Map mini={false}/>
         </>
       }
     </div>
