@@ -69,9 +69,9 @@ export const TableView = ({ width }: any) => {
         rowClassName="table-row"
         style={{width: tableWidth}}
       >
-        <Column dataIndex='regionName' width={nameColumnWidth + colPadding} />
+        <Column dataIndex='regionName' width={nameColumnWidth} />
         {columns.map(col => (
-          <Column dataIndex={col.dataKey} width={dataColumnWidth + colPadding} key={col.dataKey} render={renderCell} />
+          <Column dataIndex={col.dataKey} width={dataColumnWidth} key={col.dataKey} render={renderCell} />
         ))}
       </Table>
     )
@@ -80,12 +80,14 @@ export const TableView = ({ width }: any) => {
   return (
     <div className="table-view">
       <div className="table-header" style={{width: tableWidth}}>
-        <div className="nameColumnStyle" style={{flex: `0 1 ${nameColumnWidth}px`}}></div>
-        {columns.map(col => (
-          <div key={col.dataKey} className="dataColumnStyle" style={{flex: `0 0 ${dataColumnWidth - colPadding}px`}}>
-            {col.label}
-          </div>
-        ))}
+        <div style={{flex: `0 1 ${nameColumnWidth}px`}}/>
+        <div className="dataContent" style={{width: `${dataColumnWidth * 4}px`}}>
+          {columns.map(col => (
+            <div key={col.dataKey} className="dataColumn" style={{flex: `0 0 ${dataColumnWidth}px`}}>
+              {col.label}
+            </div>
+          ))}
+        </div>
       </div>
       {propsMapping.map((section) => (
         <CollapsibleSection title={section.title} key={section.title}>

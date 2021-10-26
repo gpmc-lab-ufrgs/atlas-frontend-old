@@ -44,13 +44,22 @@
   text-align: right;
 }
 
-.nameColumnStyle {
-  margin: 0px 10px;
+.dataContent {
+  display: flex;
 }
 
-.dataColumnStyle {
+.dataColumn {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0px 10px;
+}
+
+.cell-data {
+  margin: 0px;
+}
+
+.contentData {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
