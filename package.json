@@ -19,6 +19,7 @@
     "axios": "^0.21.4",
     "downshift": "^6.1.7",
     "mapbox-gl": "^2.4.1",
+    "rc-table": "^7.19.0",
     "react": "^17.0.2",
     "react-collapsible": "^2.8.4",
     "react-dom": "^17.0.2",

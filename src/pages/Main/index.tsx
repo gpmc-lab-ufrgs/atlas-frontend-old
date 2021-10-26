@@ -1,20 +1,19 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useLocation, useHistory } from "react-router";
 import { useComparison, useFeatures } from "../../store"
 
-import { Map, Sidebar } from "../../components"
+import { Map, Sidebar, ComparisonView, Header } from "../../components"
 import "./styles.css"
 
 export const Main = () => {
-  const [ comparisonMode, setComparisonMode ] = useState(false);
-  const { comparison, addComparisonFeature } = useComparison();
+  const { comparison, addComparisonFeature, comparisonMode, setComparisonMode } = useComparison();
   const { features } = useFeatures();
   const location = useLocation();
   const history = useHistory();
 
   useEffect(() => {
     setComparisonMode(location.pathname.startsWith('/comparison'));
-  }, [location]);
+  }, [location, setComparisonMode]);
 
   useEffect(() => {
     if (comparison.length === 0 && location.pathname.startsWith('/comparison/')) {
@@ -41,9 +40,11 @@ export const Main = () => {
 
   return (
     <div className="main">
+      <Header/>
       { comparisonMode ?
         <>
           <Sidebar comparison/>
+          <ComparisonView />
         </>
       :
         <>

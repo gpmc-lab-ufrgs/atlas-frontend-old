@@ -84,7 +84,9 @@ export function highlightFeature(feature: any, map: mapboxgl.Map) {
     hoveredId = feature.properties.FEATID;
   } else if (hoveredId) {
     hoveredPopup.remove();
-    map.setFeatureState({ source: "sp", id: hoveredId }, { hover: false });
+    if (map.getSource("sp")) {
+      map.setFeatureState({ source: "sp", id: hoveredId }, { hover: false });
+    }
     hoveredId = 0;
   }
 }

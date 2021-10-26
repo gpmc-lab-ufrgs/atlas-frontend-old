@@ -1,7 +1,7 @@
 import { FaTimes, FaChevronRight } from 'react-icons/fa';
 import { Link } from "react-router-dom";
 
-import { CollapsibleSection } from "../../../CollapsibleSection"
+import { CollapsibleSection } from "../../../index"
 import { useFeatures, useComparison } from "../../../../store"
 import { ComparisonButton } from "./components"
 import propsMapping, { propsMappingSectionType, propsMappingContentType } from "../../../../config/propsMapping"

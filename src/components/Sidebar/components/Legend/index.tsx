@@ -60,7 +60,7 @@ export const Legend = () => {
 
   const legend = () => {
     return (
-      <div className={ (selectedFeature === null || sidebarIsOpen) ? "legend" : "legend legendWithSidebar"} >
+      <div className={ (selectedFeature === null || sidebarIsOpen) ? "legend" : "legend sidebarOpen"} >
         <h4>Population</h4>
         { renderGradientBar({width: 276, height: 30}) }
         <div className="labels">

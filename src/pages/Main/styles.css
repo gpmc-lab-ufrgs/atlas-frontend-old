@@ -2,3 +2,16 @@
   width: 100%;
   height: 100vh;
 }
+
+.sidebarOpen {
+  left: 340px;
+}
+
+.viewer-container {
+  position: absolute;
+  right: 0;
+  padding-top: 60px;
+  display: flex;
+  overflow: auto;
+  justify-content: center;
+}

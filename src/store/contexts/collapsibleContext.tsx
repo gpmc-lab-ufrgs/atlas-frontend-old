@@ -21,7 +21,7 @@ type CollapsibleContext = {
 const DEFAULT_VALUE = {
   collapsible: {
     "Locations to Compare": true,
-    "Demographic Summary": false,
+    "Demographic Summary": true,
     "Economic Summary": false,
     "Growth Summary": false,
     "Residential Housing Summary": false,
