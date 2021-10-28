@@ -10,7 +10,7 @@
 .viewer-container {
   position: absolute;
   right: 0;
-  padding-top: 60px;
+  padding-top: 70px;
   display: flex;
   overflow: auto;
   justify-content: center;

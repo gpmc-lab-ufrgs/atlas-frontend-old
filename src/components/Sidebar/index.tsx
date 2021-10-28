@@ -12,15 +12,15 @@ export const Sidebar = ({comparison}: any) => {
       { comparison ?
           <>
             <MinimizerSidebarButton />
-            {!sidebarIsOpen && <ComparisonDetails />}
+            {sidebarIsOpen && <ComparisonDetails />}
           </>
         :
           <>
-            {(selectedFeature === null || !sidebarIsOpen) && <SearchBar /> }
+            {(selectedFeature === null || sidebarIsOpen) && <SearchBar /> }
             {selectedFeature !== null &&
               <>
                 <MinimizerSidebarButton />
-                {!sidebarIsOpen && <RegionDetails />}
+                {sidebarIsOpen && <RegionDetails />}
               </>
             }
             <Legend />

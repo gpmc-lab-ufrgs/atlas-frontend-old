@@ -6,7 +6,7 @@ type SidebarContext = {
 }
 
 const DEFAULT_VALUE = {
-  sidebarIsOpen: false, 
+  sidebarIsOpen: true, 
   setSidebarIsOpen: () => {}
 }
 

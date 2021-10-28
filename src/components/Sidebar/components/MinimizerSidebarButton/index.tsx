@@ -5,13 +5,11 @@ import "./styles.css";
 export const MinimizerSidebarButton = () => {
   const { sidebarIsOpen, setSidebarIsOpen } = useSidebar()
 
-  const toggleSidebar = () => {
-    setSidebarIsOpen(!sidebarIsOpen);
-  };
+  const toggleSidebar = () => setSidebarIsOpen(!sidebarIsOpen);
     
   return (
-    <div className={sidebarIsOpen ? "toggleButton toggleButtonClose" : "toggleButton"} onClick={toggleSidebar}>
-      {sidebarIsOpen ? (<FaChevronLeft />) : (<FaChevronRight />)}
+    <div className={!sidebarIsOpen ? "toggleButton toggleButtonClose" : "toggleButton"} onClick={toggleSidebar}>
+      {!sidebarIsOpen ? (<FaChevronLeft />) : (<FaChevronRight />)}
     </div>
   )
 }

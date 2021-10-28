@@ -19,7 +19,7 @@ export const ComparisonButton = () => {
 
   return (
     <div className="actionButtonsContainer">
-      <button disabled={enableButton} className="actionButton" onClick={() => comparisonClick(selectedFeature)}>
+      <button disabled={!isCompared && enableButton} className="actionButton" onClick={() => comparisonClick(selectedFeature)}>
         <ComparisonIcon className="icon"/>
         {isCompared ? "Remove from Comparison" : "Add to Comparison"}
       </button>

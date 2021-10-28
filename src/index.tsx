@@ -1,22 +1,27 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Route from './route';
+import { BrowserRouter } from "react-router-dom";
+import { Main } from "./pages"
+import { MapLayerProvider, FeaturesProvider, CollapsibleProvider, SidebarProvider, ComparisonProvider, HamburgerMenuProvider } from "./store"
 import './index.css';
-import { MapLayerProvider, FeaturesProvider, CollapsibleProvider, SidebarProvider, ComparisonProvider } from "./store"
 
 ReactDOM.render(
   <React.StrictMode>
-    <FeaturesProvider>
-      <ComparisonProvider>
-        <SidebarProvider>
-          <CollapsibleProvider>
-            <MapLayerProvider>
-              <Route />
-            </MapLayerProvider>
-          </CollapsibleProvider>
-        </SidebarProvider>
-      </ComparisonProvider> 
-    </FeaturesProvider>
+    <BrowserRouter>
+      <FeaturesProvider>
+        <ComparisonProvider>
+          <HamburgerMenuProvider>
+            <SidebarProvider>
+              <CollapsibleProvider>
+                <MapLayerProvider>
+                  <Main />
+                </MapLayerProvider>
+              </CollapsibleProvider>
+            </SidebarProvider>
+          </HamburgerMenuProvider>
+        </ComparisonProvider> 
+      </FeaturesProvider>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );

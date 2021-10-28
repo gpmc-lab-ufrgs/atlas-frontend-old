@@ -1,0 +1,108 @@
+.modalContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 6;
+  display: flex;
+  justify-content: center;
+}
+
+.modalContainerContent {
+  font-size: 14px;
+  line-height: 150%;   
+  padding: 20px 40px;
+  overflow-y: auto; 
+}
+
+.modalContainerContent h1 {
+  font-size: 24px;
+  font-weight: 700;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.modalContainerContent h2 {
+  font-size: 24px;
+  font-weight: 700;
+  margin-top: 25px;
+  margin-bottom: 15px
+}
+
+.modalContainerContent p {
+  margin-bottom: 15px;    
+}
+
+.modalContainerContent p.pubAuthors {
+  margin-bottom: 0;    
+}
+
+.modalContainerContent a {
+  color: #0099E5;
+}
+
+.modalContainerContent .imageFill {
+  width: 100%;
+}
+
+.modalContainerContent .formula {
+  width: 100%;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0 15px 0;
+}
+
+.modalContainerContent p.faqQ {
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.modalDimScreen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.5);
+  pointer-events: auto;
+}
+
+.modalContent {
+  z-index: 0;
+  display: flex;
+  margin: 60px;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1px 1px 680px;
+  max-width: 680px;
+  pointer-events: none;
+}
+
+.modalDialog {
+  display:flex;
+  background-color: #ffffff;
+  border-radius: 8px;
+  flex-direction: column;
+  pointer-events: auto;
+  overflow-y: auto;
+}
+
+.modalTitleBox {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  line-height: 20px;
+  padding: 30px 40px 20px 40px;
+  border-bottom: 1px solid #CCC;
+  font-size: 24px;
+  font-weight: 500;
+  margin: 0;
+}
+
+.modalIconButton {
+  cursor: pointer;
+  color: #999999;
+}

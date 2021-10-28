@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 
 import { ReactComponent as TableIcon} from "../../assets/table.svg";
 import { ReactComponent as GridIcon} from "../../assets/grid.svg";
-import { useComparison, useSidebar } from "../../store"
+import { useComparison, useSidebar, useHamburgerMenu } from "../../store"
 import { SegmentedControl } from "./components"
 
 import "./styles.css";
@@ -11,6 +11,7 @@ import "./styles.css";
 export const Header = () => {
   const { comparisonType, setComparisonType, comparisonMode, setComparisonMode } = useComparison();
   const { sidebarIsOpen } = useSidebar();
+  const { setHamburgerMenuIsOpen } = useHamburgerMenu()
   const location = useLocation();
   const options = [
     { label: 'Table', value: "table", icon: <TableIcon /> },
@@ -22,7 +23,7 @@ export const Header = () => {
   }, [location, setComparisonMode]);
 
   return (
-    <div className={`container ${comparisonMode && "comparisonMode"} ${!sidebarIsOpen && "sidebarOpen"}`}>
+    <div className={`container ${comparisonMode && "comparisonMode"} ${sidebarIsOpen && "sidebarOpen"}`}>
       <div className="navbarLeft">
       </div>
       <div className="navbarCenter">
@@ -37,7 +38,7 @@ export const Header = () => {
       </div>
       <div className="navbarRight">
         <button className={`hamburgerButton ${comparisonMode ? "black" : "white"}`}
-          // onClick={() => setHamburgerMenuOpen(true)}
+          onClick={() => setHamburgerMenuIsOpen(true)}
         >
           <div className="menu-icon-bar"></div>
           <div className="menu-icon-bar"></div>

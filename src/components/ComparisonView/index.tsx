@@ -9,8 +9,8 @@ export const ComparisonView = () => {
 
   useEffect(() => {
     function handleResize() {
-      if (sidebarIsOpen) {
-        setContentWidth(100)
+      if (!sidebarIsOpen) {
+        setContentWidth(window.innerWidth)
       } else {
         setContentWidth(window.innerWidth - 340)
       }
@@ -21,7 +21,7 @@ export const ComparisonView = () => {
   }, [sidebarIsOpen])
 
   return(
-    <div className="viewer-container" style={{width: sidebarIsOpen ? `${contentWidth}%` : `${contentWidth}px` }}>
+    <div className="viewer-container" style={{width: !sidebarIsOpen ? `${contentWidth}px` : `${contentWidth}px` }}>
       {comparisonType === 'table' && <TableView width={contentWidth} />}
       {comparisonType === 'grid' && <GridView />}
     </div>
