@@ -35,7 +35,7 @@ export function ComparisonProvider({ children }: any) {
   }
   
   const removeComparisonFeature = (removeValue : Feature) => {
-    setComparison(comparison.filter(feature => feature.properties["NAME_DIST"] !== removeValue.properties["NAME_DIST"]))
+    setComparison(comparison.filter((feature: Feature) => feature["FU_NAME"] !== removeValue["FU_NAME"]))
   }
 
   return (

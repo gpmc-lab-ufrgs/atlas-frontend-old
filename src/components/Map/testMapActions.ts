@@ -1,5 +1,6 @@
 import * as turf from "@turf/turf";
 import mapboxgl from "mapbox-gl";
+// import { geojsonStates } from "../../data/states";
 import geojsonSP from "../../data/states/SP_Municipios_2020.json";
 import { createLayer } from "./testMapMunActions";
 
@@ -26,6 +27,7 @@ export function clickState(feature: any, map: mapboxgl.Map) {
   if (feature !== null) {
     fitBounds(feature, map);
 
+    // @ts-ignore
     createLayer(geojsonSP, map);
   }
 }

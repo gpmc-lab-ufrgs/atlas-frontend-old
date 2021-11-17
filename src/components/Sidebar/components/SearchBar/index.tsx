@@ -24,7 +24,7 @@ export const SearchBar = () => {
   })
 
   const itemToString = (item : any) => (item ? item.name : '')
-  const initialInputValue = selectedFeature?.properties.NAME_DIST ?? ''
+  const initialInputValue = selectedFeature?.FU_NAME ?? ''
 
   const {
     getComboboxProps,
@@ -55,7 +55,7 @@ export const SearchBar = () => {
         // another component changed selectedFeature, and that should be
         // reflected in the selectedItem of the search field.
         } else if (isOpen && inputValue) {
-          const definiteMatch = localData.find(item => item.properties.NAME_DIST === inputValue)
+          const definiteMatch = localData.find(item => item.FU_NAME === inputValue)
           if (definiteMatch) {
             selectItem(definiteMatch)
           }
@@ -99,7 +99,7 @@ export const SearchBar = () => {
   // When selectedFeature changes due to another component, make sure the
   // search field reflects that.
   useEffect(() => {
-    setInputValue(selectedFeature?.properties.NAME_DIST ?? '')
+    setInputValue(selectedFeature?.FU_NAME ?? '')
   }, [selectedFeature, setInputValue])
 
   const [debouncedValue] = useDebounce(inputValue, 500);
@@ -107,13 +107,13 @@ export const SearchBar = () => {
   useEffect(() => {
     const query = debouncedValue.toLowerCase().replace(/\s+/g, ' ').replace(/(^\s+|\s+$)/g, '')
     if (query === '') {
-      setLocalData(features.sort((a: any, b: any) => a?.properties.NAME_DIST.localeCompare(b?.properties.NAME_DIST)))
+      setLocalData(features.sort((a: any, b: any) => a?.FU_NAME.localeCompare(b?.FU_NAME)))
     } else {
       setLocalData(
         features
           .filter((item: any) =>
-            item?.properties.NAME_DIST.toLowerCase().indexOf(query.toLowerCase()) !== -1)
-          .sort((a: any, b: any) => a?.properties.NAME_DIST.localeCompare(b?.properties.NAME_DIST)),
+            item?.FU_NAME.toLowerCase().indexOf(query.toLowerCase()) !== -1)
+          .sort((a: any, b: any) => a?.FU_NAME.localeCompare(b?.FU_NAME)),
       )
     }
   }, [features, debouncedValue])
@@ -169,8 +169,8 @@ export const SearchBar = () => {
                   key={`${item}${index}`}
                   {...getItemProps({ item, index })}
                 >
-                  <div className="primary">{item.properties.NAME_DIST}</div>
-                  <div className="secondary">{item.properties.SIGLA_DIST}</div>
+                  <div className="primary">{item.FU_NAME}</div>
+                  <div className="secondary">{item.FU}</div>
                 </li>
               ))}
           </ul>

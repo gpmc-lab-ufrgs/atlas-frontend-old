@@ -36,8 +36,8 @@ export const ComparisonDetails = () => {
           <CollapsibleSection title="Locations to Compare">
             <>
               {comparison.map((feature: any) => (
-                <div className="comparisonList" key={feature.properties.FEATID}>
-                  {feature.properties["NAME_DIST"]}
+                <div className="comparisonList" key={feature.MUNIC_CODE7}>
+                  {feature.FU_NAME}
                   <FaTimes
                     className="closeIcon"
                     onClick={() => removeComparisonFeature(feature)}

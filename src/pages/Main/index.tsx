@@ -20,7 +20,7 @@ export const Main = () => {
       const pathIds = location.pathname.replace('/comparison/', '');
       if (pathIds) {
         const ids = pathIds.split('+');
-        const featuresFromUrl = features.filter((ft: any) => ids.includes(ft.properties["FEATID"].toString()));
+        const featuresFromUrl = features.filter((ft: any) => ids.includes(ft["MUNIC_CODE7"].toString()));
         addComparisonFeature(featuresFromUrl);
       } else {
         history.replace("/");
@@ -30,7 +30,7 @@ export const Main = () => {
 
   useEffect(() => {
     if (location.pathname.startsWith('/comparison/') && features.length !== 0) {
-      const ids = comparison.map((feature: any) => feature.properties.FEATID);
+      const ids = comparison.map((feature: any) => feature.MUNIC_CODE7);
       const newPath = '/comparison/' + ids.join('+');
       if (location.pathname !== newPath) {
         history.replace(newPath);
@@ -41,7 +41,6 @@ export const Main = () => {
   return (
     <div className="main">
       <Modal/>
-      <TestMap/>
       <Header/>
       { comparisonMode ?
         <>
@@ -49,8 +48,9 @@ export const Main = () => {
           <ComparisonView />
         </>
       :
-        <>
+      <>
           <Sidebar/>
+          <TestMap/>
           {/* <Map mini={false}/> */}
         </>
       }

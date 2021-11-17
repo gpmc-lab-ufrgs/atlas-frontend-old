@@ -1,5 +1,6 @@
 import React, { useState, createContext,  useContext } from "react";
-import geojsonURL from "../../data/SP-districts-geojson.json";
+// import geojsonDataObject from "../../data/GeoSes.json";
+import geojsonData from "../../data/GeoSes.json";
 
 export type Feature = { 
   type: string,
@@ -17,9 +18,52 @@ export type Feature = {
     COD_DIST: string,
     COD_SUB: string,
     DATA_CRIAC: string,
-    USUARIO_ID: number
+    USUARIO_ID: number,
+    MUNIC_CODE7: number,
+    MUNIC_CODE6: number,
+    FU: number,
+    FU_NAME: string,
+    LONG: string,
+    LAT: string,
+    OBSERVED: number,
+    EXPECTED: string,
+    RR_PREV: string,
+    HDI: string,
+    HDI_educ: string,
+    HDI_long: string,
+    HDI_inc: string,
+    GeoSES: string,
+    GeoSESed: string,
+    GeoSESpv: string,
+    GeoSESdp: string,
+    GeoSESwl: string,
+    GeoSESin: string,
+    GeoSESsg: string,
   }
 }
+
+// type FeatureContent = {
+//   MUNIC_CODE7: number,
+//   MUNIC_CODE6: number,
+//   FU: number,
+//   FU_NAME: string,
+//   LONG: string,
+//   LAT: string,
+//   OBSERVED: number,
+//   EXPECTED: string,
+//   RR_PREV: string,
+//   HDI: string,
+//   HDI_educ: string,
+//   HDI_long: string,
+//   HDI_inc: string,
+//   GeoSES: string,
+//   GeoSESed: string,
+//   GeoSESpv: string,
+//   GeoSESdp: string,
+//   GeoSESwl: string,
+//   GeoSESin: string,
+//   GeoSESsg: string,
+// }
 
 type FeaturesContext = {
   features: Array<Feature>,
@@ -31,7 +75,7 @@ type FeaturesContext = {
 
 const DEFAULT_VALUE = {
   //@ts-ignore
-  features: geojsonURL["features"],
+  features: geojsonData['features'],
   selectedFeature: null,
   setSelectedFeature: () => {},
   highlightedFeature: null,
