@@ -6,7 +6,7 @@ import "./styles.css"
 export const ComparisonButton = () => {
   const { selectedFeature } = useFeatures();
   const { comparison, addComparisonFeature, removeComparisonFeature } = useComparison();
-  const isCompared = comparison.find((feature : any) => feature["FU_NAME"] === selectedFeature?.FU_NAME) !== undefined;
+  const isCompared = comparison.find((feature : any) => feature["FU_NAME"] === selectedFeature?.properties.NM_MUN) !== undefined;
   const enableButton = comparison.length >= 4;
 
   const comparisonClick = (feature: Feature | null) => {

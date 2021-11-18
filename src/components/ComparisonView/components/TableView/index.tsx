@@ -17,7 +17,7 @@ export const TableView = ({ width }: any) => {
 
   const columns = comparison.map((ft, idx) => ({ 
     dataKey: `regionData${idx + 1}`,
-    label: ft.properties.NAME_DIST
+    label: ft.properties.NM_MUN
   }));
   
   const renderTable = (section: any) => {

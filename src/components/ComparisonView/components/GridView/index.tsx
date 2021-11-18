@@ -19,7 +19,7 @@ export const GridView = () => {
               <div className="grid-item-body">
                 {comparison.map((feature, id) => (
                   <div key={id} className="comparison">
-                    <label title={feature?.properties.NAME_DIST}>{feature?.properties.NAME_DIST}</label>
+                    <label title={feature?.properties.NM_MUN}>{feature?.properties.NM_MUN}</label>
                     {/* @ts-ignore */}
                     <data value={feature?.properties[content.id]}>{content.format(feature?.properties[content.id])}</data>
                   </div>

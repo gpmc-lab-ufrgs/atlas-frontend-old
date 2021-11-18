@@ -6,8 +6,15 @@ mapboxgl.accessToken =
   "pk.eyJ1IjoibGVvc2lsdmFnb21lcyIsImEiOiJja2MwdmxhZjAwejdsMnlsbXFsYTV5ZmVsIn0.MyyvEV2SHjCbCkIUeL_9bA";
 
 var hoveredId: number;
+var clickedId: number;
 
 const hoveredPopup = new mapboxgl.Popup({
+  closeButton: false,
+  closeOnClick: false,
+  className: "floating-popup",
+});
+
+const clickedPopup = new mapboxgl.Popup({
   closeButton: false,
   closeOnClick: false,
   className: "floating-popup",
@@ -79,4 +86,43 @@ export function highlightMun(feature: any, map: mapboxgl.Map) {
     }
     hoveredId = 0;
   }
+}
+
+export function clickMun(feature: any, map: mapboxgl.Map) {
+  if (feature && feature.geometry) {
+    if (feature.properties.CD_MUN === clickedId) {
+      return;
+    }
+
+    var coordinates = turf.centerOfMass(feature).geometry.coordinates;
+    var regionName = feature.properties.NM_MUN;
+    clickedPopup
+      .setLngLat([coordinates[0], coordinates[1]])
+      .setHTML(`<h5>${regionName}</h5>`)
+      .addTo(map);
+
+    map.setFeatureState(
+      { source: "mun", id: feature.properties.CD_MUN },
+      { click: true }
+    );
+
+    if (clickedId) {
+      map.setFeatureState({ source: "mun", id: clickedId }, { click: false });
+    }
+
+    clickedId = feature.properties.CD_MUN;
+  } else if (clickedId !== undefined && map) {
+    clickedPopup.remove();
+    if (map.getSource("mun")) {
+      map.setFeatureState({ source: "mun", id: clickedId }, { click: false });
+    }
+    clickedId = 0;
+  }
+}
+
+export function fitCenter(map: mapboxgl.Map) {
+  map.flyTo({
+    center: [-58, -15],
+    zoom: 3.4,
+  });
 }

@@ -1,6 +1,6 @@
 import React, { useState, createContext,  useContext } from "react";
 // import geojsonDataObject from "../../data/GeoSes.json";
-import geojsonData from "../../data/GeoSes.json";
+import geojsonDF from "../../data/states/DF_Municipios_2020.json";
 
 export type Feature = { 
   type: string,
@@ -9,36 +9,10 @@ export type Feature = {
     coordinates:number[][][]
   },
   properties: {
-    CLASSID: number,
-    FEATID: number,
-    REVISIONNU: number,
-    PERSONS_NUM:	number,
-    NAME_DIST: string,
-    SIGLA_DIST: string,
-    COD_DIST: string,
-    COD_SUB: string,
-    DATA_CRIAC: string,
-    USUARIO_ID: number,
-    MUNIC_CODE7: number,
-    MUNIC_CODE6: number,
-    FU: number,
-    FU_NAME: string,
-    LONG: string,
-    LAT: string,
-    OBSERVED: number,
-    EXPECTED: string,
-    RR_PREV: string,
-    HDI: string,
-    HDI_educ: string,
-    HDI_long: string,
-    HDI_inc: string,
-    GeoSES: string,
-    GeoSESed: string,
-    GeoSESpv: string,
-    GeoSESdp: string,
-    GeoSESwl: string,
-    GeoSESin: string,
-    GeoSESsg: string,
+    CD_MUN: string,
+    NM_MUN: string,
+    SIGLA_UF: string,
+    AREA_KM2: number,
   }
 }
 
@@ -75,7 +49,7 @@ type FeaturesContext = {
 
 const DEFAULT_VALUE = {
   //@ts-ignore
-  features: geojsonData['features'],
+  features: geojsonDF['features'],
   selectedFeature: null,
   setSelectedFeature: () => {},
   highlightedFeature: null,

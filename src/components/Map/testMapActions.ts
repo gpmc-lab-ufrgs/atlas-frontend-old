@@ -1,7 +1,7 @@
 import * as turf from "@turf/turf";
 import mapboxgl from "mapbox-gl";
 // import { geojsonStates } from "../../data/states";
-import geojsonSP from "../../data/states/SP_Municipios_2020.json";
+import geojsonDF from "../../data/states/DF_Municipios_2020.json";
 import { createLayer } from "./testMapMunActions";
 
 mapboxgl.accessToken =
@@ -28,7 +28,7 @@ export function clickState(feature: any, map: mapboxgl.Map) {
     fitBounds(feature, map);
 
     // @ts-ignore
-    createLayer(geojsonSP, map);
+    createLayer(geojsonDF, map);
   }
 }
 

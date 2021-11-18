@@ -2,10 +2,11 @@ import { useState, useRef, useEffect } from "react";
 import mapboxgl from "mapbox-gl";
 
 import geojsonURL from "../../data/BR_UF_2020.json";
+import { useFeatures } from "../../store";
 import { lineOpacity, lineWidth, fillOpacity } from "./const";
 import { useMapLayer } from "../../store"
 import { highlightState, clickState } from "./testMapActions"
-import { highlightMun } from "./testMapMunActions"
+import { highlightMun, clickMun, fitCenter } from "./testMapMunActions"
 import "./styles.css"
 
 export const TestMap = () => {
@@ -15,13 +16,11 @@ export const TestMap = () => {
   const { mapLayer } = useMapLayer();
   const mapContainer = useRef<any>();
   
-  // const { comparison } = useComparison();
   
   const [map, setMap] = useState<mapboxgl.Map>();
   const [highlightedState, setHighlightedState] = useState(null);
-  const [highlightedMun, setHighlightedMun] = useState(null);
+  const { selectedFeature,  highlightedFeature, setSelectedFeature, setHighlightedFeature } = useFeatures();
   const [selectedState, setSelectedState] = useState(null);
-  // const [comparisonFeatures] = useState({ type: "FeatureCollection", features: comparison });
   
   useEffect(() => {   
     const initializeMap = ({mapContainer}: any) => {
@@ -77,6 +76,8 @@ export const TestMap = () => {
         });
       });
 
+      // State level
+
       map.on("click", "fill-state", (e: any) => {
         if (e.features.length > 0) {
           setSelectedState(e.features[0])
@@ -93,40 +94,87 @@ export const TestMap = () => {
         setHighlightedState(null)
       });
 
-      map.on("mousemove", "fill-mun", (e: any) => {
+      // City level
+
+      map.on("click", "fill-mun", (e: any) => {
         if (e.features.length > 0) {
-          setHighlightedMun(e.features[0])
+          setSelectedFeature(e.features[0])
         }
       });
 
-      map.on("mouseleave", "fill-mun", () => {
-        setHighlightedMun(null)
+      map.on("click", (e) => {
+        const bbox = [
+          [e.point.x - 5, e.point.y - 5],
+          [e.point.x + 5, e.point.y + 5]
+        ];
+
+        if (map.getSource("mun")) {
+          //@ts-ignore
+          const clickedMun = map.queryRenderedFeatures(bbox, {
+            layers: ['fill-mun']
+          });
+
+          if(clickedMun.length === 0) {
+            map.removeLayer("mun-borders")
+            map.removeLayer("fill-mun")
+            map.removeSource("mun")
+        
+            fitCenter(map)
+            map.setLayoutProperty("fill-state", "visibility", "visible");
+            map.setLayoutProperty("state-borders", "visibility", "visible");
+            setSelectedFeature(null)
+          }
+        }
       });
+
+      map.on("mousemove", "fill-mun", (e: any) => {
+        if (e.features.length > 0) {
+          setHighlightedFeature(e.features[0])
+        }
+      });
+    
+      map.on("mouseleave", "fill-mun", () => {
+        setHighlightedFeature(null)
+      })
 
       setMap(map)
     };
 
 
     if (!map) initializeMap({mapContainer});
-  }, [map, mapLayer]);
+  }, [map, mapLayer, setHighlightedFeature, setSelectedFeature]);
 
-  useEffect(() => {
-    if(map) {
-      highlightMun(highlightedMun, map)
-    }
-  }, [highlightedMun, map])
+  // State level
 
   useEffect(() => {
     if(map) {
       highlightState(highlightedState, map)
     }
   }, [highlightedState, map])
-
+  
   useEffect(() => {
     if(map) {
       clickState(selectedState, map)
     }
   }, [selectedState, map])
+  
+  // City level
+  
+  useEffect(() => {
+    if(highlightedFeature !== null && map) {
+      highlightMun(highlightedFeature, map);
+    } else if (highlightedFeature === null && map) {
+      highlightMun(null, map);
+    }
+  }, [highlightedFeature, map])
+
+  useEffect(() => {
+    if(selectedFeature !== null && map) {
+      clickMun(selectedFeature, map);
+    } else if (selectedFeature === null && map) {
+      clickMun(null, map);
+    }
+  }, [map, selectedFeature])
 
   return <div id="map" ref={(el) => (mapContainer.current = el)} className="map" />;
 };
