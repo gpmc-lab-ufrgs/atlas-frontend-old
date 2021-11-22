@@ -1,11 +1,12 @@
 import { FaTimes, FaChevronRight } from 'react-icons/fa';
 import { Link } from "react-router-dom";
 
+import propsMapping, { propsMappingSectionType, propsMappingContentType } from "../../../../config/propsMapping"
+import { useFeatures, useComparison } from "../../../../store"
 import geosesData from "../../../../data/GeoSesObject.json";
 import { CollapsibleSection } from "../../../index"
-import { useFeatures, useComparison } from "../../../../store"
-import { ComparisonButton, MetricDetails } from "./components"
-import propsMapping, { propsMappingSectionType, propsMappingContentType } from "../../../../config/propsMapping"
+import { ComparisonButton } from "./components"
+import { MetricDetails } from "../../../index"
 import "./styles.css"
 
 export const RegionDetails = () => {
@@ -25,13 +26,18 @@ export const RegionDetails = () => {
       {section.content.length > 0 ? 
         <>
           {section.content.map((content: propsMappingContentType, id) => (
-            //@ts-ignore
-            geosesData[selectedFeature?.properties.CD_MUN][content.id] ?
-            <MetricDetails key={id} feature={selectedFeature} metric={content} /> :
-            <div className="propsContent" key={id}>
-              <h2>{content.label}</h2>
-              <p>'n/a'</p>
-            </div>
+            <>
+              <h2 title={content.label}>{content.label}</h2>
+              {
+                //@ts-ignore
+                geosesData[selectedFeature?.properties.CD_MUN][content.id] ?
+                <MetricDetails key={id} feature={selectedFeature} metric={content} /> :
+                <div className="propsContent" key={id}>
+                  <h2>{content.label}</h2>
+                  <p>'n/a'</p>
+                </div>
+              }
+            </>
           ))}
         </>
       :

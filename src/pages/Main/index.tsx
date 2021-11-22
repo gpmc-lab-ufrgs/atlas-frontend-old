@@ -42,17 +42,17 @@ export const Main = () => {
     <div className="main">
       <Modal/>
       <Header/>
-      {/*{ comparisonMode ?
+      { comparisonMode ?
         <>
           <Sidebar comparison/>
           <ComparisonView />
         </>
-      :*/}
+      :
         <>
           <Sidebar/>
           <Map/>
         </>
-      {/*}*/}
+      }
       <HamburgerMenu/>
     </div>
   )

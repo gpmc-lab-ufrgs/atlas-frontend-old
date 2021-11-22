@@ -3,7 +3,7 @@
 }
 
 .regionDetails {
-  position: absolute;
+  position: fixed;
   height: 100vh;
   width: 320px;
   z-index: 3;

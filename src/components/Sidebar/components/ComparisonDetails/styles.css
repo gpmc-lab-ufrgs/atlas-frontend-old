@@ -3,7 +3,7 @@
 }
 
 .comparisonDetails {
-  position: absolute;
+  position: fixed;
   height: 100%;
   width: 320px;
   z-index: 3;
