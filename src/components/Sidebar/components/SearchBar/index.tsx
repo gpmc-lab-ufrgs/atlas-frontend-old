@@ -9,6 +9,7 @@ import { useFeatures } from "../../../../store"
 import { sameWidthModifier } from "../../../../utils/popper-modifiers"
 
 export const SearchBar = () => {
+
   const inputRef = useRef(null)
 
   const { features, setSelectedFeature, selectedFeature, setHighlightedFeature } = useFeatures();

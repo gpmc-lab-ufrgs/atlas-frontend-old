@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useLocation, useHistory } from "react-router";
 import { useComparison, useFeatures } from "../../store"
 
-import { Map, Sidebar, ComparisonView, Header, HamburgerMenu, Modal, TestMap } from "../../components"
+import { Map, Sidebar, ComparisonView, Header, HamburgerMenu, Modal } from "../../components"
 import "./styles.css"
 
 export const Main = () => {
@@ -42,18 +42,17 @@ export const Main = () => {
     <div className="main">
       <Modal/>
       <Header/>
-      { comparisonMode ?
+      {/*{ comparisonMode ?
         <>
           <Sidebar comparison/>
           <ComparisonView />
         </>
-      :
-      <>
+      :*/}
+        <>
           <Sidebar/>
-          <TestMap/>
-          {/* <Map mini={false}/> */}
+          <Map/>
         </>
-      }
+      {/*}*/}
       <HamburgerMenu/>
     </div>
   )

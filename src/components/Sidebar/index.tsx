@@ -23,7 +23,7 @@ export const Sidebar = ({comparison}: any) => {
                 {sidebarIsOpen && <RegionDetails />}
               </>
             }
-            <Legend />
+            {/*<Legend />*/}
           </>
       }
     </div>

@@ -11,9 +11,6 @@ export const MetricDetails = ({ feature, metric, small }: any) => {
     const value = metric.format(rawValue);
     const name = metric.label;
     const width = small ? 115 : undefined;
-    
-    console.log(rawValue)
-    console.log(value)
 
     switch (metric.type) {
       /*case 'range':

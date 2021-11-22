@@ -1,26 +1,12 @@
 import { lineOpacity, lineWidth, fillOpacity } from "./const";
 import * as turf from "@turf/turf";
 import mapboxgl from "mapbox-gl";
-
-mapboxgl.accessToken =
-  "pk.eyJ1IjoibGVvc2lsdmFnb21lcyIsImEiOiJja2MwdmxhZjAwejdsMnlsbXFsYTV5ZmVsIn0.MyyvEV2SHjCbCkIUeL_9bA";
+import { renderLayer, hoveredPopup, clickedPopup } from "./actions";
 
 var hoveredId: number;
 var clickedId: number;
 
-const hoveredPopup = new mapboxgl.Popup({
-  closeButton: false,
-  closeOnClick: false,
-  className: "floating-popup",
-});
-
-const clickedPopup = new mapboxgl.Popup({
-  closeButton: false,
-  closeOnClick: false,
-  className: "floating-popup",
-});
-
-export function createLayer(layer: any, map: mapboxgl.Map) {
+export function createMunLayer(layer: any, map: mapboxgl.Map) {
   if (layer !== null) {
     map.addSource("mun", {
       type: "geojson",
@@ -90,6 +76,8 @@ export function highlightMun(feature: any, map: mapboxgl.Map) {
 
 export function clickMun(feature: any, map: mapboxgl.Map) {
   if (feature && feature.geometry) {
+    renderLayer(feature, map)
+
     if (feature.properties.CD_MUN === clickedId) {
       return;
     }
@@ -111,18 +99,14 @@ export function clickMun(feature: any, map: mapboxgl.Map) {
     }
 
     clickedId = feature.properties.CD_MUN;
-  } else if (clickedId !== undefined && map) {
+  } else {
     clickedPopup.remove();
-    if (map.getSource("mun")) {
-      map.setFeatureState({ source: "mun", id: clickedId }, { click: false });
-    }
-    clickedId = 0;
-  }
-}
 
-export function fitCenter(map: mapboxgl.Map) {
-  map.flyTo({
-    center: [-58, -15],
-    zoom: 3.4,
-  });
+    if (clickedId !== undefined) {
+      if (map.getSource("mun")) {
+        map.setFeatureState({ source: "mun", id: clickedId }, { click: false });
+      }
+      clickedId = 0;
+    }
+  }
 }

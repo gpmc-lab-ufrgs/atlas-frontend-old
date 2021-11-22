@@ -1,7 +1,7 @@
 import * as turf from "@turf/turf";
 import mapboxgl from "mapbox-gl";
 
-import { formatPopulationNumber } from "../../utils/population";
+import { formatPopulationNumber } from "../../../utils/population";
 
 mapboxgl.accessToken =
   "pk.eyJ1IjoibGVvc2lsdmFnb21lcyIsImEiOiJja2MwdmxhZjAwejdsMnlsbXFsYTV5ZmVsIn0.MyyvEV2SHjCbCkIUeL_9bA";

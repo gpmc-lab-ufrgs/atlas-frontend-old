@@ -1,7 +1,7 @@
 import { FaTimes, FaChevronRight } from 'react-icons/fa';
 import { Link } from "react-router-dom";
 
-// import geosesData from "../../../../data/GeoSesObject.json";
+import geosesData from "../../../../data/GeoSesObject.json";
 import { CollapsibleSection } from "../../../index"
 import { useFeatures, useComparison } from "../../../../store"
 import { ComparisonButton, MetricDetails } from "./components"
@@ -22,15 +22,16 @@ export const RegionDetails = () => {
   
   const propsDetails = (section: propsMappingSectionType) => (
     <div>
-      {/*<div className="propsContent" key={id}>
-        <h2>{content.label}</h2>
-         @ts-ignore 
-        <p>{geosesData[selectedFeature?.properties.CD_MUN][content.id] ? geosesData[selectedFeature?.properties.CD_MUN][content.id] : 'n/a'}</p>
-      </div>*/}
       {section.content.length > 0 ? 
         <>
           {section.content.map((content: propsMappingContentType, id) => (
-            <MetricDetails key={id} feature={selectedFeature} metric={content} />
+            //@ts-ignore
+            geosesData[selectedFeature?.properties.CD_MUN][content.id] ?
+            <MetricDetails key={id} feature={selectedFeature} metric={content} /> :
+            <div className="propsContent" key={id}>
+              <h2>{content.label}</h2>
+              <p>'n/a'</p>
+            </div>
           ))}
         </>
       :
@@ -42,7 +43,7 @@ export const RegionDetails = () => {
   return (
     <div className="regionDetails">
       <div className="title"/>
-      <>
+      <div className='regionDetailsContent'>
         {selectedFeature && <ComparisonButton/>}
         {comparison.length > 0 &&
           <CollapsibleSection title="Locations to Compare">
@@ -63,12 +64,12 @@ export const RegionDetails = () => {
             </>
           </CollapsibleSection>
         }
-      </>
-      { propsMapping.map((section, id) => (
-        <CollapsibleSection key={id} title={section.title}>
-          {propsDetails(section)}
-        </CollapsibleSection>
-      ))}
+        { propsMapping.map((section, id) => (
+          <CollapsibleSection key={id} title={section.title}>
+            {propsDetails(section)}
+          </CollapsibleSection>
+        ))}
+      </div>
     </div>
   )
 }

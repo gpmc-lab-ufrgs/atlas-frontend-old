@@ -1,5 +1,6 @@
 export { MapLayerProvider, useMapLayer } from "./contexts/mapLayerContext";
 export { FeaturesProvider, useFeatures } from "./contexts/featuresContext";
+export { StatesProvider, useStates } from "./contexts/statesContext";
 export { SidebarProvider, useSidebar } from "./contexts/sidebarContext";
 export {
   HamburgerMenuProvider,

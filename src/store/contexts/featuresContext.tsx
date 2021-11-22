@@ -1,6 +1,6 @@
 import React, { useState, createContext,  useContext } from "react";
 // import geojsonDataObject from "../../data/GeoSes.json";
-import geojsonDF from "../../data/states/DF_Municipios_2020.json";
+import geojsonGO from "../../data/states/GO_Municipios_2020.json";
 
 export type Feature = { 
   type: string,
@@ -49,7 +49,7 @@ type FeaturesContext = {
 
 const DEFAULT_VALUE = {
   //@ts-ignore
-  features: geojsonDF['features'],
+  features: geojsonGO['features'],
   selectedFeature: null,
   setSelectedFeature: () => {},
   highlightedFeature: null,
