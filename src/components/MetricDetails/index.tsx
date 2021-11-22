@@ -1,6 +1,6 @@
 // import RangeBar from "./charts/RangeBar";
-import { SolidBar } from "../../../../../Charts";
-import geosesData from "../../../../../../data/GeoSesObject.json";
+import { SolidBar } from "../Charts";
+import geosesData from "../../data/GeoSesObject.json";
 // import LineChartMetric from "./charts/LineChartMetric";
 
 export const MetricDetails = ({ feature, metric, small }: any) => {
@@ -24,14 +24,12 @@ export const MetricDetails = ({ feature, metric, small }: any) => {
         let rawValueFloat = parseFloat(rawValue) || 0
         return (
           <div key={feature.properties.CD_MUN} className="comparison-bar">
-            <label title={name} data-value={rawValue}>{name}</label>
             <SolidBar label={value} value={rawValueFloat} max={100} width={width} />
           </div>
         )
       default:
         return (
           <div key={feature.properties.CD_MUN} className="propsContent">
-            <h2 title={name}>{name}</h2>
             <data value={rawValue}>{value}</data>
           </div>
         )

@@ -5,3 +5,4 @@ export { Sidebar } from "./Sidebar";
 export { HamburgerMenu } from "./HamburgerMenu";
 export { ComparisonView } from "./ComparisonView";
 export { CollapsibleSection } from "./CollapsibleSection";
+export { MetricDetails } from "./MetricDetails";

@@ -10,20 +10,21 @@
 
 .table-header {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
+  align-items: center;
+  margin: 0px;
+  margin-bottom: 12px;
+
   text-align: right;
   font-size: 16px;
   font-weight: 500;
-  align-items: flex-end;
   line-height: 1.5;
-  margin: 0px 10px 12px 10px;
 }
 
-.fake-chart {
-  width: 120px;
-  height: 80px;
-  background-color: #808080;
+.table-data {
+  padding-left: 20px;
 }
+
 
 .table-row > td .cell-data {
   line-height: 24px;

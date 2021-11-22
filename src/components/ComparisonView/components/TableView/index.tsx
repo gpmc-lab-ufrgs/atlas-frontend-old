@@ -2,6 +2,8 @@ import propsMapping from "../../../../config/propsMapping"
 import { useComparison } from "../../../../store"
 import { CollapsibleSection } from "../../../index"
 import Table from "rc-table";
+import { MetricDetails } from "../../../index"
+import geosesData from "../../../../data/GeoSesObject.json";
 import "./styles.css"
 
 const { Column } = Table;
@@ -26,7 +28,7 @@ export const TableView = ({ width }: any) => {
     section.content.forEach((metric: any, id: any) => {
       let columnValues = comparison.map((ft, idx) => {
         // @ts-ignore
-        let rawValue = ft.properties[metric.id];
+        let rawValue = geosesData[ft?.properties.CD_MUN][metric.id] && <MetricDetails key={id} feature={ft} metric={metric} />
         return ({ [`regionData${idx + 1}`]: rawValue });
       });
       columnValues.push({regionName: metric.label});
@@ -36,13 +38,11 @@ export const TableView = ({ width }: any) => {
     })
 
     const renderCell = (rawValue: any, record: any) => {
-      const metric = section.content[record.id];
       if (rawValue === undefined || rawValue === null) {
         return 'No data';
       }
       
-      const value = metric.format(rawValue);
-      return <span className="cell-data">{value}</span>
+      return <span className="cell-data">{rawValue}</span>
 
       // switch (metric.type) {
         // case 'line-chart':{
@@ -89,11 +89,13 @@ export const TableView = ({ width }: any) => {
           ))}
         </div>
       </div>
-      {propsMapping.map((section) => (
-        <CollapsibleSection title={section.title} key={section.title}>
-          {renderTable(section)}
-        </CollapsibleSection>
-      ))}
+      <div className="table-data">
+        {propsMapping.map((section) => (
+          <CollapsibleSection title={section.title} key={section.title}>
+            {renderTable(section)}
+          </CollapsibleSection>
+        ))}
+      </div>
     </div>
   )
 }

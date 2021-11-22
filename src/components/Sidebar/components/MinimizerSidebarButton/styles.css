@@ -8,7 +8,7 @@
   align-items: center;
   z-index: 2;
 
-  position: absolute;
+  position: fixed;
   width: 20px;
   height: 40px;
       

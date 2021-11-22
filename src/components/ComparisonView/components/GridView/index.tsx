@@ -1,6 +1,8 @@
 import propsMapping, { propsMappingSectionType, propsMappingContentType } from "../../../../config/propsMapping"
 import { useComparison } from "../../../../store"
 import { CollapsibleSection } from "../../../index"
+import geosesData from "../../../../data/GeoSesObject.json";
+import { MetricDetails } from "../../../index"
 import "./styles.css"
   
 export const GridView = () => {
@@ -20,8 +22,15 @@ export const GridView = () => {
                 {comparison.map((feature, id) => (
                   <div key={id} className="comparison">
                     <label title={feature?.properties.NM_MUN}>{feature?.properties.NM_MUN}</label>
-                    {/* @ts-ignore */}
-                    <data value={feature?.properties[content.id]}>{content.format(feature?.properties[content.id])}</data>
+                    {
+                      //@ts-ignore
+                      geosesData[feature?.properties.CD_MUN][content.id] ?
+                      <MetricDetails key={id} feature={feature} metric={content} /> :
+                      <div className="propsContent" key={id}>
+                        <h2>{content.label}</h2>
+                        <p>No Data</p>
+                      </div>
+                    }
                   </div>
                 ))}
               </div>
