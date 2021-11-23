@@ -3,7 +3,7 @@ name: New data template
 about: Describe details about new data for this project
 title: ''
 labels: ''
-assignees: ''
+assignees: LeoSilvaGomes
 
 ---
 
