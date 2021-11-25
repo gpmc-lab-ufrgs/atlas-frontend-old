@@ -16,7 +16,7 @@ A clear and concise description of what you want to happen.
 
 ## Details
 
-| Name | Description | Label | Format | Classification |
+| Name | Description | Descrição | Label | Rótulo | Format | Classification |
 | :-: | :-: | :-: | :-: | :-: |
 |     |     |     |     |     |
 
@@ -25,5 +25,6 @@ A clear and concise description of what you want to happen.
 <!-- Progress Bar -->
 <!-- Graphic -->
 <!-- Histogram -->
+<!-- Heatmap -->
 
 ## Coments
