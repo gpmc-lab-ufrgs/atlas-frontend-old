@@ -17,8 +17,8 @@ A clear and concise description of what you want to happen.
 ## Details
 
 | Name | Description | Descrição | Label | Rótulo | Format | Classification |
-| :-: | :-: | :-: | :-: | :-: |
-|     |     |     |     |     |
+| :-: | :-: | :-: | :-: | :-: | :-: | :-: |
+|     |     |     |     |     |    |    |
 
 <!-- Format -->
 <!-- Float .2 -->
