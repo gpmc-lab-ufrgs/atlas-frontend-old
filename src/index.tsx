@@ -4,6 +4,7 @@ import { BrowserRouter } from "react-router-dom";
 import { Main } from "./pages"
 import { StatesProvider, MapLayerProvider, FeaturesProvider, CollapsibleProvider, SidebarProvider, ComparisonProvider, HamburgerMenuProvider } from "./store"
 import './index.css';
+import { Footer } from './components';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -16,6 +17,7 @@ ReactDOM.render(
                 <CollapsibleProvider>
                   <MapLayerProvider>
                     <Main />
+                    <Footer />
                   </MapLayerProvider>
                 </CollapsibleProvider>
               </SidebarProvider>

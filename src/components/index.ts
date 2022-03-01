@@ -1,4 +1,4 @@
-export { default as Map } from "./Map";
+export { Map } from "./Map";
 export { Modal } from "./Modal";
 export { Header } from "./Header";
 export { Sidebar } from "./Sidebar";
@@ -6,3 +6,4 @@ export { HamburgerMenu } from "./HamburgerMenu";
 export { ComparisonView } from "./ComparisonView";
 export { CollapsibleSection } from "./CollapsibleSection";
 export { MetricDetails } from "./MetricDetails";
+export { default as Footer } from "./Footer";

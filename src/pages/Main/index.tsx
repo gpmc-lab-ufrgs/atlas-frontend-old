@@ -40,20 +40,20 @@ export const Main = () => {
 
   return (
     <div className="main">
-      <Modal/>
-      <Header/>
-      { comparisonMode ?
-        <>
-          <Sidebar comparison/>
-          <ComparisonView />
-        </>
-      :
-        <>
-          <Sidebar/>
-          <Map/>
-        </>
-      }
-      <HamburgerMenu/>
+        <Modal/>
+        <Header/>
+        { comparisonMode ?
+          <>
+            <Sidebar comparison/>
+            <ComparisonView />
+          </>
+        :
+          <>
+            <Sidebar/>
+            <Map/>
+          </>
+        }
+        <HamburgerMenu/>
     </div>
   )
 }
