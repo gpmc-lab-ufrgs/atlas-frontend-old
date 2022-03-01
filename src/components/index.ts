@@ -1,4 +1,4 @@
-export { Map } from "./Map";
+export { default as Map } from "./Map";
 export { Modal } from "./Modal";
 export { Header } from "./Header";
 export { Sidebar } from "./Sidebar";

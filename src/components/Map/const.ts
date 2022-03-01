@@ -1,3 +1,6 @@
+export const accessToken =
+  "pk.eyJ1IjoibGVvc2dvbWVzIiwiYSI6ImNsMDhob3FiNDAzZm8zaW4zZXp3ZHdjMDcifQ.G84YIGM34H0GzLEReMR5iQ";
+
 export const fillOpacity = [
   [
     "case",
