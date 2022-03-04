@@ -2,6 +2,7 @@
   height: max-content;
   width: 100%;
   max-width: 1110px;
+  padding-top: 80px;
 }
 
 .table-view .Collapsible__contentInner {
@@ -26,21 +27,25 @@
 }
 
 
-.table-row > td .cell-data {
+.table-row>td .cell-data {
   line-height: 24px;
 }
-.table-row > td {
+
+.table-row>td {
   padding: 3px 10px;
   vertical-align: middle;
 }
+
 .table-row:nth-child(even) {
   background-color: #F5F5F5;
 }
-.table-row > td:first-child {
+
+.table-row>td:first-child {
   font-weight: 500;
   padding: 6px 10px;
 }
-.table-row > td:not(:first-child) {
+
+.table-row>td:not(:first-child) {
   text-align: right;
 }
 

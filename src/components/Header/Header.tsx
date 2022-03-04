@@ -33,30 +33,31 @@ const Header = () => {
   }, [location, setComparisonMode]);
 
   if (comparisonMode) {
-    <Styles.HeaderContainer comparisonMode>
-      <Styles.HeaderCenterSide>
-        <SegmentedControl
-          options={options}
-          defaultValue={comparisonType}
-          onChange={setComparisonType}
-          width={170}
-        />
-      </Styles.HeaderCenterSide>
-      <Styles.HeaderRightSide>
-        <Styles.MenuButton comparisonMode onClick={() => setOpenMenu(true)} />
+    return(
+      <Styles.HeaderContainer comparisonMode>
+        <Styles.HeaderCenterSide>
+          <SegmentedControl
+            options={options}
+            defaultValue={comparisonType}
+            onChange={setComparisonType}
+            width={170}
+          />
+        </Styles.HeaderCenterSide>
+        <Styles.HeaderRightSide>
+          <Styles.MenuButton comparisonMode onClick={() => setOpenMenu(true)} />
 
-        <MenuDrawer open={openMenu} setOpen={setOpenMenu} anchor="right">
-          <ProjectInformations setOpen={setOpenMenu} />
-        </MenuDrawer>
-      </Styles.HeaderRightSide>
-    </Styles.HeaderContainer>;
+          <MenuDrawer open={openMenu} setOpen={setOpenMenu} anchor="right">
+            <ProjectInformations setOpen={setOpenMenu} />
+          </MenuDrawer>
+        </Styles.HeaderRightSide>
+      </Styles.HeaderContainer>
+    )
   }
 
   return (
-    <Styles.HeaderContainer comparisonMode={false}>
+    <Styles.HeaderContainer>
       <Styles.HeaderRightSide>
         <Styles.MenuButton
-          comparisonMode={false}
           onClick={() => setOpenMenu(true)}
         />
 

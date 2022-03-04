@@ -3,12 +3,12 @@ import styled from "styled-components";
 import { Menu as MenuIcon } from "@mui/icons-material";
 
 interface Props {
-  comparisonMode: boolean;
+  comparisonMode?: boolean;
 }
 
 export const HeaderContainer = styled.div<Props>`
   position: fixed;
-  z-index: 2;
+  z-index: 4;
 
   top: 0;
   left: 0;
@@ -16,13 +16,6 @@ export const HeaderContainer = styled.div<Props>`
 
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-
-  /* display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: space-between;
-  align-content: center;
-  align-items: center; */
 
   pointer-events: none;
 

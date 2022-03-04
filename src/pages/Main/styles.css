@@ -10,8 +10,10 @@
 .viewer-container {
   position: absolute;
   right: 0;
-  padding-top: 70px;
   display: flex;
   overflow: auto;
   justify-content: center;
+  background-color: white;
+  z-index: 3;
+  min-height: 100vh;
 }
