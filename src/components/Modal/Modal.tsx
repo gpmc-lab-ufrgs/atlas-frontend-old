@@ -1,7 +1,7 @@
 import { Switch, Route as Path } from "react-router-dom";
-import { AboutTheAtlas, Research, FAQ, Contributors, Methods } from "./components"
+import { AboutTheAtlas, Research, FAQ, Contributors, Methods } from "./index"
 
-export const Modal = () => {
+const Modal = () => {
   return (
     <Switch>
       <Path exact path="/aboutTheAtlas"><AboutTheAtlas/></Path>
@@ -12,3 +12,5 @@ export const Modal = () => {
     </Switch>
   );
 }
+
+export default Modal;

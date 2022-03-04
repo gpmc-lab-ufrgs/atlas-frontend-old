@@ -4,11 +4,11 @@ import { useComparison, useFeatures } from "../../store";
 
 import Footer from "@components/Footer";
 import Header from "@components/Header";
+import Modal from "@components/Modal";
 
 import { Sidebar } from "../../components";
 import { Map } from "@components/Map";
 import { ComparisonView } from "@components/ComparisonView";
-import { Modal } from "@components/Modal";
 
 import "./styles.css";
 

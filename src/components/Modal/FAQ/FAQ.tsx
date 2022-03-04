@@ -1,9 +1,11 @@
-import { ModalContainer } from "../ModalContainer";
+import { ModalContainer } from "@components/Modal";
 
-export const FAQ = () => {
+const FAQ = () => {
     return (
       <ModalContainer title="FAQ">
         <></>
       </ModalContainer>
     );
 };
+
+export default FAQ;

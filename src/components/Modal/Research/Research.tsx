@@ -1,9 +1,11 @@
-import { ModalContainer } from "../ModalContainer";
+import { ModalContainer } from "@components/Modal";
 
-export const Research = () => {
+const Research = () => {
     return (
       <ModalContainer title="Research">
         <></>
       </ModalContainer>
     );
 };
+
+export default Research;

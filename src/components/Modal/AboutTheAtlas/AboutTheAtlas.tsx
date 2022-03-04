@@ -1,6 +1,6 @@
-import { ModalContainer } from "../ModalContainer";
+import { ModalContainer } from "@components/Modal";
 
-export const AboutTheAtlas = () => {
+const AboutTheAtlas = () => {
   return (
     <ModalContainer title="About the Atlas">
       <p>
@@ -12,3 +12,5 @@ export const AboutTheAtlas = () => {
     </ModalContainer>
   );
 };
+
+export default AboutTheAtlas;

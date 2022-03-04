@@ -1,9 +1,11 @@
-import { ModalContainer } from "../ModalContainer";
+import { ModalContainer } from "@components/Modal";
 
-export const Methods = () => {
+const Methods = () => {
     return (
       <ModalContainer title="Methods">
         <></>
       </ModalContainer>
     );
 };
+
+export default Methods;

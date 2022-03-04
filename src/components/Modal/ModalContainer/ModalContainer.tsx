@@ -2,11 +2,13 @@ import { useHistory } from "react-router-dom";
 import { FaTimes } from 'react-icons/fa'
 import './styles.css'
 
-export const ModalContainer = ({title, children} : any) => {
+import * as Styles from './styles';
+
+const ModalContainer = ({title, children} : any) => {
   const history = useHistory();
 
   return (
-    <div className="modalContainer">
+    <Styles.ModalContainer>
       <div
         onClick={history.goBack}
         className="modalDimScreen"
@@ -22,7 +24,8 @@ export const ModalContainer = ({title, children} : any) => {
           </div>
         </div>
       </div>
-    </div>
+    </Styles.ModalContainer>
   )
 }
 
+export default ModalContainer;
