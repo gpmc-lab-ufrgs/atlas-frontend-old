@@ -47,16 +47,18 @@ const Map = () => {
       map.on("load", () => {
         map.dragRotate.disable();
         map.touchZoomRotate.disableRotation();
+        //sk.eyJ1IjoibGVvc2dvbWVzIiwiYSI6ImNsMGJqOG9mOTBmb2Yzam9kZmxwcGUzam0ifQ.jFWLs4OhctVQxKIsuKe6cA
 
         map.addSource("state", {
           type: "vector",
-          url: "mapbox://leosgomes.3yhfk2t5",
+          url: `mapbox://leosgomes.3yhfk2t5`,
         });
 
         map.addLayer({
           id: "fill-state",
           type: "fill",
           source: "state",
+          "source-layer": "BR_UF_2020-dp2j5o",
           layout: {
             visibility: "visible",
           },
@@ -71,6 +73,7 @@ const Map = () => {
           id: "state-borders",
           type: "line",
           source: "state",
+          "source-layer": "BR_UF_2020-dp2j5o",
           layout: {
             visibility: "visible",
           },

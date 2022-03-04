@@ -4,10 +4,6 @@ export const sections = [
       url: "/aboutTheAtlas",
       title: "About the Atlas",
     },
-    // {
-    //   url: "/aboutTheLab",
-    //   title: "About the Lab",
-    // },
     {
       url: "/methods",
       title: "Methods",
@@ -25,5 +21,4 @@ export const sections = [
       title: "Contributors",
     },
   ],
-  // [{ url: "/recommendation", title: "Recommendation Tool" }],
 ];
