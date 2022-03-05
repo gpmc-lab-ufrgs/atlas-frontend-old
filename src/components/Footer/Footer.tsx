@@ -1,7 +1,7 @@
-import "./styles.css";
+import * as Styles from "./styles";
 
 function Footer() {
-  return <div className="containerFooter">Footer</div>;
+  return <Styles.FooterContainer>Footer</Styles.FooterContainer>;
 }
 
 export default Footer;
