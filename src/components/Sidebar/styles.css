@@ -3,7 +3,7 @@
   width: auto;
   display: flex;
   flex-direction: column;
-  z-index: 2;
+  z-index: 5;
 }
 
 .legend {
@@ -27,7 +27,13 @@
   border-radius: 2px;
   display: flex;
   justify-content: space-evenly;
-  background-image: linear-gradient(to right, #ADDC91, #6CC24A, #509E2F, #4A7729);
+  background-image: linear-gradient(
+    to right,
+    #addc91,
+    #6cc24a,
+    #509e2f,
+    #4a7729
+  );
 }
 
 .line {

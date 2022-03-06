@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 
-import MenuDrawer from "@components/MenuDrawer";
-import ProjectInformations from "@components/ProjectInformations";
-
 import { useComparison } from "@store/index";
 
-import { SegmentedControl } from "@components/Header";
+import Drawer from "@components/Drawer";
+import SearchBar from "@components/SearchBar";
+import { SegmentedControl, ProjectInformations } from "@components/Header";
 
 import * as Styles from "./styles";
 
@@ -38,9 +37,9 @@ const Header = () => {
         <Styles.HeaderRightSide>
           <Styles.MenuButton comparisonMode onClick={() => setOpenMenu(true)} />
 
-          <MenuDrawer open={openMenu} setOpen={setOpenMenu} anchor="right">
+          <Drawer open={openMenu} setOpen={setOpenMenu} anchor="right">
             <ProjectInformations setOpen={setOpenMenu} />
-          </MenuDrawer>
+          </Drawer>
         </Styles.HeaderRightSide>
       </Styles.HeaderContainer>
     );
@@ -48,12 +47,15 @@ const Header = () => {
 
   return (
     <Styles.HeaderContainer>
+      <Styles.HeaderLeftSide>
+        <SearchBar />
+      </Styles.HeaderLeftSide>
       <Styles.HeaderRightSide>
         <Styles.MenuButton onClick={() => setOpenMenu(true)} />
 
-        <MenuDrawer open={openMenu} setOpen={setOpenMenu} anchor="right">
+        <Drawer open={openMenu} setOpen={setOpenMenu} anchor="right">
           <ProjectInformations setOpen={setOpenMenu} />
-        </MenuDrawer>
+        </Drawer>
       </Styles.HeaderRightSide>
     </Styles.HeaderContainer>
   );

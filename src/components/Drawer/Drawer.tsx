@@ -11,23 +11,23 @@ interface Props {
   hideBackdrop?: boolean;
 }
 
-const MenuDrawer: React.FC<Props> = ({
+const Drawer: React.FC<Props> = ({
   open,
-  setOpen,
   anchor,
-  children,
+  setOpen,
   hideBackdrop,
+  children,
 }) => {
   return (
-    <Styles.MenuDrawer
+    <Styles.Drawer
       anchor={anchor}
       open={open}
       onClose={() => setOpen(false)}
       hideBackdrop={hideBackdrop}
     >
-      <Styles.MenuContent>{children}</Styles.MenuContent>
-    </Styles.MenuDrawer>
+      <Styles.DrawerContent>{children}</Styles.DrawerContent>
+    </Styles.Drawer>
   );
 };
 
-export default MenuDrawer;
+export default Drawer;

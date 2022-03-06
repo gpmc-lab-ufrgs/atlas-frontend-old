@@ -1,10 +1,11 @@
 import {
   Legend,
-  SearchBar,
   RegionDetails,
   MinimizerSidebarButton,
   ComparisonDetails,
 } from "./components";
+
+import SearchBar from "@components/SearchBar";
 import { useFeatures, useSidebar } from "../../store";
 import "./styles.css";
 
@@ -21,9 +22,9 @@ export const Sidebar = ({ comparison }: any) => {
         </>
       ) : (
         <>
-          {(selectedFeature === null || sidebarIsOpen) && <SearchBar />}
           {selectedFeature !== null && (
             <>
+              <SearchBar />
               <MinimizerSidebarButton />
               {sidebarIsOpen && <RegionDetails />}
             </>
