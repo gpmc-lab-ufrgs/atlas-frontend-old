@@ -70,7 +70,7 @@ const contributors: Person[] = [
 
   {
     name: 'Andreon Magagna', 
-    image: require('../../../assets/andreon_magagna.png'),
+    image: require('../../../assets/andreon_magagna.jpg'),
     function: '',
     institution: ''
   },  
