@@ -43,8 +43,6 @@ const SearchBarPopper: React.FC<Props> = ({
     placement: "bottom-start",
   });
 
-  console.log(popperActions.highlightedIndex);
-
   return (
     <Styles.PopperContainer
       ref={setPopperElement}

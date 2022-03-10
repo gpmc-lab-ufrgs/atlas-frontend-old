@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 import { Box } from "@mui/system";
+import { Close } from "@mui/icons-material";
 
 export const ProjectInformationWrapper = styled(Box)`
   min-width: 230px;
@@ -18,6 +19,10 @@ export const TitleWrapper = styled.div`
 
 export const Title = styled.h3`
   margin: 0;
+`;
+
+export const CloseButton = styled(Close)`
+  cursor: pointer;
 `;
 
 export const SectionWrapper = styled.div`

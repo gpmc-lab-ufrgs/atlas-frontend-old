@@ -1,8 +1,3 @@
-.main {
-  width: 100%;
-  height: calc(100% - 60px);
-}
-
 .sidebarOpen {
   left: 340px;
 }

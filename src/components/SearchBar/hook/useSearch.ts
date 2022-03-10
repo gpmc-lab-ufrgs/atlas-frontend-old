@@ -2,6 +2,8 @@ import { useRef } from "react";
 
 import { useCombobox } from "downshift";
 
+import useMap from "@hook/useMap";
+
 import { useFeatures } from "@store/index";
 import { Feature } from "@store/contexts/featuresContext";
 
@@ -10,6 +12,7 @@ const useSearch = (featureSearched: Feature[]) => {
 
   const { setSelectedFeature, selectedFeature, setHighlightedFeature } =
     useFeatures();
+  const { resetMapValues } = useMap();
 
   const initialInputValue = selectedFeature?.properties.NM_MUN ?? "";
 
@@ -43,7 +46,7 @@ const useSearch = (featureSearched: Feature[]) => {
         inputValue === "" &&
         type === useCombobox.stateChangeTypes.InputChange
       ) {
-        setSelectedFeature(null);
+        resetMapValues();
       } else if (isOpen && inputValue !== "") {
         const definiteMatch = featureSearched.find(
           (item) => item.properties.NM_MUN === inputValue
@@ -83,24 +86,9 @@ const useSearch = (featureSearched: Feature[]) => {
   });
 
   const cleanSearchBar = () => {
-    setHighlightedFeature(null);
-    setSelectedFeature(null);
+    resetMapValues();
     reset();
   };
-
-  function getSortedFeatures(features: Feature[]) {
-    return features.sort((a: any, b: any) =>
-      a?.properties.NM_MUN.localeCompare(b?.properties.NM_MUN)
-    );
-  }
-
-  function getFilteredFeatures(features: Feature[], query: string) {
-    return features.filter(
-      (item: any) =>
-        item?.properties.NM_MUN.toLowerCase().indexOf(query.toLowerCase()) !==
-        -1
-    );
-  }
 
   const inputProps = {
     ...getInputProps({
@@ -116,8 +104,6 @@ const useSearch = (featureSearched: Feature[]) => {
   };
 
   return {
-    getFilteredFeatures,
-    getSortedFeatures,
     getComboboxProps,
     getInputProps,
     getItemProps,

@@ -11,6 +11,8 @@ import useSearch from "./hook/useSearch";
 import SearchBarPopper from "./SearchBarPopper";
 import { PopperActionsType } from "./SearchBarPopper/SearchBarPopper";
 
+import { getFilteredFeatures, getSortedFeatures } from "./utils";
+
 import * as Styles from "./styles";
 
 const SearchBar: React.FC = () => {
@@ -24,8 +26,6 @@ const SearchBar: React.FC = () => {
   );
 
   const {
-    getFilteredFeatures,
-    getSortedFeatures,
     getComboboxProps,
     getToggleButtonProps,
     inputProps,
@@ -62,7 +62,6 @@ const SearchBar: React.FC = () => {
   }, [features]);
 
   const hasInputValue = inputValue === "";
-  const hasSelectedFeature = selectedFeature !== null;
 
   const popperActions: PopperActionsType = {
     highlightedIndex,
@@ -72,10 +71,7 @@ const SearchBar: React.FC = () => {
   };
 
   return (
-    <Styles.SearchBarContainer
-      selectedFeature={hasSelectedFeature}
-      ref={setReferenceElement}
-    >
+    <Styles.SearchBarContainer ref={setReferenceElement}>
       <Styles.SearchBarField {...getComboboxProps()}>
         <input {...inputProps} />
 

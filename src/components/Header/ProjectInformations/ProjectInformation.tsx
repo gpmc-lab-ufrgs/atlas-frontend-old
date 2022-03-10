@@ -2,8 +2,6 @@ import React from "react";
 
 import { Link } from "react-router-dom";
 
-import { Close } from "@mui/icons-material";
-
 import { sections } from "./const";
 
 import * as Styles from "./styles";
@@ -17,7 +15,8 @@ const ProjectInformations: React.FC<Props> = ({ setOpen }) => {
     <Styles.ProjectInformationWrapper>
       <Styles.TitleWrapper>
         <Styles.Title> Atlas of Opportunity </Styles.Title>
-        <Close onClick={() => setOpen(false)} />
+
+        <Styles.CloseButton onClick={() => setOpen(false)} />
       </Styles.TitleWrapper>
 
       <Styles.SectionWrapper>

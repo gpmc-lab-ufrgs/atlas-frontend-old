@@ -1,7 +1,7 @@
 .toggleButton {
   pointer-events: auto;
   cursor: pointer;
-  top: 20px;
+  top: 80px;
   left: 340px;
   display: flex;
   justify-content: center;
@@ -11,12 +11,12 @@
   position: fixed;
   width: 20px;
   height: 40px;
-      
-  background: #FFFFFF;
+
+  background: #ffffff;
   /* Scratch/Standard Drop Shadow */
-  
+
   border-radius: 0px 5px 5px 0px;
-  box-shadow: 0 2px 4px rgba(0,0,0,.25),0 -1px 0 rgba(0,0,0,.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25), 0 -1px 0 rgba(0, 0, 0, 0.1);
 }
 
 .toggleButtonClose {

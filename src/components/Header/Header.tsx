@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 
-import { useComparison } from "@store/index";
+import { useComparison, useSidebar } from "@store/index";
 
 import Drawer from "@components/Drawer";
 import SearchBar from "@components/SearchBar";
@@ -13,6 +13,7 @@ const Header = () => {
   const [openMenu, setOpenMenu] = useState(false);
   const location = useLocation();
 
+  const { sidebarIsOpen } = useSidebar();
   const {
     comparisonType,
     setComparisonType,
@@ -26,7 +27,7 @@ const Header = () => {
 
   if (comparisonMode) {
     return (
-      <Styles.HeaderContainer comparisonMode>
+      <Styles.HeaderContainer comparisonMode isSidebarOpen={sidebarIsOpen}>
         <Styles.HeaderCenterSide>
           <SegmentedControl
             comparisonType={comparisonType}
@@ -46,7 +47,7 @@ const Header = () => {
   }
 
   return (
-    <Styles.HeaderContainer>
+    <Styles.HeaderContainer isSidebarOpen={sidebarIsOpen}>
       <Styles.HeaderLeftSide>
         <SearchBar />
       </Styles.HeaderLeftSide>

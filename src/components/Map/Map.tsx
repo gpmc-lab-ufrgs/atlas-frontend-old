@@ -1,8 +1,10 @@
 import { useState, useRef, useEffect } from "react";
 import mapboxgl from "mapbox-gl";
 
+import useMap from "@hook/useMap";
+
 import geojsonURL from "../../data/BR_UF_2020.json";
-import { useFeatures, useMapLayer, useStates } from "../../store";
+import { useFeatures, useMapLayer, useStates, useSidebar } from "../../store";
 
 import "./styles.css";
 import { fitBounds, fitCenter } from "./actions";
@@ -13,10 +15,12 @@ import { highlightMun, clickMun } from "./munActions";
 const Map = () => {
   mapboxgl.accessToken = accessToken;
 
+  const { resetMapValues } = useMap();
   const { mapLayer } = useMapLayer();
   const mapContainer = useRef<any>();
 
   const [map, setMap] = useState<mapboxgl.Map>();
+  const { setSidebarIsOpen } = useSidebar();
   const {
     highlightedState,
     selectedState,
@@ -107,6 +111,7 @@ const Map = () => {
       map.on("click", "fill-mun", (e: any) => {
         if (e.features.length > 0) {
           setSelectedFeature(e.features[0]);
+          setSidebarIsOpen(true);
         }
       });
 
@@ -123,8 +128,7 @@ const Map = () => {
           });
 
           if (clickedMun.length === 0) {
-            setSelectedFeature(null);
-            setSelectedState(null);
+            resetMapValues();
           }
         }
       });

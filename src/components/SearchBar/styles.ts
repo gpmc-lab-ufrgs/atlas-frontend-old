@@ -4,8 +4,7 @@ interface Props {
   selectedFeature: boolean;
 }
 
-export const SearchBarContainer = styled.div<Props>`
-  position: absolute;
+export const SearchBarContainer = styled.div`
   z-index: 5;
 
   pointer-events: auto;
@@ -13,10 +12,6 @@ export const SearchBarContainer = styled.div<Props>`
   width: 305px;
 
   top: 0;
-  left: 0;
-
-  border-bottom: ${({ selectedFeature }) =>
-    selectedFeature && "1px solid #ccc"};
 `;
 
 export const SearchBarField = styled.div<Props>`

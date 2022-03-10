@@ -8,7 +8,8 @@
       "@data/*": ["src/data/*"],
       "@store/*": ["src/store/*"],
       "@config/*": ["src/config/*"],
-      "@utils/*": ["src/utils/*"]
+      "@utils/*": ["src/utils/*"],
+      "@hook/*": ["src/hook/*"]
     }
   }
 }
