@@ -1,6 +1,8 @@
 import { useEffect } from "react";
 import { useLocation, useHistory } from "react-router";
 
+import { useTheme } from "@mui/material/styles";
+
 import { useComparison, useFeatures, useSidebar } from "@store/index";
 
 import Footer from "@components/Footer";
@@ -22,10 +24,11 @@ const Main = () => {
     comparisonMode,
     setComparisonMode,
   } = useComparison();
-  const { features } = useFeatures();
+  const { features, selectedFeature } = useFeatures();
   const location = useLocation();
   const history = useHistory();
   const { sidebarIsOpen } = useSidebar();
+  const theme = useTheme();
 
   useEffect(() => {
     setComparisonMode(location.pathname.startsWith("/comparison"));
@@ -59,11 +62,13 @@ const Main = () => {
     }
   }, [comparison, features, location, history]);
 
+  const hasSelectedFeature = !!selectedFeature;
+
   return (
     <Styles.MainContainer>
       <Modal />
-      <Sidebar isComparisonMode={comparisonMode} />
-      <Styles.ComparisonWrapper isSidebarOpen={sidebarIsOpen}>
+      {hasSelectedFeature && <Sidebar isComparisonMode={comparisonMode} />}
+      <Styles.ComparisonWrapper isSidebarOpen={sidebarIsOpen} theme={theme}>
         <Header />
         {/* {comparisonMode && <ComparisonView />} */}
       </Styles.ComparisonWrapper>

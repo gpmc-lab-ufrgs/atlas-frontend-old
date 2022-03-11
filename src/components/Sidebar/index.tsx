@@ -1,9 +1,10 @@
 import {
   Legend,
-  RegionDetails,
   MinimizerSidebarButton,
   ComparisonDetails,
 } from "./components";
+
+import RegionDetails from "@components/SidebarTest/RegionDetails";
 
 import SearchBar from "@components/SearchBar";
 import { useFeatures, useSidebar } from "../../store";

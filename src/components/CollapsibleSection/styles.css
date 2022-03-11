@@ -1,27 +1,24 @@
-
 .Collapsible__contentInner h2 {
   font-weight: 700;
   font-size: 14px;
   margin: 10px 0;
   display: inline-block;
-  max-width: 220px;
 }
-    
+
 .Collapsible {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   padding: 0px;
   align-items: stretch;
-
 }
 
 .Collapsible__contentInner {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 0px 30px 10px;
-  background: #FFFFFF;
+  padding: 0px 15px 10px;
+  background: #ffffff;
   align-items: stretch;
 }
 
@@ -60,10 +57,17 @@
 .Collapsible__contentInner .metric .recharts-legend-item-text {
   color: rgba(87, 73, 73, 1) !important;
 }
-.Collapsible__contentInner .metric .recharts-tooltip-item-list .recharts-tooltip-item > span {
+.Collapsible__contentInner
+  .metric
+  .recharts-tooltip-item-list
+  .recharts-tooltip-item
+  > span {
   color: #666666;
 }
-.Collapsible__contentInner .metric .recharts-tooltip-item-list .recharts-tooltip-item::before {
+.Collapsible__contentInner
+  .metric
+  .recharts-tooltip-item-list
+  .recharts-tooltip-item::before {
   content: "\02587";
   margin-right: 4px;
 }
@@ -73,14 +77,15 @@
   flex-direction: row;
   align-items: center;
   padding: 7px 10px;
- 
-  background: #F7F7F7;
+
+  background: #f7f7f7;
   border-radius: 5px;
+
+  margin-bottom: 5px;
 
   flex: none;
   order: 0;
   align-self: stretch;
-  margin: 3px 10px;
 
   font-weight: bold;
   font-size: 14px;
@@ -91,13 +96,13 @@
 
 .Collapsible__trigger:after {
   content: url(../../assets/chevron.svg);
-  transition: transform 300ms; 
+  transition: transform 300ms;
   margin-left: auto;
-  transform: rotateZ(180deg); 
+  transform: rotateZ(180deg);
 }
 
 .Collapsible__trigger.is-open:after {
-  transform: rotateZ(0deg); 
+  transform: rotateZ(0deg);
 }
 
 .Collapsible__trigger.is-disabled {

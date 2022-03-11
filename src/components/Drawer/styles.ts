@@ -7,5 +7,6 @@ export const Drawer = styled(DrawerSkeleton)`
 `;
 
 export const DrawerContent = styled(Box)`
-  margin: 20px 25px;
+  min-width: 280px;
+  margin: 20px 20px;
 `;

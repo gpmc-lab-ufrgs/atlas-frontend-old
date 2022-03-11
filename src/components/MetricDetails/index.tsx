@@ -4,12 +4,11 @@ import geosesData from "../../data/GeoSesObject.json";
 // import LineChartMetric from "./charts/LineChartMetric";
 
 export const MetricDetails = ({ feature, metric, small }: any) => {
-
   const renderSingleMetric = () => {
     // @ts-ignore
-    let rawValue = geosesData[feature?.properties.CD_MUN][metric.id];
+    let rawValue = geosesData[feature?.properties.CD_MUN][metric.label];
     const value = metric.format(rawValue);
-    const name = metric.label;
+    const name = metric.description;
     const width = small ? 115 : undefined;
 
     switch (metric.type) {
@@ -20,21 +19,26 @@ export const MetricDetails = ({ feature, metric, small }: any) => {
             <RangeBar value={rawValue} min={metric.min} max={metric.max} options={metric.options} width={width}/>
           </div>
         )*/
-      case 'bar':
-        let rawValueFloat = parseFloat(rawValue) || 0
+      case "bar":
+        let rawValueFloat = parseFloat(rawValue) || 0;
         return (
           <div key={feature.properties.CD_MUN} className="comparison-bar">
-            <SolidBar label={value} value={rawValueFloat} max={100} width={width} />
+            <SolidBar
+              label={value}
+              value={rawValueFloat}
+              max={100}
+              width={width}
+            />
           </div>
-        )
+        );
       default:
         return (
           <div key={feature.properties.CD_MUN} className="propsContent">
             <data value={rawValue}>{value}</data>
           </div>
-        )
+        );
     }
-  }
+  };
 
   /*const renderChartMetric = () => {
     const width = small ? 240 : undefined;
@@ -51,9 +55,5 @@ export const MetricDetails = ({ feature, metric, small }: any) => {
       : featureList.map(renderSingleMetric)
   )*/
 
-  return (
-    <div>
-      {renderSingleMetric()}
-    </div>
-  )
-}
+  return <div>{renderSingleMetric()}</div>;
+};

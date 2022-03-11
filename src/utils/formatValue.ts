@@ -17,20 +17,20 @@ export const formatPopulationNumber = (value: any) => {
 };
 
 export const formatValue = (value: any, format: string) => {
-
-  if (!value) {
+  if (value === undefined || value === null) {
     return "n/a";
   }
+
   switch (format) {
-    case 'number':
+    case "number":
       return value.toLocaleString();
-    case 'population':
-      return formatPopulationNumber(value)
-    case 'percent':
+    case "population":
+      return formatPopulationNumber(value);
+    case "percent":
       return `${Math.floor(parseFloat(value))}%`;
-    case 'percent_normalized':
+    case "percent_normalized":
       return `${(value * 100.0).toFixed(2)}%`;
     default:
-      return value ? value + '' : '';
+      return value ? value + "" : "";
   }
-}
+};

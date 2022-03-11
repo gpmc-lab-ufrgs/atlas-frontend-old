@@ -9,9 +9,15 @@ export const MainContainer = styled(Box)`
 
 interface Comparison {
   isSidebarOpen: boolean;
+  theme: {};
 }
 
 export const ComparisonWrapper = styled.div<Comparison>`
   left: ${({ isSidebarOpen }) => (isSidebarOpen ? "355" : "0")}px;
   position: absolute;
+  transition: ${({ theme }) =>
+    theme.transitions.create(["left"], {
+      easing: theme.transitions.easing.easeOut,
+      duration: theme.transitions.duration.enteringScreen,
+    })};
 `;
