@@ -78,6 +78,10 @@ export const CloseButton = styled(Close)`
 `;
 
 export const ModalContent = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 35px 90px;
+  
   font-size: 14px;
   line-height: 150%;
 
