@@ -4,9 +4,16 @@ import { ReactComponent as CompareIcon } from "@assets/compare.svg";
 
 export const ComparisonButton = styled.div`
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  padding-bottom: 12px;
+`;
 
-  padding: 8px 20px 8px 30px;
+export const ButtonWrapper = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 8px 20px;
   margin: 0px 10px;
 
   font-style: normal;
@@ -20,9 +27,7 @@ export const ComparisonButton = styled.div`
 
   background-color: white;
   cursor: pointer;
-`;
 
-export const ButtonWrapper = styled.button`
   :hover {
     background-color: rgb(239, 239, 239);
   }

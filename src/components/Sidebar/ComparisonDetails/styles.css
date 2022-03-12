@@ -11,13 +11,11 @@
   left: 0;
   padding-left: 10px;
   padding-right: 10px;
-  background-color: white;
-  box-shadow: 0 2px 4px rgba(0,0,0,.25),0 -1px 0 rgba(0,0,0,.1);
 }
 
 .closeIcon {
   cursor: "pointer";
-  color: rgb(153, 153, 153)
+  color: rgb(153, 153, 153);
 }
 
 .comparisonList {

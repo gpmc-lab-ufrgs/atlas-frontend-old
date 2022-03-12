@@ -1,8 +1,6 @@
 import { useFeatures, useComparison } from "@store/index";
 import { Feature } from "@store/contexts/featuresContext";
 
-import "./styles.css";
-
 import * as Styles from "./styles";
 
 const ComparisonButton = () => {
@@ -30,7 +28,6 @@ const ComparisonButton = () => {
     <Styles.ComparisonButton>
       <Styles.ButtonWrapper
         disabled={!isComparing && enableButton}
-        className="actionButton"
         onClick={() => comparisonClick(selectedFeature)}
       >
         <Styles.ComparisonIcon />

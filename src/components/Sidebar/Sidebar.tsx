@@ -6,26 +6,38 @@ import { Box } from "@mui/material";
 
 import { useSidebar } from "@store/index";
 
-import { MinimizerSidebarButton } from "@components/Sidebar/components/index";
+import Minimizer from "./Minimizer";
 import RegionDetails from "./RegionDetails";
 import ComparisonButton from "./ComparisonButton";
+import ComparisonDetails from "./ComparisonDetails";
 
 import * as Styles from "./styles";
 
 interface Props {
   isComparisonMode: boolean;
+  title: string;
 }
 
-const Sidebar: React.FC<Props> = ({ isComparisonMode }) => {
+const Sidebar: React.FC<Props> = ({ isComparisonMode, title }) => {
   const { sidebarIsOpen, setSidebarIsOpen } = useSidebar();
 
-  if (isComparisonMode) {
-    return <div></div>;
-  }
+  const SidebarContent = () => {
+    if (isComparisonMode) {
+      return <ComparisonDetails />;
+    } else {
+      return (
+        <>
+          <Styles.Title>{title}</Styles.Title>
+          <ComparisonButton />
+          <RegionDetails />
+        </>
+      );
+    }
+  };
 
   return (
     <Box>
-      <MinimizerSidebarButton />
+      <Minimizer />
       <Drawer
         open={sidebarIsOpen}
         setOpen={setSidebarIsOpen}
@@ -33,8 +45,7 @@ const Sidebar: React.FC<Props> = ({ isComparisonMode }) => {
         hideBackdrop
       >
         <Styles.SidebarContent>
-          <ComparisonButton />
-          <RegionDetails />
+          <SidebarContent />
         </Styles.SidebarContent>
       </Drawer>
     </Box>

@@ -13,7 +13,10 @@ interface Comparison {
 }
 
 export const ComparisonWrapper = styled.div<Comparison>`
-  left: ${({ isSidebarOpen }) => (isSidebarOpen ? "355" : "0")}px;
+  width: 100%;
+  height: 100%;
+
+  left: ${({ isSidebarOpen }) => (isSidebarOpen ? "345" : "0")}px;
   position: absolute;
   transition: ${({ theme }) =>
     theme.transitions.create(["left"], {

@@ -8,12 +8,10 @@ import { useComparison, useFeatures, useSidebar } from "@store/index";
 import Footer from "@components/Footer";
 import Header from "@components/Header";
 import Modal from "@components/Modal";
-import Sidebar from "@components/SidebarTest";
+import Sidebar from "@components/Sidebar";
+import CompatisonMode from "@components/ComparisonMode";
 
 import { Map } from "@components/Map";
-import { ComparisonView } from "@components/ComparisonView";
-
-import "./styles.css";
 
 import * as Styles from "./styles";
 
@@ -67,10 +65,15 @@ const Main = () => {
   return (
     <Styles.MainContainer>
       <Modal />
-      {hasSelectedFeature && <Sidebar isComparisonMode={comparisonMode} />}
+      {hasSelectedFeature && (
+        <Sidebar
+          isComparisonMode={comparisonMode}
+          title={selectedFeature.properties.NM_MUN}
+        />
+      )}
       <Styles.ComparisonWrapper isSidebarOpen={sidebarIsOpen} theme={theme}>
         <Header />
-        {/* {comparisonMode && <ComparisonView />} */}
+        {comparisonMode && <CompatisonMode />}
       </Styles.ComparisonWrapper>
       <Map />
       <Footer />
