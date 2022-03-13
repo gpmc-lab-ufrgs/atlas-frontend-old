@@ -18,12 +18,15 @@ const Drawer: React.FC<Props> = ({
   hideBackdrop,
   children,
 }) => {
+  const handleCloseDrawer = () => setOpen(false);
+
   return (
     <Styles.Drawer
       anchor={anchor}
       open={open}
-      onClose={() => setOpen(false)}
+      onClose={() => handleCloseDrawer()}
       hideBackdrop={hideBackdrop}
+      disableEnforceFocus
     >
       <Styles.DrawerContent>{children}</Styles.DrawerContent>
     </Styles.Drawer>
