@@ -21,7 +21,7 @@ const clickedPopup = new mapboxgl.Popup({
   className: "floating-popup",
 });
 
-export function clickFeature(feature: any, map: mapboxgl.Map) {
+export function clickDistrict(feature: any, map: mapboxgl.Map) {
   if (feature && feature.geometry) {
     if (feature.properties.FEATID === clickedId) {
       return;
@@ -37,26 +37,26 @@ export function clickFeature(feature: any, map: mapboxgl.Map) {
       .setHTML(`<h5>${regionName} - ${regionPersonsNum}</h5>`)
       .addTo(map);
 
-    map.setFeatureState(
+    map.setDistrictState(
       { source: "sp", id: feature.properties.FEATID },
       { click: true }
     );
 
     if (clickedId) {
-      map.setFeatureState({ source: "sp", id: clickedId }, { click: false });
+      map.setDistrictState({ source: "sp", id: clickedId }, { click: false });
     }
 
     clickedId = feature.properties.FEATID;
   } else if (clickedId !== undefined && map) {
     clickedPopup.remove();
     if (map.getSource("sp")) {
-      map.setFeatureState({ source: "sp", id: clickedId }, { click: false });
+      map.setDistrictState({ source: "sp", id: clickedId }, { click: false });
     }
     clickedId = 0;
   }
 }
 
-export function highlightFeature(feature: any, map: mapboxgl.Map) {
+export function highlightDistrict(feature: any, map: mapboxgl.Map) {
   if (feature && feature.geometry) {
     if (feature.properties.FEATID === hoveredId) {
       return;
@@ -72,20 +72,20 @@ export function highlightFeature(feature: any, map: mapboxgl.Map) {
       .setHTML(`<h5>${regionName} - ${regionPersonsNum}</h5>`)
       .addTo(map);
 
-    map.setFeatureState(
+    map.setDistrictState(
       { source: "sp", id: feature.properties.FEATID },
       { hover: true }
     );
 
     if (hoveredId) {
-      map.setFeatureState({ source: "sp", id: hoveredId }, { hover: false });
+      map.setDistrictState({ source: "sp", id: hoveredId }, { hover: false });
     }
 
     hoveredId = feature.properties.FEATID;
   } else if (hoveredId) {
     hoveredPopup.remove();
     if (map.getSource("sp")) {
-      map.setFeatureState({ source: "sp", id: hoveredId }, { hover: false });
+      map.setDistrictState({ source: "sp", id: hoveredId }, { hover: false });
     }
     hoveredId = 0;
   }
@@ -115,7 +115,7 @@ export function fitCenter(map: mapboxgl.Map) {
   });
 }
 
-export function highlightComparisonFeature(features: any, map: mapboxgl.Map) {
+export function highlightComparisonDistrict(features: any, map: mapboxgl.Map) {
   const [minX, minY, maxX, maxY] = turf.bbox(features);
 
   map.fitBounds(

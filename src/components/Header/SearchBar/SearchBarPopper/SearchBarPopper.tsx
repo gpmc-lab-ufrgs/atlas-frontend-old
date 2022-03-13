@@ -7,7 +7,7 @@ import {
   UseComboboxGetMenuPropsOptions,
 } from "downshift";
 
-import { Feature } from "@store/contexts/featuresContext";
+import { District } from "@store/contexts/featuresContext";
 
 import { sameWidthModifier } from "./popper-modifiers";
 
@@ -16,7 +16,7 @@ import * as Styles from "./styles";
 export interface PopperActionsType {
   highlightedIndex: number;
   isOpen: boolean;
-  getItemProps: (options: UseComboboxGetItemPropsOptions<Feature>) => any;
+  getItemProps: (options: UseComboboxGetItemPropsOptions<District>) => any;
   getMenuProps: (
     options?: UseComboboxGetMenuPropsOptions | undefined,
     otherOptions?: GetPropsCommonOptions | undefined
@@ -25,13 +25,13 @@ export interface PopperActionsType {
 
 interface Props {
   referenceElement: HTMLDivElement | null;
-  featureSearched: Feature[];
+  districtSearched: District[];
   popperActions: PopperActionsType;
 }
 
 const SearchBarPopper: React.FC<Props> = ({
   referenceElement,
-  featureSearched,
+  districtSearched,
   popperActions,
 }) => {
   const [popperElement, setPopperElement] = useState<HTMLDivElement | null>(
@@ -54,7 +54,7 @@ const SearchBarPopper: React.FC<Props> = ({
         hidden={!popperActions.isOpen}
       >
         {popperActions.isOpen &&
-          featureSearched.map((item, index) => (
+          districtSearched.map((item, index) => (
             <Styles.PopperItem
               hasHighlight={popperActions.highlightedIndex === index}
               key={index}

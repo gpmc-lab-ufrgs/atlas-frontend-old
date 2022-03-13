@@ -16,11 +16,9 @@ import { Map } from "@components/Map";
 import * as Styles from "./styles";
 
 const Main = () => {
-  const { comparison, addComparisonFeature } = useComparison();
-
+  const { comparison, addComparisonDistrict } = useComparison();
   const { setIsSidebarOpen, isSidebarOpen } = useSidebar();
-
-  const { features, selectedFeature } = useFeatures();
+  const { districts, selectedDistrict } = useFeatures();
 
   const location = useLocation();
   const history = useHistory();
@@ -42,36 +40,36 @@ const Main = () => {
       const pathIds = location.pathname.replace("/comparison/", "");
       if (pathIds) {
         const ids = pathIds.split("+");
-        const featuresFromUrl = features.filter((ft: any) =>
+        const featuresFromUrl = districts.filter((ft: any) =>
           ids.includes(ft.properties["CD_MUN"].toString())
         );
         setIsSidebarOpen(true);
-        addComparisonFeature(featuresFromUrl);
+        addComparisonDistrict(featuresFromUrl);
       } else {
         history.replace("/");
       }
     }
-  }, [features, location, history, comparison, addComparisonFeature]);
+  }, [districts, location, history, comparison, addComparisonDistrict]);
 
   useEffect(() => {
-    if (location.pathname.startsWith("/comparison/") && features.length !== 0) {
+    if (location.pathname.startsWith("/comparison/") && districts.length !== 0) {
       const ids = comparison.map((feature: any) => feature.properties.CD_MUN);
       const newPath = "/comparison/" + ids.join("+");
       if (location.pathname !== newPath) {
         history.replace(newPath);
       }
     }
-  }, [comparison, features, location, history]);
+  }, [comparison, districts, location, history]);
 
-  const hasSelectedFeature = !!selectedFeature;
+  const hasSelectedDistrict = !!selectedDistrict;
 
   return (
     <Styles.MainContainer>
       <Modal />
-      {(hasSelectedFeature || isComparisonModeOn) && (
+      {(hasSelectedDistrict || isComparisonModeOn) && (
         <Sidebar
           isComparisonMode={isComparisonModeOn}
-          title={selectedFeature?.properties.NM_MUN}
+          title={selectedDistrict?.properties.NM_MUN}
         />
       )}
       <Styles.ComparisonWrapper isSidebarOpen={isSidebarOpen} theme={theme}>

@@ -5,7 +5,7 @@ import { useComparison } from "@store/index";
 import * as Styles from "./styles";
 
 const ComparisonSection = () => {
-  const { comparison, removeComparisonFeature } = useComparison();
+  const { comparison, removeComparisonDistrict } = useComparison();
 
   const comparisonRegionIds = comparison.map(
     (feature: any) => feature.properties.CD_MUN
@@ -25,7 +25,7 @@ const ComparisonSection = () => {
       {comparison.map((feature: any) => (
         <Styles.ComparisonList key={feature.properties.CD_MUN}>
           {feature.properties["NM_MUN"]}
-          <Styles.CloseIcon onClick={() => removeComparisonFeature(feature)} />
+          <Styles.CloseIcon onClick={() => removeComparisonDistrict(feature)} />
         </Styles.ComparisonList>
       ))}
 

@@ -1,41 +1,41 @@
 import { useState, createContext, useContext } from "react";
-import { Feature } from "./featuresContext";
+import { District } from "./districtsContext";
 
 type ComparisonContext = {
-  comparison: Array<Feature>;
-  addComparisonFeature: React.Dispatch<React.SetStateAction<any>>;
-  removeComparisonFeature: React.Dispatch<React.SetStateAction<any>>;
+  comparison: Array<District>;
+  addComparisonDistrict: React.Dispatch<React.SetStateAction<any>>;
+  removeComparisonDistrict: React.Dispatch<React.SetStateAction<any>>;
 };
 
 const DEFAULT_VALUE = {
   comparison: [],
-  addComparisonFeature: () => {},
-  removeComparisonFeature: () => {},
+  addComparisonDistrict: () => {},
+  removeComparisonDistrict: () => {},
 };
 
 const comparisonContext = createContext<ComparisonContext>(DEFAULT_VALUE);
 
 export function ComparisonProvider({ children }: any) {
-  const [comparison, setComparison] = useState<Feature[]>(
+  const [comparison, setComparison] = useState<District[]>(
     DEFAULT_VALUE.comparison
   );
 
-  const addComparisonFeature = (addValue: Feature[]) => {
+  const addComparisonDistrict = (addValue: District[]) => {
     setComparison([...comparison, ...addValue]);
   };
 
-  const removeComparisonFeature = (removeValue: Feature) => {
+  const removeComparisonDistrict = (removeValue: District) => {
     setComparison(
       comparison.filter(
-        (feature: Feature) =>
-          feature.properties["NM_MUN"] !== removeValue.properties["NM_MUN"]
+        (district: District) =>
+          district.properties["NM_MUN"] !== removeValue.properties["NM_MUN"]
       )
     );
   };
 
   return (
     <comparisonContext.Provider
-      value={{ comparison, addComparisonFeature, removeComparisonFeature }}
+      value={{ comparison, addComparisonDistrict, removeComparisonDistrict }}
     >
       {children}
     </comparisonContext.Provider>
@@ -44,6 +44,6 @@ export function ComparisonProvider({ children }: any) {
 
 export function useComparison() {
   const context = useContext(comparisonContext);
-  const { comparison, addComparisonFeature, removeComparisonFeature } = context;
-  return { comparison, addComparisonFeature, removeComparisonFeature };
+  const { comparison, addComparisonDistrict, removeComparisonDistrict } = context;
+  return { comparison, addComparisonDistrict, removeComparisonDistrict };
 }

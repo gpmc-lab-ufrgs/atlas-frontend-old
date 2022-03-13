@@ -1,14 +1,14 @@
 import { useState, useRef, useEffect } from "react";
 import mapboxgl from "mapbox-gl";
 
-import { useFeatures } from "../../store";
+import { useDistricts } from "../../store";
 import geojsonURL from "../../data/SP-districts-geojson.json";
 import {
-  clickFeature,
-  highlightFeature,
+  clickDistrict,
+  highlightDistrict,
   fitBounds,
   fitCenter,
-  highlightComparisonFeature,
+  highlightComparisonDistrict,
 } from "./featureActions";
 import { fillOpacity, lineOpacity, lineWidth } from "./const";
 import { useMapLayer, useComparison } from "../../store";
@@ -22,16 +22,16 @@ export const Map = ({ mini }: any) => {
   const mapContainer = useRef<any>();
 
   const {
-    selectedFeature,
-    highlightedFeature,
-    setSelectedFeature,
-    setHighlightedFeature,
-  } = useFeatures();
+    selectedDistrict,
+    highlightedDistrict,
+    setSelectedDistrict,
+    setHighlightedDistrict,
+  } = useDistricts();
   const { comparison } = useComparison();
 
   const [map, setMap] = useState<mapboxgl.Map>();
-  const [comparisonFeatures, setComparisonFeatures] = useState({
-    type: "FeatureCollection",
+  const [comparisonDistricts, setComparisonDistricts] = useState({
+    type: "DistrictCollection",
     features: comparison,
   });
 
@@ -53,7 +53,7 @@ export const Map = ({ mini }: any) => {
         map.addSource("sp", {
           type: "geojson",
           //@ts-ignore
-          data: mini ? comparisonFeatures : geojsonURL,
+          data: mini ? comparisonDistricts : geojsonURL,
           promoteId: "FEATID",
         });
 
@@ -91,7 +91,7 @@ export const Map = ({ mini }: any) => {
 
         map.on("click", "fill-sp", (e: any) => {
           if (e.features.length > 0) {
-            setSelectedFeature(e.features[0]);
+            setSelectedDistrict(e.features[0]);
           }
         });
 
@@ -102,23 +102,23 @@ export const Map = ({ mini }: any) => {
           ];
 
           //@ts-ignore
-          const selectedFeatures = map.queryRenderedFeatures(bbox, {
+          const selectedDistricts = map.queryRenderedDistricts(bbox, {
             layers: ["fill-sp"],
           });
 
-          if (selectedFeatures.length === 0) {
-            setSelectedFeature(null);
+          if (selectedDistricts.length === 0) {
+            setSelectedDistrict(null);
           }
         });
 
         map.on("mousemove", "fill-sp", (e: any) => {
           if (e.features.length > 0) {
-            setHighlightedFeature(e.features[0]);
+            setHighlightedDistrict(e.features[0]);
           }
         });
 
         map.on("mouseleave", "fill-sp", () => {
-          setHighlightedFeature(null);
+          setHighlightedDistrict(null);
         });
       }
 
@@ -129,45 +129,45 @@ export const Map = ({ mini }: any) => {
   }, [
     map,
     mapLayer,
-    setSelectedFeature,
-    setHighlightedFeature,
+    setSelectedDistrict,
+    setHighlightedDistrict,
     mini,
     comparison,
-    comparisonFeatures,
+    comparisonDistricts,
   ]);
 
   useEffect(() => {
-    if (comparisonFeatures.features.length !== 0 && map && mini) {
-      highlightComparisonFeature(comparisonFeatures, map);
+    if (comparisonDistricts.features.length !== 0 && map && mini) {
+      highlightComparisonDistrict(comparisonDistricts, map);
     }
-  }, [comparisonFeatures, map, mini]);
+  }, [comparisonDistricts, map, mini]);
 
   useEffect(() => {
     if (comparison.length !== 0) {
-      setComparisonFeatures({
-        type: "FeatureCollection",
+      setComparisonDistricts({
+        type: "DistrictCollection",
         features: comparison,
       });
     }
   }, [comparison, mini]);
 
   useEffect(() => {
-    if (selectedFeature !== null && map && !mini) {
-      clickFeature(selectedFeature, map);
-      fitBounds(selectedFeature, map);
-    } else if (selectedFeature === null && map && !mini) {
-      clickFeature(null, map);
+    if (selectedDistrict !== null && map && !mini) {
+      clickDistrict(selectedDistrict, map);
+      fitBounds(selectedDistrict, map);
+    } else if (selectedDistrict === null && map && !mini) {
+      clickDistrict(null, map);
       fitCenter(map);
     }
-  }, [map, selectedFeature, mini]);
+  }, [map, selectedDistrict, mini]);
 
   useEffect(() => {
-    if (highlightedFeature !== null && map && !mini) {
-      highlightFeature(highlightedFeature, map);
-    } else if (highlightedFeature === null && map && !mini) {
-      highlightFeature(null, map);
+    if (highlightedDistrict !== null && map && !mini) {
+      highlightDistrict(highlightedDistrict, map);
+    } else if (highlightedDistrict === null && map && !mini) {
+      highlightDistrict(null, map);
     }
-  }, [map, highlightedFeature, mini]);
+  }, [map, highlightedDistrict, mini]);
 
   return (
     <div id="map" ref={(el) => (mapContainer.current = el)} className="map" />

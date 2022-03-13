@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 interface Props {
-  selectedFeature: boolean;
+  selectedDistrict: boolean;
 }
 
 export const SearchBarContainer = styled.div`
@@ -39,10 +39,10 @@ export const SearchBarField = styled.div<Props>`
     background: transparent;
 
     font-family: "Roboto", sans-serif;
-    font-size: ${({ selectedFeature }) =>
-      selectedFeature ? "18" : "15"}px !important;
-    font-weight: ${({ selectedFeature }) =>
-      selectedFeature && "bold"} !important;
+    font-size: ${({ selectedDistrict }) =>
+      selectedDistrict ? "18" : "15"}px !important;
+    font-weight: ${({ selectedDistrict }) =>
+      selectedDistrict && "bold"} !important;
   }
 `;
 

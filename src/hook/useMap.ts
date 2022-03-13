@@ -4,12 +4,12 @@ import { useFeatures, useStates } from "@store/index";
 const useMap = () => {
   const { setSelectedState } = useStates();
   const { setIsSidebarOpen } = useSidebar();
-  const { setHighlightedFeature, setSelectedFeature } = useFeatures();
+  const { setHighlightedDistrict, setSelectedDistrict } = useFeatures();
 
   const resetMapValues = () => {
     setIsSidebarOpen(false);
-    setHighlightedFeature(null);
-    setSelectedFeature(null);
+    setHighlightedDistrict(null);
+    setSelectedDistrict(null);
     setSelectedState(null);
   };
 

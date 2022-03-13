@@ -8,13 +8,13 @@ import {
   DistrictContentType,
 } from "@config/districtProps";
 
-import { Feature } from "@store/contexts/featuresContext";
+import { District } from "@store/contexts/districtsContext";
 
 import * as Styles from "./styles";
 
 interface Props {
   section: DistrictSectionType;
-  comparison: Array<Feature>;
+  comparison: Array<District>;
 }
 
 const TableContent: React.FC<Props> = ({ section, comparison }) => {
@@ -25,7 +25,7 @@ const TableContent: React.FC<Props> = ({ section, comparison }) => {
           <Styles.ColumnTitle>{content.description}</Styles.ColumnTitle>
           {comparison.map((region, id) => (
             <Styles.Column gridColumnNumber={id + 2}>
-              <MetricDetails feature={region} metric={content} />
+              <MetricDetails district={region} metric={content} />
             </Styles.Column>
           ))}
         </Styles.Table>

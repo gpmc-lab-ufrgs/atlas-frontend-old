@@ -8,13 +8,13 @@ import {
   DistrictContentType,
 } from "@config/districtProps";
 
-import { Feature } from "@store/contexts/featuresContext";
+import { District } from "@store/contexts/districtsContext";
 
 import * as Styles from "./styles";
 
 interface Props {
   section: DistrictSectionType;
-  comparison: Array<Feature>;
+  comparison: Array<District>;
 }
 
 const GridContent: React.FC<Props> = ({ section, comparison }) => {
@@ -27,12 +27,12 @@ const GridContent: React.FC<Props> = ({ section, comparison }) => {
               <h2>{content.label}</h2>
             </Styles.Title>
             <Styles.GridItem>
-              {comparison.map((feature, id) => (
+              {comparison.map((district, id) => (
                 <Styles.ComparisonLabel key={id}>
-                  <label title={feature?.properties.NM_MUN}>
-                    {feature?.properties.NM_MUN}
+                  <label title={district?.properties.NM_MUN}>
+                    {district?.properties.NM_MUN}
                   </label>
-                  <MetricDetails feature={feature} metric={content} />
+                  <MetricDetails district={district} metric={content} />
                 </Styles.ComparisonLabel>
               ))}
             </Styles.GridItem>

@@ -4,25 +4,25 @@ import { useDebounce } from "use-debounce";
 
 import { Search, Close } from "@mui/icons-material";
 
-import { useFeatures, Feature } from "@store/contexts/featuresContext";
+import { useFeatures, District } from "@store/contexts/featuresContext";
 
 import useSearch from "./hook/useSearch";
 
 import SearchBarPopper from "./SearchBarPopper";
 import { PopperActionsType } from "./SearchBarPopper/SearchBarPopper";
 
-import { getFilteredFeatures, getSortedFeatures } from "./utils";
+import { getFilteredDistricts, getSortedDistricts } from "./utils";
 
 import * as Styles from "./styles";
 
 const SearchBar: React.FC = () => {
-  const { features, selectedFeature } = useFeatures();
+  const { districts, selectedDistrict } = useFeatures();
 
   const [referenceElement, setReferenceElement] =
     useState<HTMLDivElement | null>(null);
 
-  const [featureSearched, setFeatureSearched] = useState<Feature[]>(
-    features.map((feature) => feature)
+  const [districtSearched, setDistrictSearched] = useState<District[]>(
+    districts.map((district) => district)
   );
 
   const {
@@ -36,13 +36,13 @@ const SearchBar: React.FC = () => {
     getMenuProps,
     getItemProps,
     isOpen,
-  } = useSearch(featureSearched);
+  } = useSearch(districtSearched);
 
   const [debouncedValue] = useDebounce(inputValue, 500);
 
   useEffect(() => {
-    setInputValue(selectedFeature?.properties.NM_MUN ?? "");
-  }, [selectedFeature]);
+    setInputValue(selectedDistrict?.properties.NM_MUN ?? "");
+  }, [selectedDistrict]);
 
   useEffect(() => {
     const query = debouncedValue
@@ -53,13 +53,13 @@ const SearchBar: React.FC = () => {
     const hasQuery = query === "";
 
     if (hasQuery) {
-      setFeatureSearched(getSortedFeatures(features));
+      setDistrictSearched(getSortedDistricts(districts));
     } else {
-      setFeatureSearched(
-        getSortedFeatures(getFilteredFeatures(features, query))
+      setDistrictSearched(
+        getSortedDistricts(getFilteredDistricts(districts, query))
       );
     }
-  }, [features]);
+  }, [districts]);
 
   const hasInputValue = inputValue === "";
 
@@ -86,7 +86,7 @@ const SearchBar: React.FC = () => {
 
       <SearchBarPopper
         referenceElement={referenceElement}
-        featureSearched={featureSearched}
+        districtSearched={districtSearched}
         popperActions={popperActions}
       />
     </Styles.SearchBarContainer>

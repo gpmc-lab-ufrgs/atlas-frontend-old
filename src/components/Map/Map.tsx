@@ -3,20 +3,14 @@ import mapboxgl from "mapbox-gl";
 
 import useMap from "@hook/useMap";
 
-import geojsonURL from "../../data/BR_UF_2020.json";
-import { useFeatures, useMapLayer, useStates, useSidebar } from "../../store";
+import geojsonURL from "@data/BR_UF_2020.json";
+import { useFeatures, useStates, useSidebar } from "@store/index";
 
 import "./styles.css";
 import { fitBounds, fitCenter } from "./actions";
-import {
-  lineOpacity,
-  lineWidth,
-  fillOpacity,
-  accessToken,
-  mapLayer,
-} from "./const";
-import { highlightState, clickState } from "./stateActions";
 import { highlightMun, clickMun } from "./munActions";
+import { highlightState, clickState } from "./stateActions";
+import { lineOpacity, lineWidth, fillOpacity, accessToken } from "./const";
 
 const Map = () => {
   mapboxgl.accessToken = accessToken;
@@ -26,17 +20,19 @@ const Map = () => {
 
   const [map, setMap] = useState<mapboxgl.Map>();
   const { setIsSidebarOpen } = useSidebar();
+
   const {
     highlightedState,
     selectedState,
     setHighlightedState,
     setSelectedState,
   } = useStates();
+
   const {
-    selectedFeature,
-    highlightedFeature,
-    setSelectedFeature,
-    setHighlightedFeature,
+    selectedDistrict,
+    highlightedDistrict,
+    setSelectedDistrict,
+    setHighlightedDistrict,
   } = useFeatures();
 
   useEffect(() => {
@@ -115,7 +111,7 @@ const Map = () => {
 
       map.on("click", "fill-mun", (e: any) => {
         if (e.features.length > 0) {
-          setSelectedFeature(e.features[0]);
+          setSelectedDistrict(e.features[0]);
           setIsSidebarOpen(true);
         }
       });
@@ -140,12 +136,12 @@ const Map = () => {
 
       map.on("mousemove", "fill-mun", (e: any) => {
         if (e.features.length > 0) {
-          setHighlightedFeature(e.features[0]);
+          setHighlightedDistrict(e.features[0]);
         }
       });
 
       map.on("mouseleave", "fill-mun", () => {
-        setHighlightedFeature(null);
+        setHighlightedDistrict(null);
       });
 
       setMap(map);
@@ -154,11 +150,11 @@ const Map = () => {
     if (!map) initializeMap({ mapContainer });
   }, [
     map,
-    setHighlightedFeature,
-    setSelectedFeature,
+    setHighlightedDistrict,
+    setSelectedDistrict,
     setHighlightedState,
     setSelectedState,
-    selectedFeature,
+    selectedDistrict,
     selectedState,
   ]);
 
@@ -186,30 +182,30 @@ const Map = () => {
 
   useEffect(() => {
     if (map && map.getSource("mun")) {
-      if (highlightedFeature !== null) {
-        highlightMun(highlightedFeature, map);
-      } else if (highlightedFeature === null) {
+      if (highlightedDistrict !== null) {
+        highlightMun(highlightedDistrict, map);
+      } else if (highlightedDistrict === null) {
         highlightMun(null, map);
       }
     }
-  }, [highlightedFeature, map]);
+  }, [highlightedDistrict, map]);
 
   useEffect(() => {
     if (map) {
-      if (selectedFeature !== null) {
+      if (selectedDistrict !== null) {
         if (selectedState === null) {
           setSelectedState({
-            properties: { SIGLA_UF: selectedFeature.properties.SIGLA_UF },
+            properties: { SIGLA_UF: selectedDistrict.properties.SIGLA_UF },
           });
         }
-        clickMun(selectedFeature, map);
-        fitBounds(selectedFeature, map);
-      } else if (selectedFeature === null && map.getSource("mun")) {
+        clickMun(selectedDistrict, map);
+        fitBounds(selectedDistrict, map);
+      } else if (selectedDistrict === null && map.getSource("mun")) {
         clickMun(null, map);
         fitBounds(selectedState, map);
       }
     }
-  }, [map, selectedFeature, selectedState, setSelectedState]);
+  }, [map, selectedDistrict, selectedState, setSelectedState]);
 
   return (
     <div id="map" ref={(el) => (mapContainer.current = el)} className="map" />

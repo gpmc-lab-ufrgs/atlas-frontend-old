@@ -13,7 +13,7 @@ import {
 import * as Styles from "./styles";
 
 const DataSection: React.FC<DistrictSectionType> = ({ title, content }) => {
-  const { selectedFeature } = useFeatures();
+  const { selectedDistrict } = useFeatures();
 
   return (
     <CollapsibleSection title={title}>
@@ -21,7 +21,7 @@ const DataSection: React.FC<DistrictSectionType> = ({ title, content }) => {
         <Styles.PropsWrapper key={id}>
           <Styles.PropsTitle>{props.description}</Styles.PropsTitle>
 
-          <MetricDetails feature={selectedFeature} metric={props} />
+          <MetricDetails district={selectedDistrict} metric={props} />
         </Styles.PropsWrapper>
       ))}
     </CollapsibleSection>

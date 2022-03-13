@@ -4,23 +4,23 @@ import { Feature } from "@store/contexts/featuresContext";
 import * as Styles from "./styles";
 
 const ComparisonButton = () => {
-  const { selectedFeature } = useFeatures();
-  const { comparison, addComparisonFeature, removeComparisonFeature } =
+  const { selectedDistrict } = useFeatures();
+  const { comparison, addComparisonDistrict, removeComparisonDistrict } =
     useComparison();
 
   const isComparing =
     comparison.find(
       (feature: any) =>
-        feature["FU_NAME"] === selectedFeature?.properties.NM_MUN
+        feature["FU_NAME"] === selectedDistrict?.properties.NM_MUN
     ) !== undefined;
 
   const enableButton = comparison.length >= 4;
 
   const comparisonClick = (feature: Feature | null) => {
     if (isComparing) {
-      removeComparisonFeature(feature);
+      removeComparisonDistrict(feature);
     } else {
-      addComparisonFeature([feature]);
+      addComparisonDistrict([feature]);
     }
   };
 
@@ -28,7 +28,7 @@ const ComparisonButton = () => {
     <Styles.ComparisonButton>
       <Styles.ButtonWrapper
         disabled={!isComparing && enableButton}
-        onClick={() => comparisonClick(selectedFeature)}
+        onClick={() => comparisonClick(selectedDistrict)}
       >
         <Styles.ComparisonIcon />
         {isComparing ? "Remove from Comparison" : "Add to Comparison"}

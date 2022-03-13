@@ -10,16 +10,16 @@ import { Feature } from "@store/contexts/featuresContext";
 const useSearch = (featureSearched: Feature[]) => {
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const { setSelectedFeature, selectedFeature, setHighlightedFeature } =
+  const { setSelectedDistrict, selectedDistrict, setHighlightedDistrict } =
     useFeatures();
   const { resetMapValues } = useMap();
 
-  const initialInputValue = selectedFeature?.properties.NM_MUN ?? "";
+  const initialInputValue = selectedDistrict?.properties.NM_MUN ?? "";
 
   const itemToString = (item: any) => (item ? item.name : "");
 
   const onSelectedItemChange = (item: any) =>
-    setSelectedFeature(item.selectedItem);
+    setSelectedDistrict(item.selectedItem);
 
   const {
     getComboboxProps,
@@ -65,7 +65,7 @@ const useSearch = (featureSearched: Feature[]) => {
           break;
         default:
           //@ts-ignore
-          setHighlightedFeature(featureSearched[highlightedIndex]);
+          setHighlightedDistrict(featureSearched[highlightedIndex]);
       }
     },
 

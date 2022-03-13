@@ -12,7 +12,7 @@ import * as Styles from "./styles";
 import "./styles.css";
 
 const ComparisonDetails = () => {
-  const { comparison, removeComparisonFeature } = useComparison();
+  const { comparison, removeComparisonDistrict } = useComparison();
   const { resetMapValues } = useMap();
   const history = useHistory();
 
@@ -39,7 +39,7 @@ const ComparisonDetails = () => {
                 <Styles.ComparisonList>
                   {feature.properties.NM_MUN}
                   <Styles.CloseButton
-                    onClick={() => removeComparisonFeature(feature)}
+                    onClick={() => removeComparisonDistrict(feature)}
                   />
                 </Styles.ComparisonList>
               ))}
