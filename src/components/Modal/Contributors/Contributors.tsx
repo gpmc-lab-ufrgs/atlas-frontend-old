@@ -17,7 +17,7 @@ import luisMenegetti from '@assets/luis_meneguetti.jpg';
 import thalesMartins from '@assets/avatar_icon.svg';
 import vilmarBoff from '@assets/vilmar_boff.png';
 
-import * as Styles from "./styles";
+import * as Styles from './styles';
 
 interface Person {
 	name: string;
@@ -27,50 +27,50 @@ interface Person {
 	hasImage?: boolean;
 }
 
-const mainContributors:Person[] = [
+const mainContributors: Person[] = [
 	{
 		name: 'Vinicius Brei',
 		image: viniciusBrei,
-		function: 'function',
+		function: 'Lead Researcher',
 		institution: 'UFRGS',
 	},
 	{
 		name: 'Alex Sandy Pentland',
 		image: alexSandy,
-		function: 'function',
+		function: 'Principal Investigator',
 		institution: 'MIT',
 	},
 	{
 		name: 'Mohsen Bahrami',
 		image: mohsenBahrami,
-		function: 'function',
+		function: 'Lead Researcher',
 		institution: 'MIT',
 	},
 	{
 		name: 'Alina Flores',
 		image: alinaFlores,
-		function: 'function',
+		function: 'Lead Researcher',
 		institution: 'UFRGS',
 	},
 	{
 		name: 'Ricardo Limongi',
 		image: ricardoLimongi,
-		function: 'function',
+		function: 'Lead Researcher',
 		institution: 'UFG',
 	},
 	{
 		name: 'Leonardo Gomes',
 		image: leonardoGomes,
-		function: 'function',
+		function: 'Lead Software Developer',
 		institution: 'Universidade de Brasília',
 	},
 	{
 		name: 'Justin Anderson',
 		image: justinAnderson,
-		function: 'function',
+		function: 'Lead Software Developer',
 		institution: 'MIT',
 	},
-]
+];
 
 const otherContributors: Person[] = [
 	{
@@ -88,7 +88,7 @@ const otherContributors: Person[] = [
 	{
 		name: 'Ana Luisa',
 		image: anaLuisa,
-		institution: 'undefined',
+		institution: '',
 		hasImage: false,
 	},
 
@@ -102,37 +102,37 @@ const otherContributors: Person[] = [
 	{
 		name: 'Carla Netto',
 		image: carlaNetto,
-		institution: 'undefined',
+		institution: '',
 		hasImage: true,
 	},
 	{
 		name: 'Jaiany Rocha',
 		image: jaianyRocha,
-		institution: 'undefined',
+		institution: '',
 		hasImage: true,
 	},
 	{
 		name: 'Jheniffer Dany Lucas',
 		image: jhenifferLucas,
-		institution: 'undefined',
+		institution: '',
 		hasImage: true,
 	},
 	{
 		name: 'Luís Eduardo Meneguetti',
 		image: luisMenegetti,
-		institution: 'undefined',
+		institution: '',
 		hasImage: true,
 	},
 	{
 		name: 'Thales Martins',
 		image: thalesMartins,
-		institution: 'undefined',
+		institution: '',
 		hasImage: false,
 	},
 	{
 		name: 'Vilmar Oro Boff',
 		image: vilmarBoff,
-		institution: 'undefined',
+		institution: '',
 		hasImage: true,
 	},
 ];
@@ -141,20 +141,25 @@ const Contributors = () => {
 	return (
 		<ModalContainer title="Contributors">
 			{mainContributors.map((mainContributor, index) => {
-				return(
+				return (
 					<div key={index}>
-						<Styles.contributorImage src={mainContributor.image} alt={mainContributor.name} />
+						<Styles.contributorImage
+							src={mainContributor.image}
+							alt={mainContributor.name}
+						/>
 						<Styles.personDatas>
 							<Styles.personData>{mainContributor.name}</Styles.personData>
 							<Styles.personData>
 								<b>{mainContributor.function}</b>
 							</Styles.personData>
-							<Styles.personData>{mainContributor.institution}</Styles.personData>
+							<Styles.personData>
+								{mainContributor.institution}
+							</Styles.personData>
 						</Styles.personDatas>
 					</div>
 				);
 			})}
-			
+
 			<br></br>
 			<h2>Developers:</h2>
 			<br></br>
@@ -163,28 +168,32 @@ const Contributors = () => {
 					<>
 						<div key={index}>
 							{otherContributor.hasImage ? (
-									<Styles.contributorImage src={otherContributor.image} alt={otherContributor.name} />
-								) : 
-								(
-									<Styles.avatarIconDiv>
-										<Styles.avatarIcon src={otherContributor.image} alt={otherContributor.name} />
-									</Styles.avatarIconDiv>
-								)
-							}
+								<Styles.contributorImage
+									src={otherContributor.image}
+									alt={`Imagem de ${otherContributor.name}`}
+								/>
+							) : (
+								<Styles.avatarIconDiv>
+									<Styles.avatarIcon
+										src={otherContributor.image}
+										alt={otherContributor.name}
+									/>
+								</Styles.avatarIconDiv>
+							)}
 
 							<Styles.personDatas>
 								<Styles.personData>{otherContributor.name}</Styles.personData>
-								<Styles.personData>{otherContributor.institution}</Styles.personData>
+								<Styles.personData>
+									{otherContributor.institution}
+								</Styles.personData>
 							</Styles.personDatas>
 						</div>
-						{	
-							index == 1 && (
-								<>
-									<h2>Researchers:</h2>
-									<br></br>
-								</>
-							)
-						}
+						{index == 1 && (
+							<>
+								<h2>Researchers:</h2>
+								<br></br>
+							</>
+						)}
 					</>
 				);
 			})}
