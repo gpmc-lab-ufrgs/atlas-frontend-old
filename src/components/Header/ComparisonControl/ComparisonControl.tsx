@@ -9,7 +9,7 @@ interface Props {
   setComparison(value: string): void;
 }
 
-const SegmentedControl: React.FC<Props> = ({
+const ComparisonControl: React.FC<Props> = ({
   comparisonType,
   setComparison,
 }) => {
@@ -19,7 +19,7 @@ const SegmentedControl: React.FC<Props> = ({
   ];
 
   return (
-    <Styles.SegmentedControlContainer>
+    <Styles.ComparisonControlContainer>
       {controls.map(({ value, icon, label }, id) => (
         <>
           <Styles.Control isControlType={value === comparisonType} key={id}>
@@ -35,8 +35,8 @@ const SegmentedControl: React.FC<Props> = ({
           </Styles.Control>
         </>
       ))}
-    </Styles.SegmentedControlContainer>
+    </Styles.ComparisonControlContainer>
   );
 };
 
-export default SegmentedControl;
+export default ComparisonControl;

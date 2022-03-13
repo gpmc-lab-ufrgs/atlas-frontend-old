@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useLocation, useHistory } from "react-router";
 
 import { useTheme } from "@mui/material/styles";
@@ -22,11 +22,14 @@ const Main = () => {
     comparisonMode,
     setComparisonMode,
   } = useComparison();
-  const { setSidebarIsOpen } = useSidebar();
+
+  const { setIsSidebarOpen, isSidebarOpen } = useSidebar();
+
   const { features, selectedFeature } = useFeatures();
+
   const location = useLocation();
   const history = useHistory();
-  const { sidebarIsOpen } = useSidebar();
+
   const theme = useTheme();
 
   useEffect(() => {
@@ -44,7 +47,7 @@ const Main = () => {
         const featuresFromUrl = features.filter((ft: any) =>
           ids.includes(ft.properties["CD_MUN"].toString())
         );
-        setSidebarIsOpen(true);
+        setIsSidebarOpen(true);
         addComparisonFeature(featuresFromUrl);
       } else {
         history.replace("/");
@@ -73,7 +76,7 @@ const Main = () => {
           title={selectedFeature?.properties.NM_MUN}
         />
       )}
-      <Styles.ComparisonWrapper isSidebarOpen={sidebarIsOpen} theme={theme}>
+      <Styles.ComparisonWrapper isSidebarOpen={isSidebarOpen} theme={theme}>
         <Header />
         {comparisonMode && <CompatisonMode />}
       </Styles.ComparisonWrapper>

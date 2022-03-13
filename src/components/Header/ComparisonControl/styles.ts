@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const SegmentedControlContainer = styled.div`
+export const ComparisonControlContainer = styled.div`
   width: 170px;
 
   display: flex;

@@ -6,7 +6,8 @@ import { useComparison, useSidebar } from "@store/index";
 import SearchBar from "./SearchBar";
 
 import Drawer from "@components/Drawer";
-import { SegmentedControl, ProjectInformations } from "@components/Header";
+import ComparisonControl from "./ComparisonControl";
+import ProjectInformations from "./ProjectInformations";
 
 import * as Styles from "./styles";
 
@@ -14,7 +15,7 @@ const Header = () => {
   const [openMenu, setOpenMenu] = useState(false);
   const location = useLocation();
 
-  const { sidebarIsOpen } = useSidebar();
+  const { isSidebarOpen } = useSidebar();
   const {
     comparisonType,
     setComparisonType,
@@ -28,9 +29,9 @@ const Header = () => {
 
   if (comparisonMode) {
     return (
-      <Styles.HeaderContainer comparisonMode isSidebarOpen={sidebarIsOpen}>
+      <Styles.HeaderContainer comparisonMode isSidebarOpen={isSidebarOpen}>
         <Styles.HeaderCenterSide>
-          <SegmentedControl
+          <ComparisonControl
             comparisonType={comparisonType}
             setComparison={setComparisonType}
           />
@@ -48,7 +49,7 @@ const Header = () => {
   }
 
   return (
-    <Styles.HeaderContainer isSidebarOpen={sidebarIsOpen}>
+    <Styles.HeaderContainer isSidebarOpen={isSidebarOpen}>
       <Styles.HeaderLeftSide>
         <SearchBar />
       </Styles.HeaderLeftSide>

@@ -3,11 +3,11 @@ import { useFeatures, useStates } from "@store/index";
 
 const useMap = () => {
   const { setSelectedState } = useStates();
-  const { setSidebarIsOpen } = useSidebar();
+  const { setIsSidebarOpen } = useSidebar();
   const { setHighlightedFeature, setSelectedFeature } = useFeatures();
 
   const resetMapValues = () => {
-    setSidebarIsOpen(false);
+    setIsSidebarOpen(false);
     setHighlightedFeature(null);
     setSelectedFeature(null);
     setSelectedState(null);

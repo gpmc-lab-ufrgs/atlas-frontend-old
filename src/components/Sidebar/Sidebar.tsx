@@ -19,7 +19,7 @@ interface Props {
 }
 
 const Sidebar: React.FC<Props> = ({ isComparisonMode, title }) => {
-  const { sidebarIsOpen, setSidebarIsOpen } = useSidebar();
+  const { isSidebarOpen, setIsSidebarOpen } = useSidebar();
 
   const SidebarContent = () => {
     if (isComparisonMode) {
@@ -39,8 +39,8 @@ const Sidebar: React.FC<Props> = ({ isComparisonMode, title }) => {
     <Box>
       <Minimizer />
       <Drawer
-        open={sidebarIsOpen}
-        setOpen={setSidebarIsOpen}
+        open={isSidebarOpen}
+        setOpen={setIsSidebarOpen}
         anchor="left"
         hideBackdrop
       >

@@ -25,7 +25,7 @@ const Map = () => {
   const mapContainer = useRef<any>();
 
   const [map, setMap] = useState<mapboxgl.Map>();
-  const { setSidebarIsOpen } = useSidebar();
+  const { setIsSidebarOpen } = useSidebar();
   const {
     highlightedState,
     selectedState,
@@ -116,7 +116,7 @@ const Map = () => {
       map.on("click", "fill-mun", (e: any) => {
         if (e.features.length > 0) {
           setSelectedFeature(e.features[0]);
-          setSidebarIsOpen(true);
+          setIsSidebarOpen(true);
         }
       });
 

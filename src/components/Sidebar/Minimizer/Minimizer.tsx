@@ -8,17 +8,17 @@ import * as Styles from "./styles";
 
 const Minimizer = () => {
   const theme = useTheme();
-  const { sidebarIsOpen, setSidebarIsOpen } = useSidebar();
+  const { isSidebarOpen, setIsSidebarOpen } = useSidebar();
 
-  const toggleSidebar = () => setSidebarIsOpen(!sidebarIsOpen);
+  const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
 
   return (
     <Styles.MinimizerWrapper
       theme={theme}
       onClick={toggleSidebar}
-      isSidebarOpen={sidebarIsOpen}
+      isSidebarOpen={isSidebarOpen}
     >
-      {!sidebarIsOpen ? <FaChevronLeft /> : <FaChevronRight />}
+      {!isSidebarOpen ? <FaChevronLeft /> : <FaChevronRight />}
     </Styles.MinimizerWrapper>
   );
 };
