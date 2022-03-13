@@ -1,24 +1,24 @@
-import React, { useState, createContext,  useContext } from "react";
+import React, { useState, createContext, useContext } from "react";
 
-type SidebarContext = {  
-  sidebarIsOpen: boolean, 
-  setSidebarIsOpen: React.Dispatch<React.SetStateAction<any>>
-}
+type SidebarContext = {
+  isSidebarOpen: boolean;
+  setIsSidebarOpen: React.Dispatch<React.SetStateAction<any>>;
+};
 
 const DEFAULT_VALUE = {
-  sidebarIsOpen: true, 
-  setSidebarIsOpen: () => {}
-}
+  isSidebarOpen: false,
+  setIsSidebarOpen: () => {},
+};
 
 const sidebarContext = createContext<SidebarContext>(DEFAULT_VALUE);
 
 export function SidebarProvider({ children }: any) {
-  const [sidebarIsOpen, setSidebarIsOpen] = useState(DEFAULT_VALUE.sidebarIsOpen) 
+  const [isSidebarOpen, setIsSidebarOpen] = useState(
+    DEFAULT_VALUE.isSidebarOpen
+  );
 
   return (
-    <sidebarContext.Provider
-      value={{sidebarIsOpen, setSidebarIsOpen}}
-    >
+    <sidebarContext.Provider value={{ isSidebarOpen, setIsSidebarOpen }}>
       {children}
     </sidebarContext.Provider>
   );
@@ -26,6 +26,6 @@ export function SidebarProvider({ children }: any) {
 
 export function useSidebar() {
   const context = useContext(sidebarContext);
-  const {sidebarIsOpen, setSidebarIsOpen} = context;
-  return {sidebarIsOpen, setSidebarIsOpen};
+  const { isSidebarOpen, setIsSidebarOpen } = context;
+  return { isSidebarOpen, setIsSidebarOpen };
 }

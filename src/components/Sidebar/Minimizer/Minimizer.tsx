@@ -1,0 +1,26 @@
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+
+import { useTheme } from "@mui/material/styles";
+
+import { useSidebar } from "@store/index";
+
+import * as Styles from "./styles";
+
+const Minimizer = () => {
+  const theme = useTheme();
+  const { isSidebarOpen, setIsSidebarOpen } = useSidebar();
+
+  const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
+
+  return (
+    <Styles.MinimizerWrapper
+      theme={theme}
+      onClick={toggleSidebar}
+      isSidebarOpen={isSidebarOpen}
+    >
+      {!isSidebarOpen ? <FaChevronLeft /> : <FaChevronRight />}
+    </Styles.MinimizerWrapper>
+  );
+};
+
+export default Minimizer;

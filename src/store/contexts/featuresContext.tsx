@@ -1,58 +1,105 @@
-import React, { useState, createContext,  useContext } from "react";
-import geojsonURL from "../../data/SP-districts-geojson.json";
+import React, { useState, createContext, useContext } from "react";
 
-export type Feature = { 
-  type: string,
+import geojsonGO from "@data/states/GO_Municipios_2020.json";
+import geojsonBR from "@data/BR_UF_2020.json";
+
+export type Feature = {
+  type: string;
   geometry: {
-    type: string, 
-    coordinates:number[][][]
-  },
+    type: string;
+    coordinates: number[][][];
+  };
   properties: {
-    CLASSID: number,
-    FEATID: number,
-    REVISIONNU: number,
-    PERSONS_NUM:	number,
-    NAME_DIST: string,
-    SIGLA_DIST: string,
-    COD_DIST: string,
-    COD_SUB: string,
-    DATA_CRIAC: string,
-    USUARIO_ID: number
-  }
-}
+    CD_MUN: string;
+    NM_MUN: string;
+    SIGLA_UF: string;
+    AREA_KM2: number;
+  };
+};
+
+// type DistrictContent = {
+//   MUNIC_CODE7: number,
+//   MUNIC_CODE6: number,
+//   FU: number,
+//   FU_NAME: string,
+//   LONG: string,
+//   LAT: string,
+//   OBSERVED: number,
+//   EXPECTED: string,
+//   RR_PREV: string,
+//   HDI: string,
+//   HDI_educ: string,
+//   HDI_long: string,
+//   HDI_inc: string,
+//   GeoSES: string,
+//   GeoSESed: string,
+//   GeoSESpv: string,
+//   GeoSESdp: string,
+//   GeoSESwl: string,
+//   GeoSESin: string,
+//   GeoSESsg: string,
+// }
 
 type FeaturesContext = {
-  features: Array<Feature>,
-  selectedFeature: Feature | null,
-  setSelectedFeature: React.Dispatch<React.SetStateAction<any>>
-  highlightedFeature: Feature | null,
-  setHighlightedFeature: React.Dispatch<React.SetStateAction<any>>
-}
+  districts: Array<Feature>;
+  selectedDistrict: Feature | null;
+  setSelectedDistrict: React.Dispatch<React.SetStateAction<any>>;
+  highlightedDistrict: Feature | null;
+  setHighlightedDistrict: React.Dispatch<React.SetStateAction<any>>;
+  states: Array<Feature>;
+  selectedState: Feature | null;
+  setSelectedState: React.Dispatch<React.SetStateAction<any>>;
+  highlightedState: Feature | null;
+  setHighlightedState: React.Dispatch<React.SetStateAction<any>>;
+};
 
 const DEFAULT_VALUE = {
   //@ts-ignore
-  features: geojsonURL["features"],
-  selectedFeature: null,
-  setSelectedFeature: () => {},
-  highlightedFeature: null,
-  setHighlightedFeature: () => {},
-}
+  districts: geojsonGO["features"],
+  selectedDistrict: null,
+  setSelectedDistrict: () => {},
+  highlightedDistrict: null,
+  setHighlightedDistrict: () => {},
+  //@ts-ignore
+  states: geojsonBR["states"],
+  selectedState: null,
+  setSelectedState: () => {},
+  highlightedState: null,
+  setHighlightedState: () => {},
+};
 
 const featuresContext = createContext<FeaturesContext>(DEFAULT_VALUE);
 
 export function FeaturesProvider({ children }: any) {
-  const [ features ] = useState(DEFAULT_VALUE.features) 
-  const [ selectedFeature, setSelectedFeature ] = useState(DEFAULT_VALUE.selectedFeature)
-  const [ highlightedFeature, setHighlightedFeature ] = useState(DEFAULT_VALUE.highlightedFeature)
+  const [districts] = useState(DEFAULT_VALUE.districts);
+  const [selectedDistrict, setSelectedDistrict] = useState(
+    DEFAULT_VALUE.selectedDistrict
+  );
+  const [highlightedDistrict, setHighlightedDistrict] = useState(
+    DEFAULT_VALUE.highlightedDistrict
+  );
+
+  const [states] = useState(DEFAULT_VALUE.states);
+  const [selectedState, setSelectedState] = useState(
+    DEFAULT_VALUE.selectedState
+  );
+  const [highlightedState, setHighlightedState] = useState(
+    DEFAULT_VALUE.highlightedState
+  );
 
   return (
     <featuresContext.Provider
       value={{
-        features,
-        selectedFeature,
-        setSelectedFeature,
-        highlightedFeature,
-        setHighlightedFeature
+        districts,
+        selectedDistrict,
+        setSelectedDistrict,
+        highlightedDistrict,
+        setHighlightedDistrict,
+        states,
+        selectedState,
+        setSelectedState,
+        highlightedState,
+        setHighlightedState,
       }}
     >
       {children}
@@ -62,6 +109,28 @@ export function FeaturesProvider({ children }: any) {
 
 export function useFeatures() {
   const context = useContext(featuresContext);
-  const { features, selectedFeature, setSelectedFeature, highlightedFeature, setHighlightedFeature } = context;
-  return { features, selectedFeature, setSelectedFeature, highlightedFeature, setHighlightedFeature };
+  const {
+    districts,
+    selectedDistrict,
+    setSelectedDistrict,
+    highlightedDistrict,
+    setHighlightedDistrict,
+    states,
+    selectedState,
+    setSelectedState,
+    highlightedState,
+    setHighlightedState,
+  } = context;
+  return {
+    districts,
+    selectedDistrict,
+    setSelectedDistrict,
+    highlightedDistrict,
+    setHighlightedDistrict,
+    states,
+    selectedState,
+    setSelectedState,
+    highlightedState,
+    setHighlightedState,
+  };
 }

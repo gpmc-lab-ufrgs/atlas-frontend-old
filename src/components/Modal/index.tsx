@@ -1,14 +1,7 @@
-import { Switch, Route as Path } from "react-router-dom";
-import { AboutTheAtlas, Research, FAQ, Contributors, Methods } from "./components"
-
-export const Modal = () => {
-  return (
-    <Switch>
-      <Path exact path="/aboutTheAtlas"><AboutTheAtlas/></Path>
-      <Path exact path="/contributors"><Contributors/></Path>
-      <Path exact path="/methods"><Methods/></Path>
-      <Path exact path="/research"><Research/></Path>
-      <Path exact path="/faq"><FAQ/></Path>
-    </Switch>
-  );
-}
+export {default} from './Modal';
+export {default as FAQ} from './FAQ';
+export {default as Methods} from './Methods';
+export {default as Research} from './Research';
+export {default as Contributors} from './Contributors';
+export {default as AboutTheAtlas} from './AboutTheAtlas';
+export {default as ModalContainer} from './ModalContainer';
