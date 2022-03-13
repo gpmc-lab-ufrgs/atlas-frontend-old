@@ -16,12 +16,7 @@ import { Map } from "@components/Map";
 import * as Styles from "./styles";
 
 const Main = () => {
-  const {
-    comparison,
-    addComparisonFeature,
-    comparisonMode,
-    setComparisonMode,
-  } = useComparison();
+  const { comparison, addComparisonFeature } = useComparison();
 
   const { setIsSidebarOpen, isSidebarOpen } = useSidebar();
 
@@ -32,9 +27,12 @@ const Main = () => {
 
   const theme = useTheme();
 
+  const [isComparisonModeOn, setIsComparisonModeOn] = useState<boolean>(false);
+  const [comparisonType, setComparisonType] = useState("table");
+
   useEffect(() => {
-    setComparisonMode(location.pathname.startsWith("/comparison"));
-  }, [location, setComparisonMode]);
+    setIsComparisonModeOn(location.pathname.startsWith("/comparison"));
+  }, [location, setIsComparisonModeOn]);
 
   useEffect(() => {
     if (
@@ -70,15 +68,21 @@ const Main = () => {
   return (
     <Styles.MainContainer>
       <Modal />
-      {(hasSelectedFeature || comparisonMode) && (
+      {(hasSelectedFeature || isComparisonModeOn) && (
         <Sidebar
-          isComparisonMode={comparisonMode}
+          isComparisonMode={isComparisonModeOn}
           title={selectedFeature?.properties.NM_MUN}
         />
       )}
       <Styles.ComparisonWrapper isSidebarOpen={isSidebarOpen} theme={theme}>
-        <Header />
-        {comparisonMode && <CompatisonMode />}
+        <Header
+          isComparisonModeOn={isComparisonModeOn}
+          comparisonType={comparisonType}
+          setComparisonType={setComparisonType}
+        />
+        {isComparisonModeOn && (
+          <CompatisonMode comparisonType={comparisonType} />
+        )}
       </Styles.ComparisonWrapper>
       <Map />
       <Footer />

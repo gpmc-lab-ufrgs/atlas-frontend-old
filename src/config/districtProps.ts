@@ -1,18 +1,18 @@
 import { formatValue } from "../utils/formatValue";
 
-export type CountyContentType = {
+export type DistrictContentType = {
   label: string;
   description: string;
   format: any;
   type?: string;
 };
 
-export type CountySectionType = {
+export type DistrictSectionType = {
   title: string;
-  content: Array<CountyContentType>;
+  content: Array<DistrictContentType>;
 };
 
-const countyProps: CountySectionType[] = [
+const districtProps: DistrictSectionType[] = [
   {
     title: "Demographic Summary",
     content: [
@@ -133,4 +133,4 @@ const countyProps: CountySectionType[] = [
   // },
 ];
 
-export default countyProps;
+export default districtProps;

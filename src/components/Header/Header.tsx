@@ -1,7 +1,6 @@
-import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import React, { useState } from "react";
 
-import { useComparison, useSidebar } from "@store/index";
+import { useSidebar } from "@store/index";
 
 import SearchBar from "./SearchBar";
 
@@ -11,23 +10,22 @@ import ProjectInformations from "./ProjectInformations";
 
 import * as Styles from "./styles";
 
-const Header = () => {
+interface Props {
+  isComparisonModeOn: boolean;
+  comparisonType: string;
+  setComparisonType(value: string): void;
+}
+
+const Header: React.FC<Props> = ({
+  isComparisonModeOn,
+  comparisonType,
+  setComparisonType,
+}) => {
   const [openMenu, setOpenMenu] = useState(false);
-  const location = useLocation();
 
   const { isSidebarOpen } = useSidebar();
-  const {
-    comparisonType,
-    setComparisonType,
-    comparisonMode,
-    setComparisonMode,
-  } = useComparison();
 
-  useEffect(() => {
-    setComparisonMode(location.pathname.startsWith("/comparison"));
-  }, [location, setComparisonMode]);
-
-  if (comparisonMode) {
+  if (isComparisonModeOn) {
     return (
       <Styles.HeaderContainer comparisonMode isSidebarOpen={isSidebarOpen}>
         <Styles.HeaderCenterSide>

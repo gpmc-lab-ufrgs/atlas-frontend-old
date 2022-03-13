@@ -1,3 +1,5 @@
+import React from "react";
+
 import { useComparison } from "@store/index";
 
 import GridMode from "./GridMode";
@@ -5,8 +7,12 @@ import TableMode from "./TableMode";
 
 import * as Styles from "./styles";
 
-const ComparisonMode = () => {
-  const { comparisonType, comparison } = useComparison();
+interface Props {
+  comparisonType: string;
+}
+
+const ComparisonMode: React.FC<Props> = ({ comparisonType }) => {
+  const { comparison } = useComparison();
 
   function comparisonModeToggle() {
     switch (comparisonType) {

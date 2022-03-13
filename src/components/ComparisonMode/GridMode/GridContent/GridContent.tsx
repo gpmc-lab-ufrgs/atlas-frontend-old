@@ -1,16 +1,19 @@
 import React from "react";
 
 import CollapsibleSection from "@components/CollapsibleSection";
-import { MetricDetails } from "@components/MetricDetails";
+import MetricDetails from "@components/MetricDetails";
 
-import { CountySectionType, CountyContentType } from "@config/countyProps";
+import {
+  DistrictSectionType,
+  DistrictContentType,
+} from "@config/districtProps";
 
 import { Feature } from "@store/contexts/featuresContext";
 
 import * as Styles from "./styles";
 
 interface Props {
-  section: CountySectionType;
+  section: DistrictSectionType;
   comparison: Array<Feature>;
 }
 
@@ -18,7 +21,7 @@ const GridContent: React.FC<Props> = ({ section, comparison }) => {
   return (
     <CollapsibleSection title={section.title} key={section.title}>
       <Styles.GridContainer>
-        {section.content.map((content: CountyContentType, id) => (
+        {section.content.map((content: DistrictContentType, id) => (
           <Styles.Grid key={id}>
             <Styles.Title>
               <h2>{content.label}</h2>

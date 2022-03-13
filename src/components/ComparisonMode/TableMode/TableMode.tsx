@@ -2,7 +2,7 @@ import React from "react";
 
 import { Box } from "@mui/material";
 
-import countyProps from "@config/countyProps";
+import districtProps from "@config/districtProps";
 import { Feature } from "@store/contexts/featuresContext";
 
 import Header from "./Header";
@@ -19,7 +19,7 @@ const TableMode: React.FC<Props> = ({ comparison }) => {
     <Styles.TablerContainer>
       <Header comparison={comparison} />
       <Box>
-        {countyProps.map((section, id) => (
+        {districtProps.map((section, id) => (
           <TableContent section={section} comparison={comparison} key={id} />
         ))}
       </Box>

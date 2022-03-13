@@ -1,6 +1,6 @@
 import { Feature } from "@store/contexts/featuresContext";
 
-import countyProps from "@config/countyProps";
+import districtProps from "@config/districtProps";
 
 import GridContent from "./GridContent";
 
@@ -13,7 +13,7 @@ interface Props {
 const GridMode: React.FC<Props> = ({ comparison }) => {
   return (
     <Styles.GridContainer>
-      {countyProps.map((section) => (
+      {districtProps.map((section) => (
         <GridContent section={section} comparison={comparison} />
       ))}
     </Styles.GridContainer>

@@ -1,6 +1,6 @@
 import { Box } from "@mui/material";
 
-import countyProps from "@config/countyProps";
+import districtProps from "@config/districtProps";
 
 import { useComparison } from "@store/index";
 
@@ -13,7 +13,7 @@ const RegionDetails = () => {
   return (
     <Box>
       {comparison.length > 0 && <ComparisonSection />}
-      {countyProps.map((section, id) => (
+      {districtProps.map((section, id) => (
         <DataSection key={id} title={section.title} content={section.content} />
       ))}
     </Box>
