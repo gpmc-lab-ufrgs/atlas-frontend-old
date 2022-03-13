@@ -51,6 +51,7 @@ const useSearch = (featureSearched: Feature[]) => {
         const definiteMatch = featureSearched.find(
           (item) => item.properties.NM_MUN === inputValue
         );
+
         if (definiteMatch) {
           selectItem(definiteMatch);
         }
