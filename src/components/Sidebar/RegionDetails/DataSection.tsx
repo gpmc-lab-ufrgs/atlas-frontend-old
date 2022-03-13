@@ -3,7 +3,7 @@ import React from "react";
 import CollapsibleSection from "@components/CollapsibleSection";
 import MetricDetails from "@components/MetricDetails";
 
-import { useFeatures } from "@store/index";
+import { useFeatures, useComparison } from "@store/index";
 
 import {
   DistrictSectionType,
@@ -14,6 +14,12 @@ import * as Styles from "./styles";
 
 const DataSection: React.FC<DistrictSectionType> = ({ title, content }) => {
   const { selectedDistrict } = useFeatures();
+  const { comparison } = useComparison();
+
+  const isSelectedOnComparison = comparison.some(
+    (district) =>
+      district.properties.CD_MUN === selectedDistrict?.properties.CD_MUN
+  );
 
   return (
     <CollapsibleSection title={title}>
@@ -21,7 +27,19 @@ const DataSection: React.FC<DistrictSectionType> = ({ title, content }) => {
         <Styles.PropsWrapper key={id}>
           <Styles.PropsTitle>{props.description}</Styles.PropsTitle>
 
-          <MetricDetails district={selectedDistrict} metric={props} />
+          {comparison.map((district) => (
+            <Styles.ValueContent>
+              <p>{district.properties.NM_MUN}</p>
+              <MetricDetails district={district} metric={props} />
+            </Styles.ValueContent>
+          ))}
+
+          {!isSelectedOnComparison && (
+            <Styles.ValueContent>
+              <p>{selectedDistrict?.properties.NM_MUN}</p>
+              <MetricDetails district={selectedDistrict} metric={props} />
+            </Styles.ValueContent>
+          )}
         </Styles.PropsWrapper>
       ))}
     </CollapsibleSection>

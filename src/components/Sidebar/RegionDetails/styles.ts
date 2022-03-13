@@ -44,6 +44,9 @@ export const CloseIcon = styled(Close)`
 
 export const PropsWrapper = styled(Box)`
   display: flex;
+  flex-direction: column;
+
+  font-size: 14px;
 `;
 
 export const PropsTitle = styled.h2`
@@ -71,4 +74,16 @@ export const DisclaimerText = styled.p`
   color: #666666;
 
   margin: 20px 0px 10px;
+`;
+
+export const ValueContent = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  margin-bottom: 5px;
+
+  p {
+    margin: 0;
+  }
 `;

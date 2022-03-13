@@ -20,7 +20,7 @@ export const Table = styled.div<Table>`
 
 export const ColumnTitle = styled.div`
   grid-column: 1;
-  font-weight: bold;
+  font-weight: 600;
 
   padding-right: 5px;
 `;

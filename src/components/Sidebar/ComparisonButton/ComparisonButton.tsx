@@ -14,7 +14,11 @@ const ComparisonButton = () => {
         feature["FU_NAME"] === selectedDistrict?.properties.NM_MUN
     ) !== undefined;
 
-  const enableButton = comparison.length >= 4;
+  const isButtonOn = comparison.length >= 4;
+  const isSelectedOnComparison = comparison.some(
+    (district) =>
+      district.properties.CD_MUN === selectedDistrict?.properties.CD_MUN
+  );
 
   const comparisonClick = (feature: Feature | null) => {
     if (isComparing) {
@@ -27,7 +31,7 @@ const ComparisonButton = () => {
   return (
     <Styles.ComparisonButton>
       <Styles.ButtonWrapper
-        disabled={!isComparing && enableButton}
+        disabled={(!isComparing && isButtonOn) || isSelectedOnComparison}
         onClick={() => comparisonClick(selectedDistrict)}
       >
         <Styles.ComparisonIcon />
