@@ -22,6 +22,7 @@ const Main = () => {
     comparisonMode,
     setComparisonMode,
   } = useComparison();
+  const { setSidebarIsOpen } = useSidebar();
   const { features, selectedFeature } = useFeatures();
   const location = useLocation();
   const history = useHistory();
@@ -43,6 +44,7 @@ const Main = () => {
         const featuresFromUrl = features.filter((ft: any) =>
           ids.includes(ft.properties["CD_MUN"].toString())
         );
+        setSidebarIsOpen(true);
         addComparisonFeature(featuresFromUrl);
       } else {
         history.replace("/");
@@ -65,10 +67,10 @@ const Main = () => {
   return (
     <Styles.MainContainer>
       <Modal />
-      {hasSelectedFeature && (
+      {(hasSelectedFeature || comparisonMode) && (
         <Sidebar
           isComparisonMode={comparisonMode}
-          title={selectedFeature.properties.NM_MUN}
+          title={selectedFeature?.properties.NM_MUN}
         />
       )}
       <Styles.ComparisonWrapper isSidebarOpen={sidebarIsOpen} theme={theme}>

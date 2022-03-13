@@ -13,9 +13,7 @@ export const Grid = styled.div`
 
   margin: 5px 0;
 
-  :last-child {
-    margin-right: auto;
-  }
+  margin-right: auto;
 `;
 
 export const Title = styled.div`

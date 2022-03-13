@@ -1,7 +1,7 @@
 import React from "react";
 
+import CollapsibleSection from "@components/CollapsibleSection";
 import { MetricDetails } from "@components/MetricDetails";
-import { CollapsibleSection } from "@components/CollapsibleSection/index";
 
 import { CountySectionType, CountyContentType } from "@config/countyProps";
 

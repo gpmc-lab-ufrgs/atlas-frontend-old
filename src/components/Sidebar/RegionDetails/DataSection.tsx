@@ -1,6 +1,6 @@
 import React from "react";
 
-import { CollapsibleSection } from "@components/CollapsibleSection";
+import CollapsibleSection from "@components/CollapsibleSection";
 import { MetricDetails } from "@components/MetricDetails";
 
 import { useFeatures } from "@store/index";

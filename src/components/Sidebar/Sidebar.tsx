@@ -15,7 +15,7 @@ import * as Styles from "./styles";
 
 interface Props {
   isComparisonMode: boolean;
-  title: string;
+  title?: string;
 }
 
 const Sidebar: React.FC<Props> = ({ isComparisonMode, title }) => {

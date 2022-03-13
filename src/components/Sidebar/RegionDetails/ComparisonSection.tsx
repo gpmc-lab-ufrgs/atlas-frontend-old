@@ -1,4 +1,4 @@
-import { CollapsibleSection } from "@components/CollapsibleSection";
+import CollapsibleSection from "@components/CollapsibleSection";
 
 import { useComparison } from "@store/index";
 
