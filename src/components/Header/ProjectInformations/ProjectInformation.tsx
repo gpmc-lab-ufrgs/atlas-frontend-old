@@ -11,19 +11,25 @@ interface Props {
 }
 
 const ProjectInformations: React.FC<Props> = ({ setOpen }) => {
+  const handleCloseDrawer = () => setOpen(false);
+
   return (
     <Styles.ProjectInformationWrapper>
       <Styles.TitleWrapper>
         <Styles.Title> Atlas of Opportunity </Styles.Title>
 
-        <Styles.CloseButton onClick={() => setOpen(false)} />
+        <Styles.CloseButton onClick={() => handleCloseDrawer()} />
       </Styles.TitleWrapper>
 
       <Styles.SectionWrapper>
         {sections.map((choices, id) => (
           <Styles.Section key={id}>
             {choices.map((choice, id) => (
-              <Link key={id} to={choice.url} onClick={() => setOpen(false)}>
+              <Link
+                key={id}
+                to={choice.url}
+                onClick={() => handleCloseDrawer()}
+              >
                 {choice.title}
               </Link>
             ))}

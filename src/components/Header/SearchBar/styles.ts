@@ -38,11 +38,8 @@ export const SearchBarField = styled.div<Props>`
 
     background: transparent;
 
-    font-family: "Roboto", sans-serif;
     font-size: ${({ selectedDistrict }) =>
       selectedDistrict ? "18" : "15"}px !important;
-    font-weight: ${({ selectedDistrict }) =>
-      selectedDistrict && "bold"} !important;
   }
 `;
 

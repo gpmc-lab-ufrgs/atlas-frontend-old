@@ -42,7 +42,7 @@ const SearchBar: React.FC = () => {
 
   useEffect(() => {
     setInputValue(selectedDistrict?.properties.NM_MUN ?? "");
-  }, [selectedDistrict]);
+  }, [selectedDistrict, setInputValue]);
 
   useEffect(() => {
     const query = debouncedValue
@@ -50,16 +50,16 @@ const SearchBar: React.FC = () => {
       .replace(/\s+/g, " ")
       .replace(/(^\s+|\s+$)/g, "");
 
-    const hasQuery = query === "";
+    const hasQuery = query !== "";
 
     if (hasQuery) {
-      setDistrictSearched(getSortedDistricts(districts));
-    } else {
       setDistrictSearched(
         getSortedDistricts(getFilteredDistricts(districts, query))
       );
+    } else {
+      setDistrictSearched(getSortedDistricts(districts));
     }
-  }, [districts]);
+  }, [debouncedValue, districts]);
 
   const hasInputValue = inputValue === "";
 
