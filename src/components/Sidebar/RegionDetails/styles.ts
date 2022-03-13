@@ -38,7 +38,7 @@ export const ChevronIcon = styled(ChevronRight)`
 `;
 
 export const CloseIcon = styled(Close)`
-  cursor: "pointer";
+  cursor: pointer;
   color: rgb(153, 153, 153) #4a7929;
 `;
 

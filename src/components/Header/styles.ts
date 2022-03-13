@@ -9,7 +9,7 @@ interface HeaderProps {
 
 export const HeaderContainer = styled.header<HeaderProps>`
   width: ${({ isSidebarOpen }) =>
-    isSidebarOpen ? "calc(100% - 395px)" : "calc(100% - 40px)"};
+    isSidebarOpen ? "calc(100% - 385px)" : "calc(100% - 40px)"};
 
   position: fixed;
   z-index: 4;

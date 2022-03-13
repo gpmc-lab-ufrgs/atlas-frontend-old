@@ -13,7 +13,8 @@ interface Comparison {
 }
 
 export const ComparisonWrapper = styled.div<Comparison>`
-  width: 100%;
+  width: ${({ isSidebarOpen }) =>
+    isSidebarOpen ? "calc(100% - 345px)" : "100%"};
   height: 100%;
 
   left: ${({ isSidebarOpen }) => (isSidebarOpen ? "345" : "0")}px;
