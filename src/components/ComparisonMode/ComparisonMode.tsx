@@ -1,6 +1,6 @@
 import { useComparison } from "@store/index";
 
-import { GridView } from "./components";
+import GridMode from "./GridMode";
 import TableMode from "./TableMode";
 
 import * as Styles from "./styles";
@@ -13,7 +13,7 @@ const ComparisonMode = () => {
       case "table":
         return <TableMode />;
       case "grid":
-        return <GridView />;
+        return <GridMode />;
       default:
         return <>Erro ao carregar dados</>;
     }

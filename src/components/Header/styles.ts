@@ -19,7 +19,7 @@ export const HeaderContainer = styled.header<HeaderProps>`
 
   pointer-events: none;
 
-  margin: 15px 20px;
+  padding: 15px 20px;
 
   background: ${({ comparisonMode }) => (comparisonMode ? "#ffffffe6" : null)};
 `;

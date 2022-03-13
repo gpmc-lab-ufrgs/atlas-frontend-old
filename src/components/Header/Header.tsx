@@ -3,8 +3,9 @@ import { useLocation } from "react-router-dom";
 
 import { useComparison, useSidebar } from "@store/index";
 
+import SearchBar from "./SearchBar";
+
 import Drawer from "@components/Drawer";
-import SearchBar from "@components/SearchBar";
 import { SegmentedControl, ProjectInformations } from "@components/Header";
 
 import * as Styles from "./styles";
