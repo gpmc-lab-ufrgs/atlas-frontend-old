@@ -6,14 +6,14 @@ import TableMode from "./TableMode";
 import * as Styles from "./styles";
 
 const ComparisonMode = () => {
-  const { comparisonType } = useComparison();
+  const { comparisonType, comparison } = useComparison();
 
   function comparisonModeToggle() {
     switch (comparisonType) {
       case "table":
-        return <TableMode />;
+        return <TableMode comparison={comparison} />;
       case "grid":
-        return <GridMode />;
+        return <GridMode comparison={comparison} />;
       default:
         return <>Erro ao carregar dados</>;
     }

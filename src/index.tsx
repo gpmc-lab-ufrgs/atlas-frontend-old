@@ -1,16 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
+
 import Main from "@pages/Main";
+
 import {
   StatesProvider,
-  MapLayerProvider,
   FeaturesProvider,
-  CollapsibleProvider,
   SidebarProvider,
   ComparisonProvider,
-  HamburgerMenuProvider,
 } from "./store";
+
 import "./index.css";
 
 ReactDOM.render(
@@ -19,15 +19,9 @@ ReactDOM.render(
       <FeaturesProvider>
         <StatesProvider>
           <ComparisonProvider>
-            <HamburgerMenuProvider>
-              <SidebarProvider>
-                <CollapsibleProvider>
-                  <MapLayerProvider>
-                    <Main />
-                  </MapLayerProvider>
-                </CollapsibleProvider>
-              </SidebarProvider>
-            </HamburgerMenuProvider>
+            <SidebarProvider>
+              <Main />
+            </SidebarProvider>
           </ComparisonProvider>
         </StatesProvider>
       </FeaturesProvider>

@@ -1,11 +1,27 @@
+import { useState } from "react";
+
 import Collapsible from "react-collapsible";
 
-import { useCollapsible } from "@store/index";
+import { CollapsibleType } from "./type";
 
 import "./styles.css";
 
+const CollapsibleDefaultValue = {
+  "Locations to Compare": true,
+  "Demographic Summary": true,
+  "Economic Summary": false,
+  "Growth Summary": false,
+  "Residential Housing Summary": false,
+  "Financial Transactions": false,
+  "Business Counts": false,
+  "Turnover vs. Cost of Sales": false,
+  "Business Rental Costs": false,
+};
+
 const CollapsibleSection = ({ children, title }: any) => {
-  const { collapsible, setCollapsible } = useCollapsible();
+  const [collapsible, setCollapsible] = useState<CollapsibleType>(
+    CollapsibleDefaultValue
+  );
 
   const onOpen = (key: any) => updateIsOpen(key, true);
   const onClose = (key: any) => updateIsOpen(key, false);

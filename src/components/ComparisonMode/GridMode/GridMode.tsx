@@ -1,13 +1,16 @@
-import { useComparison } from "@store/index";
+import { Feature } from "@store/contexts/featuresContext";
+
 import countyProps from "@config/countyProps";
 
 import GridContent from "./GridContent";
 
 import * as Styles from "./styles";
 
-const GridMode = () => {
-  const { comparison } = useComparison();
+interface Props {
+  comparison: Array<Feature>;
+}
 
+const GridMode: React.FC<Props> = ({ comparison }) => {
   return (
     <Styles.GridContainer>
       {countyProps.map((section) => (

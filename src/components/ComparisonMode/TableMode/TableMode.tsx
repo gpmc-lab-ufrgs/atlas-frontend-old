@@ -1,16 +1,20 @@
+import React from "react";
+
 import { Box } from "@mui/material";
 
-import { useComparison } from "@store/index";
 import countyProps from "@config/countyProps";
+import { Feature } from "@store/contexts/featuresContext";
 
 import Header from "./Header";
 import TableContent from "./TableContent";
 
 import * as Styles from "./styles";
 
-const TableMode = () => {
-  const { comparison } = useComparison();
+interface Props {
+  comparison: Array<Feature>;
+}
 
+const TableMode: React.FC<Props> = ({ comparison }) => {
   return (
     <Styles.TablerContainer>
       <Header comparison={comparison} />

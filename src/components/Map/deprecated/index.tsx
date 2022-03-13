@@ -3,27 +3,41 @@ import mapboxgl from "mapbox-gl";
 
 import { useFeatures } from "../../store";
 import geojsonURL from "../../data/SP-districts-geojson.json";
-import { clickFeature, highlightFeature, fitBounds, fitCenter, highlightComparisonFeature } from "./featureActions"
+import {
+  clickFeature,
+  highlightFeature,
+  fitBounds,
+  fitCenter,
+  highlightComparisonFeature,
+} from "./featureActions";
 import { fillOpacity, lineOpacity, lineWidth } from "./const";
-import { useMapLayer, useComparison } from "../../store"
-import "./styles.css"
+import { useMapLayer, useComparison } from "../../store";
+import "./styles.css";
 
-export const Map = ({mini}: any) => {
+export const Map = ({ mini }: any) => {
   mapboxgl.accessToken =
     "pk.eyJ1IjoibGVvc2lsdmFnb21lcyIsImEiOiJja2MwdmxhZjAwejdsMnlsbXFsYTV5ZmVsIn0.MyyvEV2SHjCbCkIUeL_9bA";
-    
+
   const { mapLayer } = useMapLayer();
   const mapContainer = useRef<any>();
-  
-  const { selectedFeature,  highlightedFeature, setSelectedFeature, setHighlightedFeature } = useFeatures();
+
+  const {
+    selectedFeature,
+    highlightedFeature,
+    setSelectedFeature,
+    setHighlightedFeature,
+  } = useFeatures();
   const { comparison } = useComparison();
-  
+
   const [map, setMap] = useState<mapboxgl.Map>();
-  const [comparisonFeatures, setComparisonFeatures] = useState({ type: "FeatureCollection", features: comparison });
-  
-  useEffect(() => {   
-    const initializeMap = ({mapContainer}: any) => {
-      let center: mapboxgl.LngLatLike = [-46.7, -23.68]
+  const [comparisonFeatures, setComparisonFeatures] = useState({
+    type: "FeatureCollection",
+    features: comparison,
+  });
+
+  useEffect(() => {
+    const initializeMap = ({ mapContainer }: any) => {
+      let center: mapboxgl.LngLatLike = [-46.7, -23.68];
 
       const map = new mapboxgl.Map({
         container: mapContainer.current,
@@ -31,7 +45,7 @@ export const Map = ({mini}: any) => {
         center: center,
         zoom: 9.2,
       });
-      
+
       map.on("load", () => {
         map.dragRotate.disable();
         map.touchZoomRotate.disableRotation();
@@ -48,13 +62,12 @@ export const Map = ({mini}: any) => {
           type: "fill",
           source: "sp",
           paint: {
-            "fill-color":
-            {
+            "fill-color": {
               property: "PERSONS_NUM",
-              stops: mapLayer.stops
+              stops: mapLayer.stops,
             },
             //@ts-ignore
-            "fill-opacity": mini ? fillOpacity[1] : fillOpacity[0]
+            "fill-opacity": mini ? fillOpacity[1] : fillOpacity[0],
           },
         });
 
@@ -78,73 +91,85 @@ export const Map = ({mini}: any) => {
 
         map.on("click", "fill-sp", (e: any) => {
           if (e.features.length > 0) {
-            setSelectedFeature(e.features[0])
+            setSelectedFeature(e.features[0]);
           }
         });
 
         map.on("click", (e) => {
           const bbox = [
             [e.point.x - 5, e.point.y - 5],
-            [e.point.x + 5, e.point.y + 5]
+            [e.point.x + 5, e.point.y + 5],
           ];
 
           //@ts-ignore
           const selectedFeatures = map.queryRenderedFeatures(bbox, {
-            layers: ['fill-sp']
+            layers: ["fill-sp"],
           });
 
-          if(selectedFeatures.length === 0) {
-            setSelectedFeature(null)
+          if (selectedFeatures.length === 0) {
+            setSelectedFeature(null);
           }
         });
 
         map.on("mousemove", "fill-sp", (e: any) => {
           if (e.features.length > 0) {
-            setHighlightedFeature(e.features[0])
+            setHighlightedFeature(e.features[0]);
           }
         });
-      
+
         map.on("mouseleave", "fill-sp", () => {
-          setHighlightedFeature(null)
-        })
+          setHighlightedFeature(null);
+        });
       }
 
-      setMap(map)
+      setMap(map);
     };
 
-
-    if (!map) initializeMap({mapContainer});
-  }, [map, mapLayer, setSelectedFeature, setHighlightedFeature, mini, comparison, comparisonFeatures]);
+    if (!map) initializeMap({ mapContainer });
+  }, [
+    map,
+    mapLayer,
+    setSelectedFeature,
+    setHighlightedFeature,
+    mini,
+    comparison,
+    comparisonFeatures,
+  ]);
 
   useEffect(() => {
     if (comparisonFeatures.features.length !== 0 && map && mini) {
-      highlightComparisonFeature(comparisonFeatures, map)
+      highlightComparisonFeature(comparisonFeatures, map);
     }
-  }, [comparisonFeatures, map, mini])
-  
-  useEffect(()=> {
-    if (comparison.length !== 0) {
-      setComparisonFeatures({ type: "FeatureCollection", features: comparison })
-    }
-  }, [comparison, mini])
+  }, [comparisonFeatures, map, mini]);
 
   useEffect(() => {
-    if(selectedFeature !== null && map && !mini) {
+    if (comparison.length !== 0) {
+      setComparisonFeatures({
+        type: "FeatureCollection",
+        features: comparison,
+      });
+    }
+  }, [comparison, mini]);
+
+  useEffect(() => {
+    if (selectedFeature !== null && map && !mini) {
       clickFeature(selectedFeature, map);
-      fitBounds(selectedFeature, map)
+      fitBounds(selectedFeature, map);
     } else if (selectedFeature === null && map && !mini) {
       clickFeature(null, map);
-      fitCenter(map)
+      fitCenter(map);
     }
-  }, [map, selectedFeature, mini])
+  }, [map, selectedFeature, mini]);
 
   useEffect(() => {
-    if(highlightedFeature !== null && map && !mini) {
+    if (highlightedFeature !== null && map && !mini) {
       highlightFeature(highlightedFeature, map);
     } else if (highlightedFeature === null && map && !mini) {
       highlightFeature(null, map);
     }
-  }, [map, highlightedFeature, mini])
+  }, [map, highlightedFeature, mini]);
 
-  return <div id="map" ref={(el) => (mapContainer.current = el)} className="map" />;
+  return (
+    <div id="map" ref={(el) => (mapContainer.current = el)} className="map" />
+  );
 };

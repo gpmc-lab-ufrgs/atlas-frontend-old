@@ -6,7 +6,13 @@ import { useFeatures, useMapLayer, useStates } from "../../store";
 
 import "./styles.css";
 import { fitBounds, fitCenter } from "./actions";
-import { lineOpacity, lineWidth, fillOpacity, accessToken } from "./const";
+import {
+  lineOpacity,
+  lineWidth,
+  fillOpacity,
+  accessToken,
+  mapLayer,
+} from "./const";
 import { highlightState, clickState } from "./stateActions";
 import { highlightMun, clickMun } from "./munActions";
 import { url } from "inspector";
@@ -14,7 +20,6 @@ import { url } from "inspector";
 const Map = () => {
   mapboxgl.accessToken = accessToken;
 
-  const { mapLayer } = useMapLayer();
   const mapContainer = useRef<any>();
 
   const [map, setMap] = useState<mapboxgl.Map>();
@@ -148,7 +153,6 @@ const Map = () => {
     if (!map) initializeMap({ mapContainer });
   }, [
     map,
-    mapLayer,
     setHighlightedFeature,
     setSelectedFeature,
     setHighlightedState,
