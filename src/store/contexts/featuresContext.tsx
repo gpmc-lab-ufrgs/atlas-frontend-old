@@ -1,5 +1,7 @@
 import React, { useState, createContext, useContext } from "react";
-import geojsonGO from "../../data/states/GO_Municipios_2020.json";
+
+import geojsonGO from "@data/states/GO_Municipios_2020.json";
+import geojsonBR from "@data/BR_UF_2020.json";
 
 export type Feature = {
   type: string;
@@ -44,6 +46,11 @@ type FeaturesContext = {
   setSelectedDistrict: React.Dispatch<React.SetStateAction<any>>;
   highlightedDistrict: Feature | null;
   setHighlightedDistrict: React.Dispatch<React.SetStateAction<any>>;
+  states: Array<Feature>;
+  selectedState: Feature | null;
+  setSelectedState: React.Dispatch<React.SetStateAction<any>>;
+  highlightedState: Feature | null;
+  setHighlightedState: React.Dispatch<React.SetStateAction<any>>;
 };
 
 const DEFAULT_VALUE = {
@@ -53,6 +60,12 @@ const DEFAULT_VALUE = {
   setSelectedDistrict: () => {},
   highlightedDistrict: null,
   setHighlightedDistrict: () => {},
+  //@ts-ignore
+  states: geojsonBR["states"],
+  selectedState: null,
+  setSelectedState: () => {},
+  highlightedState: null,
+  setHighlightedState: () => {},
 };
 
 const featuresContext = createContext<FeaturesContext>(DEFAULT_VALUE);
@@ -66,6 +79,14 @@ export function FeaturesProvider({ children }: any) {
     DEFAULT_VALUE.highlightedDistrict
   );
 
+  const [states] = useState(DEFAULT_VALUE.states);
+  const [selectedState, setSelectedState] = useState(
+    DEFAULT_VALUE.selectedState
+  );
+  const [highlightedState, setHighlightedState] = useState(
+    DEFAULT_VALUE.highlightedState
+  );
+
   return (
     <featuresContext.Provider
       value={{
@@ -74,6 +95,11 @@ export function FeaturesProvider({ children }: any) {
         setSelectedDistrict,
         highlightedDistrict,
         setHighlightedDistrict,
+        states,
+        selectedState,
+        setSelectedState,
+        highlightedState,
+        setHighlightedState,
       }}
     >
       {children}
@@ -89,6 +115,11 @@ export function useFeatures() {
     setSelectedDistrict,
     highlightedDistrict,
     setHighlightedDistrict,
+    states,
+    selectedState,
+    setSelectedState,
+    highlightedState,
+    setHighlightedState,
   } = context;
   return {
     districts,
@@ -96,5 +127,10 @@ export function useFeatures() {
     setSelectedDistrict,
     highlightedDistrict,
     setHighlightedDistrict,
+    states,
+    selectedState,
+    setSelectedState,
+    highlightedState,
+    setHighlightedState,
   };
 }

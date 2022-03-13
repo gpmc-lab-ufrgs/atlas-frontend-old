@@ -1,8 +1,8 @@
 import { useState, createContext, useContext } from "react";
-import { District } from "./districtsContext";
+import { Feature } from "./featuresContext";
 
 type ComparisonContext = {
-  comparison: Array<District>;
+  comparison: Array<Feature>;
   addComparisonDistrict: React.Dispatch<React.SetStateAction<any>>;
   removeComparisonDistrict: React.Dispatch<React.SetStateAction<any>>;
 };
@@ -16,18 +16,18 @@ const DEFAULT_VALUE = {
 const comparisonContext = createContext<ComparisonContext>(DEFAULT_VALUE);
 
 export function ComparisonProvider({ children }: any) {
-  const [comparison, setComparison] = useState<District[]>(
+  const [comparison, setComparison] = useState<Feature[]>(
     DEFAULT_VALUE.comparison
   );
 
-  const addComparisonDistrict = (addValue: District[]) => {
+  const addComparisonDistrict = (addValue: Feature[]) => {
     setComparison([...comparison, ...addValue]);
   };
 
-  const removeComparisonDistrict = (removeValue: District) => {
+  const removeComparisonDistrict = (removeValue: Feature) => {
     setComparison(
       comparison.filter(
-        (district: District) =>
+        (district: Feature) =>
           district.properties["NM_MUN"] !== removeValue.properties["NM_MUN"]
       )
     );
@@ -44,6 +44,7 @@ export function ComparisonProvider({ children }: any) {
 
 export function useComparison() {
   const context = useContext(comparisonContext);
-  const { comparison, addComparisonDistrict, removeComparisonDistrict } = context;
+  const { comparison, addComparisonDistrict, removeComparisonDistrict } =
+    context;
   return { comparison, addComparisonDistrict, removeComparisonDistrict };
 }

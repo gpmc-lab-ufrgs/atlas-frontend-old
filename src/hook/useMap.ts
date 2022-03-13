@@ -1,16 +1,21 @@
 import { useSidebar } from "@store/index";
-import { useFeatures, useStates } from "@store/index";
+import { useFeatures } from "@store/index";
 
 const useMap = () => {
-  const { setSelectedState } = useStates();
   const { setIsSidebarOpen } = useSidebar();
-  const { setHighlightedDistrict, setSelectedDistrict } = useFeatures();
+  const {
+    setHighlightedDistrict,
+    setSelectedDistrict,
+    setSelectedState,
+    setHighlightedState,
+  } = useFeatures();
 
   const resetMapValues = () => {
     setIsSidebarOpen(false);
     setHighlightedDistrict(null);
     setSelectedDistrict(null);
     setSelectedState(null);
+    setHighlightedState(null);
   };
 
   return { resetMapValues };

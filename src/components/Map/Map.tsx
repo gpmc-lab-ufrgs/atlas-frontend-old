@@ -4,7 +4,7 @@ import mapboxgl from "mapbox-gl";
 import useMap from "@hook/useMap";
 
 import geojsonURL from "@data/BR_UF_2020.json";
-import { useFeatures, useStates, useSidebar } from "@store/index";
+import { useFeatures, useSidebar } from "@store/index";
 
 import "./styles.css";
 import { fitBounds, fitCenter } from "./actions";
@@ -22,17 +22,14 @@ const Map = () => {
   const { setIsSidebarOpen } = useSidebar();
 
   const {
-    highlightedState,
-    selectedState,
-    setHighlightedState,
-    setSelectedState,
-  } = useStates();
-
-  const {
     selectedDistrict,
     highlightedDistrict,
     setSelectedDistrict,
     setHighlightedDistrict,
+    highlightedState,
+    selectedState,
+    setHighlightedState,
+    setSelectedState,
   } = useFeatures();
 
   useEffect(() => {
