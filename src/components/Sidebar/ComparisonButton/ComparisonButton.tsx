@@ -8,12 +8,6 @@ const ComparisonButton = () => {
   const { comparison, addComparisonDistrict, removeComparisonDistrict } =
     useComparison();
 
-  const isComparing =
-    comparison.find(
-      (feature: any) =>
-        feature["FU_NAME"] === selectedDistrict?.properties.NM_MUN
-    ) !== undefined;
-
   const isButtonOn = comparison.length >= 4;
   const isSelectedOnComparison = comparison.some(
     (district) =>
@@ -21,7 +15,7 @@ const ComparisonButton = () => {
   );
 
   const comparisonClick = (feature: Feature | null) => {
-    if (isComparing) {
+    if (isSelectedOnComparison) {
       removeComparisonDistrict(feature);
     } else {
       addComparisonDistrict([feature]);
@@ -31,11 +25,13 @@ const ComparisonButton = () => {
   return (
     <Styles.ComparisonButton>
       <Styles.ButtonWrapper
-        disabled={(!isComparing && isButtonOn) || isSelectedOnComparison}
+        disabled={!isSelectedOnComparison && isButtonOn}
         onClick={() => comparisonClick(selectedDistrict)}
       >
         <Styles.ComparisonIcon />
-        {isComparing ? "Remove from Comparison" : "Add to Comparison"}
+        {isSelectedOnComparison
+          ? "Remove from Comparison"
+          : "Add to Comparison"}
       </Styles.ButtonWrapper>
     </Styles.ComparisonButton>
   );

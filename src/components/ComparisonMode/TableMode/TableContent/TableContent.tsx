@@ -8,13 +8,13 @@ import {
   DistrictContentType,
 } from "@config/districtProps";
 
-import { District } from "@store/contexts/districtsContext";
+import { Feature } from "@store/contexts/featuresContext";
 
 import * as Styles from "./styles";
 
 interface Props {
   section: DistrictSectionType;
-  comparison: Array<District>;
+  comparison: Array<Feature>;
 }
 
 const TableContent: React.FC<Props> = ({ section, comparison }) => {

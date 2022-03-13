@@ -4,7 +4,7 @@ import { useDebounce } from "use-debounce";
 
 import { Search, Close } from "@mui/icons-material";
 
-import { useFeatures, District } from "@store/contexts/featuresContext";
+import { useFeatures, Feature } from "@store/contexts/featuresContext";
 
 import useSearch from "./hook/useSearch";
 
@@ -21,7 +21,7 @@ const SearchBar: React.FC = () => {
   const [referenceElement, setReferenceElement] =
     useState<HTMLDivElement | null>(null);
 
-  const [districtSearched, setDistrictSearched] = useState<District[]>(
+  const [districtSearched, setDistrictSearched] = useState<Feature[]>(
     districts.map((district) => district)
   );
 

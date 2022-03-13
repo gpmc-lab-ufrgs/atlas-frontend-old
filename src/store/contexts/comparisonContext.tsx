@@ -1,4 +1,4 @@
-import { useState, createContext, useContext } from "react";
+import React, { useState, createContext, useContext } from "react";
 import { Feature } from "./featuresContext";
 
 type ComparisonContext = {

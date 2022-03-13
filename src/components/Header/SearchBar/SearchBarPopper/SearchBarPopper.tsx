@@ -7,7 +7,7 @@ import {
   UseComboboxGetMenuPropsOptions,
 } from "downshift";
 
-import { District } from "@store/contexts/featuresContext";
+import { Feature } from "@store/contexts/featuresContext";
 
 import { sameWidthModifier } from "./popper-modifiers";
 
@@ -16,7 +16,7 @@ import * as Styles from "./styles";
 export interface PopperActionsType {
   highlightedIndex: number;
   isOpen: boolean;
-  getItemProps: (options: UseComboboxGetItemPropsOptions<District>) => any;
+  getItemProps: (options: UseComboboxGetItemPropsOptions<Feature>) => any;
   getMenuProps: (
     options?: UseComboboxGetMenuPropsOptions | undefined,
     otherOptions?: GetPropsCommonOptions | undefined
@@ -25,7 +25,7 @@ export interface PopperActionsType {
 
 interface Props {
   referenceElement: HTMLDivElement | null;
-  districtSearched: District[];
+  districtSearched: Feature[];
   popperActions: PopperActionsType;
 }
 

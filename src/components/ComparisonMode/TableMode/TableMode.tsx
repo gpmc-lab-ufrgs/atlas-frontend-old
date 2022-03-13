@@ -3,7 +3,7 @@ import React from "react";
 import { Box } from "@mui/material";
 
 import districtProps from "@config/districtProps";
-import { District } from "@store/contexts/districtsContext";
+import { Feature } from "@store/contexts/featuresContext";
 
 import Header from "./Header";
 import TableContent from "./TableContent";
@@ -11,7 +11,7 @@ import TableContent from "./TableContent";
 import * as Styles from "./styles";
 
 interface Props {
-  comparison: Array<District>;
+  comparison: Array<Feature>;
 }
 
 const TableMode: React.FC<Props> = ({ comparison }) => {
