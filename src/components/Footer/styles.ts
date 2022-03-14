@@ -12,7 +12,7 @@ export const FooterContainer = styled.div`
 `;
 
 export const InstitutionsLogo = styled.img`
-	height: 80%;
+	height: 65%;
 `;
 
 export const FooterItems = styled.div``;
