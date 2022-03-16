@@ -8,7 +8,7 @@ import {
   DistrictContentType,
 } from "@config/districtProps";
 
-import { Feature } from "@store/contexts/featuresContext";
+import { Feature } from "@types/Feature";
 
 import * as Styles from "./styles";
 

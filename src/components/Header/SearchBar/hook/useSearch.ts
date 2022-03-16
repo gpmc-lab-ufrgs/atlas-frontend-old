@@ -4,22 +4,21 @@ import { useCombobox } from "downshift";
 
 import useMap from "@hook/useMap";
 
-import { useFeatures } from "@store/index";
-import { Feature } from "@store/contexts/featuresContext";
+import { useFeatures } from "@store/featuresContext";
+import { Feature } from "@types/Feature";
 
 const useSearch = (featureSearched: Feature[]) => {
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const { setSelectedDistrict, selectedDistrict, setHighlightedDistrict } =
-    useFeatures();
+  const { district } = useFeatures();
   const { resetMapValues } = useMap();
 
-  const initialInputValue = selectedDistrict?.properties.NM_MUN ?? "";
+  const initialInputValue = district.selected?.properties.NM_MUN ?? "";
 
   const itemToString = (item: any) => (item ? item.name : "");
 
   const onSelectedItemChange = (item: any) =>
-    setSelectedDistrict(item.selectedItem);
+    district.setSelected(item.selectedItem);
 
   const {
     getComboboxProps,
@@ -66,7 +65,7 @@ const useSearch = (featureSearched: Feature[]) => {
           break;
         default:
           //@ts-ignore
-          setHighlightedDistrict(featureSearched[highlightedIndex]);
+          district.setHighlighted(featureSearched[highlightedIndex]);
       }
     },
 

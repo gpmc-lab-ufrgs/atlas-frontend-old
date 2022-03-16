@@ -4,7 +4,7 @@ import Drawer from "@components/Drawer";
 
 import { Box } from "@mui/material";
 
-import { useSidebar } from "@store/index";
+import { useSidebar } from "@store/sidebarContext";
 
 import Minimizer from "./Minimizer";
 import RegionDetails from "./RegionDetails";

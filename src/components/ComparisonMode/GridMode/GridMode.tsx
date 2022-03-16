@@ -1,4 +1,4 @@
-import { Feature } from "@store/contexts/featuresContext";
+import { Feature } from "@types/Feature";
 
 import districtProps from "@config/districtProps";
 

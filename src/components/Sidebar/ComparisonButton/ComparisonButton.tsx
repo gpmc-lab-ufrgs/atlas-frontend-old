@@ -1,17 +1,18 @@
-import { useFeatures, useComparison } from "@store/index";
-import { Feature } from "@store/contexts/featuresContext";
+import { useFeatures } from "@store/featuresContext";
+import { useComparison } from "@store/comparisonContext";
+import { Feature } from "@types/Feature";
 
 import * as Styles from "./styles";
 
 const ComparisonButton = () => {
-  const { selectedDistrict } = useFeatures();
+  const { district } = useFeatures();
   const { comparison, addComparisonDistrict, removeComparisonDistrict } =
     useComparison();
 
   const isButtonOn = comparison.length >= 4;
   const isSelectedOnComparison = comparison.some(
-    (district) =>
-      district.properties.CD_MUN === selectedDistrict?.properties.CD_MUN
+    (region) =>
+      region.properties.CD_MUN === district.selected?.properties.CD_MUN
   );
 
   const comparisonClick = (feature: Feature | null) => {
@@ -26,7 +27,7 @@ const ComparisonButton = () => {
     <Styles.ComparisonButton>
       <Styles.ButtonWrapper
         disabled={!isSelectedOnComparison && isButtonOn}
-        onClick={() => comparisonClick(selectedDistrict)}
+        onClick={() => comparisonClick(district.selected)}
       >
         <Styles.ComparisonIcon />
         {isSelectedOnComparison

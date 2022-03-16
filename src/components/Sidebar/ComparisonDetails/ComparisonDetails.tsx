@@ -4,7 +4,7 @@ import { Box } from "@mui/material";
 
 import CollapsibleSection from "@components/CollapsibleSection";
 
-import { useComparison } from "@store/index";
+import { useComparison } from "@store/comparisonContext";
 import useMap from "@hook/useMap";
 
 import * as Styles from "./styles";

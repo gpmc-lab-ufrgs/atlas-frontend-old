@@ -3,7 +3,7 @@ import React from "react";
 import { Box } from "@mui/material";
 
 import districtProps from "@config/districtProps";
-import { Feature } from "@store/contexts/featuresContext";
+import { Feature } from "@types/Feature";
 
 import Header from "./Header";
 import TableContent from "./TableContent";

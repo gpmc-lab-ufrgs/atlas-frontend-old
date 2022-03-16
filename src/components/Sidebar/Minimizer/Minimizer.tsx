@@ -2,7 +2,7 @@ import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 import { useTheme } from "@mui/material/styles";
 
-import { useSidebar } from "@store/index";
+import { useSidebar } from "@store/sidebarContext";
 
 import * as Styles from "./styles";
 

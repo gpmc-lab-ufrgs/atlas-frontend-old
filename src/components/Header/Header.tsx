@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { useSidebar } from "@store/index";
+import { useSidebar } from "@store/sidebarContext";
 
 import SearchBar from "./SearchBar";
 

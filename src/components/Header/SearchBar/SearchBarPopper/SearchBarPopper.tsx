@@ -7,7 +7,7 @@ import {
   UseComboboxGetMenuPropsOptions,
 } from "downshift";
 
-import { Feature } from "@store/contexts/featuresContext";
+import { Feature } from "@types/Feature";
 
 import { sameWidthModifier } from "./popper-modifiers";
 

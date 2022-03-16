@@ -3,7 +3,9 @@ import { useLocation, useHistory } from "react-router";
 
 import { useTheme } from "@mui/material/styles";
 
-import { useComparison, useFeatures, useSidebar } from "@store/index";
+import { useComparison } from "@store/comparisonContext";
+import { useFeatures } from "@store/featuresContext";
+import { useSidebar } from "@store/sidebarContext";
 
 import Footer from "@components/Footer";
 import Header from "@components/Header";
@@ -17,8 +19,8 @@ import * as Styles from "./styles";
 
 const Main = () => {
   const { comparison, addComparisonDistrict } = useComparison();
-  const { setIsSidebarOpen, isSidebarOpen } = useSidebar();
-  const { districts, selectedDistrict } = useFeatures();
+  const { isSidebarOpen, setIsSidebarOpen } = useSidebar();
+  const { district } = useFeatures();
 
   const location = useLocation();
   const history = useHistory();
@@ -40,7 +42,7 @@ const Main = () => {
       const pathIds = location.pathname.replace("/comparison/", "");
       if (pathIds) {
         const ids = pathIds.split("+");
-        const featuresFromUrl = districts.filter((ft: any) =>
+        const featuresFromUrl = district.all.filter((ft: any) =>
           ids.includes(ft.properties["CD_MUN"].toString())
         );
         setIsSidebarOpen(true);
@@ -49,19 +51,22 @@ const Main = () => {
         history.replace("/");
       }
     }
-  }, [districts, location, history, comparison, addComparisonDistrict]);
+  }, [district, location, history, comparison, addComparisonDistrict]);
 
   useEffect(() => {
-    if (location.pathname.startsWith("/comparison/") && districts.length !== 0) {
+    if (
+      location.pathname.startsWith("/comparison/") &&
+      district.all.length !== 0
+    ) {
       const ids = comparison.map((feature: any) => feature.properties.CD_MUN);
       const newPath = "/comparison/" + ids.join("+");
       if (location.pathname !== newPath) {
         history.replace(newPath);
       }
     }
-  }, [comparison, districts, location, history]);
+  }, [comparison, district, location, history]);
 
-  const hasSelectedDistrict = !!selectedDistrict;
+  const hasSelectedDistrict = !!district.selected;
 
   return (
     <Styles.MainContainer>
@@ -69,7 +74,7 @@ const Main = () => {
       {(hasSelectedDistrict || isComparisonModeOn) && (
         <Sidebar
           isComparisonMode={isComparisonModeOn}
-          title={selectedDistrict?.properties.NM_MUN}
+          title={district.selected?.properties.NM_MUN}
         />
       )}
       <Styles.ComparisonWrapper isSidebarOpen={isSidebarOpen} theme={theme}>

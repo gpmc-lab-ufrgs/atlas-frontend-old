@@ -4,7 +4,9 @@ import { BrowserRouter } from "react-router-dom";
 
 import Main from "@pages/Main";
 
-import { FeaturesProvider, SidebarProvider, ComparisonProvider } from "./store";
+import { ComparisonProvider } from "@store/comparisonContext";
+import { FeaturesProvider } from "@store/featuresContext";
+import { SidebarProvider } from "@store/sidebarContext";
 
 import "./index.css";
 

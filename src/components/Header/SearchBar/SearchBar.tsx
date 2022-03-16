@@ -4,7 +4,8 @@ import { useDebounce } from "use-debounce";
 
 import { Search, Close } from "@mui/icons-material";
 
-import { useFeatures, Feature } from "@store/contexts/featuresContext";
+import { useFeatures } from "@store/featuresContext";
+import { Feature } from "@types/Feature";
 
 import useSearch from "./hook/useSearch";
 
@@ -16,13 +17,13 @@ import { getFilteredDistricts, getSortedDistricts } from "./utils";
 import * as Styles from "./styles";
 
 const SearchBar: React.FC = () => {
-  const { districts, selectedDistrict } = useFeatures();
+  const { district } = useFeatures();
 
   const [referenceElement, setReferenceElement] =
     useState<HTMLDivElement | null>(null);
 
   const [districtSearched, setDistrictSearched] = useState<Feature[]>(
-    districts.map((district) => district)
+    district.all.map((district: Feature) => district)
   );
 
   const {
@@ -41,8 +42,8 @@ const SearchBar: React.FC = () => {
   const [debouncedValue] = useDebounce(inputValue, 500);
 
   useEffect(() => {
-    setInputValue(selectedDistrict?.properties.NM_MUN ?? "");
-  }, [selectedDistrict, setInputValue]);
+    setInputValue(district.selected?.properties.NM_MUN ?? "");
+  }, [district, setInputValue]);
 
   useEffect(() => {
     const query = debouncedValue
@@ -54,12 +55,12 @@ const SearchBar: React.FC = () => {
 
     if (hasQuery) {
       setDistrictSearched(
-        getSortedDistricts(getFilteredDistricts(districts, query))
+        getSortedDistricts(getFilteredDistricts(district.all, query))
       );
     } else {
-      setDistrictSearched(getSortedDistricts(districts));
+      setDistrictSearched(getSortedDistricts(district.all));
     }
-  }, [debouncedValue, districts]);
+  }, [debouncedValue, district]);
 
   const hasInputValue = inputValue === "";
 

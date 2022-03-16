@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import mapboxgl from "mapbox-gl";
 
 import geojsonURL from "../../data/BR_UF_2020.json";
-import { useFeatures } from "@store/index";
+import { useFeatures } from "@store/featuresContext";
 
 import "./styles.css";
 import { fitBounds, fitCenter } from "./actions";
@@ -24,16 +24,7 @@ const Map = () => {
 
   const [map, setMap] = useState<mapboxgl.Map>();
 
-  const {
-    selectedDistrict,
-    highlightedDistrict,
-    setSelectedDistrict,
-    setHighlightedDistrict,
-    highlightedState,
-    selectedState,
-    setHighlightedState,
-    setSelectedState,
-  } = useFeatures();
+  const { district, state } = useFeatures();
 
   useEffect(() => {
     const initializeMap = ({ mapContainer }: any) => {
@@ -148,15 +139,7 @@ const Map = () => {
     };
 
     if (!map) initializeMap({ mapContainer });
-  }, [
-    map,
-    setHighlightedDistrict,
-    setSelectedDistrict,
-    setHighlightedState,
-    setSelectedState,
-    selectedDistrict,
-    selectedState,
-  ]);
+  }, [map, district, state]);
 
   // State level
 

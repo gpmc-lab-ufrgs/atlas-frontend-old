@@ -9,7 +9,8 @@
       "@store/*": ["src/store/*"],
       "@config/*": ["src/config/*"],
       "@utils/*": ["src/utils/*"],
-      "@hook/*": ["src/hook/*"]
+      "@hook/*": ["src/hook/*"],
+      "@types/*": ["src/types/*"]
     }
   }
 }

@@ -1,5 +1,5 @@
 import React, { useState, createContext, useContext } from "react";
-import { Feature } from "./featuresContext";
+import { Feature } from "@types/Feature";
 
 type ComparisonContext = {
   comparison: Array<Feature>;

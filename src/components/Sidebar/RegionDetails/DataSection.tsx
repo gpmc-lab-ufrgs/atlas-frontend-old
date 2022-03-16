@@ -3,7 +3,8 @@ import React from "react";
 import CollapsibleSection from "@components/CollapsibleSection";
 import MetricDetails from "@components/MetricDetails";
 
-import { useFeatures, useComparison } from "@store/index";
+import { useFeatures } from "@store/featuresContext";
+import { useComparison } from "@store/comparisonContext";
 
 import {
   DistrictSectionType,
@@ -13,12 +14,12 @@ import {
 import * as Styles from "./styles";
 
 const DataSection: React.FC<DistrictSectionType> = ({ title, content }) => {
-  const { selectedDistrict } = useFeatures();
+  const { district } = useFeatures();
   const { comparison } = useComparison();
 
   const isSelectedOnComparison = comparison.some(
-    (district) =>
-      district.properties.CD_MUN === selectedDistrict?.properties.CD_MUN
+    (region) =>
+      region.properties.CD_MUN === district.selected?.properties.CD_MUN
   );
 
   return (
@@ -36,8 +37,8 @@ const DataSection: React.FC<DistrictSectionType> = ({ title, content }) => {
 
           {!isSelectedOnComparison && (
             <Styles.ValueContent>
-              <p>{selectedDistrict?.properties.NM_MUN}</p>
-              <MetricDetails district={selectedDistrict} metric={props} />
+              <p>{district.selected?.properties.NM_MUN}</p>
+              <MetricDetails district={district.selected} metric={props} />
             </Styles.ValueContent>
           )}
         </Styles.PropsWrapper>

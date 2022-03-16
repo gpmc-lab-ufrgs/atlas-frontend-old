@@ -4,7 +4,8 @@ import mapboxgl from "mapbox-gl";
 import useMap from "@hook/useMap";
 
 import geojsonURL from "@data/BR_UF_2020.json";
-import { useFeatures, useSidebar } from "@store/index";
+import { useFeatures } from "@store/featuresContext";
+import { useSidebar } from "@store/sidebarContext";
 
 import "./styles.css";
 import { fitBounds, fitCenter } from "./actions";
@@ -21,16 +22,7 @@ const Map = () => {
   const [map, setMap] = useState<mapboxgl.Map>();
   const { setIsSidebarOpen } = useSidebar();
 
-  const {
-    selectedDistrict,
-    highlightedDistrict,
-    setSelectedDistrict,
-    setHighlightedDistrict,
-    highlightedState,
-    selectedState,
-    setHighlightedState,
-    setSelectedState,
-  } = useFeatures();
+  const { district, state } = useFeatures();
 
   useEffect(() => {
     const initializeMap = ({ mapContainer }: any) => {
@@ -90,25 +82,25 @@ const Map = () => {
 
       map.on("click", "fill-state", (e: any) => {
         if (e.features.length > 0) {
-          setSelectedState(e.features[0]);
+          state.setSelected(e.features[0]);
         }
       });
 
       map.on("mousemove", "fill-state", (e: any) => {
         if (e.features.length > 0) {
-          setHighlightedState(e.features[0]);
+          state.setHighlighted(e.features[0]);
         }
       });
 
       map.on("mouseleave", "fill-state", () => {
-        setHighlightedState(null);
+        state.setHighlighted(null);
       });
 
       // City level
 
       map.on("click", "fill-mun", (e: any) => {
         if (e.features.length > 0) {
-          setSelectedDistrict(e.features[0]);
+          district.setSelected(e.features[0]);
           setIsSidebarOpen(true);
         }
       });
@@ -133,76 +125,68 @@ const Map = () => {
 
       map.on("mousemove", "fill-mun", (e: any) => {
         if (e.features.length > 0) {
-          setHighlightedDistrict(e.features[0]);
+          district.setHighlighted(e.features[0]);
         }
       });
 
       map.on("mouseleave", "fill-mun", () => {
-        setHighlightedDistrict(null);
+        district.setHighlighted(null);
       });
 
       setMap(map);
     };
 
     if (!map) initializeMap({ mapContainer });
-  }, [
-    map,
-    setHighlightedDistrict,
-    setSelectedDistrict,
-    setHighlightedState,
-    setSelectedState,
-    selectedDistrict,
-    selectedState,
-  ]);
+  }, [map, district, state]);
 
   // State level
 
   useEffect(() => {
     if (map) {
-      highlightState(highlightedState, map);
+      highlightState(state.highlighted, map);
     }
-  }, [highlightedState, map]);
+  }, [state, map]);
 
   useEffect(() => {
     if (map) {
-      if (selectedState !== null) {
-        clickState(selectedState, map);
-        fitBounds(selectedState, map);
-      } else if (selectedState === null) {
-        clickState(selectedState, map);
+      if (state.selected !== null) {
+        clickState(state.selected, map);
+        fitBounds(state.selected, map);
+      } else if (state.selected === null) {
+        clickState(state.selected, map);
         fitCenter(map);
       }
     }
-  }, [selectedState, map]);
+  }, [state.selected, map]);
 
   // City level
 
   useEffect(() => {
     if (map && map.getSource("mun")) {
-      if (highlightedDistrict !== null) {
-        highlightMun(highlightedDistrict, map);
-      } else if (highlightedDistrict === null) {
+      if (district.highlighted !== null) {
+        highlightMun(district.highlighted, map);
+      } else if (district.highlighted === null) {
         highlightMun(null, map);
       }
     }
-  }, [highlightedDistrict, map]);
+  }, [district.highlighted, map]);
 
   useEffect(() => {
     if (map) {
-      if (selectedDistrict !== null) {
-        if (selectedState === null) {
-          setSelectedState({
-            properties: { SIGLA_UF: selectedDistrict.properties.SIGLA_UF },
+      if (district.selected !== null) {
+        if (state.selected === null) {
+          state.setSelected({
+            properties: { SIGLA_UF: district.selected.properties.SIGLA_UF },
           });
         }
-        clickMun(selectedDistrict, map);
-        fitBounds(selectedDistrict, map);
-      } else if (selectedDistrict === null && map.getSource("mun")) {
+        clickMun(district.selected, map);
+        fitBounds(district.selected, map);
+      } else if (district.selected === null && map.getSource("mun")) {
         clickMun(null, map);
-        fitBounds(selectedState, map);
+        fitBounds(state.selected, map);
       }
     }
-  }, [map, selectedDistrict, selectedState, setSelectedState]);
+  }, [map, state.selected, district.selected]);
 
   return (
     <div id="map" ref={(el) => (mapContainer.current = el)} className="map" />
