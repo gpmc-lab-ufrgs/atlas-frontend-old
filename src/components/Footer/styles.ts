@@ -15,8 +15,6 @@ export const InstitutionsLogo = styled.img`
 	height: 65%;
 `;
 
-export const FooterItems = styled.div``;
-
 /*
 lex-direction: row;
     justify-content: space-evenly;
