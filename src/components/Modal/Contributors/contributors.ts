@@ -1,4 +1,3 @@
-
 import viniciusBrei from '@assets/vinicius_brei.jpg';
 import alexSandy from '@assets/alex_sandy.png';
 import mohsenBahrami from '@assets/mohsen_bahrami.png';
@@ -25,7 +24,7 @@ interface Person {
 	hasImage?: boolean;
 }
 
-export const mainContributors: Person[] = [
+export const mainResearchers: Person[] = [
 	{
 		name: 'Vinicius Brei',
 		image: viniciusBrei,
@@ -70,7 +69,7 @@ export const mainContributors: Person[] = [
 	},
 ];
 
-export const otherContributors: Person[] = [
+export const developers: Person[] = [
 	{
 		name: 'Enzo Gabriel',
 		image: enzoGabriel,
@@ -83,6 +82,9 @@ export const otherContributors: Person[] = [
 		institution: 'Universidade de Brasília',
 		hasImage: true,
 	},
+];
+
+export const researchers: Person[] = [
 	{
 		name: 'Ana Luisa',
 		image: anaLuisa,

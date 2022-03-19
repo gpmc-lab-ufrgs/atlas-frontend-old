@@ -1,76 +1,82 @@
 import { ModalContainer } from '@components/Modal';
 
-import {mainContributors, otherContributors} from './contributors';
+import { mainResearchers, developers, researchers } from './contributors';
 
 import * as Styles from './styles';
 
 const Contributors = () => (
 	<ModalContainer title="Contributors">
-		{mainContributors.map((mainContributor, index) => (
+		<Styles.gridDisplay>
+			{mainResearchers.map((mainResearcher, index) => (
 				<div key={index}>
 					<Styles.contributorImage
-						src={mainContributor.image}
-						alt={mainContributor.name}
+						src={mainResearcher.image}
+						alt={mainResearcher.name}
 					/>
-					
+
 					<Styles.personDatas>
-						<Styles.personData>
-							{mainContributor.name}
-						</Styles.personData>
+						<Styles.personData>{mainResearcher.name}</Styles.personData>
 
 						<Styles.personData>
-							<b>{mainContributor.function}</b>
+							<b>{mainResearcher.function}</b>
 						</Styles.personData>
 
-						<Styles.personData>
-							{mainContributor.institution}
-						</Styles.personData>
+						<Styles.personData>{mainResearcher.institution}</Styles.personData>
 					</Styles.personDatas>
 				</div>
-			)
-		)}
+			))}
+		</Styles.gridDisplay>
 
-		<br></br>
-		<h2>Developers:</h2>
-		<br></br>
-		{otherContributors.map((otherContributor, index) =>
-			(
-				<>
-					<div key={index}>
-						{otherContributor.hasImage ? (
-							<Styles.contributorImage
-								src={otherContributor.image}
-								alt={`Imagem de ${otherContributor.name}`}
-							/>
-						) : (
-							<Styles.avatarIconDiv>
-								<Styles.avatarIcon
-									src={otherContributor.image}
-									alt={otherContributor.name}
-								/>
-							</Styles.avatarIconDiv>
-						)}
+		<Styles.contributorsFunctionDiv>
+			<h2>Developers</h2>
+		</Styles.contributorsFunctionDiv>
 
-						<Styles.personDatas>
-							<Styles.personData>
-								{otherContributor.name}
-							</Styles.personData>
-							
-							<Styles.personData>
-								{otherContributor.institution}
-							</Styles.personData>
-						</Styles.personDatas>
-					</div>
-					{index == 1 && (
-						<>
-							<h2>Researchers:</h2>
-							<br></br>
-						</>
+		<Styles.gridDisplay>
+			{developers.map((developer, index) => (
+				<div key={index}>
+					{developer.hasImage ? (
+						<Styles.contributorImage
+							src={developer.image}
+							alt={`Imagem de ${developer.name}`}
+						/>
+					) : (
+						<Styles.avatarIconDiv>
+							<Styles.avatarIcon src={developer.image} alt={developer.name} />
+						</Styles.avatarIconDiv>
 					)}
-				</>
-			)
-		)}
+					<Styles.personDatas>
+						<Styles.personData>{developer.name}</Styles.personData>
+						<Styles.personData>{developer.institution}</Styles.personData>
+					</Styles.personDatas>
+				</div>
+			))}
+		</Styles.gridDisplay>
+
+		<Styles.contributorsFunctionDiv>
+			<h2>Researchers</h2>
+		</Styles.contributorsFunctionDiv>
+
+		<Styles.gridDisplay>
+			{researchers.map((researcher, index) => (
+				<div key={index}>
+					{researcher.hasImage ? (
+						<Styles.contributorImage
+							src={researcher.image}
+							alt={`Imagem de ${researcher.name}`}
+						/>
+					) : (
+						<Styles.avatarIconDiv>
+							<Styles.avatarIcon src={researcher.image} alt={researcher.name} />
+						</Styles.avatarIconDiv>
+					)}
+					<Styles.personDatas>
+						<Styles.personData>{researcher.name}</Styles.personData>
+						<Styles.personData>{researcher.institution}</Styles.personData>
+					</Styles.personDatas>
+				</div>
+			))}
+		</Styles.gridDisplay>
 	</ModalContainer>
-)
+);
 
 export default Contributors;
