@@ -1,6 +1,6 @@
 import { ModalContainer } from '@components/Modal';
 
-import { mainResearchers, developers, researchers } from './contributors';
+import { mainResearchers, developers, researchers } from './contributorsData';
 
 import * as Styles from './styles';
 
