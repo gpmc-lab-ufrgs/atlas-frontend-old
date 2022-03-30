@@ -1,28 +1,18 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const FooterContainer = styled.div`
-	display: flex;
-	flex-direction: row;
-	justify-content: space-evenly;
-	align-items: center;
+  display: flex;
+  justify-content: center;
 
-	width: 100%;
-	height: 60px;
-	background-color: #191a1a;
+  width: 100%;
+  height: 60px;
+  background-color: #191a1a;
 `;
 
-export const InstitutionsLogo = styled.img`
-	height: 65%;
-`;
+interface IInstitutionsLogo {
+  size: number;
+}
 
-/*
-lex-direction: row;
-    justify-content: space-evenly;
-    padding: 0;
-    height: 60px;
-    left: 20px;
-    top: 20px;
-    min-width: -webkit-max-content;
-    min-width: max-content;
-    width: 60%;
-    */
+export const InstitutionsLogo = styled.img<IInstitutionsLogo>`
+  height: ${({ size }) => size}px;
+`;
