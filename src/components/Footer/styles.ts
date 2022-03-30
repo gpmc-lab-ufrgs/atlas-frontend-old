@@ -15,4 +15,5 @@ interface IInstitutionsLogo {
 
 export const InstitutionsLogo = styled.img<IInstitutionsLogo>`
   height: ${({ size }) => size}px;
+  opacity: 45%;
 `;
