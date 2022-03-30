@@ -17,7 +17,7 @@ const Modal = () => {
       <Path exact path="/contributors">
         <Contributors />
       </Path>
-      <Path exact path="/methods">
+      {/* <Path exact path="/methods">
         <Methods />
       </Path>
       <Path exact path="/research">
@@ -25,7 +25,7 @@ const Modal = () => {
       </Path>
       <Path exact path="/faq">
         <FAQ />
-      </Path>
+      </Path> */}
     </Switch>
   );
 };

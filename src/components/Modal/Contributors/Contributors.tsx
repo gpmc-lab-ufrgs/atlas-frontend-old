@@ -1,82 +1,65 @@
-import { ModalContainer } from '@components/Modal';
+import { Box } from "@mui/material";
 
-import { mainResearchers, developers, researchers } from './contributorsData';
+import { ModalContainer } from "@components/Modal";
 
-import * as Styles from './styles';
+import { mainResearchers, developers, researchers } from "./ContributorsData";
 
-const Contributors = () => (
-	<ModalContainer title="Contributors">
-		<Styles.gridDisplay>
-			{mainResearchers.map((mainResearcher, index) => (
-				<div key={index}>
-					<Styles.contributorImage
-						src={mainResearcher.image}
-						alt={mainResearcher.name}
-					/>
+import * as Styles from "./styles";
 
-					<Styles.personDatas>
-						<Styles.personData>{mainResearcher.name}</Styles.personData>
+const Contributors = () => {
+  const wrapperContributorsData = [
+    {
+      data: mainResearchers,
+    },
+    {
+      data: developers,
+      title: "Developers:",
+    },
+    {
+      data: researchers,
+      title: "Researchers:",
+    },
+  ];
 
-						<Styles.personData>
-							<b>{mainResearcher.function}</b>
-						</Styles.personData>
+  return (
+    <ModalContainer title="Contributors">
+      {wrapperContributorsData.map((contributors, id) => (
+        <Box display="flex" alignItems="center" flexDirection="column" key={id}>
+          {contributors.title && (
+            <Styles.ContributorsFunctionDiv>
+              {contributors.title}
+            </Styles.ContributorsFunctionDiv>
+          )}
 
-						<Styles.personData>{mainResearcher.institution}</Styles.personData>
-					</Styles.personDatas>
-				</div>
-			))}
-		</Styles.gridDisplay>
+          <Styles.GridDisplay>
+            {contributors.data.map((data, index) => (
+              <div key={index}>
+                {data.hasImage ? (
+                  <Styles.ContributorImage src={data.image} alt={data.name} />
+                ) : (
+                  <Styles.AvatarIconDiv>
+                    <Styles.AvatarIcon src={data.image} alt={data.name} />
+                  </Styles.AvatarIconDiv>
+                )}
 
-		<Styles.contributorsFunctionDiv>
-			<h2>Developers</h2>
-		</Styles.contributorsFunctionDiv>
+                <Styles.PersonDatas>
+                  <Styles.PersonData>{data.name}</Styles.PersonData>
 
-		<Styles.gridDisplay>
-			{developers.map((developer, index) => (
-				<div key={index}>
-					{developer.hasImage ? (
-						<Styles.contributorImage
-							src={developer.image}
-							alt={`Imagem de ${developer.name}`}
-						/>
-					) : (
-						<Styles.avatarIconDiv>
-							<Styles.avatarIcon src={developer.image} alt={developer.name} />
-						</Styles.avatarIconDiv>
-					)}
-					<Styles.personDatas>
-						<Styles.personData>{developer.name}</Styles.personData>
-						<Styles.personData>{developer.institution}</Styles.personData>
-					</Styles.personDatas>
-				</div>
-			))}
-		</Styles.gridDisplay>
+                  {data.function && (
+                    <Styles.PersonData>
+                      <b>{data.function}</b>
+                    </Styles.PersonData>
+                  )}
 
-		<Styles.contributorsFunctionDiv>
-			<h2>Researchers</h2>
-		</Styles.contributorsFunctionDiv>
-
-		<Styles.gridDisplay>
-			{researchers.map((researcher, index) => (
-				<div key={index}>
-					{researcher.hasImage ? (
-						<Styles.contributorImage
-							src={researcher.image}
-							alt={`Imagem de ${researcher.name}`}
-						/>
-					) : (
-						<Styles.avatarIconDiv>
-							<Styles.avatarIcon src={researcher.image} alt={researcher.name} />
-						</Styles.avatarIconDiv>
-					)}
-					<Styles.personDatas>
-						<Styles.personData>{researcher.name}</Styles.personData>
-						<Styles.personData>{researcher.institution}</Styles.personData>
-					</Styles.personDatas>
-				</div>
-			))}
-		</Styles.gridDisplay>
-	</ModalContainer>
-);
+                  <Styles.PersonData>{data.institution}</Styles.PersonData>
+                </Styles.PersonDatas>
+              </div>
+            ))}
+          </Styles.GridDisplay>
+        </Box>
+      ))}
+    </ModalContainer>
+  );
+};
 
 export default Contributors;
