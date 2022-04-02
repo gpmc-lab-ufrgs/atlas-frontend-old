@@ -22,8 +22,6 @@ export const formatValue = (value: any, format: string) => {
   }
 
   switch (format) {
-    case "number":
-      return value.toLocaleString();
     case "population":
       return formatPopulationNumber(value);
     case "percent":
