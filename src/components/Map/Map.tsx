@@ -55,7 +55,15 @@ const Map = () => {
             visibility: "visible",
           },
           paint: {
-            "fill-color": "#6CC24A",
+            "fill-color":{ 
+              property: "POPULATION",
+              stops: [
+                [0, "#ADDC91"],
+                [2570160, "#6CC24A"],
+                [3766528, "#509E2F"],
+                [10444526, "#4A7729"],
+              ],
+            },
             //@ts-ignore
             "fill-opacity": fillOpacity[0],
           },
