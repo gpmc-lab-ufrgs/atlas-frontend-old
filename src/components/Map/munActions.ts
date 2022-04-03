@@ -21,7 +21,15 @@ export function createMunLayer(layer: any, map: mapboxgl.Map) {
       type: "fill",
       source: "mun",
       paint: {
-        "fill-color": "#6CC24A",
+        "fill-color":{ 
+              property: "POPULATION",
+              stops: [
+                [0, "#ADDC91"],
+                [3541, "#6CC24A"],
+                [6904, "#509E2F"],
+                [17121, "#4A7729"],
+              ],
+            },
         //@ts-ignore
         "fill-opacity": fillOpacity[0],
       },
