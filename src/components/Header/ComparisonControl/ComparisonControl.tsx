@@ -21,19 +21,17 @@ const ComparisonControl: React.FC<Props> = ({
   return (
     <Styles.ComparisonControlContainer>
       {controls.map(({ value, icon, label }, id) => (
-        <>
-          <Styles.Control isControlType={value === comparisonType} key={id}>
-            <input
-              type="radio"
-              value={value}
-              checked={value === comparisonType}
-              onChange={(ev) => setComparison(ev?.target?.value)}
-            />
+        <Styles.Control isControlType={value === comparisonType} key={id}>
+          <input
+            type="radio"
+            value={value}
+            checked={value === comparisonType}
+            onChange={(ev) => setComparison(ev?.target?.value)}
+          />
 
-            {icon}
-            {label}
-          </Styles.Control>
-        </>
+          {icon}
+          {label}
+        </Styles.Control>
       ))}
     </Styles.ComparisonControlContainer>
   );

@@ -1,4 +1,4 @@
-import { Feature } from "@types/Feature";
+import { Feature } from "@customTypes/feature";
 
 import districtProps from "@config/districtProps";
 
@@ -13,8 +13,8 @@ interface Props {
 const GridMode: React.FC<Props> = ({ comparison }) => {
   return (
     <Styles.GridContainer>
-      {districtProps.map((section) => (
-        <GridContent section={section} comparison={comparison} />
+      {districtProps.map((section, id) => (
+        <GridContent section={section} comparison={comparison} key={id} />
       ))}
     </Styles.GridContainer>
   );

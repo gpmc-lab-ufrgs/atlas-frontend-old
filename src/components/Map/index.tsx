@@ -1,2 +1,2 @@
-export { default as Map } from "./Map";
-export { default } from "./MapTest";
+export { default as GeojsonMap } from "./GeojsonMap/Map";
+export { default as TilesetMap } from "./TilesetMap/Map";

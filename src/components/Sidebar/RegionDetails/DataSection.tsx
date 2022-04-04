@@ -1,9 +1,10 @@
 import React from "react";
 
-import CollapsibleSection from "@components/CollapsibleSection";
+import Collapsible from "@components/Collapsible";
+
 import MetricDetails from "@components/MetricDetails";
 
-import { useFeatures } from "@store/featuresContext";
+import { useSelectedDistrict } from "@store/district/selectedContext";
 import { useComparison } from "@store/comparisonContext";
 
 import {
@@ -14,22 +15,21 @@ import {
 import * as Styles from "./styles";
 
 const DataSection: React.FC<DistrictSectionType> = ({ title, content }) => {
-  const { district } = useFeatures();
+  const { selected } = useSelectedDistrict();
   const { comparison } = useComparison();
 
   const isSelectedOnComparison = comparison.some(
-    (region) =>
-      region.properties.CD_MUN === district.selected?.properties.CD_MUN
+    (region) => region.properties.CD_MUN === selected?.properties.CD_MUN
   );
 
   return (
-    <CollapsibleSection title={title}>
+    <Collapsible title={title}>
       {content.map((props: DistrictContentType, id) => (
         <Styles.PropsWrapper key={id}>
           <Styles.PropsTitle>{props.description}</Styles.PropsTitle>
 
-          {comparison.map((district) => (
-            <Styles.ValueContent>
+          {comparison.map((district, id) => (
+            <Styles.ValueContent key={id}>
               <p>{district.properties.NM_MUN}</p>
               <MetricDetails district={district} metric={props} />
             </Styles.ValueContent>
@@ -37,13 +37,13 @@ const DataSection: React.FC<DistrictSectionType> = ({ title, content }) => {
 
           {!isSelectedOnComparison && (
             <Styles.ValueContent>
-              <p>{district.selected?.properties.NM_MUN}</p>
-              <MetricDetails district={district.selected} metric={props} />
+              <p>{selected?.properties.NM_MUN}</p>
+              <MetricDetails district={selected} metric={props} />
             </Styles.ValueContent>
           )}
         </Styles.PropsWrapper>
       ))}
-    </CollapsibleSection>
+    </Collapsible>
   );
 };
 

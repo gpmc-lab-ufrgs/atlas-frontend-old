@@ -4,7 +4,7 @@ import { useLocation, useHistory } from "react-router";
 import { useTheme } from "@mui/material/styles";
 
 import { useComparison } from "@store/comparisonContext";
-import { useFeatures } from "@store/featuresContext";
+import { useSelectedDistrict } from "@store/district/selectedContext";
 import { useSidebar } from "@store/sidebarContext";
 
 import Footer from "@components/Footer";
@@ -13,14 +13,14 @@ import Modal from "@components/Modal";
 import Sidebar from "@components/Sidebar";
 import CompatisonMode from "@components/ComparisonMode";
 
-import { Map } from "@components/Map";
+import { TilesetMap, GeojsonMap } from "@components/Map";
 
 import * as Styles from "./styles";
 
 const Main = () => {
   const { comparison, addComparisonDistrict } = useComparison();
   const { isSidebarOpen, setIsSidebarOpen } = useSidebar();
-  const { district } = useFeatures();
+  const { all, selected } = useSelectedDistrict();
 
   const location = useLocation();
   const history = useHistory();
@@ -29,6 +29,7 @@ const Main = () => {
 
   const [isComparisonModeOn, setIsComparisonModeOn] = useState<boolean>(false);
   const [comparisonType, setComparisonType] = useState("table");
+  const [useTilesetMap, setUseTilesetMap] = useState(false);
 
   useEffect(() => {
     setIsComparisonModeOn(location.pathname.startsWith("/comparison"));
@@ -42,7 +43,7 @@ const Main = () => {
       const pathIds = location.pathname.replace("/comparison/", "");
       if (pathIds) {
         const ids = pathIds.split("+");
-        const featuresFromUrl = district.all.filter((ft: any) =>
+        const featuresFromUrl = all.filter((ft: any) =>
           ids.includes(ft.properties["CD_MUN"].toString())
         );
         setIsSidebarOpen(true);
@@ -51,43 +52,47 @@ const Main = () => {
         history.replace("/");
       }
     }
-  }, [district, location, history, comparison, addComparisonDistrict]);
+  }, [location, history, comparison, addComparisonDistrict]);
 
   useEffect(() => {
-    if (
-      location.pathname.startsWith("/comparison/") &&
-      district.all.length !== 0
-    ) {
+    if (location.pathname.startsWith("/comparison/") && all.length !== 0) {
       const ids = comparison.map((feature: any) => feature.properties.CD_MUN);
       const newPath = "/comparison/" + ids.join("+");
       if (location.pathname !== newPath) {
         history.replace(newPath);
       }
     }
-  }, [comparison, district, location, history]);
+  }, [comparison, location, history]);
 
-  const hasSelectedDistrict = !!district.selected;
+  const hasSelectedDistrict = !!selected;
 
   return (
     <Styles.MainContainer>
       <Modal />
+
       {(hasSelectedDistrict || isComparisonModeOn) && (
         <Sidebar
           isComparisonMode={isComparisonModeOn}
-          title={district.selected?.properties.NM_MUN}
+          title={selected?.properties.NM_MUN}
         />
       )}
+
       <Styles.ComparisonWrapper isSidebarOpen={isSidebarOpen} theme={theme}>
         <Header
           isComparisonModeOn={isComparisonModeOn}
           comparisonType={comparisonType}
           setComparisonType={setComparisonType}
+          mapType={useTilesetMap}
+          setMapType={setUseTilesetMap}
         />
+
         {isComparisonModeOn && (
           <CompatisonMode comparisonType={comparisonType} />
         )}
       </Styles.ComparisonWrapper>
-      <Map />
+
+      {useTilesetMap ? <TilesetMap /> : <GeojsonMap />}
+
       <Footer />
     </Styles.MainContainer>
   );
