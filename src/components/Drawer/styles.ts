@@ -6,7 +6,7 @@ export const Drawer = styled(DrawerSkeleton)`
   width: 0;
 
   .css-4t3x6l-MuiPaper-root-MuiDrawer-paper {
-    overflow-y: hidden;
+    overflow-y: auto;
   }
 `;
 
