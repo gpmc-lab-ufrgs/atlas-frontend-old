@@ -100,7 +100,7 @@ const districtProps: DistrictSectionType[] = [
 		title: 'Economic Summary',
 		content: [
 			{
-				label: '	',
+				label: 'HDI_inc',
 				description: 'Índice de Desenvolvimento Humano, dimensão de renda',
 				format: (e: any) => formatValue(e, 'none'),
 				type: 'none',
