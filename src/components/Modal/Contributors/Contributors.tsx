@@ -2,7 +2,7 @@ import { Box } from "@mui/material";
 
 import { ModalContainer } from "@components/Modal";
 
-import { mainResearchers, developers, researchers } from "./ContributorsData";
+import { mainResearchers, developers, researchers } from "./contributorsData";
 
 import * as Styles from "./styles";
 
