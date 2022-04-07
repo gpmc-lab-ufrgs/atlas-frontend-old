@@ -6,6 +6,13 @@ import { renderLayer, hoveredPopup, clickedPopup } from "./actions";
 var hoveredId: number;
 var clickedId: number;
 
+const munColorStops = [
+  [0, "#ADDC91"],
+  [3541, "#6CC24A"],
+  [6904, "#509E2F"],
+  [17121, "#4A7729"],
+]
+
 export function createMunLayer(layer: any, map: mapboxgl.Map) {
   if (layer !== null) {
     map.addSource("mun", {
@@ -23,12 +30,7 @@ export function createMunLayer(layer: any, map: mapboxgl.Map) {
       paint: {
         "fill-color":{ 
               property: "POPULATION",
-              stops: [
-                [0, "#ADDC91"],
-                [3541, "#6CC24A"],
-                [6904, "#509E2F"],
-                [17121, "#4A7729"],
-              ],
+              stops: munStops,
             },
         //@ts-ignore
         "fill-opacity": fillOpacity[0],
