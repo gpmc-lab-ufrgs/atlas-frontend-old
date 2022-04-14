@@ -12,7 +12,6 @@ import {
 } from '@config/districtProps';
 
 import * as Styles from './styles';
-import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 
 const DataSection: React.FC<DistrictSectionType> = ({ title, content }) => {
