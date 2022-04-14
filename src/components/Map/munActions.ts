@@ -2,16 +2,10 @@ import { lineOpacity, lineWidth, fillOpacity } from "./const";
 import * as turf from "@turf/turf";
 import mapboxgl from "mapbox-gl";
 import { renderLayer, hoveredPopup, clickedPopup } from "./actions";
+import { munColorsRS } from "./mapColors";
 
 var hoveredId: number;
 var clickedId: number;
-
-const munColorStops = [
-  [0, "#ADDC91"],
-  [3541, "#6CC24A"],
-  [6904, "#509E2F"],
-  [17121, "#4A7729"],
-];
 
 export function createMunLayer(layer: any, map: mapboxgl.Map) {
   if (layer !== null) {
@@ -30,7 +24,7 @@ export function createMunLayer(layer: any, map: mapboxgl.Map) {
       paint: {
         "fill-color": {
           property: "POPULATION",
-          stops: munColorStops,
+          stops: munColorsRS,
         },
         //@ts-ignore
         "fill-opacity": fillOpacity[0],
