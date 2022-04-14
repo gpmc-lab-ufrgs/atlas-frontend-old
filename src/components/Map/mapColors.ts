@@ -7,7 +7,7 @@ export const mapColors = [
 
 export const munColorsRS = [
     [0, "#ADDC91"],
-    [3541, "#6CC24A"],
-    [6904, "#509E2F"],
-    [17121, "#4A7729"],
+    [2965, "#6CC24A"],
+    [5712, "#509E2F"],
+    [14380, "#4A7729"],
 ];
