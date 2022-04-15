@@ -28,9 +28,13 @@ const DataSection: React.FC<DistrictSectionType> = ({ title, content }) => {
 			{content.map((props: DistrictContentType, id) => (
 				<Styles.PropsWrapper key={id}>
 					<Styles.PropsTitle>
-						<Tooltip title={props.description} arrow>
-							<h2>{props.title}</h2>
-						</Tooltip>
+						{props.title === '' ? (
+							<h2>{props.description}</h2>
+						) : (
+							<Tooltip title={props.description} arrow>
+								<h2>{props.title}</h2>
+							</Tooltip>
+						)}
 					</Styles.PropsTitle>
 
 					{comparison.map((district) => (

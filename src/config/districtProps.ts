@@ -19,7 +19,7 @@ const districtProps: DistrictSectionType[] = [
 		content: [
 			{
 				label: 'OBSERVED',
-				title: '-',
+				title: '',
 				description:
 					'Número de mortes observadas por causas evitáveis de 5 a 74 anos (2013 a 2017)',
 				format: (e: any) => formatValue(e, 'none'),
@@ -27,7 +27,7 @@ const districtProps: DistrictSectionType[] = [
 			},
 			{
 				label: 'EXPECTED',
-				title: '-',
+				title: '',
 				description:
 					'Número de mortes esperadas para a distribuição da população de acordo com sexo e grupos de labelade',
 				format: (e: any) => formatValue(e, 'none'),
@@ -35,7 +35,7 @@ const districtProps: DistrictSectionType[] = [
 			},
 			{
 				label: 'RR_PREV',
-				title: '-',
+				title: '',
 				description:
 					'Risco relativo de mortallabelade por causas evitáveis de 5 a 74 anos por padronização indireta por sexo e labelade',
 				format: (e: any) => formatValue(e, 'none'),
@@ -43,21 +43,21 @@ const districtProps: DistrictSectionType[] = [
 			},
 			{
 				label: 'HDI',
-				title: '-',
+				title: '',
 				description: 'Índice de Desenvolvimento Humano calculado por município',
 				format: (e: any) => formatValue(e, 'none'),
 				type: 'none',
 			},
 			{
 				label: 'HDI_educ',
-				title: '-',
+				title: '',
 				description: 'Índice de Desenvolvimento Humano, dimensão educacional',
 				format: (e: any) => formatValue(e, 'none'),
 				type: 'none',
 			},
 			{
 				label: 'HDI_long',
-				title: '-',
+				title: '',
 				description:
 					'Índice de Desenvolvimento Humano, dimensão da longevlabelade',
 				format: (e: any) => formatValue(e, 'none'),
@@ -65,7 +65,7 @@ const districtProps: DistrictSectionType[] = [
 			},
 			{
 				label: 'GeoSESed',
-				title: '-',
+				title: '',
 				description: 'Dimensão de educação (%)',
 				format: (e: any) => formatValue(e, 'percent'),
 				type: 'bar',
@@ -120,35 +120,35 @@ const districtProps: DistrictSectionType[] = [
 		content: [
 			{
 				label: 'HDI_inc',
-				title: '-',
+				title: '',
 				description: 'Índice de Desenvolvimento Humano, dimensão de renda',
 				format: (e: any) => formatValue(e, 'none'),
 				type: 'none',
 			},
 			{
 				label: 'GeoSESpv',
-				title: '-',
+				title: '',
 				description: 'Dimensão da pobreza (%)',
 				format: (e: any) => formatValue(e, 'percent'),
 				type: 'bar',
 			},
 			{
 				label: 'GeoSESdp',
-				title: '-',
+				title: '',
 				description: 'Dimensão de privação (%)',
 				format: (e: any) => formatValue(e, 'percent'),
 				type: 'bar',
 			},
 			{
 				label: 'GeoSESwl',
-				title: '-',
+				title: '',
 				description: 'Dimensão de riqueza (%)',
 				format: (e: any) => formatValue(e, 'percent'),
 				type: 'bar',
 			},
 			{
 				label: 'GeoSESsg',
-				title: '-',
+				title: '',
 				description:
 					'Dimensão de segregação por raça e renda (Índice de Concentração nos Extremos, variando de -1 a +1)',
 				format: (e: any) => formatValue(e, 'none'),
@@ -156,7 +156,7 @@ const districtProps: DistrictSectionType[] = [
 			},
 			{
 				label: 'GeoSESin',
-				title: '-',
+				title: '',
 				description:
 					'Dimensão da renda (em reais; 1 dólar americano = 1,76 reais em 2010)',
 				format: (e: any) => formatValue(e, 'none'),
