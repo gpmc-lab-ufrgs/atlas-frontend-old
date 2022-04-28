@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 import { Box } from "@mui/material";
+
 import { Close, ChevronRight } from "@mui/icons-material";
 
 export const ComparisonButton = styled(Link)`
