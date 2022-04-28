@@ -15,13 +15,13 @@ const ComparisonSection = () => {
     <Styles.ComparisonButton
       to={"/comparison/" + comparisonRegionIds.join("+")}
     >
-      <p>Show Comparison</p>
+      <p>Mostrar comparação</p>
       <Styles.ChevronIcon />
     </Styles.ComparisonButton>
   );
 
   return (
-    <CollapsibleSection title="Locations to Compare">
+    <CollapsibleSection title="Regiões em comparação">
       {comparison.map((feature: any) => (
         <Styles.ComparisonList key={feature.properties.CD_MUN}>
           {feature.properties["NM_MUN"]}
@@ -30,7 +30,7 @@ const ComparisonSection = () => {
       ))}
 
       {comparison.length > 0 && ComparisonResult()}
-      <Styles.DisclaimerText>Add up to 4 regions.</Styles.DisclaimerText>
+      <Styles.DisclaimerText>Máximo de regiões 4.</Styles.DisclaimerText>
     </CollapsibleSection>
   );
 };
