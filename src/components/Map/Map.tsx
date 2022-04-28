@@ -62,9 +62,9 @@ const Map = () => {
             visibility: "visible",
           },
           paint: {
-            "fill-color":{ 
+            "fill-color": {
               property: "POPULATION",
-              stops: mapStops,
+              stops: mapColorStops,
             },
             //@ts-ignore
             "fill-opacity": fillOpacity[0],

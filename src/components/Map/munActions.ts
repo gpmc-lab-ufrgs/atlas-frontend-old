@@ -11,7 +11,7 @@ const munColorStops = [
   [3541, "#6CC24A"],
   [6904, "#509E2F"],
   [17121, "#4A7729"],
-]
+];
 
 export function createMunLayer(layer: any, map: mapboxgl.Map) {
   if (layer !== null) {
@@ -28,10 +28,10 @@ export function createMunLayer(layer: any, map: mapboxgl.Map) {
       type: "fill",
       source: "mun",
       paint: {
-        "fill-color":{ 
-              property: "POPULATION",
-              stops: munStops,
-            },
+        "fill-color": {
+          property: "POPULATION",
+          stops: munColorStops,
+        },
         //@ts-ignore
         "fill-opacity": fillOpacity[0],
       },
@@ -86,7 +86,7 @@ export function highlightMun(feature: any, map: mapboxgl.Map) {
 
 export function clickMun(feature: any, map: mapboxgl.Map) {
   if (feature && feature.geometry) {
-    renderLayer(feature, map)
+    renderLayer(feature, map);
 
     if (feature.properties.CD_MUN === clickedId) {
       return;
