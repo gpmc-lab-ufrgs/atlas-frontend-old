@@ -12,13 +12,7 @@ import { fitBounds, fitCenter } from "./actions";
 import { highlightMun, clickMun } from "./munActions";
 import { highlightState, clickState } from "./stateActions";
 import { lineOpacity, lineWidth, fillOpacity, accessToken } from "./const";
-
-const mapColorStops = [
-  [0, "#ADDC91"],
-  [2570160, "#6CC24A"],
-  [3766528, "#509E2F"],
-  [10444526, "#4A7729"],
-];
+import { mapColors } from "./mapColors";
 
 const Map = () => {
   mapboxgl.accessToken = accessToken;
@@ -64,7 +58,7 @@ const Map = () => {
           paint: {
             "fill-color": {
               property: "POPULATION",
-              stops: mapColorStops,
+              stops: mapColors,
             },
             //@ts-ignore
             "fill-opacity": fillOpacity[0],

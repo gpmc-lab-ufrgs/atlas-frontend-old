@@ -2,7 +2,7 @@ import React, { createContext, useContext } from "react";
 
 import { Feature } from "@types/Feature";
 
-import geojsonGO from "@data/states/GO_Municipios_2020.json";
+import geojsonRS from "@data/states/RS_Municipios_2020.json";
 import geojsonBR from "@data/BR_UF_2020.json";
 
 import useFeature, {
@@ -32,7 +32,7 @@ const featuresContext = createContext<FeaturesContext>(DEFAULT_VALUE);
 
 export function FeaturesProvider({ children }: any) {
   //@ts-ignore
-  const allDistricts: Array<Feature> = geojsonGO["features"];
+  const allDistricts: Array<Feature> = geojsonRS["features"];
   //@ts-ignore
   const allStates: Array<Feature> = geojsonBR["states"];
 

@@ -31,8 +31,8 @@ const ComparisonButton = () => {
       >
         <Styles.ComparisonIcon />
         {isSelectedOnComparison
-          ? "Remove from Comparison"
-          : "Add to Comparison"}
+          ? "Remover da comparação"
+          : "Adicionar a comparação"}
       </Styles.ButtonWrapper>
     </Styles.ComparisonButton>
   );
