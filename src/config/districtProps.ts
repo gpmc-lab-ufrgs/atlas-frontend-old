@@ -22,7 +22,7 @@ const districtProps: DistrictSectionType[] = [
         title: "Número de mortes observadas por causas evitáveis",
         description:
           "Número de mortes observadas por causas evitáveis de 5 a 74 anos (2013 a 2017)",
-        format: (e: any) => formatValue(e, "none"),
+        format: (e: any) => formatValue(e, "float_2"),
         type: "none",
       },
       {

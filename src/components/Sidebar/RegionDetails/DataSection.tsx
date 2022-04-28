@@ -28,13 +28,9 @@ const DataSection: React.FC<DistrictSectionType> = ({ title, content }) => {
     <CollapsibleSection title={title}>
       {content.map((props: DistrictContentType, id) => (
         <Styles.PropsWrapper key={id}>
-          {props.title === "" ? (
-            <Styles.PropsTitle>{props.description}</Styles.PropsTitle>
-          ) : (
-            <Tooltip title={props.description} arrow>
-              <Styles.PropsTitle>{props.title}</Styles.PropsTitle>
-            </Tooltip>
-          )}
+          <Tooltip title={props.description} arrow>
+            <Styles.PropsTitle>{props.title}</Styles.PropsTitle>
+          </Tooltip>
 
           {comparison.map((district) => (
             <Styles.ValueContent>
