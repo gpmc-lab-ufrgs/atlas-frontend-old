@@ -25,7 +25,7 @@ const GridContent: React.FC<Props> = ({ section, comparison }) => {
         {section.content.map((content: DistrictContentType, id) => (
           <Styles.Grid key={id}>
             <Styles.Title>
-              <h2>{content.label}</h2>
+              <h2>{content.title}</h2>
             </Styles.Title>
             <Styles.GridItem>
               {comparison.map((district, id) => (

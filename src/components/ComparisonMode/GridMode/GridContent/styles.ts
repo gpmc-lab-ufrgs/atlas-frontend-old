@@ -18,6 +18,7 @@ export const Grid = styled.div`
 
 export const Title = styled.div`
   padding: 0 15px;
+  word-break: break-all;
 `;
 
 export const GridItem = styled.div`
@@ -32,9 +33,9 @@ export const GridItem = styled.div`
 export const ComparisonLabel = styled.div`
   display: flex;
   justify-content: space-between;
+  font-size: 14px;
 
   label {
-    font-size: 14px;
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
