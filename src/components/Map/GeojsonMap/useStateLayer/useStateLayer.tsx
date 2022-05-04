@@ -7,8 +7,16 @@ import geojsonURL from "@data/BR_UF_2020.json";
 import { useSelectedState } from "@store/state/selectedContext";
 import { useHighlightedState } from "@store/state/highlightedContext";
 
-import { highlightState, clickState } from "./stateActions";
+import {
+  highlightState,
+  clickState,
+  isStateLayerVisible,
+  cleanStateActions,
+} from "./stateActions";
+
+import { fitCenter } from "../actions";
 import { lineOpacity, lineWidth, fillOpacity } from "../../const";
+import { isDistrictLayerVisible } from "../useDistrictLayer/districtActions";
 
 const useStateLayer = () => {
   const [stateReference, setStateReference] = useState<mapboxgl.Map>();
@@ -32,7 +40,6 @@ const useStateLayer = () => {
         id: "fill-state",
         type: "fill",
         source: "state",
-        maxzoom: 5,
         layout: {
           visibility: "visible",
         },
@@ -93,8 +100,20 @@ const useStateLayer = () => {
   }, [highlightedState]);
 
   useEffect(() => {
-    if (stateReference) {
+    if (stateReference && selectedState !== null) {
       clickState(selectedState, stateReference);
+
+      isDistrictLayerVisible(stateReference, true);
+      isStateLayerVisible(stateReference, false);
+    } else if (stateReference) {
+      clickState(null, stateReference);
+
+      fitCenter(stateReference);
+
+      isDistrictLayerVisible(stateReference, false);
+      isStateLayerVisible(stateReference, true);
+
+      cleanStateActions();
     }
   }, [selectedState, stateReference]);
 

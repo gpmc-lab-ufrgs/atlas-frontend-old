@@ -8,6 +8,7 @@ import { useSelectedState } from "@store/state/selectedContext";
 import { useSidebar } from "@store/sidebarContext";
 
 import useDistrictLayer from "./useDistrictLayer";
+import useStateLayer from "./useStateLayer";
 
 import { lineOpacity, lineWidth, fillOpacity, accessToken } from "../const";
 
@@ -19,11 +20,9 @@ const Map = () => {
   const mapContainer = useRef<any>();
 
   const { districtReference, setDistrictReference } = useDistrictLayer();
-
-  const { resetMapValues } = useMap();
+  const { stateReference, setStateReference } = useStateLayer();
 
   const [map, setMap] = useState<mapboxgl.Map>();
-  const { setIsSidebarOpen } = useSidebar();
 
   const { setHighlighted: setHighlightedState, highlighted: highlightedState } =
     useHighlightedState();
@@ -231,6 +230,10 @@ const Map = () => {
     } else {
       if (!districtReference) {
         setDistrictReference(map);
+      }
+
+      if (!stateReference) {
+        setStateReference(map);
       }
     }
   }, [map]);

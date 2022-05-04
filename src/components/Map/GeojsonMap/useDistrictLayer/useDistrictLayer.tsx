@@ -9,11 +9,16 @@ import { useSidebar } from "@store/sidebarContext";
 
 import useMap from "@hook/useMap";
 
+import {
+  highlightDistrict,
+  clickDistrict,
+  cleanDistrictActions,
+} from "./districtActions";
+
 import { fitBounds } from "../actions";
-import { highlightDistrict, clickDistrict } from "./districtActions";
 import { lineOpacity, lineWidth, fillOpacity } from "../../const";
 
-import geojsonGO from "../../../../data/states/RS_Municipios_2020.json";
+import geojsonGO from "@data/states/RS_Municipios_2020.json";
 
 const useDistrictLayer = () => {
   const [districtReference, setDistrictReference] = useState<mapboxgl.Map>();
@@ -25,7 +30,8 @@ const useDistrictLayer = () => {
   const { setSelected: setSelectedDistrict, selected: selectedDistrict } =
     useSelectedDistrict();
 
-  const { selected: selectedState } = useSelectedState();
+  const { selected: selectedState, setSelected: setSelectedState } =
+    useSelectedState();
 
   const { setIsSidebarOpen } = useSidebar();
   const { resetMapValues } = useMap();
@@ -48,7 +54,7 @@ const useDistrictLayer = () => {
         type: "fill",
         source: "district",
         layout: {
-          visibility: "visible",
+          visibility: "none",
         },
         paint: {
           "fill-color": "#6CC24A",
@@ -62,7 +68,7 @@ const useDistrictLayer = () => {
         type: "line",
         source: "district",
         layout: {
-          visibility: "visible",
+          visibility: "none",
         },
         paint: {
           "line-color": "#ffffff",
@@ -123,13 +129,22 @@ const useDistrictLayer = () => {
   }, [highlightedDistrict]);
 
   useEffect(() => {
-    if (districtReference && selectedDistrict) {
+    if (districtReference && selectedDistrict !== null) {
       clickDistrict(selectedDistrict, districtReference);
-      setIsSidebarOpen(true);
+
       fitBounds(selectedDistrict, districtReference);
+
+      setIsSidebarOpen(true);
+
+      if (selectedState === null) {
+        setSelectedState({
+          properties: { SIGLA_UF: selectedDistrict.properties.SIGLA_UF },
+        });
+      }
     } else if (districtReference) {
       clickDistrict(null, districtReference);
-      clickDistrict(selectedState, districtReference);
+
+      cleanDistrictActions();
     }
   }, [selectedDistrict]);
 

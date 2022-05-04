@@ -6,6 +6,14 @@ import { hoveredPopup, clickedPopup } from "../../const";
 var clickedId: number | undefined;
 var hoveredId: number | undefined;
 
+function setFeatureClick(featureID: number, map: mapboxgl.Map, state: boolean) {
+  map.setFeatureState({ source: "district", id: featureID }, { click: state });
+}
+
+function setFeatureHover(featureID: number, map: mapboxgl.Map, state: boolean) {
+  map.setFeatureState({ source: "district", id: featureID }, { hover: state });
+}
+
 function addPopup(feature: any, map: mapboxgl.Map, type: string) {
   var coordinates = turf.centerOfMass(feature).geometry.coordinates;
   var regionName = feature?.properties?.NM_MUN;
@@ -24,10 +32,6 @@ function addPopup(feature: any, map: mapboxgl.Map, type: string) {
         .addTo(map);
       break;
   }
-}
-
-function setFeatureClick(featureID: number, map: mapboxgl.Map, state: boolean) {
-  map.setFeatureState({ source: "district", id: featureID }, { click: state });
 }
 
 export function clickDistrict(feature: any, map: mapboxgl.Map) {
@@ -51,16 +55,12 @@ export function clickDistrict(feature: any, map: mapboxgl.Map) {
     clickedPopup.remove();
 
     if (clickedId !== undefined) {
-      if (map.getSource("mun")) {
+      if (map.getSource("district")) {
         setFeatureClick(clickedId, map, false);
       }
       clickedId = 0;
     }
   }
-}
-
-function setFeatureHover(featureID: number, map: mapboxgl.Map, state: boolean) {
-  map.setFeatureState({ source: "district", id: featureID }, { hover: state });
 }
 
 export function highlightDistrict(feature: any, map: mapboxgl.Map) {
@@ -87,4 +87,23 @@ export function highlightDistrict(feature: any, map: mapboxgl.Map) {
     }
     hoveredId = undefined;
   }
+}
+
+export function isDistrictLayerVisible(map: mapboxgl.Map, visible: boolean) {
+  const visibility = visible ? "visible" : "none";
+
+  if (map.getLayer("fill-district")) {
+    map.setLayoutProperty("fill-district", "visibility", visibility);
+  }
+
+  if (map.getLayer("district-borders")) {
+    map.setLayoutProperty("district-borders", "visibility", visibility);
+  }
+}
+
+export function cleanDistrictActions() {
+  hoveredPopup.remove();
+  clickedPopup.remove();
+  clickedId = 0;
+  hoveredId = undefined;
 }

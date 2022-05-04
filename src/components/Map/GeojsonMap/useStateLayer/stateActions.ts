@@ -46,8 +46,6 @@ export function clickState(feature: any, map: mapboxgl.Map) {
   } else if (clickedId) {
     fitCenter(map);
 
-    console.log("out");
-
     if (map.getSource("state")) {
       setFeatureClick(clickedId, map, false);
     }
@@ -81,4 +79,22 @@ export function highlightState(feature: any, map: mapboxgl.Map) {
     }
     hoveredId = undefined;
   }
+}
+
+export function isStateLayerVisible(map: mapboxgl.Map, visible: boolean) {
+  const visibility = visible ? "visible" : "none";
+
+  if (map.getLayer("fill-state")) {
+    map.setLayoutProperty("fill-state", "visibility", visibility);
+  }
+
+  if (map.getLayer("state-borders")) {
+    map.setLayoutProperty("state-borders", "visibility", visibility);
+  }
+}
+
+export function cleanStateActions() {
+  hoveredPopup.remove();
+  clickedId = 0;
+  hoveredId = undefined;
 }
