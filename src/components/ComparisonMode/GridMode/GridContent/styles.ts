@@ -34,6 +34,7 @@ export const ComparisonLabel = styled.div`
   justify-content: space-between;
 
   label {
+    font-size: 14px;
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
