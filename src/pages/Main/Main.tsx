@@ -64,18 +64,14 @@ const Main = () => {
     }
   }, [comparison, location, history]);
 
-  const hasSelectedDistrict = !!selected;
-
   return (
     <Styles.MainContainer>
       <Modal />
 
-      {(hasSelectedDistrict || isComparisonModeOn) && (
-        <Sidebar
-          isComparisonMode={isComparisonModeOn}
-          title={selected?.properties.NM_MUN}
-        />
-      )}
+      <Sidebar
+        isComparisonMode={isComparisonModeOn}
+        title={selected?.properties.NM_MUN}
+      />
 
       <Styles.ComparisonWrapper isSidebarOpen={isSidebarOpen} theme={theme}>
         <Header

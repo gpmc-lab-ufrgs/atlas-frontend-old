@@ -21,7 +21,7 @@ const ComparisonSection = () => {
   );
 
   return (
-    <Collapsible title="Locations to Compare">
+    <Collapsible title="Comparação">
       {comparison.map((feature: any) => (
         <Styles.ComparisonList key={feature.properties.CD_MUN}>
           {feature.properties["NM_MUN"]}
@@ -30,7 +30,7 @@ const ComparisonSection = () => {
       ))}
 
       {comparison.length > 0 && ComparisonResult()}
-      <Styles.DisclaimerText>Add up to 4 regions.</Styles.DisclaimerText>
+      <Styles.DisclaimerText>Adicione até 4 regiões</Styles.DisclaimerText>
     </Collapsible>
   );
 };

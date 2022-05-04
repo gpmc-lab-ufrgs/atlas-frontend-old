@@ -32,7 +32,7 @@ const ComparisonDetails = () => {
     <Box>
       <Title />
       {comparison.length > 0 && (
-        <Collapsible title="Locations to Compare">
+        <Collapsible title="Comparação">
           <>
             {comparison.map((feature: any, id) => (
               <Styles.ComparisonList key={id}>

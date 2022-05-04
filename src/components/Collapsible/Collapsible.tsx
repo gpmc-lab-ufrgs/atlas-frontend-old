@@ -28,7 +28,7 @@ const CollapsibleSection = ({ children, title }: any) => {
 
   const isOpen = (key: CollapsibleNames) => {
     const value = collapsible && collapsible[key];
-    return value ?? false;
+    return value ?? true;
   };
 
   const updateIsOpen = (key: any, value: any) => {

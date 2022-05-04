@@ -24,6 +24,8 @@ const DataSection: React.FC<DistrictSectionType> = ({ title, content }) => {
     (region) => region.properties.CD_MUN === selected?.properties.CD_MUN
   );
 
+  const hasSelectedDistrict = Boolean(selected);
+
   return (
     <Collapsible title={title}>
       {content.map((props: DistrictContentType, id) => (
@@ -39,7 +41,7 @@ const DataSection: React.FC<DistrictSectionType> = ({ title, content }) => {
             </Styles.ValueContent>
           ))}
 
-          {!isSelectedOnComparison && (
+          {!isSelectedOnComparison && hasSelectedDistrict && (
             <Styles.ValueContent>
               <p>{selected?.properties.NM_MUN}</p>
               <MetricDetails district={selected} metric={props} />
