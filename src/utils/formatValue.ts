@@ -37,6 +37,6 @@ export const formatValue = (value: any, format: string) => {
         ? `${parseFloat(String(value).replace(/,/g, ".")).toFixed(3)}`
         : "";
     default:
-      return value ? value + "" : "";
+      return value ? value + "" : "-";
   }
 };

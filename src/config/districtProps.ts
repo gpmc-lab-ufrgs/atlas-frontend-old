@@ -248,6 +248,39 @@ const districtProps: DistrictSectionType[] = [
         format: (e: any) => formatValue(e, "percent"),
         type: "bar",
       },
+
+      {
+        label: "AGENCIAS(2019)",
+        title: "Número de agências bancárias",
+        description: "Número de agências bancárias - BCB",
+        format: (e: any) => formatValue(e, "none"),
+        type: "none",
+      },
+
+      {
+        label: "APLICACOES(2019)",
+        title: "Aplicações",
+        description: "Valor corresponde a conta Operações de Crédito - BCB",
+        format: (e: any) => formatValue(e, "float_2"),
+        type: "none",
+      },
+
+      {
+        label: "POUPANCA(2019)",
+        title: "Poupança",
+        description: "Valor corresponde a conta Depósitos de Poupança - BCB",
+        format: (e: any) => formatValue(e, "float_2"),
+        type: "none",
+      },
+
+      {
+        label: "IPTUCH(2019)",
+        title: "IPTU",
+        description:
+          "Destina-se ao registro dos valores do tributo que tem como fato gerador a propriedade, o domínio útil ou a posse de bem imóvel por natureza ou por acessão física, como definido na lei civil, localizado na zona urbana do município, fixada em lei municipal. - IPEA",
+        format: (e: any) => formatValue(e, "float_2"),
+        type: "none",
+      },
     ],
   },
   {
