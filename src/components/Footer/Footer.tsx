@@ -1,4 +1,7 @@
-import institutionLogoImages from './institutions';
+import {
+	developerInstitutionsLogoImages,
+	supporterInstitutionLogoImages,
+} from './institutions';
 
 import { Box } from '@mui/material';
 
@@ -13,19 +16,21 @@ function Footer() {
 				justifyContent="space-between"
 				alignItems="center"
 			>
-				{institutionLogoImages.map((institution) =>
-					institution.name === 'txt' ? (
-						<Styles.footerTxt>
-							<b>Apoio:</b>
-						</Styles.footerTxt>
-					) : (
-						<Styles.InstitutionsLogo
-							src={institution.logoImage}
-							alt={`Logo image of ${institution.name}`}
-							size={institution.size}
-						/>
-					),
-				)}
+				{developerInstitutionsLogoImages.map((institution) => (
+					<Styles.InstitutionsLogo
+						src={institution.logoImage}
+						alt={`Logo image of ${institution.name}`}
+						size={institution.size}
+					/>
+				))}
+				<Styles.footerTxt>Apoio:</Styles.footerTxt>
+				{supporterInstitutionLogoImages.map((institution) => (
+					<Styles.InstitutionsLogo
+						src={institution.logoImage}
+						alt={`Logo image of ${institution.name}`}
+						size={institution.size}
+					/>
+				))}
 			</Box>
 		</Styles.FooterContainer>
 	);

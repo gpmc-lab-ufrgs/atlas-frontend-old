@@ -3,17 +3,23 @@ import logoSabanciNormal from '@assets/logoSabanciNormal.png';
 import logoUfrgsNegative from '@assets/logoUfrgsNegativo.png';
 import logoUfgNegative from '@assets/logoUfgNegativo.png';
 import logoFgvNegative from '@assets/logoNegativaFGV.png';
+import logoMitNegative from '@assets/logoNegativaMIT.png';
 import logoUnb from '@assets/logoUnb.png';
 import logoNCF from '@assets/logoNCF.png';
-import logoMitNegative from '@assets/logoNegativaMIT.png';
 
-interface Institution {
+interface DeveloperInstitutions {
 	name: string;
 	logoImage: string;
 	size: number;
 }
 
-const institutionLogoImages: Institution[] = [
+interface SupporterInstiturions {
+	name: string;
+	logoImage: string;
+	size: number;
+}
+
+const developerInstitutionsLogoImages: DeveloperInstitutions[] = [
 	{
 		name: 'Fundação Getulio Vargas',
 		logoImage: logoFgvNegative,
@@ -49,11 +55,9 @@ const institutionLogoImages: Institution[] = [
 		logoImage: logoSabanciNormal,
 		size: 40,
 	},
-	{
-		name: 'txt',
-		logoImage: 'Apoio',
-		size: 5,
-	},
+];
+
+const supporterInstitutionLogoImages: SupporterInstiturions[] = [
 	{
 		name: 'Tramontina',
 		logoImage: logoTramontinaNegativo,
@@ -61,4 +65,5 @@ const institutionLogoImages: Institution[] = [
 	},
 ];
 
-export default institutionLogoImages;
+export { developerInstitutionsLogoImages };
+export { supporterInstitutionLogoImages };
