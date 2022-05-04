@@ -1,8 +1,9 @@
 import * as turf from "@turf/turf";
 import mapboxgl from "mapbox-gl";
 import { createMunLayer } from "./munActions";
+
 import { accessToken, clickedPopup } from "../const";
-import geojsonGO from "../../../data/states/GO_Municipios_2020.json";
+import geojsonRS from "@data/states/RS_Municipios_2020.json";
 
 mapboxgl.accessToken = accessToken;
 
@@ -46,7 +47,7 @@ export function renderLayer(feature: any, map: mapboxgl.Map) {
       map.setLayoutProperty("state-borders", "visibility", "none");
 
       if (feature.source === "state") {
-        createMunLayer(geojsonGO, map);
+        createMunLayer(geojsonRS, map);
       } else {
         createMunLayer(feature, map);
       }

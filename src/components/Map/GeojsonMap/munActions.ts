@@ -7,7 +7,9 @@ import {
 } from "../const";
 import * as turf from "@turf/turf";
 import mapboxgl from "mapbox-gl";
+
 import { renderLayer } from "./actions";
+import { munColorsRS } from "../mapColors";
 
 var hoveredId: number;
 var clickedId: number;
@@ -27,7 +29,10 @@ export function createMunLayer(layer: any, map: mapboxgl.Map) {
       type: "fill",
       source: "mun",
       paint: {
-        "fill-color": "#6CC24A",
+        "fill-color": {
+          property: "POPULATION",
+          stops: munColorsRS,
+        },
         //@ts-ignore
         "fill-opacity": fillOpacity,
       },

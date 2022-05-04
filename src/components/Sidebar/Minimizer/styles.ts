@@ -11,6 +11,7 @@ export const MinimizerWrapper = styled.div<Minimizer>`
 
   top: 80px;
   left: ${({ isSidebarOpen }) => (isSidebarOpen ? "345" : "0")}px;
+  padding-left: 18px;
 
   transition: ${({ theme }) =>
     theme.transitions.create(["left"], {

@@ -15,7 +15,7 @@ const ComparisonSection = () => {
     <Styles.ComparisonButton
       to={"/comparison/" + comparisonRegionIds.join("+")}
     >
-      <p>Show Comparison</p>
+      <p>Mostrar comparação</p>
       <Styles.ChevronIcon />
     </Styles.ComparisonButton>
   );

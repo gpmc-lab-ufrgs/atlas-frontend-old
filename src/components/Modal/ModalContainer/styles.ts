@@ -31,6 +31,7 @@ export const ModalDimScreen = styled.div`
 
 export const ModalWrapper = styled.div`
   max-width: 680px;
+  flex-basis: 680px;
   margin: 60px;
 
   display: flex;
@@ -64,7 +65,7 @@ export const ModalHeader = styled.div`
   border-bottom: 1px solid #ccc;
 `;
 
-export const Title = styled.h3`
+export const Title = styled.h2`
   margin: 0;
 
   line-height: 20px;
@@ -82,6 +83,7 @@ export const ModalContent = styled.div`
   line-height: 150%;
 
   padding: 20px 40px;
+  margin: 30px 0px;
 
   overflow-y: auto;
 

@@ -22,14 +22,14 @@ export const formatValue = (value: any, format: string) => {
   }
 
   switch (format) {
-    case "number":
-      return value.toLocaleString();
     case "population":
       return formatPopulationNumber(value);
     case "percent":
       return `${Math.floor(parseFloat(value))}%`;
     case "percent_normalized":
       return `${(value * 100.0).toFixed(2)}%`;
+    case "float_2":
+      return value ? `${value.toFixed(2)}` : "";
     default:
       return value ? value + "" : "";
   }

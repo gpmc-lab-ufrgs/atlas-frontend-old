@@ -12,6 +12,8 @@ import {
   DistrictContentType,
 } from "@config/districtProps";
 
+import { Tooltip } from "@mui/material";
+
 import * as Styles from "./styles";
 
 const DataSection: React.FC<DistrictSectionType> = ({ title, content }) => {
@@ -26,7 +28,9 @@ const DataSection: React.FC<DistrictSectionType> = ({ title, content }) => {
     <Collapsible title={title}>
       {content.map((props: DistrictContentType, id) => (
         <Styles.PropsWrapper key={id}>
-          <Styles.PropsTitle>{props.description}</Styles.PropsTitle>
+          <Tooltip title={props.description} arrow>
+            <Styles.PropsTitle>{props.title}</Styles.PropsTitle>
+          </Tooltip>
 
           {comparison.map((district, id) => (
             <Styles.ValueContent key={id}>

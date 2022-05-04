@@ -24,7 +24,7 @@ const ComparisonDetails = () => {
   const Title = () => (
     <Styles.TitleWrapper>
       <Styles.ArrowBackButton onClick={handleGoBack} />
-      <Styles.Title>Comparing Locations</Styles.Title>
+      <Styles.Title>Comparando Regiões</Styles.Title>
     </Styles.TitleWrapper>
   );
 
