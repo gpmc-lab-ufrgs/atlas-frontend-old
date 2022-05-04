@@ -1,9 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import mapboxgl from "mapbox-gl";
 
-import { useHighlightedState } from "@store/state/highlightedContext";
-import { useSelectedState } from "@store/state/selectedContext";
-
 import useDistrictLayer from "./useDistrictLayer";
 import useStateLayer from "./useStateLayer";
 
@@ -20,11 +17,6 @@ const Map = () => {
   const { stateReference, setStateReference } = useStateLayer();
 
   const [map, setMap] = useState<mapboxgl.Map>();
-
-  const { setHighlighted: setHighlightedState, highlighted: highlightedState } =
-    useHighlightedState();
-  const { setSelected: setSelectedState, selected: selectedState } =
-    useSelectedState();
 
   useEffect(() => {
     const initializeMap = ({ mapContainer }: any) => {
