@@ -1,6 +1,6 @@
 // import RangeBar from "./charts/RangeBar";
 import { SolidBar } from "../Charts";
-import geosesData from "../../data/StateData.json";
+import geosesData from "../../data/Data.json";
 // import LineChartMetric from "./charts/LineChartMetric";
 
 const MetricDetails = ({ district, metric, small }: any) => {
