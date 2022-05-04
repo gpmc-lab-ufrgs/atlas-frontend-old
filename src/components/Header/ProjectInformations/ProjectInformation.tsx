@@ -16,7 +16,7 @@ const ProjectInformations: React.FC<Props> = ({ setOpen }) => {
   return (
     <Styles.ProjectInformationWrapper>
       <Styles.TitleWrapper>
-        <Styles.Title> Atlas of Opportunity </Styles.Title>
+        <Styles.Title> Atlas de Oportunidades </Styles.Title>
 
         <Styles.CloseButton onClick={() => handleCloseDrawer()} />
       </Styles.TitleWrapper>

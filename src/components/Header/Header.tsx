@@ -62,13 +62,13 @@ const Header: React.FC<Props> = ({
         <SearchBar />
       </Styles.HeaderLeftSide>
 
-      <Styles.HeaderCenterSide>
+      {/* <Styles.HeaderCenterSide>
         <Styles.MapControl>
           <h4>Geojson</h4>
           <Switch onChange={handleMap} />
           <h4>Tileset</h4>
         </Styles.MapControl>
-      </Styles.HeaderCenterSide>
+      </Styles.HeaderCenterSide> */}
 
       <Styles.HeaderRightSide>
         <Styles.MenuButton onClick={() => setOpenMenu(true)} />

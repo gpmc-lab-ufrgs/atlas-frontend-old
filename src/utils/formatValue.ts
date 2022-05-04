@@ -7,7 +7,7 @@ export const formatPopulationNumber = (value: any) => {
   for (let i = numbers.length - 1, j = 1; i >= 0; i--, j++) {
     out.push(numbers[i]);
     if (j % 3 === 0 && i !== 0) {
-      out.push(".");
+      out.push(",");
     }
   }
 
@@ -29,7 +29,13 @@ export const formatValue = (value: any, format: string) => {
     case "percent_normalized":
       return `${(value * 100.0).toFixed(2)}%`;
     case "float_2":
-      return value ? `${value.toFixed(2)}` : "";
+      return value
+        ? `${parseFloat(String(value).replace(/,/g, ".")).toFixed(2)}`
+        : "";
+    case "float_3":
+      return value
+        ? `${parseFloat(String(value).replace(/,/g, ".")).toFixed(3)}`
+        : "";
     default:
       return value ? value + "" : "";
   }

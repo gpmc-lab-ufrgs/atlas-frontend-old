@@ -15,6 +15,7 @@ import {
 } from "./stateActions";
 
 import { fitCenter } from "../actions";
+import { stateColors } from "../../mapColors";
 import { lineOpacity, lineWidth, fillOpacity } from "../../const";
 import { isDistrictLayerVisible } from "../useDistrictLayer/districtActions";
 
@@ -44,7 +45,10 @@ const useStateLayer = () => {
           visibility: "visible",
         },
         paint: {
-          "fill-color": "#6CC24A",
+          "fill-color": {
+            property: "POPULATION",
+            stops: stateColors,
+          },
           //@ts-ignore
           "fill-opacity": fillOpacity,
         },

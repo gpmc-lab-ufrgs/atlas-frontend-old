@@ -30,7 +30,7 @@ const districtProps: DistrictSectionType[] = [
         title: "Número de mortes esperadas",
         description:
           "Número de mortes esperadas para a distribuição da população de acordo com sexo e grupos de labelade",
-        format: (e: any) => formatValue(e, "none"),
+        format: (e: any) => formatValue(e, "float_2"),
         type: "none",
       },
       {
@@ -38,28 +38,35 @@ const districtProps: DistrictSectionType[] = [
         title: "Risco relativo de mortalidade por causas evitáveis",
         description:
           "Risco relativo de mortallabelade por causas evitáveis de 5 a 74 anos por padronização indireta por sexo e labelade",
-        format: (e: any) => formatValue(e, "none"),
+        format: (e: any) => formatValue(e, "float_2"),
         type: "none",
       },
+      // {
+      //   label: "IDHM",
+      //   title: "Índice de Desenvolvimento Humano (IDH)",
+      //   description: "IDHM - Índice de desenvolvimento humano municipal (2010)",
+      //   format: (e: any) => formatValue(e, "float_3"),
+      //   type: "none",
+      // },
       {
         label: "HDI",
         title: "Índice de Desenvolvimento Humano por município",
         description: "Índice de Desenvolvimento Humano calculado por município",
-        format: (e: any) => formatValue(e, "none"),
+        format: (e: any) => formatValue(e, "float_3"),
         type: "none",
       },
       {
         label: "HDI_educ",
         title: "Índice de Desenvolvimento Humano, dimensão educacional",
         description: "Índice de Desenvolvimento Humano, dimensão educacional",
-        format: (e: any) => formatValue(e, "none"),
+        format: (e: any) => formatValue(e, "float_3"),
         type: "none",
       },
       {
         label: "HDI_long",
         title: "Índice de Desenvolvimento Humano, dimensão longevidade",
         description: "Índice de Desenvolvimento Humano, dimensão longevidade",
-        format: (e: any) => formatValue(e, "none"),
+        format: (e: any) => formatValue(e, "float_3"),
         type: "none",
       },
       {
@@ -73,7 +80,7 @@ const districtProps: DistrictSectionType[] = [
         label: "Area_Territorial_km",
         title: "Área territorial",
         description: "Área Territorial Brasileira km² (2020)",
-        format: (e: any) => formatValue(e, "none"),
+        format: (e: any) => formatValue(e, "float_2"),
         type: "none",
       },
       {
@@ -87,7 +94,7 @@ const districtProps: DistrictSectionType[] = [
         label: "Densidade_demografica",
         title: "Densidade demográfica",
         description: "Densidade demográfica - hab/km² (2010)",
-        format: (e: any) => formatValue(e, "none"),
+        format: (e: any) => formatValue(e, "float_2"),
         type: "none",
       },
       {
@@ -98,18 +105,11 @@ const districtProps: DistrictSectionType[] = [
         type: "bar",
       },
       {
-        label: "IDHM",
-        title: "Índice de Desenvolvimento Humano (IDH)",
-        description: "IDHM - Índice de desenvolvimento humano municipal (2010)",
-        format: (e: any) => formatValue(e, "none"),
-        type: "none",
-      },
-      {
         label: "Mortalidade_infantil",
         title: "Mortalidade infantil",
         description:
           "Mortalidade infantil - óbitos por mil nascidos vivos (2019)",
-        format: (e: any) => formatValue(e, "none"),
+        format: (e: any) => formatValue(e, "float_2"),
         type: "none",
       },
     ],
@@ -121,7 +121,7 @@ const districtProps: DistrictSectionType[] = [
         label: "HDI_inc",
         title: "Índice de Desenvolvimento Humano, dimensão de renda",
         description: "Índice de Desenvolvimento Humano, dimensão de renda",
-        format: (e: any) => formatValue(e, "none"),
+        format: (e: any) => formatValue(e, "float_3"),
         type: "none",
       },
       {
@@ -150,7 +150,7 @@ const districtProps: DistrictSectionType[] = [
         title: "Dimensão de segregação por raça e renda",
         description:
           "Dimensão de segregação por raça e renda (Índice de Concentração nos Extremos, variando de -1 a +1)",
-        format: (e: any) => formatValue(e, "none"),
+        format: (e: any) => formatValue(e, "float_2"),
         type: "none",
       },
       {
@@ -158,28 +158,28 @@ const districtProps: DistrictSectionType[] = [
         title: "Dimensão da renda",
         description:
           "Dimensão da renda (em reais; 1 dólar americano = 1,76 reais em 2010)",
-        format: (e: any) => formatValue(e, "none"),
+        format: (e: any) => formatValue(e, "float_2"),
         type: "none",
       },
       {
         label: "Receitas_realizadas",
         title: "Receitas",
         description: "Receitas realizadas - R$ (×1000) (2017)",
-        format: (e: any) => formatValue(e, "none"),
+        format: (e: any) => formatValue(e, "float_2"),
         type: "none",
       },
       {
         label: "Despesas_empenhadas",
         title: "Despesas",
         description: "Despesas empenhadas - R$ (×1000) (2017)",
-        format: (e: any) => formatValue(e, "none"),
+        format: (e: any) => formatValue(e, "float_2"),
         type: "none",
       },
       {
         label: "PIB_per_capita",
         title: "PIB per capita",
         description: "PIB per capita - R$ (2018)",
-        format: (e: any) => formatValue(e, "none"),
+        format: (e: any) => formatValue(e, "float_2"),
         type: "none",
       },
     ],
@@ -192,7 +192,7 @@ const districtProps: DistrictSectionType[] = [
         title: "Índice socioeconômico",
         description:
           "Índice socioeconômico proposto, variando de -1 a +1 (das piores às melhores condições)",
-        format: (e: any) => formatValue(e, "none"),
+        format: (e: any) => formatValue(e, "float_2"),
         type: "none",
       },
     ],

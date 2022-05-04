@@ -98,7 +98,7 @@ const useSearch = (featureSearched: District[]) => {
           openMenu();
         }
       },
-      placeholder: "Search by suburb or region",
+      placeholder: "Pesquise por regiões",
       spellCheck: "false",
       ref: inputRef,
     }),
