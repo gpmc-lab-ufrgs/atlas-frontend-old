@@ -2,8 +2,6 @@ import React, { useState } from "react";
 
 import { useSidebar } from "@store/sidebarContext";
 
-import { Switch } from "@mui/material";
-
 import Drawer from "@components/Drawer";
 
 import SearchBar from "./SearchBar";

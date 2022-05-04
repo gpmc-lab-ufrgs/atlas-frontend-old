@@ -3,6 +3,8 @@ import { SolidBar } from "../Charts";
 import geosesData from "../../data/Data.json";
 // import LineChartMetric from "./charts/LineChartMetric";
 
+import * as Styles from "./styles";
+
 const MetricDetails = ({ district, metric, small }: any) => {
   const renderSingleMetric = () => {
     // @ts-ignore
@@ -22,14 +24,17 @@ const MetricDetails = ({ district, metric, small }: any) => {
       case "bar":
         let rawValueFloat = parseFloat(rawValue) || 0;
         return (
-          <div key={district.properties.CD_MUN} className="comparison-bar">
+          <Styles.ProgressBar
+            key={district.properties.CD_MUN}
+            className="comparison-bar"
+          >
             <SolidBar
               label={value}
               value={rawValueFloat}
               max={100}
               width={width}
             />
-          </div>
+          </Styles.ProgressBar>
         );
       default:
         return (
