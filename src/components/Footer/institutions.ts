@@ -4,6 +4,7 @@ import logoUfrgsNegative from "@assets/logoUfrgsNegativo.png";
 import logoUfgNegative from "@assets/logoUfgNegativo.png";
 import logoFgvNegative from "@assets/logoNegativaFGV.png";
 import logoMitNegative from "@assets/logoNegativaMIT.png";
+import logoBologna from "@assets/logoBologna.png";
 import logoUnb from "@assets/logoUnb.png";
 import logoNCF from "@assets/logoNCF.png";
 
@@ -21,14 +22,14 @@ interface SupporterInstiturions {
 
 const developerInstitutionsLogoImages: DeveloperInstitutions[] = [
   {
-    name: "Fundação Getulio Vargas",
-    logoImage: logoFgvNegative,
-    size: 80,
+    name: "Federal University of Goiás",
+    logoImage: logoUfgNegative,
+    size: 40,
   },
   {
-    name: "Federal University of Rio Grande do Sul",
-    logoImage: logoUfrgsNegative,
-    size: 25,
+    name: "University of Bologna",
+    logoImage: logoBologna,
+    size: 30,
   },
   {
     name: "New College of Florida",
@@ -36,9 +37,9 @@ const developerInstitutionsLogoImages: DeveloperInstitutions[] = [
     size: 25,
   },
   {
-    name: "Federal University of Goiás",
-    logoImage: logoUfgNegative,
-    size: 40,
+    name: "Federal University of Rio Grande do Sul",
+    logoImage: logoUfrgsNegative,
+    size: 25,
   },
   {
     name: "Massachusetts Institute of Technology",
@@ -46,14 +47,19 @@ const developerInstitutionsLogoImages: DeveloperInstitutions[] = [
     size: 40,
   },
   {
+    name: "Sabanci University",
+    logoImage: logoSabanciNormal,
+    size: 35,
+  },
+  {
     name: "Federal University of Brasília",
     logoImage: logoUnb,
     size: 25,
   },
   {
-    name: "Sabanci University",
-    logoImage: logoSabanciNormal,
-    size: 35,
+    name: "Fundação Getulio Vargas",
+    logoImage: logoFgvNegative,
+    size: 80,
   },
 ];
 
