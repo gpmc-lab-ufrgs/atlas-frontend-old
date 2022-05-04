@@ -1,4 +1,4 @@
-import CollapsibleSection from "@components/CollapsibleSection";
+import Collapsible from "@components/Collapsible";
 
 import { useComparison } from "@store/comparisonContext";
 
@@ -21,7 +21,7 @@ const ComparisonSection = () => {
   );
 
   return (
-    <CollapsibleSection title="Regiões em comparação">
+    <Collapsible title="Comparação">
       {comparison.map((feature: any) => (
         <Styles.ComparisonList key={feature.properties.CD_MUN}>
           {feature.properties["NM_MUN"]}
@@ -30,8 +30,8 @@ const ComparisonSection = () => {
       ))}
 
       {comparison.length > 0 && ComparisonResult()}
-      <Styles.DisclaimerText>Máximo de regiões 4.</Styles.DisclaimerText>
-    </CollapsibleSection>
+      <Styles.DisclaimerText>Adicione até 4 regiões</Styles.DisclaimerText>
+    </Collapsible>
   );
 };
 
