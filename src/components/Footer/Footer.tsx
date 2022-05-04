@@ -1,4 +1,7 @@
-import institutionLogoImages from "./institutions";
+import {
+  developerInstitutionsLogoImages,
+  supporterInstitutionLogoImages,
+} from "./institutions";
 
 import { Box } from "@mui/material";
 
@@ -8,12 +11,23 @@ function Footer() {
   return (
     <Styles.FooterContainer>
       <Box
-        width="60%"
         display="flex"
         justifyContent="space-between"
         alignItems="center"
+        paddingRight={5}
       >
-        {institutionLogoImages.map((institution) => (
+        {developerInstitutionsLogoImages.map((institution) => (
+          <Styles.InstitutionsLogo
+            src={institution.logoImage}
+            alt={`Logo image of ${institution.name}`}
+            size={institution.size}
+          />
+        ))}
+      </Box>
+
+      <Box display="flex" justifyContent="space-between" alignItems="center">
+        <Styles.FooterText>Apoio:</Styles.FooterText>
+        {supporterInstitutionLogoImages.map((institution) => (
           <Styles.InstitutionsLogo
             src={institution.logoImage}
             alt={`Logo image of ${institution.name}`}
