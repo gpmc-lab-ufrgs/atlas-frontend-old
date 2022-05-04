@@ -4,10 +4,12 @@ import mapboxgl from "mapbox-gl";
 
 import { useHighlightedDistrict } from "@store/district/highlightedContext";
 import { useSelectedDistrict } from "@store/district/selectedContext";
+import { useSelectedState } from "@store/state/selectedContext";
 import { useSidebar } from "@store/sidebarContext";
 
 import useMap from "@hook/useMap";
 
+import { fitBounds } from "../actions";
 import { highlightDistrict, clickDistrict } from "./districtActions";
 import { lineOpacity, lineWidth, fillOpacity } from "../../const";
 
@@ -22,6 +24,8 @@ const useDistrictLayer = () => {
   } = useHighlightedDistrict();
   const { setSelected: setSelectedDistrict, selected: selectedDistrict } =
     useSelectedDistrict();
+
+  const { selected: selectedState } = useSelectedState();
 
   const { setIsSidebarOpen } = useSidebar();
   const { resetMapValues } = useMap();
@@ -122,6 +126,10 @@ const useDistrictLayer = () => {
     if (districtReference && selectedDistrict) {
       clickDistrict(selectedDistrict, districtReference);
       setIsSidebarOpen(true);
+      fitBounds(selectedDistrict, districtReference);
+    } else if (districtReference) {
+      clickDistrict(null, districtReference);
+      clickDistrict(selectedState, districtReference);
     }
   }, [selectedDistrict]);
 

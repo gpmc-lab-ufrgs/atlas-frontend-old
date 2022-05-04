@@ -17,7 +17,7 @@ export function fitBounds(feature: any, map: mapboxgl.Map) {
         [maxX, maxY],
       ],
       {
-        padding: { top: 0, bottom: 0, left: 320, right: 120 },
+        padding: { top: 0, bottom: 0, left: 420, right: 200 },
       }
     );
   }

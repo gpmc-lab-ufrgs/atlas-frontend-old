@@ -1,22 +1,62 @@
 import * as turf from "@turf/turf";
 import mapboxgl from "mapbox-gl";
 
-import { hoveredPopup } from "../../const";
+import { hoveredPopup, clickedPopup } from "../../const";
 
+var clickedId: number | undefined;
 var hoveredId: number | undefined;
 
-export function clickDistrict(feature: any, map: mapboxgl.Map) {
-  console.log("leo");
-}
-
-function addPopup(feature: any, map: mapboxgl.Map) {
+function addPopup(feature: any, map: mapboxgl.Map, type: string) {
   var coordinates = turf.centerOfMass(feature).geometry.coordinates;
   var regionName = feature?.properties?.NM_MUN;
 
-  hoveredPopup
-    .setLngLat([coordinates[0], coordinates[1]])
-    .setHTML(`<h5>${regionName}</h5>`)
-    .addTo(map);
+  switch (type) {
+    case "hover":
+      hoveredPopup
+        .setLngLat([coordinates[0], coordinates[1]])
+        .setHTML(`<h5>${regionName}</h5>`)
+        .addTo(map);
+      break;
+    case "click":
+      clickedPopup
+        .setLngLat([coordinates[0], coordinates[1]])
+        .setHTML(`<h5>${regionName}</h5>`)
+        .addTo(map);
+      break;
+  }
+}
+
+function setFeatureClick(featureID: number, map: mapboxgl.Map, state: boolean) {
+  map.setFeatureState({ source: "district", id: featureID }, { click: state });
+}
+
+export function clickDistrict(feature: any, map: mapboxgl.Map) {
+  const districtID = feature?.properties.CD_MUN;
+
+  if (feature && feature.geometry) {
+    if (districtID === clickedId) {
+      return;
+    }
+
+    addPopup(feature, map, "click");
+
+    setFeatureClick(districtID, map, true);
+
+    if (clickedId) {
+      setFeatureClick(clickedId, map, false);
+    }
+
+    clickedId = districtID;
+  } else {
+    clickedPopup.remove();
+
+    if (clickedId !== undefined) {
+      if (map.getSource("mun")) {
+        setFeatureClick(clickedId, map, false);
+      }
+      clickedId = 0;
+    }
+  }
 }
 
 function setFeatureHover(featureID: number, map: mapboxgl.Map, state: boolean) {
@@ -31,7 +71,7 @@ export function highlightDistrict(feature: any, map: mapboxgl.Map) {
       return;
     }
 
-    addPopup(feature, map);
+    addPopup(feature, map, "hover");
 
     if (hoveredId) {
       setFeatureHover(hoveredId, map, false);
