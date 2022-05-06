@@ -39,15 +39,6 @@ export const lineOpacity = [
   0.5,
 ];
 
-export const mapLayer = {
-  stops: [
-    [0, "#ADDC91"],
-    [55000, "#6CC24A"],
-    [110000, "#509E2F"],
-    [215000, "#4A7729"],
-  ],
-};
-
 export const hoveredPopup = new mapboxgl.Popup({
   closeButton: false,
   closeOnClick: false,
