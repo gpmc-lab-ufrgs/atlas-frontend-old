@@ -1,9 +1,7 @@
 import * as turf from "@turf/turf";
 import mapboxgl from "mapbox-gl";
-import { createMunLayer } from "./munActions";
 
-import { accessToken, clickedPopup } from "../const";
-import geojsonRS from "@data/states/RS_Municipios_2020.json";
+import { accessToken } from "../const";
 
 mapboxgl.accessToken = accessToken;
 
@@ -28,42 +26,4 @@ export function fitCenter(map: mapboxgl.Map) {
     center: [-58, -15],
     zoom: 3.4,
   });
-}
-
-export function renderLayer(feature: any, map: mapboxgl.Map) {
-  if (map.getLayer("fill-state") && map.getLayer("state-borders")) {
-    const visibilityFill = map.getLayoutProperty("fill-state", "visibility");
-    const visibilityState = map.getLayoutProperty(
-      "state-borders",
-      "visibility"
-    );
-
-    if (
-      visibilityFill === "visible" &&
-      visibilityState === "visible" &&
-      feature !== null
-    ) {
-      map.setLayoutProperty("fill-state", "visibility", "none");
-      map.setLayoutProperty("state-borders", "visibility", "none");
-
-      if (feature.source === "state") {
-        createMunLayer(geojsonRS, map);
-      } else {
-        createMunLayer(feature, map);
-      }
-    } else if (
-      map.getSource("mun") &&
-      map.getLayer("fill-mun") &&
-      map.getLayer("mun-borders") &&
-      feature === null
-    ) {
-      map.removeLayer("mun-borders");
-      map.removeLayer("fill-mun");
-      map.removeSource("mun");
-
-      clickedPopup.remove();
-      map.setLayoutProperty("fill-state", "visibility", "visible");
-      map.setLayoutProperty("state-borders", "visibility", "visible");
-    }
-  }
 }
