@@ -23,25 +23,25 @@ const Main = () => {
   const theme = useTheme();
 
   const [comparisonType, setComparisonType] = useState("table");
-  const { isComparisonModeOn } = useMain();
+  const { isComparisonModeEnabled } = useMain();
 
   return (
     <Styles.MainContainer>
       <Modal />
 
       <Sidebar
-        isComparisonMode={isComparisonModeOn}
+        isComparisonMode={isComparisonModeEnabled}
         title={selected?.properties.NM_MUN}
       />
 
       <Styles.ComparisonWrapper isSidebarOpen={isSidebarOpen} theme={theme}>
         <Header
-          isComparisonModeOn={isComparisonModeOn}
+          isComparisonModeOn={isComparisonModeEnabled}
           comparisonType={comparisonType}
           setComparisonType={setComparisonType}
         />
 
-        {isComparisonModeOn && (
+        {isComparisonModeEnabled && (
           <CompatisonMode comparisonType={comparisonType} />
         )}
       </Styles.ComparisonWrapper>

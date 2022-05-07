@@ -13,7 +13,8 @@ const useMain = () => {
   const location = useLocation();
   const history = useHistory();
 
-  const [isComparisonModeOn, setIsComparisonModeOn] = useState<boolean>(false);
+  const [isComparisonModeEnabled, setIsComparisonModeEnabled] =
+    useState<boolean>(false);
 
   useEffect(() => {
     if (
@@ -45,11 +46,11 @@ const useMain = () => {
   }, [comparison, location, history]);
 
   useEffect(() => {
-    setIsComparisonModeOn(location.pathname.startsWith("/comparison"));
+    setIsComparisonModeEnabled(location.pathname.startsWith("/comparison"));
   }, [location]);
 
   return {
-    isComparisonModeOn,
+    isComparisonModeEnabled,
   };
 };
 
