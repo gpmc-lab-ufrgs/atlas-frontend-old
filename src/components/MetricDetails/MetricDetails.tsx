@@ -14,13 +14,6 @@ const MetricDetails = ({ district, metric, small }: any) => {
     const width = small ? 115 : undefined;
 
     switch (metric.type) {
-      /*case 'range':
-        return (
-          <div key={district.properties.NM_MUN} className="comparison-bar">
-            <label title={name} data-value={rawValue}>{name}</label>
-            <RangeBar value={rawValue} min={metric.min} max={metric.max} options={metric.options} width={width}/>
-          </div>
-        )*/
       case "bar":
         let rawValueFloat = parseFloat(rawValue) || 0;
         return (
@@ -38,27 +31,12 @@ const MetricDetails = ({ district, metric, small }: any) => {
         );
       default:
         return (
-          <div key={district.properties.CD_MUN} className="propsContent">
+          <div key={district.properties.CD_MUN}>
             <data value={rawValue}>{value}</data>
           </div>
         );
     }
   };
-
-  /*const renderChartMetric = () => {
-    const width = small ? 240 : undefined;
-    const series = districtList.map((district) => {
-      const data = district.properties[metric.id];
-      return { name: district.properties.SA2_NAME16, data };
-    });
-    return (<LineChartMetric series={series} width={width} showLegend />)
-  }*/
-
-  /*return (
-    metric.type === 'line-chart'
-      ? renderChartMetric()
-      : districtList.map(renderSingleMetric)
-  )*/
 
   return <div>{renderSingleMetric()}</div>;
 };
