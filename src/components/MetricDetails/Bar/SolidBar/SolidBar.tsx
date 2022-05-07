@@ -1,7 +1,7 @@
 import { BarChart, Bar, XAxis, YAxis, LabelList } from "recharts";
-import { getColorFromGradient, lightOrDark } from "@utils/colors";
+import { getColorFromGradient, lightOrDark } from "@utils/colorManipulator";
 
-export const SolidBar = ({
+const SolidBar = ({
   width = 150,
   height = 24,
   label,
@@ -46,8 +46,16 @@ export const SolidBar = ({
         fill={fill}
         isAnimationActive={false}
       >
-        <LabelList dataKey="name" position="insideLeft" fontSize="12" />
+        <LabelList
+          dataKey="name"
+          position="insideLeft"
+          fontSize="12"
+          fill={textColor}
+          fontWeight={500}
+        />
       </Bar>
     </BarChart>
   );
 };
+
+export default SolidBar;

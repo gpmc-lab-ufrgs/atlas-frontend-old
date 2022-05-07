@@ -4,7 +4,7 @@ export function getColorFromGradient(min: string, max: string, value: number) {
 
   const getRGBColor = (color: "red" | "green" | "blue") => {
     return Math.round(
-      (minColor[color] - maxColor[color]) * value + maxColor[color]
+      (maxColor[color] - minColor[color]) * value + minColor[color]
     );
   };
 
@@ -28,9 +28,9 @@ export function lightOrDark(color: string) {
   );
 
   if (hsp > 127.5) {
-    return "white";
-  } else {
     return "black";
+  } else {
+    return "white";
   }
 }
 
