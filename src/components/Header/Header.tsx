@@ -14,24 +14,16 @@ interface Props {
   isComparisonModeOn: boolean;
   comparisonType: string;
   setComparisonType(value: string): void;
-  mapType: boolean;
-  setMapType: (bool: boolean) => void;
 }
 
 const Header: React.FC<Props> = ({
   isComparisonModeOn,
   comparisonType,
   setComparisonType,
-  mapType,
-  setMapType,
 }) => {
   const [openMenu, setOpenMenu] = useState(false);
 
   const { isSidebarOpen } = useSidebar();
-
-  function handleMap() {
-    setMapType(!mapType);
-  }
 
   if (isComparisonModeOn) {
     return (
@@ -59,14 +51,6 @@ const Header: React.FC<Props> = ({
       <Styles.HeaderLeftSide>
         <SearchBar />
       </Styles.HeaderLeftSide>
-
-      {/* <Styles.HeaderCenterSide>
-        <Styles.MapControl>
-          <h4>Geojson</h4>
-          <Switch onChange={handleMap} />
-          <h4>Tileset</h4>
-        </Styles.MapControl>
-      </Styles.HeaderCenterSide> */}
 
       <Styles.HeaderRightSide>
         <Styles.MenuButton onClick={() => setOpenMenu(true)} />

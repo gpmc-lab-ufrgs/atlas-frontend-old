@@ -15,8 +15,8 @@ import {
   cleanDistrictActions,
 } from "./districtActions";
 
-import { fitBounds } from "../actions";
-import { munColorsRS } from "../../mapColors";
+import { fitBounds } from "../../actions";
+import { RSColors } from "./const";
 import { lineOpacity, lineWidth, fillOpacity } from "../../const";
 
 import geojsonGO from "@data/states/RS_Municipios_2020.json";
@@ -60,7 +60,7 @@ const useDistrictLayer = () => {
         paint: {
           "fill-color": {
             property: "POPULATION",
-            stops: munColorsRS,
+            stops: RSColors,
           },
           //@ts-ignore
           "fill-opacity": fillOpacity,

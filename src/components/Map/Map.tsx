@@ -1,12 +1,12 @@
 import { useState, useRef, useEffect } from "react";
 import mapboxgl from "mapbox-gl";
 
-import useDistrictLayer from "./useDistrictLayer";
-import useStateLayer from "./useStateLayer";
+import useDistrictLayer from "./hook/useDistrictLayer";
+import useStateLayer from "./hook/useStateLayer";
 
-import { accessToken } from "../const";
+import { accessToken } from "./const";
 
-import "../styles.css";
+import "./styles.css";
 
 const Map = () => {
   mapboxgl.accessToken = accessToken;

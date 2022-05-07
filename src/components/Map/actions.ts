@@ -1,7 +1,7 @@
 import * as turf from "@turf/turf";
 import mapboxgl from "mapbox-gl";
 
-import { accessToken } from "../const";
+import { accessToken } from "./const";
 
 mapboxgl.accessToken = accessToken;
 

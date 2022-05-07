@@ -2,16 +2,22 @@ import { useEffect, useState } from "react";
 
 import mapboxgl from "mapbox-gl";
 
+import geojsonURL from "@data/BR_UF_2020.json";
+
 import { useSelectedState } from "@store/state/selectedContext";
 import { useHighlightedState } from "@store/state/highlightedContext";
 
-import { highlightState, clickState } from "./stateActions";
 import {
-  lineOpacity,
-  lineWidth,
-  fillOpacity,
-  stateSourceLayer,
-} from "../../const";
+  highlightState,
+  clickState,
+  isStateLayerVisible,
+  cleanStateActions,
+} from "./stateActions";
+
+import { fitCenter } from "../../actions";
+import { stateColors } from "./const";
+import { lineOpacity, lineWidth, fillOpacity } from "../../const";
+import { isDistrictLayerVisible } from "../useDistrictLayer/districtActions";
 
 const useStateLayer = () => {
   const [stateReference, setStateReference] = useState<mapboxgl.Map>();
@@ -23,25 +29,26 @@ const useStateLayer = () => {
 
   function initLayers(stateReference: mapboxgl.Map) {
     stateReference.on("load", () => {
-      stateReference.dragRotate.disable();
-      stateReference.touchZoomRotate.disableRotation();
-
       stateReference.addSource("state", {
-        type: "vector",
-        url: `mapbox://leosgomes.3yhfk2t5`,
+        type: "geojson",
+        //@ts-ignore
+        data: geojsonURL,
+        //@ts-ignore
+        promoteId: "CD_UF",
       });
 
       stateReference.addLayer({
         id: "fill-state",
         type: "fill",
         source: "state",
-        "source-layer": stateSourceLayer,
-        maxzoom: 7,
         layout: {
           visibility: "visible",
         },
         paint: {
-          "fill-color": "#6CC24A",
+          "fill-color": {
+            property: "POPULATION",
+            stops: stateColors,
+          },
           //@ts-ignore
           "fill-opacity": fillOpacity,
         },
@@ -51,7 +58,6 @@ const useStateLayer = () => {
         id: "state-borders",
         type: "line",
         source: "state",
-        "source-layer": stateSourceLayer,
         layout: {
           visibility: "visible",
         },
@@ -93,17 +99,31 @@ const useStateLayer = () => {
 
   useEffect(() => {
     if (stateReference) {
-      highlightState(highlightState, stateReference);
+      highlightState(highlightedState, stateReference);
     }
-  }, [highlightState]);
+  }, [highlightedState]);
 
   useEffect(() => {
-    if (stateReference && selectedState) {
+    if (stateReference && selectedState !== null) {
       clickState(selectedState, stateReference);
+
+      isDistrictLayerVisible(stateReference, true);
+      isStateLayerVisible(stateReference, false);
+    } else if (stateReference) {
+      clickState(null, stateReference);
+
+      fitCenter(stateReference);
+
+      isDistrictLayerVisible(stateReference, false);
+      isStateLayerVisible(stateReference, true);
+
+      cleanStateActions();
     }
-  }, [selectedState]);
+  }, [selectedState, stateReference]);
 
   return {
+    initLayers,
+    initActions,
     setStateReference,
     stateReference,
   };

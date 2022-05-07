@@ -2,7 +2,7 @@ import * as turf from "@turf/turf";
 import mapboxgl from "mapbox-gl";
 
 import { hoveredPopup } from "../../const";
-import { fitBounds, fitCenter } from "../actions";
+import { fitBounds, fitCenter } from "../../actions";
 
 var hoveredId: number | undefined;
 var clickedId: number | undefined;

@@ -13,7 +13,7 @@ import Modal from "@components/Modal";
 import Sidebar from "@components/Sidebar";
 import CompatisonMode from "@components/ComparisonMode";
 
-import { TilesetMap, GeojsonMap } from "@components/Map";
+import Map from "@components/Map";
 
 import * as Styles from "./styles";
 
@@ -29,7 +29,6 @@ const Main = () => {
 
   const [isComparisonModeOn, setIsComparisonModeOn] = useState<boolean>(false);
   const [comparisonType, setComparisonType] = useState("table");
-  const [useTilesetMap, setUseTilesetMap] = useState(false);
 
   useEffect(() => {
     setIsComparisonModeOn(location.pathname.startsWith("/comparison"));
@@ -78,8 +77,6 @@ const Main = () => {
           isComparisonModeOn={isComparisonModeOn}
           comparisonType={comparisonType}
           setComparisonType={setComparisonType}
-          mapType={useTilesetMap}
-          setMapType={setUseTilesetMap}
         />
 
         {isComparisonModeOn && (
@@ -87,7 +84,7 @@ const Main = () => {
         )}
       </Styles.ComparisonWrapper>
 
-      {useTilesetMap ? <TilesetMap /> : <GeojsonMap />}
+      {<Map />}
 
       <Footer />
     </Styles.MainContainer>
