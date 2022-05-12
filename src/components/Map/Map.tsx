@@ -1,6 +1,8 @@
 import { useState, useRef, useEffect } from "react";
 import mapboxgl from "mapbox-gl";
 
+import useMap from "@hook/useMap";
+
 import useDistrictLayer from "./hook/useDistrictLayer";
 import useStateLayer from "./hook/useStateLayer";
 
@@ -16,6 +18,7 @@ const Map = () => {
   const { districtReference, setDistrictReference } = useDistrictLayer();
   const { stateReference, setStateReference } = useStateLayer();
 
+  const { resetMapValues, resetDistrictValues } = useMap();
   const [map, setMap] = useState<mapboxgl.Map>();
 
   useEffect(() => {
@@ -27,6 +30,26 @@ const Map = () => {
         style: "mapbox://styles/mapbox/dark-v10",
         center: center,
         zoom: 3.4,
+      });
+
+      map.on("click", (e) => {
+        const bbox = [
+          [e.point.x - 5, e.point.y - 5],
+          [e.point.x + 5, e.point.y + 5],
+        ];
+
+        //@ts-ignore
+        const clickedDistrict = map.queryRenderedFeatures(bbox, {
+          layers: ["fill-district"],
+        });
+
+        const zoom = map.getZoom();
+
+        if (clickedDistrict.length === 0 && zoom > 6) {
+          resetDistrictValues();
+        } else if (clickedDistrict.length === 0) {
+          resetMapValues();
+        }
       });
 
       setMap(map);

@@ -7,19 +7,19 @@ import { useSelectedDistrict } from "@store/district/selectedContext";
 import { useSelectedState } from "@store/state/selectedContext";
 import { useSidebar } from "@store/sidebarContext";
 
-import useMap from "@hook/useMap";
-
 import {
   highlightDistrict,
   clickDistrict,
   cleanDistrictActions,
+  fitDistrictBounds,
 } from "./districtActions";
 
-import { fitBounds } from "../../actions";
 import { RSColors } from "./const";
 import { lineOpacity, lineWidth, fillOpacity } from "../../const";
 
 import geojsonGO from "@data/states/RS_Municipios_2020.json";
+import { fitStateBounds } from "../useStateLayer/stateActions";
+import { findState } from "@components/Map/actions";
 
 const useDistrictLayer = () => {
   const [districtReference, setDistrictReference] = useState<mapboxgl.Map>();
@@ -31,11 +31,13 @@ const useDistrictLayer = () => {
   const { setSelected: setSelectedDistrict, selected: selectedDistrict } =
     useSelectedDistrict();
 
-  const { selected: selectedState, setSelected: setSelectedState } =
-    useSelectedState();
+  const {
+    selected: selectedState,
+    setSelected: setSelectedState,
+    all: allState,
+  } = useSelectedState();
 
   const { setIsSidebarOpen } = useSidebar();
-  const { resetMapValues } = useMap();
 
   function initLayers(districtReference: mapboxgl.Map) {
     districtReference.on("load", () => {
@@ -102,22 +104,6 @@ const useDistrictLayer = () => {
     districtReference.on("mouseleave", "fill-district", () => {
       setHighlightedDistrict(null);
     });
-
-    districtReference.on("click", (e) => {
-      const bbox = [
-        [e.point.x - 5, e.point.y - 5],
-        [e.point.x + 5, e.point.y + 5],
-      ];
-
-      //@ts-ignore
-      const clickedDistrict = districtReference.queryRenderedFeatures(bbox, {
-        layers: ["fill-district"],
-      });
-
-      if (clickedDistrict.length === 0) {
-        resetMapValues();
-      }
-    });
   }
 
   useEffect(() => {
@@ -137,17 +123,19 @@ const useDistrictLayer = () => {
     if (districtReference && selectedDistrict !== null) {
       clickDistrict(selectedDistrict, districtReference);
 
-      fitBounds(selectedDistrict, districtReference);
+      fitDistrictBounds(selectedDistrict, districtReference);
 
       setIsSidebarOpen(true);
 
       if (selectedState === null) {
-        setSelectedState({
-          properties: { SIGLA_UF: selectedDistrict.properties.SIGLA_UF },
-        });
+        const state = findState(allState, selectedDistrict.properties.SIGLA_UF);
+
+        setSelectedState(state);
       }
     } else if (districtReference) {
       clickDistrict(null, districtReference);
+
+      fitStateBounds(selectedState, districtReference);
 
       cleanDistrictActions();
     }
