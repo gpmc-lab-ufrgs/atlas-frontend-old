@@ -4,8 +4,8 @@ import { useState } from 'react';
 
 import { useTheme } from '@mui/material/styles';
 
-import { useSelectedDistrict } from '@store/district/selectedContext';
-import { useSidebar } from '@store/sidebarContext';
+import { useSidebar } from "@store/sidebarContext";
+import { useSelectedDistrict } from "@store/district/selectedContext";
 
 import Map from '@components/Map';
 import Modal from '@components/Modal';
@@ -13,6 +13,7 @@ import Footer from '@components/Footer';
 import Header from '@components/Header';
 import Sidebar from '@components/Sidebar';
 import CompatisonMode from '@components/ComparisonMode';
+import SideInformationsContainer from "@components/SideInformationsContainer";
 
 import { useMain } from './hook';
 
@@ -31,7 +32,12 @@ const Main = () => {
     <Styles.MainContainer>
       <Modal />
 
-      <Sidebar isComparisonMode={isComparisonModeEnabled} title={selected?.properties.NM_MUN} />
+      <Sidebar
+        isComparisonMode={isComparisonModeOn}
+        title={selected?.properties.NM_MUN}
+      />
+
+      <SideInformationsContainer/>
 
       <Styles.ComparisonWrapper isSidebarOpen={isSidebarOpen} theme={theme}>
         <Header
