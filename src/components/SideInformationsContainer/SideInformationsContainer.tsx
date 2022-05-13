@@ -1,4 +1,4 @@
-import { ExplanationCard } from "../ExplanationCard";
+import { ExplanationCard } from "./ExplanationCard";
 import { useSidebar } from "@store/sidebarContext";
 import { useTheme } from "@mui/material/styles";
 import * as Styles from "./styles";
@@ -13,8 +13,7 @@ export default function SideInformationsContainer(){
         theme={theme}
         isSidebarOpen={isSidebarOpen}
         >
-            {/* <ExplanationCard/> */}
-            
+            <ExplanationCard/>
         </Styles.SideInformationsContainer>
     )
 }
