@@ -1,11 +1,13 @@
+import { useState } from "react";
 import * as Styles from "./styles";
 
 export default function ExplanationCard(){
 
+    const [cardStatus, setCardStatus] = useState(false);
 
     return(
-        <Styles.ExplanationContainer>
-            <Styles.ExplanationCardCloseIcon width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/Styles.ExplanationCardCloseIcon" 
+        <Styles.ExplanationContainer isCardClosed={ cardStatus } >
+            <Styles.ExplanationCardCloseIcon onClick={ ()=>{ setCardStatus(true); }  }  width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/Styles.ExplanationCardCloseIcon" 
             >
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M0.439341 9.43589C-0.146446 10.0217 -0.146447 10.9714 0.439339 11.5572C1.02513 12.143 1.97487 
                 12.143 2.56066 11.5572L5.99813 8.11976L9.43568 11.5573C10.0215 12.1431 10.9712 12.1431 11.557 11.5573C12.1428 10.9715 12.1428 10.0218 11.557 

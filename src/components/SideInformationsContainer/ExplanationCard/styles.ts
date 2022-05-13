@@ -1,11 +1,15 @@
 import { Card } from "@mui/material";
 import styled from "styled-components";
 
+interface CloseCard {
+    isCardClosed: boolean;
+}
 
-export const ExplanationContainer = styled(Card)`
+
+export const ExplanationContainer = styled(Card)<CloseCard>`
   
     position: fixed;
-    z-index: 5;
+    z-index: ${({ isCardClosed }) => (isCardClosed ? "1" : "2")};;
         
     padding: 30px 35px;
     font-size: 14px;
