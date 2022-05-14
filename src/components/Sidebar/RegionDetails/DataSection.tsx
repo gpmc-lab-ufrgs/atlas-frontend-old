@@ -8,15 +8,15 @@ import { useSelectedDistrict } from "@store/district/selectedContext";
 import { useComparison } from "@store/comparisonContext";
 
 import {
-  DistrictSectionType,
-  DistrictContentType,
-} from "@config/districtProps";
+  MapPropsContentType,
+  MapPropsSectionType,
+} from "@customTypes/mapProps";
 
 import { Tooltip } from "@mui/material";
 
 import * as Styles from "./styles";
 
-const DataSection: React.FC<DistrictSectionType> = ({ title, content }) => {
+const DataSection: React.FC<MapPropsSectionType> = ({ title, content }) => {
   const { selected } = useSelectedDistrict();
   const { comparison } = useComparison();
 
@@ -28,7 +28,7 @@ const DataSection: React.FC<DistrictSectionType> = ({ title, content }) => {
 
   return (
     <Collapsible title={title}>
-      {content.map((props: DistrictContentType, id) => (
+      {content.map((props: MapPropsContentType, id) => (
         <Styles.PropsWrapper key={id}>
           <Tooltip title={props.description} arrow>
             <Styles.PropsTitle>{props.title}</Styles.PropsTitle>
