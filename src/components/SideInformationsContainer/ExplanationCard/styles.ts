@@ -49,7 +49,7 @@ export const ExplanationCardCloseIcon = styled.svg`
     width: 12px;
     height: 12px;
     padding: 6px;
-    margin: 8px 14px 0px 0px;
+    margin: 12px 12px 0px 0px;
     cursor: pointer;
 `
 
