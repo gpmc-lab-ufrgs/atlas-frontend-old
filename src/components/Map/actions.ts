@@ -1,24 +1,16 @@
-import * as turf from "@turf/turf";
+import { State } from "@customTypes/feature";
 import mapboxgl from "mapbox-gl";
 
 import { accessToken } from "./const";
 
 mapboxgl.accessToken = accessToken;
 
-export function fitBounds(feature: any, map: mapboxgl.Map) {
-  if (feature && (feature.geometry || feature._geometry)) {
-    const [minX, minY, maxX, maxY] = turf.bbox(feature);
+export function findState(allState: State[], stateName: string) {
+  const state = allState.find(
+    (state) => state.properties.SIGLA_UF === stateName
+  );
 
-    map.fitBounds(
-      [
-        [minX, minY],
-        [maxX, maxY],
-      ],
-      {
-        padding: { top: 200, bottom: 200, left: 550, right: 200 },
-      }
-    );
-  }
+  return state;
 }
 
 export function fitCenter(map: mapboxgl.Map) {

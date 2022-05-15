@@ -12,15 +12,19 @@ const useMap = () => {
   const { setSelected: setSelectedDistrict } = useSelectedDistrict();
   const { setSelected: setSelectedState } = useSelectedState();
 
-  const resetMapValues = () => {
+  const resetDistrictValues = () => {
     setIsSidebarOpen(false);
     setHighlightedDistrict(null);
-    setHighlightedState(null);
     setSelectedDistrict(null);
+  };
+
+  const resetMapValues = () => {
+    resetDistrictValues();
+    setHighlightedState(null);
     setSelectedState(null);
   };
 
-  return { resetMapValues };
+  return { resetMapValues, resetDistrictValues };
 };
 
 export default useMap;

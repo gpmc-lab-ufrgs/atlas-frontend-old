@@ -2,7 +2,6 @@ import * as turf from "@turf/turf";
 import mapboxgl from "mapbox-gl";
 
 import { hoveredPopup } from "../../const";
-import { fitBounds, fitCenter } from "../../actions";
 
 var hoveredId: number | undefined;
 var clickedId: number | undefined;
@@ -33,8 +32,6 @@ export function clickState(feature: any, map: mapboxgl.Map) {
       return;
     }
 
-    fitBounds(feature, map);
-
     if (clickedId) {
       setFeatureClick(clickedId, map, false);
     }
@@ -44,8 +41,6 @@ export function clickState(feature: any, map: mapboxgl.Map) {
       clickedId = stateID;
     }
   } else if (clickedId) {
-    fitCenter(map);
-
     if (map.getSource("state")) {
       setFeatureClick(clickedId, map, false);
     }
@@ -97,4 +92,20 @@ export function cleanStateActions() {
   hoveredPopup.remove();
   clickedId = 0;
   hoveredId = undefined;
+}
+
+export function fitStateBounds(feature: any, map: mapboxgl.Map) {
+  if (feature && (feature.geometry || feature._geometry)) {
+    const [minX, minY, maxX, maxY] = turf.bbox(feature);
+
+    map.fitBounds(
+      [
+        [minX, minY],
+        [maxX, maxY],
+      ],
+      {
+        padding: { top: 100, bottom: 100, left: 200, right: 200 },
+      }
+    );
+  }
 }

@@ -107,3 +107,19 @@ export function cleanDistrictActions() {
   clickedId = 0;
   hoveredId = undefined;
 }
+
+export function fitDistrictBounds(feature: any, map: mapboxgl.Map) {
+  if (feature && (feature.geometry || feature._geometry)) {
+    const [minX, minY, maxX, maxY] = turf.bbox(feature);
+
+    map.fitBounds(
+      [
+        [minX, minY],
+        [maxX, maxY],
+      ],
+      {
+        padding: { top: 200, bottom: 200, left: 550, right: 200 },
+      }
+    );
+  }
+}
