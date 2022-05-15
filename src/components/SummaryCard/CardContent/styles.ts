@@ -16,7 +16,7 @@ export const Container = styled(Card)`
 `;
 
 export const Title = styled.h2`
-    margin-top: 0px;
+    margin: 0px;
 `
 
 export const Text =  styled.p`

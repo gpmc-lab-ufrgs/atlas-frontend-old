@@ -19,12 +19,12 @@ export default function CardContent() {
 
     return (
         <Styles.Container>
-            <Box py="20px" px="25px">
-                <Box display="flex" justifyContent="flex-end">
+            <Box py="25px" px="25px">
+                <Box display="flex" justifyContent="space-between" pb="10px">
+                    <Styles.Title>Atlas Of Opportunity</Styles.Title>
                     <CloseIcon onClick={handleCloseCard} cursor="pointer" />
                 </Box>
 
-                <Styles.Title>Atlas Of Opportunity</Styles.Title>
                 <Styles.Text>
                     Recent research has revealed a connection
                     between people's mobility and the economy — areas with diverse community movement patterns
