@@ -35,16 +35,12 @@ const Main = () => {
       <Modal />
 
       <Sidebar
-        isComparisonMode={isComparisonModeOn}
+        isComparisonMode={isComparisonModeEnabled}
         title={selected?.properties.NM_MUN}
       />
 
       <SummaryCard/>
-<<<<<<< HEAD
 
-=======
-      
->>>>>>> a4dd9ac0 (:adhesive_bandage: fix spaces between components)
       <Styles.ComparisonWrapper isSidebarOpen={isSidebarOpen} theme={theme}>
         <Header
           isComparisonModeOn={isComparisonModeEnabled}
