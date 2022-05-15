@@ -4,18 +4,16 @@ import { useState } from 'react';
 
 import { useTheme } from '@mui/material/styles';
 
-import { useSidebar } from "@store/sidebarContext";
-import { useSelectedDistrict } from "@store/district/selectedContext";
+import { useSidebar } from '@store/sidebarContext';
+import { useSelectedDistrict } from '@store/district/selectedContext';
 
-import Map from "@components/Map";
-import Modal from "@components/Modal";
-import Header from "@components/Header";
-import Footer from "@components/Footer";
-import Sidebar from "@components/Sidebar";
-import SummaryCard from "@components/SummaryCard";
-import CompatisonMode from "@components/ComparisonMode";
-
-
+import Map from '@components/Map';
+import Modal from '@components/Modal';
+import Header from '@components/Header';
+import Footer from '@components/Footer';
+import Sidebar from '@components/Sidebar';
+import SummaryCard from '@components/SummaryCard';
+import CompatisonMode from '@components/ComparisonMode';
 
 import { useMain } from './hook';
 
@@ -34,12 +32,9 @@ const Main = () => {
     <Styles.MainContainer>
       <Modal />
 
-      <Sidebar
-        isComparisonMode={isComparisonModeEnabled}
-        title={selected?.properties.NM_MUN}
-      />
+      <Sidebar isComparisonMode={isComparisonModeEnabled} title={selected?.properties.NM_MUN} />
 
-      <SummaryCard/>
+      <SummaryCard />
 
       <Styles.ComparisonWrapper isSidebarOpen={isSidebarOpen} theme={theme}>
         <Header

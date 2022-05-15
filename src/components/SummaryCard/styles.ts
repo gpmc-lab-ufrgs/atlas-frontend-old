@@ -1,20 +1,20 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 interface Minimizer {
-    isSidebarOpen: boolean;
-    theme: {};
-  }
+  isSidebarOpen: boolean;
+  theme: unknown;
+}
 
 export const SideInformationsContainer = styled.div<Minimizer>`
-    top: 150px;
-    position: absolute;
-    font-family: "Roboto",sans-serif;
+  top: 150px;
+  position: absolute;
+  font-family: 'Roboto', sans-serif;
 
-    left: ${({ isSidebarOpen }) => (isSidebarOpen ? "365" : "20")}px;
+  left: ${({ isSidebarOpen }) => (isSidebarOpen ? '365' : '20')}px;
 
-    transition: ${({ theme }) =>
-    theme.transitions.create(["left"], {
+  transition: ${({ theme }) =>
+    theme.transitions.create(['left'], {
       easing: theme.transitions.easing.easeOut,
       duration: theme.transitions.duration.enteringScreen,
     })};
-`
+`;

@@ -1,19 +1,19 @@
-import { CardContent } from "./CardContent";
-import { useSidebar } from "@store/sidebarContext";
-import { useTheme } from "@mui/material/styles";
-import * as Styles from "./styles";
+import React from 'react';
 
-export default function SummaryCard(){
+import { useTheme } from '@mui/material/styles';
 
-    const { isSidebarOpen } = useSidebar();
-    const theme = useTheme();
+import { useSidebar } from '@store/sidebarContext';
 
-    return(
-        <Styles.SideInformationsContainer 
-        theme={theme}
-        isSidebarOpen={isSidebarOpen}
-        >
-            <CardContent/>
-        </Styles.SideInformationsContainer>
-    )
+import { CardContent } from './CardContent';
+import * as Styles from './styles';
+
+export default function SummaryCard() {
+  const { isSidebarOpen } = useSidebar();
+  const theme = useTheme();
+
+  return (
+    <Styles.SideInformationsContainer theme={theme} isSidebarOpen={isSidebarOpen}>
+      <CardContent />
+    </Styles.SideInformationsContainer>
+  );
 }

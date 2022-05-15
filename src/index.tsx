@@ -4,14 +4,14 @@ import { BrowserRouter } from 'react-router-dom';
 
 import Main from '@pages/Main';
 
-import AtlasTheme from "@components/Theme";
+import AtlasTheme from '@components/Theme';
 
-import { SidebarProvider } from "@store/sidebarContext";
-import { ComparisonProvider } from "@store/comparisonContext";
-import { SelectedStatesProvider } from "@store/state/selectedContext";
-import { SelectedDistrictProvider } from "@store/district/selectedContext";
-import { HighlightedStatesProvider } from "@store/state/highlightedContext";
-import { HighlightedDistrictProvider } from "@store/district/highlightedContext";
+import { SidebarProvider } from '@store/sidebarContext';
+import { ComparisonProvider } from '@store/comparisonContext';
+import { SelectedStatesProvider } from '@store/state/selectedContext';
+import { SelectedDistrictProvider } from '@store/district/selectedContext';
+import { HighlightedStatesProvider } from '@store/state/highlightedContext';
+import { HighlightedDistrictProvider } from '@store/district/highlightedContext';
 
 import './index.css';
 
