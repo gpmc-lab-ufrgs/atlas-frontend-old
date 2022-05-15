@@ -1,7 +1,7 @@
 import { useState } from "react";
 import * as Styles from "./styles";
 
-export default function ExplanationCard(){
+export default function CardContent(){
     const [cardStatus, setCardStatus] = useState(false);
 
     return(

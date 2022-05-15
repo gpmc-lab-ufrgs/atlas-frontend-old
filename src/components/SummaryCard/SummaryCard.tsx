@@ -1,9 +1,9 @@
-import { ExplanationCard } from "./ExplanationCard";
+import { CardContent } from "./CardContent";
 import { useSidebar } from "@store/sidebarContext";
 import { useTheme } from "@mui/material/styles";
 import * as Styles from "./styles";
 
-export default function SideInformationsContainer(){
+export default function SummaryCard(){
 
     const { isSidebarOpen } = useSidebar();
     const theme = useTheme();
@@ -13,7 +13,7 @@ export default function SideInformationsContainer(){
         theme={theme}
         isSidebarOpen={isSidebarOpen}
         >
-            <ExplanationCard/>
+            <CardContent/>
         </Styles.SideInformationsContainer>
     )
 }
