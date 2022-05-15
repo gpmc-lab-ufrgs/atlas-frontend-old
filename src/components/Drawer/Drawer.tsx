@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react';
 
-import * as Styles from "./styles";
+import * as Styles from './styles';
 
-type Anchor = "right" | "left";
+type Anchor = 'right' | 'left';
 
 interface Props {
   open: boolean;
@@ -11,13 +11,7 @@ interface Props {
   hideBackdrop?: boolean;
 }
 
-const Drawer: React.FC<Props> = ({
-  open,
-  anchor,
-  setOpen,
-  hideBackdrop,
-  children,
-}) => {
+const Drawer: React.FC<Props> = ({ open, anchor, setOpen, hideBackdrop, children }) => {
   const handleCloseDrawer = () => setOpen(false);
 
   return (

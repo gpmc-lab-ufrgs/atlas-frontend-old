@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const PopperContainer = styled.div`
   z-index: 1;
@@ -26,8 +26,7 @@ interface PopperItemProps {
 export const PopperItem = styled.li<PopperItemProps>`
   padding: 12px 15px;
 
-  background-color: ${({ hasHighlight }) =>
-    hasHighlight ? "#f2f2f2" : "white"};
+  background-color: ${({ hasHighlight }) => (hasHighlight ? '#f2f2f2' : 'white')};
 `;
 
 export const PopperTitle = styled.h4`

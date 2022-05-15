@@ -1,20 +1,20 @@
-import viniciusBrei from "@assets/vinicius_brei.jpg";
-import alexSandy from "@assets/alex_sandy.png";
-import mohsenBahrami from "@assets/mohsen_bahrami.png";
-import alinaFlores from "@assets/alina_flores.png";
-import ricardoLimongi from "@assets/ricardo_limongi.png";
-import leonardoGomes from "@assets/leonardo_gomes.jpg";
-import justinAnderson from "@assets/justin_anderson.png";
-import enzoGabriel from "@assets/enzo_gabriel.jpg";
-import valdersonJunior from "@assets/valderson_junior.png";
-import anaLuisa from "@assets/avatar_icon.svg";
-import andreonMagagna from "@assets/andreon_magagna.jpg";
-import carlaNetto from "@assets/carla_netto.jpg";
-import jaianyRocha from "@assets/jaiany_rocha.png";
-import jhenifferLucas from "@assets/jheniffer_lucas.jpg";
-import luisMenegetti from "@assets/luis_meneguetti.jpg";
-import thalesMartins from "@assets/avatar_icon.svg";
-import vilmarBoff from "@assets/vilmar_boff.png";
+import viniciusBrei from '@assets/vinicius_brei.jpg';
+import alexSandy from '@assets/alex_sandy.png';
+import mohsenBahrami from '@assets/mohsen_bahrami.png';
+import alinaFlores from '@assets/alina_flores.png';
+import ricardoLimongi from '@assets/ricardo_limongi.png';
+import leonardoGomes from '@assets/leonardo_gomes.jpg';
+import justinAnderson from '@assets/justin_anderson.png';
+import enzoGabriel from '@assets/enzo_gabriel.jpg';
+import valdersonJunior from '@assets/valderson_junior.png';
+import anaLuisa from '@assets/avatar_icon.svg';
+import andreonMagagna from '@assets/andreon_magagna.jpg';
+import carlaNetto from '@assets/carla_netto.jpg';
+import jaianyRocha from '@assets/jaiany_rocha.png';
+import jhenifferLucas from '@assets/jheniffer_lucas.jpg';
+import luisMenegetti from '@assets/luis_meneguetti.jpg';
+import thalesMartins from '@assets/avatar_icon.svg';
+import vilmarBoff from '@assets/vilmar_boff.png';
 
 interface Person {
   name: string;
@@ -26,120 +26,120 @@ interface Person {
 
 export const mainResearchers: Person[] = [
   {
-    name: "Vinicius Brei",
+    name: 'Vinicius Brei',
     image: viniciusBrei,
-    function: "Lead Researcher",
-    institution: "UFRGS",
+    function: 'Lead Researcher',
+    institution: 'UFRGS',
     hasImage: true,
   },
   {
-    name: "Alex Sandy Pentland",
+    name: 'Alex Sandy Pentland',
     image: alexSandy,
-    function: "Principal Investigator",
-    institution: "MIT",
+    function: 'Principal Investigator',
+    institution: 'MIT',
     hasImage: true,
   },
   {
-    name: "Mohsen Bahrami",
+    name: 'Mohsen Bahrami',
     image: mohsenBahrami,
-    function: "Lead Researcher",
-    institution: "MIT",
+    function: 'Lead Researcher',
+    institution: 'MIT',
     hasImage: true,
   },
   {
-    name: "Alina Flores",
+    name: 'Alina Flores',
     image: alinaFlores,
-    function: "Lead Researcher",
-    institution: "UFRGS",
+    function: 'Lead Researcher',
+    institution: 'UFRGS',
     hasImage: true,
   },
   {
-    name: "Ricardo Limongi",
+    name: 'Ricardo Limongi',
     image: ricardoLimongi,
-    function: "Lead Researcher",
-    institution: "UFG",
+    function: 'Lead Researcher',
+    institution: 'UFG',
     hasImage: true,
   },
   {
-    name: "Leonardo Gomes",
+    name: 'Leonardo Gomes',
     image: leonardoGomes,
-    function: "Lead Software Developer",
-    institution: "Universidade de Brasília",
+    function: 'Lead Software Developer',
+    institution: 'Universidade de Brasília',
     hasImage: true,
   },
   {
-    name: "Justin Anderson",
+    name: 'Justin Anderson',
     image: justinAnderson,
-    function: "Lead Software Developer",
-    institution: "MIT",
+    function: 'Lead Software Developer',
+    institution: 'MIT',
     hasImage: true,
   },
 ];
 
 export const developers: Person[] = [
   {
-    name: "Enzo Gabriel",
+    name: 'Enzo Gabriel',
     image: enzoGabriel,
-    institution: "Universidade de Brasília",
+    institution: 'Universidade de Brasília',
     hasImage: true,
   },
   {
-    name: "Valderson Junior",
+    name: 'Valderson Junior',
     image: valdersonJunior,
-    institution: "Universidade de Brasília",
+    institution: 'Universidade de Brasília',
     hasImage: true,
   },
 ];
 
 export const researchers: Person[] = [
   {
-    name: "Ana Luisa",
+    name: 'Ana Luisa',
     image: anaLuisa,
-    institution: "",
+    institution: '',
     hasImage: false,
   },
 
   {
-    name: "Andreon Magagna",
+    name: 'Andreon Magagna',
     image: andreonMagagna,
-    institution: "UFRGS",
+    institution: 'UFRGS',
     hasImage: true,
   },
 
   {
-    name: "Carla Netto",
+    name: 'Carla Netto',
     image: carlaNetto,
-    institution: "",
+    institution: '',
     hasImage: true,
   },
   {
-    name: "Jaiany Rocha",
+    name: 'Jaiany Rocha',
     image: jaianyRocha,
-    institution: "",
+    institution: '',
     hasImage: true,
   },
   {
-    name: "Jheniffer Dany Lucas",
+    name: 'Jheniffer Dany Lucas',
     image: jhenifferLucas,
-    institution: "",
+    institution: '',
     hasImage: true,
   },
   {
-    name: "Luís Eduardo Meneguetti",
+    name: 'Luís Eduardo Meneguetti',
     image: luisMenegetti,
-    institution: "",
+    institution: '',
     hasImage: true,
   },
   {
-    name: "Thales Martins",
+    name: 'Thales Martins',
     image: thalesMartins,
-    institution: "",
+    institution: '',
     hasImage: false,
   },
   {
-    name: "Vilmar Oro Boff",
+    name: 'Vilmar Oro Boff',
     image: vilmarBoff,
-    institution: "",
+    institution: '',
     hasImage: true,
   },
 ];

@@ -1,11 +1,11 @@
-import React from "react";
+import React from 'react';
 
-import { Feature } from "@store/contexts/featuresContext";
+import { District } from '@customTypes/feature';
 
-import * as Styles from "./styles";
+import * as Styles from './styles';
 
 interface Props {
-  comparison: Array<Feature>;
+  comparison: Array<District>;
 }
 
 const Header: React.FC<Props> = ({ comparison }) => {

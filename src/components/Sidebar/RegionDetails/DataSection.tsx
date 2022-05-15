@@ -1,31 +1,28 @@
-import React from "react";
+import React from 'react';
 
-import CollapsibleSection from "@components/CollapsibleSection";
-import MetricDetails from "@components/MetricDetails";
+import Collapsible from '@components/Collapsible';
 
-import { useFeatures } from "@store/featuresContext";
-import { useComparison } from "@store/comparisonContext";
+import MetricDetails from '@components/MetricDetails';
 
-import {
-  DistrictSectionType,
-  DistrictContentType,
-} from "@config/districtProps";
+import { useSelectedDistrict } from '@store/district/selectedContext';
+import { useComparison } from '@store/comparisonContext';
 
-import { Tooltip } from "@mui/material";
+import { DistrictSectionType, DistrictContentType } from '@config/districtProps';
 
-import * as Styles from "./styles";
+import { Tooltip } from '@mui/material';
+
+import * as Styles from './styles';
 
 const DataSection: React.FC<DistrictSectionType> = ({ title, content }) => {
-  const { district } = useFeatures();
+  const { selected } = useSelectedDistrict();
   const { comparison } = useComparison();
 
-  const isSelectedOnComparison = comparison.some(
-    (region) =>
-      region.properties.CD_MUN === district.selected?.properties.CD_MUN
-  );
+  const isSelectedOnComparison = comparison.some((region) => region.properties.CD_MUN === selected?.properties.CD_MUN);
+
+  const hasSelectedDistrict = Boolean(selected);
 
   return (
-    <CollapsibleSection title={title}>
+    <Collapsible title={title}>
       {content.map((props: DistrictContentType, id) => (
         <Styles.PropsWrapper key={id}>
           <Tooltip title={props.description} arrow>
@@ -33,21 +30,21 @@ const DataSection: React.FC<DistrictSectionType> = ({ title, content }) => {
           </Tooltip>
 
           {comparison.map((district) => (
-            <Styles.ValueContent>
+            <Styles.ValueContent key={district.properties.CD_MUN}>
               <p>{district.properties.NM_MUN}</p>
               <MetricDetails district={district} metric={props} />
             </Styles.ValueContent>
           ))}
 
-          {!isSelectedOnComparison && (
+          {!isSelectedOnComparison && hasSelectedDistrict && (
             <Styles.ValueContent>
-              <p>{district.selected?.properties.NM_MUN}</p>
-              <MetricDetails district={district.selected} metric={props} />
+              <p>{selected?.properties.NM_MUN}</p>
+              <MetricDetails district={selected} metric={props} />
             </Styles.ValueContent>
           )}
         </Styles.PropsWrapper>
       ))}
-    </CollapsibleSection>
+    </Collapsible>
   );
 };
 

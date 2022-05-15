@@ -1,17 +1,30 @@
-import { useSidebar } from "@store/sidebarContext";
-import { useFeatures } from "@store/featuresContext";
+import { useSidebar } from '@store/sidebarContext';
+import { useHighlightedDistrict } from '@store/district/highlightedContext';
+import { useSelectedDistrict } from '@store/district/selectedContext';
+import { useHighlightedState } from '@store/state/highlightedContext';
+import { useSelectedState } from '@store/state/selectedContext';
 
 const useMap = () => {
   const { setIsSidebarOpen } = useSidebar();
-  const { district, state } = useFeatures();
 
-  const resetMapValues = () => {
+  const { setHighlighted: setHighlightedDistrict } = useHighlightedDistrict();
+  const { setHighlighted: setHighlightedState } = useHighlightedState();
+  const { setSelected: setSelectedDistrict } = useSelectedDistrict();
+  const { setSelected: setSelectedState } = useSelectedState();
+
+  const resetDistrictValues = () => {
     setIsSidebarOpen(false);
-    district.resetValues();
-    state.resetValues();
+    setHighlightedDistrict(null);
+    setSelectedDistrict(null);
   };
 
-  return { resetMapValues };
+  const resetMapValues = () => {
+    resetDistrictValues();
+    setHighlightedState(null);
+    setSelectedState(null);
+  };
+
+  return { resetMapValues, resetDistrictValues };
 };
 
 export default useMap;

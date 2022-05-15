@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const FooterContainer = styled.div`
   display: flex;
@@ -16,4 +16,12 @@ interface IInstitutionsLogo {
 export const InstitutionsLogo = styled.img<IInstitutionsLogo>`
   height: ${({ size }) => size}px;
   opacity: 50%;
+  padding-right: 30px;
+`;
+
+export const FooterText = styled.h2`
+  color: #8b8c8c;
+  font-weight: 400;
+  font-size: 15px;
+  padding-right: 10px;
 `;

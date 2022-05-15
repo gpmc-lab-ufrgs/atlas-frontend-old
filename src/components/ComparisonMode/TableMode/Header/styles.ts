@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const TableHeader = styled.div`
   display: grid;
@@ -7,11 +7,11 @@ export const TableHeader = styled.div`
   padding: 10px 25px;
 `;
 
-interface TableItens {
+interface ITableItens {
   gridColumnNumber: number;
 }
 
-export const TableItens = styled.div<TableItens>`
+export const TableItens = styled.div<ITableItens>`
   grid-column: ${({ gridColumnNumber }) => gridColumnNumber};
   justify-self: start;
   align-self: center;

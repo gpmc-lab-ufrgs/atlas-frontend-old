@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const GridContainer = styled.div`
   display: flex;
@@ -18,6 +18,7 @@ export const Grid = styled.div`
 
 export const Title = styled.div`
   padding: 0 15px;
+  word-break: break-all;
 `;
 
 export const GridItem = styled.div`
@@ -32,6 +33,7 @@ export const GridItem = styled.div`
 export const ComparisonLabel = styled.div`
   display: flex;
   justify-content: space-between;
+  font-size: 14px;
 
   label {
     text-overflow: ellipsis;

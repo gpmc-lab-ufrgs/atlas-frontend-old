@@ -1,24 +1,25 @@
-import { useRef } from "react";
+import { useRef } from 'react';
 
-import { useCombobox } from "downshift";
+import { useCombobox } from 'downshift';
 
-import useMap from "@hook/useMap";
+import useMap from '@hook/useMap';
 
-import { useFeatures } from "@store/featuresContext";
-import { Feature } from "@types/Feature";
+import { useHighlightedDistrict } from '@store/district/highlightedContext';
+import { useSelectedDistrict } from '@store/district/selectedContext';
+import { District } from '@customTypes/feature';
 
-const useSearch = (featureSearched: Feature[]) => {
+const useSearch = (featureSearched: District[]) => {
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const { district } = useFeatures();
+  const { selected, setSelected } = useSelectedDistrict();
+  const { setHighlighted } = useHighlightedDistrict();
   const { resetMapValues } = useMap();
 
-  const initialInputValue = district.selected?.properties.NM_MUN ?? "";
+  const initialInputValue = selected?.properties.NM_MUN ?? '';
 
-  const itemToString = (item: any) => (item ? item.name : "");
+  const itemToString = (item: any) => (item ? item.name : '');
 
-  const onSelectedItemChange = (item: any) =>
-    district.setSelected(item.selectedItem);
+  const onSelectedItemChange = (item: any) => setSelected(item.selectedItem);
 
   const {
     getComboboxProps,
@@ -40,16 +41,11 @@ const useSearch = (featureSearched: Feature[]) => {
     itemToString,
     onSelectedItemChange,
 
-    onInputValueChange: ({ inputValue, type }) => {
-      if (
-        inputValue === "" &&
-        type === useCombobox.stateChangeTypes.InputChange
-      ) {
+    onInputValueChange: ({ inputValue: input, type }) => {
+      if (input === '' && type === useCombobox.stateChangeTypes.InputChange) {
         resetMapValues();
-      } else if (isOpen && inputValue !== "") {
-        const definiteMatch = featureSearched.find(
-          (item) => item.properties.NM_MUN === inputValue
-        );
+      } else if (isOpen && input !== '') {
+        const definiteMatch = featureSearched.find((item) => item.properties.NM_MUN === input);
 
         if (definiteMatch) {
           selectItem(definiteMatch);
@@ -57,7 +53,7 @@ const useSearch = (featureSearched: Feature[]) => {
       }
     },
 
-    onHighlightedIndexChange: ({ highlightedIndex, type }) => {
+    onHighlightedIndexChange: ({ highlightedIndex: highlightID, type }) => {
       switch (type) {
         case useCombobox.stateChangeTypes.ItemClick:
         case useCombobox.stateChangeTypes.InputKeyDownEnter:
@@ -65,7 +61,7 @@ const useSearch = (featureSearched: Feature[]) => {
           break;
         default:
           //@ts-ignore
-          district.setHighlighted(featureSearched[highlightedIndex]);
+          setHighlighted(featureSearched[highlightID]);
       }
     },
 
@@ -97,8 +93,8 @@ const useSearch = (featureSearched: Feature[]) => {
           openMenu();
         }
       },
-      placeholder: "Search by suburb or region",
-      spellCheck: "false",
+      placeholder: 'Pesquise por regiões',
+      spellCheck: 'false',
       ref: inputRef,
     }),
   };
@@ -119,6 +115,10 @@ const useSearch = (featureSearched: Feature[]) => {
     selectItem,
     setInputValue,
   };
+};
+
+useSearch.defaultProps = {
+  cfeatureSearched: [],
 };
 
 export default useSearch;

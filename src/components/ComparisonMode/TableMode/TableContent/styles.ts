@@ -1,10 +1,10 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-interface Table {
+interface ITable {
   lineTableNumber: number;
 }
 
-export const Table = styled.div<Table>`
+export const Table = styled.div<ITable>`
   display: grid;
   grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
 
@@ -13,8 +13,7 @@ export const Table = styled.div<Table>`
 
   padding: 8px 10px;
 
-  background-color: ${({ lineTableNumber }) =>
-    lineTableNumber % 2 === 0 ? "white" : "#f5f5f5"};
+  background-color: ${({ lineTableNumber }) => (lineTableNumber % 2 === 0 ? 'white' : '#f5f5f5')};
   border-radius: 2px;
 `;
 
@@ -25,11 +24,11 @@ export const ColumnTitle = styled.div`
   padding-right: 5px;
 `;
 
-interface Column {
+interface IColumn {
   gridColumnNumber: number;
 }
 
-export const Column = styled.div<Column>`
+export const Column = styled.div<IColumn>`
   grid-column: ${({ gridColumnNumber }) => gridColumnNumber};
   justify-self: start;
   align-self: center;

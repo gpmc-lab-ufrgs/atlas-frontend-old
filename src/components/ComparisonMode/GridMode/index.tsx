@@ -1,1 +1,1 @@
-export { default } from "./GridMode";
+export { default } from './GridMode';

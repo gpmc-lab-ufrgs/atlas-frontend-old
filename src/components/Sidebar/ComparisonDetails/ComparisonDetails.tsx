@@ -1,15 +1,17 @@
-import { useHistory } from "react-router";
+import React from 'react';
 
-import { Box } from "@mui/material";
+import { useHistory } from 'react-router';
 
-import CollapsibleSection from "@components/CollapsibleSection";
+import { Box } from '@mui/material';
 
-import { useComparison } from "@store/comparisonContext";
-import useMap from "@hook/useMap";
+import Collapsible from '@components/Collapsible';
 
-import * as Styles from "./styles";
+import { useComparison } from '@store/comparisonContext';
+import useMap from '@hook/useMap';
 
-import "./styles.css";
+import * as Styles from './styles';
+
+import './styles.css';
 
 const ComparisonDetails = () => {
   const { comparison, removeComparisonDistrict } = useComparison();
@@ -17,7 +19,7 @@ const ComparisonDetails = () => {
   const history = useHistory();
 
   const handleGoBack = () => {
-    history.replace("/");
+    history.replace('/');
     resetMapValues();
   };
 
@@ -32,20 +34,16 @@ const ComparisonDetails = () => {
     <Box>
       <Title />
       {comparison.length > 0 && (
-        <>
-          <CollapsibleSection title="Regiões em comparação">
-            <>
-              {comparison.map((feature: any) => (
-                <Styles.ComparisonList>
-                  {feature.properties.NM_MUN}
-                  <Styles.CloseButton
-                    onClick={() => removeComparisonDistrict(feature)}
-                  />
-                </Styles.ComparisonList>
-              ))}
-            </>
-          </CollapsibleSection>
-        </>
+        <Collapsible title="Comparação">
+          <>
+            {comparison.map((feature: any, id) => (
+              <Styles.ComparisonList key={id}>
+                {feature.properties.NM_MUN}
+                <Styles.CloseButton onClick={() => removeComparisonDistrict(feature)} />
+              </Styles.ComparisonList>
+            ))}
+          </>
+        </Collapsible>
       )}
     </Box>
   );

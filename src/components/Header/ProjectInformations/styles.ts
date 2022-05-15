@@ -1,7 +1,7 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-import { Box } from "@mui/system";
-import { Close } from "@mui/icons-material";
+import { Box } from '@mui/system';
+import { Close } from '@mui/icons-material';
 
 export const ProjectInformationWrapper = styled(Box)`
   min-width: 230px;

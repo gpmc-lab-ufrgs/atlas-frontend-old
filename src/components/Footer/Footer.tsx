@@ -1,20 +1,30 @@
-import institutionLogoImages from "./institutions";
+import React from 'react';
 
-import { Box } from "@mui/material";
+import { developerInstitutionsLogoImages, supporterInstitutionLogoImages } from './institutions';
 
-import * as Styles from "./styles";
+import { Box } from '@mui/material';
+
+import * as Styles from './styles';
 
 function Footer() {
   return (
     <Styles.FooterContainer>
-      <Box
-        width="60%"
-        display="flex"
-        justifyContent="space-between"
-        alignItems="center"
-      >
-        {institutionLogoImages.map((institution) => (
+      <Box display="flex" justifyContent="space-between" alignItems="center" paddingRight={5}>
+        {developerInstitutionsLogoImages.map((institution, id) => (
           <Styles.InstitutionsLogo
+            key={id}
+            src={institution.logoImage}
+            alt={`Logo image of ${institution.name}`}
+            size={institution.size}
+          />
+        ))}
+      </Box>
+
+      <Box display="flex" justifyContent="space-between" alignItems="center">
+        <Styles.FooterText>Apoio:</Styles.FooterText>
+        {supporterInstitutionLogoImages.map((institution, id) => (
+          <Styles.InstitutionsLogo
+            key={id}
             src={institution.logoImage}
             alt={`Logo image of ${institution.name}`}
             size={institution.size}

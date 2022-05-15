@@ -1,12 +1,16 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-import { Box, Drawer as DrawerSkeleton } from "@mui/material";
+import { Box, Drawer as DrawerSkeleton } from '@mui/material';
 
 export const Drawer = styled(DrawerSkeleton)`
   width: 0;
+
+  .css-4t3x6l-MuiPaper-root-MuiDrawer-paper {
+    overflow-y: auto;
+  }
 `;
 
 export const DrawerContent = styled(Box)`
   min-width: 280px;
-  margin: 20px 20px;
+  margin: 20px;
 `;

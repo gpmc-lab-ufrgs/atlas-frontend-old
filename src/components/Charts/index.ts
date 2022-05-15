@@ -1,1 +1,0 @@
-export { SolidBar } from "./SolidBar";

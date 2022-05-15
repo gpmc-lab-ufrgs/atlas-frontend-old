@@ -1,8 +1,8 @@
 export const sections = [
   [
     {
-      url: "/aboutTheAtlas",
-      title: "About the Atlas",
+      url: '/aboutTheAtlas',
+      title: 'Sobre o Atlas',
     },
     // {
     //   url: "/methods",
@@ -17,8 +17,8 @@ export const sections = [
     //   title: "FAQ",
     // },
     {
-      url: "/contributors",
-      title: "Contributors",
+      url: '/contributors',
+      title: 'Contribuidores',
     },
   ],
 ];

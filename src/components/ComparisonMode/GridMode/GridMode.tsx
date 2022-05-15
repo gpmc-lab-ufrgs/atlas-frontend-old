@@ -1,10 +1,12 @@
-import { Feature } from "@types/Feature";
+import React from 'react';
 
-import districtProps from "@config/districtProps";
+import { Feature } from '@customTypes/feature';
 
-import GridContent from "./GridContent";
+import districtProps from '@config/districtProps';
 
-import * as Styles from "./styles";
+import GridContent from './GridContent';
+
+import * as Styles from './styles';
 
 interface Props {
   comparison: Array<Feature>;
@@ -13,8 +15,8 @@ interface Props {
 const GridMode: React.FC<Props> = ({ comparison }) => {
   return (
     <Styles.GridContainer>
-      {districtProps.map((section) => (
-        <GridContent section={section} comparison={comparison} />
+      {districtProps.map((section, id) => (
+        <GridContent section={section} comparison={comparison} key={id} />
       ))}
     </Styles.GridContainer>
   );

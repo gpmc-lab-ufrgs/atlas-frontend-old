@@ -1,37 +1,33 @@
-import React from "react";
+import React from 'react';
 
-import CollapsibleSection from "@components/CollapsibleSection";
-import MetricDetails from "@components/MetricDetails";
+import Collapsible from '@components/Collapsible';
 
-import {
-  DistrictSectionType,
-  DistrictContentType,
-} from "@config/districtProps";
+import MetricDetails from '@components/MetricDetails';
 
-import { Feature } from "@store/contexts/featuresContext";
+import { DistrictSectionType, DistrictContentType } from '@config/districtProps';
 
-import * as Styles from "./styles";
+import { District } from '@customTypes/feature';
+
+import * as Styles from './styles';
 
 interface Props {
   section: DistrictSectionType;
-  comparison: Array<Feature>;
+  comparison: Array<District>;
 }
 
 const GridContent: React.FC<Props> = ({ section, comparison }) => {
   return (
-    <CollapsibleSection title={section.title} key={section.title}>
+    <Collapsible title={section.title}>
       <Styles.GridContainer>
         {section.content.map((content: DistrictContentType, id) => (
           <Styles.Grid key={id}>
             <Styles.Title>
-              <h2>{content.label}</h2>
+              <h2>{content.title}</h2>
             </Styles.Title>
             <Styles.GridItem>
-              {comparison.map((district, id) => (
-                <Styles.ComparisonLabel key={id}>
-                  <label title={district?.properties.NM_MUN}>
-                    {district?.properties.NM_MUN}
-                  </label>
+              {comparison.map((district, idx) => (
+                <Styles.ComparisonLabel key={idx}>
+                  <label title={district?.properties.NM_MUN}>{district?.properties.NM_MUN}</label>
                   <MetricDetails district={district} metric={content} />
                 </Styles.ComparisonLabel>
               ))}
@@ -39,7 +35,7 @@ const GridContent: React.FC<Props> = ({ section, comparison }) => {
           </Styles.Grid>
         ))}
       </Styles.GridContainer>
-    </CollapsibleSection>
+    </Collapsible>
   );
 };
 

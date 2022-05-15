@@ -10,7 +10,7 @@
       "@config/*": ["src/config/*"],
       "@utils/*": ["src/utils/*"],
       "@hook/*": ["src/hook/*"],
-      "@types/*": ["src/types/*"]
+      "@customTypes/*": ["src/customTypes/*"]
     }
   }
 }
