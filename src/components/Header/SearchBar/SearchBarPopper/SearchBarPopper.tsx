@@ -1,17 +1,17 @@
-import React, { useState, useMemo } from "react";
-import { usePopper } from "react-popper";
+import React, { useState, useMemo } from 'react';
+import { usePopper } from 'react-popper';
 
 import {
   UseComboboxGetItemPropsOptions,
   GetPropsCommonOptions,
   UseComboboxGetMenuPropsOptions,
-} from "downshift";
+} from 'downshift';
 
-import { District } from "@customTypes/feature";
+import { District } from '@customTypes/feature';
 
-import { sameWidthModifier } from "./popper-modifiers";
+import { sameWidthModifier } from './popper-modifiers';
 
-import * as Styles from "./styles";
+import * as Styles from './styles';
 
 export interface PopperActionsType {
   highlightedIndex: number;
@@ -40,7 +40,7 @@ const SearchBarPopper: React.FC<Props> = ({
 
   const { styles, attributes } = usePopper(referenceElement, popperElement, {
     modifiers: useMemo(() => [sameWidthModifier], []),
-    placement: "bottom-start",
+    placement: 'bottom-start',
   });
 
   return (

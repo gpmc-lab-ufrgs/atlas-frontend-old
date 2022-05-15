@@ -1,1 +1,1 @@
-export { default } from "./ComparisonControl";
+export { default } from './ComparisonControl';

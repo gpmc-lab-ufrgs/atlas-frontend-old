@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const ComparisonControlContainer = styled.div`
   width: 170px;
@@ -32,9 +32,9 @@ export const Control = styled.label<ControlProps>`
   font-size: 14px;
   line-height: 34px;
 
-  color: ${({ isControlType }) => (isControlType ? "#ffffff" : "#333")};
+  color: ${({ isControlType }) => (isControlType ? '#ffffff' : '#333')};
   background-color: ${({ isControlType }) =>
-    isControlType ? "#666666" : "white"};
+    isControlType ? '#666666' : 'white'};
 
   :last-child {
     border-radius: 0 5px 5px 0;

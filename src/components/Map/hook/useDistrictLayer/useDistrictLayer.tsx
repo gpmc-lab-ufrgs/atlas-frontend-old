@@ -1,25 +1,25 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 
-import mapboxgl from "mapbox-gl";
+import mapboxgl from 'mapbox-gl';
 
-import { useHighlightedDistrict } from "@store/district/highlightedContext";
-import { useSelectedDistrict } from "@store/district/selectedContext";
-import { useSelectedState } from "@store/state/selectedContext";
-import { useSidebar } from "@store/sidebarContext";
+import { useHighlightedDistrict } from '@store/district/highlightedContext';
+import { useSelectedDistrict } from '@store/district/selectedContext';
+import { useSelectedState } from '@store/state/selectedContext';
+import { useSidebar } from '@store/sidebarContext';
 
 import {
   highlightDistrict,
   clickDistrict,
   cleanDistrictActions,
   fitDistrictBounds,
-} from "./districtActions";
+} from './districtActions';
 
-import { RSColors } from "./const";
-import { lineOpacity, lineWidth, fillOpacity } from "../../const";
+import { RSColors } from './const';
+import { lineOpacity, lineWidth, fillOpacity } from '../../const';
 
-import geojsonGO from "@data/states/RS_Municipios_2020.json";
-import { fitStateBounds } from "../useStateLayer/stateActions";
-import { findState } from "@components/Map/actions";
+import geojsonGO from '@data/states/RS_Municipios_2020.json';
+import { fitStateBounds } from '../useStateLayer/stateActions';
+import { findState } from '@components/Map/actions';
 
 const useDistrictLayer = () => {
   const [districtReference, setDistrictReference] = useState<mapboxgl.Map>();
@@ -39,69 +39,69 @@ const useDistrictLayer = () => {
 
   const { setIsSidebarOpen } = useSidebar();
 
-  function initLayers(districtReference: mapboxgl.Map) {
-    districtReference.on("load", () => {
-      districtReference.dragRotate.disable();
-      districtReference.touchZoomRotate.disableRotation();
+  function initLayers(reference: mapboxgl.Map) {
+    reference.on('load', () => {
+      reference.dragRotate.disable();
+      reference.touchZoomRotate.disableRotation();
 
-      districtReference.addSource("district", {
-        type: "geojson",
+      reference.addSource('district', {
+        type: 'geojson',
         //@ts-ignore
         data: geojsonGO,
         //@ts-ignore
-        promoteId: "CD_MUN",
+        promoteId: 'CD_MUN',
       });
 
-      districtReference.addLayer({
-        id: "fill-district",
-        type: "fill",
-        source: "district",
+      reference.addLayer({
+        id: 'fill-district',
+        type: 'fill',
+        source: 'district',
         layout: {
-          visibility: "none",
+          visibility: 'none',
         },
         paint: {
-          "fill-color": {
-            property: "POPULATION",
+          'fill-color': {
+            property: 'POPULATION',
             stops: RSColors,
           },
           //@ts-ignore
-          "fill-opacity": fillOpacity,
+          'fill-opacity': fillOpacity,
         },
       });
 
-      districtReference.addLayer({
-        id: "district-borders",
-        type: "line",
-        source: "district",
+      reference.addLayer({
+        id: 'district-borders',
+        type: 'line',
+        source: 'district',
         layout: {
-          visibility: "none",
+          visibility: 'none',
         },
         paint: {
-          "line-color": "#ffffff",
+          'line-color': '#ffffff',
           //@ts-ignore
-          "line-width": lineWidth,
+          'line-width': lineWidth,
           //@ts-ignore
-          "line-opacity": lineOpacity,
+          'line-opacity': lineOpacity,
         },
       });
     });
   }
 
-  function initActions(districtReference: mapboxgl.Map) {
-    districtReference.on("click", "fill-district", (e: any) => {
+  function initActions(reference: mapboxgl.Map) {
+    reference.on('click', 'fill-district', (e: any) => {
       if (e.features.length > 0) {
         console.log(e.features);
         setSelectedDistrict(e.features[0]);
       }
     });
 
-    districtReference.on("mousemove", "fill-district", (e: any) => {
+    reference.on('mousemove', 'fill-district', (e: any) => {
       if (e.features.length > 0) {
         setHighlightedDistrict(e.features[0]);
       }
     });
 
-    districtReference.on("mouseleave", "fill-district", () => {
+    reference.on('mouseleave', 'fill-district', () => {
       setHighlightedDistrict(null);
     });
   }

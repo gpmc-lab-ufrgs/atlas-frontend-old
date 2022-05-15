@@ -1,14 +1,14 @@
-import React from "react";
+import React from 'react';
 
-import { Box } from "@mui/material";
+import { Box } from '@mui/material';
 
-import districtProps from "@config/districtProps";
-import { Feature } from "@customTypes/feature";
+import districtProps from '@config/districtProps';
+import { Feature } from '@customTypes/feature';
 
-import Header from "./Header";
-import TableContent from "./TableContent";
+import Header from './Header';
+import TableContent from './TableContent';
 
-import * as Styles from "./styles";
+import * as Styles from './styles';
 
 interface Props {
   comparison: Array<Feature>;

@@ -1,10 +1,12 @@
-import { Feature } from "@customTypes/feature";
+import React from 'react';
 
-import districtProps from "@config/districtProps";
+import { Feature } from '@customTypes/feature';
 
-import GridContent from "./GridContent";
+import districtProps from '@config/districtProps';
 
-import * as Styles from "./styles";
+import GridContent from './GridContent';
+
+import * as Styles from './styles';
 
 interface Props {
   comparison: Array<Feature>;

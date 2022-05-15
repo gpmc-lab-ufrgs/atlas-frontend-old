@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useState } from 'react';
 
-import { Feature } from "@customTypes/feature";
+import { Feature } from '@customTypes/feature';
 
 export const DEFAULT_VALUE = {
   all: [],

@@ -1,17 +1,17 @@
-import React from "react";
+import React from 'react';
 
-import Collapsible from "@components/Collapsible";
+import Collapsible from '@components/Collapsible';
 
-import MetricDetails from "@components/MetricDetails";
+import MetricDetails from '@components/MetricDetails';
 
 import {
   DistrictSectionType,
   DistrictContentType,
-} from "@config/districtProps";
+} from '@config/districtProps';
 
-import { District } from "@customTypes/feature";
+import { District } from '@customTypes/feature';
 
-import * as Styles from "./styles";
+import * as Styles from './styles';
 
 interface Props {
   section: DistrictSectionType;
@@ -28,8 +28,8 @@ const GridContent: React.FC<Props> = ({ section, comparison }) => {
               <h2>{content.title}</h2>
             </Styles.Title>
             <Styles.GridItem>
-              {comparison.map((district, id) => (
-                <Styles.ComparisonLabel key={id}>
+              {comparison.map((district, idx) => (
+                <Styles.ComparisonLabel key={idx}>
                   <label title={district?.properties.NM_MUN}>
                     {district?.properties.NM_MUN}
                   </label>

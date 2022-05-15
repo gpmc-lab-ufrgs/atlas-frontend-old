@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react';
 
-import { Window, TableChart } from "@mui/icons-material";
+import { Window, TableChart } from '@mui/icons-material';
 
-import * as Styles from "./styles";
+import * as Styles from './styles';
 
 interface Props {
   comparisonType: string;
@@ -14,8 +14,8 @@ const ComparisonControl: React.FC<Props> = ({
   setComparison,
 }) => {
   const controls = [
-    { label: "Table", value: "table", icon: <TableChart /> },
-    { label: "Grid", value: "grid", icon: <Window /> },
+    { label: 'Table', value: 'table', icon: <TableChart /> },
+    { label: 'Grid', value: 'grid', icon: <Window /> },
   ];
 
   return (

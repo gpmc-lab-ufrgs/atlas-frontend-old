@@ -1,20 +1,22 @@
-import { useState } from "react";
+import React from 'react';
 
-import { useTheme } from "@mui/material/styles";
+import { useState } from 'react';
 
-import { useSelectedDistrict } from "@store/district/selectedContext";
-import { useSidebar } from "@store/sidebarContext";
+import { useTheme } from '@mui/material/styles';
 
-import Map from "@components/Map";
-import Modal from "@components/Modal";
-import Footer from "@components/Footer";
-import Header from "@components/Header";
-import Sidebar from "@components/Sidebar";
-import CompatisonMode from "@components/ComparisonMode";
+import { useSelectedDistrict } from '@store/district/selectedContext';
+import { useSidebar } from '@store/sidebarContext';
 
-import { useMain } from "./hook";
+import Map from '@components/Map';
+import Modal from '@components/Modal';
+import Footer from '@components/Footer';
+import Header from '@components/Header';
+import Sidebar from '@components/Sidebar';
+import CompatisonMode from '@components/ComparisonMode';
 
-import * as Styles from "./styles";
+import { useMain } from './hook';
+
+import * as Styles from './styles';
 
 const Main = () => {
   const { isSidebarOpen } = useSidebar();
@@ -22,7 +24,7 @@ const Main = () => {
 
   const theme = useTheme();
 
-  const [comparisonType, setComparisonType] = useState("table");
+  const [comparisonType, setComparisonType] = useState('table');
   const { isComparisonModeEnabled } = useMain();
 
   return (

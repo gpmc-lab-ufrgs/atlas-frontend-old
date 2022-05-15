@@ -1,8 +1,8 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useState } from 'react';
 
-import { State } from "@customTypes/feature";
+import { State } from '@customTypes/feature';
 
-import { DEFAULT_VALUE } from "@hook/useFeature";
+import { DEFAULT_VALUE } from '@hook/useFeature';
 
 interface StateActions {
   highlighted: State | null;

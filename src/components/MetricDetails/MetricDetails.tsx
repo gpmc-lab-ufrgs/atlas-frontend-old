@@ -1,14 +1,16 @@
-import Bar from "./Bar";
-import geosesData from "../../data/Data.json";
+import React from 'react';
+
+import Bar from './Bar';
+import geosesData from '../../data/Data.json';
 
 const MetricDetails = ({ district, metric }: any) => {
   const renderSingleMetric = () => {
     // @ts-ignore
-    let rawValue = geosesData[district?.properties.CD_MUN][metric.label];
+    const rawValue = geosesData[district?.properties.CD_MUN][metric.label];
     const value = metric.format(rawValue);
 
     switch (metric.type) {
-      case "bar":
+      case 'bar':
         return (
           <Bar
             rawValue={rawValue}

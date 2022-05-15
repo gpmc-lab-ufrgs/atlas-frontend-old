@@ -1,6 +1,6 @@
-import React, { useState, createContext, useContext } from "react";
+import React, { useState, createContext, useContext } from 'react';
 
-import { District } from "@customTypes/feature";
+import { District } from '@customTypes/feature';
 
 type ComparisonContext = {
   comparison: Array<District>;
@@ -30,7 +30,7 @@ export function ComparisonProvider({ children }: any) {
       comparison.filter(
         (district: District) =>
           //@ts-ignore
-          district.properties["NM_MUN"] !== removeValue.properties["NM_MUN"]
+          district.properties['NM_MUN'] !== removeValue.properties['NM_MUN']
       )
     );
   };

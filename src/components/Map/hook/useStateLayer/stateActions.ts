@@ -1,14 +1,18 @@
-import * as turf from "@turf/turf";
-import mapboxgl from "mapbox-gl";
+import * as turf from '@turf/turf';
+import mapboxgl from 'mapbox-gl';
 
-import { hoveredPopup } from "../../const";
+import { State } from '@customTypes/feature';
 
-var hoveredId: number | undefined;
-var clickedId: number | undefined;
+import { hoveredPopup } from '../../const';
 
-function addPopup(feature: any, map: mapboxgl.Map) {
-  var coordinates = turf.centerOfMass(feature).geometry.coordinates;
-  var regionName = feature?.properties?.NM_UF;
+let hoveredId: number | undefined;
+let clickedId: number | undefined;
+
+type Feature = State | null;
+
+function addPopup(feature: Feature, map: mapboxgl.Map) {
+  const coordinates = turf.centerOfMass(feature).geometry.coordinates;
+  const regionName = feature?.properties?.NM_UF;
 
   hoveredPopup
     .setLngLat([coordinates[0], coordinates[1]])
@@ -17,14 +21,14 @@ function addPopup(feature: any, map: mapboxgl.Map) {
 }
 
 function setFeatureHover(featureID: number, map: mapboxgl.Map, state: boolean) {
-  map.setFeatureState({ source: "state", id: featureID }, { hover: state });
+  map.setFeatureState({ source: 'state', id: featureID }, { hover: state });
 }
 
 function setFeatureClick(featureID: number, map: mapboxgl.Map, state: boolean) {
-  map.setFeatureState({ source: "state", id: featureID }, { hover: state });
+  map.setFeatureState({ source: 'state', id: featureID }, { hover: state });
 }
 
-export function clickState(feature: any, map: mapboxgl.Map) {
+export function clickState(feature: Feature, map: mapboxgl.Map) {
   const stateID = feature?.properties?.CD_UF;
 
   if (feature && feature.geometry) {
@@ -41,14 +45,14 @@ export function clickState(feature: any, map: mapboxgl.Map) {
       clickedId = stateID;
     }
   } else if (clickedId) {
-    if (map.getSource("state")) {
+    if (map.getSource('state')) {
       setFeatureClick(clickedId, map, false);
     }
     clickedId = undefined;
   }
 }
 
-export function highlightState(feature: any, map: mapboxgl.Map) {
+export function highlightState(feature: Feature, map: mapboxgl.Map) {
   const stateID = feature?.properties?.CD_UF;
 
   if (feature && feature.geometry) {
@@ -69,7 +73,7 @@ export function highlightState(feature: any, map: mapboxgl.Map) {
   } else if (hoveredId) {
     hoveredPopup.remove();
 
-    if (map.getSource("state")) {
+    if (map.getSource('state')) {
       setFeatureHover(hoveredId, map, false);
     }
     hoveredId = undefined;
@@ -77,14 +81,14 @@ export function highlightState(feature: any, map: mapboxgl.Map) {
 }
 
 export function isStateLayerVisible(map: mapboxgl.Map, visible: boolean) {
-  const visibility = visible ? "visible" : "none";
+  const visibility = visible ? 'visible' : 'none';
 
-  if (map.getLayer("fill-state")) {
-    map.setLayoutProperty("fill-state", "visibility", visibility);
+  if (map.getLayer('fill-state')) {
+    map.setLayoutProperty('fill-state', 'visibility', visibility);
   }
 
-  if (map.getLayer("state-borders")) {
-    map.setLayoutProperty("state-borders", "visibility", visibility);
+  if (map.getLayer('state-borders')) {
+    map.setLayoutProperty('state-borders', 'visibility', visibility);
   }
 }
 
@@ -94,7 +98,7 @@ export function cleanStateActions() {
   hoveredId = undefined;
 }
 
-export function fitStateBounds(feature: any, map: mapboxgl.Map) {
+export function fitStateBounds(feature: Feature, map: mapboxgl.Map) {
   if (feature && (feature.geometry || feature._geometry)) {
     const [minX, minY, maxX, maxY] = turf.bbox(feature);
 

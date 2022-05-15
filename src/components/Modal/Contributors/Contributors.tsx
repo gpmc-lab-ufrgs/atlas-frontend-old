@@ -1,10 +1,12 @@
-import { Box } from "@mui/material";
+import React from 'react';
 
-import { ModalContainer } from "@components/Modal";
+import { Box } from '@mui/material';
 
-import { mainResearchers, developers, researchers } from "./contributorsData";
+import { ModalContainer } from '@components/Modal';
 
-import * as Styles from "./styles";
+import { mainResearchers, developers, researchers } from './contributorsData';
+
+import * as Styles from './styles';
 
 const Contributors = () => {
   const wrapperContributorsData = [
@@ -13,18 +15,18 @@ const Contributors = () => {
     },
     {
       data: developers,
-      title: "Developers:",
+      title: 'Developers:',
     },
     {
       data: researchers,
-      title: "Researchers:",
+      title: 'Researchers:',
     },
   ];
 
   return (
-    <ModalContainer title="Contributors">
+    <ModalContainer title='Contributors'>
       {wrapperContributorsData.map((contributors, id) => (
-        <Box display="flex" alignItems="center" flexDirection="column" key={id}>
+        <Box display='flex' alignItems='center' flexDirection='column' key={id}>
           {contributors.title && (
             <Styles.ContributorsFunctionDiv>
               {contributors.title}

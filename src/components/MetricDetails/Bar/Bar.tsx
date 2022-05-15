@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 
-import SolidBar from "./SolidBar";
-import * as Styles from "./styles";
+import SolidBar from './SolidBar';
+import * as Styles from './styles';
 
 interface Props {
   rawValue: string;
@@ -13,7 +13,7 @@ interface Props {
 
 const Bar: React.FC<Props> = ({ rawValue, metric, key }) => {
   const value = metric.format(rawValue);
-  var rawValueFloat = parseFloat(rawValue) || 0;
+  const rawValueFloat = parseFloat(rawValue) || 0;
 
   return (
     <Styles.ProgressBar key={key} className="comparison-bar">

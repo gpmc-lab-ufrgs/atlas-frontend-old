@@ -1,1 +1,1 @@
-export { default } from "./SolidBar";
+export { default } from './SolidBar';

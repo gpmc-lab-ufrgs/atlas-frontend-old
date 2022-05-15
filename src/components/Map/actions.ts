@@ -1,16 +1,16 @@
-import { State } from "@customTypes/feature";
-import mapboxgl from "mapbox-gl";
+import { State } from '@customTypes/feature';
+import mapboxgl from 'mapbox-gl';
 
-import { accessToken } from "./const";
+import { accessToken } from './const';
 
 mapboxgl.accessToken = accessToken;
 
 export function findState(allState: State[], stateName: string) {
-  const state = allState.find(
+  const result = allState.find(
     (state) => state.properties.SIGLA_UF === stateName
   );
 
-  return state;
+  return result;
 }
 
 export function fitCenter(map: mapboxgl.Map) {

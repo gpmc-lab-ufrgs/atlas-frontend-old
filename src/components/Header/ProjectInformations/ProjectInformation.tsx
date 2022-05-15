@@ -1,10 +1,10 @@
-import React from "react";
+import React from 'react';
 
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
-import { sections } from "./const";
+import { sections } from './const';
 
-import * as Styles from "./styles";
+import * as Styles from './styles';
 
 interface Props {
   setOpen: (bool: boolean) => void;
@@ -24,9 +24,9 @@ const ProjectInformations: React.FC<Props> = ({ setOpen }) => {
       <Styles.SectionWrapper>
         {sections.map((choices, id) => (
           <Styles.Section key={id}>
-            {choices.map((choice, id) => (
+            {choices.map((choice) => (
               <Link
-                key={id}
+                key={choice.title}
                 to={choice.url}
                 onClick={() => handleCloseDrawer()}
               >

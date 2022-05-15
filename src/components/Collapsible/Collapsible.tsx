@@ -1,21 +1,21 @@
-import { useState } from "react";
+import React, { useState } from 'react';
 
-import Collapsible from "react-collapsible";
+import Collapsible from 'react-collapsible';
 
-import { CollapsibleType, CollapsibleNames } from "./type";
+import { CollapsibleType, CollapsibleNames } from './type';
 
-import "./styles.css";
+import './styles.css';
 
 const CollapsibleDefaultValue = {
-  "Locations to Compare": true,
-  "Demographic Summary": true,
-  "Economic Summary": false,
-  "Growth Summary": false,
-  "Residential Housing Summary": false,
-  "Financial Transactions": false,
-  "Business Counts": false,
-  "Turnover vs. Cost of Sales": false,
-  "Business Rental Costs": false,
+  'Locations to Compare': true,
+  'Demographic Summary': true,
+  'Economic Summary': false,
+  'Growth Summary': false,
+  'Residential Housing Summary': false,
+  'Financial Transactions': false,
+  'Business Counts': false,
+  'Turnover vs. Cost of Sales': false,
+  'Business Rental Costs': false,
 };
 
 const CollapsibleSection = ({ children, title }: any) => {

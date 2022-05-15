@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react';
 
-import { District } from "@customTypes/feature";
+import { District } from '@customTypes/feature';
 
-import * as Styles from "./styles";
+import * as Styles from './styles';
 
 interface Props {
   comparison: Array<District>;

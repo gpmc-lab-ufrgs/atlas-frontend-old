@@ -1,8 +1,10 @@
-import { ModalContainer } from "@components/Modal";
+import React from 'react';
+
+import { ModalContainer } from '@components/Modal';
 
 const AboutTheAtlas = () => {
   return (
-    <ModalContainer title="About the Atlas">
+    <ModalContainer title='About the Atlas'>
       <p>
         Este site visa apoiar o desenvolvimento de estratégias baseadas em dados
         e métodos avançados que são usados para entender como o comportamento

@@ -1,6 +1,6 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-import { Menu as MenuIcon } from "@mui/icons-material";
+import { Menu as MenuIcon } from '@mui/icons-material';
 
 interface HeaderProps {
   comparisonMode?: boolean;
@@ -9,7 +9,7 @@ interface HeaderProps {
 
 export const HeaderContainer = styled.header<HeaderProps>`
   width: ${({ isSidebarOpen }) =>
-    isSidebarOpen ? "calc(100% - 385px)" : "calc(100% - 40px)"};
+    isSidebarOpen ? 'calc(100% - 385px)' : 'calc(100% - 40px)'};
 
   position: fixed;
   z-index: 4;
@@ -21,7 +21,7 @@ export const HeaderContainer = styled.header<HeaderProps>`
 
   padding: 15px 20px;
 
-  background: ${({ comparisonMode }) => (comparisonMode ? "#ffffffe6" : null)};
+  background: ${({ comparisonMode }) => (comparisonMode ? '#ffffffe6' : null)};
 `;
 
 interface MenuButtonProps {
@@ -33,7 +33,7 @@ export const MenuButton = styled(MenuIcon)<MenuButtonProps>`
 
   pointer-events: auto;
 
-  color: ${({ comparisonMode }) => (comparisonMode ? "black" : "white")};
+  color: ${({ comparisonMode }) => (comparisonMode ? 'black' : 'white')};
 `;
 
 export const MapControl = styled.div`

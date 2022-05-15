@@ -1,10 +1,12 @@
-import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import React from 'react';
 
-import { useTheme } from "@mui/material/styles";
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
-import { useSidebar } from "@store/sidebarContext";
+import { useTheme } from '@mui/material/styles';
 
-import * as Styles from "./styles";
+import { useSidebar } from '@store/sidebarContext';
+
+import * as Styles from './styles';
 
 const Minimizer = () => {
   const theme = useTheme();

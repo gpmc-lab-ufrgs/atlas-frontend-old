@@ -1,5 +1,9 @@
 export interface District {
   type: string;
+  _geometry?: {
+    type: string;
+    coordinates: number[][][];
+  };
   geometry: {
     type: string;
     coordinates: number[][][];
@@ -14,6 +18,10 @@ export interface District {
 
 export interface State {
   type: string;
+  _geometry?: {
+    type: string;
+    coordinates: number[][][];
+  };
   geometry: {
     type: string;
     coordinates: number[][][];

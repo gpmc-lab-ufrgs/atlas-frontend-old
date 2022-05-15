@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react';
 
-import * as Styles from "./styles";
+import * as Styles from './styles';
 
-type Anchor = "right" | "left";
+type Anchor = 'right' | 'left';
 
 interface Props {
   open: boolean;

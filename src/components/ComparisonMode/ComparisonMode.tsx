@@ -1,11 +1,11 @@
-import React from "react";
+import React from 'react';
 
-import { useComparison } from "@store/comparisonContext";
+import { useComparison } from '@store/comparisonContext';
 
-import GridMode from "./GridMode";
-import TableMode from "./TableMode";
+import GridMode from './GridMode';
+import TableMode from './TableMode';
 
-import * as Styles from "./styles";
+import * as Styles from './styles';
 
 interface Props {
   comparisonType: string;
@@ -16,9 +16,9 @@ const ComparisonMode: React.FC<Props> = ({ comparisonType }) => {
 
   function comparisonModeToggle() {
     switch (comparisonType) {
-      case "table":
+      case 'table':
         return <TableMode comparison={comparison} />;
-      case "grid":
+      case 'grid':
         return <GridMode comparison={comparison} />;
       default:
         return <>Erro ao carregar dados</>;

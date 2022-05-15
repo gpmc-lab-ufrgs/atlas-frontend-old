@@ -1,14 +1,14 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
-import { useSidebar } from "@store/sidebarContext";
+import { useSidebar } from '@store/sidebarContext';
 
-import Drawer from "@components/Drawer";
+import Drawer from '@components/Drawer';
 
-import SearchBar from "./SearchBar";
-import ComparisonControl from "./ComparisonControl";
-import ProjectInformations from "./ProjectInformations";
+import SearchBar from './SearchBar';
+import ComparisonControl from './ComparisonControl';
+import ProjectInformations from './ProjectInformations';
 
-import * as Styles from "./styles";
+import * as Styles from './styles';
 
 interface Props {
   isComparisonModeOn: boolean;

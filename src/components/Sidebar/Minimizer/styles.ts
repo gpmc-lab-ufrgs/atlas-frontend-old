@@ -1,8 +1,8 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 interface Minimizer {
   isSidebarOpen: boolean;
-  theme: {};
+  theme: unknown;
 }
 
 export const MinimizerWrapper = styled.div<Minimizer>`
@@ -10,11 +10,11 @@ export const MinimizerWrapper = styled.div<Minimizer>`
   cursor: pointer;
 
   top: 80px;
-  left: ${({ isSidebarOpen }) => (isSidebarOpen ? "345" : "0")}px;
+  left: ${({ isSidebarOpen }) => (isSidebarOpen ? '345' : '0')}px;
   padding-left: 18px;
 
   transition: ${({ theme }) =>
-    theme.transitions.create(["left"], {
+    theme.transitions.create(['left'], {
       easing: theme.transitions.easing.easeOut,
       duration: theme.transitions.duration.enteringScreen,
     })};

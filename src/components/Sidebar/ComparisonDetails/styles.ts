@@ -1,6 +1,6 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-import { ArrowBack, Close } from "@mui/icons-material";
+import { ArrowBack, Close } from '@mui/icons-material';
 
 export const TitleWrapper = styled.div`
   display: flex;

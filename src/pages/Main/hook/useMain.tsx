@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
-import { useLocation, useHistory } from "react-router";
+import { useEffect, useState } from 'react';
+import { useLocation, useHistory } from 'react-router';
 
-import { useComparison } from "@store/comparisonContext";
-import { useSelectedDistrict } from "@store/district/selectedContext";
-import { useSidebar } from "@store/sidebarContext";
+import { useComparison } from '@store/comparisonContext';
+import { useSelectedDistrict } from '@store/district/selectedContext';
+import { useSidebar } from '@store/sidebarContext';
 
 const useMain = () => {
   const { comparison, addComparisonDistrict } = useComparison();
@@ -19,26 +19,26 @@ const useMain = () => {
   useEffect(() => {
     if (
       comparison.length === 0 &&
-      location.pathname.startsWith("/comparison/")
+      location.pathname.startsWith('/comparison/')
     ) {
-      const pathIds = location.pathname.replace("/comparison/", "");
+      const pathIds = location.pathname.replace('/comparison/', '');
       if (pathIds) {
-        const ids = pathIds.split("+");
+        const ids = pathIds.split('+');
         const featuresFromUrl = all.filter((ft: any) =>
-          ids.includes(ft.properties["CD_MUN"].toString())
+          ids.includes(ft.properties['CD_MUN'].toString())
         );
         setIsSidebarOpen(true);
         addComparisonDistrict(featuresFromUrl);
       } else {
-        history.replace("/");
+        history.replace('/');
       }
     }
   }, [location, history, comparison]);
 
   useEffect(() => {
-    if (location.pathname.startsWith("/comparison/") && all.length !== 0) {
+    if (location.pathname.startsWith('/comparison/') && all.length !== 0) {
       const ids = comparison.map((feature: any) => feature.properties.CD_MUN);
-      const newPath = "/comparison/" + ids.join("+");
+      const newPath = '/comparison/' + ids.join('+');
       if (location.pathname !== newPath) {
         history.replace(newPath);
       }
@@ -46,7 +46,7 @@ const useMain = () => {
   }, [comparison, location, history]);
 
   useEffect(() => {
-    setIsComparisonModeEnabled(location.pathname.startsWith("/comparison"));
+    setIsComparisonModeEnabled(location.pathname.startsWith('/comparison'));
   }, [location]);
 
   return {

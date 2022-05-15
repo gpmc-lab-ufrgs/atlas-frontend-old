@@ -1,17 +1,17 @@
-import React from "react";
+import React from 'react';
 
-import Collapsible from "@components/Collapsible";
+import Collapsible from '@components/Collapsible';
 
-import MetricDetails from "@components/MetricDetails";
+import MetricDetails from '@components/MetricDetails';
 
 import {
   DistrictSectionType,
   DistrictContentType,
-} from "@config/districtProps";
+} from '@config/districtProps';
 
-import { Feature } from "@customTypes/feature";
+import { Feature } from '@customTypes/feature';
 
-import * as Styles from "./styles";
+import * as Styles from './styles';
 
 interface Props {
   section: DistrictSectionType;
@@ -24,8 +24,8 @@ const TableContent: React.FC<Props> = ({ section, comparison }) => {
       {section.content.map((content: DistrictContentType, id) => (
         <Styles.Table lineTableNumber={id} key={id}>
           <Styles.ColumnTitle>{content.description}</Styles.ColumnTitle>
-          {comparison.map((region, id) => (
-            <Styles.Column gridColumnNumber={id + 2} key={id}>
+          {comparison.map((region, idx) => (
+            <Styles.Column gridColumnNumber={idx + 2} key={idx}>
               <MetricDetails district={region} metric={content} />
             </Styles.Column>
           ))}

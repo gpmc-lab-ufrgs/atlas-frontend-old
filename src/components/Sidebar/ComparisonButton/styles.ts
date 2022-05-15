@@ -1,6 +1,6 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-import { ReactComponent as CompareIcon } from "@assets/compare.svg";
+import { ReactComponent as CompareIcon } from '@assets/compare.svg';
 
 export const ComparisonButton = styled.div`
   display: flex;

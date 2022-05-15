@@ -1,9 +1,11 @@
-import { useSelectedDistrict } from "@store/district/selectedContext";
-import { useComparison } from "@store/comparisonContext";
+import React from 'react';
 
-import { Feature } from "@customTypes/feature";
+import { useSelectedDistrict } from '@store/district/selectedContext';
+import { useComparison } from '@store/comparisonContext';
 
-import * as Styles from "./styles";
+import { Feature } from '@customTypes/feature';
+
+import * as Styles from './styles';
 
 const ComparisonButton = () => {
   const { selected } = useSelectedDistrict();
@@ -31,8 +33,8 @@ const ComparisonButton = () => {
       >
         <Styles.ComparisonIcon />
         {isSelectedOnComparison
-          ? "Remover da comparação"
-          : "Adicionar a comparação"}
+          ? 'Remover da comparação'
+          : 'Adicionar a comparação'}
       </Styles.ButtonWrapper>
     </Styles.ComparisonButton>
   );

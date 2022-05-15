@@ -41,6 +41,8 @@
   },
   "scripts": {
     "start": "BROWSER=none craco start",
+    "lint": "eslint '*/**/*.{js,ts,tsx}' --color",
+    "lint:fix": "eslint '*/**/*.{js,ts,tsx}' --fix",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -64,6 +66,10 @@
     ]
   },
   "devDependencies": {
-    "craco-alias": "^3.0.1"
+    "@typescript-eslint/eslint-plugin": "^5.23.0",
+    "@typescript-eslint/parser": "^5.23.0",
+    "craco-alias": "^3.0.1",
+    "eslint": "^8.15.0",
+    "eslint-plugin-react": "^7.29.4"
   }
 }

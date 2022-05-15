@@ -1,1 +1,1 @@
-export { default } from "./TableMode";
+export { default } from './TableMode';

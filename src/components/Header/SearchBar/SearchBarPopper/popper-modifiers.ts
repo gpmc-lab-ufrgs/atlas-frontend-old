@@ -1,10 +1,10 @@
-import { HideModifier } from "@popperjs/core/lib/modifiers/hide";
+import { HideModifier } from '@popperjs/core/lib/modifiers/hide';
 
 const sameWidthModifier: HideModifier = {
-  name: "hide",
+  name: 'hide',
   enabled: true,
-  phase: "beforeWrite",
-  requires: ["computeStyles"],
+  phase: 'beforeWrite',
+  requires: ['computeStyles'],
   fn: ({ state }) => {
     state.styles.popper.width = `${state.rects.reference.width}px`;
   },

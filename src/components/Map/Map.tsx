@@ -1,14 +1,14 @@
-import { useState, useRef, useEffect } from "react";
-import mapboxgl from "mapbox-gl";
+import React, { useState, useRef, useEffect } from 'react';
+import mapboxgl from 'mapbox-gl';
 
-import useMap from "@hook/useMap";
+import useMap from '@hook/useMap';
 
-import useDistrictLayer from "./hook/useDistrictLayer";
-import useStateLayer from "./hook/useStateLayer";
+import useDistrictLayer from './hook/useDistrictLayer';
+import useStateLayer from './hook/useStateLayer';
 
-import { accessToken } from "./const";
+import { accessToken } from './const';
 
-import "./styles.css";
+import './styles.css';
 
 const Map = () => {
   mapboxgl.accessToken = accessToken;
@@ -22,17 +22,17 @@ const Map = () => {
   const [map, setMap] = useState<mapboxgl.Map>();
 
   useEffect(() => {
-    const initializeMap = ({ mapContainer }: any) => {
-      let center: mapboxgl.LngLatLike = [-58, -15];
+    const initializeMap = ({ mapRef }: any) => {
+      const center: mapboxgl.LngLatLike = [-58, -15];
 
-      const map = new mapboxgl.Map({
-        container: mapContainer.current,
-        style: "mapbox://styles/mapbox/dark-v10",
+      const mapReference = new mapboxgl.Map({
+        container: mapRef.current,
+        style: 'mapbox://styles/mapbox/dark-v10',
         center: center,
         zoom: 3.4,
       });
 
-      map.on("click", (e) => {
+      mapReference.on('click', (e) => {
         const bbox = [
           [e.point.x - 5, e.point.y - 5],
           [e.point.x + 5, e.point.y + 5],
@@ -40,10 +40,10 @@ const Map = () => {
 
         //@ts-ignore
         const clickedDistrict = map.queryRenderedFeatures(bbox, {
-          layers: ["fill-district"],
+          layers: ['fill-district'],
         });
 
-        const zoom = map.getZoom();
+        const zoom = mapReference.getZoom();
 
         if (clickedDistrict.length === 0 && zoom > 6) {
           resetDistrictValues();
@@ -69,7 +69,7 @@ const Map = () => {
   }, [map]);
 
   return (
-    <div id="map" ref={(el) => (mapContainer.current = el)} className="map" />
+    <div id='map' ref={(el) => (mapContainer.current = el)} className='map' />
   );
 };
 

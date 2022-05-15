@@ -1,8 +1,10 @@
-import Collapsible from "@components/Collapsible";
+import React from 'react';
 
-import { useComparison } from "@store/comparisonContext";
+import Collapsible from '@components/Collapsible';
 
-import * as Styles from "./styles";
+import { useComparison } from '@store/comparisonContext';
+
+import * as Styles from './styles';
 
 const ComparisonSection = () => {
   const { comparison, removeComparisonDistrict } = useComparison();
@@ -13,7 +15,7 @@ const ComparisonSection = () => {
 
   const ComparisonResult = () => (
     <Styles.ComparisonButton
-      to={"/comparison/" + comparisonRegionIds.join("+")}
+      to={'/comparison/' + comparisonRegionIds.join('+')}
     >
       <p>Mostrar comparação</p>
       <Styles.ChevronIcon />
@@ -21,10 +23,10 @@ const ComparisonSection = () => {
   );
 
   return (
-    <Collapsible title="Comparação">
+    <Collapsible title='Comparação'>
       {comparison.map((feature: any) => (
         <Styles.ComparisonList key={feature.properties.CD_MUN}>
-          {feature.properties["NM_MUN"]}
+          {feature.properties['NM_MUN']}
           <Styles.CloseIcon onClick={() => removeComparisonDistrict(feature)} />
         </Styles.ComparisonList>
       ))}

@@ -1,4 +1,4 @@
-import { Feature } from "@customTypes/feature";
+import { Feature } from '@customTypes/feature';
 
 export function getSortedDistricts(features: Feature[]) {
   return features?.sort((a: any, b: any) =>

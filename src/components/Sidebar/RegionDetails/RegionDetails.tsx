@@ -1,11 +1,13 @@
-import { Box } from "@mui/material";
+import React from 'react';
 
-import districtProps from "@config/districtProps";
+import { Box } from '@mui/material';
 
-import { useComparison } from "@store/comparisonContext";
+import districtProps from '@config/districtProps';
 
-import ComparisonSection from "./ComparisonSection";
-import DataSection from "./DataSection";
+import { useComparison } from '@store/comparisonContext';
+
+import ComparisonSection from './ComparisonSection';
+import DataSection from './DataSection';
 
 const RegionDetails = () => {
   const { comparison } = useComparison();

@@ -1,8 +1,8 @@
-import { useSidebar } from "@store/sidebarContext";
-import { useHighlightedDistrict } from "@store/district/highlightedContext";
-import { useSelectedDistrict } from "@store/district/selectedContext";
-import { useHighlightedState } from "@store/state/highlightedContext";
-import { useSelectedState } from "@store/state/selectedContext";
+import { useSidebar } from '@store/sidebarContext';
+import { useHighlightedDistrict } from '@store/district/highlightedContext';
+import { useSelectedDistrict } from '@store/district/selectedContext';
+import { useHighlightedState } from '@store/state/highlightedContext';
+import { useSelectedState } from '@store/state/selectedContext';
 
 const useMap = () => {
   const { setIsSidebarOpen } = useSidebar();
