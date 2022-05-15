@@ -1,10 +1,11 @@
 import { Card } from "@mui/material";
 import styled from "styled-components";
+import CloseIcon from '@mui/icons-material/Close';
 interface CloseCard {
     isCardClosed: boolean;
 }
 
-export const ExplanationContainer = styled(Card)<CloseCard>`
+export const CardContentContainer = styled(Card)<CloseCard>`
   
     position: fixed;
     z-index: ${({ isCardClosed }) => (isCardClosed ? "1" : "2")};;
@@ -19,7 +20,7 @@ export const ExplanationContainer = styled(Card)<CloseCard>`
     
 `;
 
-export const ExplanationCardTitle = styled.h1`
+export const CardContentTitle = styled.h1`
     margin-top: 0px;
     margin-bottom: 5px;
     font-weight: bold;
@@ -28,7 +29,7 @@ export const ExplanationCardTitle = styled.h1`
     text-align: center;
 `
 
-export const ExplanationText =  styled.p`
+export const CardContentText =  styled.p`
     
     line-height: 150%;
     color: #1f3349;
@@ -39,7 +40,7 @@ export const ExplanationCardReadMore = styled.a`
     align-self: flex-start;
     color: rgb(0, 153, 229);
 `
-export const ExplanationCardCloseIcon = styled.svg`
+export const CardContentCloseIcon = styled(CloseIcon)`
     position: absolute;
     right: 0px;
     top:0px;
@@ -48,8 +49,4 @@ export const ExplanationCardCloseIcon = styled.svg`
     padding: 6px;
     margin: 12px 12px 0px 0px;
     cursor: pointer;
-`
-
-export const teste = styled.path`
-    box-sizing: inherit;
 `
