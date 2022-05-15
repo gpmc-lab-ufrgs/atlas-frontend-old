@@ -10,7 +10,7 @@ export const SideInformationsContainer = styled.div<Minimizer>`
     position: absolute;
     font-family: "Roboto",sans-serif;
 
-    left: ${({ isSidebarOpen }) => (isSidebarOpen ? "360" : "20")}px;
+    left: ${({ isSidebarOpen }) => (isSidebarOpen ? "365" : "20")}px;
 
     transition: ${({ theme }) =>
     theme.transitions.create(["left"], {
