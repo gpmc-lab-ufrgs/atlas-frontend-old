@@ -40,7 +40,11 @@ const Main = () => {
       />
 
       <SummaryCard/>
+<<<<<<< HEAD
 
+=======
+      
+>>>>>>> a4dd9ac0 (:adhesive_bandage: fix spaces between components)
       <Styles.ComparisonWrapper isSidebarOpen={isSidebarOpen} theme={theme}>
         <Header
           isComparisonModeOn={isComparisonModeEnabled}
