@@ -77,7 +77,6 @@ const useDistrictLayer = () => {
   function initActions(reference: mapboxgl.Map) {
     reference.on('click', 'fill-district', (e: any) => {
       if (e.features.length > 0) {
-        console.log(e.features);
         setSelectedDistrict(e.features[0]);
       }
     });

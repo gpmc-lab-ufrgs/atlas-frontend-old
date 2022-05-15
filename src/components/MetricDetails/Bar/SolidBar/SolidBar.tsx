@@ -4,11 +4,11 @@ import { BarChart, Bar, XAxis, YAxis, LabelList } from 'recharts';
 import { getColorFromGradient, lightOrDark } from '@utils/colorManipulator';
 
 interface Props {
-  width: number;
-  height: number;
-  label: string;
+  width?: number;
+  height?: number;
+  label: number;
   value: number;
-  max: number;
+  max?: number;
 }
 
 const SolidBar: React.FC<Props> = ({ width = 150, height = 24, label, value, max = 100 }) => {
@@ -22,8 +22,6 @@ const SolidBar: React.FC<Props> = ({ width = 150, height = 24, label, value, max
   const fill = getColorFromGradient('rgb(173,220,145)', 'rgb(74,119,41)', value / max);
 
   const textColor = lightOrDark(fill);
-
-  console.log(textColor);
 
   return (
     <BarChart

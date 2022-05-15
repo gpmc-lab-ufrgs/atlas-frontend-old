@@ -11,7 +11,7 @@ const MetricDetails = ({ district, metric }: any) => {
 
     switch (metric.type) {
       case 'bar':
-        return <Bar rawValue={rawValue} metric={metric} key={district.properties.CD_MUN} />;
+        return <Bar rawValue={rawValue} metric={metric} id={district.properties.CD_MUN} />;
       default:
         return (
           <div key={district.properties.CD_MUN}>

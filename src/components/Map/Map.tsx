@@ -22,11 +22,11 @@ const Map = () => {
   const [map, setMap] = useState<mapboxgl.Map>();
 
   useEffect(() => {
-    const initializeMap = ({ mapRef }: any) => {
+    const initializeMap = (ref: any) => {
       const center: mapboxgl.LngLatLike = [-58, -15];
 
       const mapReference = new mapboxgl.Map({
-        container: mapRef.current,
+        container: ref.current,
         style: 'mapbox://styles/mapbox/dark-v10',
         center: center,
         zoom: 3.4,
@@ -39,7 +39,7 @@ const Map = () => {
         ];
 
         //@ts-ignore
-        const clickedDistrict = map.queryRenderedFeatures(bbox, {
+        const clickedDistrict = mapReference.queryRenderedFeatures(bbox, {
           layers: ['fill-district'],
         });
 
@@ -52,11 +52,11 @@ const Map = () => {
         }
       });
 
-      setMap(map);
+      setMap(mapReference);
     };
 
     if (!map) {
-      initializeMap({ mapContainer });
+      initializeMap(mapContainer);
     } else {
       if (!districtReference) {
         setDistrictReference(map);

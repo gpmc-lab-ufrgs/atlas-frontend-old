@@ -8,15 +8,15 @@ interface Props {
   metric: {
     format: (value: string) => number;
   };
-  key: number;
+  id: number;
 }
 
-const Bar: React.FC<Props> = ({ rawValue, metric, key }) => {
+const Bar: React.FC<Props> = ({ rawValue, metric, id }) => {
   const value = metric.format(rawValue);
   const rawValueFloat = parseFloat(rawValue) || 0;
 
   return (
-    <Styles.ProgressBar key={key} className="comparison-bar">
+    <Styles.ProgressBar key={id} className="comparison-bar">
       <SolidBar label={value} value={rawValueFloat} max={100} width={115} />
     </Styles.ProgressBar>
   );
