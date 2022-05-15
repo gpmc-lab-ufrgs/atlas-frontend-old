@@ -1,1 +1,1 @@
-export { default } from "./GridContent";
+export { default } from './GridContent';

@@ -1,8 +1,8 @@
-import { useSidebar } from "@store/sidebarContext";
-import { useHighlightedDistrict } from "@store/district/highlightedContext";
-import { useSelectedDistrict } from "@store/district/selectedContext";
-import { useHighlightedState } from "@store/state/highlightedContext";
-import { useSelectedState } from "@store/state/selectedContext";
+import { useSidebar } from '@store/sidebarContext';
+import { useHighlightedDistrict } from '@store/district/highlightedContext';
+import { useSelectedDistrict } from '@store/district/selectedContext';
+import { useHighlightedState } from '@store/state/highlightedContext';
+import { useSelectedState } from '@store/state/selectedContext';
 
 const useMap = () => {
   const { setIsSidebarOpen } = useSidebar();
@@ -12,15 +12,19 @@ const useMap = () => {
   const { setSelected: setSelectedDistrict } = useSelectedDistrict();
   const { setSelected: setSelectedState } = useSelectedState();
 
-  const resetMapValues = () => {
+  const resetDistrictValues = () => {
     setIsSidebarOpen(false);
     setHighlightedDistrict(null);
-    setHighlightedState(null);
     setSelectedDistrict(null);
+  };
+
+  const resetMapValues = () => {
+    resetDistrictValues();
+    setHighlightedState(null);
     setSelectedState(null);
   };
 
-  return { resetMapValues };
+  return { resetMapValues, resetDistrictValues };
 };
 
 export default useMap;

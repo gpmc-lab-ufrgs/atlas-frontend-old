@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 interface Props {
   selectedDistrict: boolean;
@@ -38,8 +38,7 @@ export const SearchBarField = styled.div<Props>`
 
     background: transparent;
 
-    font-size: ${({ selectedDistrict }) =>
-      selectedDistrict ? "18" : "15"}px !important;
+    font-size: ${({ selectedDistrict }) => (selectedDistrict ? '18' : '15')}px !important;
   }
 `;
 

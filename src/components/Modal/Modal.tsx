@@ -1,6 +1,8 @@
-import { Switch, Route as Path } from "react-router-dom";
+import React from 'react';
 
-import { AboutTheAtlas, Contributors } from "@components/Modal";
+import { Switch, Route as Path } from 'react-router-dom';
+
+import { AboutTheAtlas, Contributors } from '@components/Modal';
 
 const Modal = () => {
   return (

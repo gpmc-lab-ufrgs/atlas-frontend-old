@@ -1,25 +1,24 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 
-import { useDebounce } from "use-debounce";
+import { useDebounce } from 'use-debounce';
 
-import { Search, Close } from "@mui/icons-material";
+import { Search, Close } from '@mui/icons-material';
 
-import { useSelectedDistrict } from "@store/district/selectedContext";
-import { District } from "@customTypes/feature";
+import { useSelectedDistrict } from '@store/district/selectedContext';
+import { District } from '@customTypes/feature';
 
-import useSearch from "./hook/useSearch";
+import useSearch from './hook/useSearch';
 
-import SearchBarPopper, { PopperActionsType } from "./SearchBarPopper";
+import SearchBarPopper, { PopperActionsType } from './SearchBarPopper';
 
-import { getFilteredDistricts, getSortedDistricts } from "./utils";
+import { getFilteredDistricts, getSortedDistricts } from './utils';
 
-import * as Styles from "./styles";
+import * as Styles from './styles';
 
 const SearchBar: React.FC = () => {
   const { selected, all } = useSelectedDistrict();
 
-  const [referenceElement, setReferenceElement] =
-    useState<HTMLDivElement | null>(null);
+  const [referenceElement, setReferenceElement] = useState<HTMLDivElement | null>(null);
 
   const [districtSearched, setDistrictSearched] = useState<District[]>(all);
 
@@ -39,16 +38,16 @@ const SearchBar: React.FC = () => {
   const [debouncedValue] = useDebounce(inputValue, 500);
 
   useEffect(() => {
-    setInputValue(selected?.properties.NM_MUN ?? "");
+    setInputValue(selected?.properties.NM_MUN ?? '');
   }, [selected, setInputValue]);
 
   useEffect(() => {
     const query = debouncedValue
       .toLowerCase()
-      .replace(/\s+/g, " ")
-      .replace(/(^\s+|\s+$)/g, "");
+      .replace(/\s+/g, ' ')
+      .replace(/(^\s+|\s+$)/g, '');
 
-    const hasQuery = query !== "";
+    const hasQuery = query !== '';
 
     if (hasQuery) {
       setDistrictSearched(getSortedDistricts(getFilteredDistricts(all, query)));
@@ -57,7 +56,7 @@ const SearchBar: React.FC = () => {
     }
   }, [debouncedValue, all]);
 
-  const hasInputValue = inputValue === "";
+  const hasInputValue = inputValue === '';
 
   const popperActions: PopperActionsType = {
     highlightedIndex,
@@ -72,11 +71,7 @@ const SearchBar: React.FC = () => {
         <input {...inputProps} />
 
         <Styles.IconWrapper>
-          {hasInputValue ? (
-            <Search {...getToggleButtonProps()} />
-          ) : (
-            <Close onClick={() => cleanSearchBar()} />
-          )}
+          {hasInputValue ? <Search {...getToggleButtonProps()} /> : <Close onClick={() => cleanSearchBar()} />}
         </Styles.IconWrapper>
       </Styles.SearchBarField>
 

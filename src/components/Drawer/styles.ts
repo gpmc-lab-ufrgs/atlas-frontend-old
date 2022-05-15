@@ -1,6 +1,6 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-import { Box, Drawer as DrawerSkeleton } from "@mui/material";
+import { Box, Drawer as DrawerSkeleton } from '@mui/material';
 
 export const Drawer = styled(DrawerSkeleton)`
   width: 0;

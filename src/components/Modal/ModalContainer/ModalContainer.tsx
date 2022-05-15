@@ -1,6 +1,8 @@
-import { useHistory } from "react-router-dom";
+import React from 'react';
 
-import * as Styles from "./styles";
+import { useHistory } from 'react-router-dom';
+
+import * as Styles from './styles';
 
 const ModalContainer = ({ title, children }: any) => {
   const history = useHistory();

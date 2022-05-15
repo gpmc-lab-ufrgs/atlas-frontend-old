@@ -1,6 +1,6 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-import { Close } from "@mui/icons-material";
+import { Close } from '@mui/icons-material';
 
 export const ModalContainer = styled.div`
   position: fixed;

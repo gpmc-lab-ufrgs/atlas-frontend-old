@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 interface ITable {
   lineTableNumber: number;
@@ -13,8 +13,7 @@ export const Table = styled.div<ITable>`
 
   padding: 8px 10px;
 
-  background-color: ${({ lineTableNumber }) =>
-    lineTableNumber % 2 === 0 ? "white" : "#f5f5f5"};
+  background-color: ${({ lineTableNumber }) => (lineTableNumber % 2 === 0 ? 'white' : '#f5f5f5')};
   border-radius: 2px;
 `;
 

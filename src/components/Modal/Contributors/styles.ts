@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const ContributorContainer = styled.div`
   padding: 70px;

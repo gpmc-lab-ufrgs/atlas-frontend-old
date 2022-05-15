@@ -1,11 +1,13 @@
-import { ModalContainer } from "@components/Modal";
+import React from 'react';
+
+import { ModalContainer } from '@components/Modal';
 
 const Research = () => {
-    return (
-      <ModalContainer title="Research">
-        <></>
-      </ModalContainer>
-    );
+  return (
+    <ModalContainer title="Research">
+      <></>
+    </ModalContainer>
+  );
 };
 
 export default Research;

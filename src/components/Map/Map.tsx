@@ -1,12 +1,14 @@
-import { useState, useRef, useEffect } from "react";
-import mapboxgl from "mapbox-gl";
+import React, { useState, useRef, useEffect } from 'react';
+import mapboxgl from 'mapbox-gl';
 
-import useDistrictLayer from "./hook/useDistrictLayer";
-import useStateLayer from "./hook/useStateLayer";
+import useMap from '@hook/useMap';
 
-import { accessToken } from "./const";
+import useDistrictLayer from './hook/useDistrictLayer';
+import useStateLayer from './hook/useStateLayer';
 
-import "./styles.css";
+import { accessToken } from './const';
+
+import './styles.css';
 
 const Map = () => {
   mapboxgl.accessToken = accessToken;
@@ -16,24 +18,45 @@ const Map = () => {
   const { districtReference, setDistrictReference } = useDistrictLayer();
   const { stateReference, setStateReference } = useStateLayer();
 
+  const { resetMapValues, resetDistrictValues } = useMap();
   const [map, setMap] = useState<mapboxgl.Map>();
 
   useEffect(() => {
-    const initializeMap = ({ mapContainer }: any) => {
-      let center: mapboxgl.LngLatLike = [-58, -15];
+    const initializeMap = (ref: any) => {
+      const center: mapboxgl.LngLatLike = [-58, -15];
 
-      const map = new mapboxgl.Map({
-        container: mapContainer.current,
-        style: "mapbox://styles/mapbox/dark-v10",
+      const mapReference = new mapboxgl.Map({
+        container: ref.current,
+        style: 'mapbox://styles/mapbox/dark-v10',
         center: center,
         zoom: 3.4,
       });
 
-      setMap(map);
+      mapReference.on('click', (e) => {
+        const bbox = [
+          [e.point.x - 5, e.point.y - 5],
+          [e.point.x + 5, e.point.y + 5],
+        ];
+
+        //@ts-ignore
+        const clickedDistrict = mapReference.queryRenderedFeatures(bbox, {
+          layers: ['fill-district'],
+        });
+
+        const zoom = mapReference.getZoom();
+
+        if (clickedDistrict.length === 0 && zoom > 6) {
+          resetDistrictValues();
+        } else if (clickedDistrict.length === 0) {
+          resetMapValues();
+        }
+      });
+
+      setMap(mapReference);
     };
 
     if (!map) {
-      initializeMap({ mapContainer });
+      initializeMap(mapContainer);
     } else {
       if (!districtReference) {
         setDistrictReference(map);
@@ -45,9 +68,7 @@ const Map = () => {
     }
   }, [map]);
 
-  return (
-    <div id="map" ref={(el) => (mapContainer.current = el)} className="map" />
-  );
+  return <div id="map" ref={(el) => (mapContainer.current = el)} className="map" />;
 };
 
 export default Map;

@@ -1,91 +1,87 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 
-import mapboxgl from "mapbox-gl";
+import mapboxgl from 'mapbox-gl';
 
-import geojsonURL from "@data/BR_UF_2020.json";
+import geojsonURL from '@data/BR_UF_2020.json';
 
-import { useSelectedState } from "@store/state/selectedContext";
-import { useHighlightedState } from "@store/state/highlightedContext";
+import { useSelectedState } from '@store/state/selectedContext';
+import { useHighlightedState } from '@store/state/highlightedContext';
+import { useSelectedDistrict } from '@store/district/selectedContext';
 
-import {
-  highlightState,
-  clickState,
-  isStateLayerVisible,
-  cleanStateActions,
-} from "./stateActions";
+import { highlightState, clickState, isStateLayerVisible, cleanStateActions, fitStateBounds } from './stateActions';
 
-import { fitCenter } from "../../actions";
-import { stateColors } from "./const";
-import { lineOpacity, lineWidth, fillOpacity } from "../../const";
-import { isDistrictLayerVisible } from "../useDistrictLayer/districtActions";
+import { fitCenter } from '../../actions';
+import { stateColors } from './const';
+import { lineOpacity, lineWidth, fillOpacity } from '../../const';
+import { isDistrictLayerVisible } from '../useDistrictLayer/districtActions';
 
 const useStateLayer = () => {
   const [stateReference, setStateReference] = useState<mapboxgl.Map>();
 
-  const { setHighlighted: setHighlightedState, highlighted: highlightedState } =
-    useHighlightedState();
-  const { setSelected: setSelectedState, selected: selectedState } =
-    useSelectedState();
+  const { setHighlighted: setHighlightedState, highlighted: highlightedState } = useHighlightedState();
+  const { setSelected: setSelectedState, selected: selectedState } = useSelectedState();
 
-  function initLayers(stateReference: mapboxgl.Map) {
-    stateReference.on("load", () => {
-      stateReference.addSource("state", {
-        type: "geojson",
+  const { selected: selectedDistrict } = useSelectedDistrict();
+
+  function initLayers(reference: mapboxgl.Map) {
+    reference.on('load', () => {
+      reference.addSource('state', {
+        type: 'geojson',
         //@ts-ignore
         data: geojsonURL,
         //@ts-ignore
-        promoteId: "CD_UF",
+        promoteId: 'CD_UF',
       });
 
-      stateReference.addLayer({
-        id: "fill-state",
-        type: "fill",
-        source: "state",
+      reference.addLayer({
+        id: 'fill-state',
+        type: 'fill',
+        source: 'state',
         layout: {
-          visibility: "visible",
+          visibility: 'visible',
         },
         paint: {
-          "fill-color": {
-            property: "POPULATION",
+          'fill-color': {
+            property: 'POPULATION',
             stops: stateColors,
           },
           //@ts-ignore
-          "fill-opacity": fillOpacity,
+          'fill-opacity': fillOpacity,
         },
       });
 
-      stateReference.addLayer({
-        id: "state-borders",
-        type: "line",
-        source: "state",
+      reference.addLayer({
+        id: 'state-borders',
+        type: 'line',
+        source: 'state',
         layout: {
-          visibility: "visible",
+          visibility: 'visible',
         },
         paint: {
-          "line-color": "#ffffff",
+          'line-color': '#ffffff',
           //@ts-ignore
-          "line-width": lineWidth,
+          'line-width': lineWidth,
           //@ts-ignore
-          "line-opacity": lineOpacity,
+          'line-opacity': lineOpacity,
         },
       });
     });
   }
 
-  function initActions(stateReference: mapboxgl.Map) {
-    stateReference.on("click", "fill-state", (e: any) => {
+  function initActions(reference: mapboxgl.Map) {
+    reference.on('click', 'fill-state', (e: any) => {
       if (e.features.length > 0) {
         setSelectedState(e.features[0]);
       }
     });
 
-    stateReference.on("mousemove", "fill-state", (e: any) => {
+    reference.on('mousemove', 'fill-state', (e: any) => {
       if (e.features.length > 0) {
         setHighlightedState(e.features[0]);
       }
     });
 
-    stateReference.on("mouseleave", "fill-state", () => {
+    reference.on('mouseleave', 'fill-state', () => {
       setHighlightedState(null);
     });
   }
@@ -109,6 +105,10 @@ const useStateLayer = () => {
 
       isDistrictLayerVisible(stateReference, true);
       isStateLayerVisible(stateReference, false);
+
+      if (selectedDistrict === null) {
+        fitStateBounds(selectedState, stateReference);
+      }
     } else if (stateReference) {
       clickState(null, stateReference);
 

@@ -1,1 +1,1 @@
-export { default } from "./Minimizer";
+export { default } from './Minimizer';
