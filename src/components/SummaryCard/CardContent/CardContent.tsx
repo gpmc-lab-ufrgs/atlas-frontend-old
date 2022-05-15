@@ -3,10 +3,11 @@ import * as Styles from "./styles";
 
 export default function CardContent(){
     const [cardStatus, setCardStatus] = useState(false);
+    const handleCloseCard = () => { setCardStatus(true) };
 
     return(
         <Styles.CardContentContainer isCardClosed={ cardStatus } >
-            <Styles.CardContentCloseIcon onClick={ ()=>{setCardStatus(true); }} />
+            <Styles.CardContentCloseIcon onClick={ handleCloseCard } />
             <Styles.CardContentTitle>Atlas Of Opportunity</Styles.CardContentTitle>
             <Styles.CardContentText>
                         Recent research has revealed a connection 
