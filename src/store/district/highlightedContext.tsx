@@ -9,8 +9,7 @@ interface DistrictActions {
   setHighlighted: React.Dispatch<React.SetStateAction<any>>;
 }
 
-const highlightedDistrictsContext =
-  createContext<DistrictActions>(DEFAULT_VALUE);
+const highlightedDistrictsContext = createContext<DistrictActions>(DEFAULT_VALUE);
 
 export function HighlightedDistrictProvider({ children }: any) {
   const [highlighted, setHighlighted] = useState(null);

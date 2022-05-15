@@ -7,10 +7,10 @@ import { AboutTheAtlas, Contributors } from '@components/Modal';
 const Modal = () => {
   return (
     <Switch>
-      <Path exact path='/aboutTheAtlas'>
+      <Path exact path="/aboutTheAtlas">
         <AboutTheAtlas />
       </Path>
-      <Path exact path='/contributors'>
+      <Path exact path="/contributors">
         <Contributors />
       </Path>
       {/* <Path exact path="/methods">

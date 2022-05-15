@@ -24,16 +24,10 @@ function addPopup(feature: Feature, map: mapboxgl.Map, type: string) {
 
   switch (type) {
     case 'hover':
-      hoveredPopup
-        .setLngLat([coordinates[0], coordinates[1]])
-        .setHTML(`<h5>${regionName}</h5>`)
-        .addTo(map);
+      hoveredPopup.setLngLat([coordinates[0], coordinates[1]]).setHTML(`<h5>${regionName}</h5>`).addTo(map);
       break;
     case 'click':
-      clickedPopup
-        .setLngLat([coordinates[0], coordinates[1]])
-        .setHTML(`<h5>${regionName}</h5>`)
-        .addTo(map);
+      clickedPopup.setLngLat([coordinates[0], coordinates[1]]).setHTML(`<h5>${regionName}</h5>`).addTo(map);
       break;
   }
 }
@@ -123,7 +117,7 @@ export function fitDistrictBounds(feature: Feature, map: mapboxgl.Map) {
       ],
       {
         padding: { top: 200, bottom: 200, left: 550, right: 200 },
-      }
+      },
     );
   }
 }

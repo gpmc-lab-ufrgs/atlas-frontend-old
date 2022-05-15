@@ -29,13 +29,9 @@ export const formatValue = (value: any, format: string) => {
     case 'percent_normalized':
       return `${(value * 100.0).toFixed(2)}%`;
     case 'float_2':
-      return value
-        ? `${parseFloat(String(value).replace(/,/g, '.')).toFixed(2)}`
-        : '';
+      return value ? `${parseFloat(String(value).replace(/,/g, '.')).toFixed(2)}` : '';
     case 'float_3':
-      return value
-        ? `${parseFloat(String(value).replace(/,/g, '.')).toFixed(3)}`
-        : '';
+      return value ? `${parseFloat(String(value).replace(/,/g, '.')).toFixed(3)}` : '';
     default:
       return value ? value + '' : '-';
   }

@@ -9,10 +9,7 @@ interface Props {
   setComparison(value: string): void;
 }
 
-const ComparisonControl: React.FC<Props> = ({
-  comparisonType,
-  setComparison,
-}) => {
+const ComparisonControl: React.FC<Props> = ({ comparisonType, setComparison }) => {
   const controls = [
     { label: 'Table', value: 'table', icon: <TableChart /> },
     { label: 'Grid', value: 'grid', icon: <Window /> },

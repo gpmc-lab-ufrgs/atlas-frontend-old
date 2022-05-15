@@ -25,11 +25,7 @@ const ComparisonMode: React.FC<Props> = ({ comparisonType }) => {
     }
   }
 
-  return (
-    <Styles.ComparisonWrapper>
-      {comparisonModeToggle()}
-    </Styles.ComparisonWrapper>
-  );
+  return <Styles.ComparisonWrapper>{comparisonModeToggle()}</Styles.ComparisonWrapper>;
 };
 
 export default ComparisonMode;

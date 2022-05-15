@@ -20,8 +20,7 @@ const districtProps: DistrictSectionType[] = [
       {
         label: 'OBSERVED',
         title: 'Número de mortes observadas por causas evitáveis',
-        description:
-          'Número de mortes observadas por causas evitáveis de 5 a 74 anos (2013 a 2017) - GeoSES',
+        description: 'Número de mortes observadas por causas evitáveis de 5 a 74 anos (2013 a 2017) - GeoSES',
         format: (e: any) => formatValue(e, 'float_2'),
         type: 'none',
       },
@@ -44,24 +43,21 @@ const districtProps: DistrictSectionType[] = [
       {
         label: 'IDHM',
         title: 'Índice de Desenvolvimento Humano (IDH)',
-        description:
-          'IDHM - Índice de desenvolvimento humano municipal (2010) - IBGE cidades',
+        description: 'IDHM - Índice de desenvolvimento humano municipal (2010) - IBGE cidades',
         format: (e: any) => formatValue(e, 'float_3'),
         type: 'none',
       },
       {
         label: 'HDI_educ',
         title: 'Índice de Desenvolvimento Humano, dimensão educacional',
-        description:
-          'Índice de Desenvolvimento Humano, dimensão educacional - GeoSES',
+        description: 'Índice de Desenvolvimento Humano, dimensão educacional - GeoSES',
         format: (e: any) => formatValue(e, 'float_3'),
         type: 'none',
       },
       {
         label: 'HDI_long',
         title: 'Índice de Desenvolvimento Humano, dimensão longevidade',
-        description:
-          'Índice de Desenvolvimento Humano, dimensão longevidade - GeoSES',
+        description: 'Índice de Desenvolvimento Humano, dimensão longevidade - GeoSES',
         format: (e: any) => formatValue(e, 'float_3'),
         type: 'none',
       },
@@ -103,8 +99,7 @@ const districtProps: DistrictSectionType[] = [
       {
         label: 'Mortalidade_infantil',
         title: 'Mortalidade infantil',
-        description:
-          'Mortalidade infantil - óbitos por mil nascidos vivos (2019) - IBGE cidades',
+        description: 'Mortalidade infantil - óbitos por mil nascidos vivos (2019) - IBGE cidades',
         format: (e: any) => formatValue(e, 'float_2'),
         type: 'none',
       },
@@ -153,8 +148,7 @@ const districtProps: DistrictSectionType[] = [
       {
         label: 'HDI_inc',
         title: 'Índice de Desenvolvimento Humano, dimensão de renda',
-        description:
-          'Índice de Desenvolvimento Humano, dimensão de renda - GeoSES',
+        description: 'Índice de Desenvolvimento Humano, dimensão de renda - GeoSES',
         format: (e: any) => formatValue(e, 'float_3'),
         type: 'none',
       },
@@ -190,8 +184,7 @@ const districtProps: DistrictSectionType[] = [
       {
         label: 'GeoSESin',
         title: 'Dimensão da renda',
-        description:
-          'Dimensão da renda (em reais; 1 dólar americano = 1,76 reais em 2010) - GeoSES',
+        description: 'Dimensão da renda (em reais; 1 dólar americano = 1,76 reais em 2010) - GeoSES',
         format: (e: any) => formatValue(e, 'float_2'),
         type: 'none',
       },
@@ -219,16 +212,14 @@ const districtProps: DistrictSectionType[] = [
       {
         label: 'Salario_medio_mensal_dos_trabalhadores_formais(2019)',
         title: 'Salário médio mensal',
-        description:
-          'Salário médio mensal dos trabalhadores formais (2019) - IBGE cidades',
+        description: 'Salário médio mensal dos trabalhadores formais (2019) - IBGE cidades',
         format: (e: any) => formatValue(e, 'float_2'),
         type: 'none',
       },
       {
         label: 'Pessoal_ocupado(2019)',
         title: 'Pessoas empregadas',
-        description:
-          'Número de pessoas empregadas no município (2019) - IBGE cidades',
+        description: 'Número de pessoas empregadas no município (2019) - IBGE cidades',
         format: (e: any) => formatValue(e, 'float_2'),
         type: 'none',
       },
@@ -240,8 +231,7 @@ const districtProps: DistrictSectionType[] = [
         type: 'bar',
       },
       {
-        label:
-          'Percentual_da_populacao_com_rendimento_nominal_mensal_per_capita_de_ate_1/2_salario_minimo(2010)',
+        label: 'Percentual_da_populacao_com_rendimento_nominal_mensal_per_capita_de_ate_1/2_salario_minimo(2010)',
         title: 'Percentual população renda mensal até 1/2 salário mínimo',
         description:
           'Percentual da população com rendimento nominal mensal per capita de até 1/2 salário mínimo (2010) - IBGE cidades',
@@ -289,8 +279,7 @@ const districtProps: DistrictSectionType[] = [
       {
         label: 'GeoSES',
         title: 'Índice socioeconômico',
-        description:
-          'Índice socioeconômico proposto, variando de -1 a +1 (das piores às melhores condições) - GeoSES',
+        description: 'Índice socioeconômico proposto, variando de -1 a +1 (das piores às melhores condições) - GeoSES',
         format: (e: any) => formatValue(e, 'float_2'),
         type: 'none',
       },
@@ -310,8 +299,7 @@ const districtProps: DistrictSectionType[] = [
       {
         label: 'IDEB_anos_finais_do_ensino_fundamental(2015)',
         title: 'IDEB anos finais do ensino fundamental',
-        description:
-          'Índice de Desenvolvimento da Educação Básica - Anos iniciais do ensino médio (2010) - GeoSES',
+        description: 'Índice de Desenvolvimento da Educação Básica - Anos iniciais do ensino médio (2010) - GeoSES',
         format: (e: any) => formatValue(e, 'float_2'),
         type: 'none',
       },

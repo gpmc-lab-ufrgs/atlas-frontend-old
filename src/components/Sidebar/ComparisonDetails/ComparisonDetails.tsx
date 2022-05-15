@@ -34,14 +34,12 @@ const ComparisonDetails = () => {
     <Box>
       <Title />
       {comparison.length > 0 && (
-        <Collapsible title='Comparação'>
+        <Collapsible title="Comparação">
           <>
             {comparison.map((feature: any, id) => (
               <Styles.ComparisonList key={id}>
                 {feature.properties.NM_MUN}
-                <Styles.CloseButton
-                  onClick={() => removeComparisonDistrict(feature)}
-                />
+                <Styles.CloseButton onClick={() => removeComparisonDistrict(feature)} />
               </Styles.ComparisonList>
             ))}
           </>

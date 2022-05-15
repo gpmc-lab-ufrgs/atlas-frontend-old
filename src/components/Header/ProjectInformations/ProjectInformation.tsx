@@ -25,11 +25,7 @@ const ProjectInformations: React.FC<Props> = ({ setOpen }) => {
         {sections.map((choices, id) => (
           <Styles.Section key={id}>
             {choices.map((choice) => (
-              <Link
-                key={choice.title}
-                to={choice.url}
-                onClick={() => handleCloseDrawer()}
-              >
+              <Link key={choice.title} to={choice.url} onClick={() => handleCloseDrawer()}>
                 {choice.title}
               </Link>
             ))}

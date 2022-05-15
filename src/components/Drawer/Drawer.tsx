@@ -11,13 +11,7 @@ interface Props {
   hideBackdrop?: boolean;
 }
 
-const Drawer: React.FC<Props> = ({
-  open,
-  anchor,
-  setOpen,
-  hideBackdrop,
-  children,
-}) => {
+const Drawer: React.FC<Props> = ({ open, anchor, setOpen, hideBackdrop, children }) => {
   const handleCloseDrawer = () => setOpen(false);
 
   return (

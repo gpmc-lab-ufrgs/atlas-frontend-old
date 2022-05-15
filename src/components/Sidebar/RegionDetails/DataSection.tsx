@@ -7,10 +7,7 @@ import MetricDetails from '@components/MetricDetails';
 import { useSelectedDistrict } from '@store/district/selectedContext';
 import { useComparison } from '@store/comparisonContext';
 
-import {
-  DistrictSectionType,
-  DistrictContentType,
-} from '@config/districtProps';
+import { DistrictSectionType, DistrictContentType } from '@config/districtProps';
 
 import { Tooltip } from '@mui/material';
 
@@ -20,9 +17,7 @@ const DataSection: React.FC<DistrictSectionType> = ({ title, content }) => {
   const { selected } = useSelectedDistrict();
   const { comparison } = useComparison();
 
-  const isSelectedOnComparison = comparison.some(
-    (region) => region.properties.CD_MUN === selected?.properties.CD_MUN
-  );
+  const isSelectedOnComparison = comparison.some((region) => region.properties.CD_MUN === selected?.properties.CD_MUN);
 
   const hasSelectedDistrict = Boolean(selected);
 

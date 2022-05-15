@@ -4,10 +4,7 @@ import Collapsible from '@components/Collapsible';
 
 import MetricDetails from '@components/MetricDetails';
 
-import {
-  DistrictSectionType,
-  DistrictContentType,
-} from '@config/districtProps';
+import { DistrictSectionType, DistrictContentType } from '@config/districtProps';
 
 import { Feature } from '@customTypes/feature';
 

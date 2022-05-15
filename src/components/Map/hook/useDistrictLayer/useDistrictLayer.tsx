@@ -7,12 +7,7 @@ import { useSelectedDistrict } from '@store/district/selectedContext';
 import { useSelectedState } from '@store/state/selectedContext';
 import { useSidebar } from '@store/sidebarContext';
 
-import {
-  highlightDistrict,
-  clickDistrict,
-  cleanDistrictActions,
-  fitDistrictBounds,
-} from './districtActions';
+import { highlightDistrict, clickDistrict, cleanDistrictActions, fitDistrictBounds } from './districtActions';
 
 import { RSColors } from './const';
 import { lineOpacity, lineWidth, fillOpacity } from '../../const';
@@ -24,18 +19,10 @@ import { findState } from '@components/Map/actions';
 const useDistrictLayer = () => {
   const [districtReference, setDistrictReference] = useState<mapboxgl.Map>();
 
-  const {
-    setHighlighted: setHighlightedDistrict,
-    highlighted: highlightedDistrict,
-  } = useHighlightedDistrict();
-  const { setSelected: setSelectedDistrict, selected: selectedDistrict } =
-    useSelectedDistrict();
+  const { setHighlighted: setHighlightedDistrict, highlighted: highlightedDistrict } = useHighlightedDistrict();
+  const { setSelected: setSelectedDistrict, selected: selectedDistrict } = useSelectedDistrict();
 
-  const {
-    selected: selectedState,
-    setSelected: setSelectedState,
-    all: allState,
-  } = useSelectedState();
+  const { selected: selectedState, setSelected: setSelectedState, all: allState } = useSelectedState();
 
   const { setIsSidebarOpen } = useSidebar();
 

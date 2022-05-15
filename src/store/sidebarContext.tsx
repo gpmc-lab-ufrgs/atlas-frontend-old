@@ -13,15 +13,9 @@ const DEFAULT_VALUE = {
 const sidebarContext = createContext<SidebarContext>(DEFAULT_VALUE);
 
 export function SidebarProvider({ children }: any) {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(
-    DEFAULT_VALUE.isSidebarOpen
-  );
+  const [isSidebarOpen, setIsSidebarOpen] = useState(DEFAULT_VALUE.isSidebarOpen);
 
-  return (
-    <sidebarContext.Provider value={{ isSidebarOpen, setIsSidebarOpen }}>
-      {children}
-    </sidebarContext.Provider>
-  );
+  return <sidebarContext.Provider value={{ isSidebarOpen, setIsSidebarOpen }}>{children}</sidebarContext.Provider>;
 }
 
 export function useSidebar() {

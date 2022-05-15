@@ -33,8 +33,7 @@ export const Control = styled.label<ControlProps>`
   line-height: 34px;
 
   color: ${({ isControlType }) => (isControlType ? '#ffffff' : '#333')};
-  background-color: ${({ isControlType }) =>
-    isControlType ? '#666666' : 'white'};
+  background-color: ${({ isControlType }) => (isControlType ? '#666666' : 'white')};
 
   :last-child {
     border-radius: 0 5px 5px 0;
@@ -45,7 +44,7 @@ export const Control = styled.label<ControlProps>`
     border-left: 1px solid #999999;
   }
 
-  input[type="radio"] {
+  input[type='radio'] {
     position: absolute;
 
     width: 0;

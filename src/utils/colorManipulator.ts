@@ -3,9 +3,7 @@ export function getColorFromGradient(min: string, max: string, value: number) {
   const maxColor = stringToColor(max);
 
   const getRGBColor = (color: 'red' | 'green' | 'blue') => {
-    return Math.round(
-      (maxColor[color] - minColor[color]) * value + minColor[color]
-    );
+    return Math.round((maxColor[color] - minColor[color]) * value + minColor[color]);
   };
 
   const gradient = {
@@ -21,11 +19,7 @@ export function getColorFromGradient(min: string, max: string, value: number) {
 export function lightOrDark(color: string) {
   const rgb = stringToColor(color);
 
-  const hsp = Math.sqrt(
-    0.299 * (rgb.red * rgb.red) +
-      0.587 * (rgb.green * rgb.green) +
-      0.114 * (rgb.blue * rgb.blue)
-  );
+  const hsp = Math.sqrt(0.299 * (rgb.red * rgb.red) + 0.587 * (rgb.green * rgb.green) + 0.114 * (rgb.blue * rgb.blue));
 
   if (hsp > 127.5) {
     return 'black';

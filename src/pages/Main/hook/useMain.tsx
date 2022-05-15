@@ -13,20 +13,14 @@ const useMain = () => {
   const location = useLocation();
   const history = useHistory();
 
-  const [isComparisonModeEnabled, setIsComparisonModeEnabled] =
-    useState<boolean>(false);
+  const [isComparisonModeEnabled, setIsComparisonModeEnabled] = useState<boolean>(false);
 
   useEffect(() => {
-    if (
-      comparison.length === 0 &&
-      location.pathname.startsWith('/comparison/')
-    ) {
+    if (comparison.length === 0 && location.pathname.startsWith('/comparison/')) {
       const pathIds = location.pathname.replace('/comparison/', '');
       if (pathIds) {
         const ids = pathIds.split('+');
-        const featuresFromUrl = all.filter((ft: any) =>
-          ids.includes(ft.properties['CD_MUN'].toString())
-        );
+        const featuresFromUrl = all.filter((ft: any) => ids.includes(ft.properties['CD_MUN'].toString()));
         setIsSidebarOpen(true);
         addComparisonDistrict(featuresFromUrl);
       } else {

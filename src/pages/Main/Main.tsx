@@ -31,10 +31,7 @@ const Main = () => {
     <Styles.MainContainer>
       <Modal />
 
-      <Sidebar
-        isComparisonMode={isComparisonModeEnabled}
-        title={selected?.properties.NM_MUN}
-      />
+      <Sidebar isComparisonMode={isComparisonModeEnabled} title={selected?.properties.NM_MUN} />
 
       <Styles.ComparisonWrapper isSidebarOpen={isSidebarOpen} theme={theme}>
         <Header
@@ -43,9 +40,7 @@ const Main = () => {
           setComparisonType={setComparisonType}
         />
 
-        {isComparisonModeEnabled && (
-          <CompatisonMode comparisonType={comparisonType} />
-        )}
+        {isComparisonModeEnabled && <CompatisonMode comparisonType={comparisonType} />}
       </Styles.ComparisonWrapper>
 
       <Map />

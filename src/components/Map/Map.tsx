@@ -68,9 +68,7 @@ const Map = () => {
     }
   }, [map]);
 
-  return (
-    <div id='map' ref={(el) => (mapContainer.current = el)} className='map' />
-  );
+  return <div id="map" ref={(el) => (mapContainer.current = el)} className="map" />;
 };
 
 export default Map;

@@ -1,9 +1,6 @@
 import React from 'react';
 
-import {
-  developerInstitutionsLogoImages,
-  supporterInstitutionLogoImages,
-} from './institutions';
+import { developerInstitutionsLogoImages, supporterInstitutionLogoImages } from './institutions';
 
 import { Box } from '@mui/material';
 
@@ -12,12 +9,7 @@ import * as Styles from './styles';
 function Footer() {
   return (
     <Styles.FooterContainer>
-      <Box
-        display='flex'
-        justifyContent='space-between'
-        alignItems='center'
-        paddingRight={5}
-      >
+      <Box display="flex" justifyContent="space-between" alignItems="center" paddingRight={5}>
         {developerInstitutionsLogoImages.map((institution, id) => (
           <Styles.InstitutionsLogo
             key={id}
@@ -28,7 +20,7 @@ function Footer() {
         ))}
       </Box>
 
-      <Box display='flex' justifyContent='space-between' alignItems='center'>
+      <Box display="flex" justifyContent="space-between" alignItems="center">
         <Styles.FooterText>Apoio:</Styles.FooterText>
         {supporterInstitutionLogoImages.map((institution, id) => (
           <Styles.InstitutionsLogo

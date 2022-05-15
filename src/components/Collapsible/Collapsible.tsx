@@ -19,9 +19,7 @@ const CollapsibleDefaultValue = {
 };
 
 const CollapsibleSection = ({ children, title }: any) => {
-  const [collapsible, setCollapsible] = useState<CollapsibleType>(
-    CollapsibleDefaultValue
-  );
+  const [collapsible, setCollapsible] = useState<CollapsibleType>(CollapsibleDefaultValue);
 
   const onOpen = (key: any) => updateIsOpen(key, true);
   const onClose = (key: any) => updateIsOpen(key, false);

@@ -16,11 +16,7 @@ interface Props {
   setComparisonType(value: string): void;
 }
 
-const Header: React.FC<Props> = ({
-  isComparisonModeOn,
-  comparisonType,
-  setComparisonType,
-}) => {
+const Header: React.FC<Props> = ({ isComparisonModeOn, comparisonType, setComparisonType }) => {
   const [openMenu, setOpenMenu] = useState(false);
 
   const { isSidebarOpen } = useSidebar();
@@ -29,10 +25,7 @@ const Header: React.FC<Props> = ({
     return (
       <Styles.HeaderContainer comparisonMode isSidebarOpen={isSidebarOpen}>
         <Styles.HeaderCenterSide>
-          <ComparisonControl
-            comparisonType={comparisonType}
-            setComparison={setComparisonType}
-          />
+          <ComparisonControl comparisonType={comparisonType} setComparison={setComparisonType} />
         </Styles.HeaderCenterSide>
 
         <Styles.HeaderRightSide>

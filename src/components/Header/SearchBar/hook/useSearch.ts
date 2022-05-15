@@ -45,9 +45,7 @@ const useSearch = (featureSearched: District[]) => {
       if (input === '' && type === useCombobox.stateChangeTypes.InputChange) {
         resetMapValues();
       } else if (isOpen && input !== '') {
-        const definiteMatch = featureSearched.find(
-          (item) => item.properties.NM_MUN === input
-        );
+        const definiteMatch = featureSearched.find((item) => item.properties.NM_MUN === input);
 
         if (definiteMatch) {
           selectItem(definiteMatch);

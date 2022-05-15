@@ -1,1 +1,1 @@
-export {default} from './AboutTheAtlas';
+export { default } from './AboutTheAtlas';

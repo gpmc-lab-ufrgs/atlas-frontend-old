@@ -4,7 +4,7 @@ import { ModalContainer } from '@components/Modal';
 
 const Research = () => {
   return (
-    <ModalContainer title='Research'>
+    <ModalContainer title="Research">
       <></>
     </ModalContainer>
   );
