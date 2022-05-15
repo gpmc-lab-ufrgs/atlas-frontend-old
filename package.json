@@ -6,7 +6,6 @@
     "@craco/craco": "^6.4.3",
     "@emotion/react": "^11.8.1",
     "@emotion/styled": "^11.8.1",
-    "@material-ui/core": "^4.12.4",
     "@mui/base": "^5.0.0-alpha.80",
     "@mui/icons-material": "^5.4.4",
     "@mui/material": "^5.4.4",
