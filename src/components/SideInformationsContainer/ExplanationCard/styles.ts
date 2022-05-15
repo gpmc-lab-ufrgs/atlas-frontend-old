@@ -1,10 +1,8 @@
 import { Card } from "@mui/material";
 import styled from "styled-components";
-
 interface CloseCard {
     isCardClosed: boolean;
 }
-
 
 export const ExplanationContainer = styled(Card)<CloseCard>`
   
@@ -20,7 +18,6 @@ export const ExplanationContainer = styled(Card)<CloseCard>`
     flex-direction: column;
     
 `;
-// border-radius: 5px;
 
 export const ExplanationCardTitle = styled.h1`
     margin-top: 0px;

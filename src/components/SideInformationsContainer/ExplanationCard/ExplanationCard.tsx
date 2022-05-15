@@ -2,7 +2,6 @@ import { useState } from "react";
 import * as Styles from "./styles";
 
 export default function ExplanationCard(){
-
     const [cardStatus, setCardStatus] = useState(false);
 
     return(
