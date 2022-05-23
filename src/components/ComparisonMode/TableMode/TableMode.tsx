@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Box } from '@mui/material';
 
-import districtProps from '@config/districtProps';
+import districtProps from '@config/district';
 import { Feature } from '@customTypes/feature';
 
 import Header from './Header';
