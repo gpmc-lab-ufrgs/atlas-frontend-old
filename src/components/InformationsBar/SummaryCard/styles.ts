@@ -2,6 +2,7 @@ import { Card } from '@mui/material';
 import styled from 'styled-components';
 
 export const Container = styled(Card)`
+  top: 150px;
   position: fixed;
   z-index: 2;
 

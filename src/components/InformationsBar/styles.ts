@@ -6,7 +6,6 @@ interface Minimizer {
 }
 
 export const SideInformationsContainer = styled.div<Minimizer>`
-  top: 150px;
   position: absolute;
   font-family: 'Roboto', sans-serif;
 
