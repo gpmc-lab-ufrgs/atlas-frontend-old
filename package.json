@@ -6,6 +6,7 @@
     "@craco/craco": "^6.4.3",
     "@emotion/react": "^11.8.1",
     "@emotion/styled": "^11.8.1",
+    "@mui/base": "^5.0.0-alpha.80",
     "@mui/icons-material": "^5.4.4",
     "@mui/material": "^5.4.4",
     "@popperjs/core": "^2.10.2",
