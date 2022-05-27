@@ -4,7 +4,6 @@ import styled from 'styled-components';
 export const Container = styled(Card)`
   bottom: 100px;
   position: fixed;
-  z-index: 2;
 
   font-size: 14px;
   width: 305px;
