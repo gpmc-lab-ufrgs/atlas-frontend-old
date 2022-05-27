@@ -1,22 +1,14 @@
 import { Box } from '@mui/material';
 import React from 'react';
 import { VictoryBar, VictoryChart, VictoryAxis, VictoryTheme } from 'victory';
+import LegendGradient from './LegendGradient';
 
 import * as Styles from './styles';
 
 export default function CloroplethLegend() {
   return (
     <Styles.Container>
-      <svg style={{ height: 0 }}>
-        <defs>
-          <linearGradient id="myGradient">
-            <stop offset="25%" stopColor="#ADDC91" />
-            <stop offset="50%" stopColor="#6CC24A" />
-            <stop offset="75%" stopColor="#509E2F" />
-            <stop offset="100%" stopColor="#4A7729" />
-          </linearGradient>
-        </defs>
-      </svg>
+      <LegendGradient />
       <Box paddingTop="25px" px="25px">
         <Styles.Title>População</Styles.Title>
       </Box>
