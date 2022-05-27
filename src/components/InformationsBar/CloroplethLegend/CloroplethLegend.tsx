@@ -9,9 +9,11 @@ export default function CloroplethLegend() {
   return (
     <Styles.Container>
       <LegendGradient />
+
       <Box paddingTop="25px" px="25px">
         <Styles.Title>População</Styles.Title>
       </Box>
+
       <Box sx={{ dispay: 'flex', alignItem: 'center' }}>
         <VictoryChart theme={VictoryTheme.material} height={200} horizontal>
           <VictoryBar barRatio={4} data={[{ x: 1, y: 10000 }]} style={{ data: { fill: 'url(#myGradient)' } }} />
