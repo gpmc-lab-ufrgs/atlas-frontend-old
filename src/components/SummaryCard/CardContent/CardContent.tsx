@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import CloseIcon from '@mui/icons-material/Close';
@@ -7,17 +7,20 @@ import { Box, Button } from '@mui/material';
 import * as Styles from './styles';
 
 export default function CardContent() {
-  const [hasSummaryCard, setHasSummaryCard] = useState(false);
+  const [hasSummaryCard, setHasSummaryCard] = useState(!localStorage.getItem('hasLocalStorage'));
   const history = useHistory();
 
   const handleCloseCard = () => {
-    setHasSummaryCard(true);
+    localStorage.setItem('hasLocalStorage', 'false');
+
+    setHasSummaryCard(false);
   };
+
   const handleRedirect = () => {
     history.push('/aboutTheAtlas');
   };
 
-  if (hasSummaryCard) {
+  if (!hasSummaryCard) {
     return <></>;
   }
 
