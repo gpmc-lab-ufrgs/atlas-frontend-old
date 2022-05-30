@@ -14,7 +14,7 @@ function addPopup(feature: Feature, map: mapboxgl.Map) {
   const coordinates = turf.centerOfMass(feature).geometry.coordinates;
   const regionName = feature?.properties?.NM_UF;
 
-  hoveredPopup.setLngLat([coordinates[0], coordinates[1]]).setHTML(`<h5>${regionName}</h5>`).addTo(map);
+  hoveredPopup.trackPointer().setHTML(`<h5>${regionName}</h5>`).addTo(map);
 }
 
 function setFeatureHover(featureID: number, map: mapboxgl.Map, state: boolean) {
