@@ -8,14 +8,18 @@ import { SummaryCard } from './SummaryCard';
 import { CloroplethLegend } from './CloroplethLegend';
 import * as Styles from './styles';
 
-export default function InformationBar() {
+interface InformationBarProps {
+  legendTick: number[];
+}
+
+export default function InformationBar({ legendTick }: InformationBarProps) {
   const { isSidebarOpen } = useSidebar();
   const theme = useTheme();
 
   return (
     <Styles.SideInformationsContainer theme={theme} isSidebarOpen={isSidebarOpen}>
       <SummaryCard />
-      <CloroplethLegend />
+      <CloroplethLegend legendTick={legendTick} />
     </Styles.SideInformationsContainer>
   );
 }
