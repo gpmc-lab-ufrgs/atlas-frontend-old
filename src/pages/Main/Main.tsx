@@ -1,6 +1,7 @@
 import React from 'react';
 
 import geojsonBR from '@data/BR_UF_2020.json';
+import extremePopulationValues from '@data/ExtremePopValuesByState.json';
 
 import { State } from '@customTypes/feature';
 
@@ -47,7 +48,10 @@ const Main = () => {
 
   const legendTick: number[] = !selectedState
     ? [smallestState.properties.POPULATION, biggestState.properties.POPULATION]
-    : [1, 2];
+    : [
+        extremePopulationValues[selectedState.properties.SIGLA_UF].MIN_POPULATION_DISTRICT.POPULATION,
+        extremePopulationValues[selectedState.properties.SIGLA_UF].MAX_POPULATION_DISTRICT.POPULATION,
+      ];
 
   return (
     <Styles.MainContainer>
