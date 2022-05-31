@@ -6,7 +6,7 @@ import { Box, Button } from '@mui/material';
 
 import * as Styles from './styles';
 
-export default function CardContent() {
+export default function SummaryCard() {
   const [hasSummaryCard, setHasSummaryCard] = useState(!localStorage.getItem('hasLocalStorage'));
   const history = useHistory();
 

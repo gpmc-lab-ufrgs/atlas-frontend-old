@@ -4,16 +4,18 @@ import { useTheme } from '@mui/material/styles';
 
 import { useSidebar } from '@store/sidebarContext';
 
-import { CardContent } from './CardContent';
+import { SummaryCard } from './SummaryCard';
+import { CloroplethLegend } from './CloroplethLegend';
 import * as Styles from './styles';
 
-export default function SummaryCard() {
+export default function InformationBar() {
   const { isSidebarOpen } = useSidebar();
   const theme = useTheme();
 
   return (
     <Styles.SideInformationsContainer theme={theme} isSidebarOpen={isSidebarOpen}>
-      <CardContent />
+      <SummaryCard />
+      <CloroplethLegend />
     </Styles.SideInformationsContainer>
   );
 }
