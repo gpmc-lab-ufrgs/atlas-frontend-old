@@ -103,9 +103,6 @@ const useStateLayer = () => {
     if (stateReference && selectedState !== null) {
       clickState(selectedState, stateReference);
 
-      isDistrictLayerVisible(stateReference, true);
-      isStateLayerVisible(stateReference, false);
-
       if (selectedDistrict === null) {
         fitStateBounds(selectedState, stateReference);
       }

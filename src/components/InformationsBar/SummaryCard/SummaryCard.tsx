@@ -26,7 +26,7 @@ export default function SummaryCard() {
   }
 
   const summary =
-    "Recent research has revealed a connection between people's mobility and the economy — areas with diverse community movement patterns are more likely to experience higher economic growth. This version of the Atlas aims to make such insights accessible to small business owners and government planners.";
+    'O Atlas de Oportunidade é um projeto que tem o objetivo de ajudar na identificação, mensuração e classificação de necessidades humanas não satisfeitas, estimação de potencial de mercado, previsão de demanda e identificação de oportunidades de negócio em larga escala.';
 
   return (
     <Styles.Container>
