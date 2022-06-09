@@ -20,7 +20,6 @@
   },
   "plugins": ["react", "@typescript-eslint", "prettier"],
   "rules": {
-    "prettier/prettier": "error",
     "react-hooks/exhaustive-deps": "off",
     "semi": ["error", "always"],
     "quotes": ["error", "single", { "avoidEscape": true, "allowTemplateLiterals": false }],
