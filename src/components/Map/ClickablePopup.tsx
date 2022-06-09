@@ -23,12 +23,12 @@ export default function ClickablePopup({ regionName, reference, feature }: Props
   };
 
   return (
-    <Styles.teste
+    <Styles.Popup
       onClick={() => {
         handlePopupCkick();
       }}
     >
       {regionName}
-    </Styles.teste>
+    </Styles.Popup>
   );
 }
