@@ -33,7 +33,9 @@ const Contributors = () => {
             {contributors.data.map((data, index) => (
               <div key={index}>
                 {data.hasImage ? (
-                  <Styles.ContributorImage src={data.image} alt={data.name} />
+                  <Styles.ContributorImageContainer>
+                    <Styles.ContributorImage src={data.image} alt={data.name} />
+                  </Styles.ContributorImageContainer>
                 ) : (
                   <Styles.AvatarIconDiv>
                     <Styles.AvatarIcon src={data.image} alt={data.name} />
