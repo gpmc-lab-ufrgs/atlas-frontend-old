@@ -1,7 +1,7 @@
 import viniciusBrei from '@assets/vinicius_brei.jpg';
 import alexSandy from '@assets/alex_sandy.png';
 import mohsenBahrami from '@assets/mohsen_bahrami.png';
-import alinaFlores from '@assets/alina_flores.png';
+import alinaFlores from '@assets/alina_flores.jpg';
 import ricardoLimongi from '@assets/ricardo_limongi.png';
 import leonardoGomes from '@assets/leonardo_gomes.jpg';
 import justinAnderson from '@assets/justin_anderson.png';
@@ -10,7 +10,7 @@ import valdersonJunior from '@assets/valderson_junior.png';
 import anaLuisa from '@assets/avatar_icon.svg';
 import andreonMagagna from '@assets/andreon_magagna.jpg';
 import carlaNetto from '@assets/carla_netto.jpg';
-import jaianyRocha from '@assets/jaiany_rocha.png';
+import jaianyRocha from '@assets/jaiany_rocha.jpg';
 import jhenifferLucas from '@assets/jheniffer_lucas.jpg';
 import luisMenegetti from '@assets/luis_meneguetti.jpg';
 import thalesMartins from '@assets/avatar_icon.svg';
