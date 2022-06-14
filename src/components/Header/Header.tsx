@@ -43,6 +43,7 @@ const Header: React.FC<Props> = ({ isComparisonModeOn, comparisonType, setCompar
     <Styles.HeaderContainer isSidebarOpen={isSidebarOpen}>
       <Styles.HeaderLeftSide>
         <SearchBar />
+        <Styles.ReturnRoute>Oiasdadasdaddss</Styles.ReturnRoute>
       </Styles.HeaderLeftSide>
 
       <Styles.HeaderRightSide>

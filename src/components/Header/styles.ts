@@ -50,6 +50,7 @@ export const HeaderLeftSide = styled.div`
   grid-column: 1;
   justify-self: start;
   align-self: center;
+  display: flex;
 `;
 
 export const HeaderCenterSide = styled.div`
@@ -62,4 +63,11 @@ export const HeaderRightSide = styled.div`
   grid-column: 3;
   justify-self: end;
   align-self: center;
+`;
+
+export const ReturnRoute = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
 `;
