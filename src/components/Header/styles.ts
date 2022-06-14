@@ -66,6 +66,9 @@ export const HeaderRightSide = styled.div`
 `;
 
 export const ReturnRoute = styled.div`
+  font-size: 20px;
+  white-space: nowrap;
+  margin-left: 50px;
   display: flex;
   align-items: center;
   justify-content: center;

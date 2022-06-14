@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 
 import { useSidebar } from '@store/sidebarContext';
+import { useSelectedState } from '@store/state/selectedContext';
+import { useSelectedDistrict } from '@store/district/selectedContext';
 
 import Drawer from '@components/Drawer';
 
@@ -18,6 +20,11 @@ interface Props {
 
 const Header: React.FC<Props> = ({ isComparisonModeOn, comparisonType, setComparisonType }) => {
   const [openMenu, setOpenMenu] = useState(false);
+
+  const { selected: selectedState } = useSelectedState();
+  const { selected } = useSelectedDistrict();
+
+  console.log(selectedState, selected);
 
   const { isSidebarOpen } = useSidebar();
 
@@ -43,7 +50,11 @@ const Header: React.FC<Props> = ({ isComparisonModeOn, comparisonType, setCompar
     <Styles.HeaderContainer isSidebarOpen={isSidebarOpen}>
       <Styles.HeaderLeftSide>
         <SearchBar />
-        <Styles.ReturnRoute>Oiasdadasdaddss</Styles.ReturnRoute>
+        {selectedState && (
+          <Styles.ReturnRoute>
+            Brasil - {selectedState.properties.NM_UF} {selected && <div>&nbsp;- {selected.properties.NM_MUN}</div>}
+          </Styles.ReturnRoute>
+        )}
       </Styles.HeaderLeftSide>
 
       <Styles.HeaderRightSide>
