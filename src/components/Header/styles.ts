@@ -25,6 +25,7 @@ export const HeaderContainer = styled.header<HeaderProps>`
   padding: 15px 20px;
 
   background: ${({ comparisonMode }) => (comparisonMode ? '#ffffffe6' : null)};
+  backdrop-filter: blur(2px);
 `;
 
 interface MenuButtonProps {
