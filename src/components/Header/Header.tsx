@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+
 import useMap from '@hook/useMap';
 import { useSidebar } from '@store/sidebarContext';
 import { useSelectedState } from '@store/state/selectedContext';
@@ -35,8 +37,6 @@ const Header: React.FC<Props> = ({ isComparisonModeOn, comparisonType, setCompar
     } else {
       setSelectedLayer('country');
     }
-
-    console.log(selectedLayer, selected, selectedState);
   }, [selected, selectedState]);
 
   const returnPath = () => {
@@ -58,6 +58,24 @@ const Header: React.FC<Props> = ({ isComparisonModeOn, comparisonType, setCompar
             {selectedState?.properties.NM_UF}
           </div>
         </>
+      );
+    }
+  };
+
+  const returnToPreviousLayer = () => {
+    if (selectedLayer === 'district') {
+      resetDistrictValues();
+    } else if (selectedLayer === 'state') {
+      resetMapValues();
+    }
+  };
+
+  const returnPathButton = () => {
+    if (selectedLayer !== 'country') {
+      return (
+        <Styles.ReturnRouteButton onClick={() => returnToPreviousLayer()}>
+          <ChevronLeftIcon sx={{ color: 'black' }} />
+        </Styles.ReturnRouteButton>
       );
     }
   };
@@ -87,6 +105,7 @@ const Header: React.FC<Props> = ({ isComparisonModeOn, comparisonType, setCompar
       <Styles.HeaderLeftSide>
         <SearchBar />
         <Styles.ReturnRoute selectedLayer={selectedLayer}>
+          {returnPathButton()}
           <div className="country" onClick={() => resetMapValues()}>
             Brasil
           </div>

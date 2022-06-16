@@ -92,3 +92,14 @@ export const ReturnRoute = styled.div<IReturnRoute>`
     font-weight: ${({ selectedLayer }) => (selectedLayer === 'district' ? 'bold' : 'normal')};
   }
 `;
+
+export const ReturnRouteButton = styled.div`
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  margin-right: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
