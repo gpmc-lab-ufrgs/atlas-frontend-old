@@ -86,7 +86,7 @@ const Header: React.FC<Props> = ({ isComparisonModeOn, comparisonType, setCompar
     <Styles.HeaderContainer isSidebarOpen={isSidebarOpen}>
       <Styles.HeaderLeftSide>
         <SearchBar />
-        <Styles.ReturnRoute>
+        <Styles.ReturnRoute selectedLayer={selectedLayer}>
           <div className="country" onClick={() => resetMapValues()}>
             Brasil
           </div>

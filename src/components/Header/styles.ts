@@ -7,6 +7,10 @@ interface HeaderProps {
   isSidebarOpen: boolean;
 }
 
+interface IReturnRoute {
+  selectedLayer: string;
+}
+
 export const HeaderContainer = styled.header<HeaderProps>`
   width: ${({ isSidebarOpen }) => (isSidebarOpen ? 'calc(100% - 385px)' : 'calc(100% - 40px)')};
 
@@ -65,7 +69,7 @@ export const HeaderRightSide = styled.div`
   align-self: center;
 `;
 
-export const ReturnRoute = styled.div`
+export const ReturnRoute = styled.div<IReturnRoute>`
   font-size: 20px;
   white-space: nowrap;
   margin-left: 50px;
@@ -75,4 +79,16 @@ export const ReturnRoute = styled.div`
   color: white;
   cursor: pointer;
   pointer-events: auto;
+
+  .country {
+    font-weight: ${({ selectedLayer }) => (selectedLayer === 'country' ? 'bold' : 'normal')};
+  }
+
+  .state {
+    font-weight: ${({ selectedLayer }) => (selectedLayer === 'state' ? 'bold' : 'normal')};
+  }
+
+  .district {
+    font-weight: ${({ selectedLayer }) => (selectedLayer === 'district' ? 'bold' : 'normal')};
+  }
 `;
