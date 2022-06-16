@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
+import useMap from '@hook/useMap';
 import { useSidebar } from '@store/sidebarContext';
 import { useSelectedState } from '@store/state/selectedContext';
 import { useSelectedDistrict } from '@store/district/selectedContext';
@@ -22,6 +23,7 @@ const Header: React.FC<Props> = ({ isComparisonModeOn, comparisonType, setCompar
   const [openMenu, setOpenMenu] = useState(false);
   const [selectedLayer, setSelectedLayer] = useState('country');
 
+  const { resetMapValues, resetDistrictValues } = useMap();
   const { selected: selectedState } = useSelectedState();
   const { selected } = useSelectedDistrict();
 
@@ -42,15 +44,19 @@ const Header: React.FC<Props> = ({ isComparisonModeOn, comparisonType, setCompar
       return (
         <>
           &nbsp;-&nbsp;
-          <div className="state"> {selectedState?.properties.NM_UF} </div>
-          &nbsp; - <div className="district">{selected?.properties.NM_MUN}</div>
+          <div className="state" onClick={() => resetDistrictValues()}>
+            {selectedState?.properties.NM_UF}
+          </div>
+          &nbsp;-&nbsp;<div className="district">{selected?.properties.NM_MUN}</div>
         </>
       );
     } else if (selectedLayer === 'state') {
       return (
         <>
           &nbsp;-&nbsp;
-          <div className="state"> {selectedState?.properties.NM_UF} </div>
+          <div className="state" onClick={() => resetDistrictValues()}>
+            {selectedState?.properties.NM_UF}
+          </div>
         </>
       );
     }
@@ -81,7 +87,9 @@ const Header: React.FC<Props> = ({ isComparisonModeOn, comparisonType, setCompar
       <Styles.HeaderLeftSide>
         <SearchBar />
         <Styles.ReturnRoute>
-          <div className="country"> Brasil </div>
+          <div className="country" onClick={() => resetMapValues()}>
+            Brasil
+          </div>
           {returnPath()}
         </Styles.ReturnRoute>
       </Styles.HeaderLeftSide>
