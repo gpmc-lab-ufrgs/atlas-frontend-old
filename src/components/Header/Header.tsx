@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { useSidebar } from '@store/sidebarContext';
 import { useSelectedState } from '@store/state/selectedContext';
@@ -20,11 +20,41 @@ interface Props {
 
 const Header: React.FC<Props> = ({ isComparisonModeOn, comparisonType, setComparisonType }) => {
   const [openMenu, setOpenMenu] = useState(false);
+  const [selectedLayer, setSelectedLayer] = useState('country');
 
   const { selected: selectedState } = useSelectedState();
   const { selected } = useSelectedDistrict();
 
-  console.log(selectedState, selected);
+  useEffect(() => {
+    if (selected) {
+      setSelectedLayer('district');
+    } else if (selectedState && !selected) {
+      setSelectedLayer('state');
+    } else {
+      setSelectedLayer('country');
+    }
+
+    console.log(selectedLayer, selected, selectedState);
+  }, [selected, selectedState]);
+
+  const returnPath = () => {
+    if (selectedLayer === 'district') {
+      return (
+        <>
+          &nbsp;-&nbsp;
+          <div className="state"> {selectedState?.properties.NM_UF} </div>
+          &nbsp; - <div className="district">{selected?.properties.NM_MUN}</div>
+        </>
+      );
+    } else if (selectedLayer === 'state') {
+      return (
+        <>
+          &nbsp;-&nbsp;
+          <div className="state"> {selectedState?.properties.NM_UF} </div>
+        </>
+      );
+    }
+  };
 
   const { isSidebarOpen } = useSidebar();
 
@@ -50,11 +80,10 @@ const Header: React.FC<Props> = ({ isComparisonModeOn, comparisonType, setCompar
     <Styles.HeaderContainer isSidebarOpen={isSidebarOpen}>
       <Styles.HeaderLeftSide>
         <SearchBar />
-        {selectedState && (
-          <Styles.ReturnRoute>
-            Brasil - {selectedState.properties.NM_UF} {selected && <div>&nbsp;- {selected.properties.NM_MUN}</div>}
-          </Styles.ReturnRoute>
-        )}
+        <Styles.ReturnRoute>
+          <div className="country"> Brasil </div>
+          {returnPath()}
+        </Styles.ReturnRoute>
       </Styles.HeaderLeftSide>
 
       <Styles.HeaderRightSide>
