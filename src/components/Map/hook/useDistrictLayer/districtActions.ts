@@ -19,17 +19,26 @@ function setFeatureHover(featureID: number, map: mapboxgl.Map, state: boolean) {
 }
 
 function addPopup(feature: Feature, map: mapboxgl.Map, type: string) {
-  const coordinates = turf.centerOfMass(feature).geometry.coordinates;
   const regionName = feature?.properties?.NM_MUN;
 
-  switch (type) {
-    case 'hover':
-      hoveredPopup.trackPointer().setHTML(`<h5>${regionName}</h5>`).addTo(map);
-      break;
-    case 'click':
-      clickedPopup.setLngLat([coordinates[0], coordinates[1]]).setHTML(`<h5>${regionName}</h5>`).addTo(map);
-      break;
-  }
+  map.on('mousemove', function (e) {
+    const coordinates = e.lngLat;
+
+    hoveredPopup
+      .setLngLat(coordinates)
+      .setHTML(`<div style="display: flex;flex-direction: column;"><h5>${regionName}</h5></div>`);
+
+    hoveredPopup.addTo(map);
+  });
+
+  map.on('click', function (e) {
+    const coordinates = e.lngLat;
+
+    clickedPopup
+      .setLngLat(coordinates)
+      .setHTML(`<div style="display: flex;flex-direction: column;"><h5>${regionName}</h5><h5>População:  </h5></div>`);
+    clickedPopup.addTo(map);
+  });
 }
 
 export function clickDistrict(feature: Feature, map: mapboxgl.Map) {
