@@ -5,7 +5,7 @@ import { District } from '@customTypes/feature';
 
 import { hoveredPopup, clickedPopup } from '../../const';
 
-import geosesData from '../../../../data/Data.json';
+import geosesData from '@data/Data.json';
 
 let clickedId: number | undefined;
 let hoveredId: number | undefined;
@@ -43,7 +43,7 @@ function addPopup(feature: Feature, map: mapboxgl.Map, type: string) {
     clickedPopup
       .setLngLat(coordinates)
       .setHTML(
-        `<div style="display: flex;flex-direction: column;"><h5>${regionName}</h5><h5>População:${population} </h5></div>`,
+        `<div style="display: flex; flex-direction: column;"><h5>${regionName}</h5><h5>População: ${population}</h5></div>`,
       );
     clickedPopup.addTo(map);
   });
