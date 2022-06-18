@@ -5,6 +5,8 @@ import { District } from '@customTypes/feature';
 
 import { hoveredPopup, clickedPopup } from '../../const';
 
+import geosesData from '../../../../data/Data.json';
+
 let clickedId: number | undefined;
 let hoveredId: number | undefined;
 
@@ -21,6 +23,10 @@ function setFeatureHover(featureID: number, map: mapboxgl.Map, state: boolean) {
 function addPopup(feature: Feature, map: mapboxgl.Map, type: string) {
   const regionName = feature?.properties?.NM_MUN;
 
+  const population =
+    //@ts-ignore
+    feature?.properties?.CD_MUN != undefined ? geosesData[feature?.properties?.CD_MUN]['Populacao_Estimada'] : '';
+
   map.on('mousemove', function (e) {
     const coordinates = e.lngLat;
 
@@ -36,7 +42,9 @@ function addPopup(feature: Feature, map: mapboxgl.Map, type: string) {
 
     clickedPopup
       .setLngLat(coordinates)
-      .setHTML(`<div style="display: flex;flex-direction: column;"><h5>${regionName}</h5><h5>População:  </h5></div>`);
+      .setHTML(
+        `<div style="display: flex;flex-direction: column;"><h5>${regionName}</h5><h5>População:${population} </h5></div>`,
+      );
     clickedPopup.addTo(map);
   });
 }
