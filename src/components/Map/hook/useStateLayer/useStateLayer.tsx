@@ -102,10 +102,6 @@ const useStateLayer = () => {
   useEffect(() => {
     if (stateReference && selectedState !== null) {
       clickState(selectedState, stateReference);
-
-      if (selectedDistrict === null) {
-        fitStateBounds(selectedState, stateReference);
-      }
     } else if (stateReference) {
       clickState(null, stateReference);
 
