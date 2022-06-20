@@ -1,11 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-
-import useMap from '@hook/useMap';
 import { useSidebar } from '@store/sidebarContext';
-import { useSelectedState } from '@store/state/selectedContext';
-import { useSelectedDistrict } from '@store/district/selectedContext';
 
 import Drawer from '@components/Drawer';
 
@@ -14,6 +9,7 @@ import ComparisonControl from './ComparisonControl';
 import ProjectInformations from './ProjectInformations';
 
 import * as Styles from './styles';
+import LayerRoute from './LayerRoute';
 
 interface Props {
   isComparisonModeOn: boolean;
@@ -23,62 +19,6 @@ interface Props {
 
 const Header: React.FC<Props> = ({ isComparisonModeOn, comparisonType, setComparisonType }) => {
   const [openMenu, setOpenMenu] = useState(false);
-  const [selectedLayer, setSelectedLayer] = useState('country');
-
-  const { resetMapValues, resetDistrictValues } = useMap();
-  const { selected: selectedState } = useSelectedState();
-  const { selected } = useSelectedDistrict();
-
-  useEffect(() => {
-    if (selected) {
-      setSelectedLayer('district');
-    } else if (selectedState && !selected) {
-      setSelectedLayer('state');
-    } else {
-      setSelectedLayer('country');
-    }
-  }, [selected, selectedState]);
-
-  const returnPath = () => {
-    if (selectedLayer === 'district') {
-      return (
-        <>
-          &nbsp;-&nbsp;
-          <div className="state" onClick={() => resetDistrictValues()}>
-            {selectedState?.properties.NM_UF}
-          </div>
-          &nbsp;-&nbsp;<div className="district">{selected?.properties.NM_MUN}</div>
-        </>
-      );
-    } else if (selectedLayer === 'state') {
-      return (
-        <>
-          &nbsp;-&nbsp;
-          <div className="state" onClick={() => resetDistrictValues()}>
-            {selectedState?.properties.NM_UF}
-          </div>
-        </>
-      );
-    }
-  };
-
-  const returnToPreviousLayer = () => {
-    if (selectedLayer === 'district') {
-      resetDistrictValues();
-    } else if (selectedLayer === 'state') {
-      resetMapValues();
-    }
-  };
-
-  const returnPathButton = () => {
-    if (selectedLayer !== 'country') {
-      return (
-        <Styles.ReturnRouteButton onClick={() => returnToPreviousLayer()}>
-          <ChevronLeftIcon sx={{ color: 'black' }} />
-        </Styles.ReturnRouteButton>
-      );
-    }
-  };
 
   const { isSidebarOpen } = useSidebar();
 
@@ -104,13 +44,7 @@ const Header: React.FC<Props> = ({ isComparisonModeOn, comparisonType, setCompar
     <Styles.HeaderContainer isSidebarOpen={isSidebarOpen}>
       <Styles.HeaderLeftSide>
         <SearchBar />
-        <Styles.ReturnRoute selectedLayer={selectedLayer}>
-          {returnPathButton()}
-          <div className="country" onClick={() => resetMapValues()}>
-            Brasil
-          </div>
-          {returnPath()}
-        </Styles.ReturnRoute>
+        <LayerRoute />
       </Styles.HeaderLeftSide>
 
       <Styles.HeaderRightSide>
