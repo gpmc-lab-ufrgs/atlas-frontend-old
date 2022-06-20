@@ -45,11 +45,10 @@ function addPopup(feature: Feature, map: mapboxgl.Map) {
     const coordinates = e.lngLat;
 
     if (clickedId !== 0) {
-      clickedPopup
-        .setLngLat(coordinates)
-        .setHTML(
-          `<div style="display: flex; flex-direction: column;"><h5>${regionName}</h5><h5>População: ${population}</h5></div>`,
-        );
+      clickedPopup.setLngLat(coordinates).setHTML(
+        `<div style="display: flex; flex-direction: column; cursor: default;
+          pointer-events: all;"><h5>${regionName}</h5><h5>População: ${population}</h5></div>`,
+      );
       clickedPopup.addTo(map);
     } else {
       clickedPopup.remove();
