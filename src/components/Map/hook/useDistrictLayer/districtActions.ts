@@ -20,7 +20,7 @@ function setFeatureHover(featureID: number, map: mapboxgl.Map, state: boolean) {
   map.setFeatureState({ source: 'district', id: featureID }, { hover: state });
 }
 
-function addPopup(feature: Feature, map: mapboxgl.Map, type: string) {
+function addPopup(feature: Feature, map: mapboxgl.Map) {
   const regionName = feature?.properties?.NM_MUN;
 
   const population =
@@ -30,22 +30,30 @@ function addPopup(feature: Feature, map: mapboxgl.Map, type: string) {
   map.on('mousemove', function (e) {
     const coordinates = e.lngLat;
 
-    hoveredPopup
-      .setLngLat(coordinates)
-      .setHTML(`<div style="display: flex;flex-direction: column;"><h5>${regionName}</h5></div>`);
+    if (hoveredId) {
+      hoveredPopup
+        .setLngLat(coordinates)
+        .setHTML(`<div style="display: flex;flex-direction: column;"><h5>${regionName}</h5></div>`);
 
-    hoveredPopup.addTo(map);
+      hoveredPopup.addTo(map);
+    } else {
+      hoveredPopup.remove();
+    }
   });
 
   map.on('click', function (e) {
     const coordinates = e.lngLat;
 
-    clickedPopup
-      .setLngLat(coordinates)
-      .setHTML(
-        `<div style="display: flex; flex-direction: column;"><h5>${regionName}</h5><h5>População: ${population}</h5></div>`,
-      );
-    clickedPopup.addTo(map);
+    if (clickedId !== 0) {
+      clickedPopup
+        .setLngLat(coordinates)
+        .setHTML(
+          `<div style="display: flex; flex-direction: column;"><h5>${regionName}</h5><h5>População: ${population}</h5></div>`,
+        );
+      clickedPopup.addTo(map);
+    } else {
+      clickedPopup.remove();
+    }
   });
 }
 
@@ -57,7 +65,7 @@ export function clickDistrict(feature: Feature, map: mapboxgl.Map) {
       return;
     }
 
-    addPopup(feature, map, 'click');
+    addPopup(feature, map);
 
     setFeatureClick(districtID, map, true);
 
@@ -86,7 +94,7 @@ export function highlightDistrict(feature: Feature, map: mapboxgl.Map) {
       return;
     }
 
-    addPopup(feature, map, 'hover');
+    addPopup(feature, map);
 
     if (hoveredId) {
       setFeatureHover(hoveredId, map, false);
