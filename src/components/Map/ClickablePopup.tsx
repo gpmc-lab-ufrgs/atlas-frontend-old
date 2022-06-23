@@ -1,7 +1,7 @@
 import React from 'react';
 import mapboxgl from 'mapbox-gl';
 
-import { Feature } from '@customTypes/feature';
+import { State } from '@customTypes/feature';
 
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 
@@ -12,7 +12,7 @@ import * as Styles from './styles';
 interface Props {
   regionName: string;
   reference: mapboxgl.Map;
-  feature: Feature;
+  feature: State;
 }
 
 export default function ClickablePopup({ regionName, reference, feature }: Props) {
