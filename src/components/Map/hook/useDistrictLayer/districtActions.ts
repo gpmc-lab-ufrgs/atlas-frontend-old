@@ -20,40 +20,33 @@ function setFeatureHover(featureID: number, map: mapboxgl.Map, state: boolean) {
   map.setFeatureState({ source: 'district', id: featureID }, { hover: state });
 }
 
-function addPopup(feature: Feature, map: mapboxgl.Map) {
-  const regionName = feature?.properties?.NM_MUN;
+export function addHoverPopup(feature: any, map: mapboxgl.Map) {
+  const regionName = feature.features[0]?.properties?.NM_MUN;
 
+  const coordinates = feature.lngLat;
+
+  hoveredPopup
+    .setLngLat(coordinates)
+    .setHTML(`<div style="display: flex;flex-direction: column;"><h5>${regionName}</h5></div>`);
+
+  hoveredPopup.addTo(map);
+}
+
+export function addClickPopup(feature: any, map: mapboxgl.Map) {
+  const coordinates = feature.lngLat;
+  const regionName = feature.features[0]?.properties?.NM_MUN;
   const population =
     //@ts-ignore
-    feature?.properties?.CD_MUN != undefined ? geosesData[feature?.properties?.CD_MUN]['Populacao_Estimada'] : '';
+    feature.features[0]?.properties?.CD_MUN != undefined //@ts-ignore
+      ? geosesData[feature.features[0]?.properties?.CD_MUN]['Populacao_Estimada']
+      : '';
 
-  map.on('mousemove', function (e) {
-    const coordinates = e.lngLat;
-
-    if (hoveredId) {
-      hoveredPopup
-        .setLngLat(coordinates)
-        .setHTML(`<div style="display: flex;flex-direction: column;"><h5>${regionName}</h5></div>`);
-
-      hoveredPopup.addTo(map);
-    } else {
-      hoveredPopup.remove();
-    }
-  });
-
-  map.on('click', function (e) {
-    const coordinates = e.lngLat;
-
-    if (clickedId !== 0) {
-      clickedPopup.setLngLat(coordinates).setHTML(
-        `<div style="display: flex; flex-direction: column; cursor: default;
+  clickedPopup.setLngLat(coordinates).setHTML(
+    `<div style="display: flex; flex-direction: column; cursor: default;
           pointer-events: all;"><h5>${regionName}</h5><h5>População: ${population}</h5></div>`,
-      );
-      clickedPopup.addTo(map);
-    } else {
-      clickedPopup.remove();
-    }
-  });
+  );
+
+  clickedPopup.addTo(map);
 }
 
 export function clickDistrict(feature: Feature, map: mapboxgl.Map) {
@@ -63,8 +56,6 @@ export function clickDistrict(feature: Feature, map: mapboxgl.Map) {
     if (districtID === clickedId) {
       return;
     }
-
-    addPopup(feature, map);
 
     setFeatureClick(districtID, map, true);
 
@@ -92,8 +83,6 @@ export function highlightDistrict(feature: Feature, map: mapboxgl.Map) {
     if (districtID === hoveredId) {
       return;
     }
-
-    addPopup(feature, map);
 
     if (hoveredId) {
       setFeatureHover(hoveredId, map, false);

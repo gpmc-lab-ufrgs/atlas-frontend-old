@@ -7,7 +7,14 @@ import { useSelectedDistrict } from '@store/district/selectedContext';
 import { useSelectedState } from '@store/state/selectedContext';
 import { useSidebar } from '@store/sidebarContext';
 
-import { highlightDistrict, clickDistrict, cleanDistrictActions, fitDistrictBounds } from './districtActions';
+import {
+  highlightDistrict,
+  clickDistrict,
+  cleanDistrictActions,
+  fitDistrictBounds,
+  addClickPopup,
+  addHoverPopup,
+} from './districtActions';
 
 import { RSColors } from './const';
 import { lineOpacity, lineWidth, fillOpacity } from '../../const';
@@ -79,12 +86,16 @@ const useDistrictLayer = () => {
       if (e.features.length > 0) {
         setSelectedDistrict(e.features[0]);
       }
+
+      addClickPopup(e, reference);
     });
 
     reference.on('mousemove', 'fill-district', (e: any) => {
       if (e.features.length > 0) {
         setHighlightedDistrict(e.features[0]);
       }
+
+      addHoverPopup(e, reference);
     });
 
     reference.on('mouseleave', 'fill-district', () => {
