@@ -20,7 +20,7 @@ function setFeatureHover(featureID: number, map: mapboxgl.Map, state: boolean) {
   map.setFeatureState({ source: 'district', id: featureID }, { hover: state });
 }
 
-export function addHoverPopup(feature: any, map: mapboxgl.Map) {
+export function addHoverPopup(feature: mapboxgl.EventData, map: mapboxgl.Map) {
   const regionName = feature.features[0]?.properties?.NM_MUN;
 
   hoveredPopup
@@ -30,7 +30,7 @@ export function addHoverPopup(feature: any, map: mapboxgl.Map) {
   hoveredPopup.addTo(map);
 }
 
-export function addClickPopup(feature: any, map: mapboxgl.Map) {
+export function addClickPopup(feature: mapboxgl.EventData, map: mapboxgl.Map) {
   const coordinates = feature.lngLat;
   const regionName = feature.features[0]?.properties?.NM_MUN;
   const population =

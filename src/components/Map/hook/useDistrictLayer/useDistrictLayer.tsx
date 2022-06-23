@@ -82,7 +82,7 @@ const useDistrictLayer = () => {
   }
 
   function initActions(reference: mapboxgl.Map) {
-    reference.on('click', 'fill-district', (e: any) => {
+    reference.on('click', 'fill-district', (e: mapboxgl.EventData) => {
       if (e.features.length > 0) {
         setSelectedDistrict(e.features[0]);
       }
@@ -90,7 +90,7 @@ const useDistrictLayer = () => {
       addClickPopup(e, reference);
     });
 
-    reference.on('mousemove', 'fill-district', (e: any) => {
+    reference.on('mousemove', 'fill-district', (e: mapboxgl.EventData) => {
       if (e.features.length > 0) {
         setHighlightedDistrict(e.features[0]);
       }

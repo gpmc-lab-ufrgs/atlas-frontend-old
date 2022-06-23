@@ -33,7 +33,7 @@ export default function ClickablePopup({ regionName, reference, feature }: Props
         {regionName}
         <ChevronRightIcon />
       </Styles.ClickableSection>
-      <h5>População: </h5>
+      <h5>População: {feature.properties?.POPULATION}</h5>
     </Styles.Popup>
   );
 }
