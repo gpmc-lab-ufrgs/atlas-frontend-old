@@ -21,15 +21,14 @@ function setFeatureHover(featureID: number, map: mapboxgl.Map, state: boolean) {
 }
 
 export function addHoverPopup(feature: mapboxgl.EventData, map: mapboxgl.Map) {
+  const coordinates = feature.lngLat;
   const regionName = feature.features[0]?.properties?.NM_MUN;
 
-  if (hoveredId) {
-    hoveredPopup
-      .trackPointer()
-      .setHTML(`<div style="display: flex;flex-direction: column;"><h5>${regionName}</h5></div>`);
+  hoveredPopup
+    .setLngLat(coordinates)
+    .setHTML(`<div style="display: flex;flex-direction: column;"><h5>${regionName}</h5></div>`);
 
-    hoveredPopup.addTo(map);
-  }
+  hoveredPopup.addTo(map);
 }
 
 export function addClickPopup(feature: mapboxgl.EventData, map: mapboxgl.Map) {
