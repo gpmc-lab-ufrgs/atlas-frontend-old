@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import CloseIcon from '@mui/icons-material/Close';
 import { Box, Button } from '@mui/material';
 
 import * as Styles from './styles';
+import { VolunteerActivismOutlined } from '@mui/icons-material';
 
 export default function SummaryCard() {
   const [hasSummaryCard, setHasSummaryCard] = useState(false);
