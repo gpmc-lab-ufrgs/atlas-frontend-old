@@ -30,17 +30,17 @@ const LayerRoute = () => {
       return (
         <>
           &nbsp;-&nbsp;
-          <div className="state" onClick={() => resetDistrictValues()}>
+          <div className="place state" onClick={() => resetDistrictValues()}>
             {selectedState?.properties.NM_UF}
           </div>
-          &nbsp;-&nbsp;<div className="district">{selected?.properties.NM_MUN}</div>
+          &nbsp;-&nbsp;<div className="place district">{selected?.properties.NM_MUN}</div>
         </>
       );
     } else if (selectedLayer === 'state') {
       return (
         <>
           &nbsp;-&nbsp;
-          <div className="state" onClick={() => resetDistrictValues()}>
+          <div className="place state" onClick={() => resetDistrictValues()}>
             {selectedState?.properties.NM_UF}
           </div>
         </>
@@ -69,7 +69,7 @@ const LayerRoute = () => {
   return (
     <Styles.ReturnRoute selectedLayer={selectedLayer}>
       {returnPathButton()}
-      <div className="country" onClick={() => resetMapValues()}>
+      <div className="place country" onClick={() => resetMapValues()}>
         Brasil
       </div>
       {returnPath()}

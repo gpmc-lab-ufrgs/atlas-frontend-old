@@ -5,9 +5,9 @@ interface IReturnRoute {
 }
 
 export const ReturnRoute = styled.div<IReturnRoute>`
-  font-size: 20px;
+  font-size: 15px;
   white-space: nowrap;
-  margin-left: 50px;
+  margin-left: 30px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -26,6 +26,16 @@ export const ReturnRoute = styled.div<IReturnRoute>`
   .district {
     font-weight: ${({ selectedLayer }) => (selectedLayer === 'district' ? 'bold' : 'normal')};
   }
+
+  .place {
+    padding: 5px;
+    border-radius: 5px;
+    &:hover {
+      background-color: rgb(239, 239, 239, 0.3);
+      /* background-color: rgb(239, 239, 239); */
+      /* opacity: 0.1; */
+    }
+  }
 `;
 
 export const ReturnRouteButton = styled.div`
@@ -37,4 +47,12 @@ export const ReturnRouteButton = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  &:hover {
+    background-color: black;
+
+    svg {
+      color: white;
+    }
+  }
 `;
