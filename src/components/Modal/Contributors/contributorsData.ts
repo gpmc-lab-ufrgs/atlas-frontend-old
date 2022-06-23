@@ -5,7 +5,7 @@ import alinaFlores from '@assets/alina_flores.jpg';
 import ricardoLimongi from '@assets/ricardo_limongi.png';
 import leonardoGomes from '@assets/leonardo_gomes.jpg';
 import justinAnderson from '@assets/justin_anderson.png';
-import enzoGabriel from '@assets/enzo_gabriel.jpg';
+import enzoGabriel from '@assets/enzo_gabriel.jpeg';
 import valdersonJunior from '@assets/valderson_junior.png';
 import anaLuisa from '@assets/avatar_icon.svg';
 import andreonMagagna from '@assets/andreon_magagna.jpg';
