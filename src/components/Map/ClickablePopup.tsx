@@ -31,7 +31,7 @@ export default function ClickablePopup({ regionName, reference, feature }: Props
         }}
       >
         {regionName}
-        <ChevronRightIcon viewBox="-5 -2 30 30 " />
+        <ChevronRightIcon viewBox="-5 -3 30 30 " />
       </Styles.ClickableSection>
       <h5>População: {feature.properties?.POPULATION}</h5>
     </Styles.Popup>

@@ -8,6 +8,7 @@ export const Popup = styled.div`
 export const ClickableSection = styled.h5`
   display: flex;
   align-items: center;
+  justify-content: space-between;
   cursor: pointer;
   pointer-events: all;
   :hover {
