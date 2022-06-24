@@ -6,6 +6,7 @@ import { District } from '@customTypes/feature';
 import { hoveredPopup, clickedPopup } from '../../const';
 
 import geosesData from '@data/Data.json';
+import { formatPopulationNumber } from '@utils/formatValue';
 
 let clickedId: number | undefined;
 let hoveredId: number | undefined;
@@ -42,7 +43,7 @@ export function addClickPopup(feature: mapboxgl.EventData, map: mapboxgl.Map) {
 
   clickedPopup.setLngLat(coordinates).setHTML(
     `<div style="display: flex; flex-direction: column; cursor: default;
-          pointer-events: all;"><h5>${regionName}</h5><h5>População: ${population}</h5></div>`,
+          pointer-events: all;"><h5>${regionName}</h5><h5>População: ${formatPopulationNumber(population)}</h5></div>`,
   );
 
   clickedPopup.addTo(map);

@@ -27,8 +27,12 @@ export const ClickableSection = styled.button`
   }
 `;
 
+export const PopupContent = styled.div`
+  padding: 0px 2px;
+`;
+
 export const PopupText = styled.h5`
-  margin: 0px;
+  padding: 2px;
 `;
 
 export const IconWrapper = styled.div`
