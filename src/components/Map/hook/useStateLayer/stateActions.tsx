@@ -6,7 +6,7 @@ import ReactDOM from 'react-dom';
 import { State } from '@customTypes/feature';
 
 import { clickedPopup, hoveredPopup } from '../../const';
-import ClickablePopup from '@components/Map/ClickablePopup';
+import { ClickablePopup } from '@components/Map/components';
 
 let hoveredId: number | undefined;
 let clickedId: number | undefined;

@@ -8,7 +8,7 @@ import { useSelectedState } from '@store/state/selectedContext';
 import { useHighlightedState } from '@store/state/highlightedContext';
 import { useSelectedDistrict } from '@store/district/selectedContext';
 
-import { highlightState, clickState, isStateLayerVisible, cleanStateActions, fitStateBounds } from './stateActions';
+import { highlightState, clickState, isStateLayerVisible, cleanStateActions } from './stateActions';
 
 import { fitCenter } from '../../actions';
 import { stateColors } from './const';

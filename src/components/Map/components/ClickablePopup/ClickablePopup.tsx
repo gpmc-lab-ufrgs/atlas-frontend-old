@@ -5,8 +5,8 @@ import { State } from '@customTypes/feature';
 
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 
-import { isDistrictLayerVisible } from './hook/useDistrictLayer/districtActions';
-import { isStateLayerVisible, cleanStateActions, fitStateBounds } from './hook/useStateLayer/stateActions';
+import { isDistrictLayerVisible } from '../../hook/useDistrictLayer/districtActions';
+import { isStateLayerVisible, cleanStateActions, fitStateBounds } from '../../hook/useStateLayer/stateActions';
 
 import * as Styles from './styles';
 interface Props {
@@ -30,10 +30,15 @@ export default function ClickablePopup({ regionName, reference, feature }: Props
           handlePopupCkick();
         }}
       >
-        {regionName}
-        <ChevronRightIcon viewBox="-5 -3 30 30 " />
+        <Styles.PopupText>{regionName}</Styles.PopupText>
+        <Styles.IconWrapper className="iconAction">
+          <ChevronRightIcon fontSize="small" />
+        </Styles.IconWrapper>
       </Styles.ClickableSection>
-      <h5>População: {feature.properties?.POPULATION}</h5>
+
+      <div>
+        <Styles.PopupText>População: {feature.properties?.POPULATION}</Styles.PopupText>
+      </div>
     </Styles.Popup>
   );
 }
