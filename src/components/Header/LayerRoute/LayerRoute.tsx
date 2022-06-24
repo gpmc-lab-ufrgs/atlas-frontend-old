@@ -33,7 +33,8 @@ const LayerRoute = () => {
           <div className="place state" onClick={() => resetDistrictValues()}>
             {selectedState?.properties.NM_UF}
           </div>
-          &nbsp;-&nbsp;<div className="place district">{selected?.properties.NM_MUN}</div>
+          &nbsp;-&nbsp;
+          <div className="place district">{selected?.properties.NM_MUN}</div>
         </>
       );
     } else if (selectedLayer === 'state') {
