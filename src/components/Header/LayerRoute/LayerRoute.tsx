@@ -4,6 +4,7 @@ import useMap from '@hook/useMap';
 import { useSelectedState } from '@store/state/selectedContext';
 import { useSelectedDistrict } from '@store/district/selectedContext';
 
+import { Button } from '@mui/material';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 
 import * as Styles from './styles';
@@ -30,20 +31,20 @@ const LayerRoute = () => {
       return (
         <>
           &nbsp;-&nbsp;
-          <div className="place state" onClick={() => resetDistrictValues()}>
+          <Button className="place state" onClick={() => resetDistrictValues()}>
             {selectedState?.properties.NM_UF}
-          </div>
+          </Button>
           &nbsp;-&nbsp;
-          <div className="place district">{selected?.properties.NM_MUN}</div>
+          <Button className="place district">{selected?.properties.NM_MUN}</Button>
         </>
       );
     } else if (selectedLayer === 'state') {
       return (
         <>
           &nbsp;-&nbsp;
-          <div className="place state" onClick={() => resetDistrictValues()}>
+          <Button className="place state" onClick={() => resetDistrictValues()}>
             {selectedState?.properties.NM_UF}
-          </div>
+          </Button>
         </>
       );
     }
@@ -70,9 +71,9 @@ const LayerRoute = () => {
   return (
     <Styles.ReturnRoute selectedLayer={selectedLayer}>
       {returnPathButton()}
-      <div className="place country" onClick={() => resetMapValues()}>
+      <Button className="place country" onClick={() => resetMapValues()}>
         Brasil
-      </div>
+      </Button>
       {returnPath()}
     </Styles.ReturnRoute>
   );

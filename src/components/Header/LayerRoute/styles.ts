@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Button } from '@mui/material';
 
 interface IReturnRoute {
   selectedLayer: string;
@@ -27,9 +28,11 @@ export const ReturnRoute = styled.div<IReturnRoute>`
     font-weight: ${({ selectedLayer }) => (selectedLayer === 'district' ? 'bold' : 'normal')};
   }
 
-  .place {
+  Button {
     padding: 5px;
+    color: white;
     border-radius: 5px;
+    font-size: 15px;
     &:hover {
       background-color: rgb(239, 239, 239, 0.3);
     }
