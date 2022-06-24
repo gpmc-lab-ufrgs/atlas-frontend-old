@@ -22,6 +22,7 @@ interface Person {
   function?: string;
   institution: string;
   hasImage?: boolean;
+  socialProfile?: string;
 }
 
 export const mainResearchers: Person[] = [
@@ -52,6 +53,7 @@ export const mainResearchers: Person[] = [
     function: 'Lead Researcher',
     institution: 'UFRGS',
     hasImage: true,
+    socialProfile: 'https://github.com/Alinaflores',
   },
   {
     name: 'Ricardo Limongi',
@@ -59,6 +61,7 @@ export const mainResearchers: Person[] = [
     function: 'Lead Researcher',
     institution: 'UFG',
     hasImage: true,
+    socialProfile: 'http://lattes.cnpq.br/9466882455242939',
   },
   {
     name: 'Leonardo Gomes',
@@ -66,6 +69,7 @@ export const mainResearchers: Person[] = [
     function: 'Lead Software Developer',
     institution: 'Universidade de Brasília',
     hasImage: true,
+    socialProfile: 'https://github.com/LeoSilvaGomes',
   },
   {
     name: 'Justin Anderson',
@@ -88,6 +92,7 @@ export const developers: Person[] = [
     image: valdersonJunior,
     institution: 'Universidade de Brasília',
     hasImage: true,
+    socialProfile: 'https://github.com/valdersonjr',
   },
 ];
 
@@ -111,12 +116,14 @@ export const researchers: Person[] = [
     image: carlaNetto,
     institution: '',
     hasImage: true,
+    socialProfile: 'https://www.unibo.it/sitoweb/carla.freitas/en',
   },
   {
     name: 'Jaiany Rocha',
     image: jaianyRocha,
     institution: '',
     hasImage: true,
+    socialProfile: 'http://lattes.cnpq.br/1097813774336960',
   },
   {
     name: 'Jheniffer Dany Lucas',
@@ -129,6 +136,7 @@ export const researchers: Person[] = [
     image: luisMenegetti,
     institution: '',
     hasImage: true,
+    socialProfile: 'https://www.linkedin.com/in/luismeneguetti/',
   },
   {
     name: 'Thales Martins',
