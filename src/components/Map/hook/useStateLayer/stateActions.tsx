@@ -1,20 +1,37 @@
+import React from 'react';
 import * as turf from '@turf/turf';
 import mapboxgl from 'mapbox-gl';
+import ReactDOM from 'react-dom';
 
 import { State } from '@customTypes/feature';
 
-import { hoveredPopup } from '../../const';
+import { clickedPopup, hoveredPopup } from '../../const';
+import { ClickablePopup } from '@components/Map/components';
 
 let hoveredId: number | undefined;
 let clickedId: number | undefined;
 
 type Feature = State | null;
 
-function addPopup(feature: Feature, map: mapboxgl.Map) {
-  const coordinates = turf.centerOfMass(feature).geometry.coordinates;
+function addPopup(feature: Feature, map: mapboxgl.Map, type: string) {
   const regionName = feature?.properties?.NM_UF;
+  const coordinates = turf.centerOfMass(feature).geometry.coordinates;
+  const placeholder = document.createElement('div');
 
-  hoveredPopup.trackPointer().setHTML(`<h5>${regionName}</h5>`).addTo(map);
+  switch (type) {
+    case 'hover':
+      hoveredPopup.trackPointer().setHTML(`<h5>${regionName}</h5>`).addTo(map);
+
+      break;
+    case 'click':
+      if (regionName) {
+        ReactDOM.render(<ClickablePopup regionName={regionName} reference={map} feature={feature} />, placeholder);
+
+        clickedPopup.setLngLat([coordinates[0], coordinates[1]]).setDOMContent(placeholder).addTo(map);
+      }
+
+      break;
+  }
 }
 
 function setFeatureHover(featureID: number, map: mapboxgl.Map, state: boolean) {
@@ -32,6 +49,7 @@ export function clickState(feature: Feature, map: mapboxgl.Map) {
     if (stateID === clickedId) {
       return;
     }
+    addPopup(feature, map, 'click');
 
     if (clickedId) {
       setFeatureClick(clickedId, map, false);
@@ -57,7 +75,7 @@ export function highlightState(feature: Feature, map: mapboxgl.Map) {
       return;
     }
 
-    addPopup(feature, map);
+    addPopup(feature, map, 'hover');
 
     if (hoveredId) {
       setFeatureHover(hoveredId, map, false);
@@ -91,6 +109,7 @@ export function isStateLayerVisible(map: mapboxgl.Map, visible: boolean) {
 
 export function cleanStateActions() {
   hoveredPopup.remove();
+  clickedPopup.remove();
   clickedId = 0;
   hoveredId = undefined;
 }
@@ -108,5 +127,17 @@ export function fitStateBounds(feature: Feature, map: mapboxgl.Map) {
         padding: { top: 100, bottom: 100, left: 200, right: 200 },
       },
     );
+  }
+}
+
+export function fitStateCenter(feature: Feature, map: mapboxgl.Map) {
+  if (feature && (feature.geometry || feature._geometry)) {
+    const [minX, minY, maxX, maxY] = turf.bbox(feature);
+    const coordinates = turf.centerOfMass(feature).geometry.coordinates;
+
+    map.flyTo({
+      center: [coordinates[0], coordinates[1]],
+      zoom: 3.4,
+    });
   }
 }

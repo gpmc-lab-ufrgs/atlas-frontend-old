@@ -5,6 +5,8 @@ import { District } from '@customTypes/feature';
 
 import { hoveredPopup, clickedPopup } from '../../const';
 
+import geosesData from '@data/Data.json';
+
 let clickedId: number | undefined;
 let hoveredId: number | undefined;
 
@@ -18,18 +20,32 @@ function setFeatureHover(featureID: number, map: mapboxgl.Map, state: boolean) {
   map.setFeatureState({ source: 'district', id: featureID }, { hover: state });
 }
 
-function addPopup(feature: Feature, map: mapboxgl.Map, type: string) {
-  const coordinates = turf.centerOfMass(feature).geometry.coordinates;
-  const regionName = feature?.properties?.NM_MUN;
+export function addHoverPopup(feature: mapboxgl.EventData, map: mapboxgl.Map) {
+  const coordinates = feature.lngLat;
+  const regionName = feature.features[0]?.properties?.NM_MUN;
 
-  switch (type) {
-    case 'hover':
-      hoveredPopup.trackPointer().setHTML(`<h5>${regionName}</h5>`).addTo(map);
-      break;
-    case 'click':
-      clickedPopup.setLngLat([coordinates[0], coordinates[1]]).setHTML(`<h5>${regionName}</h5>`).addTo(map);
-      break;
-  }
+  hoveredPopup
+    .setLngLat(coordinates)
+    .setHTML(`<div style="display: flex;flex-direction: column;"><h5>${regionName}</h5></div>`);
+
+  hoveredPopup.addTo(map);
+}
+
+export function addClickPopup(feature: mapboxgl.EventData, map: mapboxgl.Map) {
+  const coordinates = feature.lngLat;
+  const regionName = feature.features[0]?.properties?.NM_MUN;
+  const population =
+    //@ts-ignore
+    feature.features[0]?.properties?.CD_MUN != undefined //@ts-ignore
+      ? geosesData[feature.features[0]?.properties?.CD_MUN]['Populacao_Estimada']
+      : '';
+
+  clickedPopup.setLngLat(coordinates).setHTML(
+    `<div style="display: flex; flex-direction: column; cursor: default;
+          pointer-events: all;"><h5>${regionName}</h5><h5>População: ${population}</h5></div>`,
+  );
+
+  clickedPopup.addTo(map);
 }
 
 export function clickDistrict(feature: Feature, map: mapboxgl.Map) {
@@ -39,8 +55,6 @@ export function clickDistrict(feature: Feature, map: mapboxgl.Map) {
     if (districtID === clickedId) {
       return;
     }
-
-    addPopup(feature, map, 'click');
 
     setFeatureClick(districtID, map, true);
 
@@ -68,8 +82,6 @@ export function highlightDistrict(feature: Feature, map: mapboxgl.Map) {
     if (districtID === hoveredId) {
       return;
     }
-
-    addPopup(feature, map, 'hover');
 
     if (hoveredId) {
       setFeatureHover(hoveredId, map, false);
