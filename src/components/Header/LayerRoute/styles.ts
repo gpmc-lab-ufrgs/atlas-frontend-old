@@ -57,3 +57,9 @@ export const ReturnRouteButton = styled.div`
     }
   }
 `;
+
+export const NextLayer = styled.div`
+  margin-right: 2px;
+  margin-left: 2px;
+  font-size: 15px;
+`;
