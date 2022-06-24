@@ -29,7 +29,7 @@ export const ReturnRoute = styled.div<IReturnRoute>`
   }
 
   Button {
-    padding: 5px;
+    padding: 0px 5px;
     color: white;
     border-radius: 5px;
     font-size: 15px;
