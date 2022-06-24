@@ -9,6 +9,7 @@ import ComparisonControl from './ComparisonControl';
 import ProjectInformations from './ProjectInformations';
 
 import * as Styles from './styles';
+import LayerRoute from './LayerRoute';
 
 interface Props {
   isComparisonModeOn: boolean;
@@ -43,6 +44,7 @@ const Header: React.FC<Props> = ({ isComparisonModeOn, comparisonType, setCompar
     <Styles.HeaderContainer isSidebarOpen={isSidebarOpen}>
       <Styles.HeaderLeftSide>
         <SearchBar />
+        <LayerRoute />
       </Styles.HeaderLeftSide>
 
       <Styles.HeaderRightSide>
