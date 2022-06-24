@@ -32,8 +32,6 @@ export const ReturnRoute = styled.div<IReturnRoute>`
     border-radius: 5px;
     &:hover {
       background-color: rgb(239, 239, 239, 0.3);
-      /* background-color: rgb(239, 239, 239); */
-      /* opacity: 0.1; */
     }
   }
 `;
