@@ -30,7 +30,7 @@ export default function SummaryCard() {
 
   return (
     <Styles.Container>
-      <Box py="25px" px="25px">
+      <Box p="20px">
         <Box display="flex" justifyContent="space-between" pb="10px">
           <Styles.Title>Atlas Of Opportunity</Styles.Title>
           <CloseIcon onClick={handleCloseCard} cursor="pointer" />

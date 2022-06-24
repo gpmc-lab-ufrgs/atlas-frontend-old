@@ -5,10 +5,13 @@ import { State } from '@customTypes/feature';
 
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 
+import { formatPopulationNumber } from '@utils/formatValue';
+
 import { isDistrictLayerVisible } from '../../hook/useDistrictLayer/districtActions';
 import { isStateLayerVisible, cleanStateActions, fitStateBounds } from '../../hook/useStateLayer/stateActions';
 
 import * as Styles from './styles';
+import { StickyNote2Sharp } from '@mui/icons-material';
 interface Props {
   regionName: string;
   reference: mapboxgl.Map;
@@ -36,9 +39,9 @@ export default function ClickablePopup({ regionName, reference, feature }: Props
         </Styles.IconWrapper>
       </Styles.ClickableSection>
 
-      <div>
-        <Styles.PopupText>População: {feature.properties?.POPULATION}</Styles.PopupText>
-      </div>
+      <Styles.PopupContent>
+        <Styles.PopupText>População: {formatPopulationNumber(feature.properties?.POPULATION)}</Styles.PopupText>
+      </Styles.PopupContent>
     </Styles.Popup>
   );
 }
