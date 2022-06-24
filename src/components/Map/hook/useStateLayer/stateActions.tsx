@@ -129,3 +129,15 @@ export function fitStateBounds(feature: Feature, map: mapboxgl.Map) {
     );
   }
 }
+
+export function fitStateCenter(feature: Feature, map: mapboxgl.Map) {
+  if (feature && (feature.geometry || feature._geometry)) {
+    const [minX, minY, maxX, maxY] = turf.bbox(feature);
+    const coordinates = turf.centerOfMass(feature).geometry.coordinates;
+
+    map.flyTo({
+      center: [coordinates[0], coordinates[1]],
+      zoom: 3.4,
+    });
+  }
+}
