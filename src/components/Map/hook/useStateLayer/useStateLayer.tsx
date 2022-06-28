@@ -4,6 +4,7 @@ import mapboxgl from 'mapbox-gl';
 
 import geojsonURL from '@data/BR_UF_2020.json';
 
+import { useSidebar } from '@store/sidebarContext';
 import { useSelectedState } from '@store/state/selectedContext';
 import { useHighlightedState } from '@store/state/highlightedContext';
 import { useSelectedDistrict } from '@store/district/selectedContext';
@@ -29,6 +30,7 @@ const useStateLayer = () => {
   const { setHighlighted: setHighlightedState, highlighted: highlightedState } = useHighlightedState();
   const { setSelected: setSelectedState, selected: selectedState } = useSelectedState();
   const { selected: selectedDistrict } = useSelectedDistrict();
+  const { setIsSidebarOpen } = useSidebar();
 
   function initLayers(reference: mapboxgl.Map) {
     reference.on('load', () => {
@@ -114,6 +116,7 @@ const useStateLayer = () => {
       clickState(selectedState, stateReference);
 
       if (selectedState) {
+        setIsSidebarOpen(true);
         fitStateCenter(selectedState, stateReference);
         if (latLng) addPopup(selectedState, stateReference, latLng, 'Click');
       } else {

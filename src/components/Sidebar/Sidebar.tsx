@@ -7,6 +7,7 @@ import { AutoStories } from '@mui/icons-material';
 
 import { useSidebar } from '@store/sidebarContext';
 import { useComparison } from '@store/comparisonContext';
+import { useSelectedState } from '@store/state/selectedContext';
 import { useSelectedDistrict } from '@store/district/selectedContext';
 
 import Minimizer from './Minimizer';
@@ -23,16 +24,21 @@ interface Props {
 
 const Sidebar: React.FC<Props> = ({ isComparisonMode, title }) => {
   const { comparison } = useComparison();
-  const { selected } = useSelectedDistrict();
   const { isSidebarOpen, setIsSidebarOpen } = useSidebar();
 
-  const hasSelectedDistrict = Boolean(selected);
+  const { selected: selectedState } = useSelectedState();
+  const { selected: selectedDistrict } = useSelectedDistrict();
+
+  const hasSelectedState = Boolean(selectedState);
+  const hasSelectedDistrict = Boolean(selectedDistrict);
 
   const hasComparisonRegions = comparison.length !== 0;
 
   const SidebarContent = () => {
     if (isComparisonMode) {
       return <ComparisonDetails />;
+    } else if (hasSelectedState && !(hasComparisonRegions || hasSelectedDistrict)) {
+      return <h1>Working</h1>;
     } else if (hasComparisonRegions || hasSelectedDistrict) {
       return (
         <>
