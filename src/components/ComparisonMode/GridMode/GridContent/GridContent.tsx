@@ -17,7 +17,7 @@ interface Props {
 
 const GridContent: React.FC<Props> = ({ section, comparison }) => {
   return (
-    <Collapsible title={section.title}>
+    <Collapsible isTitle={'collapsibleTitle'} title={section.title}>
       <Styles.GridContainer>
         {section.content.map((content: MapPropsContentType, id) => (
           <Styles.Grid key={id}>

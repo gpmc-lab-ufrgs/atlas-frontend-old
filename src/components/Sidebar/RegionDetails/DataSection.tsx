@@ -22,7 +22,7 @@ const DataSection: React.FC<MapPropsSectionType> = ({ title, content }) => {
   const hasSelectedDistrict = Boolean(selected);
 
   return (
-    <Collapsible title={title}>
+    <Collapsible isTitle={'collapsibleTitle'} title={title}>
       {content.map((props: MapPropsContentType, id) => (
         <Styles.PropsWrapper key={id}>
           

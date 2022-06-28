@@ -17,7 +17,7 @@ interface Props {
 
 const TableContent: React.FC<Props> = ({ section, comparison }) => {
   return (
-    <Collapsible title={section.title}>
+    <Collapsible isTitle={'collapsibleTitle'} title={section.title}>
       {section.content.map((content: MapPropsContentType, id) => (
         <>
           {!content.nestedData ? 
