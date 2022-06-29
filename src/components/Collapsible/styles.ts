@@ -6,6 +6,7 @@ interface ICollapsibleContainer {
 
 export const CollapsibleContainer = styled.div<ICollapsibleContainer>`
   .Collapsible__trigger  {
-    background-color: ${({ isTitle }) => (isTitle == 'collapsibleTitle' ? '#509e2f' : '#ffffff')}!important;
+    background-color: ${({ isTitle }) => (isTitle == 'collapsibleTitle' ? '#4A7729' : '#ffffff')}!important;
+    color: ${({ isTitle }) => (isTitle == 'collapsibleTitle' ? '#ffffff' : '#000000')}!important;
   }
 `;
