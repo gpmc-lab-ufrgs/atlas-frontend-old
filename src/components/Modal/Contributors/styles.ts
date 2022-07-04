@@ -63,7 +63,8 @@ export const SocialProfileLink = styled.a`
   text-decoration: none;
   color: inherit !important;
   border-bottom: 2px solid #54a333;
-  :hover{
+  cursor: pointer;
+  :hover {
     color: #217100 !important;
   }
 `;
