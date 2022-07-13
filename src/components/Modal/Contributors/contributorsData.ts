@@ -15,6 +15,7 @@ import jhenifferLucas from '@assets/jheniffer_lucas.jpg';
 import luisMenegetti from '@assets/luis_meneguetti.jpg';
 import thalesMartins from '@assets/avatar_icon.svg';
 import vilmarBoff from '@assets/vilmar_boff.png';
+import pedroDeConto from '@assets/pedro_conto.png';
 
 interface Person {
   name: string;
@@ -139,6 +140,12 @@ export const researchers: Person[] = [
   {
     name: 'Vilmar Oro Boff',
     image: vilmarBoff,
+    institution: '',
+    hasImage: true,
+  },
+  {
+    name: 'Pedro de Conto',
+    image: pedroDeConto,
     institution: '',
     hasImage: true,
   },
