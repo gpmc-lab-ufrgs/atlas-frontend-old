@@ -17,7 +17,7 @@ interface Props {
 
 const GridContent: React.FC<Props> = ({ section, comparison }) => {
   return (
-    <Collapsible isTitle={'collapsibleTitle'} title={section.title}>
+    <Collapsible isTitle={true} title={section.title}>
       <Styles.GridContainer>
         {section.content.map((content: MapPropsContentType, id) => (
           <>
@@ -37,7 +37,7 @@ const GridContent: React.FC<Props> = ({ section, comparison }) => {
                   </Styles.GridItem>
                 </Styles.Grid>
               ) : (
-                <Collapsible title={content.title}>
+                <Collapsible isTitle={false} title={content.title}>
                   <Styles.GridContainer>
                     <Styles.GridWithChild>
                       {content.nestedData.map((data, index) => (

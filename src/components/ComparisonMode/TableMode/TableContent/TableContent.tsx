@@ -17,7 +17,7 @@ interface Props {
 
 const TableContent: React.FC<Props> = ({ section, comparison }) => {
   return (
-    <Collapsible isTitle={'collapsibleTitle'} title={section.title}>
+    <Collapsible isTitle={true} title={section.title}>
       {section.content.map((content: MapPropsContentType, id) => (
         <>
           {!content.nestedData ? 
@@ -32,7 +32,7 @@ const TableContent: React.FC<Props> = ({ section, comparison }) => {
               </Styles.Table>
             ) : 
             (
-              <Collapsible title={content.title}>
+              <Collapsible isTitle={false} title={content.title}>
                 {content.nestedData?.map((data, index) => (
                   <div key={index}>
                     <Styles.Table lineTableNumber={index} key={index}>

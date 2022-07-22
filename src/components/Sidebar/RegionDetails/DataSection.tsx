@@ -22,7 +22,7 @@ const DataSection: React.FC<MapPropsSectionType> = ({ title, content }) => {
   const hasSelectedDistrict = Boolean(selected);
 
   return (
-    <Collapsible isTitle={'collapsibleTitle'} title={title}>
+    <Collapsible className="nesttt" isTitle={true} title={title}>
       {content.map((props: MapPropsContentType, id) => (
         <Styles.PropsWrapper key={id}>
           
@@ -49,7 +49,7 @@ const DataSection: React.FC<MapPropsSectionType> = ({ title, content }) => {
             ) : 
             (
               <>
-                <Collapsible title={props.title}>
+                <Collapsible isTitle={false} title={props.title}>
                   {comparison && (
                     <>
                       {props.nestedData?.map((data, index) => (
