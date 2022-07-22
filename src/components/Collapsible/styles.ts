@@ -8,7 +8,7 @@ interface ICollapsibleContainer {
 
 export const CollapsibleContainer = styled.div<ICollapsibleContainer>`
   .Collapsible__trigger  {
-    background-color: ${({ isTitle }) => (isTitle ? '#4A7729' : '#ffffff')}!important;
+    background-color: ${({ isTitle }) => (isTitle ? '#4A7729' : '#f7f7f7')}!important;
     color: ${({ isTitle }) => (isTitle ? '#ffffff' : '#000000')}!important;
   }
 
