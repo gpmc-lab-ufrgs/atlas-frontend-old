@@ -29,6 +29,8 @@ There are many commits types, like:
 - **```refactor```**: Code refactoring
 - **```fix```**: Fix a problema
 
+You can follow the description used by [gitmoji](https://gitmoji.dev/) :)
+
 ## Found a Bug?
 If you have found any errors in the application, let us know through an issue, so we can always be improving. We ask that it be descriptive, that way we can identify and reproduce the error to fix it.
 
