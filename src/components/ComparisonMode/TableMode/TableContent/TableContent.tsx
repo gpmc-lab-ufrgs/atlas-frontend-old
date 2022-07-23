@@ -4,21 +4,21 @@ import Collapsible from '@components/Collapsible';
 
 import MetricDetails from '@components/MetricDetails';
 
-import { DistrictSectionType, DistrictContentType } from '@config/districtProps';
+import { MapPropsContentType, MapPropsSectionType } from '@customTypes/mapProps';
 
 import { Feature } from '@customTypes/feature';
 
 import * as Styles from './styles';
 
 interface Props {
-  section: DistrictSectionType;
+  section: MapPropsSectionType;
   comparison: Array<Feature>;
 }
 
 const TableContent: React.FC<Props> = ({ section, comparison }) => {
   return (
     <Collapsible title={section.title}>
-      {section.content.map((content: DistrictContentType, id) => (
+      {section.content.map((content: MapPropsContentType, id) => (
         <Styles.Table lineTableNumber={id} key={id}>
           <Styles.ColumnTitle>{content.description}</Styles.ColumnTitle>
           {comparison.map((region, idx) => (

@@ -6,9 +6,8 @@ import geojsonURL from '@data/BR_UF_2020.json';
 
 import { useSelectedState } from '@store/state/selectedContext';
 import { useHighlightedState } from '@store/state/highlightedContext';
-import { useSelectedDistrict } from '@store/district/selectedContext';
 
-import { highlightState, clickState, isStateLayerVisible, cleanStateActions, fitStateBounds } from './stateActions';
+import { highlightState, clickState, isStateLayerVisible, cleanStateActions, fitStateCenter } from './stateActions';
 
 import { fitCenter } from '../../actions';
 import { stateColors } from './const';
@@ -20,8 +19,6 @@ const useStateLayer = () => {
 
   const { setHighlighted: setHighlightedState, highlighted: highlightedState } = useHighlightedState();
   const { setSelected: setSelectedState, selected: selectedState } = useSelectedState();
-
-  const { selected: selectedDistrict } = useSelectedDistrict();
 
   function initLayers(reference: mapboxgl.Map) {
     reference.on('load', () => {
@@ -102,13 +99,7 @@ const useStateLayer = () => {
   useEffect(() => {
     if (stateReference && selectedState !== null) {
       clickState(selectedState, stateReference);
-
-      isDistrictLayerVisible(stateReference, true);
-      isStateLayerVisible(stateReference, false);
-
-      if (selectedDistrict === null) {
-        fitStateBounds(selectedState, stateReference);
-      }
+      fitStateCenter(selectedState, stateReference);
     } else if (stateReference) {
       clickState(null, stateReference);
 

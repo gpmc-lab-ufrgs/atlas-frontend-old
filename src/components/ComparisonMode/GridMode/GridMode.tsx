@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Feature } from '@customTypes/feature';
 
-import districtProps from '@config/districtProps';
+import districtProps from '@config/district';
 
 import GridContent from './GridContent';
 
