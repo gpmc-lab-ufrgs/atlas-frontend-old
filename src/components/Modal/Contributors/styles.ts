@@ -5,9 +5,14 @@ export const ContributorContainer = styled.div`
 `;
 
 export const ContributorImage = styled.img`
+  width: 100%;
+`;
+
+export const ContributorImageContainer = styled.div`
   width: 200px;
   height: 200px;
   border-radius: 10px;
+  overflow: hidden;
 `;
 
 export const GridDisplay = styled.div`

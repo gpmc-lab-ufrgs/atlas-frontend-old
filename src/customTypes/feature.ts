@@ -31,6 +31,7 @@ export interface State {
     CD_UF?: number;
     SIGLA_UF: string;
     AREA_KM2: number;
+    POPULATION?: number;
   };
 }
 

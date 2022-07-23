@@ -4,6 +4,8 @@ import { BrowserRouter } from 'react-router-dom';
 
 import Main from '@pages/Main';
 
+import AtlasTheme from '@components/Theme';
+
 import { SidebarProvider } from '@store/sidebarContext';
 import { ComparisonProvider } from '@store/comparisonContext';
 import { SelectedStatesProvider } from '@store/state/selectedContext';
@@ -16,19 +18,21 @@ import './index.css';
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <HighlightedDistrictProvider>
-        <SelectedDistrictProvider>
-          <SelectedStatesProvider>
-            <HighlightedStatesProvider>
-              <ComparisonProvider>
-                <SidebarProvider>
-                  <Main />
-                </SidebarProvider>
-              </ComparisonProvider>
-            </HighlightedStatesProvider>
-          </SelectedStatesProvider>
-        </SelectedDistrictProvider>
-      </HighlightedDistrictProvider>
+      <AtlasTheme>
+        <HighlightedDistrictProvider>
+          <SelectedDistrictProvider>
+            <SelectedStatesProvider>
+              <HighlightedStatesProvider>
+                <ComparisonProvider>
+                  <SidebarProvider>
+                    <Main />
+                  </SidebarProvider>
+                </ComparisonProvider>
+              </HighlightedStatesProvider>
+            </SelectedStatesProvider>
+          </SelectedDistrictProvider>
+        </HighlightedDistrictProvider>
+      </AtlasTheme>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root'),

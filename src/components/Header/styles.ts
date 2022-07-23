@@ -21,6 +21,7 @@ export const HeaderContainer = styled.header<HeaderProps>`
   padding: 15px 20px;
 
   background: ${({ comparisonMode }) => (comparisonMode ? '#ffffffe6' : null)};
+  backdrop-filter: blur(2px);
 `;
 
 interface MenuButtonProps {
@@ -50,6 +51,7 @@ export const HeaderLeftSide = styled.div`
   grid-column: 1;
   justify-self: start;
   align-self: center;
+  display: flex;
 `;
 
 export const HeaderCenterSide = styled.div`
