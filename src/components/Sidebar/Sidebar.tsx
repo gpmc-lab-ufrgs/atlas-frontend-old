@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import Drawer from '@components/Drawer';
 
@@ -22,10 +22,19 @@ interface Props {
 }
 
 const Sidebar: React.FC<Props> = ({ isComparisonMode, title }) => {
+
+  
   const { comparison } = useComparison();
   const { selected } = useSelectedDistrict();
   const { isSidebarOpen, setIsSidebarOpen } = useSidebar();
 
+  useEffect(() => {
+    console.log("aaaaaaaaaaaaaaaaaaaaaaaaa")
+    setIsSidebarOpen(true)
+  }, [])
+  useEffect(() => {
+    console.log({comparison, selected, isSidebarOpen})
+  },[comparison, selected, isSidebarOpen])
   const hasSelectedDistrict = Boolean(selected);
 
   const hasComparisonRegions = comparison.length !== 0;
