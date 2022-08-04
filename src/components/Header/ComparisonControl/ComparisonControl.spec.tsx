@@ -24,4 +24,10 @@ describe('ComparisonControl', () => {
         expect(screen.getByText('Grid')).toBeTruthy();
     });
 
+    test('Should be able to render the ComparisonControl component with the comparisonType table the comparison with the string "São Paulo"', () => {
+        render(<ComparisonControl comparisonType='table' setComparison={() => { 'São Paulo' }} />);
+
+        expect(screen.getByText('Table')).toBeTruthy();
+        expect(screen.findAllByAltText('São Paulo')).toBeTruthy();
+    });
 });
