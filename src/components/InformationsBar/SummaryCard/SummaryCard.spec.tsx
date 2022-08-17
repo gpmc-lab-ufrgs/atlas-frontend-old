@@ -1,28 +1,9 @@
 import React from 'react';
+import 'jest-styled-components';
 import { render, screen } from '@testing-library/react';
-import { CloroplethLegend } from './CloroplethLegend';
-import { SummaryCard } from './SummaryCard';
+import { SummaryCard } from '.';
 
 describe('InformationsBar', () => {
-    /* ********** Cloropleth Legend Component  ********** */
-    test('Test the title of Choropletic Legend', () => {
-        render(<CloroplethLegend />);
-        const titleText = screen.getByText('População') as HTMLElement;
-        expect(titleText.textContent).toContain('População');
-    });
-
-    test('Test the contains of Choropletic Legend', () => {
-        render(<CloroplethLegend />);
-        const legendText = screen.getByText('Baixa') as HTMLElement;
-        expect(legendText.textContent).toContain('Baixa');
-    });
-
-    test('Test the contains of Choropletic Legend', () => {
-        render(<CloroplethLegend />);
-        const legendText = screen.getByText('Alta') as HTMLElement;
-        expect(legendText.textContent).toContain('Alta');
-    });
-
     /* ********** Summary Button Component  ********** */
     test('Test the contains of Summary Card', () => {
         render(<SummaryCard />);
