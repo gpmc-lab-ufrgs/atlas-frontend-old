@@ -18,7 +18,10 @@ const ProjectInformations: React.FC<Props> = ({ setOpen }) => {
       <Styles.TitleWrapper>
         <Styles.Title> Atlas de Oportunidades </Styles.Title>
 
-        <Styles.CloseButton onClick={() => handleCloseDrawer()} />
+        <div role='closeButton'>
+          <Styles.CloseButton onClick={() => handleCloseDrawer()} />
+
+        </div>
       </Styles.TitleWrapper>
 
       <Styles.SectionWrapper>
