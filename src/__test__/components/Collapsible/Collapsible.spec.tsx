@@ -10,4 +10,11 @@ describe('Collapsible', () => {
         expect(button).not.toBeDisabled();
         expect(button).toHaveTextContent('Teste');
     });
+
+    test('Checking if collapsible is opened', () => {
+        const collapsible = render(<Collapsible title={'Teste'} />);
+
+        const button = collapsible.getByRole('button');
+        expect(button.className).toEqual('Collapsible__trigger is-open');
+    });
 });
