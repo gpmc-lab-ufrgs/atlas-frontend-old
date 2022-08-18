@@ -10,7 +10,7 @@ const DEFAULT_VALUE = {
   setIsSidebarOpen: () => {},
 };
 
-const sidebarContext = createContext<SidebarContext>(DEFAULT_VALUE);
+export const sidebarContext = createContext<SidebarContext>(DEFAULT_VALUE);
 
 export function SidebarProvider({ children }: any) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(DEFAULT_VALUE.isSidebarOpen);

@@ -1,43 +1,34 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
-
-import { SidebarProvider, useSidebar } from '@store/sidebarContext';
-import { ComparisonProvider } from '@store/comparisonContext';
-import { SelectedDistrictProvider } from '@store/district/selectedContext';
+import { render } from '@testing-library/react';
+import { sidebarContext } from '@store/sidebarContext';
+import { comparisonContext } from '@store/comparisonContext';
+import { selectedDistrictsContext } from '@store/district/selectedContext';
+import { BrowserRouter } from 'react-router-dom';
+import {
+    districtMock,
+    districtMockFalse,
+    comparisonMock,
+    comparisonMockFalse,
+    sidebarOpenMock
+} from './mockData';
 
 import Sidebar from '@components/Sidebar';
 
 
 describe('Sidebar', () => {
-    jest.mock('@store/sidebarContext', () => ({
-        useSidebar: jest.fn().mockImplementation(() => (
-            { isSidebarOpen: true, setIsSidebarOpen: jest.fn().mockReturnValue(true) }
-        ))
-    }))
-    // jest.spyOn(SidebarProvider, 'useSidebar').mockImplementation(() => (
-    //     { isSidebarOpen: true, setIsSidebarOpen: jest.fn() }
-    // ))
-    // const mockUseSideBar = useSidebar as jest.MockedFunction<typeof useSidebar>
-    // mockUseSideBar.mockImplementation(() => (
-    //     { isSidebarOpen: true, setIsSidebarOpen: jest.fn() }
-    // ))
-
-    test ('Teste main Title', async () => {
-
-
-
-        render(
-            <SelectedDistrictProvider>
-                <ComparisonProvider>
-                    <SidebarProvider>
-                        <Sidebar isComparisonMode={false} title="Atlas" />
-                    </SidebarProvider>
-                </ComparisonProvider>
-            </SelectedDistrictProvider>
+    test('Teste main Title without district selected and comparison', async () => {
+        const { findByText } = render(
+            <BrowserRouter>
+                <selectedDistrictsContext.Provider value={districtMockFalse}>
+                    <comparisonContext.Provider value={comparisonMockFalse}>
+                        <sidebarContext.Provider value={sidebarOpenMock}>
+                            <Sidebar isComparisonMode={false} title="Atlas" />
+                        </sidebarContext.Provider>
+                    </comparisonContext.Provider>
+                </selectedDistrictsContext.Provider>
+            </BrowserRouter>
         );
 
-        await screen.findByText('Atlas de Oportunidades');
-
-
+        expect(await findByText('Atlas de Oportunidades')).toBeTruthy();
     });
 });

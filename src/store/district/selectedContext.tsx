@@ -12,7 +12,7 @@ interface DistrictActions {
   setSelected: React.Dispatch<React.SetStateAction<any>>;
 }
 
-const selectedDistrictsContext = createContext<DistrictActions>(DEFAULT_VALUE);
+export const selectedDistrictsContext = createContext<DistrictActions>(DEFAULT_VALUE);
 
 export function SelectedDistrictProvider({ children }: any) {
   //@ts-ignore

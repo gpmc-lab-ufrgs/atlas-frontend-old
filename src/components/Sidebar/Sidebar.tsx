@@ -28,13 +28,6 @@ const Sidebar: React.FC<Props> = ({ isComparisonMode, title }) => {
   const { selected } = useSelectedDistrict();
   const { isSidebarOpen, setIsSidebarOpen } = useSidebar();
 
-  useEffect(() => {
-    console.log("aaaaaaaaaaaaaaaaaaaaaaaaa")
-    setIsSidebarOpen(true)
-  }, [])
-  useEffect(() => {
-    console.log({comparison, selected, isSidebarOpen})
-  },[comparison, selected, isSidebarOpen])
   const hasSelectedDistrict = Boolean(selected);
 
   const hasComparisonRegions = comparison.length !== 0;

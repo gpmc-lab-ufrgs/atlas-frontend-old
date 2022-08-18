@@ -14,7 +14,7 @@ const DEFAULT_VALUE = {
   removeComparisonDistrict: () => {},
 };
 
-const comparisonContext = createContext<ComparisonContext>(DEFAULT_VALUE);
+export const comparisonContext = createContext<ComparisonContext>(DEFAULT_VALUE);
 
 export function ComparisonProvider({ children }: any) {
   const [comparison, setComparison] = useState<District[]>(DEFAULT_VALUE.comparison);
