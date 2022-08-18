@@ -1,7 +1,6 @@
 import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
 import ProjectInformations from '@components/Header/ProjectInformations';
-import Drawer from '@components/Drawer';
 import { BrowserRouter } from 'react-router-dom';
 import Header from '@components/Header';
 import '@testing-library/jest-dom/extend-expect';
@@ -21,7 +20,6 @@ describe('Project Informations', () => {
     const { getByRole } = render( 
       <BrowserRouter>
         <Header isComparisonModeOn comparisonType="grid" setComparisonType={() => {}} />
-        <Drawer anchor='right' open={false} setOpen={jest.fn()}/>
         <ProjectInformations setOpen={jest.fn()}/>
       </BrowserRouter>
     );
