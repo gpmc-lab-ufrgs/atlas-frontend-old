@@ -1,12 +1,12 @@
-import logoTramontinaNegativo from '@assets/logoTramontinaNegativo.png';
-import logoSabanciNormal from '@assets/logoSabanciNormal.png';
-import logoUfrgsNegative from '@assets/logoUfrgsNegativo.png';
-import logoUfgNegative from '@assets/logoUfgNegativo.png';
-import logoFgvNegative from '@assets/logoNegativaFGV.png';
-import logoMitNegative from '@assets/logoNegativaMIT.png';
-import logoBologna from '@assets/logoBologna.png';
-import logoUnb from '@assets/logoUnb.png';
-import logoNCF from '@assets/logoNCF.png';
+import logoTramontinaNegativo from '@assets/institutions/logoTramontinaNegativo.png';
+import logoSabanciNormal from '@assets/institutions/logoSabanciNormal.png';
+import logoUfrgsNegative from '@assets/institutions/logoUfrgsNegativo.png';
+import logoUfgNegative from '@assets/institutions/logoUfgNegativo.png';
+import logoFgvNegative from '@assets/institutions/logoNegativaFGV.png';
+import logoMitNegative from '@assets/institutions/logoNegativaMIT.png';
+import logoBologna from '@assets/institutions/logoBologna.png';
+import logoUnb from '@assets/institutions/logoUnb.png';
+import logoNCF from '@assets/institutions/logoNCF.png';
 
 interface DeveloperInstitutions {
   name: string;

@@ -1,20 +1,20 @@
-import viniciusBrei from '@assets/vinicius_brei.jpg';
-import alexSandy from '@assets/alex_sandy.png';
-import mohsenBahrami from '@assets/mohsen_bahrami.png';
-import alinaFlores from '@assets/alina_flores.jpg';
-import ricardoLimongi from '@assets/ricardo_limongi.png';
-import leonardoGomes from '@assets/leonardo_gomes.jpg';
-import justinAnderson from '@assets/justin_anderson.png';
-import enzoGabriel from '@assets/enzo_gabriel.jpeg';
-import valdersonJunior from '@assets/valderson_junior.png';
-import anaLuisa from '@assets/avatar_icon.svg';
-import andreonMagagna from '@assets/andreon_magagna.jpg';
-import carlaNetto from '@assets/carla_netto.jpg';
-import jaianyRocha from '@assets/jaiany_rocha.jpg';
-import jhenifferLucas from '@assets/jheniffer_lucas.jpg';
-import luisMenegetti from '@assets/luis_meneguetti.jpg';
-import thalesMartins from '@assets/avatar_icon.svg';
-import vilmarBoff from '@assets/vilmar_boff.png';
+import viniciusBrei from '@assets/contribuitors/vinicius_brei.jpg';
+import alexSandy from '@assets/contribuitors/alex_sandy.png';
+import mohsenBahrami from '@assets/contribuitors/mohsen_bahrami.png';
+import alinaFlores from '@assets/contribuitors/alina_flores.jpg';
+import ricardoLimongi from '@assets/contribuitors/ricardo_limongi.png';
+import leonardoGomes from '@assets/contribuitors/leonardo_gomes.jpg';
+import justinAnderson from '@assets/contribuitors/justin_anderson.png';
+import enzoGabriel from '@assets/contribuitors/enzo_gabriel.jpeg';
+import valdersonJunior from '@assets/contribuitors/valderson_junior.png';
+import anaLuisa from '@assets/contribuitors/avatar_icon.svg';
+import andreonMagagna from '@assets/contribuitors/andreon_magagna.jpg';
+import carlaNetto from '@assets/contribuitors/carla_netto.jpg';
+import jaianyRocha from '@assets/contribuitors/jaiany_rocha.jpg';
+import jhenifferLucas from '@assets/contribuitors/jheniffer_lucas.jpg';
+import luisMenegetti from '@assets/contribuitors/luis_meneguetti.jpg';
+import thalesMartins from '@assets/contribuitors/avatar_icon.svg';
+import vilmarBoff from '@assets/contribuitors/vilmar_boff.png';
 
 interface Person {
   name: string;
