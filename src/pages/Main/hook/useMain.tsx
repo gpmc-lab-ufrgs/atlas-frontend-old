@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useLocation, useHistory } from 'react-router';
 
-import { useComparison } from '@store/comparisonContext';
-import { useSelectedDistrict } from '@store/district/selectedContext';
-import { useSidebar } from '@store/sidebarContext';
+import { useComparison } from '@context/comparisonContext';
+import { useSelectedDistrict } from '@context/district/selectedContext';
+import { useSidebar } from 'src/context/sidebarContext';
 
 const useMain = () => {
   const { comparison, addComparisonDistrict } = useComparison();

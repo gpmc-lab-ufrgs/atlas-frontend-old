@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react';
 
 import mapboxgl from 'mapbox-gl';
 
-import { useHighlightedDistrict } from '@store/district/highlightedContext';
-import { useSelectedDistrict } from '@store/district/selectedContext';
-import { useSelectedState } from '@store/state/selectedContext';
-import { useSidebar } from '@store/sidebarContext';
+import { useHighlightedDistrict } from '@context/district/highlightedContext';
+import { useSelectedDistrict } from '@context/district/selectedContext';
+import { useSelectedState } from '@context/state/selectedContext';
+import { useSidebar } from 'src/context/sidebarContext';
 
 import {
   highlightDistrict,

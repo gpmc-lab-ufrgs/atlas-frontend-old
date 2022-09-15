@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { useSidebar } from '@store/sidebarContext';
+import { useSidebar } from 'src/context/sidebarContext';
 
 import Drawer from '@components/Drawer';
 

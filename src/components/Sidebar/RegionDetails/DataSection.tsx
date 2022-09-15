@@ -4,8 +4,8 @@ import Collapsible from '@components/Collapsible';
 
 import MetricDetails from '@components/MetricDetails';
 
-import { useSelectedDistrict } from '@store/district/selectedContext';
-import { useComparison } from '@store/comparisonContext';
+import { useSelectedDistrict } from '@context/district/selectedContext';
+import { useComparison } from '@context/comparisonContext';
 
 import { MapPropsContentType, MapPropsSectionType } from '@customTypes/map';
 

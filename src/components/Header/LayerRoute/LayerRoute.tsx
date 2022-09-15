@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 
 import useMap from '@hook/useMap';
-import { useSelectedState } from '@store/state/selectedContext';
-import { useSelectedDistrict } from '@store/district/selectedContext';
+import { useSelectedState } from '@context/state/selectedContext';
+import { useSelectedDistrict } from '@context/district/selectedContext';
 
 import { Button } from '@mui/material';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';

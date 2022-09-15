@@ -6,12 +6,12 @@ import Main from '@pages/Main';
 
 import AtlasTheme from '@components/Theme';
 
-import { SidebarProvider } from '@store/sidebarContext';
-import { ComparisonProvider } from '@store/comparisonContext';
-import { SelectedStatesProvider } from '@store/state/selectedContext';
-import { SelectedDistrictProvider } from '@store/district/selectedContext';
-import { HighlightedStatesProvider } from '@store/state/highlightedContext';
-import { HighlightedDistrictProvider } from '@store/district/highlightedContext';
+import { SidebarProvider } from 'src/context/sidebarContext';
+import { ComparisonProvider } from '@context/comparisonContext';
+import { SelectedStatesProvider } from '@context/state/selectedContext';
+import { SelectedDistrictProvider } from '@context/district/selectedContext';
+import { HighlightedStatesProvider } from '@context/state/highlightedContext';
+import { HighlightedDistrictProvider } from '@context/district/highlightedContext';
 
 import './index.css';
 

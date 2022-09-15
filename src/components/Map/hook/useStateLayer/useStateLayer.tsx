@@ -4,8 +4,8 @@ import mapboxgl from 'mapbox-gl';
 
 import geojsonURL from '@data/BR_UF_2020.json';
 
-import { useSelectedState } from '@store/state/selectedContext';
-import { useHighlightedState } from '@store/state/highlightedContext';
+import { useSelectedState } from '@context/state/selectedContext';
+import { useHighlightedState } from '@context/state/highlightedContext';
 
 import { highlightState, clickState, isStateLayerVisible, cleanStateActions, fitStateCenter } from './stateActions';
 

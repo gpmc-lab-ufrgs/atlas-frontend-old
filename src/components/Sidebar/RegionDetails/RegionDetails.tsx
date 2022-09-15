@@ -4,7 +4,7 @@ import { Box } from '@mui/material';
 
 import districtProps from '@config/district';
 
-import { useComparison } from '@store/comparisonContext';
+import { useComparison } from '@context/comparisonContext';
 
 import ComparisonSection from './ComparisonSection';
 import DataSection from './DataSection';

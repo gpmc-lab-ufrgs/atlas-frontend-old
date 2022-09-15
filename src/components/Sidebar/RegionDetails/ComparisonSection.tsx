@@ -2,7 +2,7 @@ import React from 'react';
 
 import Collapsible from '@components/Collapsible';
 
-import { useComparison } from '@store/comparisonContext';
+import { useComparison } from '@context/comparisonContext';
 
 import * as Styles from './styles';
 

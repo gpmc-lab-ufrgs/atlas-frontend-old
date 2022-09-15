@@ -4,7 +4,7 @@ import { useDebounce } from 'use-debounce';
 
 import { Search, Close } from '@mui/icons-material';
 
-import { useSelectedDistrict } from '@store/district/selectedContext';
+import { useSelectedDistrict } from '@context/district/selectedContext';
 import { District } from '@customTypes/district';
 
 import useSearch from './hook/useSearch';

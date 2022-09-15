@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { useComparison } from '@store/comparisonContext';
+import { useComparison } from '@context/comparisonContext';
 
 import GridMode from './GridMode';
 import TableMode from './TableMode';

@@ -6,7 +6,7 @@
       "@components/*": ["src/components/*"],
       "@pages/*": ["src/pages/*"],
       "@data/*": ["src/data/*"],
-      "@store/*": ["src/store/*"],
+      "@context/*": ["src/context/*"],
       "@config/*": ["src/config/*"],
       "@utils/*": ["src/utils/*"],
       "@hook/*": ["src/hook/*"],

@@ -4,8 +4,8 @@ import { useCombobox } from 'downshift';
 
 import useMap from '@hook/useMap';
 
-import { useHighlightedDistrict } from '@store/district/highlightedContext';
-import { useSelectedDistrict } from '@store/district/selectedContext';
+import { useHighlightedDistrict } from '@context/district/highlightedContext';
+import { useSelectedDistrict } from '@context/district/selectedContext';
 import { District } from '@customTypes/district';
 
 const useSearch = (featureSearched: District[]) => {

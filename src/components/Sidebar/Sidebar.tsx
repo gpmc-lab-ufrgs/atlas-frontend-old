@@ -5,9 +5,9 @@ import Drawer from '@components/Drawer';
 import { Box } from '@mui/material';
 import { AutoStories } from '@mui/icons-material';
 
-import { useSidebar } from '@store/sidebarContext';
-import { useComparison } from '@store/comparisonContext';
-import { useSelectedDistrict } from '@store/district/selectedContext';
+import { useSidebar } from 'src/context/sidebarContext';
+import { useComparison } from '@context/comparisonContext';
+import { useSelectedDistrict } from '@context/district/selectedContext';
 
 import Minimizer from './Minimizer';
 import RegionDetails from './RegionDetails';

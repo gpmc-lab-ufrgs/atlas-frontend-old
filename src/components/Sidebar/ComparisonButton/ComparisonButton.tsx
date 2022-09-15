@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { useSelectedDistrict } from '@store/district/selectedContext';
-import { useComparison } from '@store/comparisonContext';
+import { useSelectedDistrict } from '@context/district/selectedContext';
+import { useComparison } from '@context/comparisonContext';
 
 import { District } from '@customTypes/district';
 

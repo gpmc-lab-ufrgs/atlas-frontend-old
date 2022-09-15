@@ -2,7 +2,7 @@ import React from 'react';
 
 import { useTheme } from '@mui/material/styles';
 
-import { useSidebar } from '@store/sidebarContext';
+import { useSidebar } from 'src/context/sidebarContext';
 
 import { SummaryCard } from './SummaryCard';
 import { CloroplethLegend } from './CloroplethLegend';
