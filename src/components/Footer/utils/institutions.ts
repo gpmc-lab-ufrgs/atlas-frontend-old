@@ -8,19 +8,13 @@ import logoBologna from '@assets/institutions/logoBologna.png';
 import logoUnb from '@assets/institutions/logoUnb.png';
 import logoNCF from '@assets/institutions/logoNCF.png';
 
-interface DeveloperInstitutions {
+interface Institutions {
   name: string;
   logoImage: string;
   size: number;
 }
 
-interface SupporterInstiturions {
-  name: string;
-  logoImage: string;
-  size: number;
-}
-
-const developerInstitutionsLogoImages: DeveloperInstitutions[] = [
+const developerInstitutionsLogoImages: Institutions[] = [
   {
     name: 'Federal University of Goiás',
     logoImage: logoUfgNegative,
@@ -63,7 +57,7 @@ const developerInstitutionsLogoImages: DeveloperInstitutions[] = [
   },
 ];
 
-const supporterInstitutionLogoImages: SupporterInstiturions[] = [
+const supporterInstitutionLogoImages: Institutions[] = [
   {
     name: 'Tramontina',
     logoImage: logoTramontinaNegativo,
