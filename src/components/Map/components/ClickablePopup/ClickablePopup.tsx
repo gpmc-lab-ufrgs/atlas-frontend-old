@@ -1,7 +1,7 @@
 import React from 'react';
 import mapboxgl from 'mapbox-gl';
 
-import { State } from '@customTypes/feature';
+import { State } from '@customTypes/state';
 
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 

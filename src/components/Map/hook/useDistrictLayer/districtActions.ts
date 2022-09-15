@@ -1,7 +1,7 @@
 import * as turf from '@turf/turf';
 import mapboxgl from 'mapbox-gl';
 
-import { District } from '@customTypes/feature';
+import { District } from '@customTypes/district';
 
 import { hoveredPopup, clickedPopup } from '../../const';
 

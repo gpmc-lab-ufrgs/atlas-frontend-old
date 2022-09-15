@@ -1,6 +1,6 @@
 import React, { useState, createContext, useContext } from 'react';
 
-import { District } from '@customTypes/feature';
+import { District } from '@customTypes/district';
 
 type ComparisonContext = {
   comparison: Array<District>;

@@ -4,15 +4,15 @@ import Collapsible from '@components/Collapsible';
 
 import MetricDetails from '@components/MetricDetails';
 
-import { MapPropsContentType, MapPropsSectionType } from '@customTypes/mapProps';
+import { MapPropsContentType, MapPropsSectionType } from '@customTypes/map';
 
-import { Feature } from '@customTypes/feature';
+import { District } from '@customTypes/district';
 
 import * as Styles from './styles';
 
 interface Props {
   section: MapPropsSectionType;
-  comparison: Array<Feature>;
+  comparison: Array<District>;
 }
 
 const TableContent: React.FC<Props> = ({ section, comparison }) => {

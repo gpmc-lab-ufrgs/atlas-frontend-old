@@ -3,7 +3,7 @@ import * as turf from '@turf/turf';
 import mapboxgl from 'mapbox-gl';
 import ReactDOM from 'react-dom';
 
-import { State } from '@customTypes/feature';
+import { State } from '@customTypes/state';
 
 import { clickedPopup, hoveredPopup } from '../../const';
 import { ClickablePopup } from '@components/Map/components';

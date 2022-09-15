@@ -3,7 +3,7 @@ import React from 'react';
 import { useSelectedDistrict } from '@store/district/selectedContext';
 import { useComparison } from '@store/comparisonContext';
 
-import { Feature } from '@customTypes/feature';
+import { District } from '@customTypes/district';
 
 import * as Styles from './styles';
 
@@ -14,7 +14,7 @@ const ComparisonButton = () => {
   const isButtonOn = comparison.length >= 4;
   const isSelectedOnComparison = comparison.some((region) => region.properties.CD_MUN === selected?.properties.CD_MUN);
 
-  const comparisonClick = (feature: Feature | null) => {
+  const comparisonClick = (feature: District | null) => {
     if (isSelectedOnComparison) {
       removeComparisonDistrict(feature);
     } else {

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { District } from '@customTypes/feature';
+import { District } from '@customTypes/district';
 
 import * as Styles from './styles';
 

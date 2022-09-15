@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
-import { Feature } from '@customTypes/feature';
+import { District } from '@customTypes/district';
+import { State } from '@customTypes/state';
 
 export const DEFAULT_VALUE = {
   all: [],
@@ -12,7 +13,7 @@ export const DEFAULT_VALUE = {
 };
 
 interface Props {
-  allFeatures: Array<Feature>;
+  allFeatures: Array<District | State>;
 }
 
 const useFeature = ({ allFeatures }: Props) => {

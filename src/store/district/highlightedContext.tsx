@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState } from 'react';
 
-import { District } from '@customTypes/feature';
+import { District } from '@customTypes/district';
 
 import { DEFAULT_VALUE } from '@hook/useFeature';
 

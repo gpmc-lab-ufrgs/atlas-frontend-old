@@ -6,7 +6,7 @@ import useMap from '@hook/useMap';
 
 import { useHighlightedDistrict } from '@store/district/highlightedContext';
 import { useSelectedDistrict } from '@store/district/selectedContext';
-import { District } from '@customTypes/feature';
+import { District } from '@customTypes/district';
 
 const useSearch = (featureSearched: District[]) => {
   const inputRef = useRef<HTMLInputElement>(null);
