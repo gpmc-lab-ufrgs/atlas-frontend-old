@@ -1,4 +1,4 @@
-const LIGHT_BRIGHTNESS_LIMIT = 127.5
+const LIGHT_BRIGHTNESS_LIMIT = 127.5;
 
 export function getColorFromGradient(min: string, max: string, value: number) {
   const minColor = stringToColor(min);
