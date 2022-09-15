@@ -5,8 +5,8 @@ import ReactDOM from 'react-dom';
 
 import { State } from '@customTypes/state';
 
-import { clickedPopup, hoveredPopup } from '../../const';
-import { ClickablePopup } from '@components/Map/components';
+import { clickedPopup, hoveredPopup } from '../../utils/const';
+import ClickablePopup from '@components/Map/ClickablePopup';
 
 let hoveredId: number | undefined;
 let clickedId: number | undefined;

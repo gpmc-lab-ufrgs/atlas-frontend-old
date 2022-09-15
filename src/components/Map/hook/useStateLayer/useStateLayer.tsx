@@ -9,9 +9,9 @@ import { useHighlightedState } from '@context/state/highlightedContext';
 
 import { highlightState, clickState, isStateLayerVisible, cleanStateActions, fitStateCenter } from './stateActions';
 
-import { fitCenter } from '../../actions';
+import { fitCenter } from '../../utils/actions';
 import { stateColors } from './const';
-import { lineOpacity, lineWidth, fillOpacity } from '../../const';
+import { lineOpacity, lineWidth, fillOpacity } from '../../utils/const';
 import { isDistrictLayerVisible } from '../useDistrictLayer/districtActions';
 
 const useStateLayer = () => {

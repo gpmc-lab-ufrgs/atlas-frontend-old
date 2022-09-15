@@ -17,11 +17,11 @@ import {
 } from './districtActions';
 
 import { RSColors } from './const';
-import { lineOpacity, lineWidth, fillOpacity } from '../../const';
+import { lineOpacity, lineWidth, fillOpacity } from '../../utils/const';
 
 import geojsonGO from '@data/states/RS_Municipios_2020.json';
 import { fitStateBounds } from '../useStateLayer/stateActions';
-import { findState } from '@components/Map/actions';
+import { findState } from '@components/Map/utils/actions';
 
 const useDistrictLayer = () => {
   const [districtReference, setDistrictReference] = useState<mapboxgl.Map>();

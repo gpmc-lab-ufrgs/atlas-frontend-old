@@ -3,7 +3,7 @@ import mapboxgl from 'mapbox-gl';
 
 import { District } from '@customTypes/district';
 
-import { hoveredPopup, clickedPopup } from '../../const';
+import { hoveredPopup, clickedPopup } from '../../utils/const';
 
 import geosesData from '@data/Data.json';
 import { formatPopulationNumber } from '@utils/formatValue';

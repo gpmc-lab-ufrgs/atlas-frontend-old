@@ -7,8 +7,8 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 
 import { formatPopulationNumber } from '@utils/formatValue';
 
-import { isDistrictLayerVisible } from '../../hook/useDistrictLayer/districtActions';
-import { isStateLayerVisible, cleanStateActions, fitStateBounds } from '../../hook/useStateLayer/stateActions';
+import { isDistrictLayerVisible } from '../hook/useDistrictLayer/districtActions';
+import { isStateLayerVisible, cleanStateActions, fitStateBounds } from '../hook/useStateLayer/stateActions';
 
 import * as Styles from './styles';
 import { StickyNote2Sharp } from '@mui/icons-material';
