@@ -1,10 +1,11 @@
 import React from 'react';
-import { BrowserRouter } from 'react-router-dom';
 import { render } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 
+import districtProps from '@config/district';
 import { useComparison } from '@store/comparisonContext';
 import { ComparisonProvider } from '@store/comparisonContext';
+import geosesData from '@data/Data.json';
 
 import ComparisonModeComponent from '@components/ComparisonMode';
 
@@ -46,14 +47,45 @@ describe('Table Mode', () => {
         </ComparisonProvider>
     );
 
-    const district = getByText('Acrelândia');
+    const munName = getByText('Acrelândia');
 
-    expect(district).toBeTruthy;
+    expect(munName).toBeTruthy;
   });
 
-  // test('Test comparison data',  () => {
-  // });
+  test('Test section data',  () => {
+    const { getAllByText } = render(
+        <ComparisonProvider>
+          <ComparisonMode />
+        </ComparisonProvider>
+    );
+
+    districtProps.forEach((item) => {
+      item.content.forEach((contentItem) => {
+        const data = geosesData['1200013'];
+        const rawValue = data[contentItem.label];
+        const value = contentItem.format(rawValue);
+
+        const renderedValue = getAllByText(value);
+
+        expect(renderedValue).toBeTruthy;
+      });
+    });
+  });
 
   // test('Test information display',  () => {
+  // test('Test section data',  () => {
+  //   const { getAllByText } = render(
+  //       <ComparisonProvider>
+  //         <ComparisonMode />
+  //       </ComparisonProvider>
+  //   );
+
+  //   districtProps.forEach((item) => {
+  //     expect(getByText(item.title)).toBeTruthy;
+  //     item.content.forEach((contentItem) => {
+  //       expect(getByText(contentItem.description)).toBeTruthy;
+  //     });
+  //   });
+  // });
   // });
 });
