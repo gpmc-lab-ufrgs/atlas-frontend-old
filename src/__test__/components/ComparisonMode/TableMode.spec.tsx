@@ -107,4 +107,19 @@ describe('Table Mode', () => {
     const description = getByText('Dimensão de educação (%) - GeoSES');
     expect(description).toBeTruthy;
   });
+
+  test('Test information display', () => {
+    const { getAllByText } = render(
+      <ComparisonProvider>
+        <ComparisonMode />
+      </ComparisonProvider>,
+    );
+
+    districtProps.forEach((item) => {
+      expect(getAllByText(item.title)).toBeTruthy;
+      item.content.forEach((contentItem) => {
+        expect(getAllByText(contentItem.description)).toBeTruthy;
+      });
+    });
+  });
 });
