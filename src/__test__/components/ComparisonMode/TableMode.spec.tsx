@@ -8,32 +8,35 @@ import { ComparisonProvider } from '@store/comparisonContext';
 import geosesData from '@data/Data.json';
 
 import ComparisonModeComponent from '@components/ComparisonMode';
+import TableMode from '@components/ComparisonMode/TableMode';
 
 type GeosesDataObjectKey = keyof typeof geosesData;
+
+const comparisonDistrictMock = [
+  {
+    type: '',
+    _geometry: {
+      type: '',
+      coordinates: [[[]]],
+    },
+    geometry: {
+      type: '',
+      coordinates: [[[]]],
+    },
+    properties: {
+      CD_MUN: 1200013,
+      NM_MUN: 'Acrelândia',
+      SIGLA_UF: 'RS',
+      AREA_KM2: 1811.613,
+    },
+  },
+];
 
 const ComparisonMode = () => {
   const { addComparisonDistrict } = useComparison();
 
   React.useEffect(() => {
-    addComparisonDistrict([
-      {
-        type: '',
-        _geometry: {
-          type: '',
-          coordinates: [[[]]],
-        },
-        geometry: {
-          type: '',
-          coordinates: [[[]]],
-        },
-        properties: {
-          CD_MUN: 1200013,
-          NM_MUN: 'Acrelândia',
-          SIGLA_UF: 'RS',
-          AREA_KM2: 1811.613,
-        },
-      },
-    ]);
+    addComparisonDistrict(comparisonDistrictMock);
   }, []);
 
   return <ComparisonModeComponent comparisonType="table" />;
@@ -78,49 +81,30 @@ describe('Table Mode', () => {
     const { getByText } = render(
       <ComparisonProvider>
         <ComparisonMode />
-      </ComparisonProvider>,
+      </ComparisonProvider>
     );
     const title = getByText('Demográfica (D)');
     expect(title).toBeTruthy;
   });
 
-  test('Test TablerContainer', () => {
+  test('Test TableContainer', () => {
     const { container: tablerContainer } = render(
-      <ComparisonProvider>
-        <ComparisonMode />
-      </ComparisonProvider>,
+      <TableMode comparison={comparisonDistrictMock} />
     );
-    expect(tablerContainer.firstChild).toHaveStyleRule('width', 'calc(100% - 50px)');
-    expect(tablerContainer.firstChild).toHaveStyleRule('height', 'fit-content');
-    expect(tablerContainer.firstChild).toHaveStyleRule('padding', '0px 25px');
-    expect(tablerContainer.firstChild).toHaveStyleRule('padding-top', '70px');
-    expect(tablerContainer.firstChild).toHaveStyleRule('padding-bottom', '35px');
+    expect(tablerContainer.firstChild).toHaveStyle('width: calc(100% - 50px)');
+    expect(tablerContainer.firstChild).toHaveStyle('height: fit-content');
+    expect(tablerContainer.firstChild).toHaveStyle('padding: 70px 25px 35px 25px');
+    expect(tablerContainer.firstChild).toHaveStyle('padding-top: 70px');
+    expect(tablerContainer.firstChild).toHaveStyle('padding-bottom: 35px');
   });
 
   test('Test description ', () => {
     const { getByText } = render(
       <ComparisonProvider>
         <ComparisonMode />
-      </ComparisonProvider>,
+      </ComparisonProvider>
     );
     const description = getByText('Dimensão de educação (%) - GeoSES');
     expect(description).toBeTruthy;
   });
-
-  // test('Test information display',  () => {
-  // test('Test section data',  () => {
-  //   const { getAllByText } = render(
-  //       <ComparisonProvider>
-  //         <ComparisonMode />
-  //       </ComparisonProvider>
-  //   );
-
-  //   districtProps.forEach((item) => {
-  //     expect(getByText(item.title)).toBeTruthy;
-  //     item.content.forEach((contentItem) => {
-  //       expect(getByText(contentItem.description)).toBeTruthy;
-  //     });
-  //   });
-  // });
-  // });
 });
