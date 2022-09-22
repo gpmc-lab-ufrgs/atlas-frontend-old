@@ -8,7 +8,7 @@ import geosesData from '@data/Data.json';
 import districtProps from '@config/district';
 
 import ComparisonModeComponent from '@components/ComparisonMode';
-// import GridMode from '@components/ComparisonMode/GridMode';
+import GridMode from '@components/ComparisonMode/GridMode';
 
 type GeosesDataObjectKey = keyof typeof geosesData;
 
@@ -76,5 +76,25 @@ describe('Grid Mode', () => {
         expect(renderedValue).toBeTruthy;
       });
     });
+  });
+
+  test('Test title', () => {
+    const { getByText } = render(
+      <ComparisonProvider>
+        <ComparisonMode />
+      </ComparisonProvider>
+    );
+    const title = getByText('Demográfica (D)');
+    expect(title).toBeTruthy;
+  });
+
+  test('Test TableContainer', () => {
+    const { container: tablerContainer } = render(
+      <GridMode comparison={comparisonDistrictMock} />
+    );
+    expect(tablerContainer.firstChild).toHaveStyle('width: calc(100% - 50px)');
+    expect(tablerContainer.firstChild).toHaveStyle('height: fit-content');
+    expect(tablerContainer.firstChild).toHaveStyle('padding: 109px 25px 35px 25px');
+    expect(tablerContainer.firstChild).toHaveStyle('padding-bottom: 35px');
   });
 });
