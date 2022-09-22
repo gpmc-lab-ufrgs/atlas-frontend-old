@@ -5,9 +5,12 @@ import '@testing-library/jest-dom/extend-expect';
 import { useComparison } from '@store/comparisonContext';
 import { ComparisonProvider } from '@store/comparisonContext';
 import geosesData from '@data/Data.json';
+import districtProps from '@config/district';
 
 import ComparisonModeComponent from '@components/ComparisonMode';
-import GridMode from '@components/ComparisonMode/GridMode';
+// import GridMode from '@components/ComparisonMode/GridMode';
+
+type GeosesDataObjectKey = keyof typeof geosesData;
 
 const comparisonDistrictMock = [
   {
@@ -39,7 +42,7 @@ const ComparisonMode = () => {
   return <ComparisonModeComponent comparisonType="grid" />;
 };
 
-describe('Table Mode', () => {
+describe('Grid Mode', () => {
   test('Test comparison data', () => {
     const { getAllByText } = render(
       <ComparisonProvider>
@@ -50,5 +53,28 @@ describe('Table Mode', () => {
     const munName = getAllByText('Acrelândia');
 
     expect(munName).toBeTruthy;
+  });
+
+
+  test('Test section data', () => {
+    const { getAllByText } = render(
+      <ComparisonProvider>
+        <ComparisonMode />
+      </ComparisonProvider>,
+    );
+
+    districtProps.forEach((item) => {
+      item.content.forEach((contentItem) => {
+        const key = '1200013' as GeosesDataObjectKey;
+
+        const data = geosesData[key];
+        const rawValue = data[contentItem.label];
+        const value = contentItem.format(rawValue);
+
+        const renderedValue = getAllByText(value);
+
+        expect(renderedValue).toBeTruthy;
+      });
+    });
   });
 });
