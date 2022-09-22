@@ -97,4 +97,19 @@ describe('Grid Mode', () => {
     expect(tablerContainer.firstChild).toHaveStyle('padding: 109px 25px 35px 25px');
     expect(tablerContainer.firstChild).toHaveStyle('padding-bottom: 35px');
   });
+
+  test('Test information display', () => {
+    const { getAllByText } = render(
+      <ComparisonProvider>
+        <ComparisonMode />
+      </ComparisonProvider>,
+    );
+
+    districtProps.forEach((item) => {
+      expect(getAllByText(item.title)).toBeTruthy;
+      comparisonDistrictMock.forEach((district) => {
+        expect(getAllByText(district.properties.NM_MUN)).toBeTruthy;
+      });
+    });
+  });
 });
