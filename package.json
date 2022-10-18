@@ -8,7 +8,8 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "lint": "eslint '*/**/*.{js,ts,tsx}' --color",
-    "lint:fix": "eslint '*/**/*.{js,ts,tsx}' --fix"
+    "lint:fix": "eslint '*/**/*.{js,ts,tsx}' --fix",
+    "test": "react-scripts test"
   },
   "eslintConfig": {
     "extends": [
@@ -36,6 +37,8 @@
     "@mui/material": "^5.4.4",
     "@popperjs/core": "^2.10.2",
     "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.10",
     "@turf/turf": "^6.5.0",
     "@types/jest": "^26.0.15",
     "@types/mapbox-gl": "^2.4.2",
