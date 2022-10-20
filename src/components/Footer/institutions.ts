@@ -1,11 +1,11 @@
-import logoTramontinaNegativo from '@assets/logoTramontinaNegativo.png';
-import logoSabanciNormal from '@assets/logoSabanciNormal.png';
-import logoUfrgsNegative from '@assets/logoUfrgsNegativo.png';
-import logoUfgNegative from '@assets/logoUfgNegativo.png';
-import logoFgvNegative from '@assets/logoNegativaFGV.png';
-import logoMitNegative from '@assets/logoNegativaMIT.png';
-import logoBologna from '@assets/logoBologna.png';
-import logoUnb from '@assets/logoUnb.png';
+import logoTramontina from '@assets/logoTramontina.png';
+import logoSabanci from '@assets/logoSabanci.png';
+import logoUfrgs from '@assets/logoUFRGS.png';
+import logoUfg from '@assets/logoUFG.png';
+import logoFgv from '@assets/logoFGV.png';
+import logoMit from '@assets/logoMIT.png';
+import logoBologna from '@assets/logoBologna.svg';
+import logoUnb from '@assets/logoUNB.png';
 import logoNCF from '@assets/logoNCF.png';
 
 interface DeveloperInstitutions {
@@ -23,50 +23,50 @@ interface SupporterInstiturions {
 const developerInstitutionsLogoImages: DeveloperInstitutions[] = [
   {
     name: 'Federal University of Goiás',
-    logoImage: logoUfgNegative,
-    size: 40,
+    logoImage: logoUfg,
+    size: 70,
   },
   {
     name: 'University of Bologna',
     logoImage: logoBologna,
-    size: 30,
+    size: 45,
   },
   {
     name: 'New College of Florida',
     logoImage: logoNCF,
-    size: 25,
+    size: 35,
   },
   {
     name: 'Federal University of Rio Grande do Sul',
-    logoImage: logoUfrgsNegative,
-    size: 25,
+    logoImage: logoUfrgs,
+    size: 35,
   },
   {
     name: 'Massachusetts Institute of Technology',
-    logoImage: logoMitNegative,
-    size: 40,
+    logoImage: logoMit,
+    size: 25,
   },
   {
     name: 'Sabanci University',
-    logoImage: logoSabanciNormal,
-    size: 35,
+    logoImage: logoSabanci,
+    size: 70,
   },
   {
     name: 'Federal University of Brasília',
     logoImage: logoUnb,
-    size: 25,
+    size: 31,
   },
   {
     name: 'Fundação Getulio Vargas',
-    logoImage: logoFgvNegative,
-    size: 80,
+    logoImage: logoFgv,
+    size: 20,
   },
 ];
 
 const supporterInstitutionLogoImages: SupporterInstiturions[] = [
   {
     name: 'Tramontina',
-    logoImage: logoTramontinaNegativo,
+    logoImage: logoTramontina,
     size: 150,
   },
 ];

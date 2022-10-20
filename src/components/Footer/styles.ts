@@ -6,7 +6,7 @@ export const FooterContainer = styled.div`
 
   width: 100%;
   height: 60px;
-  background-color: #191a1a;
+  background-color: #fff;
 `;
 
 interface IInstitutionsLogo {
@@ -15,12 +15,12 @@ interface IInstitutionsLogo {
 
 export const InstitutionsLogo = styled.img<IInstitutionsLogo>`
   height: ${({ size }) => size}px;
-  opacity: 50%;
+  opacity: 100%;
   padding-right: 30px;
 `;
 
 export const FooterText = styled.h2`
-  color: #8b8c8c;
+  color: black;
   font-weight: 400;
   font-size: 15px;
   padding-right: 10px;
