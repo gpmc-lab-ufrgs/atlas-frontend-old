@@ -7,7 +7,7 @@ import leonardoGomes from '@assets/leonardo_gomes.jpg';
 import justinAnderson from '@assets/justin_anderson.png';
 import anaBeatriz from '@assets/ana_beatriz.jpeg';
 import julioCesar from '@assets/julio_cesar.jfif';
-import enzoGabriel from '@assets/enzo_gabriel.jpeg'; // --> a png tá com tamanho que excede
+import enzoGabriel from '@assets/enzo_gabriel.jpeg';
 import valdersonJunior from '@assets/valderson_junior.jpeg';
 import arianoBangemann from '@assets/ariano_bangemann.png';
 import anaLuisa from '@assets/avatar_icon.svg';
@@ -19,8 +19,8 @@ import jessicaMiranda from '@assets/jessica_miranda.jpg';
 import jhenifferLucas from '@assets/jheniffer_lucas.jpeg';
 import luisMenegetti from '@assets/luis_meneguetti.jpg';
 import pedroDeConto from '@assets/pedro_conto.png';
-import rafaelPereira from '@assets/rafael_pereira.jpg'
-import ruthSelina from '@assets/ruth_selina.jpg'
+import rafaelPereira from '@assets/rafael_pereira.jpg';
+import ruthSelina from '@assets/ruth_selina.jpg';
 import thalesMartins from '@assets/avatar_icon.svg';
 import vilmarBoff from '@assets/vilmar_boff.png';
 
