@@ -10,8 +10,6 @@ import julioCesar from '@assets/julio_cesar.jfif';
 import enzoGabriel from '@assets/enzo_gabriel.jpeg';
 import valdersonJunior from '@assets/valderson_junior.jpeg';
 import arianoBangemann from '@assets/ariano_bangemann.png';
-import anaLuisa from '@assets/avatar_icon.svg';
-import andreonMagagna from '@assets/andreon_magagna.jpg';
 import carlaNetto from '@assets/carla_netto.jpg';
 import fernandaKlein from '@assets/fernanda_klein.jpg';
 import jaianyRocha from '@assets/jaiany_rocha.jpg';
@@ -21,8 +19,6 @@ import luisMenegetti from '@assets/luis_meneguetti.jpg';
 import pedroDeConto from '@assets/pedro_conto.png';
 import rafaelPereira from '@assets/rafael_pereira.jpg';
 import ruthSelina from '@assets/ruth_selina.jpg';
-import thalesMartins from '@assets/avatar_icon.svg';
-import vilmarBoff from '@assets/vilmar_boff.png';
 
 interface Person {
   name: string;
@@ -129,19 +125,6 @@ export const researchers: Person[] = [
     socialProfile: 'http://lattes.cnpq.br/6285622771537571',
   },
   {
-    name: 'Ana Luisa',
-    image: anaLuisa,
-    institution: '',
-    hasImage: false,
-  },
-  {
-    name: 'Andreon Magagna',
-    image: andreonMagagna,
-    institution: 'UFRGS',
-    hasImage: true,
-  },
-
-  {
     name: 'Carla Netto',
     image: carlaNetto,
     institution: 'University of Bologna',
@@ -203,17 +186,5 @@ export const researchers: Person[] = [
     institution: 'UFRGS',
     hasImage: true,
     socialProfile: 'http://lattes.cnpq.br/1583654759584875'
-  },
-  {
-    name: 'Thales Martins',
-    image: thalesMartins,
-    institution: '',
-    hasImage: false,
-  },
-  {
-    name: 'Vilmar Oro Boff',
-    image: vilmarBoff,
-    institution: '',
-    hasImage: true,
   },
 ];
