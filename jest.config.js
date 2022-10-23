@@ -1,8 +1,6 @@
 module.exports = {
   preset: 'ts-jest',
-  setupFilesAfterEnv: [
-    '<rootDir>/src/__test__/setupTests.ts',
-  ],
+  setupFilesAfterEnv: ['<rootDir>/src/__test__/setupTests.ts'],
   transform: {
     '^.+\\.(js|jsx|ts|tsx)$': '<rootDir>/node_modules/babel-jest',
   },

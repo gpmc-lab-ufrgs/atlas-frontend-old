@@ -42,6 +42,21 @@
     "react/jsx-props-no-spreading": "off",
     "react/jsx-one-expression-per-line": "off",
     "react/display-name": "off",
-    "jsx-a11y/anchor-is-valid": "off"
+    "jsx-a11y/anchor-is-valid": "off",
+    "import/no-unresolved": "off",
+    "import/extensions": "off",
+    "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
+    "jest/expect-expect": "off",
+    "react-hooks/rules-of-hooks": "error",
+    "react/function-component-definition": "off",
+    "react/react-in-jsx-scope": "off",
+    "react/require-default-props": "off",
+    "react/jsx-uses-react": "off",
+    "react/jsx-filename-extension": [1, { "extensions": [".ts", ".tsx"] }],
+    "react/jsx-no-useless-fragment": "off",
+    "react/jsx-no-bind": "off",
+    "prettier/prettier": "error",
+    "no-restricted-exports": "off",
+    "default-param-last": "off"
   }
 }
