@@ -4,12 +4,12 @@ import { State } from '@customTypes/feature';
 
 import { DEFAULT_VALUE } from '@hook/useFeature';
 
-interface StateActions {
+export interface StateActions {
   highlighted: State | null;
   setHighlighted: React.Dispatch<React.SetStateAction<any>>;
 }
 
-const highlightedStatesContext = createContext<StateActions>(DEFAULT_VALUE);
+export const highlightedStatesContext = createContext<StateActions>(DEFAULT_VALUE);
 
 export function HighlightedStatesProvider({ children }: any) {
   const [highlighted, setHighlighted] = useState(null);
