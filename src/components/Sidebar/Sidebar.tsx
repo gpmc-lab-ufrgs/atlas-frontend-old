@@ -22,11 +22,11 @@ interface Props {
 }
 
 const Sidebar: React.FC<Props> = ({ isComparisonMode, title }) => {
-
-  
   const { comparison } = useComparison();
   const { selected } = useSelectedDistrict();
   const { isSidebarOpen, setIsSidebarOpen } = useSidebar();
+
+  console.log(isSidebarOpen);
 
   const hasSelectedDistrict = Boolean(selected);
 

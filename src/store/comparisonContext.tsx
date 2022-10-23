@@ -2,7 +2,7 @@ import React, { useState, createContext, useContext } from 'react';
 
 import { District } from '@customTypes/feature';
 
-type ComparisonContext = {
+export type ComparisonContext = {
   comparison: Array<District>;
   addComparisonDistrict: React.Dispatch<React.SetStateAction<any>>;
   removeComparisonDistrict: React.Dispatch<React.SetStateAction<any>>;

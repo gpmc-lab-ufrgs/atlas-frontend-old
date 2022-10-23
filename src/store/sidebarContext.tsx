@@ -1,6 +1,6 @@
 import React, { useState, createContext, useContext } from 'react';
 
-type SidebarContext = {
+export type SidebarContext = {
   isSidebarOpen: boolean;
   setIsSidebarOpen: React.Dispatch<React.SetStateAction<any>>;
 };
