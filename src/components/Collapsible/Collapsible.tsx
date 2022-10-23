@@ -5,7 +5,6 @@ import Collapsible from 'react-collapsible';
 import { CollapsibleType, CollapsibleNames } from './type';
 
 import './styles.css';
-import * as Styles from './styles';
 
 const CollapsibleDefaultValue = {
   'Locations to Compare': true,
@@ -19,7 +18,7 @@ const CollapsibleDefaultValue = {
   'Business Rental Costs': false,
 };
 
-const CollapsibleSection = ({ children, title, isTitle}: any) => {
+const CollapsibleSection = ({ children, title }: any) => {
   const [collapsible, setCollapsible] = useState<CollapsibleType>(CollapsibleDefaultValue);
 
   const onOpen = (key: any) => updateIsOpen(key, true);
@@ -36,18 +35,15 @@ const CollapsibleSection = ({ children, title, isTitle}: any) => {
   };
 
   return (
-    <Styles.CollapsibleContainer isTitle={isTitle}>
-      <Collapsible
-        trigger={title}
-        open={isOpen(title)}
-        onOpening={() => onOpen(title)}
-        onClosing={() => onClose(title)}
-        lazyRender={true}
-        className={`${isTitle}`}
-      >
-        {children}
-      </Collapsible>
-    </Styles.CollapsibleContainer>
+    <Collapsible
+      trigger={title}
+      open={isOpen(title)}
+      onOpening={() => onOpen(title)}
+      onClosing={() => onClose(title)}
+      lazyRender={true}
+    >
+      {children}
+    </Collapsible>
   );
 };
 
