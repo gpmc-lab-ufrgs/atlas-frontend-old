@@ -59,13 +59,13 @@ export const PersonData = styled.p`
   font-size: 16px;
 `;
 
-export const SocialProfileLink = styled.a`
+export const SocialProfileLink = styled.a<{ hasLink: boolean }>`
   text-decoration: none;
   color: inherit !important;
-  border-bottom: 2px solid #54a333;
-  cursor: pointer;
+  border-bottom: ${({ hasLink }) => hasLink ? '1px solid #54a333' : 'transparent'};
+  cursor: ${({ hasLink }) => hasLink ? 'pointer' : 'text'};;
   :hover {
-    color: #217100 !important;
+    color: ${({ hasLink }) => hasLink ? '#217100 !important' : ''};
   }
 `;
 
