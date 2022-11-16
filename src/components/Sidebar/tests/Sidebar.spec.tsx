@@ -1,4 +1,3 @@
-import React from 'react';
 import { screen } from '@testing-library/react';
 
 import { render } from '@tests/helpers/render';
@@ -11,7 +10,7 @@ describe('Sidebar', () => {
   test('should render title without district selected and comparison', async () => {
     render(<Sidebar isComparisonMode={false} title="Atlas" />);
 
-    screen.getByText('Atlas de Oportunidades');
+    await screen.findByText('Atlas de Oportunidades');
   });
 
   test('should render with district selected without comparison', async () => {
@@ -19,7 +18,8 @@ describe('Sidebar', () => {
       districtSelectedMock: scenarios.districtMock,
     });
 
-    screen.getByText('Atlas');
+    await screen.findByText('Atlas');
+
     screen.getByText('Adicionar a comparação');
     screen.getByText('Demográfica (D)');
     screen.getByText('Número de mortes observadas por causas evitáveis');

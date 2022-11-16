@@ -1,7 +1,6 @@
 import React from 'react';
 
 import Collapsible from '@components/Collapsible';
-
 import MetricDetails from '@components/MetricDetails';
 
 import { useSelectedDistrict } from '@store/district/selectedContext';
