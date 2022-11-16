@@ -44,7 +44,7 @@ const Contributors = () => {
 
                 <Styles.PersonDatas>
                   <Styles.PersonData>
-                    <Styles.SocialProfileLink href={data.socialProfile} rel="noreferrer" target="_blank">
+                    <Styles.SocialProfileLink hasLink={!!data.socialProfile} href={data.socialProfile} rel="noreferrer" target="_blank">
                       {data.name}
                     </Styles.SocialProfileLink>
                   </Styles.PersonData>

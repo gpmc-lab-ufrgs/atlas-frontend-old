@@ -1,21 +1,24 @@
 import viniciusBrei from '@assets/vinicius_brei.jpg';
 import alexSandy from '@assets/alex_sandy.png';
 import mohsenBahrami from '@assets/mohsen_bahrami.png';
-import alinaFlores from '@assets/alina_flores.jpg';
-import ricardoLimongi from '@assets/ricardo_limongi.png';
+import alinaFlores from '@assets/alina_flores.jpeg';
+import ricardoLimongi from '@assets/ricardo_limongi.jpg';
 import leonardoGomes from '@assets/leonardo_gomes.jpg';
 import justinAnderson from '@assets/justin_anderson.png';
+import anaBeatriz from '@assets/ana_beatriz.jpeg';
+import julioCesar from '@assets/julio_cesar.jfif';
 import enzoGabriel from '@assets/enzo_gabriel.jpeg';
-import valdersonJunior from '@assets/valderson_junior.png';
-import anaLuisa from '@assets/avatar_icon.svg';
-import andreonMagagna from '@assets/andreon_magagna.jpg';
+import valdersonJunior from '@assets/valderson_junior.jpeg';
+import arianoBangemann from '@assets/ariano_bangemann.png';
 import carlaNetto from '@assets/carla_netto.jpg';
+import fernandaKlein from '@assets/fernanda_klein.jpg';
 import jaianyRocha from '@assets/jaiany_rocha.jpg';
-import jhenifferLucas from '@assets/jheniffer_lucas.jpg';
+import jessicaMiranda from '@assets/jessica_miranda.jpg';
+import jhenifferLucas from '@assets/jheniffer_lucas.jpeg';
 import luisMenegetti from '@assets/luis_meneguetti.jpg';
-import thalesMartins from '@assets/avatar_icon.svg';
-import vilmarBoff from '@assets/vilmar_boff.png';
 import pedroDeConto from '@assets/pedro_conto.png';
+import rafaelPereira from '@assets/rafael_pereira.jpg';
+import ruthSelina from '@assets/ruth_selina.jpg';
 
 interface Person {
   name: string;
@@ -33,6 +36,7 @@ export const mainResearchers: Person[] = [
     function: 'Lead Researcher',
     institution: 'UFRGS',
     hasImage: true,
+    socialProfile: 'https://www.ufrgs.br/escoladeadministracao/professor/vinicius-andrade-brei',
   },
   {
     name: 'Alex Sandy Pentland',
@@ -54,7 +58,7 @@ export const mainResearchers: Person[] = [
     function: 'Lead Researcher',
     institution: 'UFRGS',
     hasImage: true,
-    socialProfile: 'https://github.com/Alinaflores',
+    socialProfile: 'http://lattes.cnpq.br/2980780748375851',
   },
   {
     name: 'Ricardo Limongi',
@@ -83,10 +87,25 @@ export const mainResearchers: Person[] = [
 
 export const developers: Person[] = [
   {
+    name: 'Ana Beatriz',
+    image: anaBeatriz,
+    institution: 'Universidade de Brasília',
+    hasImage: true,
+    socialProfile: 'https://github.com/AnaBeatrizPontes'
+  },
+  {
     name: 'Enzo Gabriel',
     image: enzoGabriel,
     institution: 'Universidade de Brasília',
     hasImage: true,
+    socialProfile: 'https://github.com/enzoggqs'
+  },
+  {
+    name: 'Júlio César',
+    image: julioCesar,
+    institution: 'Universidade de Brasília',
+    hasImage: true,
+    socialProfile: 'https://github.com/Julio-eng'
   },
   {
     name: 'Valderson Junior',
@@ -99,62 +118,73 @@ export const developers: Person[] = [
 
 export const researchers: Person[] = [
   {
-    name: 'Ana Luisa',
-    image: anaLuisa,
-    institution: '',
-    hasImage: false,
-  },
-
-  {
-    name: 'Andreon Magagna',
-    image: andreonMagagna,
+    name: 'Ariano Bangemann',
+    image: arianoBangemann,
     institution: 'UFRGS',
     hasImage: true,
+    socialProfile: 'http://lattes.cnpq.br/6285622771537571',
   },
-
   {
     name: 'Carla Netto',
     image: carlaNetto,
-    institution: '',
+    institution: 'University of Bologna',
     hasImage: true,
     socialProfile: 'https://www.unibo.it/sitoweb/carla.freitas/en',
   },
   {
+    name: 'Fernanda Klein',
+    image: fernandaKlein,
+    institution: 'UFRGS',
+    hasImage: true,
+    socialProfile: 'http://lattes.cnpq.br/0182209534332837',
+  },
+  {
     name: 'Jaiany Rocha',
     image: jaianyRocha,
-    institution: '',
+    institution: 'UFRGS',
     hasImage: true,
     socialProfile: 'http://lattes.cnpq.br/1097813774336960',
   },
   {
+    name: 'Jéssica Miranda',
+    image: jessicaMiranda,
+    institution: 'UFRGS',
+    hasImage: true,
+    socialProfile: 'http://lattes.cnpq.br/3972534605652979',
+  },
+  {
     name: 'Jheniffer Dany Lucas',
     image: jhenifferLucas,
-    institution: '',
+    institution: 'UFRGS',
     hasImage: true,
+    socialProfile: 'https://lattes.cnpq.br/4711226999588931',
   },
   {
     name: 'Luís Eduardo Meneguetti',
     image: luisMenegetti,
-    institution: '',
+    institution: 'UFRGS',
     hasImage: true,
-    socialProfile: 'https://www.linkedin.com/in/luismeneguetti/',
-  },
-  {
-    name: 'Thales Martins',
-    image: thalesMartins,
-    institution: '',
-    hasImage: false,
-  },
-  {
-    name: 'Vilmar Oro Boff',
-    image: vilmarBoff,
-    institution: '',
-    hasImage: true,
+    socialProfile: 'https://www.linkedin.com/in/luismeneguetti',
   },
   {
     name: 'Pedro de Conto',
     image: pedroDeConto,
-    institution: '',
+    institution: 'UFRGS',
     hasImage: true,
+    socialProfile: 'http://lattes.cnpq.br/6534969356603102'
+  },
+  {
+    name: 'Rafael Pereira',
+    image: rafaelPereira,
+    institution: 'UFRGS',
+    hasImage: true,
+    socialProfile: 'http://lattes.cnpq.br/7208559081053768'
+  },
+  {
+    name: 'Ruth Selina',
+    image: ruthSelina,
+    institution: 'UFRGS',
+    hasImage: true,
+    socialProfile: 'http://lattes.cnpq.br/1583654759584875'
   },
 ];
