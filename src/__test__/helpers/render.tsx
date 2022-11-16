@@ -19,7 +19,10 @@ import {
   sidebarOpen,
 } from './mocks';
 
-const customRender = (ui: JSX.Element, options?: ComponentOptions) => {
+const AllTheProviders: React.FC<{ children: React.ReactNode; options?: ComponentOptions }> = ({
+  children,
+  options,
+}) => {
   const {
     districtSelectedMock,
     districtHighlightedMock,
@@ -29,45 +32,29 @@ const customRender = (ui: JSX.Element, options?: ComponentOptions) => {
     sidebarMock,
   } = options || {};
 
+  return (
+    <Providers
+      districtSelectedMock={districtSelectedMock || districtSelected}
+      districtHighlightedMock={districtHighlightedMock || districtHighlighted}
+      stateSelectedMock={stateSelectedMock || stateSelected}
+      stateHighlightedMock={stateHighlightedMock || stateHighlighted}
+      comparisonMock={comparisonMock || comparison}
+      sidebarMock={sidebarMock || sidebarOpen}
+    >
+      {children}
+    </Providers>
+  );
+};
+
+const customRender = (ui: JSX.Element, options?: ComponentOptions) => {
   return render(ui, {
-    wrapper: ({ children }) => (
-      <Providers
-        districtSelectedMock={districtSelectedMock || districtSelected}
-        districtHighlightedMock={districtHighlightedMock || districtHighlighted}
-        stateSelectedMock={stateSelectedMock || stateSelected}
-        stateHighlightedMock={stateHighlightedMock || stateHighlighted}
-        comparisonMock={comparisonMock || comparison}
-        sidebarMock={sidebarMock || sidebarOpen}
-      >
-        {children}
-      </Providers>
-    ),
+    wrapper: ({ children }) => <AllTheProviders options={options}>{children}</AllTheProviders>,
   });
 };
 
 const customRenderHook = <HookProps, HookReturn>(hook: Hook<HookProps, HookReturn>, options?: HookOptions) => {
-  const {
-    districtSelectedMock,
-    districtHighlightedMock,
-    stateSelectedMock,
-    stateHighlightedMock,
-    comparisonMock,
-    sidebarMock,
-  } = options || {};
-
   return renderHook<HookProps, HookReturn>(hook, {
-    wrapper: ({ children }) => (
-      <Providers
-        districtSelectedMock={districtSelectedMock || districtSelected}
-        districtHighlightedMock={districtHighlightedMock || districtHighlighted}
-        stateSelectedMock={stateSelectedMock || stateSelected}
-        stateHighlightedMock={stateHighlightedMock || stateHighlighted}
-        comparisonMock={comparisonMock || comparison}
-        sidebarMock={sidebarMock || sidebarOpen}
-      >
-        {children}
-      </Providers>
-    ),
+    wrapper: ({ children }) => <AllTheProviders options={options}>{children}</AllTheProviders>,
   });
 };
 
