@@ -6,7 +6,8 @@ const aliases = require('./config/alias').reduce((acc, alias) => {
 
 module.exports = {
   preset: 'ts-jest',
-  setupFilesAfterEnv: ['@testing-library/jest-dom/extend-expect'],
+  setupFilesAfterEnv: ['<rootDir>/src/__test__/setup.ts'],
+  setupFiles: ['<rootDir>/src/__test__/helpers/libraries/reactRouterDom.ts'],
   transform: {
     '^.+\\.(js|jsx|ts|tsx)$': '<rootDir>/node_modules/babel-jest',
     '.+\\.(css|styl|less|sass|scss|png|jpg|ttf|woff|woff2|svg|pdf|webp|xlsx)$': 'jest-transform-stub',
