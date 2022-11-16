@@ -1,6 +1,4 @@
-import React from 'react';
-
-import { useHistory } from 'react-router';
+import { useNavigate } from 'react-router';
 
 import { Box } from '@mui/material';
 
@@ -16,10 +14,10 @@ import './styles.css';
 const ComparisonDetails = () => {
   const { comparison, removeComparisonDistrict } = useComparison();
   const { resetMapValues } = useMap();
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const handleGoBack = () => {
-    history.replace('/');
+    navigate('/');
     resetMapValues();
   };
 

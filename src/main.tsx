@@ -15,7 +15,6 @@ import { HighlightedDistrictProvider } from '@store/district/highlightedContext'
 
 import './index.css';
 
-
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
