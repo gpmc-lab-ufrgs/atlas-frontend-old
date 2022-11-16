@@ -9,13 +9,14 @@
     "allowSyntheticDefaultImports": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
-    "module": "ESNext",
+    "module": "nodenext",
     "moduleResolution": "Node",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
     "baseUrl": ".",
+    "types": ["vitest/globals"],
     "paths": {
       "@assets/*": ["src/assets/*"],
       "@components/*": ["src/components/*"],
@@ -25,7 +26,8 @@
       "@config/*": ["src/config/*"],
       "@utils/*": ["src/utils/*"],
       "@hook/*": ["src/hook/*"],
-      "@customTypes/*": ["src/customTypes/*"]
+      "@customTypes/*": ["src/customTypes/*"],
+      "@tests/*": ["src/__test__/*"]
     }
   },
   "include": ["src"],

@@ -9,6 +9,7 @@ interface Props {
   setOpen: (bool: boolean) => void;
   anchor: Anchor;
   hideBackdrop?: boolean;
+  children: React.ReactNode;
 }
 
 const Drawer: React.FC<Props> = ({ open, anchor, setOpen, hideBackdrop, children }) => {
