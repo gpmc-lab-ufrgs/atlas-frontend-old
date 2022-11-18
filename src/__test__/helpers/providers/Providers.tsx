@@ -27,6 +27,7 @@ export interface Props {
   stateHighlightedMock?: StateHighlightedActions;
   sidebarMock?: SidebarContext;
   comparisonMock?: ComparisonContext;
+  children?: React.ReactNode;
 }
 
 export const Providers: React.FC<Props> = ({

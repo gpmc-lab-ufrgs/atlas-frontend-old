@@ -27,4 +27,16 @@ module.exports = [
     name: '@hook',
     path: './src/hook',
   },
+  {
+    name: '@store',
+    path: './src/store',
+  },
+  {
+    name: '@config',
+    path: './src/config',
+  },
+  {
+    name: '@data',
+    path: './src/data',
+  },
 ];

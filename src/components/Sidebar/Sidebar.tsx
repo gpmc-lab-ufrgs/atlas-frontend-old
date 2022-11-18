@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import Drawer from '@components/Drawer';
 
 import { Box } from '@mui/material';
-import { AutoStories } from '@mui/icons-material';
+import { AutoStories, CollectionsOutlined } from '@mui/icons-material';
 
 import { useSidebar } from '@store/sidebarContext';
 import { useComparison } from '@store/comparisonContext';
@@ -25,8 +25,6 @@ const Sidebar: React.FC<Props> = ({ isComparisonMode, title }) => {
   const { comparison } = useComparison();
   const { selected } = useSelectedDistrict();
   const { isSidebarOpen, setIsSidebarOpen } = useSidebar();
-
-  console.log(isSidebarOpen);
 
   const hasSelectedDistrict = Boolean(selected);
 
