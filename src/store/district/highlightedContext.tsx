@@ -4,12 +4,12 @@ import { District } from '@customTypes/feature';
 
 import { DEFAULT_VALUE } from '@hook/useFeature';
 
-interface DistrictActions {
+export interface DistrictActions {
   highlighted: District | null;
   setHighlighted: React.Dispatch<React.SetStateAction<any>>;
 }
 
-const highlightedDistrictsContext = createContext<DistrictActions>(DEFAULT_VALUE);
+export const highlightedDistrictsContext = createContext<DistrictActions>(DEFAULT_VALUE);
 
 export function HighlightedDistrictProvider({ children }: any) {
   const [highlighted, setHighlighted] = useState(null);
