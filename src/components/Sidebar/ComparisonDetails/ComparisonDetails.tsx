@@ -4,7 +4,7 @@ import { Box } from '@mui/material';
 
 import Collapsible from '@components/Collapsible';
 
-import { useComparison } from '@store/comparisonContext';
+import { useComparison } from '@context/comparisonContext';
 import useMap from '@hook/useMap';
 
 import * as Styles from './styles';
@@ -17,7 +17,7 @@ const ComparisonDetails = () => {
   const navigate = useNavigate();
 
   const handleGoBack = () => {
-    navigate('/');
+    navigate('');
     resetMapValues();
   };
 

@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState } from 'react';
 
-import { State } from '@customTypes/feature';
+import { State } from '@customTypes/state';
 
 import { DEFAULT_VALUE } from '@hook/useFeature';
 

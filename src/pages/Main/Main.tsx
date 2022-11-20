@@ -4,8 +4,8 @@ import { useState } from 'react';
 
 import { useTheme } from '@mui/material/styles';
 
-import { useSidebar } from '@store/sidebarContext';
-import { useSelectedDistrict } from '@store/district/selectedContext';
+import { useSidebar } from '@context/sidebarContext';
+import { useSelectedDistrict } from '@context/district/selectedContext';
 
 import Map from '@components/Map';
 import Modal from '@components/Modal';

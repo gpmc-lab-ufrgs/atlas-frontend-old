@@ -5,9 +5,9 @@ import Drawer from '@components/Drawer';
 import { Box } from '@mui/material';
 import { AutoStories } from '@mui/icons-material';
 
-import { useSidebar } from '@store/sidebarContext';
-import { useComparison } from '@store/comparisonContext';
-import { useSelectedDistrict } from '@store/district/selectedContext';
+import { useSidebar } from '@context/sidebarContext';
+import { useComparison } from '@context/comparisonContext';
+import { useSelectedDistrict } from '@context/district/selectedContext';
 
 import Minimizer from './Minimizer';
 import RegionDetails from './RegionDetails';
@@ -27,7 +27,6 @@ const Sidebar: React.FC<Props> = ({ isComparisonMode, title }) => {
   const { isSidebarOpen, setIsSidebarOpen } = useSidebar();
 
   const hasSelectedDistrict = Boolean(selected);
-
   const hasComparisonRegions = comparison.length !== 0;
 
   const SidebarContent = () => {
@@ -41,19 +40,19 @@ const Sidebar: React.FC<Props> = ({ isComparisonMode, title }) => {
           <RegionDetails />
         </>
       );
-    } else {
-      return (
-        <>
-          <Styles.Title>{hasComparisonRegions ? title : 'Atlas de Oportunidades'}</Styles.Title>
-          <Styles.EmptyContent>
-            <h4>Selecione uma região no mapa para ver seus detalhes</h4>
-            <Box paddingLeft={2}>
-              <AutoStories />
-            </Box>
-          </Styles.EmptyContent>
-        </>
-      );
     }
+
+    return (
+      <>
+        <Styles.Title>Atlas de Oportunidades</Styles.Title>
+        <Styles.EmptyContent>
+          <h4>Selecione uma região no mapa para ver seus detalhes</h4>
+          <Box paddingLeft={2}>
+            <AutoStories />
+          </Box>
+        </Styles.EmptyContent>
+      </>
+    );
   };
 
   return (

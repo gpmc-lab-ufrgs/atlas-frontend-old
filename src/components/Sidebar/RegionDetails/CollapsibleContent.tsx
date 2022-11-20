@@ -2,10 +2,10 @@ import React from 'react';
 
 import MetricDetails from '@components/MetricDetails';
 
-import { useSelectedDistrict } from '@store/district/selectedContext';
-import { useComparison } from '@store/comparisonContext';
+import { useSelectedDistrict } from '@context/district/selectedContext';
+import { useComparison } from '@context/comparisonContext';
 
-import { MapPropsContentType } from '@customTypes/mapProps';
+import { MapPropsContentType } from '@customTypes/map';
 
 import { Tooltip } from '@mui/material';
 

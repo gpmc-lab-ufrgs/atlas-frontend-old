@@ -4,9 +4,9 @@ import Collapsible from '@components/Collapsible';
 
 import MetricDetails from '@components/MetricDetails';
 
-import { MapPropsContentType, MapPropsSectionType } from '@customTypes/mapProps';
+import { MapPropsContentType, MapPropsSectionType } from '@customTypes/map';
 
-import { District } from '@customTypes/feature';
+import { District } from '@customTypes/district';
 
 import * as Styles from './styles';
 

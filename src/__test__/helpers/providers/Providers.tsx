@@ -1,15 +1,18 @@
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 
-import { sidebarContext, SidebarContext } from '@store/sidebarContext';
-import { comparisonContext, ComparisonContext } from '@store/comparisonContext';
-import { selectedDistrictsContext, DistrictActions as DistrictSelectedActions } from '@store/district/selectedContext';
+import { sidebarContext, SidebarContext } from '@context/sidebarContext';
+import { comparisonContext, ComparisonContext } from '@context/comparisonContext';
+import {
+  selectedDistrictsContext,
+  DistrictActions as DistrictSelectedActions,
+} from '@context/district/selectedContext';
 import {
   highlightedDistrictsContext,
   DistrictActions as DistrictHighlightedActions,
-} from '@store/district/highlightedContext';
-import { selectedStatesContext, StateActions as StateSelectedActions } from '@store/state/selectedContext';
-import { highlightedStatesContext, StateActions as StateHighlightedActions } from '@store/state/highlightedContext';
+} from '@context/district/highlightedContext';
+import { selectedStatesContext, StateActions as StateSelectedActions } from '@context/state/selectedContext';
+import { highlightedStatesContext, StateActions as StateHighlightedActions } from '@context/state/highlightedContext';
 
 import {
   comparison,

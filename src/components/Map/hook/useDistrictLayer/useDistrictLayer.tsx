@@ -3,20 +3,19 @@ import React, { useEffect, useState } from 'react';
 import mapboxgl from 'mapbox-gl';
 import * as turf from '@turf/turf';
 
-import { useHighlightedDistrict } from '@store/district/highlightedContext';
-import { useSelectedDistrict } from '@store/district/selectedContext';
-import { useSelectedState } from '@store/state/selectedContext';
-import { useSidebar } from '@store/sidebarContext';
+import { useHighlightedDistrict } from '@context/district/highlightedContext';
+import { useSelectedDistrict } from '@context/district/selectedContext';
+import { useSelectedState } from '@context/state/selectedContext';
+import { useSidebar } from '@context/sidebarContext';
+
+import geojsonGO from '@data/states/RS_Municipios_2020.json';
+import { findState } from '@components/Map/utils/actions';
 
 import { highlightDistrict, clickDistrict, cleanDistrictActions, fitDistrictBounds, addPopup } from './districtActions';
 
 import { RSColors } from './const';
-import { lineOpacity, lineWidth, fillOpacity } from '../../const';
-
-import geojsonGO from '@data/states/RS_Municipios_2020.json';
+import { lineOpacity, lineWidth, fillOpacity } from '../../utils/const';
 import { fitStateBounds, handleCleanStateLayer } from '../useStateLayer/stateActions';
-import { findState } from '@components/Map/actions';
-import { CommentsDisabledOutlined } from '@mui/icons-material';
 
 const useDistrictLayer = () => {
   const [districtReference, setDistrictReference] = useState<mapboxgl.Map>();

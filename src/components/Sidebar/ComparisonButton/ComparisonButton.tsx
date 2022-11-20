@@ -1,12 +1,11 @@
-import { useSelectedDistrict } from '@store/district/selectedContext';
-import { useComparison } from '@store/comparisonContext';
-
 import { Box } from '@mui/material';
 
-import { Feature } from '@customTypes/feature';
+import { useSelectedDistrict } from '@context/district/selectedContext';
+import { useComparison } from '@context/comparisonContext';
 
-import CompareIcon from '../../../assets/utils/compare.svg';
+import { District } from '@customTypes/district';
 
+import CompareIcon from '../../../assets/utils/compare.svg?component';
 import * as Styles from './styles';
 
 const ComparisonButton = () => {
@@ -16,7 +15,7 @@ const ComparisonButton = () => {
   const isButtonOn = comparison.length >= 4;
   const isSelectedOnComparison = comparison.some((region) => region.properties.CD_MUN === selected?.properties.CD_MUN);
 
-  const comparisonClick = (feature: Feature | null) => {
+  const comparisonClick = (feature: District | null) => {
     if (isSelectedOnComparison) {
       removeComparisonDistrict(feature);
     } else {

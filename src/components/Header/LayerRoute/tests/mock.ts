@@ -1,4 +1,5 @@
-import { District, State } from '@customTypes/feature';
+import { District } from '@customTypes/district';
+import { State } from '@customTypes/state';
 
 const selectedDistrict: District = {
   type: 'Feature',

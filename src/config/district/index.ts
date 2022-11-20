@@ -1,4 +1,4 @@
-import { MapPropsSectionType } from '@customTypes/mapProps';
+import { MapPropsSectionType } from '@customTypes/map';
 
 import socioeconomicProps from './socioeconomic';
 import demographicProps from './demographic';

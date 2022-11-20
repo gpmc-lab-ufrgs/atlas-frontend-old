@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Feature } from '@customTypes/feature';
+import { District } from '@customTypes/district';
 
 import districtProps from '@config/district';
 
@@ -9,7 +9,7 @@ import GridContent from './GridContent';
 import * as Styles from './styles';
 
 interface Props {
-  comparison: Array<Feature>;
+  comparison: Array<District>;
 }
 
 const GridMode: React.FC<Props> = ({ comparison }) => {

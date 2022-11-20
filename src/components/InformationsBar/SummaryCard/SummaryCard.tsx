@@ -17,7 +17,7 @@ export default function SummaryCard() {
   };
 
   const handleRedirect = () => {
-    navigate('/aboutTheAtlas');
+    navigate('aboutTheAtlas');
   };
 
   if (!hasSummaryCard) {

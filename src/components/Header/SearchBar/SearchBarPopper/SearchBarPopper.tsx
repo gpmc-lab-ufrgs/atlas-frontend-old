@@ -3,7 +3,7 @@ import { usePopper } from 'react-popper';
 
 import { UseComboboxGetItemPropsOptions, GetPropsCommonOptions, UseComboboxGetMenuPropsOptions } from 'downshift';
 
-import { District } from '@customTypes/feature';
+import { District } from '@customTypes/district';
 
 import { sameWidthModifier } from './popper-modifiers';
 

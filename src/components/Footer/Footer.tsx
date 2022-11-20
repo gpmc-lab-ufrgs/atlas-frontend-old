@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { developerInstitutionsLogoImages, supporterInstitutionLogoImages } from './institutions';
+import { developerInstitutionsLogoImages, supporterInstitutionLogoImages } from './utils/institutions';
 
 import { Box } from '@mui/material';
 

@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router';
 
-import { useComparison } from '@store/comparisonContext';
-import { useSelectedDistrict } from '@store/district/selectedContext';
-import { useSidebar } from '@store/sidebarContext';
+import { useSidebar } from '@context/sidebarContext';
+import { useComparison } from '@context/comparisonContext';
+import { useSelectedDistrict } from '@context/district/selectedContext';
 
 const useMain = () => {
   const { comparison, addComparisonDistrict } = useComparison();
@@ -24,7 +24,7 @@ const useMain = () => {
         setIsSidebarOpen(true);
         addComparisonDistrict(featuresFromUrl);
       } else {
-        navigate('/');
+        navigate('');
       }
     }
   }, [location, history, comparison]);

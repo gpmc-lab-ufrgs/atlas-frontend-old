@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { useSidebar } from '@store/sidebarContext';
+import { useSidebar } from '@context/sidebarContext';
 
 import Drawer from '@components/Drawer';
 
@@ -55,7 +55,7 @@ const Header: React.FC<Props> = ({ isComparisonModeOn, comparisonType, setCompar
 
       <Styles.HeaderRightSide>
         <div aria-label="menu-button">
-          <Styles.MenuButton comparisonMode onClick={() => setOpenMenu(true)} />
+          <Styles.MenuButton onClick={() => setOpenMenu(true)} />
         </div>
 
         <Drawer open={openMenu} setOpen={setOpenMenu} anchor="right">

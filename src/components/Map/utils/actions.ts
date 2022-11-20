@@ -1,4 +1,4 @@
-import { State } from '@customTypes/feature';
+import { State } from '@customTypes/state';
 import mapboxgl from 'mapbox-gl';
 
 import { accessToken } from './const';

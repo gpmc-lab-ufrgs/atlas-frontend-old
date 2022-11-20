@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState } from 'react';
 
-import { District } from '@customTypes/feature';
+import { District } from '@customTypes/district';
 
 import geojsonRS from '@data/states/RS_Municipios_2020.json';
 

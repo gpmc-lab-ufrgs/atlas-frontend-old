@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 
-import * as SidebarContext from '@store/sidebarContext';
+import * as SidebarContext from '@context/sidebarContext';
 
 import Header from '@components/Header';
 

@@ -28,8 +28,8 @@ module.exports = [
     path: './src/hook',
   },
   {
-    name: '@store',
-    path: './src/store',
+    name: '@context',
+    path: './src/context',
   },
   {
     name: '@config',

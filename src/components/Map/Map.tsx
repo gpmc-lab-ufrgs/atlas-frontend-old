@@ -6,7 +6,7 @@ import useMap from '@hook/useMap';
 import useDistrictLayer from './hook/useDistrictLayer';
 import useStateLayer from './hook/useStateLayer';
 
-import { accessToken } from './const';
+import { accessToken } from './utils/const';
 
 import './styles.css';
 

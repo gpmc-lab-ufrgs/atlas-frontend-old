@@ -1,5 +1,5 @@
 import { formatValue } from '@utils/formatValue';
-import { MapPropsSectionType } from '@customTypes/mapProps';
+import { MapPropsSectionType } from '@customTypes/map';
 
 const socioeconomicProps: MapPropsSectionType = {
   title: 'Socioeconômico (SE)',

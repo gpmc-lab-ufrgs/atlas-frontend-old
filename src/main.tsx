@@ -1,21 +1,25 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
+
 import { BrowserRouter } from 'react-router-dom';
 
 import Main from '@pages/Main';
 
 import AtlasTheme from '@components/Theme';
 
-import { SidebarProvider } from '@store/sidebarContext';
-import { ComparisonProvider } from '@store/comparisonContext';
-import { SelectedStatesProvider } from '@store/state/selectedContext';
-import { SelectedDistrictProvider } from '@store/district/selectedContext';
-import { HighlightedStatesProvider } from '@store/state/highlightedContext';
-import { HighlightedDistrictProvider } from '@store/district/highlightedContext';
+import { SidebarProvider } from '@context/sidebarContext';
+import { ComparisonProvider } from '@context/comparisonContext';
+import { SelectedStatesProvider } from '@context/state/selectedContext';
+import { SelectedDistrictProvider } from '@context/district/selectedContext';
+import { HighlightedStatesProvider } from '@context/state/highlightedContext';
+import { HighlightedDistrictProvider } from '@context/district/highlightedContext';
 
 import './index.css';
 
-ReactDOM.render(
+const container = document.getElementById('root') as Element;
+const root = createRoot(container);
+
+const mount = root.render(
   <React.StrictMode>
     <BrowserRouter>
       <AtlasTheme>
@@ -35,5 +39,6 @@ ReactDOM.render(
       </AtlasTheme>
     </BrowserRouter>
   </React.StrictMode>,
-  document.getElementById('root'),
 );
+
+export { mount };

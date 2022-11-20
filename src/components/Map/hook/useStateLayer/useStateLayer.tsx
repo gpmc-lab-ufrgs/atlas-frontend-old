@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import mapboxgl from 'mapbox-gl';
 
 import geojsonURL from '@data/BR_UF_2020.json';
 
-import { useSelectedState } from '@store/state/selectedContext';
-import { useHighlightedState } from '@store/state/highlightedContext';
-import { useSelectedDistrict } from '@store/district/selectedContext';
+import { useSelectedState } from '@context/state/selectedContext';
+import { useHighlightedState } from '@context/state/highlightedContext';
+import { useSelectedDistrict } from '@context/district/selectedContext';
 
 import {
   highlightState,
@@ -18,8 +18,8 @@ import {
 } from './stateActions';
 
 import { stateColors } from './const';
-import { fitCenter } from '../../actions';
-import { lineOpacity, lineWidth, fillOpacity } from '../../const';
+import { fitCenter } from '../../utils/actions';
+import { lineOpacity, lineWidth, fillOpacity } from '../../utils/const';
 import { isDistrictLayerVisible } from '../useDistrictLayer/districtActions';
 
 const useStateLayer = () => {
