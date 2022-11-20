@@ -22,6 +22,10 @@ const Header: React.FC<Props> = ({ isComparisonModeOn, comparisonType, setCompar
 
   const { isSidebarOpen } = useSidebar();
 
+  if (comparisonType !== 'table' && comparisonType !== 'grid') {
+    return <div />;
+  }
+
   if (isComparisonModeOn) {
     return (
       <Styles.HeaderContainer comparisonMode isSidebarOpen={isSidebarOpen}>

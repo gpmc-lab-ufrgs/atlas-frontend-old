@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Bar from './Bar';
-import geosesData from '../../data/Data.json';
+import geosesData from '@data/Data.json';
 
 const MetricDetails = ({ district, metric }: any) => {
   const renderSingleMetric = () => {
