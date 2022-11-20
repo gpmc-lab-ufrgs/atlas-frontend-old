@@ -5,7 +5,8 @@ import { Box } from '@mui/material';
 
 import { Feature } from '@customTypes/feature';
 
-import CompareIcon from '../../../assets/compare.svg';
+import CompareIcon from '../../../assets/utils/compare.svg';
+
 import * as Styles from './styles';
 
 const ComparisonButton = () => {
