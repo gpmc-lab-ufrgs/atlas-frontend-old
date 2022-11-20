@@ -1,24 +1,24 @@
-import viniciusBrei from '@assets/vinicius_brei.jpg';
-import alexSandy from '@assets/alex_sandy.png';
-import mohsenBahrami from '@assets/mohsen_bahrami.png';
-import alinaFlores from '@assets/alina_flores.jpeg';
-import ricardoLimongi from '@assets/ricardo_limongi.jpg';
-import leonardoGomes from '@assets/leonardo_gomes.jpg';
-import justinAnderson from '@assets/justin_anderson.png';
-import anaBeatriz from '@assets/ana_beatriz.jpeg';
-import julioCesar from '@assets/julio_cesar.jfif';
-import enzoGabriel from '@assets/enzo_gabriel.jpeg';
-import valdersonJunior from '@assets/valderson_junior.jpeg';
-import arianoBangemann from '@assets/ariano_bangemann.png';
-import carlaNetto from '@assets/carla_netto.jpg';
-import fernandaKlein from '@assets/fernanda_klein.jpg';
-import jaianyRocha from '@assets/jaiany_rocha.jpg';
-import jessicaMiranda from '@assets/jessica_miranda.jpg';
-import jhenifferLucas from '@assets/jheniffer_lucas.jpeg';
-import luisMenegetti from '@assets/luis_meneguetti.jpg';
-import pedroDeConto from '@assets/pedro_conto.png';
-import rafaelPereira from '@assets/rafael_pereira.jpg';
-import ruthSelina from '@assets/ruth_selina.jpg';
+import viniciusBrei from '@assets/contribuitors/vinicius_brei.jpg';
+import alexSandy from '@assets/contribuitors/alex_sandy.png';
+import mohsenBahrami from '@assets/contribuitors/mohsen_bahrami.png';
+import alinaFlores from '@assets/contribuitors/alina_flores.jpeg';
+import ricardoLimongi from '@assets/contribuitors/ricardo_limongi.jpg';
+import leonardoGomes from '@assets/contribuitors/leonardo_gomes.jpg';
+import justinAnderson from '@assets/contribuitors/justin_anderson.png';
+import anaBeatriz from '@assets/contribuitors/ana_beatriz.jpeg';
+import julioCesar from '@assets/contribuitors/julio_cesar.jfif';
+import enzoGabriel from '@assets/contribuitors/enzo_gabriel.jpeg';
+import valdersonJunior from '@assets/contribuitors/valderson_junior.jpeg';
+import arianoBangemann from '@assets/contribuitors/ariano_bangemann.png';
+import carlaNetto from '@assets/contribuitors/carla_netto.jpg';
+import fernandaKlein from '@assets/contribuitors/fernanda_klein.jpg';
+import jaianyRocha from '@assets/contribuitors/jaiany_rocha.jpg';
+import jessicaMiranda from '@assets/contribuitors/jessica_miranda.jpg';
+import jhenifferLucas from '@assets/contribuitors/jheniffer_lucas.jpeg';
+import luisMenegetti from '@assets/contribuitors/luis_meneguetti.jpg';
+import pedroDeConto from '@assets/contribuitors/pedro_conto.png';
+import rafaelPereira from '@assets/contribuitors/rafael_pereira.jpg';
+import ruthSelina from '@assets/contribuitors/ruth_selina.jpg';
 
 interface Person {
   name: string;
@@ -91,21 +91,21 @@ export const developers: Person[] = [
     image: anaBeatriz,
     institution: 'Universidade de Brasília',
     hasImage: true,
-    socialProfile: 'https://github.com/AnaBeatrizPontes'
+    socialProfile: 'https://github.com/AnaBeatrizPontes',
   },
   {
     name: 'Enzo Gabriel',
     image: enzoGabriel,
     institution: 'Universidade de Brasília',
     hasImage: true,
-    socialProfile: 'https://github.com/enzoggqs'
+    socialProfile: 'https://github.com/enzoggqs',
   },
   {
     name: 'Júlio César',
     image: julioCesar,
     institution: 'Universidade de Brasília',
     hasImage: true,
-    socialProfile: 'https://github.com/Julio-eng'
+    socialProfile: 'https://github.com/Julio-eng',
   },
   {
     name: 'Valderson Junior',
@@ -171,20 +171,20 @@ export const researchers: Person[] = [
     image: pedroDeConto,
     institution: 'UFRGS',
     hasImage: true,
-    socialProfile: 'http://lattes.cnpq.br/6534969356603102'
+    socialProfile: 'http://lattes.cnpq.br/6534969356603102',
   },
   {
     name: 'Rafael Pereira',
     image: rafaelPereira,
     institution: 'UFRGS',
     hasImage: true,
-    socialProfile: 'http://lattes.cnpq.br/7208559081053768'
+    socialProfile: 'http://lattes.cnpq.br/7208559081053768',
   },
   {
     name: 'Ruth Selina',
     image: ruthSelina,
     institution: 'UFRGS',
     hasImage: true,
-    socialProfile: 'http://lattes.cnpq.br/1583654759584875'
+    socialProfile: 'http://lattes.cnpq.br/1583654759584875',
   },
 ];

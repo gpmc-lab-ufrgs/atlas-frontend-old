@@ -95,7 +95,7 @@
 }
 
 .Collapsible__trigger:after {
-  content: url(../../assets/chevron.svg);
+  content: url(../../assets/utils/chevron.svg);
   transition: transform 300ms;
   margin-left: auto;
   transform: rotateZ(180deg);

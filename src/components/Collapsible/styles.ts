@@ -13,6 +13,6 @@ export const CollapsibleContainer = styled.div<ICollapsibleContainer>`
 
   .Collapsible__trigger:after {
     ${({ isTitle }) =>
-      isTitle ? 'content: url(../../assets/chevron_white.svg)' : 'content: url(../../assets/chevron.svg)'}
+      isTitle ? 'content: url(../../assets/utils/chevron_white.svg)' : 'content: url(../../assets/utils/chevron.svg)'}
   }
 `;
