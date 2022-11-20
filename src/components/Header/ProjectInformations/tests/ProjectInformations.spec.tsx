@@ -1,4 +1,5 @@
-import { fireEvent, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 
 import { render } from '@tests/helpers/render';
 
@@ -25,13 +26,7 @@ describe('Project Informations', () => {
     screen.getByLabelText('close-button');
     const menuButton = screen.getByLabelText('menu-button');
 
-    fireEvent(
-      menuButton,
-      new MouseEvent('click', {
-        bubbles: true,
-        cancelable: true,
-      }),
-    );
+    userEvent.click(menuButton);
   });
 
   test('should render sections names', () => {
