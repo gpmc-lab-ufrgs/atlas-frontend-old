@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 
-import Collapsible from 'react-collapsible';
+import Component from 'react-collapsible';
 
 import { CollapsibleType, CollapsibleNames } from './type';
 
 import './styles.css';
+import * as Styles from './styles';
 
-const CollapsibleDefaultValue = {
+const CollapsibleDefaultValue: Record<CollapsibleNames, boolean> = {
   'Locations to Compare': true,
   'Demographic Summary': true,
   'Economic Summary': false,
@@ -18,13 +19,16 @@ const CollapsibleDefaultValue = {
   'Business Rental Costs': false,
 };
 
-const CollapsibleSection = ({ children, title }: any) => {
+interface Props {
+  isTitle?: boolean;
+  children: React.ReactNode;
+  title: string;
+}
+
+const Collapsible = ({ children, title, isTitle = false }: Props) => {
   const [collapsible, setCollapsible] = useState<CollapsibleType>(CollapsibleDefaultValue);
 
-  const onOpen = (key: any) => updateIsOpen(key, true);
-  const onClose = (key: any) => updateIsOpen(key, false);
-
-  const isOpen = (key: CollapsibleNames) => {
+  const isOpen = (key: string) => {
     const value = collapsible && collapsible[key];
     return value ?? true;
   };
@@ -34,17 +38,23 @@ const CollapsibleSection = ({ children, title }: any) => {
     setCollapsible(newValue);
   };
 
+  const onOpen = (key: any) => updateIsOpen(key, true);
+  const onClose = (key: any) => updateIsOpen(key, false);
+
   return (
-    <Collapsible
-      trigger={title}
-      open={isOpen(title)}
-      onOpening={() => onOpen(title)}
-      onClosing={() => onClose(title)}
-      lazyRender={true}
-    >
-      {children}
-    </Collapsible>
+    <Styles.CollapsibleContainer isTitle={isTitle}>
+      <Component
+        trigger={title}
+        open={isOpen(title)}
+        onOpening={() => onOpen(title)}
+        onClosing={() => onClose(title)}
+        lazyRender={true}
+        className={`${title}`}
+      >
+        {children}
+      </Component>
+    </Styles.CollapsibleContainer>
   );
 };
 
-export default CollapsibleSection;
+export default Collapsible;

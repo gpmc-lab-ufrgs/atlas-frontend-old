@@ -1,7 +1,6 @@
 import React from 'react';
 
 import Collapsible from '@components/Collapsible';
-
 import MetricDetails from '@components/MetricDetails';
 
 import { useSelectedDistrict } from '@store/district/selectedContext';
@@ -10,6 +9,8 @@ import { useComparison } from '@store/comparisonContext';
 import { MapPropsContentType, MapPropsSectionType } from '@customTypes/mapProps';
 
 import { Tooltip } from '@mui/material';
+
+import { CollapsibleContent } from './CollapsibleContent';
 
 import * as Styles from './styles';
 
@@ -22,25 +23,41 @@ const DataSection: React.FC<MapPropsSectionType> = ({ title, content }) => {
   const hasSelectedDistrict = Boolean(selected);
 
   return (
-    <Collapsible title={title}>
+    <Collapsible isTitle={true} title={title}>
       {content.map((props: MapPropsContentType, id) => (
         <Styles.PropsWrapper key={id}>
-          <Tooltip title={props.description} arrow>
-            <Styles.PropsTitle>{props.title}</Styles.PropsTitle>
-          </Tooltip>
+          {!props.nestedData ? (
+            <CollapsibleContent props={props} />
+          ) : (
+            <>
+              <Collapsible isTitle={false} title={props.title}>
+                {comparison && (
+                  <>
+                    {props.nestedData?.map((data, index) => (
+                      <div key={index}>
+                        <CollapsibleContent props={props} />
+                      </div>
+                    ))}
+                  </>
+                )}
 
-          {comparison.map((district) => (
-            <Styles.ValueContent key={district.properties.CD_MUN}>
-              <p>{district.properties.NM_MUN}</p>
-              <MetricDetails district={district} metric={props} />
-            </Styles.ValueContent>
-          ))}
-
-          {!isSelectedOnComparison && hasSelectedDistrict && (
-            <Styles.ValueContent>
-              <p>{selected?.properties.NM_MUN}</p>
-              <MetricDetails district={selected} metric={props} />
-            </Styles.ValueContent>
+                {!isSelectedOnComparison && !comparison.length && hasSelectedDistrict && (
+                  <>
+                    {props.nestedData.map((data, index) => (
+                      <div key={index}>
+                        <Tooltip title={data.description} arrow>
+                          <Styles.PropsTitle>{data.title}</Styles.PropsTitle>
+                        </Tooltip>
+                        <Styles.ValueContent>
+                          <p>{selected?.properties.NM_MUN}</p>
+                          <MetricDetails district={selected} metric={data} />
+                        </Styles.ValueContent>
+                      </div>
+                    ))}
+                  </>
+                )}
+              </Collapsible>
+            </>
           )}
         </Styles.PropsWrapper>
       ))}
