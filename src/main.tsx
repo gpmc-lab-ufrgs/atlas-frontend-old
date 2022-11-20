@@ -6,7 +6,7 @@ import Main from '@pages/Main';
 
 import AtlasTheme from '@components/Theme';
 
-import { SidebarProvider } from 'src/context/sidebarContext';
+import { SidebarProvider } from '@context/sidebarContext';
 import { ComparisonProvider } from '@context/comparisonContext';
 import { SelectedStatesProvider } from '@context/state/selectedContext';
 import { SelectedDistrictProvider } from '@context/district/selectedContext';

@@ -1,4 +1,4 @@
-import { useSidebar } from 'src/context/sidebarContext';
+import { useSidebar } from '@context/sidebarContext';
 import { useHighlightedDistrict } from '@context/district/highlightedContext';
 import { useSelectedDistrict } from '@context/district/selectedContext';
 import { useHighlightedState } from '@context/state/highlightedContext';

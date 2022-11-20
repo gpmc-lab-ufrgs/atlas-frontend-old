@@ -5,7 +5,7 @@ import Drawer from '@components/Drawer';
 import { Box } from '@mui/material';
 import { AutoStories } from '@mui/icons-material';
 
-import { useSidebar } from 'src/context/sidebarContext';
+import { useSidebar } from '@context/sidebarContext';
 import { useComparison } from '@context/comparisonContext';
 import { useSelectedDistrict } from '@context/district/selectedContext';
 
@@ -29,16 +29,10 @@ const Sidebar: React.FC<Props> = ({ isComparisonMode, title }) => {
   const hasSelectedDistrict = Boolean(selected);
   const hasComparisonRegions = comparison.length !== 0;
 
-  console.log('isComparisonMode: ', isComparisonMode);
-  console.log('hasComparisonRegions: ', hasComparisonRegions);
-  console.log('hasSelectedDistrict: ', hasSelectedDistrict);
-
   const SidebarContent = () => {
     if (isComparisonMode) {
       return <ComparisonDetails />;
-    }
-
-    else if (hasComparisonRegions || hasSelectedDistrict) {
+    } else if (hasComparisonRegions || hasSelectedDistrict) {
       return (
         <>
           <Styles.Title>{hasSelectedDistrict ? title : 'Atlas de Oportunidades'}</Styles.Title>

@@ -1,36 +1,31 @@
-import React from 'react';
 import * as turf from '@turf/turf';
 import mapboxgl from 'mapbox-gl';
 import ReactDOM from 'react-dom';
 
 import { State } from '@customTypes/state';
 
-import { clickedPopup, hoveredPopup } from '../../utils/const';
 import ClickablePopup from '@components/Map/ClickablePopup';
+import { MapActionType } from '@customTypes/map';
+
+import { clickedPopup, hoveredPopup } from '../../utils/const';
+import { isDistrictLayerVisible } from '../useDistrictLayer/districtActions';
 
 let hoveredId: number | undefined;
 let clickedId: number | undefined;
 
 type Feature = State | null;
 
-function addPopup(feature: Feature, map: mapboxgl.Map, type: string) {
+export function addPopup(feature: Feature, map: mapboxgl.Map, lngLat: mapboxgl.LngLat, type: MapActionType) {
   const regionName = feature?.properties?.NM_UF;
-  const coordinates = turf.centerOfMass(feature).geometry.coordinates;
   const placeholder = document.createElement('div');
 
-  switch (type) {
-    case 'hover':
+  if (regionName) {
+    if (type === 'Click') {
+      ReactDOM.render(<ClickablePopup regionName={regionName} reference={map} feature={feature} />, placeholder);
+      clickedPopup.setLngLat(lngLat).setDOMContent(placeholder).addTo(map);
+    } else if (type === 'Hover') {
       hoveredPopup.trackPointer().setHTML(`<h5>${regionName}</h5>`).addTo(map);
-
-      break;
-    case 'click':
-      if (regionName) {
-        ReactDOM.render(<ClickablePopup regionName={regionName} reference={map} feature={feature} />, placeholder);
-
-        clickedPopup.setLngLat([coordinates[0], coordinates[1]]).setDOMContent(placeholder).addTo(map);
-      }
-
-      break;
+    }
   }
 }
 
@@ -49,7 +44,6 @@ export function clickState(feature: Feature, map: mapboxgl.Map) {
     if (stateID === clickedId) {
       return;
     }
-    addPopup(feature, map, 'click');
 
     if (clickedId) {
       setFeatureClick(clickedId, map, false);
@@ -74,8 +68,6 @@ export function highlightState(feature: Feature, map: mapboxgl.Map) {
     if (stateID === hoveredId) {
       return;
     }
-
-    addPopup(feature, map, 'hover');
 
     if (hoveredId) {
       setFeatureHover(hoveredId, map, false);
@@ -107,6 +99,12 @@ export function isStateLayerVisible(map: mapboxgl.Map, visible: boolean) {
   }
 }
 
+export const handleCleanStateLayer = (map: mapboxgl.Map) => {
+  isStateLayerVisible(map, false);
+  isDistrictLayerVisible(map, true);
+  cleanStateActions();
+};
+
 export function cleanStateActions() {
   hoveredPopup.remove();
   clickedPopup.remove();
@@ -132,12 +130,10 @@ export function fitStateBounds(feature: Feature, map: mapboxgl.Map) {
 
 export function fitStateCenter(feature: Feature, map: mapboxgl.Map) {
   if (feature && (feature.geometry || feature._geometry)) {
-    const [minX, minY, maxX, maxY] = turf.bbox(feature);
     const coordinates = turf.centerOfMass(feature).geometry.coordinates;
 
     map.flyTo({
       center: [coordinates[0], coordinates[1]],
-      zoom: 3.4,
     });
   }
 }

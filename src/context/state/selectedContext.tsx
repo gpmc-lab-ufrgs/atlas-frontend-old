@@ -6,13 +6,13 @@ import geojsonBR from '@data/BR_UF_2020.json';
 
 import { DEFAULT_VALUE } from '@hook/useFeature';
 
-interface StateActions {
+export interface StateActions {
   all: Array<State>;
   selected: State | null;
   setSelected: React.Dispatch<React.SetStateAction<any>>;
 }
 
-const selectedStatesContext = createContext<StateActions>(DEFAULT_VALUE);
+export const selectedStatesContext = createContext<StateActions>(DEFAULT_VALUE);
 
 export function SelectedStatesProvider({ children }: any) {
   //@ts-ignore

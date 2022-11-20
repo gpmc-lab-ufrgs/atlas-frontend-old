@@ -6,7 +6,7 @@ import palette from './palette';
 
 const theme = createTheme({ ...palette });
 
-const AtlasTheme: React.FC = ({ children }) => {
+const AtlasTheme: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
 };
 

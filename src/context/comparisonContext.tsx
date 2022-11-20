@@ -2,7 +2,7 @@ import React, { useState, createContext, useContext } from 'react';
 
 import { District } from '@customTypes/district';
 
-type ComparisonContext = {
+export type ComparisonContext = {
   comparison: Array<District>;
   addComparisonDistrict: React.Dispatch<React.SetStateAction<any>>;
   removeComparisonDistrict: React.Dispatch<React.SetStateAction<any>>;
@@ -14,7 +14,7 @@ const DEFAULT_VALUE = {
   removeComparisonDistrict: () => {},
 };
 
-const comparisonContext = createContext<ComparisonContext>(DEFAULT_VALUE);
+export const comparisonContext = createContext<ComparisonContext>(DEFAULT_VALUE);
 
 export function ComparisonProvider({ children }: any) {
   const [comparison, setComparison] = useState<District[]>(DEFAULT_VALUE.comparison);

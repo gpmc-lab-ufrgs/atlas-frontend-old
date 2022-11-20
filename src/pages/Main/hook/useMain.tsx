@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
-import { useLocation, useHistory } from 'react-router';
+import { useLocation, useNavigate } from 'react-router';
 
+import { useSidebar } from '@context/sidebarContext';
 import { useComparison } from '@context/comparisonContext';
 import { useSelectedDistrict } from '@context/district/selectedContext';
-import { useSidebar } from 'src/context/sidebarContext';
 
 const useMain = () => {
   const { comparison, addComparisonDistrict } = useComparison();
@@ -11,7 +11,7 @@ const useMain = () => {
   const { all } = useSelectedDistrict();
 
   const location = useLocation();
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const [isComparisonModeEnabled, setIsComparisonModeEnabled] = useState<boolean>(false);
 
@@ -24,7 +24,7 @@ const useMain = () => {
         setIsSidebarOpen(true);
         addComparisonDistrict(featuresFromUrl);
       } else {
-        history.replace('/');
+        navigate('/');
       }
     }
   }, [location, history, comparison]);
@@ -34,7 +34,7 @@ const useMain = () => {
       const ids = comparison.map((feature: any) => feature.properties.CD_MUN);
       const newPath = '/comparison/' + ids.join('+');
       if (location.pathname !== newPath) {
-        history.replace(newPath);
+        navigate(newPath);
       }
     }
   }, [comparison, location, history]);

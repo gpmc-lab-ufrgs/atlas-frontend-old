@@ -6,13 +6,13 @@ import geojsonRS from '@data/states/RS_Municipios_2020.json';
 
 import { DEFAULT_VALUE } from '@hook/useFeature';
 
-interface DistrictActions {
+export interface DistrictActions {
   all: Array<District>;
   selected: District | null;
   setSelected: React.Dispatch<React.SetStateAction<any>>;
 }
 
-const selectedDistrictsContext = createContext<DistrictActions>(DEFAULT_VALUE);
+export const selectedDistrictsContext = createContext<DistrictActions>(DEFAULT_VALUE);
 
 export function SelectedDistrictProvider({ children }: any) {
   //@ts-ignore

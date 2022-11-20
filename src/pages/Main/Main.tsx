@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 import { useTheme } from '@mui/material/styles';
 
-import { useSidebar } from 'src/context/sidebarContext';
+import { useSidebar } from '@context/sidebarContext';
 import { useSelectedDistrict } from '@context/district/selectedContext';
 
 import Map from '@components/Map';

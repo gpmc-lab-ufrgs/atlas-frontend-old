@@ -1,10 +1,11 @@
-import React from 'react';
+import { Box } from '@mui/material';
 
 import { useSelectedDistrict } from '@context/district/selectedContext';
 import { useComparison } from '@context/comparisonContext';
 
 import { District } from '@customTypes/district';
 
+import CompareIcon from '../../../assets/utils/compare.svg';
 import * as Styles from './styles';
 
 const ComparisonButton = () => {
@@ -25,7 +26,9 @@ const ComparisonButton = () => {
   return (
     <Styles.ComparisonButton>
       <Styles.ButtonWrapper disabled={!isSelectedOnComparison && isButtonOn} onClick={() => comparisonClick(selected)}>
-        <Styles.ComparisonIcon />
+        <Box mr="12px">
+          <CompareIcon />
+        </Box>
         {isSelectedOnComparison ? 'Remover da comparação' : 'Adicionar a comparação'}
       </Styles.ButtonWrapper>
     </Styles.ComparisonButton>

@@ -1,15 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import CloseIcon from '@mui/icons-material/Close';
 import { Box, Button } from '@mui/material';
 
 import * as Styles from './styles';
-import { VolunteerActivismOutlined } from '@mui/icons-material';
 
 export default function SummaryCard() {
   const [hasSummaryCard, setHasSummaryCard] = useState(!localStorage.getItem('hasLocalStorage'));
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const handleCloseCard = () => {
     localStorage.setItem('hasLocalStorage', 'false');
@@ -18,7 +17,7 @@ export default function SummaryCard() {
   };
 
   const handleRedirect = () => {
-    history.push('/aboutTheAtlas');
+    navigate('/aboutTheAtlas');
   };
 
   if (!hasSummaryCard) {
@@ -38,7 +37,7 @@ export default function SummaryCard() {
 
         <Styles.Text>{summary}</Styles.Text>
 
-        <Button variant="outlined" color="primary" onClick={handleRedirect}>
+        <Button variant="outlined" color="primary" onClick={handleRedirect} aria-label="more-button">
           Saiba mais...
         </Button>
       </Box>

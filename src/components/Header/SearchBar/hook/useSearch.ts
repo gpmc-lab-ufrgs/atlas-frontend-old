@@ -1,11 +1,10 @@
 import { useRef } from 'react';
-
 import { useCombobox } from 'downshift';
-
-import useMap from '@hook/useMap';
 
 import { useHighlightedDistrict } from '@context/district/highlightedContext';
 import { useSelectedDistrict } from '@context/district/selectedContext';
+
+import useMap from '@hook/useMap';
 import { District } from '@customTypes/district';
 
 const useSearch = (featureSearched: District[]) => {

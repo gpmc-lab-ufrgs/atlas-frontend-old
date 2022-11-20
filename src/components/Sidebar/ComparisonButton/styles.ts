@@ -1,7 +1,5 @@
 import styled from 'styled-components';
 
-import { ReactComponent as CompareIcon } from '@assets/compare.svg';
-
 export const ComparisonButton = styled.div`
   display: flex;
   flex-direction: column;
@@ -37,8 +35,4 @@ export const ButtonWrapper = styled.button`
     background-color: white;
     cursor: default;
   }
-`;
-
-export const ComparisonIcon = styled(CompareIcon)`
-  margin-right: 12px;
 `;

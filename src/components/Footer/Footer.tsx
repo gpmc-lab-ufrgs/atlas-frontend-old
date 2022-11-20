@@ -16,6 +16,7 @@ function Footer() {
             src={institution.logoImage}
             alt={`Logo image of ${institution.name}`}
             size={institution.size}
+            aria-label="institution-logo"
           />
         ))}
       </Box>
@@ -28,6 +29,7 @@ function Footer() {
             src={institution.logoImage}
             alt={`Logo image of ${institution.name}`}
             size={institution.size}
+            aria-label="institution-logo"
           />
         ))}
       </Box>
