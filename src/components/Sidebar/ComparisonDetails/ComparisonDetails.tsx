@@ -17,7 +17,7 @@ const ComparisonDetails = () => {
   const navigate = useNavigate();
 
   const handleGoBack = () => {
-    navigate('/');
+    navigate('');
     resetMapValues();
   };
 

@@ -1,6 +1,6 @@
 import * as turf from '@turf/turf';
 import mapboxgl from 'mapbox-gl';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 
 import { State } from '@customTypes/state';
 
@@ -17,11 +17,12 @@ type Feature = State | null;
 
 export function addPopup(feature: Feature, map: mapboxgl.Map, lngLat: mapboxgl.LngLat, type: MapActionType) {
   const regionName = feature?.properties?.NM_UF;
-  const placeholder = document.createElement('div');
+  const placeholder = document.createElement('div') as Element;
+  const root = createRoot(placeholder);
 
   if (regionName) {
     if (type === 'Click') {
-      ReactDOM.render(<ClickablePopup regionName={regionName} reference={map} feature={feature} />, placeholder);
+      root.render(<ClickablePopup regionName={regionName} reference={map} feature={feature} />);
       clickedPopup.setLngLat(lngLat).setDOMContent(placeholder).addTo(map);
     } else if (type === 'Hover') {
       hoveredPopup.trackPointer().setHTML(`<h5>${regionName}</h5>`).addTo(map);

@@ -24,7 +24,7 @@ const useMain = () => {
         setIsSidebarOpen(true);
         addComparisonDistrict(featuresFromUrl);
       } else {
-        navigate('/');
+        navigate('');
       }
     }
   }, [location, history, comparison]);

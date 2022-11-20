@@ -1,5 +1,6 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
+
 import { BrowserRouter } from 'react-router-dom';
 
 import Main from '@pages/Main';
@@ -15,7 +16,10 @@ import { HighlightedDistrictProvider } from '@context/district/highlightedContex
 
 import './index.css';
 
-ReactDOM.render(
+const container = document.getElementById('root') as Element;
+const root = createRoot(container);
+
+const mount = root.render(
   <React.StrictMode>
     <BrowserRouter>
       <AtlasTheme>
@@ -35,5 +39,6 @@ ReactDOM.render(
       </AtlasTheme>
     </BrowserRouter>
   </React.StrictMode>,
-  document.getElementById('root'),
 );
+
+export { mount };

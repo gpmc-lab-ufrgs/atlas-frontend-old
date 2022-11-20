@@ -5,7 +5,7 @@ import { useComparison } from '@context/comparisonContext';
 
 import { District } from '@customTypes/district';
 
-import CompareIcon from '../../../assets/utils/compare.svg';
+import CompareIcon from '../../../assets/utils/compare.svg?component';
 import * as Styles from './styles';
 
 const ComparisonButton = () => {

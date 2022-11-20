@@ -4,7 +4,7 @@ import * as Styles from './styles';
 
 const ModalContainer = ({ title, children }: any) => {
   const navigate = useNavigate();
-  const goBack = () => () => navigate(-1);
+  const goBack = () => navigate(-1);
 
   return (
     <Styles.ModalContainer>
