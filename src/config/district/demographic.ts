@@ -55,7 +55,7 @@ const demographicProps: MapPropsSectionType = {
           format: (e: any) => formatValue(e, 'float_3'),
           type: 'none',
         },
-      ]
+      ],
     },
     {
       label: 'HDI_educ',

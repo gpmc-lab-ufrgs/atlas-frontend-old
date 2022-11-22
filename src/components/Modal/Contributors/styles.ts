@@ -62,10 +62,10 @@ export const PersonData = styled.p`
 export const SocialProfileLink = styled.a<{ hasLink: boolean }>`
   text-decoration: none;
   color: inherit !important;
-  border-bottom: ${({ hasLink }) => hasLink ? '1px solid #54a333' : 'transparent'};
-  cursor: ${({ hasLink }) => hasLink ? 'pointer' : 'text'};;
+  border-bottom: ${({ hasLink }) => (hasLink ? '1px solid #54a333' : 'transparent')};
+  cursor: ${({ hasLink }) => (hasLink ? 'pointer' : 'text')};
   :hover {
-    color: ${({ hasLink }) => hasLink ? '#217100 !important' : ''};
+    color: ${({ hasLink }) => (hasLink ? '#217100 !important' : '')};
   }
 `;
 
