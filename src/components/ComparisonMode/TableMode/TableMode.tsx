@@ -17,7 +17,7 @@ interface Props {
 const TableMode: React.FC<Props> = ({ comparison }) => {
   return (
     <Styles.TablerContainer>
-      <Header comparison={comparison} />
+      <Header comparison={comparison}/>
       <Box>
         {districtProps.map((section, id) => (
           <TableContent section={section} comparison={comparison} key={id} />
