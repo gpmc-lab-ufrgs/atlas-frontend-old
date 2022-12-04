@@ -1,3 +1,5 @@
+const LIGHT_BRIGHTNESS_LIMIT = 127.5;
+
 export function getColorFromGradient(min: string, max: string, value: number) {
   const minColor = stringToColor(min);
   const maxColor = stringToColor(max);
@@ -19,9 +21,10 @@ export function getColorFromGradient(min: string, max: string, value: number) {
 export function lightOrDark(color: string) {
   const rgb = stringToColor(color);
 
-  const hsp = Math.sqrt(0.299 * (rgb.red * rgb.red) + 0.587 * (rgb.green * rgb.green) + 0.114 * (rgb.blue * rgb.blue));
+  // Using HSP (Highly Sensitive Perceived Brightness) system to determinate RGB color brightness
+  const colorBrightness = Math.sqrt(0.299 * (rgb.red * rgb.red) + 0.587 * (rgb.green * rgb.green) + 0.114 * (rgb.blue * rgb.blue));
 
-  if (hsp > 127.5) {
+  if (colorBrightness > LIGHT_BRIGHTNESS_LIMIT) {
     return 'black';
   } else {
     return 'white';
