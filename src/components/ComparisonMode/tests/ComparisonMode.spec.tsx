@@ -18,4 +18,15 @@ describe('<ComparisonMode />', () => {
       screen.getByText('Dimensão de educação (%) - GeoSES');
     });
   });
+
+  describe('<GridMode />', () => {
+    test('should render comparison data', () => {
+      render(<ComparisonMode comparisonType="grid" />, {
+        comparisonMock: scenarios.comparisonMock,
+      });
+
+      screen.getAllByText('Acrelândia');
+      screen.getByText('Demográfica (D)');
+    });
+  });
 });
