@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  atlas:
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile
+
+    image: local-atlas:latest
+
+    command: ["yarn", "start" ]
+
+    ports:
+      - 3000:3000
+
+    volumes:
+       - .:/src/
