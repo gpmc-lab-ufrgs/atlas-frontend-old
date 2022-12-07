@@ -1,4 +1,3 @@
-import { Box } from '@mui/material';
 import styled from 'styled-components';
 
 export const Container = styled.div`
@@ -17,14 +16,3 @@ export const Container = styled.div`
     align-items: center;
 `;
 
-export const LoadingModal = styled(Box)`
-    width: 12rem; 
-    height: 10rem;
-
-    background-color: #ffffff;
-    border-radius: 10px;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-`;
