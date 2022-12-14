@@ -22,7 +22,9 @@ export function lightOrDark(color: string) {
   const rgb = stringToColor(color);
 
   // Using HSP (Highly Sensitive Perceived Brightness) system to determinate RGB color brightness
-  const colorBrightness = Math.sqrt(0.299 * (rgb.red * rgb.red) + 0.587 * (rgb.green * rgb.green) + 0.114 * (rgb.blue * rgb.blue));
+  const colorBrightness = Math.sqrt(
+    0.299 * (rgb.red * rgb.red) + 0.587 * (rgb.green * rgb.green) + 0.114 * (rgb.blue * rgb.blue),
+  );
 
   if (colorBrightness > LIGHT_BRIGHTNESS_LIMIT) {
     return 'black';
