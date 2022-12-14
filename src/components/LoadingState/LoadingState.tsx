@@ -5,7 +5,7 @@ import * as Styles from './styles';
 
 export default function LoadingState() {
   return (
-    <Styles.Container>
+    <Styles.Container aria-label="loading-circle">
       <Box sx={{ position: 'relative' }}>
         <CircularProgress
           variant="determinate"
