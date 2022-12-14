@@ -3,6 +3,9 @@
     "browser": true,
     "es2021": true
   },
+  "globals": {
+    "module": true
+  },
   "extends": [
     "eslint:recommended",
     "plugin:react/recommended",
@@ -45,7 +48,7 @@
     "jsx-a11y/anchor-is-valid": "off",
     "import/no-unresolved": "off",
     "import/extensions": "off",
-    "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
+    "import/no-extraneous-dependencies": "off",
     "jest/expect-expect": "off",
     "react-hooks/rules-of-hooks": "error",
     "react/function-component-definition": "off",
