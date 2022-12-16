@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-npm test
-npx lint-staged
-npx lint-staged
+yarn lint:fix
+yarn lint:style
+yarn test --silent

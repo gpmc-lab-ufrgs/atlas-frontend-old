@@ -9,6 +9,7 @@
     "preview": "vite preview",
     "lint": "eslint '*/**/*.{js,ts,tsx}' --color",
     "lint:fix": "eslint '*/**/*.{js,ts,tsx}' --fix",
+    "lint:style": "stylelint 'src/**/*.{ts,tsx}'",
     "test": "jest --passWithNoTests --no-cache",
     "watch": "yarn test --watch",
     "prepare": "husky install"
@@ -41,6 +42,7 @@
     "@mui/icons-material": "^5.4.4",
     "@mui/material": "^5.4.4",
     "@popperjs/core": "^2.10.2",
+    "@stylelint/postcss-css-in-js": "^0.38.0",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
     "@testing-library/react-hooks": "^8.0.1",
@@ -52,6 +54,7 @@
     "eslint": "^8.15.0",
     "jest-environment-jsdom": "^29.3.1",
     "mapbox-gl": "^2.4.1",
+    "postcss-syntax": "^0.36.2",
     "rc-table": "^7.19.0",
     "react": "^18.2.0",
     "react-collapsible": "^2.10.0",
@@ -96,9 +99,17 @@
     "jsdom": "^20.0.2",
     "lint-staged": "^13.1.0",
     "prettier": "^2.6.2",
+    "stylelint": "^14.16.0",
+    "stylelint-config-recommended": "^9.0.0",
+    "stylelint-config-standard": "^29.0.0",
+    "stylelint-config-styled-components": "^0.1.1",
+    "stylelint-processor-styled-components": "^1.10.0",
     "ts-jest": "^29.0.3",
     "typescript": "^4.6.4",
     "vite": "^3.1.0",
     "vite-tsconfig-paths": "^3.5.0"
+  },
+  "resolutions": {
+    "postcss": "8.2.10"
   }
 }
