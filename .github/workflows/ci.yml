@@ -13,5 +13,7 @@ jobs:
         run: npm install -g yarn
       - name: Install all dependencies
         run: yarn install
+      - name: Run test
+        run: yarn test
       - name: Run linter
         run: yarn lint
