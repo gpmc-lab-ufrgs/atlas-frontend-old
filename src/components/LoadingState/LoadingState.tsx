@@ -10,7 +10,7 @@ export default function LoadingState() {
         <CircularProgress
           variant="determinate"
           sx={{
-            color: '#909090'
+            color: '#909090',
           }}
           size={'4rem'}
           thickness={4}
@@ -23,7 +23,7 @@ export default function LoadingState() {
             color: '#379D4E',
             animationDuration: '700ms',
             position: 'absolute',
-            left: 0
+            left: 0,
           }}
           size={'4rem'}
           thickness={4}
