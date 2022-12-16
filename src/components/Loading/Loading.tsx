@@ -3,7 +3,7 @@ import { Box, CircularProgress } from '@mui/material';
 
 import * as Styles from './styles';
 
-export default function LoadingState() {
+export default function Loading() {
   return (
     <Styles.Container aria-label="loading-circle">
       <Box sx={{ position: 'relative' }}>
