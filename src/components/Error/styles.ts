@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 
-
 export const Container = styled.div`
   background: rgba(0, 0, 0, 0.5);
   z-index: 3;
@@ -12,4 +11,4 @@ export const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-`
+`;
