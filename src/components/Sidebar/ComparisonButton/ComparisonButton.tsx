@@ -1,11 +1,12 @@
 import { Box } from '@mui/material';
 
-import { useSelectedDistrict } from '@context/district/selectedContext';
 import { useComparison } from '@context/comparisonContext';
+import { useSelectedDistrict } from '@context/district/selectedContext';
 
 import { District } from '@customTypes/district';
 
-import CompareIcon from '../../../assets/utils/compare.svg';
+import { ReactComponent as CompareIcon } from '../../../assets/utils/compare.svg';
+
 import * as Styles from './styles';
 
 const ComparisonButton = () => {
