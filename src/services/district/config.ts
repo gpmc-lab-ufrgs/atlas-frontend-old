@@ -1,7 +1,7 @@
 import axios from 'axios';
-
+const baseUrl = 'http://localhost:8000/district';
 const districtEndpoint = axios.create({
-  baseURL: 'http://localhost:8000/district',
+  baseURL: baseUrl,
 });
 
 export default districtEndpoint;
