@@ -87,3 +87,15 @@ export const ValueContent = styled.div`
     margin: 0;
   }
 `;
+
+export const GraphicContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  margin-bottom: 5px;
+
+  p {
+    margin: 0;
+  }
+`;
