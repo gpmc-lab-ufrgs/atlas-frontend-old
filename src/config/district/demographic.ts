@@ -9,7 +9,7 @@ const demographicProps: MapPropsSectionType = {
       title: 'Número de mortes observadas por causas evitáveis',
       description: 'Número de mortes observadas por causas evitáveis de 5 a 74 anos (2013 a 2017) - GeoSES',
       format: (e: any) => formatValue(e, 'float_2'),
-      type: 'none',
+      type: 'graphic_line',
     },
     {
       label: 'EXPECTED',
@@ -17,7 +17,7 @@ const demographicProps: MapPropsSectionType = {
       description:
         'Número de mortes esperadas para a distribuição da população de acordo com sexo e grupos de labelade - GeoSES',
       format: (e: any) => formatValue(e, 'float_2'),
-      type: 'none',
+      type: 'graphic_line',
     },
     {
       label: 'RR_PREV',
@@ -25,7 +25,7 @@ const demographicProps: MapPropsSectionType = {
       description:
         'Risco relativo de mortallabelade por causas evitáveis de 5 a 74 anos por padronização indireta por sexo e labelade - GeoSES',
       format: (e: any) => formatValue(e, 'float_2'),
-      type: 'none',
+      type: 'graphic_line',
     },
     {
       label: 'IDHM',
@@ -90,14 +90,14 @@ const demographicProps: MapPropsSectionType = {
       title: 'População',
       description: 'População estimada - pessoas (2021) - IBGE cidades',
       format: (e: any) => formatValue(e, 'population'),
-      type: 'none',
+      type: 'graphic_line',
     },
     {
       label: 'Densidade_demografica',
       title: 'Densidade demográfica',
       description: 'Densidade demográfica - hab/km² (2010) - IBGE cidades',
       format: (e: any) => formatValue(e, 'float_2'),
-      type: 'none',
+      type: 'graphic_line',
     },
     {
       label: 'Escolarizacao',
@@ -111,14 +111,14 @@ const demographicProps: MapPropsSectionType = {
       title: 'Mortalidade infantil',
       description: 'Mortalidade infantil - óbitos por mil nascidos vivos (2019) - IBGE cidades',
       format: (e: any) => formatValue(e, 'float_2'),
-      type: 'none',
+      type: 'graphic_line',
     },
     {
       label: 'Populacao_no_ultimo_censo(2010)',
       title: 'População',
       description: 'População no último censo (2010) - IBGE cidades',
       format: (e: any) => formatValue(e, 'float_2'),
-      type: 'none',
+      type: 'graphic_line',
     },
     {
       label: 'Frota_2020',
@@ -141,14 +141,14 @@ const demographicProps: MapPropsSectionType = {
       title: 'População Masculina',
       description: 'População Masculina - IBGE',
       format: (e: any) => formatValue(e, 'float_2'),
-      type: 'none',
+      type: 'graphic_line',
     },
     {
       label: 'POPF(2010)',
       title: 'População Feminina',
       description: 'População Feminina - IBGE',
       format: (e: any) => formatValue(e, 'float_2'),
-      type: 'none',
+      type: 'graphic_line',
     },
   ],
 };
