@@ -37,12 +37,19 @@ export const CollapsibleContent: React.FC<CollapsibleContentProps> = ({ props })
         </Styles.ValueContent>
       ))}
 
-      {!isSelectedOnComparison && hasSelectedDistrict && (
-        <Styles.ValueContent>
-          <p>{selected?.properties.NM_MUN}</p>
-          <MetricDetails district={selected} metric={props} />
-        </Styles.ValueContent>
-      )}
+      {!isSelectedOnComparison &&
+        hasSelectedDistrict &&
+        (props.type === 'graphic_line' ? (
+          <Styles.GraphicContent>
+            <p>{selected?.properties.NM_MUN}</p>
+            <MetricDetails district={selected} metric={props} />
+          </Styles.GraphicContent>
+        ) : (
+          <Styles.ValueContent>
+            <p>{selected?.properties.NM_MUN}</p>
+            <MetricDetails district={selected} metric={props} />
+          </Styles.ValueContent>
+        ))}
     </>
   );
 };
