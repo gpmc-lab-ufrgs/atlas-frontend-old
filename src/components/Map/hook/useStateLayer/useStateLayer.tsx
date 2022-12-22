@@ -4,23 +4,24 @@ import mapboxgl from 'mapbox-gl';
 
 import geojsonURL from '@data/BR_UF_2020.json';
 
-import { useSelectedState } from '@context/state/selectedContext';
-import { useHighlightedState } from '@context/state/highlightedContext';
 import { useSelectedDistrict } from '@context/district/selectedContext';
+import { useSidebar } from '@context/sidebarContext';
+import { useHighlightedState } from '@context/state/highlightedContext';
+import { useSelectedState } from '@context/state/selectedContext';
 
 import {
-  highlightState,
-  clickState,
-  isStateLayerVisible,
-  cleanStateActions,
-  fitStateCenter,
   addPopup,
+  cleanStateActions,
+  clickState,
+  fitStateCenter,
+  highlightState,
+  isStateLayerVisible,
 } from './stateActions';
 
-import { stateColors } from './const';
 import { fitCenter } from '../../utils/actions';
-import { lineOpacity, lineWidth, fillOpacity } from '../../utils/const';
+import { fillOpacity, lineOpacity, lineWidth } from '../../utils/const';
 import { isDistrictLayerVisible } from '../useDistrictLayer/districtActions';
+import { stateColors } from './const';
 
 const useStateLayer = () => {
   const [stateReference, setStateReference] = useState<mapboxgl.Map>();
@@ -29,6 +30,8 @@ const useStateLayer = () => {
   const { setHighlighted: setHighlightedState, highlighted: highlightedState } = useHighlightedState();
   const { setSelected: setSelectedState, selected: selectedState } = useSelectedState();
   const { selected: selectedDistrict } = useSelectedDistrict();
+
+  const { setIsSidebarOpen } = useSidebar();
 
   function initLayers(reference: mapboxgl.Map) {
     reference.on('load', () => {
@@ -110,8 +113,9 @@ const useStateLayer = () => {
   }, [highlightedState]);
 
   useEffect(() => {
-    if (stateReference && !selectedDistrict) {
+    if (stateReference && selectedState && !selectedDistrict) {
       clickState(selectedState, stateReference);
+      setIsSidebarOpen(true);
 
       if (selectedState) {
         fitStateCenter(selectedState, stateReference);
