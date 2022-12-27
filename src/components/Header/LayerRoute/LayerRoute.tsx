@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
-import useMap from '@hook/useMap';
-import { useSelectedState } from '@context/state/selectedContext';
 import { useSelectedDistrict } from '@context/district/selectedContext';
+import { useSelectedState } from '@context/state/selectedContext';
+import useMap from '@hook/useMap';
 
-import { Button } from '@mui/material';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+import { Button } from '@mui/material';
 
 import * as Styles from './styles';
 
@@ -14,17 +14,17 @@ const LayerRoute = () => {
 
   const { resetMapValues, resetDistrictValues } = useMap();
   const { selected: selectedState } = useSelectedState();
-  const { selected } = useSelectedDistrict();
+  const { selected: selectedDistrict } = useSelectedDistrict();
 
   useEffect(() => {
-    if (selected) {
+    if (selectedDistrict) {
       setSelectedLayer('district');
-    } else if (selectedState && !selected) {
+    } else if (selectedState && !selectedDistrict) {
       setSelectedLayer('state');
     } else {
       setSelectedLayer('country');
     }
-  }, [selected, selectedState]);
+  }, [selectedDistrict, selectedState]);
 
   const returnPath = () => {
     if (selectedLayer === 'district') {
@@ -35,7 +35,7 @@ const LayerRoute = () => {
             {selectedState?.properties.NM_UF}
           </Button>
           <Styles.NextLayer>-</Styles.NextLayer>
-          <Button className="place district">{selected?.properties.NM_MUN}</Button>
+          <Button className="place district">{selectedDistrict?.properties.NM_MUN}</Button>
         </>
       );
     } else if (selectedLayer === 'state') {
