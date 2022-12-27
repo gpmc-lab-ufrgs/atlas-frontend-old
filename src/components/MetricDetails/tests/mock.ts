@@ -31,6 +31,44 @@ export const district = {
   },
 };
 
+export const state = {
+  type: 'Feature',
+  geometry: {
+    type: 'Polygon',
+    coordinates: [
+      [
+        [-61.5838623046875, -8.79822545901635],
+        [-58.414306640625, -8.792796892565548],
+      ],
+    ],
+  },
+  properties: {
+    CD_UF: '51',
+    POPULATION: 3567234,
+    NM_UF: 'Mato Grosso',
+    SIGLA_UF: 'MT',
+    NM_REGIAO: 'Centro-oeste',
+  },
+  id: '51',
+  layer: {
+    id: 'fill-state',
+    type: 'fill',
+    source: 'state',
+    layout: {},
+    paint: {
+      'fill-color': {
+        r: 0.33201690449761273,
+        g: 0.6431253758106562,
+        b: 0.20195187499524705,
+        a: 1,
+      },
+      'fill-opacity': 1,
+    },
+  },
+  source: 'state',
+  state: { hover: true },
+};
+
 export const metric = {
   label: 'IPTUCH(2019)',
   title: 'IPTU',
@@ -46,6 +84,14 @@ export const metricBar = {
   description: 'Dimensão da pobreza (%) - GeoSES',
   format: (e: any) => formatValue(e, 'percent'),
   type: 'bar',
+};
+
+export const metricState = {
+  label: 'HDI_inc',
+  title: 'Índice de Desenvolvimento Humano, dimensão de renda',
+  description: 'Índice de Desenvolvimento Humano, dimensão de renda - GeoSES',
+  format: (e: any) => formatValue(e, 'float2'),
+  type: 'none',
 };
 
 export const mockData = {
@@ -102,5 +148,42 @@ export const mockData = {
     'DISTCAPU(1998)': '267,8277119',
     'POPM(2010)': 6381,
     'POPF(2010)': 6399,
+  },
+};
+
+export const mockStateData = {
+  '51': {
+    MUNICIPIO: "Alta Floresta D'Oeste",
+    Pop_2020: 22728,
+    Frota_2020: 14414,
+    Area_Territorial_km: '7067,127',
+    Populacao_Estimada: 22516,
+    Densidade_demografica: '3,45',
+    Escolarizacao: '95,7',
+    IDHM: '0,641',
+    Mortalidade_infantil: '8,17',
+    Receitas_realizadas: '61193,25696',
+    Despesas_empenhadas: '63500,28264',
+    PIB_per_capita: '21552,47',
+    MUNIC_CODE6: 110001,
+    FU: 11,
+    FU_NAME: 'RONDONIA',
+    LONG: '-61,999824',
+    LAT: '-11,93554',
+    OBSERVED: 308,
+    EXPECTED: '369,7893997',
+    RR_PREV: '0,832889',
+    HDI: '0,641',
+    HDI_educ: '0,526',
+    HDI_long: '0,763',
+    HDI_inc: '0,657',
+    GeoSES: '-0,46844',
+    GeoSESed: '71,44755',
+    GeoSESpv: '48,08146',
+    GeoSESdp: '7,260275',
+    GeoSESwl: '0,144285',
+    GeoSESin: '1601,553',
+    GeoSESsg: '0,085033',
+    'IPTUCH(2019)': 1200,
   },
 };
