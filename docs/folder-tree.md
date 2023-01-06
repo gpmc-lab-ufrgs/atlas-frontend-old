@@ -83,11 +83,11 @@
 
 `src/data/`: Folder that stores JSON data used on the project.
 
-`src/hook/`: this folder is responsible for using the districts, cities and states that are being shown in the atlas.
+`src/hook/`: This folder is responsible for the districts, cities and states that are being shown in the atlas.
 
 `src/pages/`: This folder has all the visuals of the pages that are displayed on Atlas.
 
-`src/utils/`: this folder contains the formatting for the composite structures in the atlas from the cities to the colors shown in the projects
+`src/utils/`: This folder contains the formatting for the composite structures in the atlas, from the cities to the colors shown in the project.
 
 
 
