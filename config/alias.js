@@ -39,4 +39,8 @@ module.exports = [
     name: '@data',
     path: './src/data',
   },
+  {
+    name: '@services',
+    path: './src/services',
+  },
 ];
