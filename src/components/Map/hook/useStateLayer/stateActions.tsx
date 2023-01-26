@@ -25,7 +25,7 @@ export function addPopup(feature: Feature, map: mapboxgl.Map, lngLat: mapboxgl.L
       root.render(<ClickablePopup regionName={regionName} reference={map} feature={feature} />);
       clickedPopup.setLngLat(lngLat).setDOMContent(placeholder).addTo(map);
     } else if (type === 'Hover') {
-      hoveredPopup.trackPointer().setHTML(`<h5>${regionName}</h5>`).addTo(map);
+      hoveredPopup.setLngLat(lngLat).setHTML(`<h5>${regionName}</h5>`).addTo(map);
     }
   }
 }
