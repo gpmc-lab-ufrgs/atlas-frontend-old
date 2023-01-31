@@ -26,6 +26,7 @@
       "@config/*": ["src/config/*"],
       "@utils/*": ["src/utils/*"],
       "@hook/*": ["src/hook/*"],
+      "@services/*": ["src/services/*"],
       "@customTypes/*": ["src/customTypes/*"],
       "@tests/*": ["src/__test__/*"]
     }
