@@ -23,7 +23,7 @@ const ComparisonDetails = () => {
 
   const Title = () => (
     <Styles.TitleWrapper>
-      <Styles.ArrowBackButton onClick={handleGoBack} />
+      <Styles.ArrowBackButton onClick={handleGoBack} data-id="btn_back_button" />
       <Styles.Title>Comparando Regiões</Styles.Title>
     </Styles.TitleWrapper>
   );
@@ -37,7 +37,7 @@ const ComparisonDetails = () => {
             {comparison.map((feature: any, id) => (
               <Styles.ComparisonList key={id}>
                 {feature.properties.NM_MUN}
-                <Styles.CloseButton onClick={() => removeComparisonDistrict(feature)} />
+                <Styles.CloseButton onClick={() => removeComparisonDistrict(feature)} data-id="btn_remove_button" />
               </Styles.ComparisonList>
             ))}
           </>
