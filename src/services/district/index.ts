@@ -1,7 +1,7 @@
 import api from './config';
 
 export const getAllDistricts = async () => {
-  const response = await api.get('/geojson');
+  const response = await api.get('/geojson/');
   return response.data;
 };
 
