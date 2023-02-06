@@ -7,14 +7,15 @@ import { useHighlightedDistrict } from '@context/district/highlightedContext';
 import { useSelectedDistrict } from '@context/district/selectedContext';
 import { useSelectedState } from '@context/state/selectedContext';
 import { useSidebar } from '@context/sidebarContext';
+import { getDistrictBySigla } from 'src/services/district';
 
-import geojsonGO from '@data/states/RS_Municipios_2020.json';
+import { fillOpacity, lineOpacity, lineWidth } from '../../utils/const';
+
 import { findState } from '@components/Map/utils/actions';
 
 import { highlightDistrict, clickDistrict, cleanDistrictActions, fitDistrictBounds, addPopup } from './districtActions';
 
 import { RSColors } from './const';
-import { lineOpacity, lineWidth, fillOpacity } from '../../utils/const';
 import { fitStateBounds, handleCleanStateLayer } from '../useStateLayer/stateActions';
 
 const useDistrictLayer = () => {
@@ -29,14 +30,14 @@ const useDistrictLayer = () => {
   const { setIsSidebarOpen } = useSidebar();
 
   function initLayers(reference: mapboxgl.Map) {
-    reference.on('load', () => {
+    reference.on('load', async () => {
       reference.dragRotate.disable();
       reference.touchZoomRotate.disableRotation();
 
       reference.addSource('district', {
         type: 'geojson',
         //@ts-ignore
-        data: geojsonGO,
+        data: await getDistrictBySigla(sigla),
         //@ts-ignore
         promoteId: 'CD_MUN',
       });
