@@ -5,15 +5,15 @@ export type SidebarContext = {
   setIsSidebarOpen: React.Dispatch<React.SetStateAction<any>>;
 };
 
-const DEFAULT_VALUE = {
+const DEFAULT_VALUE_SIDEBAR_CONTEXT = {
   isSidebarOpen: false,
   setIsSidebarOpen: () => {},
 };
 
-export const sidebarContext = createContext<SidebarContext>(DEFAULT_VALUE);
+export const sidebarContext = createContext<SidebarContext>(DEFAULT_VALUE_SIDEBAR_CONTEXT);
 
 export function SidebarProvider({ children }: any) {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(DEFAULT_VALUE.isSidebarOpen);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(DEFAULT_VALUE_SIDEBAR_CONTEXT.isSidebarOpen);
 
   return <sidebarContext.Provider value={{ isSidebarOpen, setIsSidebarOpen }}>{children}</sidebarContext.Provider>;
 }
