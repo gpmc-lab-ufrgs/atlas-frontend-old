@@ -29,13 +29,15 @@ const Sidebar: React.FC<Props> = ({ isComparisonMode, title }) => {
   const hasSelectedDistrict = Boolean(selected);
   const hasComparisonRegions = comparison.length !== 0;
 
+  const atlasTitle = 'Atlas de Oportunidades';
+
   const SidebarContent = () => {
     if (isComparisonMode) {
       return <ComparisonDetails />;
     } else if (hasComparisonRegions || hasSelectedDistrict) {
       return (
         <>
-          <Styles.Title>{hasSelectedDistrict ? title : 'Atlas de Oportunidades'}</Styles.Title>
+          <Styles.Title>{hasSelectedDistrict ? title : atlasTitle}</Styles.Title>
           <ComparisonButton />
           <RegionDetails />
         </>
@@ -44,7 +46,7 @@ const Sidebar: React.FC<Props> = ({ isComparisonMode, title }) => {
 
     return (
       <>
-        <Styles.Title>Atlas de Oportunidades</Styles.Title>
+        <Styles.Title>{atlasTitle}</Styles.Title>
         <Styles.EmptyContent>
           <h4>Selecione uma região no mapa para ver seus detalhes</h4>
           <Box paddingLeft={2}>

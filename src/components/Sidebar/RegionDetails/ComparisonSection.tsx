@@ -16,12 +16,16 @@ const ComparisonSection = () => {
     </Styles.ComparisonButton>
   );
 
+  const handleRemoveComparisonDistrict = (feature: any) => {
+    removeComparisonDistrict(feature);
+  };
+
   return (
     <Collapsible title="Comparação">
       {comparison.map((feature: any) => (
         <Styles.ComparisonList key={feature.properties.CD_MUN}>
           {feature.properties['NM_MUN']}
-          <Styles.CloseIcon onClick={() => removeComparisonDistrict(feature)} />
+          <Styles.CloseIcon onClick={() => handleRemoveComparisonDistrict(feature)} />
         </Styles.ComparisonList>
       ))}
 
