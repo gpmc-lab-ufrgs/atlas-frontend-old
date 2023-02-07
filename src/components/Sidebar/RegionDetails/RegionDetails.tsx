@@ -15,8 +15,8 @@ const RegionDetails = () => {
   return (
     <Box>
       {comparison.length > 0 && <ComparisonSection />}
-      {districtProps.map((section, id) => (
-        <DataSection key={id} title={section.title} content={section.content} />
+      {districtProps.map((section) => (
+        <DataSection key={`${section.title}-${section.content}`} title={section.title} content={section.content} />
       ))}
     </Box>
   );
