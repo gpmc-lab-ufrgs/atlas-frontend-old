@@ -8,16 +8,16 @@ export type ComparisonContext = {
   removeComparisonDistrict: React.Dispatch<React.SetStateAction<any>>;
 };
 
-const DEFAULT_VALUE = {
+const DEFAULT_VALUE_COMPARISON_CONTEXT = {
   comparison: [],
   addComparisonDistrict: () => {},
   removeComparisonDistrict: () => {},
 };
 
-export const comparisonContext = createContext<ComparisonContext>(DEFAULT_VALUE);
+export const comparisonContext = createContext<ComparisonContext>(DEFAULT_VALUE_COMPARISON_CONTEXT);
 
 export function ComparisonProvider({ children }: any) {
-  const [comparison, setComparison] = useState<District[]>(DEFAULT_VALUE.comparison);
+  const [comparison, setComparison] = useState<District[]>(DEFAULT_VALUE_COMPARISON_CONTEXT.comparison);
 
   const addComparisonDistrict = (addValue: District[]) => {
     setComparison([...comparison, ...addValue]);
