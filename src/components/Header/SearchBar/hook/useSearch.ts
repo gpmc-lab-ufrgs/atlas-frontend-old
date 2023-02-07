@@ -14,7 +14,7 @@ const useSearch = (featureSearched: District[]) => {
   const { setHighlighted } = useHighlightedDistrict();
   const { resetMapValues } = useMap();
 
-  const initialInputValue = selected?.properties.NM_MUN ?? '';
+  const initialInputValue = selected?.properties.MUNICIPALITY_NAME ?? '';
 
   const itemToString = (item: any) => (item ? item.name : '');
 
@@ -44,7 +44,7 @@ const useSearch = (featureSearched: District[]) => {
       if (input === '' && type === useCombobox.stateChangeTypes.InputChange) {
         resetMapValues();
       } else if (isOpen && input !== '') {
-        const definiteMatch = featureSearched.find((item) => item.properties.NM_MUN === input);
+        const definiteMatch = featureSearched.find((item) => item.properties.MUNICIPALITY_NAME === input);
 
         if (definiteMatch) {
           selectItem(definiteMatch);

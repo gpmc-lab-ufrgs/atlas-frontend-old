@@ -13,7 +13,7 @@ const Header: React.FC<Props> = ({ comparison }) => {
     <Styles.TableHeader>
       {comparison.map((region, id) => (
         <Styles.TableItens key={id} gridColumnNumber={id + 2}>
-          {region.properties.NM_MUN}
+          {region.properties.MUNICIPALITY_NAME}
         </Styles.TableItens>
       ))}
     </Styles.TableHeader>

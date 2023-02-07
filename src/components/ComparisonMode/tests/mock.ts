@@ -11,9 +11,9 @@ const comparisonDistrictMock = [
       ],
     },
     properties: {
-      CD_MUN: 1200013,
-      NM_MUN: 'Acrelândia',
-      SIGLA_UF: 'RS',
+      MUNICIPALITY_CODE: 1200013,
+      MUNICIPALITY_NAME: 'Acrelândia',
+      ACRONYM_FU: 'RS',
       AREA_KM2: 1811.613,
     },
   },

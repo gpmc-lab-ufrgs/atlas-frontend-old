@@ -38,7 +38,7 @@ const useDistrictLayer = () => {
         //@ts-ignore
         data: geojsonGO,
         //@ts-ignore
-        promoteId: 'CD_MUN',
+        promoteId: 'MUNICIPALITY_CODE',
       });
 
       reference.addLayer({
@@ -135,7 +135,7 @@ const useDistrictLayer = () => {
         }
         setLatLng(undefined);
 
-        const state = findState(allState, selectedDistrict.properties.SIGLA_UF);
+        const state = findState(allState, selectedDistrict.properties.ACRONYM_FU);
         if (!selectedState || selectedState !== state) {
           setSelectedState(state);
         }

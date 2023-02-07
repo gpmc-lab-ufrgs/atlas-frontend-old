@@ -7,7 +7,7 @@ import * as Styles from './styles';
 const ComparisonSection = () => {
   const { comparison, removeComparisonDistrict } = useComparison();
 
-  const comparisonRegionIds = comparison.map((feature: any) => feature.properties.CD_MUN);
+  const comparisonRegionIds = comparison.map((feature: any) => feature.properties.MUNICIPALITY_CODE);
 
   const ComparisonResult = () => (
     <Styles.ComparisonButton to={'/comparison/' + comparisonRegionIds.join('+')}>
@@ -19,8 +19,8 @@ const ComparisonSection = () => {
   return (
     <Collapsible title="Comparação">
       {comparison.map((feature: any) => (
-        <Styles.ComparisonList key={feature.properties.CD_MUN}>
-          {feature.properties['NM_MUN']}
+        <Styles.ComparisonList key={feature.properties.MUNICIPALITY_CODE}>
+          {feature.properties['MUNICIPALITY_NAME']}
           <Styles.CloseIcon onClick={() => removeComparisonDistrict(feature)} />
         </Styles.ComparisonList>
       ))}

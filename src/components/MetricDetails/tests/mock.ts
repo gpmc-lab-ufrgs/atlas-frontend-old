@@ -3,10 +3,10 @@ import { formatValue } from '@utils/formatValue';
 export const district = {
   type: 'Feature',
   properties: {
-    CD_MUN: '4314506',
+    MUNICIPALITY_CODE: '4314506',
     POPULATION: 12122,
-    NM_MUN: 'Pinheiro Machado',
-    SIGLA_UF: 'RS',
+    MUNICIPALITY_NAME: 'Pinheiro Machado',
+    ACRONYM_FU: 'RS',
     AREA_KM2: 2248.221,
   },
   id: '4314506',

@@ -36,7 +36,7 @@ const ComparisonDetails = () => {
           <>
             {comparison.map((feature: any, id) => (
               <Styles.ComparisonList key={id}>
-                {feature.properties.NM_MUN}
+                {feature.properties.MUNICIPALITY_NAME}
                 <Styles.CloseButton onClick={() => removeComparisonDistrict(feature)} />
               </Styles.ComparisonList>
             ))}

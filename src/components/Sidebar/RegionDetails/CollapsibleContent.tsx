@@ -19,7 +19,9 @@ export const CollapsibleContent: React.FC<CollapsibleContentProps> = ({ props })
   const { selected } = useSelectedDistrict();
   const { comparison } = useComparison();
 
-  const isSelectedOnComparison = comparison.some((region) => region.properties.CD_MUN === selected?.properties.CD_MUN);
+  const isSelectedOnComparison = comparison.some(
+    (region) => region.properties.MUNICIPALITY_CODE === selected?.properties.MUNICIPALITY_CODE,
+  );
 
   const hasSelectedDistrict = Boolean(selected);
 
@@ -31,15 +33,15 @@ export const CollapsibleContent: React.FC<CollapsibleContentProps> = ({ props })
         <Styles.PropsTitle>{title}</Styles.PropsTitle>
       </Tooltip>
       {comparison.map((district) => (
-        <Styles.ValueContent key={district.properties.CD_MUN}>
-          <p>{district.properties.NM_MUN}</p>
+        <Styles.ValueContent key={district.properties.MUNICIPALITY_CODE}>
+          <p>{district.properties.MUNICIPALITY_NAME}</p>
           <MetricDetails district={district} metric={props} />
         </Styles.ValueContent>
       ))}
 
       {!isSelectedOnComparison && hasSelectedDistrict && (
         <Styles.ValueContent>
-          <p>{selected?.properties.NM_MUN}</p>
+          <p>{selected?.properties.MUNICIPALITY_NAME}</p>
           <MetricDetails district={selected} metric={props} />
         </Styles.ValueContent>
       )}

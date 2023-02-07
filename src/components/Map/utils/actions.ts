@@ -6,7 +6,7 @@ import { accessToken } from './const';
 mapboxgl.accessToken = accessToken;
 
 export function findState(allState: State[], stateName: string) {
-  const result = allState.find((state) => state.properties.SIGLA_UF === stateName);
+  const result = allState.find((state) => state.properties.ACRONYM_FU === stateName);
 
   return result;
 }

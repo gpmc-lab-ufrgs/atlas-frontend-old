@@ -13,9 +13,9 @@ const selectedDistrict: District = {
     ],
   },
   properties: {
-    CD_MUN: 2709400,
-    NM_MUN: 'Goiânia',
-    SIGLA_UF: 'GO',
+    MUNICIPALITY_CODE: 2709400,
+    MUNICIPALITY_NAME: 'Goiânia',
+    ACRONYM_FU: 'GO',
     AREA_KM2: 367.888,
   },
 };
@@ -34,7 +34,7 @@ const selectedState: State = {
   properties: {
     NM_UF: 'Goiás',
     CD_UF: 9323,
-    SIGLA_UF: 'GO',
+    ACRONYM_FU: 'GO',
     AREA_KM2: 367.888,
     POPULATION: 367.888,
   },

@@ -6,15 +6,15 @@ import geosesData from '@data/Data.json';
 const MetricDetails = ({ district, metric }: any) => {
   const renderSingleMetric = () => {
     // @ts-ignore
-    const rawValue = geosesData[district?.properties.CD_MUN][metric.label];
+    const rawValue = geosesData[district?.properties.MUNICIPALITY_CODE][metric.label];
     const value = metric.format(rawValue);
 
     switch (metric.type) {
       case 'bar':
-        return <Bar rawValue={rawValue} metric={metric} id={district.properties.CD_MUN} />;
+        return <Bar rawValue={rawValue} metric={metric} id={district.properties.MUNICIPALITY_CODE} />;
       default:
         return (
-          <div key={district.properties.CD_MUN}>
+          <div key={district.properties.MUNICIPALITY_CODE}>
             <data value={rawValue}>{value}</data>
           </div>
         );
