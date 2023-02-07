@@ -4,10 +4,10 @@ import mapboxgl from 'mapbox-gl';
 import { District } from '@customTypes/district';
 import { MapActionType } from '@customTypes/map';
 
-import { hoveredPopup, clickedPopup } from '../../utils/const';
-
 import geosesData from '@data/Data.json';
 import { formatPopulationNumber } from '@utils/formatValue';
+
+import { hoveredPopup, clickedPopup } from '../../utils/const';
 
 let clickedId: number | undefined;
 let hoveredId: number | undefined;
