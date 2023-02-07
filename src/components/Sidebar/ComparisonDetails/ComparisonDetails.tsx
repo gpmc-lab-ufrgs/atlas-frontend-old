@@ -28,6 +28,10 @@ const ComparisonDetails = () => {
     </Styles.TitleWrapper>
   );
 
+  const handleRemoveComparisonDistrict = (feature: any) => {
+    removeComparisonDistrict(feature);
+  };
+
   return (
     <Box>
       <Title />
@@ -37,7 +41,7 @@ const ComparisonDetails = () => {
             {comparison.map((feature: any, index) => (
               <Styles.ComparisonList key={index}>
                 {feature.properties.NM_MUN}
-                <Styles.CloseButton onClick={() => removeComparisonDistrict(feature)} />
+                <Styles.CloseButton onClick={() => handleRemoveComparisonDistrict(feature)} />
               </Styles.ComparisonList>
             ))}
           </>

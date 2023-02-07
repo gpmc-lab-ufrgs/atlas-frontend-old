@@ -16,17 +16,17 @@ const ComparisonButton = () => {
   const isButtonOn = comparison.length >= 4;
   const isSelectedOnComparison = comparison.some((region) => region.properties.CD_MUN === selected?.properties.CD_MUN);
 
-  const comparisonClick = (feature: District | null) => {
+  const comparisonClick = () => {
     if (isSelectedOnComparison) {
-      removeComparisonDistrict(feature);
+      removeComparisonDistrict(selected);
     } else {
-      addComparisonDistrict([feature]);
+      addComparisonDistrict([selected]);
     }
   };
 
   return (
     <Styles.ComparisonButton>
-      <Styles.ButtonWrapper disabled={!isSelectedOnComparison && isButtonOn} onClick={() => comparisonClick(selected)}>
+      <Styles.ButtonWrapper disabled={!isSelectedOnComparison && isButtonOn} onClick={comparisonClick}>
         <Box mr="12px">
           <CompareIcon />
         </Box>
