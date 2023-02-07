@@ -9,9 +9,9 @@ export interface District {
     coordinates: number[][][];
   };
   properties: {
-    CD_MUN?: number;
-    NM_MUN?: string;
-    SIGLA_UF: string;
+    MUNICIPALITY_CODE?: number;
+    MUNICIPALITY_NAME?: string;
+    ACRONYM_FU: string;
     AREA_KM2: number;
   };
 }

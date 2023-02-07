@@ -28,7 +28,7 @@ export function ComparisonProvider({ children }: any) {
       comparison.filter(
         (district: District) =>
           //@ts-ignore
-          district.properties['NM_MUN'] !== removeValue.properties['NM_MUN'],
+          district.properties['MUNICIPALITY_NAME'] !== removeValue.properties['MUNICIPALITY_NAME'],
       ),
     );
   };

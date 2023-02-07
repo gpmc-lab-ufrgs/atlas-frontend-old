@@ -43,9 +43,9 @@ const SearchBarPopper: React.FC<Props> = ({ referenceElement, districtSearched, 
               key={index}
               {...popperActions.getItemProps({ item, index })}
             >
-              <Styles.PopperTitle>{item.properties.NM_MUN}</Styles.PopperTitle>
+              <Styles.PopperTitle>{item.properties.MUNICIPALITY_NAME}</Styles.PopperTitle>
 
-              <Styles.PopperSubtitle>{item.properties.SIGLA_UF}</Styles.PopperSubtitle>
+              <Styles.PopperSubtitle>{item.properties.ACRONYM_FU}</Styles.PopperSubtitle>
             </Styles.PopperItem>
           ))}
       </Styles.PopperItens>

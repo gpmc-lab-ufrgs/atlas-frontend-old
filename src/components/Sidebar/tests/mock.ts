@@ -10,9 +10,9 @@ const selected = {
     ],
   },
   properties: {
-    CD_MUN: 2709400,
-    NM_MUN: 'Viçosa',
-    SIGLA_UF: 'AL',
+    MUNICIPALITY_CODE: 2709400,
+    MUNICIPALITY_NAME: 'Viçosa',
+    ACRONYM_FU: 'AL',
     AREA_KM2: 367.888,
   },
 };

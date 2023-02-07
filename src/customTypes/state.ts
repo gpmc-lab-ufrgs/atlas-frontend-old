@@ -11,7 +11,7 @@ export interface State {
   properties: {
     NM_UF?: string;
     CD_UF?: number;
-    SIGLA_UF: string;
+    ACRONYM_FU: string;
     AREA_KM2: number;
     POPULATION?: number;
   };

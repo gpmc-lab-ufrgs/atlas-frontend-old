@@ -20,7 +20,7 @@ const useMain = () => {
       const pathIds = location.pathname.replace('/comparison/', '');
       if (pathIds) {
         const ids = pathIds.split('+');
-        const featuresFromUrl = all.filter((ft: any) => ids.includes(ft.properties['CD_MUN'].toString()));
+        const featuresFromUrl = all.filter((ft: any) => ids.includes(ft.properties['MUNICIPALITY_CODE'].toString()));
         setIsSidebarOpen(true);
         addComparisonDistrict(featuresFromUrl);
       } else {
@@ -31,7 +31,7 @@ const useMain = () => {
 
   useEffect(() => {
     if (location.pathname.startsWith('/comparison/') && all.length !== 0) {
-      const ids = comparison.map((feature: any) => feature.properties.CD_MUN);
+      const ids = comparison.map((feature: any) => feature.properties.MUNICIPALITY_CODE);
       const newPath = '/comparison/' + ids.join('+');
       if (location.pathname !== newPath) {
         navigate(newPath);

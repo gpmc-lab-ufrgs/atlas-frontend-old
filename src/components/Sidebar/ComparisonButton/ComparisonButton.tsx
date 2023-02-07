@@ -14,7 +14,9 @@ const ComparisonButton = () => {
   const { comparison, addComparisonDistrict, removeComparisonDistrict } = useComparison();
 
   const isButtonOn = comparison.length >= 4;
-  const isSelectedOnComparison = comparison.some((region) => region.properties.CD_MUN === selected?.properties.CD_MUN);
+  const isSelectedOnComparison = comparison.some(
+    (region) => region.properties.MUNICIPALITY_CODE === selected?.properties.MUNICIPALITY_CODE,
+  );
 
   const comparisonClick = (feature: District | null) => {
     if (isSelectedOnComparison) {

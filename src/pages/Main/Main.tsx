@@ -32,7 +32,7 @@ const Main = () => {
     <Styles.MainContainer>
       <Modal />
 
-      <Sidebar isComparisonMode={isComparisonModeEnabled} title={selected?.properties.NM_MUN} />
+      <Sidebar isComparisonMode={isComparisonModeEnabled} title={selected?.properties.MUNICIPALITY_NAME} />
 
       <InformationsBar />
 

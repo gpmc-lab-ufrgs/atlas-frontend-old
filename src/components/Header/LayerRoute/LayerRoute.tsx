@@ -35,7 +35,7 @@ const LayerRoute = () => {
             {selectedState?.properties.NM_UF}
           </Button>
           <Styles.NextLayer>-</Styles.NextLayer>
-          <Button className="place district">{selected?.properties.NM_MUN}</Button>
+          <Button className="place district">{selected?.properties.MUNICIPALITY_NAME}</Button>
         </>
       );
     } else if (selectedLayer === 'state') {

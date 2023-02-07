@@ -28,11 +28,11 @@ export function addPopup(
   lngLat: mapboxgl.LngLat | [number, number],
   type: MapActionType,
 ) {
-  const regionName = feature?.properties?.NM_MUN;
+  const regionName = feature?.properties?.MUNICIPALITY_NAME;
   const population =
     //@ts-ignore
-    feature?.properties?.CD_MUN != undefined //@ts-ignore
-      ? geosesData[feature?.properties?.CD_MUN]['Populacao_Estimada']
+    feature?.properties?.MUNICIPALITY_CODE != undefined //@ts-ignore
+      ? geosesData[feature?.properties?.MUNICIPALITY_CODE]['Populacao_Estimada']
       : '';
 
   if (type === 'Click') {
@@ -52,7 +52,7 @@ export function addPopup(
 }
 
 export function clickDistrict(feature: Feature, map: mapboxgl.Map) {
-  const districtID = feature?.properties.CD_MUN;
+  const districtID = feature?.properties.MUNICIPALITY_CODE;
 
   if (feature && feature.geometry && districtID) {
     if (districtID === clickedId) {
@@ -79,7 +79,7 @@ export function clickDistrict(feature: Feature, map: mapboxgl.Map) {
 }
 
 export function highlightDistrict(feature: Feature, map: mapboxgl.Map) {
-  const districtID = feature?.properties.CD_MUN;
+  const districtID = feature?.properties.MUNICIPALITY_CODE;
 
   if (feature && feature.geometry && districtID) {
     if (districtID === hoveredId) {
