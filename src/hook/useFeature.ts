@@ -15,25 +15,3 @@ export const DEFAULT_VALUE = {
 interface Props {
   allFeatures: Array<District | State>;
 }
-
-const useFeature = ({ allFeatures }: Props) => {
-  const [all] = useState(allFeatures);
-  const [selected, setSelected] = useState(null);
-  const [highlighted, setHighlighted] = useState(null);
-
-  function resetValues() {
-    setSelected(null);
-    setHighlighted(null);
-  }
-
-  return {
-    all,
-    selected,
-    setSelected,
-    highlighted,
-    setHighlighted,
-    resetValues,
-  };
-};
-
-export default useFeature;
