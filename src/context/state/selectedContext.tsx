@@ -4,29 +4,31 @@ import { State } from '@customTypes/state';
 
 import geojsonBR from '@data/BR_UF_2020.json';
 
-import { DEFAULT_VALUE } from '@hook/useFeature';
-
 export interface StateActions {
-  all: Array<State>;
-  selected: State | null;
-  setSelected: React.Dispatch<React.SetStateAction<any>>;
+  allStates: Array<State>;
+  selectedState: State | null;
+  setSelectedState: React.Dispatch<React.SetStateAction<any>>;
 }
 
-export const selectedStatesContext = createContext<StateActions>(DEFAULT_VALUE);
+const DEFAULT_VALUE_STATE_ACTIONS: StateActions = {
+  allStates: [],
+  selectedState: null,
+  setSelectedState: () => {},
+};
+
+export const selectedStatesContext = createContext<StateActions>(DEFAULT_VALUE_STATE_ACTIONS);
 
 export function SelectedStatesProvider({ children }: any) {
   //@ts-ignore
-  const allStates: Array<State> = geojsonBR['features'];
-
-  const [all] = useState(allStates);
-  const [selected, setSelected] = useState(null);
+  const [allStates] = useState<State[]>(geojsonBR['features']);
+  const [selectedState, setSelectedState] = useState(null);
 
   return (
     <selectedStatesContext.Provider
       value={{
-        all,
-        selected,
-        setSelected,
+        allStates,
+        selectedState,
+        setSelectedState,
       }}
     >
       {children}

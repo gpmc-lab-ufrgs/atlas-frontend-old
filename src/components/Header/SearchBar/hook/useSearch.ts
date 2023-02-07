@@ -10,15 +10,15 @@ import { District } from '@customTypes/district';
 const useSearch = (featureSearched: District[]) => {
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const { selected, setSelected } = useSelectedDistrict();
+  const { selectedDistrict, setSelectedDistrict } = useSelectedDistrict();
   const { setHighlighted } = useHighlightedDistrict();
   const { resetMapValues } = useMap();
 
-  const initialInputValue = selected?.properties.NM_MUN ?? '';
+  const initialInputValue = selectedDistrict?.properties.NM_MUN ?? '';
 
   const itemToString = (item: any) => (item ? item.name : '');
 
-  const onSelectedItemChange = (item: any) => setSelected(item.selectedItem);
+  const onSelectedItemChange = (item: any) => setSelectedDistrict(item.selectedItem);
 
   const {
     getComboboxProps,

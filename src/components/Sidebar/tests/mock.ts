@@ -18,9 +18,9 @@ const selected = {
 };
 
 const districtMock = {
-  all: [],
-  selected,
-  setSelected: () => {},
+  allDistricts: [],
+  selectedDistrict: selected,
+  setSelectedDistrict: () => {},
 };
 
 const comparisonMock = {

@@ -4,29 +4,31 @@ import { District } from '@customTypes/district';
 
 import geojsonRS from '@data/states/RS_Municipios_2020.json';
 
-import { DEFAULT_VALUE } from '@hook/useFeature';
-
 export interface DistrictActions {
-  all: Array<District>;
-  selected: District | null;
-  setSelected: React.Dispatch<React.SetStateAction<any>>;
+  allDistricts: Array<District>;
+  selectedDistrict: District | null;
+  setSelectedDistrict: React.Dispatch<React.SetStateAction<any>>;
 }
 
-export const selectedDistrictsContext = createContext<DistrictActions>(DEFAULT_VALUE);
+const DEFAULT_VALUE_DISTRICT_ACTIONS: DistrictActions = {
+  allDistricts: [],
+  selectedDistrict: null,
+  setSelectedDistrict: () => {},
+};
+
+export const selectedDistrictsContext = createContext<DistrictActions>(DEFAULT_VALUE_DISTRICT_ACTIONS);
 
 export function SelectedDistrictProvider({ children }: any) {
   //@ts-ignore
-  const allDistricts: Array<District> = geojsonRS['features'];
-
-  const [all] = useState(allDistricts);
-  const [selected, setSelected] = useState(null);
+  const [allDistricts] = useState<District[]>(geojsonRS['features']);
+  const [selectedDistrict, setSelectedDistrict] = useState(null);
 
   return (
     <selectedDistrictsContext.Provider
       value={{
-        all,
-        selected,
-        setSelected,
+        allDistricts,
+        selectedDistrict,
+        setSelectedDistrict,
       }}
     >
       {children}
