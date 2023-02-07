@@ -21,6 +21,16 @@ const Map = () => {
   const { resetMapValues, resetDistrictValues } = useMap();
   const [map, setMap] = useState<mapboxgl.Map>();
 
+  const setReferences = () => {
+    if (!districtReference) {
+      setDistrictReference(map);
+    }
+
+    if (!stateReference) {
+      setStateReference(map);
+    }
+  };
+
   useEffect(() => {
     const initializeMap = (ref: any) => {
       const center: mapboxgl.LngLatLike = [-58, -15];
@@ -58,13 +68,7 @@ const Map = () => {
     if (!map) {
       initializeMap(mapContainer);
     } else {
-      if (!districtReference) {
-        setDistrictReference(map);
-      }
-
-      if (!stateReference) {
-        setStateReference(map);
-      }
+      setReferences();
     }
   }, [map]);
 

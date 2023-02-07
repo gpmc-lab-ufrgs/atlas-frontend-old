@@ -15,14 +15,14 @@ interface Props {
 }
 
 export default function ClickablePopup({ regionName, reference, feature }: Props) {
+  const handleUpdateLayerAndBounds = () => {
+    handleCleanStateLayer(reference);
+    fitStateBounds(feature, reference);
+  };
+
   return (
     <Styles.Popup>
-      <Styles.ClickableSection
-        onClick={() => {
-          handleCleanStateLayer(reference);
-          fitStateBounds(feature, reference);
-        }}
-      >
+      <Styles.ClickableSection onClick={handleUpdateLayerAndBounds}>
         <Styles.PopupText>{regionName}</Styles.PopupText>
         <Styles.IconWrapper className="iconAction">
           <ChevronRightIcon fontSize="small" />
