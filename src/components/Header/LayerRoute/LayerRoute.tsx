@@ -13,7 +13,7 @@ const LayerRoute = () => {
   const [selectedLayer, setSelectedLayer] = useState('country');
 
   const { resetMapValues, resetDistrictValues } = useMap();
-  const { selected: selectedState } = useSelectedState();
+  const { selectedState } = useSelectedState();
   const { selectedDistrict } = useSelectedDistrict();
 
   useEffect(() => {

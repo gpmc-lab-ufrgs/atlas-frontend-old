@@ -47,8 +47,8 @@ export const scenarios = {
     setSelectedDistrict: () => {},
   },
   state: {
-    all: [],
-    selected: selectedState,
-    setSelected: () => null,
+    allStates: [],
+    selectedState: selectedState,
+    setSelectedState: () => null,
   },
 };

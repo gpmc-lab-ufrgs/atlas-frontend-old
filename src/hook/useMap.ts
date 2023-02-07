@@ -10,7 +10,7 @@ const useMap = () => {
   const { setHighlighted: setHighlightedDistrict } = useHighlightedDistrict();
   const { setHighlighted: setHighlightedState } = useHighlightedState();
   const { setSelectedDistrict } = useSelectedDistrict();
-  const { setSelected: setSelectedState } = useSelectedState();
+  const { setSelectedState } = useSelectedState();
 
   const resetDistrictValues = () => {
     setIsSidebarOpen(false);

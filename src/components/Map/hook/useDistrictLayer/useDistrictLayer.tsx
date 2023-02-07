@@ -24,7 +24,7 @@ const useDistrictLayer = () => {
   const { setHighlighted: setHighlightedDistrict, highlighted: highlightedDistrict } = useHighlightedDistrict();
   const { setSelectedDistrict, selectedDistrict } = useSelectedDistrict();
 
-  const { selected: selectedState, setSelected: setSelectedState, all: allState } = useSelectedState();
+  const { selectedState, setSelectedState, allStates } = useSelectedState();
 
   const { setIsSidebarOpen } = useSidebar();
 
@@ -135,7 +135,7 @@ const useDistrictLayer = () => {
         }
         setLatLng(undefined);
 
-        const state = findState(allState, selectedDistrict.properties.SIGLA_UF);
+        const state = findState(allStates, selectedDistrict.properties.SIGLA_UF);
         if (!selectedState || selectedState !== state) {
           setSelectedState(state);
         }

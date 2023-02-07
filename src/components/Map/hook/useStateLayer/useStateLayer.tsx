@@ -27,7 +27,7 @@ const useStateLayer = () => {
   const [latLng, setLatLng] = useState<mapboxgl.LngLat>();
 
   const { setHighlighted: setHighlightedState, highlighted: highlightedState } = useHighlightedState();
-  const { setSelected: setSelectedState, selected: selectedState } = useSelectedState();
+  const { setSelectedState, selectedState } = useSelectedState();
   const { selectedDistrict } = useSelectedDistrict();
 
   function initLayers(reference: mapboxgl.Map) {
