@@ -8,7 +8,7 @@ import { useSelectedDistrict } from '@context/district/selectedContext';
 const useMain = () => {
   const { comparison, addComparisonDistrict } = useComparison();
   const { setIsSidebarOpen } = useSidebar();
-  const { all } = useSelectedDistrict();
+  const { allDistricts } = useSelectedDistrict();
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -20,7 +20,7 @@ const useMain = () => {
       const pathIds = location.pathname.replace('/comparison/', '');
       if (pathIds) {
         const ids = pathIds.split('+');
-        const featuresFromUrl = all.filter((ft: any) => ids.includes(ft.properties['CD_MUN'].toString()));
+        const featuresFromUrl = allDistricts.filter((ft: any) => ids.includes(ft.properties['CD_MUN'].toString()));
         setIsSidebarOpen(true);
         addComparisonDistrict(featuresFromUrl);
       } else {
@@ -30,7 +30,7 @@ const useMain = () => {
   }, [location, history, comparison]);
 
   useEffect(() => {
-    if (location.pathname.startsWith('/comparison/') && all.length !== 0) {
+    if (location.pathname.startsWith('/comparison/') && allDistricts.length !== 0) {
       const ids = comparison.map((feature: any) => feature.properties.CD_MUN);
       const newPath = '/comparison/' + ids.join('+');
       if (location.pathname !== newPath) {

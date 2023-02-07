@@ -15,12 +15,14 @@ import { CollapsibleContent } from './CollapsibleContent';
 import * as Styles from './styles';
 
 const DataSection: React.FC<MapPropsSectionType> = ({ title, content }) => {
-  const { selected } = useSelectedDistrict();
+  const { selectedDistrict } = useSelectedDistrict();
   const { comparison } = useComparison();
 
-  const isSelectedOnComparison = comparison.some((region) => region.properties.CD_MUN === selected?.properties.CD_MUN);
+  const isSelectedOnComparison = comparison.some(
+    (region) => region.properties.CD_MUN === selectedDistrict?.properties.CD_MUN,
+  );
 
-  const hasSelectedDistrict = Boolean(selected);
+  const hasSelectedDistrict = Boolean(selectedDistrict);
 
   return (
     <Collapsible isTitle={true} title={title}>
@@ -49,8 +51,8 @@ const DataSection: React.FC<MapPropsSectionType> = ({ title, content }) => {
                           <Styles.PropsTitle>{data.title}</Styles.PropsTitle>
                         </Tooltip>
                         <Styles.ValueContent>
-                          <p>{selected?.properties.NM_MUN}</p>
-                          <MetricDetails district={selected} metric={data} />
+                          <p>{selectedDistrict?.properties.NM_MUN}</p>
+                          <MetricDetails district={selectedDistrict} metric={data} />
                         </Styles.ValueContent>
                       </div>
                     ))}

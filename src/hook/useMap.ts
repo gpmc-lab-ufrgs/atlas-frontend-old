@@ -9,7 +9,7 @@ const useMap = () => {
 
   const { setHighlighted: setHighlightedDistrict } = useHighlightedDistrict();
   const { setHighlighted: setHighlightedState } = useHighlightedState();
-  const { setSelected: setSelectedDistrict } = useSelectedDistrict();
+  const { setSelectedDistrict } = useSelectedDistrict();
   const { setSelected: setSelectedState } = useSelectedState();
 
   const resetDistrictValues = () => {

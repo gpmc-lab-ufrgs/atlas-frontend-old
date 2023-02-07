@@ -21,7 +21,7 @@ import * as Styles from './styles';
 
 const Main = () => {
   const { isSidebarOpen } = useSidebar();
-  const { selected } = useSelectedDistrict();
+  const { selectedDistrict } = useSelectedDistrict();
 
   const theme = useTheme();
 
@@ -32,7 +32,7 @@ const Main = () => {
     <Styles.MainContainer>
       <Modal />
 
-      <Sidebar isComparisonMode={isComparisonModeEnabled} title={selected?.properties.NM_MUN} />
+      <Sidebar isComparisonMode={isComparisonModeEnabled} title={selectedDistrict?.properties.NM_MUN} />
 
       <InformationsBar />
 

@@ -42,9 +42,9 @@ const selectedState: State = {
 
 export const scenarios = {
   district: {
-    all: [],
-    selected: selectedDistrict,
-    setSelected: () => {},
+    allDistricts: [],
+    selectedDistrict: selectedDistrict,
+    setSelectedDistrict: () => {},
   },
   state: {
     all: [],

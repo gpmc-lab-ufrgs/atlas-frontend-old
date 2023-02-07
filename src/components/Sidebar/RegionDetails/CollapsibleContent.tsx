@@ -16,12 +16,14 @@ interface CollapsibleContentProps {
 }
 
 export const CollapsibleContent: React.FC<CollapsibleContentProps> = ({ props }) => {
-  const { selected } = useSelectedDistrict();
+  const { selectedDistrict } = useSelectedDistrict();
   const { comparison } = useComparison();
 
-  const isSelectedOnComparison = comparison.some((region) => region.properties.CD_MUN === selected?.properties.CD_MUN);
+  const isSelectedOnComparison = comparison.some(
+    (region) => region.properties.CD_MUN === selectedDistrict?.properties.CD_MUN,
+  );
 
-  const hasSelectedDistrict = Boolean(selected);
+  const hasSelectedDistrict = Boolean(selectedDistrict);
 
   const { description, title } = props;
 
@@ -39,8 +41,8 @@ export const CollapsibleContent: React.FC<CollapsibleContentProps> = ({ props })
 
       {!isSelectedOnComparison && hasSelectedDistrict && (
         <Styles.ValueContent>
-          <p>{selected?.properties.NM_MUN}</p>
-          <MetricDetails district={selected} metric={props} />
+          <p>{selectedDistrict?.properties.NM_MUN}</p>
+          <MetricDetails district={selectedDistrict} metric={props} />
         </Styles.ValueContent>
       )}
     </>

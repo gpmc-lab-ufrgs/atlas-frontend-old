@@ -14,17 +14,17 @@ const LayerRoute = () => {
 
   const { resetMapValues, resetDistrictValues } = useMap();
   const { selected: selectedState } = useSelectedState();
-  const { selected } = useSelectedDistrict();
+  const { selectedDistrict } = useSelectedDistrict();
 
   useEffect(() => {
-    if (selected) {
+    if (selectedDistrict) {
       setSelectedLayer('district');
-    } else if (selectedState && !selected) {
+    } else if (selectedState && !selectedDistrict) {
       setSelectedLayer('state');
     } else {
       setSelectedLayer('country');
     }
-  }, [selected, selectedState]);
+  }, [selectedDistrict, selectedState]);
 
   const returnPath = () => {
     if (selectedLayer === 'district') {
@@ -35,7 +35,7 @@ const LayerRoute = () => {
             {selectedState?.properties.NM_UF}
           </Button>
           <Styles.NextLayer>-</Styles.NextLayer>
-          <Button className="place district">{selected?.properties.NM_MUN}</Button>
+          <Button className="place district">{selectedDistrict?.properties.NM_MUN}</Button>
         </>
       );
     } else if (selectedLayer === 'state') {

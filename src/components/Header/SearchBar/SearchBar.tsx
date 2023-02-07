@@ -16,11 +16,11 @@ import { getFilteredDistricts, getSortedDistricts } from './utils';
 import * as Styles from './styles';
 
 const SearchBar: React.FC = () => {
-  const { selected, all } = useSelectedDistrict();
+  const { selectedDistrict, allDistricts } = useSelectedDistrict();
 
   const [referenceElement, setReferenceElement] = useState<HTMLDivElement | null>(null);
 
-  const [districtSearched, setDistrictSearched] = useState<District[]>(all);
+  const [districtSearched, setDistrictSearched] = useState<District[]>(allDistricts);
 
   const {
     getComboboxProps,
@@ -48,12 +48,12 @@ const SearchBar: React.FC = () => {
       const hasQuery = query !== '';
 
       if (hasQuery) {
-        setDistrictSearched(getSortedDistricts(getFilteredDistricts(all, query)));
+        setDistrictSearched(getSortedDistricts(getFilteredDistricts(allDistricts, query)));
       } else {
-        setDistrictSearched(getSortedDistricts(all));
+        setDistrictSearched(getSortedDistricts(allDistricts));
       }
     }
-  }, [debouncedValue, all]);
+  }, [debouncedValue, allDistricts]);
 
   const hasInputValue = inputValue === '';
 
