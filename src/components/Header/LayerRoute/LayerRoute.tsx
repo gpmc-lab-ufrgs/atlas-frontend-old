@@ -26,27 +26,28 @@ const LayerRoute = () => {
     }
   }, [selected, selectedState]);
 
+  const returnStatePath = () => {
+    return (
+      <>
+        <Styles.NextLayer>-</Styles.NextLayer>
+        <Button className="place state" onClick={resetDistrictValues}>
+          {selectedState?.properties.NM_UF}
+        </Button>
+      </>
+    );
+  };
+
   const returnPath = () => {
     if (selectedLayer === 'district') {
       return (
         <>
-          <Styles.NextLayer>-</Styles.NextLayer>
-          <Button className="place state" onClick={resetDistrictValues}>
-            {selectedState?.properties.NM_UF}
-          </Button>
+          {returnStatePath()}
           <Styles.NextLayer>-</Styles.NextLayer>
           <Button className="place district">{selected?.properties.NM_MUN}</Button>
         </>
       );
     } else if (selectedLayer === 'state') {
-      return (
-        <>
-          <Styles.NextLayer>-</Styles.NextLayer>
-          <Button className="place state" onClick={resetDistrictValues}>
-            {selectedState?.properties.NM_UF}
-          </Button>
-        </>
-      );
+      return returnStatePath();
     }
   };
 
