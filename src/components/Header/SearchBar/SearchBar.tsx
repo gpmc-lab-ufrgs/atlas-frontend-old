@@ -16,7 +16,7 @@ import { getFilteredDistricts, getSortedDistricts } from './utils';
 import * as Styles from './styles';
 
 const SearchBar: React.FC = () => {
-  const { selected, all } = useSelectedDistrict();
+  const { all } = useSelectedDistrict();
 
   const [referenceElement, setReferenceElement] = useState<HTMLDivElement | null>(null);
 
@@ -70,7 +70,7 @@ const SearchBar: React.FC = () => {
         <input {...inputProps} />
 
         <Styles.IconWrapper>
-          {hasInputValue ? <Search {...getToggleButtonProps()} /> : <Close onClick={() => cleanSearchBar()} />}
+          {hasInputValue ? <Search {...getToggleButtonProps()} /> : <Close onClick={cleanSearchBar} />}
         </Styles.IconWrapper>
       </Styles.SearchBarField>
 

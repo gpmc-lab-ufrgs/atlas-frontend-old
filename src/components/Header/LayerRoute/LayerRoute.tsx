@@ -26,27 +26,28 @@ const LayerRoute = () => {
     }
   }, [selected, selectedState]);
 
+  const returnStatePath = () => {
+    return (
+      <>
+        <Styles.NextLayer>-</Styles.NextLayer>
+        <Button className="place state" onClick={resetDistrictValues}>
+          {selectedState?.properties.NM_UF}
+        </Button>
+      </>
+    );
+  };
+
   const returnPath = () => {
     if (selectedLayer === 'district') {
       return (
         <>
-          <Styles.NextLayer>-</Styles.NextLayer>
-          <Button className="place state" onClick={() => resetDistrictValues()}>
-            {selectedState?.properties.NM_UF}
-          </Button>
+          {returnStatePath()}
           <Styles.NextLayer>-</Styles.NextLayer>
           <Button className="place district">{selected?.properties.NM_MUN}</Button>
         </>
       );
     } else if (selectedLayer === 'state') {
-      return (
-        <>
-          <Styles.NextLayer>-</Styles.NextLayer>
-          <Button className="place state" onClick={() => resetDistrictValues()}>
-            {selectedState?.properties.NM_UF}
-          </Button>
-        </>
-      );
+      return returnStatePath();
     }
   };
 
@@ -61,7 +62,7 @@ const LayerRoute = () => {
   const returnPathButton = () => {
     if (selectedLayer !== 'country') {
       return (
-        <Styles.ReturnRouteButton onClick={() => returnToPreviousLayer()}>
+        <Styles.ReturnRouteButton onClick={returnToPreviousLayer}>
           <ChevronLeftIcon sx={{ color: 'black' }} />
         </Styles.ReturnRouteButton>
       );
@@ -71,7 +72,7 @@ const LayerRoute = () => {
   return (
     <Styles.ReturnRoute selectedLayer={selectedLayer}>
       {returnPathButton()}
-      <Button className="place country" onClick={() => resetMapValues()}>
+      <Button className="place country" onClick={resetMapValues}>
         Brasil
       </Button>
       {returnPath()}

@@ -19,7 +19,7 @@ const ProjectInformations: React.FC<Props> = ({ setOpen }) => {
         <Styles.Title> Atlas de Oportunidades </Styles.Title>
 
         <div aria-label="close-button">
-          <Styles.CloseButton onClick={() => handleCloseDrawer()} />
+          <Styles.CloseButton onClick={handleCloseDrawer} />
         </div>
       </Styles.TitleWrapper>
 
@@ -27,7 +27,7 @@ const ProjectInformations: React.FC<Props> = ({ setOpen }) => {
         {sections.map((choices, id) => (
           <Styles.Section key={id}>
             {choices.map((choice) => (
-              <Link key={choice.title} to={choice.url} onClick={() => handleCloseDrawer()}>
+              <Link key={choice.title} to={choice.url} onClick={handleCloseDrawer}>
                 {choice.title}
               </Link>
             ))}
