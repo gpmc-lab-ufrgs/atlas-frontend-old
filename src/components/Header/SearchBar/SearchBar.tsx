@@ -70,7 +70,7 @@ const SearchBar: React.FC = () => {
         <input {...inputProps} />
 
         <Styles.IconWrapper>
-          {hasInputValue ? <Search {...getToggleButtonProps()} /> : <Close onClick={() => cleanSearchBar()} />}
+          {hasInputValue ? <Search {...getToggleButtonProps()} /> : <Close onClick={cleanSearchBar} />}
         </Styles.IconWrapper>
       </Styles.SearchBarField>
 
