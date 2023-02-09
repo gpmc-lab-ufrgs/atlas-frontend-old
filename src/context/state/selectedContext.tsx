@@ -3,7 +3,8 @@ import React, { createContext, useContext, useEffect, useState } from 'react';
 import { State } from '@customTypes/state';
 
 import { DEFAULT_VALUE } from '@hook/useFeature';
-import { getAllStates } from '@services/state';
+import { StateService } from '@services/state/impl/StateServiceImpl';
+import { IStateService } from '@services/state/IStateService';
 
 export interface StateActions {
   all: Array<State>;
@@ -17,8 +18,10 @@ export function SelectedStatesProvider({ children }: any) {
   const [all, setAll] = useState<State[]>([]);
   const [selected, setSelected] = useState(null);
 
+  const stateService: IStateService = new StateService();
+
   useEffect(() => {
-    getAllStates().then((states) => {
+    stateService.getAllStates().then((states) => {
       setAll(states);
     });
   }, []);

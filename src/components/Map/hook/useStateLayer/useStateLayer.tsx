@@ -15,7 +15,8 @@ import {
   isStateLayerVisible,
 } from './stateActions';
 
-import { getAllStates } from '@services/state';
+import { StateService } from '@services/state/impl/StateServiceImpl';
+import { IStateService } from '@services/state/IStateService';
 import { fitCenter } from '../../utils/actions';
 import { fillOpacity, lineOpacity, lineWidth } from '../../utils/const';
 import { isDistrictLayerVisible } from '../useDistrictLayer/districtActions';
@@ -29,12 +30,14 @@ const useStateLayer = () => {
   const { setSelected: setSelectedState, selected: selectedState } = useSelectedState();
   const { selected: selectedDistrict } = useSelectedDistrict();
 
+  const stateService: IStateService = new StateService();
+
   function initLayers(reference: mapboxgl.Map) {
     reference.on('load', async () => {
       reference.addSource('state', {
         type: 'geojson',
         //@ts-ignore
-        data: await getAllStates(),
+        data: await stateService.getAllStates(),
         //@ts-ignore
         promoteId: 'CD_UF',
       });
