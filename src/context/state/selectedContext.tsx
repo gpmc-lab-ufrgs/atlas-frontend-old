@@ -1,10 +1,10 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 
 import { State } from '@customTypes/state';
 
-import geojsonBR from '@data/BR_UF_2020.json';
-
 import { DEFAULT_VALUE } from '@hook/useFeature';
+import { StateService } from '@services/state/impl/StateServiceImpl';
+import { IStateService } from '@services/state/IStateService';
 
 export interface StateActions {
   all: Array<State>;
@@ -15,11 +15,16 @@ export interface StateActions {
 export const selectedStatesContext = createContext<StateActions>(DEFAULT_VALUE);
 
 export function SelectedStatesProvider({ children }: any) {
-  //@ts-ignore
-  const allStates: Array<State> = geojsonBR['features'];
-
-  const [all] = useState(allStates);
+  const [all, setAll] = useState<State[]>([]);
   const [selected, setSelected] = useState(null);
+
+  const stateService: IStateService = new StateService();
+
+  useEffect(() => {
+    stateService.getAllStates().then((states) => {
+      setAll(states);
+    });
+  }, []);
 
   return (
     <selectedStatesContext.Provider

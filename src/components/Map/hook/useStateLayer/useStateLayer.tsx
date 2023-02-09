@@ -2,25 +2,25 @@ import { useEffect, useState } from 'react';
 
 import mapboxgl from 'mapbox-gl';
 
-import geojsonURL from '@data/BR_UF_2020.json';
-
-import { useSelectedState } from '@context/state/selectedContext';
-import { useHighlightedState } from '@context/state/highlightedContext';
 import { useSelectedDistrict } from '@context/district/selectedContext';
+import { useHighlightedState } from '@context/state/highlightedContext';
+import { useSelectedState } from '@context/state/selectedContext';
 
 import {
-  highlightState,
-  clickState,
-  isStateLayerVisible,
-  cleanStateActions,
-  fitStateCenter,
   addPopup,
+  cleanStateActions,
+  clickState,
+  fitStateCenter,
+  highlightState,
+  isStateLayerVisible,
 } from './stateActions';
 
-import { stateColors } from './const';
+import { StateService } from '@services/state/impl/StateServiceImpl';
+import { IStateService } from '@services/state/IStateService';
 import { fitCenter } from '../../utils/actions';
-import { lineOpacity, lineWidth, fillOpacity } from '../../utils/const';
+import { fillOpacity, lineOpacity, lineWidth } from '../../utils/const';
 import { isDistrictLayerVisible } from '../useDistrictLayer/districtActions';
+import { stateColors } from './const';
 
 const useStateLayer = () => {
   const [stateReference, setStateReference] = useState<mapboxgl.Map>();
@@ -30,12 +30,14 @@ const useStateLayer = () => {
   const { setSelected: setSelectedState, selected: selectedState } = useSelectedState();
   const { selected: selectedDistrict } = useSelectedDistrict();
 
+  const stateService: IStateService = new StateService();
+
   function initLayers(reference: mapboxgl.Map) {
-    reference.on('load', () => {
+    reference.on('load', async () => {
       reference.addSource('state', {
         type: 'geojson',
         //@ts-ignore
-        data: geojsonURL,
+        data: await stateService.getAllStates(),
         //@ts-ignore
         promoteId: 'CD_UF',
       });
