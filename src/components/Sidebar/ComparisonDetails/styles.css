@@ -1,0 +1,59 @@
+.title {
+  height: 10%;
+}
+
+.comparisonDetails {
+  position: fixed;
+  height: 100%;
+  width: 320px;
+  z-index: 3;
+  bottom: 0;
+  left: 0;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.closeIcon {
+  cursor: "pointer";
+  color: rgb(153, 153, 153);
+}
+
+.comparisonList {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 15px;
+  font-size: 15px;
+}
+
+.comparisonHeader {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-left: 20px;
+  margin-top: 20px;
+  width: 305px;
+  z-index: 2;
+}
+
+.comparisonHeaderContent {
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.comparisonHeaderIcon {
+  align-items: center;
+  display: flex;
+  margin-right: 15px;
+  color: black;
+}
+
+.miniMap {
+  width: 300px;
+  height: 300px;
+  margin-left: -20px;
+  margin-top: 5px;
+}

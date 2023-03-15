@@ -1,0 +1,19 @@
+name: CI
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+      - name: Install yarn
+        run: npm install -g yarn
+      - name: Install all dependencies
+        run: yarn install
+      - name: Run test
+        run: yarn test:ci
+      - name: Run linter
+        run: yarn lint

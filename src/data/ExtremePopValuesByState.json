@@ -1,0 +1,272 @@
+{
+  "AC": {
+    "MAX_POPULATION_DISTRICT": {
+      "NAME": "Rio Branco",
+      "POPULATION": 336038
+    },
+    "MIN_POPULATION_DISTRICT": {
+      "NAME": "Santa Rosa do Purus",
+      "POPULATION": 4691
+    }
+  },
+  "AL": {
+    "MAX_POPULATION_DISTRICT": {
+      "NAME": "Maceió",
+      "POPULATION": 932748
+    },
+    "MIN_POPULATION_DISTRICT": {
+      "NAME": "Pindoba",
+      "POPULATION": 2866
+    }
+  },
+  "AP": {
+    "MAX_POPULATION_DISTRICT": {
+      "NAME": "Macapá",
+      "POPULATION": 398204
+    },
+    "MIN_POPULATION_DISTRICT": {
+      "NAME": "Pracuúba",
+      "POPULATION": 3793
+    }
+  },
+  "AM": {
+    "MAX_POPULATION_DISTRICT": {
+      "NAME": "Manaus",
+      "POPULATION": 1802014
+    },
+    "MIN_POPULATION_DISTRICT": {
+      "NAME": "Japurá",
+      "POPULATION": 7326
+    }
+  },
+  "BA": {
+    "MAX_POPULATION_DISTRICT": {
+      "NAME": "Salvador",
+      "POPULATION": 2675656
+    },
+    "MIN_POPULATION_DISTRICT": {
+      "NAME": "Catolândia",
+      "POPULATION": 2612
+    }
+  },
+  "CE": {
+    "MAX_POPULATION_DISTRICT": {
+      "NAME": "Fortaleza",
+      "POPULATION": 2452185
+    },
+    "MIN_POPULATION_DISTRICT": {
+      "NAME": "Guaramiranga",
+      "POPULATION": 4164
+    }
+  },
+  "DF": {
+    "MAX_POPULATION_DISTRICT": {
+      "NAME": "Brasília",
+      "POPULATION": 2570160
+    },
+    "MIN_POPULATION_DISTRICT": {
+      "NAME": "Brasília",
+      "POPULATION": 2570160
+    }
+  },
+  "ES": {
+    "MAX_POPULATION_DISTRICT": {
+      "NAME": "Vila Velha",
+      "POPULATION": 414586
+    },
+    "MIN_POPULATION_DISTRICT": {
+      "NAME": "Divino de São Lourenço",
+      "POPULATION": 4516
+    }
+  },
+  "GO": {
+    "MAX_POPULATION_DISTRICT": {
+      "NAME": "Goiânia",
+      "POPULATION": 1302001
+    },
+    "MIN_POPULATION_DISTRICT": {
+      "NAME": "Anhanguera",
+      "POPULATION": 1020
+    }
+  },
+  "MA": {
+    "MAX_POPULATION_DISTRICT": {
+      "NAME": "São Luís",
+      "POPULATION": 1014837
+    },
+    "MIN_POPULATION_DISTRICT": {
+      "NAME": "Junco do Maranhão",
+      "POPULATION": 4020
+    }
+  },
+  "MT": {
+    "MAX_POPULATION_DISTRICT": {
+      "NAME": "Cuiabá",
+      "POPULATION": 551098
+    },
+    "MIN_POPULATION_DISTRICT": {
+      "NAME": "Araguainha",
+      "POPULATION": 1096
+    }
+  },
+  "MS": {
+    "MAX_POPULATION_DISTRICT": {
+      "NAME": "Campo Grande",
+      "POPULATION": 786797
+    },
+    "MIN_POPULATION_DISTRICT": {
+      "NAME": "Figueirão",
+      "POPULATION": 2928
+    }
+  },
+  "MG": {
+    "MAX_POPULATION_DISTRICT": {
+      "NAME": "Belo Horizonte",
+      "POPULATION": 2375151
+    },
+    "MIN_POPULATION_DISTRICT": {
+      "NAME": "Betim",
+      "POPULATION": 815
+    }
+  },
+  "PA": {
+    "MAX_POPULATION_DISTRICT": {
+      "NAME": "Belém",
+      "POPULATION": 1393399
+    },
+    "MIN_POPULATION_DISTRICT": {
+      "NAME": "Bannach",
+      "POPULATION": 3431
+    }
+  },
+  "PB": {
+    "MAX_POPULATION_DISTRICT": {
+      "NAME": "João Pessoa",
+      "POPULATION": 123515
+    },
+    "MIN_POPULATION_DISTRICT": {
+      "NAME": "Parari",
+      "POPULATION": 1256
+    }
+  },
+  "PR": {
+    "MAX_POPULATION_DISTRICT": {
+      "NAME": "Curitiba",
+      "POPULATION": 1751907
+    },
+    "MIN_POPULATION_DISTRICT": {
+      "NAME": "Jardim Olinda",
+      "POPULATION": 1409
+    }
+  },
+  "PE": {
+    "MAX_POPULATION_DISTRICT": {
+      "NAME": "Recife",
+      "POPULATION": 1537704
+    },
+    "MIN_POPULATION_DISTRICT": {
+      "NAME": "Fernando de Noronha",
+      "POPULATION": 2630
+    }
+  },
+  "PI": {
+    "MAX_POPULATION_DISTRICT": {
+      "NAME": "Teresina",
+      "POPULATION": 814230
+    },
+    "MIN_POPULATION_DISTRICT": {
+      "NAME": "Miguel Leão",
+      "POPULATION": 1253
+    }
+  },
+  "RJ": {
+    "MAX_POPULATION_DISTRICT": {
+      "NAME": "Rio de Janeiro",
+      "POPULATION": 6320446
+    },
+    "MIN_POPULATION_DISTRICT": {
+      "NAME": "Macuco",
+      "POPULATION": 5269
+    }
+  },
+  "RN": {
+    "MAX_POPULATION_DISTRICT": {
+      "NAME": "Natal",
+      "POPULATION": 803739
+    },
+    "MIN_POPULATION_DISTRICT": {
+      "NAME": "Viçosa",
+      "POPULATION": 1618
+    }
+  },
+  "RS": {
+    "MAX_POPULATION_DISTRICT": {
+      "NAME": "Porto Alegre",
+      "POPULATION": 1409351
+    },
+    "MIN_POPULATION_DISTRICT": {
+      "NAME": "André da Rocha",
+      "POPULATION": 1216
+    }
+  },
+  "RO": {
+    "MAX_POPULATION_DISTRICT": {
+      "NAME": "Porto Velho",
+      "POPULATION": 428527
+    },
+    "MIN_POPULATION_DISTRICT": {
+      "NAME": "Pimenteiras do Oeste",
+      "POPULATION": 2315
+    }
+  },
+  "RR": {
+    "MAX_POPULATION_DISTRICT": {
+      "NAME": "Boa Vista",
+      "POPULATION": 284313
+    },
+    "MIN_POPULATION_DISTRICT": {
+      "NAME": "São Luiz",
+      "POPULATION": 6750
+    }
+  },
+  "SC": {
+    "MAX_POPULATION_DISTRICT": {
+      "NAME": "Joinville",
+      "POPULATION": 515288
+    },
+    "MIN_POPULATION_DISTRICT": {
+      "NAME": "Santiago do Sul",
+      "POPULATION": 1465
+    }
+  },
+  "SP": {
+    "MAX_POPULATION_DISTRICT": {
+      "NAME": "São Paulo",
+      "POPULATION": 11253503
+    },
+    "MIN_POPULATION_DISTRICT": {
+      "NAME": "Borá",
+      "POPULATION": 805
+    }
+  },
+  "SE": {
+    "MAX_POPULATION_DISTRICT": {
+      "NAME": "Aracaju",
+      "POPULATION": 571149
+    },
+    "MIN_POPULATION_DISTRICT": {
+      "NAME": "Amparo do São Francisco",
+      "POPULATION": 2275
+    }
+  },
+  "TO": {
+    "MAX_POPULATION_DISTRICT": {
+      "NAME": "Palmas",
+      "POPULATION": 228332
+    },
+    "MIN_POPULATION_DISTRICT": {
+      "NAME": "Oliveira de Fátima",
+      "POPULATION": 1037
+    }
+  }
+}

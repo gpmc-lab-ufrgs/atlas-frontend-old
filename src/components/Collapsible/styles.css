@@ -1,0 +1,110 @@
+.Collapsible__contentInner h2 {
+  font-weight: 600;
+  font-size: 14px;
+  margin: 10px 0;
+  display: inline-block;
+}
+
+.Collapsible {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  align-items: stretch;
+}
+
+.Collapsible__contentInner {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px 15px 10px;
+  background: #ffffff;
+  align-items: stretch;
+}
+
+.Collapsible__contentInner .metric {
+  font-size: 14px;
+}
+
+.Collapsible__contentInner .metric div.inline {
+  float: right;
+  margin: 10px 0;
+}
+
+.Collapsible__contentInner .metric div.comparison {
+  line-height: 24px;
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.Collapsible__contentInner .metric div.comparison-bar {
+  line-height: 24px;
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.Collapsible__contentInner .metric div.comparison-bar label {
+  line-height: 24px;
+  align-self: center;
+  margin-right: 8px;
+  white-space: nowrap;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+}
+
+.Collapsible__contentInner .metric .recharts-legend-item-text {
+  color: rgba(87, 73, 73, 1) !important;
+}
+.Collapsible__contentInner
+  .metric
+  .recharts-tooltip-item-list
+  .recharts-tooltip-item
+  > span {
+  color: #666666;
+}
+.Collapsible__contentInner
+  .metric
+  .recharts-tooltip-item-list
+  .recharts-tooltip-item::before {
+  content: "\02587";
+  margin-right: 4px;
+}
+
+.Collapsible__trigger {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 7px 10px;
+
+  background: #f7f7f7;
+  border-radius: 5px;
+
+  margin-bottom: 5px;
+
+  flex: none;
+  order: 0;
+  align-self: stretch;
+
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 16px;
+  color: #000000;
+  cursor: pointer;
+}
+
+.Collapsible__trigger:after {
+  content: url(../../assets/utils/chevron.svg);
+  transition: transform 300ms;
+  margin-left: auto;
+  transform: rotateZ(180deg);
+}
+
+.Collapsible__trigger.is-open:after {
+  transform: rotateZ(0deg);
+}
+
+.Collapsible__trigger.is-disabled {
+  opacity: 0.5;
+}
