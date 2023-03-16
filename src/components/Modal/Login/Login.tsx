@@ -1,12 +1,17 @@
 import React, { useState } from 'react';
+import { ModalContainer } from '@components/Modal';
 
 function Login() {
-
-  const [username, setEmail] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const handleClick = () => {
+    window.location.href = '/dashboard';
+  };
 
   const handleUsernameChange = (event) => {
-    setEmail(event.target.value);
+    setUsername(event.target.value);
   };
 
   const handlePasswordChange = (event) => {
@@ -20,28 +25,39 @@ function Login() {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ username: username, password: password })
     };
-    fetch('http://127.0.0.1:8000/authentication/login/login/', requestOptions)
-      .then(response => response.json())
+    fetch('http://127.0.0.1:8001/authentication/login/login/', requestOptions)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Login failed. Please check your username and password and try again.');
+        }
+        return response.json();
+      })
       .then(data => {
         localStorage.setItem('token', data.token);
-        window.location.href = '/dashboard'; // redirect to dashboard page after successful login
+        window.location.href = '/dashboard';
       })
-      .catch(error => console.error(error));
+      .catch(error => {
+        console.error(error);
+        setErrorMessage(error.message);
+      });
   };
 
   return (
-  <div style={{width: '100%', height: '100vh', padding: '200px'}}>
-  <h2>Login</h2>
-    <form onSubmit={handleSubmit}>
-      <label>
-        <input type="username" placeholder="Username" value={username} onChange={handleUsernameChange} />
-      </label>
-      <label>
-        <input type="password" placeholder="Password" value={password} onChange={handlePasswordChange} />
-      </label><br /><br />
-      <button type="submit">Log In</button>
-    </form>
-    </div>
+    <ModalContainer title="Login">
+      <form onSubmit={handleSubmit}>
+
+      {errorMessage && (
+        <div style={{ color: 'red' }}>{errorMessage}</div>
+      )}
+        <label>
+          <input type="username" placeholder="Username" value={username} onChange={handleUsernameChange} />
+        </label>
+        <label>
+          <input type="password" placeholder="Password" value={password} onChange={handlePasswordChange} />
+        </label><br /><br />
+        <button type="submit">Log In</button>
+      </form>
+    </ModalContainer>
   );
 }
 

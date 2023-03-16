@@ -8,14 +8,14 @@ export const sections = [
        url: "/methods",
        title: "Methods",
      },
-     {
-       url: "/app",
-       title: "App",
-     },
      //{
-       //url: "/upload",
-       //title: "Upload",
+     //  url: "/app",
+     //  title: "App",
      //},
+     {
+       url: "/loaddata",
+       title: "Carregar dados",
+     },
     // {
     //   url: "/research",
     //   title: "Research",

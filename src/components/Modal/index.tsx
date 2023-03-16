@@ -5,5 +5,5 @@ export { default as Methods } from './Methods';
 export { default as App } from './App';
 export { default as ModalContainer } from './ModalContainer';
 
-export { default as Upload } from './Upload';
+export { default as LoadData } from './LoadData';
 export { default as Login } from './Login';
