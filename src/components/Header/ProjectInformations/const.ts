@@ -12,10 +12,10 @@ export const sections = [
      //  url: "/app",
      //  title: "App",
      //},
-     {
-       url: "/loaddata",
-       title: "Carregar dados",
-     },
+     //{
+     //  url: "/loaddata",
+     //  title: "Carregar dados",
+     //},
     // {
     //   url: "/research",
     //   title: "Research",
