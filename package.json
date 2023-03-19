@@ -5,7 +5,7 @@
   "type": "commonjs",
   "scripts": {
     "start": "vite",
-    "build": "tsc && vite build",
+    "build": "node --max-old-space-size=8192 ./node_modules/.bin/vite build",
     "preview": "vite preview",
     "lint": "eslint '*/**/*.{js,ts,tsx}' --color",
     "lint:fix": "eslint '*/**/*.{js,ts,tsx}' --fix",
@@ -13,7 +13,8 @@
     "test": "jest --passWithNoTests --no-cache",
     "test:ci": "yarn test --coverage --noStackTrace --silent --ci --runInBand",
     "watch": "yarn test --watch",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "deploy": "aws s3 sync dist/ s3://atlas-oportunidades --acl public-read"
   },
   "eslintConfig": {
     "extends": [

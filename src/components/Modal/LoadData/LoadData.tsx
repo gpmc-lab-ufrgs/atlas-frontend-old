@@ -32,7 +32,7 @@ function LoadData(props) {
   formData.append('table', table);
   formData.append('username', username);
   formData.append('password', password);
-  fetch('http://127.0.0.1:8001/upload/load_data/upload/', {
+  fetch('http://0.0.0.0:8000/upload/load_data/upload/', {
     method: 'POST',
     body: formData,
   })
@@ -44,7 +44,7 @@ function LoadData(props) {
     })
     .then(data => {
       console.log(data);
-      alert('File sent to upload. Wait an e-mail with status of upload');
+      alert('File sent to upload. An e-mail with status of upload was sent for you.');
       setFile(null);
       setTable('');
       setUsername('');
