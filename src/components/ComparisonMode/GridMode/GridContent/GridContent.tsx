@@ -29,8 +29,8 @@ const GridContent: React.FC<Props> = ({ section, comparison }) => {
                 <Styles.GridItem>
                   {comparison.map((district, idx) => (
                     <Styles.ComparisonLabel key={idx}>
-                      <label title={district?.properties.NM_MUN}>{district?.properties.NM_MUN}</label>
-                      <MetricDetails district={district} metric={content} />
+                      <label title={district?.properties.NM_MUN}>{district?.properties.NM_MUN}</label> {/* title */}
+                      <MetricDetails district={district} metric={content} /> {/* metric */}
                     </Styles.ComparisonLabel>
                   ))}
                 </Styles.GridItem>
