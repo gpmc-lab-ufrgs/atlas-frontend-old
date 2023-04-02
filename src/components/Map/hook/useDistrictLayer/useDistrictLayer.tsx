@@ -8,7 +8,7 @@ import { useSelectedDistrict } from '@context/district/selectedContext';
 import { useSelectedState } from '@context/state/selectedContext';
 import { useSidebar } from '@context/sidebarContext';
 
-import geojsonGO from '@data/states/RS_Municipios_2020.json';
+//import geojsonGO from '@data/states/RS_Municipios_2020.json';
 import { findState } from '@components/Map/utils/actions';
 
 import { highlightDistrict, clickDistrict, cleanDistrictActions, fitDistrictBounds, addPopup } from './districtActions';
@@ -36,7 +36,7 @@ const useDistrictLayer = () => {
       reference.addSource('district', {
         type: 'geojson',
         //@ts-ignore
-        data: geojsonGO,
+        data: 'http://127.0.0.1:8000/district/geojson',
         //@ts-ignore
         promoteId: 'CD_MUN',
       });
