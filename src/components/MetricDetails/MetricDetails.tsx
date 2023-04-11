@@ -1,12 +1,21 @@
-import React from 'react';
-
+import React, { useState, useEffect } from 'react';
 import Bar from './Bar';
-import geosesData from '@data/Data.json';
-
 
 const MetricDetails = ({ district, metric }: any) => {
+  const [geosesData, setGeosesData] = useState(null);
+
+  useEffect(() => {
+    fetch('http://127.0.0.1:8000/data/data_city_dicio/json/')
+      .then(response => response.json())
+      .then(data => setGeosesData(data))
+      .catch(error => console.log(error));
+  }, []);
+
   const renderSingleMetric = () => {
-    // @ts-ignore
+    if (!geosesData) {
+      return <div>Loading data...</div>;
+    }
+
     const rawValue = geosesData[district?.properties.CD_MUN][metric.label];
     const value = metric.format(rawValue);
 

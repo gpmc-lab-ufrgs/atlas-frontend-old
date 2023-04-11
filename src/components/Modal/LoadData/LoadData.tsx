@@ -8,6 +8,8 @@ function LoadData(props) {
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const [sheetType, setSheetType] = useState('');
+  const [uploadMessageVisible, setUploadMessageVisible] = useState(false);
+
 
   const handleUsernameChange = (event) => {
     setUsername(event.target.value);
@@ -38,6 +40,7 @@ function LoadData(props) {
     formData.append('username', username);
     formData.append('password', password);
     formData.append('sheetType', sheetType);
+    setUploadMessageVisible(true); // set flag to show message
     fetch('http://0.0.0.0:8000/upload/load_data/upload/', {
       method: 'POST',
       body: formData,
@@ -103,6 +106,9 @@ function LoadData(props) {
         <br />
         <button type="submit" disabled={!table || !file}>Upload</button>
       </form>
+      {uploadMessageVisible && (
+        <div>If everything went well with your login, you will receive an email about the status of your upload.</div>
+      )}
     </ModalContainer>
   );
 }
