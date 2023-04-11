@@ -1,23 +1,45 @@
-import React from 'react';
-
+import React, { useState, useEffect } from 'react';
 import { Box } from '@mui/material';
-
-import districtProps from '@config/district';
-
 import { useComparison } from '@context/comparisonContext';
-
 import ComparisonSection from './ComparisonSection';
 import DataSection from './DataSection';
 
 const RegionDetails = () => {
   const { comparison } = useComparison();
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch('http://127.0.0.1:8000/dictionary/dictionary/json/');
+      const json = await response.json();
+      setData(json);
+      setLoading(false);
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <Box>
       {comparison.length > 0 && <ComparisonSection />}
-      {districtProps.map((section, id) => (
-        <DataSection key={id} title={section.title} content={section.content} />
-      ))}
+      {loading ? (
+        <p>Loading...</p>
+      ) : (
+        data.map((section, id) => (
+          <DataSection
+            key={id}
+            title={section.title}
+            content={section.content.map((item, idx) => ({
+              label: item.label,
+              title: item.title,
+              description: item.description,
+              format: item.format,
+              type: item.type,
+            }))}
+          />
+        ))
+      )}
     </Box>
   );
 };

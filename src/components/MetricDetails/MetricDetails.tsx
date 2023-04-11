@@ -12,24 +12,24 @@ const MetricDetails = ({ district, metric }: any) => {
   }, []);
 
   const renderSingleMetric = () => {
-    if (!geosesData) {
-      return <div>Loading data...</div>;
-    }
+  if (!geosesData) {
+    return <div>Loading data...</div>;
+  }
 
-    const rawValue = geosesData[district?.properties.CD_MUN][metric.label];
-    const value = metric.format(rawValue);
+  const rawValue = geosesData[district?.properties.CD_MUN][metric.label];
+  const value = typeof metric.format === 'function' ? metric.format(rawValue) : rawValue; //UPDATE
 
-    switch (metric.type) {
-      case 'bar':
-        return <Bar rawValue={rawValue} metric={metric} id={district.properties.CD_MUN} />;
-      default:
-        return (
-          <div key={district.properties.CD_MUN}>
-            <data value={rawValue}>{value}</data>
-          </div>
-        );
-    }
-  };
+  switch (metric.type) {
+    case 'bar':
+      return <Bar rawValue={rawValue} metric={metric} id={district.properties.CD_MUN} />;
+    default:
+      return (
+        <div key={district.properties.CD_MUN}>
+          <data value={rawValue}>{value}</data>
+        </div>
+      );
+  }
+};
 
   return <div>{renderSingleMetric()}</div>;
 };

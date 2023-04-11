@@ -65,43 +65,43 @@ function LoadData(props) {
 
   return (
     <ModalContainer title="Load data">
-      <h2>Carregue sua planilha para upload</h2>
+      <h2>Upload spreadsheet</h2>
       <form onSubmit={handleSubmit}>
         <label>
-          Selecione o tipo de planilha:
+          Select the spreadsheet type:
           <select value={sheetType} onChange={handleSheetTypeChange}>
             <option value="">---</option>
-            <option value="dictionary">Planilha de Dicionário</option>
-            <option value="data">Planilha de Dados</option>
+            <option value="dictionary">Dictionary spreadsheet</option>
+            <option value="data">Data spreadsheet</option>
           </select>
         </label><br />
         <br />
         <label>
-          Selecione uma tabela:
+          Select a table:
           <select value={table} onChange={handleTableChange}>
              <option value="">---</option>
-=            <option value="state">Estado</option>
-            <option value="city">Cidade</option>
-            <option value="sensus=">Censo</option>
+=            <option value="state">State</option>
+            <option value="city">City</option>
+            <option value="sensus=">Census</option>
           </select>
         </label><br />
         <br />
         <label>
-          Selecione um arquivo:
+          Select a file:
           <input type="file" accept=".xlsx" onChange={handleFileChange} />
         </label>
         <br /><br />
-        <h2>Autenticação</h2>
+        <h2>Autentication</h2>
 
         {errorMessage && (
           <div style={{ color: 'red' }}>{errorMessage}</div>
         )}
 
         <label>
-          <input type="username" placeholder="Nome de usuário" value={username} onChange={handleUsernameChange} />
+          <input type="username" placeholder="username" value={username} onChange={handleUsernameChange} />
         </label>
         <label>
-          <input type="password" placeholder="Senha" value={password} onChange={handlePasswordChange} />
+          <input type="password" placeholder="password" value={password} onChange={handlePasswordChange} />
         </label><br />
         <br />
         <button type="submit" disabled={!table || !file}>Upload</button>
