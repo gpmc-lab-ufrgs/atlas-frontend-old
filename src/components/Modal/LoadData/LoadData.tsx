@@ -41,13 +41,13 @@ function LoadData(props) {
     formData.append('password', password);
     formData.append('sheetType', sheetType);
     setUploadMessageVisible(true); // set flag to show message
-    fetch('http://0.0.0.0:8000/upload/load_data/upload/', {
+    fetch('http://0.0.0.0:8001/upload/load_data/upload/', {
       method: 'POST',
       body: formData,
     })
       .then(response => {
         if (!response.ok) {
-          throw new Error('Failed to log in.');
+          throw new Error('Failed.');
         }
         return response.json();
       })
@@ -80,9 +80,9 @@ function LoadData(props) {
           Select a table:
           <select value={table} onChange={handleTableChange}>
              <option value="">---</option>
-=            <option value="state">State</option>
+            <option value="state">State</option>
             <option value="city">City</option>
-            <option value="sensus=">Census</option>
+            <option value="sensus">Census</option>
           </select>
         </label><br />
         <br />
