@@ -5,7 +5,7 @@ const MetricDetails = ({ district, metric }: any) => {
   const [geosesData, setGeosesData] = useState(null);
 
   useEffect(() => {
-    fetch('http://127.0.0.1:8001/data/data_city_dicio/json/')
+    fetch('http://44.201.229.157:8001/data/data_city_dicio/json/')
       .then(response => response.json())
       .then(data => setGeosesData(data))
       .catch(error => console.log(error));
