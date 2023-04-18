@@ -36,7 +36,7 @@ const useDistrictLayer = () => {
       reference.addSource('district', {
         type: 'geojson',
         //@ts-ignore
-        data: 'http://44.201.229.157:8001/district/geojson',
+        data: 'http://3.95.16.204:8001/district/geojson',
         //@ts-ignore
         promoteId: 'CD_MUN',
       });

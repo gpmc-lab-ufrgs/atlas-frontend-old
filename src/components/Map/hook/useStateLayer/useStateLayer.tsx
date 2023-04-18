@@ -34,7 +34,7 @@ const useStateLayer = () => {
     reference.on('load', () => {
       reference.addSource('state', {
       type: 'geojson',
-      data: 'http://44.201.229.157:8001/state/geojson',
+      data: 'http://3.95.16.204:8001/state/geojson',
       promoteId: 'CD_UF',
     });
 
