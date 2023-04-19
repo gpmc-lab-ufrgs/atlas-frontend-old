@@ -8,17 +8,9 @@ import { useSelectedDistrict } from '@context/district/selectedContext';
 import { useSelectedState } from '@context/state/selectedContext';
 import { useSidebar } from '@context/sidebarContext';
 
-import geojsonBA from '@data/states/BA_Municipios_2020.json';
+import geojsonSC from '@data/states/SC_Municipios_2020.json';
 import geojsonRS from '@data/states/RS_Municipios_2020.json';
-import geojsonAC from '@data/states/AC_Municipios_2020.json';
-import geojsonAL from '@data/states/AL_Municipios_2020.json';
-import geojsonAM from '@data/states/AM_Municipios_2020.json';
-import geojsonAP from '@data/states/AP_Municipios_2020.json';
-import geojsonCE from '@data/states/CE_Municipios_2020.json';
-import geojsonDF from '@data/states/DF_Municipios_2020.json';
-import geojsonES from '@data/states/ES_Municipios_2020.json';
-import geojsonGO from '@data/states/GO_Municipios_2020.json';
-import geojsonMA from '@data/states/MA_Municipios_2020.json';
+import geojsonPR from '@data/states/AC_Municipios_2020.json';
 
 
 import { findState } from '@components/Map/utils/actions';
@@ -42,7 +34,7 @@ const useDistrictLayer = () => {
 
   const allDistricts = {
     type: 'FeatureCollection',
-    features: [...geojsonBA.features, ...geojsonRS.features, ...geojsonAC.features, ...geojsonAL.features, ...geojsonAM.features, ...geojsonAM.features, ...geojsonAC.features, ...geojsonCE.features, ...geojsonDF.features, ...geojsonES.features, ...geojsonGO.features, ...geojsonMA.features],
+    features: [...geojsonSC.features, ...geojsonRS.features, ...geojsonPR.features],
   };
 
   function initLayers(reference: mapboxgl.Map) {
