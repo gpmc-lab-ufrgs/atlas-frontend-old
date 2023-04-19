@@ -1,20 +1,13 @@
-import mapboxgl from 'mapbox-gl';
 import * as turf from '@turf/turf';
+import mapboxgl from 'mapbox-gl';
+
 import { District } from '@customTypes/district';
 import { MapActionType } from '@customTypes/map';
+
 import { hoveredPopup, clickedPopup } from '../../utils/const';
+
+import geosesData from '@data/Data.json';
 import { formatPopulationNumber } from '@utils/formatValue';
-
-import { DEFAULT_VALUE } from '@hook/useFeature';
-
-const URL_DATA = 'http://3.95.16.204:8001/data/data_city_dicio/json/';
-const geosesData = {};
-
-fetch(URL_DATA)
-  .then((response) => response.json())
-  .then((data) => {
-    Object.assign(geosesData, data);
-  });
 
 let clickedId: number | undefined;
 let hoveredId: number | undefined;
