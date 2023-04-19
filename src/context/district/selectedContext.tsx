@@ -1,9 +1,5 @@
-import React, { createContext, useContext, useState } from 'react';
-
+import React, { createContext, useContext, useState, useEffect } from 'react';
 import { District } from '@customTypes/district';
-
-import geojsonRS from '@data/states/RS_Municipios_2020.json';
-
 import { DEFAULT_VALUE } from '@hook/useFeature';
 
 export interface DistrictActions {
@@ -15,11 +11,21 @@ export interface DistrictActions {
 export const selectedDistrictsContext = createContext<DistrictActions>(DEFAULT_VALUE);
 
 export function SelectedDistrictProvider({ children }: any) {
-  //@ts-ignore
-  const allDistricts: Array<District> = geojsonRS['features'];
+  const [all, setAll] = useState<Array<District>>([]);
+  const [selected, setSelected] = useState<District | null>(null);
 
-  const [all] = useState(allDistricts);
-  const [selected, setSelected] = useState(null);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('http://3.95.16.204:8001/district/geojson');
+        const data = await response.json();
+        setAll(data.features);
+      } catch (error) {
+        console.error('Error fetching district data:', error);
+      }
+    };
+    fetchData();
+  }, []);
 
   return (
     <selectedDistrictsContext.Provider
