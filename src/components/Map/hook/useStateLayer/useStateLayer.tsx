@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 
 import mapboxgl from 'mapbox-gl';
 
-//import geojsonURL from '@data/BR_UF_2020.json';
+import geojsonURL from '@data/BR_UF_2020.json';
 
 import { useSelectedState } from '@context/state/selectedContext';
 import { useHighlightedState } from '@context/state/highlightedContext';
@@ -33,10 +33,12 @@ const useStateLayer = () => {
   function initLayers(reference: mapboxgl.Map) {
     reference.on('load', () => {
       reference.addSource('state', {
-      type: 'geojson',
-      data: 'http://3.95.16.204:8001/state/geojson',
-      promoteId: 'CD_UF',
-    });
+        type: 'geojson',
+        //@ts-ignore
+        data: geojsonURL,
+        //@ts-ignore
+        promoteId: 'CD_UF',
+      });
 
       reference.addLayer({
         id: 'fill-state',
