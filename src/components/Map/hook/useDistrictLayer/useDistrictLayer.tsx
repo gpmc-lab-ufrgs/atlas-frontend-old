@@ -8,9 +8,7 @@ import { useSelectedDistrict } from '@context/district/selectedContext';
 import { useSelectedState } from '@context/state/selectedContext';
 import { useSidebar } from '@context/sidebarContext';
 
-import geojsonSC from '@data/states/SC_Municipios_2020.json';
 import geojsonRS from '@data/states/RS_Municipios_2020.json';
-import geojsonPR from '@data/states/PR_Municipios_2020.json';
 
 
 import { findState } from '@components/Map/utils/actions';
@@ -34,7 +32,7 @@ const useDistrictLayer = () => {
 
   const allDistricts = {
     type: 'FeatureCollection',
-    features: [...geojsonSC.features, ...geojsonRS.features, ...geojsonPR.features],
+    features: [...geojsonRS.features],
   };
 
   function initLayers(reference: mapboxgl.Map) {
