@@ -1,9 +1,5 @@
-import React, { createContext, useContext, useState } from 'react';
-
+import React, { createContext, useContext, useState, useEffect } from 'react';
 import { State } from '@customTypes/state';
-
-import geojsonBR from '@data/BR_UF_2020.json';
-
 import { DEFAULT_VALUE } from '@hook/useFeature';
 
 export interface StateActions {
@@ -15,11 +11,21 @@ export interface StateActions {
 export const selectedStatesContext = createContext<StateActions>(DEFAULT_VALUE);
 
 export function SelectedStatesProvider({ children }: any) {
-  //@ts-ignore
-  const allStates: Array<State> = geojsonBR['features'];
+  const [all, setAll] = useState<Array<State>>([]);
+  const [selected, setSelected] = useState<State | null>(null);
 
-  const [all] = useState(allStates);
-  const [selected, setSelected] = useState(null);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('http://3.95.16.204:8001/state/geojson');
+        const data = await response.json();
+        setAll(data.features);
+      } catch (error) {
+        console.error('Error fetching state data:', error);
+      }
+    };
+    fetchData();
+  }, []);
 
   return (
     <selectedStatesContext.Provider
