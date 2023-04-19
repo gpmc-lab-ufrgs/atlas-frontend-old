@@ -10,7 +10,7 @@ import { useSidebar } from '@context/sidebarContext';
 
 import geojsonSC from '@data/states/SC_Municipios_2020.json';
 import geojsonRS from '@data/states/RS_Municipios_2020.json';
-import geojsonPR from '@data/states/AC_Municipios_2020.json';
+import geojsonPR from '@data/states/PR_Municipios_2020.json';
 
 
 import { findState } from '@components/Map/utils/actions';
