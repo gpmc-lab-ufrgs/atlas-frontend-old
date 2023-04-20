@@ -8,8 +8,32 @@ import { useSelectedDistrict } from '@context/district/selectedContext';
 import { useSelectedState } from '@context/state/selectedContext';
 import { useSidebar } from '@context/sidebarContext';
 
+import geojsonBA from '@data/states/BA_Municipios_2020.json';
 import geojsonRS from '@data/states/RS_Municipios_2020.json';
-
+import geojsonAC from '@data/states/AC_Municipios_2020.json';
+import geojsonAL from '@data/states/AL_Municipios_2020.json';
+import geojsonAM from '@data/states/AM_Municipios_2020.json';
+import geojsonAP from '@data/states/AP_Municipios_2020.json';
+import geojsonCE from '@data/states/CE_Municipios_2020.json';
+import geojsonDF from '@data/states/DF_Municipios_2020.json';
+import geojsonES from '@data/states/ES_Municipios_2020.json';
+import geojsonGO from '@data/states/GO_Municipios_2020.json';
+import geojsonMA from '@data/states/MA_Municipios_2020.json';
+import geojsonMG from '@data/states/MG_Municipios_2020.json';
+import geojsonMS from '@data/states/MS_Municipios_2020.json';
+import geojsonMT from '@data/states/MT_Municipios_2020.json';
+import geojsonPA from '@data/states/PA_Municipios_2020.json';
+import geojsonPB from '@data/states/PB_Municipios_2020.json';
+import geojsonPE from '@data/states/PE_Municipios_2020.json';
+import geojsonPI from '@data/states/PI_Municipios_2020.json';
+import geojsonPR from '@data/states/PR_Municipios_2020.json';
+import geojsonRJ from '@data/states/RJ_Municipios_2020.json';
+import geojsonRN from '@data/states/RN_Municipios_2020.json';
+import geojsonRR from '@data/states/RR_Municipios_2020.json';
+import geojsonSC from '@data/states/SC_Municipios_2020.json';
+import geojsonSE from '@data/states/SE_Municipios_2020.json';
+import geojsonSP from '@data/states/SP_Municipios_2020.json';
+import geojsonTO from '@data/states/TO_Municipios_2020.json';
 
 import { findState } from '@components/Map/utils/actions';
 
@@ -141,6 +165,8 @@ const useDistrictLayer = () => {
         setLatLng(undefined);
 
         const state = findState(allState, selectedDistrict.properties.SIGLA_UF);
+
+
         if (!selectedState || selectedState !== state) {
           setSelectedState(state);
         }
