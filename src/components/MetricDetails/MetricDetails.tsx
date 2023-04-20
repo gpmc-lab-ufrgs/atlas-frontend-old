@@ -6,7 +6,7 @@ const MetricDetails = ({ district, metric }: any) => {
 
   useEffect(() => {
     if (district && district.properties && district.properties.SIGLA_UF) {
-      fetch(`http://127.0.0.1:8001/data/data_city_dicio/json/?state=${district.properties.SIGLA_UF}`)
+      fetch(`http://http://54.163.63.53:8001/data/data_city_dicio/json/?cd_mun=${district.properties.CD_MUN}`)
         .then(response => response.json())
         .then(data => setGeosesData(data))
         .catch(error => console.log(error));
