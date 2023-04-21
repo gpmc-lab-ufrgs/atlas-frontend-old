@@ -41,7 +41,7 @@ function LoadData(props) {
     formData.append('password', password);
     formData.append('sheetType', sheetType);
     setUploadMessageVisible(true); // set flag to show message
-    fetch('http://localhost:8001/upload/load_data/upload/', { //http://0.0.0.0:8001/ http://54.163.63.53:8001/upload/load_data/upload/
+    fetch('http://172.31.86.104:8001/upload/load_data/upload/', { //http://0.0.0.0:8001/ http://54.163.63.53:8001/upload/load_data/upload/
       method: 'POST',
       body: formData,
     })
