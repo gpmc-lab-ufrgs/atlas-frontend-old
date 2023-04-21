@@ -24,7 +24,7 @@ const TableContent: React.FC<Props> = ({ comparison }) => {
 
   useEffect(() => {
     async function fetchData() {
-      const response = await fetch('http://54.209.17.39:8001/dictionary/dictionary/json/');
+      const response = await fetch('http://localhost:8001/dictionary/dictionary/json/');
       const data = await response.json();
       setDictionaryData(data);
     }

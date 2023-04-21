@@ -11,7 +11,7 @@ const RegionDetails = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch('http://54.209.17.39:8001/dictionary/dictionary/json/');
+      const response = await fetch('http://localhost:8001/dictionary/dictionary/json/');
       const json = await response.json();
       setData(json);
       setLoading(false);
