@@ -24,7 +24,7 @@ const GridContent: React.FC<Props> = ({ comparison }) => {
 
   useEffect(() => {
     async function fetchData() {
-      const response = await fetch('http://127.0.0.1:8001/dictionary/dictionary/json/');
+      const response = await fetch('http://54.211.3.236:8001/dictionary/dictionary/json/');
       const data = await response.json();
       setDictionaryData(data);
     }
