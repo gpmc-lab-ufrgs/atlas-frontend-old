@@ -9,7 +9,7 @@ import { useSelectedState } from '@context/state/selectedContext';
 import { useSidebar } from '@context/sidebarContext';
 
 import geojsonBA from '@data/states/BA_Municipios_2020.json';
-import geojsonRS from '@data/states/RS_Municipios_2020.json';
+import geojsonRS from '@data/states/RS_Municipios_2020_simplified.json';
 import geojsonAC from '@data/states/AC_Municipios_2020.json';
 import geojsonAL from '@data/states/AL_Municipios_2020.json';
 import geojsonAM from '@data/states/AM_Municipios_2020.json';
@@ -26,11 +26,11 @@ import geojsonPA from '@data/states/PA_Municipios_2020.json';
 import geojsonPB from '@data/states/PB_Municipios_2020.json';
 import geojsonPE from '@data/states/PE_Municipios_2020.json';
 import geojsonPI from '@data/states/PI_Municipios_2020.json';
-import geojsonPR from '@data/states/PR_Municipios_2020.json';
+import geojsonPR from '@data/states/PR_Municipios_2020_simplified.json';
 import geojsonRJ from '@data/states/RJ_Municipios_2020.json';
 import geojsonRN from '@data/states/RN_Municipios_2020.json';
 import geojsonRR from '@data/states/RR_Municipios_2020.json';
-import geojsonSC from '@data/states/SC_Municipios_2020.json';
+import geojsonSC from '@data/states/SC_Municipios_2020_simplified.json';
 import geojsonSE from '@data/states/SE_Municipios_2020.json';
 import geojsonSP from '@data/states/SP_Municipios_2020.json';
 import geojsonTO from '@data/states/TO_Municipios_2020.json';
@@ -56,7 +56,7 @@ const useDistrictLayer = () => {
 
   const allDistricts = {
     type: 'FeatureCollection',
-    features: [...geojsonRS.features],
+    features: [...geojsonRS.features, ...geojsonSC.features, ...geojsonPR.features],
   };
 
   function initLayers(reference: mapboxgl.Map) {

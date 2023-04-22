@@ -11,7 +11,7 @@ import './styles.css';
 const Map = () => {
   const mapContainer = useRef<any>();
   const { districtReference, setDistrictReference } = useDistrictLayer();
-  const { stateReference, setStateReference } = useStateLayer();
+  const { stateReference, setStateReference } = useStateLayer(); //passar como parâmetro para a função qual estado quer ver
   const { resetMapValues, resetDistrictValues } = useMap();
   const [map, setMap] = useState<mapboxgl.Map>();
 
@@ -25,7 +25,7 @@ const Map = () => {
         container: mapContainer.current,
         style: 'mapbox://styles/mapbox/satellite-v9',
         center: center,
-        zoom: 1.0,
+        zoom: 3.4,
       });
 
       mapReference.on('click', (e) => {

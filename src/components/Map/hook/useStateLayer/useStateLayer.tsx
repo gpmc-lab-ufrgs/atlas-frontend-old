@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 
 import mapboxgl from 'mapbox-gl';
 
-import geojsonURL from '@data/BR_UF_2020.json';
+import geojsonURL from '@data/BR_UF_2020_simplified.json';
 
 import { useSelectedState } from '@context/state/selectedContext';
 import { useHighlightedState } from '@context/state/highlightedContext';
@@ -31,49 +31,51 @@ const useStateLayer = () => {
   const { selected: selectedDistrict } = useSelectedDistrict();
 
   function initLayers(reference: mapboxgl.Map) {
-    reference.on('load', () => {
-      reference.addSource('state', {
-        type: 'geojson',
-        //@ts-ignore
-        data: geojsonURL,
-        //@ts-ignore
-        promoteId: 'CD_UF',
-      });
+  reference.on('load', () => {
+    reference.addSource('state', {
+      type: 'geojson',
+      //@ts-ignore
+      data: geojsonURL,
+      //@ts-ignore
+      promoteId: 'CD_UF',
+      //@ts-ignore
 
-      reference.addLayer({
-        id: 'fill-state',
-        type: 'fill',
-        source: 'state',
-        layout: {
-          visibility: 'visible',
-        },
-        paint: {
-          'fill-color': {
-            property: 'POPULATION',
-            stops: stateColors,
-          },
-          //@ts-ignore
-          'fill-opacity': fillOpacity,
-        },
-      });
-
-      reference.addLayer({
-        id: 'state-borders',
-        type: 'line',
-        source: 'state',
-        layout: {
-          visibility: 'visible',
-        },
-        paint: {
-          'line-color': '#ffffff',
-          //@ts-ignore
-          'line-width': lineWidth,
-          //@ts-ignore
-          'line-opacity': lineOpacity,
-        },
-      });
     });
-  }
+
+    reference.addLayer({
+      id: 'fill-state',
+      type: 'fill',
+      source: 'state',
+      layout: {
+        visibility: 'visible',
+      },
+      paint: {
+        'fill-color': {
+          property: 'POPULATION',
+          stops: stateColors,
+        },
+        //@ts-ignore
+        'fill-opacity': fillOpacity,
+      },
+    });
+
+    reference.addLayer({
+      id: 'state-borders',
+      type: 'line',
+      source: 'state',
+      layout: {
+        visibility: 'visible',
+      },
+      paint: {
+        'line-color': '#ffffff',
+        //@ts-ignore
+        'line-width': lineWidth,
+        //@ts-ignore
+        'line-opacity': lineOpacity,
+      },
+    });
+  });
+}
 
   function initActions(reference: mapboxgl.Map) {
     reference.on('click', 'fill-state', (e: any) => {
