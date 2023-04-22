@@ -27,7 +27,7 @@ const Map = () => {
 
       const mapReference = new mapboxgl.Map({
         container: ref.current,
-        style: 'mapbox://styles/mapbox/dark-v10',
+        style: 'mapbox://styles/mapbox/satellite-v9',
         center: center,
         zoom: 3.4,
       });
