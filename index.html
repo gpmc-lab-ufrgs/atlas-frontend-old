@@ -27,11 +27,74 @@
         margin: 0;
         padding: 0;
       }
+
+      #loader {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+      }
+
+      #progress-bar-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        background-color: #eee;
+      }
+
+      #progress-bar {
+        height: 100%;
+        background-color: #4caf50;
+        width: 0%;
+      }
     </style>
     <title>Atlas of Opportunity - Brazil</title>
   </head>
   <body>
+    <div id="progress-bar-container">
+      <div id="progress-bar"></div>
+    </div>
+    <div id="loader">
+      <h1>Loading...</h1>
+    </div>
     <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+    <script type="module">
+      const loader = document.querySelector("#loader");
+      const root = document.querySelector("#root");
+      const progressBar = document.querySelector("#progress-bar");
+      const progressBarContainer = document.querySelector(
+        "#progress-bar-container"
+      );
+
+      loader.style.display = "flex";
+      root.style.display = "none";
+
+      function updateProgressBar(progress) {
+        progressBar.style.width = `${progress}%`;
+      }
+
+      function hideProgressBar() {
+        progressBarContainer.style.display = "none";
+      }
+
+      import("/src/main.tsx")
+        .then(() => {
+          loader.style.display = "none";
+          root.style.display = "block";
+          hideProgressBar();
+        })
+        .catch((error) => console.error(error));
+
+      // simulate progress
+      let progress = 0;
+      setInterval(() => {
+        if (progress >= 100) return;
+        progress += Math.random() * 10;
+        if (progress > 100) progress = 100;
+        updateProgressBar(progress);
+      }, 500);
+    </script>
   </body>
 </html>

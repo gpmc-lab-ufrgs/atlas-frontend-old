@@ -25,7 +25,7 @@ const Map = () => {
         container: mapContainer.current,
         style: 'mapbox://styles/mapbox/satellite-v9',
         center: center,
-        zoom: 3.4,
+        zoom: 1.0,
       });
 
       mapReference.on('click', (e) => {
