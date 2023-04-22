@@ -32,7 +32,7 @@ import geojsonRN from '@data/states/RN_Municipios_2020.json';
 import geojsonRR from '@data/states/RR_Municipios_2020.json';
 import geojsonSC from '@data/states/SC_Municipios_2020_simplified.json';
 import geojsonSE from '@data/states/SE_Municipios_2020.json';
-import geojsonSP from '@data/states/SP_Municipios_2020.json';
+import geojsonSP from '@data/states/SP_Municipios_2020_simplified.json';
 import geojsonTO from '@data/states/TO_Municipios_2020.json';
 
 import { findState } from '@components/Map/utils/actions';
@@ -56,7 +56,7 @@ const useDistrictLayer = () => {
 
   const allDistricts = {
     type: 'FeatureCollection',
-    features: [...geojsonRS.features, ...geojsonSC.features, ...geojsonPR.features],
+    features: [...geojsonRS.features, ...geojsonSC.features, ...geojsonPR.features, ...geojsonSP.features],
   };
 
   function initLayers(reference: mapboxgl.Map) {
