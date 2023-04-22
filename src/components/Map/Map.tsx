@@ -1,8 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
-import mapboxgl from 'mapbox-gl';
 
 import useMap from '@hook/useMap';
-
 import useDistrictLayer from './hook/useDistrictLayer';
 import useStateLayer from './hook/useStateLayer';
 
@@ -11,22 +9,20 @@ import { accessToken } from './utils/const';
 import './styles.css';
 
 const Map = () => {
-  mapboxgl.accessToken = accessToken;
-
   const mapContainer = useRef<any>();
-
   const { districtReference, setDistrictReference } = useDistrictLayer();
   const { stateReference, setStateReference } = useStateLayer();
-
   const { resetMapValues, resetDistrictValues } = useMap();
   const [map, setMap] = useState<mapboxgl.Map>();
 
   useEffect(() => {
-    const initializeMap = (ref: any) => {
-      const center: mapboxgl.LngLatLike = [-58, -15];
+    const loadMapboxGl = async () => {
+      const mapboxgl = await import('mapbox-gl');
+      mapboxgl.accessToken = accessToken;
 
+      const center: mapboxgl.LngLatLike = [-58, -15];
       const mapReference = new mapboxgl.Map({
-        container: ref.current,
+        container: mapContainer.current,
         style: 'mapbox://styles/mapbox/satellite-v9',
         center: center,
         zoom: 3.4,
@@ -56,7 +52,7 @@ const Map = () => {
     };
 
     if (!map) {
-      initializeMap(mapContainer);
+      loadMapboxGl();
     } else {
       if (!districtReference) {
         setDistrictReference(map);
