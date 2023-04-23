@@ -20,7 +20,7 @@ import geojsonES from '@data/states/ES_Municipios_2020_simplified.json';
 import geojsonGO from '@data/states/GO_Municipios_2020.json';
 import geojsonMA from '@data/states/MA_Municipios_2020_simplified.json';
 import geojsonMG from '@data/states/MG_Municipios_2020_simplified.json';
-import geojsonMS from '@data/states/MS_Municipios_2020.json';
+import geojsonMS from '@data/states/MS_Municipios_2020_simplified.json';
 import geojsonMT from '@data/states/MT_Municipios_2020_simplified.json';
 import geojsonPA from '@data/states/PA_Municipios_2020_simplified.json';
 import geojsonPB from '@data/states/PB_Municipios_2020.json';
@@ -56,7 +56,7 @@ const useDistrictLayer = () => {
 
   const allDistricts = {
     type: 'FeatureCollection',
-    features: [...geojsonRS.features, ...geojsonSC.features, ...geojsonPR.features, ...geojsonSP.features, ...geojsonRJ.features, ...geojsonMG.features, ...geojsonES.features, ...geojsonAM.features, ...geojsonMT.features, ...geojsonMA.features, ...geojsonPA.features, ...geojsonRR.features, ...geojsonAP.features],
+    features: [...geojsonRS.features, ...geojsonSC.features, ...geojsonPR.features, ...geojsonSP.features, ...geojsonRJ.features, ...geojsonMG.features, ...geojsonES.features, ...geojsonAM.features, ...geojsonMT.features, ...geojsonMA.features, ...geojsonPA.features, ...geojsonRR.features, ...geojsonAP.features, ...geojsonMS.features],
   };
 
   function initLayers(reference: mapboxgl.Map) {
