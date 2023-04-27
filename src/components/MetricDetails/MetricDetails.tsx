@@ -27,7 +27,7 @@ const MetricDetails = ({ district, metric }: any) => {
       default:
         return (
           <div key={district.properties.CD_MUN}>
-            <data value={rawValue}>{value}</data>
+            <data value={rawValue} >{geosesData[district?.properties.CD_MUN][metric.label].value}</data>
           </div>
         );
     }
