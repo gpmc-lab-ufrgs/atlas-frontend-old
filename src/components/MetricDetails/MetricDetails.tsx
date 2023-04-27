@@ -21,9 +21,75 @@ const MetricDetails = ({ district, metric }: any) => {
     const rawValue = geosesData[district?.properties.CD_MUN][metric.label];
     const value = typeof metric.format === 'function' ? metric.format(rawValue) : rawValue;
 
-    switch (metric.type) {
+    switch (metric.format) {
       case 'bar':
         return <Bar rawValue={rawValue} metric={metric} id={district.properties.CD_MUN} />;
+      case 'Float .2':
+        return (
+          <div key={district.properties.CD_MUN}>
+            <data value={rawValue} >{parseFloat(geosesData[district?.properties.CD_MUN][metric.label].value).toFixed(2)}</data>
+          </div>
+        );
+      case 'Float .2 (-1 to +1)':
+        return (
+          <div key={district.properties.CD_MUN}>
+            <data value={rawValue} >{parseFloat(geosesData[district?.properties.CD_MUN][metric.label].value).toFixed(3)}</data>
+          </div>
+        );
+      case 'Float':
+        return (
+          <div key={district.properties.CD_MUN}>
+            <data value={rawValue} >{parseFloat(geosesData[district?.properties.CD_MUN][metric.label].value).toFixed(3)}</data>
+          </div>
+        );
+
+      case 'Int':
+      return (
+        <div key={district.properties.CD_MUN}>
+          <data value={rawValue}>{parseInt(geosesData[district?.properties.CD_MUN][metric.label].value)}</data>
+        </div>
+      );
+      case 'String':
+      return (
+        <div key={district.properties.CD_MUN}>
+          <data value={rawValue}>{geosesData[district?.properties.CD_MUN][metric.label].value}</data>
+        </div>
+      );
+      case 'Progress Bar':
+  // Get the value for the progress bar
+  const value = geosesData[district?.properties.CD_MUN][metric.label].value;
+
+  // Calculate the percentage value of the progress bar
+  const percentage = Math.round((value / 100) * 100);
+
+  // Define a style for the progress bar
+  const progressBarStyle = {
+    width: '100px',
+    height: '20px',
+    borderRadius: '10px',
+    backgroundColor: '#ddd',
+    margin: '10px 0'
+  };
+
+  // Define a style for the filled part of the progress bar
+  const progressBarFilledStyle = {
+    width: `${percentage}%`,
+    height: '100%',
+    borderRadius: '10px',
+    backgroundColor: 'green',
+    textAlign: 'center',
+    color: 'black',
+    fontWeight: 'bold',
+    lineHeight: '20px'
+  };
+
+  return (
+    <div key={district.properties.CD_MUN}>
+      <div style={progressBarStyle}>
+        <div style={progressBarFilledStyle}>{value}%</div>
+      </div>
+    </div>
+  );
       default:
         return (
           <div key={district.properties.CD_MUN}>
