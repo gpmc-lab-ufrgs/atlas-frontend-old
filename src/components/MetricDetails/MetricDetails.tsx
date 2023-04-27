@@ -55,41 +55,77 @@ const MetricDetails = ({ district, metric }: any) => {
           <data value={rawValue}>{geosesData[district?.properties.CD_MUN][metric.label].value}</data>
         </div>
       );
+      case 'Graphic':
+      // Get the value from the data
+      const valueg = geosesData[district?.properties.CD_MUN][metric.label].value;
+
+      // Create the data for the chart
+      const data = {
+        labels: [district?.properties.CD_MUN],
+        datasets: [
+          {
+            label: metric.label,
+            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+            borderColor: 'rgba(255, 99, 132, 1)',
+            borderWidth: 1,
+            hoverBackgroundColor: 'rgba(255, 99, 132, 0.4)',
+            hoverBorderColor: 'rgba(255, 99, 132, 1)',
+            data: [valueg]
+          }
+        ]
+      };
+
+      // Set the options for the chart
+      const options = {
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            }
+          }]
+        }
+      };
+
+      return (
+        <div key={district.properties.CD_MUN}>
+          <Bar data={data} options={options} />
+        </div>
+      );
       case 'Progress Bar':
-  // Get the value for the progress bar
-  const value = geosesData[district?.properties.CD_MUN][metric.label].value;
+      // Get the value for the progress bar
+      const value = geosesData[district?.properties.CD_MUN][metric.label].value;
 
-  // Calculate the percentage value of the progress bar
-  const percentage = Math.round((value / 100) * 100);
+      // Calculate the percentage value of the progress bar
+      const percentage = Math.round((value / 100) * 100);
 
-  // Define a style for the progress bar
-  const progressBarStyle = {
-    width: '100px',
-    height: '20px',
-    borderRadius: '10px',
-    backgroundColor: '#ddd',
-    margin: '10px 0'
-  };
+      // Define a style for the progress bar
+      const progressBarStyle = {
+        width: '100px',
+        height: '20px',
+        borderRadius: '10px',
+        backgroundColor: '#ddd',
+        margin: '10px 0'
+      };
 
-  // Define a style for the filled part of the progress bar
-  const progressBarFilledStyle = {
-    width: `${percentage}%`,
-    height: '100%',
-    borderRadius: '10px',
-    backgroundColor: 'green',
-    textAlign: 'center',
-    color: 'black',
-    fontWeight: 'bold',
-    lineHeight: '20px'
-  };
+      // Define a style for the filled part of the progress bar
+      const progressBarFilledStyle = {
+        width: `${percentage}%`,
+        height: '100%',
+        borderRadius: '10px',
+        backgroundColor: 'green',
+        textAlign: 'center',
+        color: 'black',
+        fontWeight: 'bold',
+        lineHeight: '20px'
+      };
 
-  return (
-    <div key={district.properties.CD_MUN}>
-      <div style={progressBarStyle}>
-        <div style={progressBarFilledStyle}>{value}%</div>
-      </div>
-    </div>
-  );
+      return (
+        <div key={district.properties.CD_MUN}>
+          <div style={progressBarStyle}>
+            <div style={progressBarFilledStyle}>{value}%</div>
+          </div>
+        </div>
+      );
       default:
         return (
           <div key={district.properties.CD_MUN}>
