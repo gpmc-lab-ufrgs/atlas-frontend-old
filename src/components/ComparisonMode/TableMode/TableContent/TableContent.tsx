@@ -23,12 +23,19 @@ const TableContent: React.FC<Props> = ({ comparison }) => {
   const [dictionaryData, setDictionaryData] = useState<Array<DictionaryData>>([]);
 
   useEffect(() => {
-    async function fetchData() {
-      const response = await fetch('http://15.228.145.19:8001/dictionary/dictionary/json/');
-      const data = await response.json();
-      setDictionaryData(data);
+    const cachedData = localStorage.getItem('dictionaryData'); // Check if cached data is available in local storage
+
+    if (cachedData) {
+      setDictionaryData(JSON.parse(cachedData)); // If cached data is available, use it
+    } else {
+      async function fetchData() {
+        const response = await fetch('http://15.228.145.19:8001/dictionary/dictionary/json/');
+        const data = await response.json();
+        setDictionaryData(data);
+        localStorage.setItem('dictionaryData', JSON.stringify(data)); // Cache the fetched data in local storage
+      }
+      fetchData();
     }
-    fetchData();
   }, []);
 
   return (
