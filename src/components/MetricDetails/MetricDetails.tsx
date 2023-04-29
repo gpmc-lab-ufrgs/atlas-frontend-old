@@ -55,42 +55,7 @@ const MetricDetails = ({ district, metric }: any) => {
           <data value={rawValue}>{geosesData[district?.properties.CD_MUN][metric.label].value}</data>
         </div>
       );
-      case 'Graphic':
-      // Get the value from the data
-      const valueg = geosesData[district?.properties.CD_MUN][metric.label].value;
 
-      // Create the data for the chart
-      const data = {
-        labels: [district?.properties.CD_MUN],
-        datasets: [
-          {
-            label: metric.label,
-            backgroundColor: 'rgba(255, 99, 132, 0.2)',
-            borderColor: 'rgba(255, 99, 132, 1)',
-            borderWidth: 1,
-            hoverBackgroundColor: 'rgba(255, 99, 132, 0.4)',
-            hoverBorderColor: 'rgba(255, 99, 132, 1)',
-            data: [valueg]
-          }
-        ]
-      };
-
-      // Set the options for the chart
-      const options = {
-        scales: {
-          yAxes: [{
-            ticks: {
-              beginAtZero: true
-            }
-          }]
-        }
-      };
-
-      return (
-        <div key={district.properties.CD_MUN}>
-          <Bar data={data} options={options} />
-        </div>
-      );
       case 'Progress Bar':
       // Get the value for the progress bar
       const value = geosesData[district?.properties.CD_MUN][metric.label].value;
@@ -102,7 +67,7 @@ const MetricDetails = ({ district, metric }: any) => {
       const progressBarStyle = {
         width: '100px',
         height: '20px',
-        borderRadius: '10px',
+        borderRadius: '3px',
         backgroundColor: '#ddd',
         margin: '10px 0'
       };
@@ -111,7 +76,7 @@ const MetricDetails = ({ district, metric }: any) => {
       const progressBarFilledStyle = {
         width: `${percentage}%`,
         height: '100%',
-        borderRadius: '10px',
+        borderRadius: '3px',
         backgroundColor: 'green',
         textAlign: 'center',
         color: 'black',

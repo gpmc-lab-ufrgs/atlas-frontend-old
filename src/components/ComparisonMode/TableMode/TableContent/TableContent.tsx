@@ -39,7 +39,7 @@ const TableContent: React.FC<Props> = ({ comparison }) => {
             <>
               {!content.nestedData ? (
                 <Styles.Table lineTableNumber={id} key={id}>
-                  <Styles.ColumnTitle>{content.description}</Styles.ColumnTitle>
+                  <Styles.ColumnTitle>{content.title}</Styles.ColumnTitle>
                   {comparison.map((region, idx) => (
                     <Styles.Column gridColumnNumber={idx + 2} key={idx}>
                       <MetricDetails district={region} metric={content} />
