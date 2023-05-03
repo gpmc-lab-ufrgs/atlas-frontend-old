@@ -89,6 +89,7 @@ export function highlightState(feature: Feature, map: mapboxgl.Map) {
   }
 }
 
+
 export function isStateLayerVisible(map: mapboxgl.Map, visible: boolean) {
   const visibility = visible ? 'visible' : 'none';
 
@@ -99,11 +100,12 @@ export function isStateLayerVisible(map: mapboxgl.Map, visible: boolean) {
   if (map.getLayer('state-borders')) {
     map.setLayoutProperty('state-borders', 'visibility', visibility);
   }
+
 }
 
 export const handleCleanStateLayer = (map: mapboxgl.Map) => {
-  isStateLayerVisible(map, false);
   isDistrictLayerVisible(map, true);
+  isStateLayerVisible(map, false);
   cleanStateActions();
 };
 

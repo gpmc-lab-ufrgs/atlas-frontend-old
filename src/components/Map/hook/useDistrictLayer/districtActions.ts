@@ -112,7 +112,14 @@ export function isDistrictLayerVisible(map: mapboxgl.Map, visible: boolean) {
   if (map.getLayer('district-borders')) {
     map.setLayoutProperty('district-borders', 'visibility', visibility);
   }
+
+  if (map.getLayer('state-borders')) {
+    map.setLayoutProperty('state-borders', 'visibility', visibility);
+    map.setPaintProperty('state-borders', 'line-width', 2); // Set the line width to 3 pixels
+  }
 }
+
+
 
 export function cleanDistrictActions() {
   hoveredPopup.remove();
