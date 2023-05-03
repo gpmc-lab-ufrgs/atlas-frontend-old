@@ -92,7 +92,7 @@ const useSearch = (featureSearched: District[]) => {
           openMenu();
         }
       },
-      placeholder: 'Pesquise por regiões',
+      placeholder: 'Pesquise por cidades',
       spellCheck: 'false',
       ref: inputRef,
     }),

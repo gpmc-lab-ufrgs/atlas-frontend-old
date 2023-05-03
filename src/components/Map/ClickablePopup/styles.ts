@@ -46,3 +46,23 @@ export const IconWrapper = styled.div`
 
   margin-left: 5px;
 `;
+
+export const ButtonWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 8px;
+`;
+
+export const Button = styled.button`
+  background-color: #509e2f;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+
+  :hover {
+    background-color: #417b23;
+  }
+`;

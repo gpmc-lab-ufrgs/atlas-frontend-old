@@ -37,7 +37,7 @@ const SearchBarPopper: React.FC<Props> = ({ referenceElement, districtSearched, 
     <Styles.PopperContainer ref={setPopperElement} {...attributes.popper} style={{ ...styles.popper }}>
       <Styles.PopperItens {...popperActions.getMenuProps()} hidden={!popperActions.isOpen}>
         {popperActions.isOpen &&
-          districtSearched.map((item, index) => (
+          districtSearched.slice(0, 10).map((item, index) => (
             <Styles.PopperItem
               hasHighlight={popperActions.highlightedIndex === index}
               key={index}
