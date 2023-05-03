@@ -4,7 +4,7 @@ import { ModalContainer } from '@components/Modal';
 
 const AboutTheAtlas = () => {
   return (
-    <ModalContainer title="About the Atlas">
+    <ModalContainer title="Sobre o Atlas">
       <p>
         Este site visa apoiar o desenvolvimento de estratégias baseadas em dados e métodos avançados que são usados para
         entender como o comportamento humano (por exemplo, movimentos, gastos) molda a prosperidade econômica.

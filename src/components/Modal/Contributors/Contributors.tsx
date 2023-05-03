@@ -24,7 +24,7 @@ const Contributors = () => {
   ];
 
   return (
-    <ModalContainer title="Contributors">
+    <ModalContainer title="Colaboradores">
       {wrapperContributorsData.map((contributors, id) => (
         <Box display="flex" alignItems="center" flexDirection="column" key={id}>
           {contributors.title && <Styles.ContributorsFunctionDiv>{contributors.title}</Styles.ContributorsFunctionDiv>}

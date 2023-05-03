@@ -4,10 +4,10 @@ export const sections = [
       url: '/aboutTheAtlas',
       title: 'Sobre o Atlas',
     },
-     {
-       url: "/methods",
-       title: "Methods",
-     },
+     //{
+     //  url: "/methods",
+     //  title: "Methods",
+     //},
      //{
      //  url: "/app",
      //  title: "App",
@@ -26,7 +26,7 @@ export const sections = [
     // },
     {
       url: '/contributors',
-      title: 'Contribuidores',
+      title: 'Colaboradores',
     },
   ],
 ];
