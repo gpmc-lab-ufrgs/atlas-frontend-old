@@ -89,6 +89,20 @@ export function highlightState(feature: Feature, map: mapboxgl.Map) {
   }
 }
 
+export function isStateLayerVisible2(map: mapboxgl.Map, visible: boolean) {
+  const visibility = visible ? 'visible' : 'none';
+  const fillColor = visible ? 'transparent' : 'rgba(0, 0, 0, 0)'; // set the fill color to transparent or transparent black
+  const borderColor = visible ? 'black' : 'rgba(0, 0, 0, 0)'; // set the border color to the desired color or transparent black
+
+  if (map.getLayer('fill-state')) {
+    map.setPaintProperty('fill-state', 'fill-color', fillColor);
+  }
+
+  if (map.getLayer('state-borders')) {
+    map.setPaintProperty('state-borders', 'line-color', borderColor);
+    map.setLayoutProperty('state-borders', 'visibility', visibility);
+  }
+}
 
 export function isStateLayerVisible(map: mapboxgl.Map, visible: boolean) {
   const visibility = visible ? 'visible' : 'none';
@@ -100,7 +114,6 @@ export function isStateLayerVisible(map: mapboxgl.Map, visible: boolean) {
   if (map.getLayer('state-borders')) {
     map.setLayoutProperty('state-borders', 'visibility', visibility);
   }
-
 }
 
 export const handleCleanStateLayer = (map: mapboxgl.Map) => {
