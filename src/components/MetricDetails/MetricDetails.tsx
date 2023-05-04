@@ -34,11 +34,13 @@ const MetricDetails = ({ district, metric }: any) => {
       case 'bar':
         return <Bar rawValue={rawValue} metric={metric} id={district.properties.CD_MUN} />;
       case 'Float .2':
-        return (
-          <div key={district.properties.CD_MUN}>
-            <data value={rawValue} >{parseFloat(geosesData[district?.properties.CD_MUN][metric.label].value).toFixed(2)}</data>
-          </div>
-        );
+      return (
+        <div key={district.properties.CD_MUN}>
+          <data value={rawValue}>
+            {parseFloat(geosesData[district?.properties.CD_MUN][metric.label].value).toLocaleString('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+          </data>
+        </div>
+      );
       case 'Float .2 (-1 to +1)':
         return (
           <div key={district.properties.CD_MUN}>
