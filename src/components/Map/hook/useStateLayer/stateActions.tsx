@@ -93,6 +93,7 @@ export function isStateLayerVisible2(map: mapboxgl.Map, visible: boolean) {
   const visibility = visible ? 'visible' : 'none';
   const fillColor = visible ? 'transparent' : 'rgba(0, 0, 0, 0)'; // set the fill color to transparent or transparent black
   const borderColor = visible ? 'black' : 'rgba(0, 0, 0, 0)'; // set the border color to the desired color or transparent black
+  const borderWidth = 2; // set the desired border width
 
   if (map.getLayer('fill-state')) {
     map.setPaintProperty('fill-state', 'fill-color', fillColor);
@@ -100,9 +101,11 @@ export function isStateLayerVisible2(map: mapboxgl.Map, visible: boolean) {
 
   if (map.getLayer('state-borders')) {
     map.setPaintProperty('state-borders', 'line-color', borderColor);
+    map.setPaintProperty('state-borders', 'line-width', borderWidth); // set the border width to the desired value
     map.setLayoutProperty('state-borders', 'visibility', visibility);
   }
 }
+
 
 export function isStateLayerVisible(map: mapboxgl.Map, visible: boolean) {
   const visibility = visible ? 'visible' : 'none';
