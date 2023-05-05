@@ -29,7 +29,7 @@ const TableContent: React.FC<Props> = ({ comparison }) => {
       setDictionaryData(JSON.parse(cachedData)); // If cached data is available, use it
     } else {
       async function fetchData() {
-        const response = await fetch('http://15.228.145.19:8001/dictionary/dictionary/json/');
+        const response = await fetch('http://15.229.85.209:8001/dictionary/dictionary/json/');
         const data = await response.json();
         setDictionaryData(data);
         localStorage.setItem('dictionaryData', JSON.stringify(data)); // Cache the fetched data in local storage
