@@ -9,6 +9,8 @@ import { hoveredPopup, clickedPopup } from '../../utils/const';
 import geosesData from '@data/Data.json';
 import { formatPopulationNumber } from '@utils/formatValue';
 
+import { isStateLayerVisible, isStateLayerVisible2 } from '../useStateLayer/stateActions';
+
 let clickedId: number | undefined;
 let hoveredId: number | undefined;
 
@@ -107,11 +109,13 @@ export function isDistrictLayerVisible(map: mapboxgl.Map, visible: boolean) {
 
   if (map.getLayer('fill-district')) {
     map.setLayoutProperty('fill-district', 'visibility', visibility);
+    isStateLayerVisible2(map, false); //revover as bordas de estados
   }
 
   if (map.getLayer('district-borders')) {
     map.setLayoutProperty('district-borders', 'visibility', visibility);
   }
+
 }
 
 export function cleanDistrictActions() {

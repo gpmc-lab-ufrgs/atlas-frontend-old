@@ -8,6 +8,8 @@ import { useSelectedDistrict } from '@context/district/selectedContext';
 import { useSelectedState } from '@context/state/selectedContext';
 import { useSidebar } from '@context/sidebarContext';
 
+import { isStateLayerVisible } from '../useStateLayer/stateActions';
+
 import geojsonBA from '@data/states/BA_Municipios_2020_simplified.json';
 import geojsonRS from '@data/states/RS_Municipios_2020_simplified.json';
 import geojsonAC from '@data/states/AC_Municipios_2020_simplified.json';

@@ -95,9 +95,6 @@ export function isStateLayerVisible2(map: mapboxgl.Map, visible: boolean) {
   const borderColor = visible ? 'black' : 'rgba(0, 0, 0, 0)'; // set the border color to the desired color or transparent black
   const borderWidth = 2; // set the desired border width
 
-  if (map.getLayer('fill-state')) {
-    map.setPaintProperty('fill-state', 'fill-color', fillColor);
-  }
 
   if (map.getLayer('state-borders')) {
     map.setPaintProperty('state-borders', 'line-color', borderColor);
@@ -117,11 +114,13 @@ export function isStateLayerVisible(map: mapboxgl.Map, visible: boolean) {
   if (map.getLayer('state-borders')) {
     map.setLayoutProperty('state-borders', 'visibility', visibility);
   }
+
 }
 
 export const handleCleanStateLayer = (map: mapboxgl.Map) => {
   isDistrictLayerVisible(map, true);
   isStateLayerVisible(map, false);
+  isStateLayerVisible2(map, true);
   cleanStateActions();
 };
 
@@ -185,6 +184,7 @@ export function fitStateBounds(feature: Feature, map: mapboxgl.Map) {
 
 export function fitStateCenter(feature: Feature, map: mapboxgl.Map) {
   if (feature && (feature.geometry || feature._geometry)) {
+
     const coordinates = turf.centerOfMass(feature).geometry.coordinates;
 
     map.flyTo({
