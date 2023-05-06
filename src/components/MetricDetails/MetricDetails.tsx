@@ -11,7 +11,7 @@ const MetricDetails = ({ district, metric }: any) => {
       setGeosesData(JSON.parse(cachedData)); // If cached data is available, use it
     } else {
       if (district && district.properties && district.properties.SIGLA_UF) {
-        fetch(`http://15.229.85.209:8001/data/data_city_dicio/json/?cd_mun=${district.properties.CD_MUN}`)
+        fetch(`http://3.92.188.34:8001/data/data_city_dicio/json/?cd_mun=${district.properties.CD_MUN}`)
           .then(response => response.json())
           .then(data => {
             setGeosesData(data);
