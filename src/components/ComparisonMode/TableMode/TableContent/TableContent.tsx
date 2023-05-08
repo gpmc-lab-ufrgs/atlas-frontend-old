@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from 'react';
+import { Tooltip } from '@mui/material';
 
 import Collapsible from '@components/Collapsible';
-
 import MetricDetails from '@components/MetricDetails';
-
 import { MapPropsContentType, MapPropsSectionType } from '@customTypes/map';
-
 import { District } from '@customTypes/district';
 
 import * as Styles from './styles';
@@ -46,7 +44,15 @@ const TableContent: React.FC<Props> = ({ comparison }) => {
             <>
               {!content.nestedData ? (
                 <Styles.Table lineTableNumber={id} key={id}>
-                  <Styles.ColumnTitle>{content.title}</Styles.ColumnTitle>
+                  <Tooltip
+                    title={
+                      <div>
+                        <div>{content.description}</div>
+                      </div>
+                    }
+                  >
+                    <Styles.ColumnTitle>{content.title}</Styles.ColumnTitle>
+                  </Tooltip>
                   {comparison.map((region, idx) => (
                     <Styles.Column gridColumnNumber={idx + 2} key={idx}>
                       <MetricDetails district={region} metric={content} />
@@ -58,7 +64,16 @@ const TableContent: React.FC<Props> = ({ comparison }) => {
                   {content.nestedData?.map((data, index) => (
                     <div key={index}>
                       <Styles.Table lineTableNumber={index} key={index}>
-                        <Styles.ColumnTitle>{data.description}</Styles.ColumnTitle>
+                        <Tooltip
+                          title={
+                            <div>
+                              <div>{data.title}</div>
+                              <div>{data.description}</div>
+                            </div>
+                          }
+                        >
+                          <Styles.ColumnTitle>{data.title}</Styles.ColumnTitle>
+                        </Tooltip>
                         {comparison.map((region, idx) => (
                           <Styles.Column gridColumnNumber={idx + 2} key={idx}>
                             <MetricDetails district={region} metric={data} />
