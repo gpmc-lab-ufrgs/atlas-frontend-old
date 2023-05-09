@@ -3,7 +3,6 @@ import { Tooltip } from '@mui/material';
 
 import Collapsible from '@components/Collapsible';
 import MetricDetails from '@components/MetricDetails';
-import { MapPropsContentType, MapPropsSectionType } from '@customTypes/map';
 import { District } from '@customTypes/district';
 
 import * as Styles from './styles';
@@ -14,33 +13,33 @@ interface Props {
 
 interface DictionaryData {
   title: string;
-  content: Array<MapPropsContentType>;
+  content: Array<{
+    title: string;
+    description?: string;
+    nestedData?: Array<{
+      title: string;
+      description?: string;
+    }>;
+  }>;
 }
 
 const TableContent: React.FC<Props> = ({ comparison }) => {
   const [dictionaryData, setDictionaryData] = useState<Array<DictionaryData>>([]);
 
   useEffect(() => {
-    const cachedData = localStorage.getItem('dictionaryData'); // Check if cached data is available in local storage
-
-    if (cachedData) {
-      setDictionaryData(JSON.parse(cachedData)); // If cached data is available, use it
-    } else {
-      async function fetchData() {
-        const response = await fetch('http://3.92.188.34:8001/dictionary/dictionary/json/');
-        const data = await response.json();
-        setDictionaryData(data);
-        localStorage.setItem('dictionaryData', JSON.stringify(data)); // Cache the fetched data in local storage
-      }
-      fetchData();
+    async function fetchData() {
+      const response = await fetch('http://3.92.188.34:8001/dictionary/dictionary/json/');
+      const data = await response.json();
+      setDictionaryData(data);
     }
+    fetchData();
   }, []);
 
   return (
     <>
       {dictionaryData.map((section: DictionaryData) => (
         <Collapsible isTitle={true} title={section.title} key={section.title}>
-          {section.content.map((content: MapPropsContentType, id) => (
+          {section.content.map((content, id) => (
             <>
               {!content.nestedData ? (
                 <Styles.Table lineTableNumber={id} key={id}>
