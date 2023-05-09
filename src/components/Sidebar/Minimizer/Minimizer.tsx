@@ -16,7 +16,7 @@ const Minimizer = () => {
 
   return (
     <Styles.MinimizerWrapper theme={theme} onClick={toggleSidebar} isSidebarOpen={isSidebarOpen}>
-      {!isSidebarOpen ? <FaChevronLeft /> : <FaChevronRight />}
+      {!isSidebarOpen ? <FaChevronRight /> : <FaChevronLeft />}
     </Styles.MinimizerWrapper>
   );
 };
