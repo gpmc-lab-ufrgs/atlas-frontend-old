@@ -5,22 +5,31 @@ const MetricDetails = ({ district, metric }: any) => {
   const [geosesData, setGeosesData] = useState(null);
 
   useEffect(() => {
-    const cachedData = localStorage.getItem(`geosesData_${district?.properties.CD_MUN}_${metric.label}`); // Check if cached data is available in local storage
+  let abortController = new AbortController();
+  const cachedData = localStorage.getItem(`geosesData_${district?.properties.CD_MUN}_${metric.label}`);
 
-    if (cachedData) {
-      setGeosesData(JSON.parse(cachedData)); // If cached data is available, use it
-    } else {
-      if (district && district.properties && district.properties.SIGLA_UF) {
-        fetch(`http://3.92.188.34:8001/data/data_city_dicio/json/?cd_mun=${district.properties.CD_MUN}`)
-          .then(response => response.json())
-          .then(data => {
-            setGeosesData(data);
-            localStorage.setItem(`geosesData_${district?.properties.CD_MUN}_${metric.label}`, JSON.stringify(data)); // Cache the fetched data in local storage
-          })
-          .catch(error => console.log(error));
-      }
+  if (cachedData) {
+    setGeosesData(JSON.parse(cachedData));
+  } else {
+    if (district && district.properties && district.properties.SIGLA_UF) {
+      // Abort any ongoing fetch requests
+      abortController.abort();
+      abortController = new AbortController();
+      const signal = abortController.signal;
+
+      fetch(`http://3.92.188.34:8001/data/data_city_dicio/json/?cd_mun=${district.properties.CD_MUN}`, { signal })
+        .then(response => response.json())
+        .then(data => {
+          setGeosesData(data);
+          localStorage.setItem(`geosesData_${district?.properties.CD_MUN}_${metric.label}`, JSON.stringify(data));
+        })
+        .catch(error => console.log(error));
     }
-  }, [district, metric]);
+  }
+  // Clean up the AbortController when the effect is cleaned up
+  return () => abortController.abort();
+}, [district, metric]);
+
 
   const renderSingleMetric = () => {
     if (!geosesData) {
