@@ -3,6 +3,7 @@ import { Tooltip } from '@mui/material';
 
 import Collapsible from '@components/Collapsible';
 import MetricDetails from '@components/MetricDetails';
+import { MapPropsContentType, MapPropsSectionType } from '@customTypes/map';
 import { District } from '@customTypes/district';
 
 import * as Styles from './styles';
@@ -13,14 +14,7 @@ interface Props {
 
 interface DictionaryData {
   title: string;
-  content: Array<{
-    title: string;
-    description?: string;
-    nestedData?: Array<{
-      title: string;
-      description?: string;
-    }>;
-  }>;
+  content: Array<MapPropsContentType>;
 }
 
 const GridContent: React.FC<Props> = ({ comparison }) => {
@@ -40,7 +34,7 @@ const GridContent: React.FC<Props> = ({ comparison }) => {
       {dictionaryData.map((section: DictionaryData) => (
         <Collapsible isTitle={true} title={section.title} key={section.title}>
           <Styles.GridContainer>
-            {section.content.map((content, id) => (
+            {section.content.map((content: MapPropsContentType, id) => (
               <>
                 {!content.nestedData ? (
                   <Styles.Grid key={id}>
