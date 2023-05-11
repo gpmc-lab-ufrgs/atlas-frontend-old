@@ -136,7 +136,6 @@ const MetricDetails = ({ district, metric }: any) => {
       case 'Progress Bar':
         // Get the value for the progress bar
         const value = geosesData[district?.properties.CD_MUN][metric.label].value;
-        const formattedValue = value.toFixed(Math.min(2, value.toString().split('.')[1]?.length || 0));
 
         // Calculate the percentage value of the progress bar
         const percentage = Math.round((value / 100) * 100);
@@ -165,7 +164,7 @@ const MetricDetails = ({ district, metric }: any) => {
     return (
       <div key={district.properties.CD_MUN}>
         <div style={progressBarStyle}>
-          <div style={progressBarFilledStyle}>{formattedValue}%</div>
+          <div style={progressBarFilledStyle}>{value}%</div>
         </div>
       </div>
     );
