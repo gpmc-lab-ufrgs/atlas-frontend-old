@@ -84,6 +84,16 @@ const MetricDetails = ({ district, metric }: any) => {
             </div>
           );
         }
+        if (unit === 'Hab/km²') {
+          const geosesDataValue2 = geosesData?.[district?.properties.CD_MUN]?.[metric.label]?.value;
+          const parsedValue2 = parseFloat(geosesDataValue2);
+          const formattedValue2 = isNaN(parsedValue2) ? '-----' : parsedValue2.toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+          return (
+            <div key={district?.properties.CD_MUN}>
+              <data value={geosesDataValue2}>{formattedValue2} Hab/km²</data>
+            </div>
+          );
+        }
       case 'Float .2 (-1 to +1)':
         return (
           <div key={district.properties.CD_MUN}>
