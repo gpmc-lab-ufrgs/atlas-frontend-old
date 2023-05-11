@@ -138,7 +138,7 @@ const MetricDetails = ({ district, metric }: any) => {
         const value = geosesData[district?.properties.CD_MUN][metric.label].value;
 
         // Calculate the percentage value of the progress bar
-        const percentage = Math.round((value / 100) * 100);
+        const percentage = ((value / 100) * 100).toFixed(2);
 
         // Define a style for the progress bar
         const progressBarStyle = {
