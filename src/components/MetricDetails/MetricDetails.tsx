@@ -44,7 +44,7 @@ const MetricDetails = ({ district, metric }: any) => {
       case 'bar':
         return <Bar rawValue={rawValue} metric={metric} id={district.properties.CD_MUN} />;
       case 'Float .2':
-        if unit === 'Número':
+        if (unit === 'Número') {
           const geosesDataValue2 = geosesData?.[district?.properties.CD_MUN]?.[metric.label]?.value;
           const parsedValue2 = parseFloat(geosesDataValue2);
           const displayValue2 = isNaN(parsedValue2) ? '-----' : parsedValue2.toLocaleString('de-DE', { minimumFractionDigits: 3, maximumFractionDigits: 3 });
@@ -54,7 +54,7 @@ const MetricDetails = ({ district, metric }: any) => {
             </div>
           );
         }
-        if unit === 'R$':
+        if (unit === 'R$') {
           const geosesDataValue2 = geosesData?.[district?.properties.CD_MUN]?.[metric.label]?.value;
           const parsedValue2 = parseFloat(geosesDataValue2);
           const displayValue2 = isNaN(parsedValue2) ? '-----' : parsedValue2.toLocaleString('de-DE', { minimumFractionDigits: 3, maximumFractionDigits: 3 });
