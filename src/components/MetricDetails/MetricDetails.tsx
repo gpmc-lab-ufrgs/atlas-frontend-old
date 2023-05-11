@@ -56,12 +56,12 @@ const MetricDetails = ({ district, metric }: any) => {
             );
           case 'R$':
             return <Bar rawValue={rawValue} metric={metric} id={district.properties.CD_MUN} />;
-            const geosesDataValue2 = geosesData?.[district?.properties.CD_MUN]?.[metric.label]?.value;
-            const parsedValue2 = parseFloat(geosesDataValue2);
-            const displayValue2 = isNaN(parsedValue2) ? '-----' : parsedValue2.toLocaleString('de-DE', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
+            const geosesDataValue3 = geosesData?.[district?.properties.CD_MUN]?.[metric.label]?.value;
+            const parsedValue3 = parseFloat(geosesDataValue3);
+            const displayValue3 = isNaN(parsedValue3) ? '-----' : parsedValue3.toLocaleString('de-DE', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
             return (
               <div key={district?.properties.CD_MUN}>
-                <data value={geosesDataValue2}>{displayValue2}</data>
+                <data value={geosesDataValue3}>{displayValue3}</data>
               </div>
             );
         }
