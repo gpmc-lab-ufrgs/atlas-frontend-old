@@ -49,7 +49,7 @@ const MetricDetails = ({ district, metric }: any) => {
           const displayValue2 = isNaN(parsedValue2) ? '-----' : parsedValue2.toLocaleString('de-DE', { minimumFractionDigits: 3, maximumFractionDigits: 3 });
           return (
             <div key={district?.properties.CD_MUN}>
-              <data value={geosesDataValue2}>{displayValue2}</data>
+              <data value={geosesDataValue2}>{metric.unit}</data>
             </div>
           );
         }
