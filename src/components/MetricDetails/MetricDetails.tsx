@@ -37,7 +37,7 @@ const MetricDetails = ({ district, metric }: any) => {
     }
 
     const rawValue = geosesData[district?.properties.CD_MUN][metric.label];
-    const value = typeof metric.format === 'function' ? metric.format(rawValue) : rawValue;
+    //const value = typeof metric.format === 'function' ? metric.format(rawValue) : rawValue;
     const value = typeof metric.unit === 'function' ? metric.unit(rawValue) : rawValue;
 
     switch (metric.unit) {
