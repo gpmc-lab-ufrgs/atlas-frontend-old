@@ -60,7 +60,7 @@ const MetricDetails = ({ district, metric }: any) => {
           const displayValue2 = isNaN(parsedValue2) ? '-----' : parsedValue2.toLocaleString('de-DE', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
           return (
             <div key={district?.properties.CD_MUN}>
-              <data value={geosesDataValue2}>{displayValue2}</data>
+              <data value={geosesDataValue2}>R${displayValue2}</data>
             </div>
           );
         }
@@ -70,7 +70,7 @@ const MetricDetails = ({ district, metric }: any) => {
           const displayValue2 = isNaN(parsedValue2) ? '-----' : parsedValue2.toLocaleString('de-DE', { minimumFractionDigits: 0, maximumFractionDigits: 1 });
           return (
             <div key={district?.properties.CD_MUN}>
-              <data value={geosesDataValue2}>{displayValue2}</data>
+              <data value={geosesDataValue2}>{displayValue2} Salários mínimos</data>
             </div>
           );
         }
