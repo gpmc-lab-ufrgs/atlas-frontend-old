@@ -42,7 +42,7 @@ const MetricDetails = ({ district, metric }: any) => {
     switch (metric.unit) {
       case 'bar':
         return <Bar rawValue={rawValue} metric={metric} id={district.properties.CD_MUN} />;
-      case 'Número':
+      case 'R$':
         const geosesDataValue2 = geosesData?.[district?.properties.CD_MUN]?.[metric.label]?.value;
         const parsedValue2 = parseFloat(geosesDataValue2);
         const displayValue2 = isNaN(parsedValue2) ? '-----' : parsedValue2.toLocaleString('de-DE', { minimumFractionDigits: 3, maximumFractionDigits: 3 });
