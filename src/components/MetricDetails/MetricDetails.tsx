@@ -81,7 +81,7 @@ const MetricDetails = ({ district, metric }: any) => {
           </div>
         );
 
-      case 'Progress Bar':
+      case '%':
         // Get the value for the progress bar
         const value = geosesData[district?.properties.CD_MUN][metric.label].value;
 
