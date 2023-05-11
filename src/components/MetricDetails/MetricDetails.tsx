@@ -48,7 +48,7 @@ const MetricDetails = ({ district, metric }: any) => {
             return <Bar rawValue={rawValue} metric={metric} id={district.properties.CD_MUN} />;
             const geosesDataValue2 = geosesData?.[district?.properties.CD_MUN]?.[metric.label]?.value;
             const parsedValue2 = parseFloat(geosesDataValue2);
-            const displayValue2 = isNaN(parsedValue2) ? '-----' : parsedValue2.toLocaleString('de-DE', { minimumFractionDigits: 3, maximumFractionDigits: 3 });
+            const displayValue2 = isNaN(parsedValue2) ? '-----' : parsedValue2.toLocaleString('de-DE', { minimumFractionDigits: 4, maximumFractionDigits: 4 });
             return (
               <div key={district?.properties.CD_MUN}>
                 <data value={geosesDataValue2}>{metric.unit}</data>
