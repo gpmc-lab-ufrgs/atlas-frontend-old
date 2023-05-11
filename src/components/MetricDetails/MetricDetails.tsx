@@ -43,14 +43,17 @@ const MetricDetails = ({ district, metric }: any) => {
       case 'bar':
         return <Bar rawValue={rawValue} metric={metric} id={district.properties.CD_MUN} />;
       case 'Float .2':
-        const geosesDataValue2 = geosesData?.[district?.properties.CD_MUN]?.[metric.label]?.value;
-        const parsedValue2 = parseFloat(geosesDataValue2);
-        const displayValue2 = isNaN(parsedValue2) ? '-----' : parsedValue2.toLocaleString('de-DE', { minimumFractionDigits: 3, maximumFractionDigits: 3 });
-        return (
-          <div key={district?.properties.CD_MUN}>
-            <data value={geosesDataValue2}>{displayValue2}</data>
-          </div>
-        );
+        switch (metric.unit) {
+          case 'Número':
+            return <Bar rawValue={rawValue} metric={metric} id={district.properties.CD_MUN} />;
+            const geosesDataValue2 = geosesData?.[district?.properties.CD_MUN]?.[metric.label]?.value;
+            const parsedValue2 = parseFloat(geosesDataValue2);
+            const displayValue2 = isNaN(parsedValue2) ? '-----' : parsedValue2.toLocaleString('de-DE', { minimumFractionDigits: 3, maximumFractionDigits: 3 });
+            return (
+              <div key={district?.properties.CD_MUN}>
+                <data value={geosesDataValue2}>{displayValue2}</data>
+              </div>
+            );
       case 'Float .2 (-1 to +1)':
         return (
           <div key={district.properties.CD_MUN}>
