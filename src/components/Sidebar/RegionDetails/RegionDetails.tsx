@@ -35,6 +35,7 @@ const RegionDetails = () => {
               title: item.title,
               description: item.description,
               format: item.format,
+              unit: item.unit,
               type: item.type,
             }))}
           />
