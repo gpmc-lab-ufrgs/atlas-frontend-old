@@ -37,10 +37,9 @@ const MetricDetails = ({ district, metric }: any) => {
     }
 
     const rawValue = geosesData[district?.properties.CD_MUN][metric.label];
-    //const value = typeof metric.format === 'function' ? metric.format(rawValue) : rawValue;
-    const value = typeof metric.unit === 'function' ? metric.unit(rawValue) : rawValue;
+    const value = typeof metric.format === 'function' ? metric.format(rawValue) : rawValue;
 
-    switch (metric.unit) {
+    switch (metric.format) {
       case 'bar':
         return <Bar rawValue={rawValue} metric={metric} id={district.properties.CD_MUN} />;
       case 'Float .2':
@@ -81,7 +80,7 @@ const MetricDetails = ({ district, metric }: any) => {
           </div>
         );
 
-      case '%':
+      case 'Progress Bar':
         // Get the value for the progress bar
         const value = geosesData[district?.properties.CD_MUN][metric.label].value;
 
@@ -119,7 +118,7 @@ const MetricDetails = ({ district, metric }: any) => {
   default:
     return (
       <div key={district.properties.CD_MUN}>
-        <data value={rawValue} >{metric.unit}</data>
+        <data value={rawValue} >{geosesData[district?.properties.CD_MUN][metric.label].value}</data>
       </div>
     );
 }};
