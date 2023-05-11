@@ -54,6 +54,7 @@ const MetricDetails = ({ district, metric }: any) => {
                 <data value={geosesDataValue2}>{displayValue2}</data>
               </div>
             );
+        }
       case 'Float .2 (-1 to +1)':
         return (
           <div key={district.properties.CD_MUN}>
