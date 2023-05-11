@@ -164,7 +164,7 @@ const MetricDetails = ({ district, metric }: any) => {
     return (
       <div key={district.properties.CD_MUN}>
         <div style={progressBarStyle}>
-          <div style={progressBarFilledStyle}>{value}%</div>
+          <div style={progressBarFilledStyle}>{value.toFixed(2)}%</div>
         </div>
       </div>
     );
