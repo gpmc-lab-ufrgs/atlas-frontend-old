@@ -38,7 +38,7 @@ const MetricDetails = ({ district, metric }: any) => {
 
     const rawValue = geosesData[district?.properties.CD_MUN][metric.label];
     const value = typeof metric.format === 'function' ? metric.format(rawValue) : rawValue;
-    const unit = metric.unit;
+    const unit = geosesData?.[district?.properties.CD_MUN]?.[metric.label]?.unit;
 
     switch (metric.format) {
       case 'bar':
