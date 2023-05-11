@@ -38,6 +38,7 @@ const MetricDetails = ({ district, metric }: any) => {
 
     const rawValue = geosesData[district?.properties.CD_MUN][metric.label];
     const value = typeof metric.format === 'function' ? metric.format(rawValue) : rawValue;
+    const unit = metric.unit;
 
     switch (metric.format) {
       case 'bar':
@@ -48,7 +49,7 @@ const MetricDetails = ({ district, metric }: any) => {
         const displayValue2 = isNaN(parsedValue2) ? '-----' : parsedValue2.toLocaleString('de-DE', { minimumFractionDigits: 3, maximumFractionDigits: 3 });
         return (
           <div key={district?.properties.CD_MUN}>
-            <data value={geosesDataValue2}>{displayValue2} - {metric.unit}</data>
+            <data value={geosesDataValue2}>{displayValue2} - {unit}</data>
           </div>
         );
       case 'Float .2 (-1 to +1)':
