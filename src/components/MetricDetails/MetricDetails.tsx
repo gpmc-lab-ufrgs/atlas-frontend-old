@@ -70,7 +70,17 @@ const MetricDetails = ({ district, metric }: any) => {
           const displayValue2 = isNaN(parsedValue2) ? '-----' : parsedValue2.toLocaleString('de-DE', { minimumFractionDigits: 0, maximumFractionDigits: 1 });
           return (
             <div key={district?.properties.CD_MUN}>
-              <data value={geosesDataValue2}>{displayValue2} Salários mínimos</data>
+              <data value={geosesDataValue2}>{displayValue2} salários mínimos</data>
+            </div>
+          );
+        }
+        if (unit === 'Km²') {
+          const geosesDataValue2 = geosesData?.[district?.properties.CD_MUN]?.[metric.label]?.value;
+          const parsedValue2 = parseFloat(geosesDataValue2);
+          const formattedValue2 = isNaN(parsedValue2) ? '-----' : parsedValue2.toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+          return (
+            <div key={district?.properties.CD_MUN}>
+              <data value={geosesDataValue2}>{formattedValue2} km²</data>
             </div>
           );
         }
