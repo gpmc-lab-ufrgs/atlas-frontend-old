@@ -42,7 +42,7 @@ const MetricDetails = ({ district, metric }: any) => {
     switch (metric.unit) {
       case 'bar':
         return <Bar rawValue={rawValue} metric={metric} id={district.properties.CD_MUN} />;
-      case 'R$':
+      case 'Float .2':
         const geosesDataValue2 = geosesData?.[district?.properties.CD_MUN]?.[metric.label]?.value;
         const parsedValue2 = parseFloat(geosesDataValue2);
         const displayValue2 = isNaN(parsedValue2) ? '-----' : parsedValue2.toLocaleString('de-DE', { minimumFractionDigits: 3, maximumFractionDigits: 3 });
@@ -80,7 +80,7 @@ const MetricDetails = ({ district, metric }: any) => {
           </div>
         );
 
-      case '%':
+      case 'Progress Bar':
         // Get the value for the progress bar
         const value = geosesData[district?.properties.CD_MUN][metric.label].value;
 
@@ -118,7 +118,7 @@ const MetricDetails = ({ district, metric }: any) => {
   default:
     return (
       <div key={district.properties.CD_MUN}>
-        <data value={rawValue} >{geosesData[district?.properties.CD_MUN][metric.label].value}</data>
+        <data value={rawValue} >{metric.unit}</data>
       </div>
     );
 }};
