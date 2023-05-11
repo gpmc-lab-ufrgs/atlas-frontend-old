@@ -150,24 +150,24 @@ const MetricDetails = ({ district, metric }: any) => {
         };
 
         // Define a style for the filled part of the progress bar
-    const progressBarFilledStyle = {
-      width: `${percentage}%`,
-      height: '100%',
-      borderRadius: '3px',
-      backgroundColor: 'green',
-      textAlign: 'center',
-      color: 'black',
-      fontWeight: 'bold',
-      lineHeight: '20px'
-    };
+        const progressBarFilledStyle = {
+          width: `${percentage}%`,
+          height: '100%',
+          borderRadius: '3px',
+          backgroundColor: 'green',
+          textAlign: 'center',
+          color: 'black',
+          fontWeight: 'bold',
+          lineHeight: '20px'
+        };
 
-    return (
-      <div key={district.properties.CD_MUN}>
-        <div style={progressBarStyle}>
-          <div style={progressBarFilledStyle}>{value}%</div>
-        </div>
-      </div>
-    );
+        return (
+          <div key={district.properties.CD_MUN}>
+            <div style={progressBarStyle}>
+              <div style={progressBarFilledStyle}>{value.toFixed(2)}%</div>
+            </div>
+          </div>
+        );
   default:
     return (
       <div key={district.properties.CD_MUN}>
