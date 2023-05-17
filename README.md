@@ -10,11 +10,11 @@ This project is part of a collaborative research initiative enabled by principal
 
 This project was developed using React TS and yarn as package managers. To run in your machine, please follow the instructions below:
 
-### Requirements
+### 1 - Requirements
 
 nodejs version =>12.0
 
-#### 1 - Downloading the liblaries with yarn
+#### 2 - Downloading the liblaries with yarn
 
 ```
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
@@ -28,13 +28,13 @@ sudo apt install yarn
 yarn
 ```
 
-#### 2 - Running the project
+#### 3 - Running the project
 
 ```
 yarn start
 ```
 
-#### 3 - Accessing the platform
+#### 4 - Accessing the platform
 
 ```
 open http://localhost:3000/
