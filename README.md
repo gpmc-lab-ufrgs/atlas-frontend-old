@@ -33,7 +33,7 @@ open http://localhost:3000/
 ```
 
 ## How to Contribute to this project?
-See our [Contribution Guide](CONTRIBUTION.md) 🚀 
+See our [Contribution Guide](CONTRIBUTION.md) 
 
 
 ## Contributors
