@@ -7,3 +7,4 @@ export { default as ModalContainer } from './ModalContainer';
 
 export { default as LoadData } from './LoadData';
 export { default as Login } from './Login';
+export { default as Recommendation } from './Recommendation';

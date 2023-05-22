@@ -1,6 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 
-import { AboutTheAtlas, Contributors, Methods, App, Login, LoadData } from '@components/Modal';
+import { AboutTheAtlas, Contributors, Methods, App, Login, LoadData, Recommendation } from '@components/Modal';
 
 const Modal = () => {
   return (
@@ -13,6 +13,7 @@ const Modal = () => {
       <Route path="App" element={<App />} />
       <Route path="Login" element={<Login />} />
       <Route path="LoadData" element={<LoadData />} />
+      <Route path="Recommendation" element={<Recommendation />} />
     </Routes>
   );
 };

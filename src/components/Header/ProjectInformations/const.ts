@@ -12,10 +12,6 @@ export const sections = [
      //  url: "/app",
      //  title: "App",
      //},
-     //{
-     //  url: "/loaddata",
-     //  title: "Carregar dados",
-     //},
     // {
     //   url: "/research",
     //   title: "Research",
@@ -27,6 +23,10 @@ export const sections = [
     {
       url: '/contributors',
       title: 'Colaboradores',
+    },
+    {
+      url: '/Recommendation',
+      title: 'Sistema de Recomendação',
     },
   ],
 ];
