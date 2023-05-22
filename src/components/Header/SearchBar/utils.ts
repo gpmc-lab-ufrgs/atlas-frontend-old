@@ -1,9 +1,18 @@
 import { District } from '@customTypes/district';
 
+function removeAccents(str: string) {
+  return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+}
+
 export function getSortedDistricts(districts: District[]) {
-  return districts?.sort((a: any, b: any) => a?.properties.NM_MUN.localeCompare(b?.properties.NM_MUN));
+  return districts?.sort((a: any, b: any) =>
+    removeAccents(a?.properties.NM_MUN).localeCompare(removeAccents(b?.properties.NM_MUN))
+  );
 }
 
 export function getFilteredDistricts(districts: District[], query: string) {
-  return districts?.filter((item: any) => item?.properties.NM_MUN.toLowerCase().indexOf(query.toLowerCase()) !== -1);
+  const normalizedQuery = removeAccents(query.toLowerCase());
+  return districts?.filter((item: any) =>
+    removeAccents(item?.properties.NM_MUN.toLowerCase()).indexOf(normalizedQuery) !== -1
+  );
 }
