@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 
 import mapboxgl from 'mapbox-gl';
 
-import geojsonURL from '@data/BR_UF_2020_038.json';
+import geojsonURL from '@data/BR_UF_2020.json';
 
 import { useSelectedState } from '@context/state/selectedContext';
 import { useHighlightedState } from '@context/state/highlightedContext';
