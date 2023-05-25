@@ -29,9 +29,9 @@ const Collapsible = ({ children, title, isTitle = false }: Props) => {
   const [collapsible, setCollapsible] = useState<CollapsibleType>(CollapsibleDefaultValue);
 
   const isOpen = (key: string) => {
-    const value = collapsible && collapsible[key];
-    return value ?? true;
+    return key === 'Comparação' ? true : false;
   };
+
 
   const updateIsOpen = (key: any, value: any) => {
     const newValue = { ...collapsible, [key]: value };
