@@ -2,7 +2,7 @@ import React, { createContext, useContext, useState } from 'react';
 
 import { State } from '@customTypes/state';
 
-import geojsonBR from '@data/BR_UF_2020.json';
+import geojsonBR from '@data/BR_UF_2020_038.json';
 
 import { DEFAULT_VALUE } from '@hook/useFeature';
 
