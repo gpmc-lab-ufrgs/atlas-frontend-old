@@ -1,9 +1,16 @@
 import React, { useState } from 'react';
 import { ModalContainer } from '@components/Modal';
+import './recommendation.css';
+
 
 const Recommendation = () => {
   const [currentScreen, setCurrentScreen] = useState(0);
   const [language, setLanguage] = useState('pt'); // Estado para controlar o idioma
+  const [sliderValue, setSliderValue] = useState(5);
+
+  const handleSliderChange = (event) => {
+    setSliderValue(event.target.value);
+  };
 
   const totalScreens = 4;
 
@@ -118,19 +125,109 @@ const Recommendation = () => {
       case 2:
         return (
           <div>
-            {/* Conteúdo para a tela 2 */}
+            <br /><br />
+            {language === 'pt' ? (
+              <label htmlFor="businessType">Qual é a faixa de renda dos seus clientes que você gostaria de atingir?</label>
+            ) : (
+              <label htmlFor="businessType">What is the income range of the customers you would like to reach?</label>
+            )}
+            <br />
+            <div className="slider-container">
+              <input
+                type="range"
+                min="0"
+                max="9"
+                value={sliderValue}
+                step="1"
+                list="tickmarks"
+                className="slider"
+                onChange={handleSliderChange}
+              />
+              <datalist id="tickmarks">
+                <option value="0">R$0</option>
+                <option value="5">R$5K</option>
+                <option value="10">R$10K</option>
+                <option value="20">R$20K</option>
+                <option value="30">R$30K</option>
+                <option value="40">R$40K</option>
+                <option value="50">R$50K</option>
+                <option value="100">R$100K</option>
+                <option value="200">R$200K</option>
+                <option value="500">R$500K+</option>
+              </datalist>
+              <div className="slider-values">
+                <span>R$00</span>
+                <span>R$5K</span>
+                <span>R$10K</span>
+                <span>R$20K</span>
+                <span>R$30K</span>
+                <span>R$40K</span>
+                <span>R$50K</span>
+                <span>R$100K</span>
+                <span>R$200K</span>
+                <span>R$500K+</span>
+              </div>
+            </div>
           </div>
         );
       case 3:
         return (
           <div>
-            {/* Conteúdo para a tela 3 */}
+            <br /><br />
+            {language === 'pt' ? (
+              <label htmlFor="businessType">Qual é o máximo que você está disposto a pagar para alugar suas instalações comerciais?</label>
+            ) : (
+              <label htmlFor="businessType">What is the most you are willing to pay to lease your commercial premises?</label>
+            )}
+            <br />
+            <div className="slider-container">
+              <input
+                type="range"
+                min="0"
+                max="9"
+                value={sliderValue}
+                step="1"
+                list="tickmarks"
+                className="slider"
+                onChange={handleSliderChange}
+              />
+              <datalist id="tickmarks">
+                <option value="0">R$0</option>
+                <option value="5">R$5K</option>
+                <option value="10">R$10K</option>
+                <option value="20">R$20K</option>
+                <option value="30">R$30K</option>
+                <option value="40">R$40K</option>
+                <option value="50">R$50K</option>
+                <option value="100">R$100K</option>
+                <option value="200">R$200K</option>
+                <option value="500">R$500K+</option>
+              </datalist>
+              <div className="slider-values">
+                <span>R$00</span>
+                <span>R$5K</span>
+                <span>R$10K</span>
+                <span>R$20K</span>
+                <span>R$30K</span>
+                <span>R$40K</span>
+                <span>R$50K</span>
+                <span>R$100K</span>
+                <span>R$200K</span>
+                <span>R$500K+</span>
+              </div>
+            </div>
           </div>
         );
       case 4:
         return (
           <div>
-            {/* Conteúdo para a tela 4 */}
+            <br /><br />
+            {language === 'pt' ? (
+              <label htmlFor="businessType">Baseado nas informações que você forneceu, os seguintes locais podem ser uma boa correspondência.</label>
+            ) : (
+              <label htmlFor="businessType">Based on the information you provided, the following locations could be a good match:</label>
+            )}
+            <br />
           </div>
         );
       default:
@@ -144,7 +241,7 @@ const Recommendation = () => {
       { en: 'Region of Interest', pt: 'Região de interesse' },
       { en: 'Your Business', pt: 'Seu negócio' },
       { en: 'Your Customers', pt: 'Seus clientes' },
-      { en: 'Facilities', pt: 'Instalações' },
+      { en: 'Premises', pt: 'Instalações' },
       { en: 'Results', pt: 'Resultados' },
     ];
 
