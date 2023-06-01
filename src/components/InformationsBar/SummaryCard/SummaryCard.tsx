@@ -25,7 +25,7 @@ export default function SummaryCard() {
   }
 
   const summary =
-    'O Atlas de Oportunidade é um projeto que tem o objetivo de ajudar na identificação, mensuração e classificação de necessidades humanas não satisfeitas, estimação de potencial de mercado, previsão de demanda e identificação de oportunidades de negócio em larga escala.';
+    'O Atlas de Oportunidades é um site gratuito de apoio à decisão que visa ajudar empreendedores e empresas a identificar oportunidades de negócios. O projeto combina várias fontes de dados, processadas com ciência de dados espaciais e algoritmos de Inteligência Artificial.';
 
   return (
     <Styles.Container>
