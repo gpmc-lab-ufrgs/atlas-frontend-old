@@ -3,7 +3,7 @@
   align-items: center;
   justify-content: space-between;
   height: 50px;
-  border-radius: 10px;
+  border-radius: 20px;
   padding: 0 20px;
 }
 
@@ -82,3 +82,28 @@
 .slider-values span {
   margin-right: 10px;
 }
+
+.custom-button {
+    background-color: rgb(61, 190, 255);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+
+  .custom-button:hover {
+    background-color: #3dadeb;
+  }
+
+  .custom-button:active {
+    background-color: #3396d8;
+  }
+
+.custom-h4 {
+    font-size: 14px;
+    color: #333333;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }

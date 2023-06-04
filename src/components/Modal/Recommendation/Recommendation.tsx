@@ -34,9 +34,9 @@ const Recommendation = () => {
           <div>
             <br /><br />
             {language === 'pt' ? (
-              <label htmlFor="state">Selecione o estado</label>
+              <label htmlFor="state"><b>Selecione o estado</b></label>
             ) : (
-              <label htmlFor="state">Select the state</label>
+              <label htmlFor="state"><b>Select the state</b></label>
             )}
             <br />
             <select id="state">
@@ -112,9 +112,9 @@ const Recommendation = () => {
           <div>
             <br /><br />
             {language === 'pt' ? (
-              <label htmlFor="businessType">Qual é o seu tipo de negócio?</label>
+              <label htmlFor="businessType"><b>Qual é o seu tipo de negócio?</b></label>
             ) : (
-              <label htmlFor="businessType">What is your business type?</label>
+              <label htmlFor="businessType"><b>What is your business type?</b></label>
             )}
             <br />
             <select id="businessType">
@@ -127,9 +127,9 @@ const Recommendation = () => {
           <div>
             <br /><br />
             {language === 'pt' ? (
-              <label htmlFor="businessType">Qual é a faixa de renda dos seus clientes que você gostaria de atingir?</label>
+              <label htmlFor="businessType"><b>Qual é a faixa de renda dos seus clientes que você gostaria de atingir?</b></label>
             ) : (
-              <label htmlFor="businessType">What is the income range of the customers you would like to reach?</label>
+              <label htmlFor="businessType"><b>What is the income range of the customers you would like to reach?</b></label>
             )}
             <br />
             <div className="slider-container">
@@ -157,11 +157,11 @@ const Recommendation = () => {
               </datalist>
               <div className="slider-values">
                 <span>R$00</span>
-                <span>R$5K</span>
-                <span>R$10K</span>
-                <span>R$20K</span>
+                <span>&nbsp;R$5K</span>
+                <span>&nbsp;&nbsp;R$10K</span>
+                <span>&nbsp;R$20K</span>
                 <span>R$30K</span>
-                <span>R$40K</span>
+                <span>&nbsp;&nbsp;R$40K</span>
                 <span>R$50K</span>
                 <span>R$100K</span>
                 <span>R$200K</span>
@@ -175,9 +175,9 @@ const Recommendation = () => {
           <div>
             <br /><br />
             {language === 'pt' ? (
-              <label htmlFor="businessType">Qual é o máximo que você está disposto a pagar para alugar suas instalações comerciais?</label>
+              <label htmlFor="businessType"><b>Qual é o máximo que você está disposto a pagar para alugar suas instalações comerciais?</b></label>
             ) : (
-              <label htmlFor="businessType">What is the most you are willing to pay to lease your commercial premises?</label>
+              <label htmlFor="businessType"><b>What is the most you are willing to pay to lease your commercial premises?</b></label>
             )}
             <br />
             <div className="slider-container">
@@ -193,7 +193,7 @@ const Recommendation = () => {
               />
               <datalist id="tickmarks">
                 <option value="0">R$0</option>
-                <option value="5">R$5K</option>
+                <option value="5">R$5k</option>
                 <option value="10">R$10K</option>
                 <option value="20">R$20K</option>
                 <option value="30">R$30K</option>
@@ -205,11 +205,11 @@ const Recommendation = () => {
               </datalist>
               <div className="slider-values">
                 <span>R$00</span>
-                <span>R$5K</span>
-                <span>R$10K</span>
-                <span>R$20K</span>
+                <span>&nbsp;R$5K</span>
+                <span>&nbsp;&nbsp;R$10K</span>
+                <span>&nbsp;R$20K</span>
                 <span>R$30K</span>
-                <span>R$40K</span>
+                <span>&nbsp;&nbsp;R$40K</span>
                 <span>R$50K</span>
                 <span>R$100K</span>
                 <span>R$200K</span>
@@ -223,9 +223,9 @@ const Recommendation = () => {
           <div>
             <br /><br />
             {language === 'pt' ? (
-              <label htmlFor="businessType">Baseado nas informações que você forneceu, os seguintes locais podem ser uma boa correspondência.</label>
+              <label htmlFor="businessType"><b>Baseado nas informações que você forneceu, os seguintes locais podem ser uma boa correspondência:</b></label>
             ) : (
-              <label htmlFor="businessType">Based on the information you provided, the following locations could be a good match:</label>
+              <label htmlFor="businessType"><b>Based on the information you provided, the following locations could be a good match:</b></label>
             )}
             <br />
           </div>
@@ -255,7 +255,7 @@ const Recommendation = () => {
         <div className="progress-bar__line">
           <div key={index} className="progress-bar__item">
             <div className="progress-bar__circle" style={circleStyle} />
-            <h3 className="progress-bar__name">{screen[language]}</h3>
+            <h3 class="custom-h4" className="progress-bar__name">{screen[language]}</h3>
           </div>
         </div>
       );
@@ -316,20 +316,20 @@ const Recommendation = () => {
       <br /><br /><br /><br />
       <div style={{ display: 'flex', justifyContent: 'space-between' }}>
         {currentScreen > 0 && (
-          <button onClick={handlePrevious} style={{ marginRight: 'auto' }}>
-            {language === 'pt' ? 'Anterior' : 'Previous'}
+          <button class="custom-button" onClick={handlePrevious} style={{ marginRight: 'auto' }}>
+            <b>{language === 'pt' ? 'Anterior' : 'Previous'}</b>
           </button>
         )}
 
         {currentScreen < totalScreens - 1 && (
-          <button onClick={handleNext} style={{ marginLeft: 'auto' }}>
-            {language === 'pt' ? 'Próximo' : 'Next'}
+          <button class="custom-button" onClick={handleNext} style={{ marginLeft: 'auto' }}>
+            <b>{language === 'pt' ? 'Próximo' : 'Next'}</b>
           </button>
         )}
 
         {currentScreen === totalScreens - 1 && (
-          <button onClick={handleNext} style={{ marginLeft: 'auto' }}>
-            {language === 'pt' ? 'Gerar Resultado' : 'Generate Result'}
+          <button class="custom-button" onClick={handleNext} style={{ marginLeft: 'auto' }}>
+            <b>{language === 'pt' ? 'Gerar Resultado' : 'Generate Result'}</b>
           </button>
         )}
       </div>

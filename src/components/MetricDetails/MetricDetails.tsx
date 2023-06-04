@@ -150,24 +150,71 @@ const MetricDetails = ({ district, metric }: any) => {
         };
 
         // Define a style for the filled part of the progress bar
-    const progressBarFilledStyle = {
-      width: `${percentage}%`,
-      height: '100%',
-      borderRadius: '3px',
-      backgroundColor: 'green',
-      textAlign: 'center',
-      color: 'black',
-      fontWeight: 'bold',
-      lineHeight: '20px'
-    };
 
-    return (
-      <div key={district.properties.CD_MUN}>
-        <div style={progressBarStyle}>
-          <div style={progressBarFilledStyle}>{value}%</div>
-        </div>
-      </div>
-    );
+        const progressBarFilledStyle = {
+          width: `${percentage}%`,
+          height: '100%',
+          borderRadius: '3px',
+          backgroundColor: '#87A96B',
+          textAlign: 'center',
+          color: 'black',
+          fontWeight: 'bold',
+          lineHeight: '20px'
+        };
+
+        return (
+          <div key={district.properties.CD_MUN}>
+            <div style={progressBarStyle}>
+              <div style={progressBarFilledStyle}>{value}%</div>
+            </div>
+          </div>
+        );
+
+      case 'Graphicc':
+        // Get the value for the graphic
+        const gvalue = geosesData[district?.properties.CD_MUN][metric.label].value;
+
+        // Define a style for the graphic container
+        const graphicContainerStyle = {
+          width: '200px',
+          height: '200px',
+          border: '1px solid #ddd',
+          borderRadius: '5px',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          margin: '10px 0'
+        };
+
+        // Define a style for the graphic
+        const graphicStyle = {
+          width: '80%',
+          height: '80%',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'flex-end',
+          backgroundColor: '#F5F5F5',
+          padding: '10px',
+          borderRadius: '3px'
+        };
+
+        // Define a style for the line in the graphic
+        const lineStyle = {
+          height: `${gvalue}%`,
+          backgroundColor: '#87A96B',
+          borderRadius: '3px'
+        };
+
+        return (
+          <div key={district.properties.CD_MUN}>
+            <div style={graphicContainerStyle}>
+              <div style={graphicStyle}>
+                <div style={lineStyle}></div>
+              </div>
+            </div>
+          </div>
+        );
+
   default:
     return (
       <div key={district.properties.CD_MUN}>
