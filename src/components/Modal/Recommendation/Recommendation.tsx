@@ -117,9 +117,95 @@ const Recommendation = () => {
               <label htmlFor="businessType"><b>What is your business type?</b></label>
             )}
             <br />
-            <select id="businessType">
-              {/* Opções para os tipos de negócio */}
+            <select class="custom-select">
+              <option value="AGRICULTURA">AGRICULTURA</option>
+              <option value="PRODUÇÃO FLORESTAL">PRODUÇÃO FLORESTAL</option>
+              <option value="PESCA E AQÜICULTURA">PESCA E AQÜICULTURA</option>
+              <option value="EXTRAÇÃO DE CARVÃO MINERAL">EXTRAÇÃO DE CARVÃO MINERAL</option>
+              <option value="EXTRAÇÃO DE PETRÓLEO E GÁS NATURAL">EXTRAÇÃO DE PETRÓLEO E GÁS NATURAL</option>
+              <option value="EXTRAÇÃO DE MINERAIS METÁLICOS">EXTRAÇÃO DE MINERAIS METÁLICOS</option>
+              <option value="EXTRAÇÃO DE MINERAIS NÃO-METÁLICOS">EXTRAÇÃO DE MINERAIS NÃO-METÁLICOS</option>
+              <option value="ATIVIDADES DE APOIO À EXTRAÇÃO DE MINERAIS">ATIVIDADES DE APOIO À EXTRAÇÃO DE MINERAIS</option>
+              <option value="FABRICAÇÃO DE PRODUTOS ALIMENTÍCIOS">FABRICAÇÃO DE PRODUTOS ALIMENTÍCIOS</option>
+              <option value="FABRICAÇÃO DE BEBIDAS">FABRICAÇÃO DE BEBIDAS</option>
+              <option value="FABRICAÇÃO DE PRODUTOS DO FUMO">FABRICAÇÃO DE PRODUTOS DO FUMO</option>
+              <option value="FABRICAÇÃO DE PRODUTOS TÊXTEIS">FABRICAÇÃO DE PRODUTOS TÊXTEIS</option>
+              <option value="CONFECÇÃO DE ARTIGOS DO VESTUÁRIO E ACESSÓRIOS">CONFECÇÃO DE ARTIGOS DO VESTUÁRIO E ACESSÓRIOS</option>
+              <option value="PREPARAÇÃO DE COUROS E FABRICAÇÃO DE ARTEFATOS DE COURO">PREPARAÇÃO DE COUROS E FABRICAÇÃO DE ARTEFATOS DE COURO</option>
+              <option value="FABRICAÇÃO DE PRODUTOS DE MADEIRA">FABRICAÇÃO DE PRODUTOS DE MADEIRA</option>
+              <option value="FABRICAÇÃO DE CELULOSE">FABRICAÇÃO DE CELULOSE</option>
+              <option value="IMPRESSÃO E REPRODUÇÃO DE GRAVAÇÕES">IMPRESSÃO E REPRODUÇÃO DE GRAVAÇÕES</option>
+              <option value="FABRICAÇÃO DE COQUE">FABRICAÇÃO DE COQUE</option>
+              <option value="FABRICAÇÃO DE PRODUTOS QUÍMICOS">FABRICAÇÃO DE PRODUTOS QUÍMICOS</option>
+              <option value="FABRICAÇÃO DE PRODUTOS FARMOQUÍMICOS E FARMACÊUTICOS">FABRICAÇÃO DE PRODUTOS FARMOQUÍMICOS E FARMACÊUTICOS</option>
+              <option value="FABRICAÇÃO DE PRODUTOS DE BORRACHA E DE MATERIAL PLÁSTICO">FABRICAÇÃO DE PRODUTOS DE BORRACHA E DE MATERIAL PLÁSTICO</option>
+              <option value="FABRICAÇÃO DE PRODUTOS DE MINERAIS NÃO-METÁLICOS">FABRICAÇÃO DE PRODUTOS DE MINERAIS NÃO-METÁLICOS</option>
+              <option value="METALURGIA">METALURGIA</option>
+              <option value="FABRICAÇÃO DE PRODUTOS DE METAL">FABRICAÇÃO DE PRODUTOS DE METAL</option>
+              <option value="FABRICAÇÃO DE EQUIPAMENTOS DE INFORMÁTICA">FABRICAÇÃO DE EQUIPAMENTOS DE INFORMÁTICA</option>
+              <option value="FABRICAÇÃO DE MÁQUINAS">FABRICAÇÃO DE MÁQUINAS</option>
+              <option value="FABRICAÇÃO DE MÁQUINAS E EQUIPAMENTOS">FABRICAÇÃO DE MÁQUINAS E EQUIPAMENTOS</option>
+              <option value="FABRICAÇÃO DE VEÍCULOS AUTOMOTORES">FABRICAÇÃO DE VEÍCULOS AUTOMOTORES</option>
+              <option value="FABRICAÇÃO DE OUTROS EQUIPAMENTOS DE TRANSPORTE">FABRICAÇÃO DE OUTROS EQUIPAMENTOS DE TRANSPORTE</option>
+              <option value="FABRICAÇÃO DE MÓVEIS">FABRICAÇÃO DE MÓVEIS</option>
+              <option value="FABRICAÇÃO DE PRODUTOS DIVERSOS">FABRICAÇÃO DE PRODUTOS DIVERSOS</option>
+              <option value="MANUTENÇÃO">MANUTENÇÃO</option>
+              <option value="ELETRICIDADE">ELETRICIDADE</option>
+              <option value="CAPTAÇÃO">CAPTAÇÃO</option>
+              <option value="ESGOTO E ATIVIDADES RELACIONADAS">ESGOTO E ATIVIDADES RELACIONADAS</option>
+              <option value="COLETA">COLETA</option>
+              <option value="DESCONTAMINAÇÃO E OUTROS SERVIÇOS DE GESTÃO DE RESÍDUOS">DESCONTAMINAÇÃO E OUTROS SERVIÇOS DE GESTÃO DE RESÍDUOS</option>
+              <option value="CONSTRUÇÃO DE EDIFÍCIOS">CONSTRUÇÃO DE EDIFÍCIOS</option>
+              <option value="OBRAS DE INFRA-ESTRUTURA">OBRAS DE INFRA-ESTRUTURA</option>
+              <option value="SERVIÇOS ESPECIALIZADOS PARA CONSTRUÇÃO">SERVIÇOS ESPECIALIZADOS PARA CONSTRUÇÃO</option>
+              <option value="COMÉRCIO E REPARAÇÃO DE VEÍCULOS AUTOMOTORES E MOTOCICLETAS">COMÉRCIO E REPARAÇÃO DE VEÍCULOS AUTOMOTORES E MOTOCICLETAS</option>
+              <option value="COMÉRCIO POR ATACADO">COMÉRCIO POR ATACADO</option>
+              <option value="COMÉRCIO VAREJISTA">COMÉRCIO VAREJISTA</option>
+              <option value="TRANSPORTE TERRESTRE">TRANSPORTE TERRESTRE</option>
+              <option value="TRANSPORTE AQUAVIÁRIO">TRANSPORTE AQUAVIÁRIO</option>
+              <option value="TRANSPORTE AÉREO">TRANSPORTE AÉREO</option>
+              <option value="ARMAZENAMENTO E ATIVIDADES AUXILIARES DOS TRANSPORTES">ARMAZENAMENTO E ATIVIDADES AUXILIARES DOS TRANSPORTES</option>
+              <option value="CORREIO E OUTRAS ATIVIDADES DE ENTREGA">CORREIO E OUTRAS ATIVIDADES DE ENTREGA</option>
+              <option value="ALOJAMENTO">ALOJAMENTO</option>
+              <option value="ALIMENTAÇÃO">ALIMENTAÇÃO</option>
+              <option value="EDIÇÃO E EDIÇÃO INTEGRADA À IMPRESSÃO">EDIÇÃO E EDIÇÃO INTEGRADA À IMPRESSÃO</option>
+              <option value="ATIVIDADES CINEMATOGRÁFICAS">ATIVIDADES CINEMATOGRÁFICAS</option>
+              <option value="ATIVIDADES DE RÁDIO E DE TELEVISÃO">ATIVIDADES DE RÁDIO E DE TELEVISÃO</option>
+              <option value="TELECOMUNICAÇÕES">TELECOMUNICAÇÕES</option>
+              <option value="ATIVIDADES DOS SERVIÇOS DE TECNOLOGIA DA INFORMAÇÃO">ATIVIDADES DOS SERVIÇOS DE TECNOLOGIA DA INFORMAÇÃO</option>
+              <option value="ATIVIDADES DE PRESTAÇÃO DE SERVIÇOS DE INFORMAÇÃO">ATIVIDADES DE PRESTAÇÃO DE SERVIÇOS DE INFORMAÇÃO</option>
+              <option value="ATIVIDADES DE SERVIÇOS FINANCEIROS">ATIVIDADES DE SERVIÇOS FINANCEIROS</option>
+              <option value="SEGUROS">SEGUROS</option>
+              <option value="ATIVIDADES AUXILIARES DOS SERVIÇOS FINANCEIROS">ATIVIDADES AUXILIARES DOS SERVIÇOS FINANCEIROS</option>
+              <option value="ATIVIDADES IMOBILIÁRIAS">ATIVIDADES IMOBILIÁRIAS</option>
+              <option value="ATIVIDADES JURÍDICAS">ATIVIDADES JURÍDICAS</option>
+              <option value="SERVIÇOS DE ARQUITETURA E ENGENHARIA; TESTES E ANÁLISES TÉCNICAS">SERVIÇOS DE ARQUITETURA E ENGENHARIA; TESTES E ANÁLISES TÉCNICAS</option>
+              <option value="PESQUISA E DESENVOLVIMENTO CIENTÍFICO">PESQUISA E DESENVOLVIMENTO CIENTÍFICO</option>
+              <option value="PUBLICIDADE E PESQUISA DE MERCADO">PUBLICIDADE E PESQUISA DE MERCADO</option>
+              <option value="OUTRAS ATIVIDADES PROFISSIONAIS">OUTRAS ATIVIDADES PROFISSIONAIS</option>
+              <option value="ATIVIDADES VETERINÁRIAS">ATIVIDADES VETERINÁRIAS</option>
+              <option value="ALUGUÉIS NÃO-IMOBILIÁRIOS E GESTÃO DE ATIVOS INTANGÍVEIS NÃO-FINANCEIROS">ALUGUÉIS NÃO-IMOBILIÁRIOS E GESTÃO DE ATIVOS INTANGÍVEIS NÃO-FINANCEIROS</option>
+              <option value="SELEÇÃO">SELEÇÃO</option>
+              <option value="AGÊNCIAS DE VIAGENS">AGÊNCIAS DE VIAGENS</option>
+              <option value="ATIVIDADES DE VIGILÂNCIA">ATIVIDADES DE VIGILÂNCIA</option>
+              <option value="SERVIÇOS PARA EDIFÍCIOS E ATIVIDADES PAISAGÍSTICAS">SERVIÇOS PARA EDIFÍCIOS E ATIVIDADES PAISAGÍSTICAS</option>
+              <option value="SERVIÇOS DE ESCRITÓRIO">SERVIÇOS DE ESCRITÓRIO</option>
+              <option value="ADMINISTRAÇÃO PÚBLICA">ADMINISTRAÇÃO PÚBLICA</option>
+              <option value="EDUCAÇÃO">EDUCAÇÃO</option>
+              <option value="ATIVIDADES DE ATENÇÃO À SAÚDE HUMANA">ATIVIDADES DE ATENÇÃO À SAÚDE HUMANA</option>
+              <option value="ATIVIDADES DE ATENÇÃO À SAÚDE HUMANA INTEGRADAS COM ASSISTÊNCIA SOCIAL">ATIVIDADES DE ATENÇÃO À SAÚDE HUMANA INTEGRADAS COM ASSISTÊNCIA SOCIAL</option>
+              <option value="SERVIÇOS DE ASSISTÊNCIA SOCIAL SEM ALOJAMENTO">SERVIÇOS DE ASSISTÊNCIA SOCIAL SEM ALOJAMENTO</option>
+              <option value="ATIVIDADES ARTÍSTICAS">ATIVIDADES ARTÍSTICAS</option>
+              <option value="ATIVIDADES LIGADAS AO PATRIMÔNIO CULTURAL E AMBIENTAL">ATIVIDADES LIGADAS AO PATRIMÔNIO CULTURAL E AMBIENTAL</option>
+              <option value="ATIVIDADES DE EXPLORAÇÃO DE JOGOS DE AZAR E APOSTAS">ATIVIDADES DE EXPLORAÇÃO DE JOGOS DE AZAR E APOSTAS</option>
+              <option value="ATIVIDADES ESPORTIVAS E DE RECREAÇÃO E LAZER">ATIVIDADES ESPORTIVAS E DE RECREAÇÃO E LAZER</option>
+              <option value="ATIVIDADES DE ORGANIZAÇÕES ASSOCIATIVAS">ATIVIDADES DE ORGANIZAÇÕES ASSOCIATIVAS</option>
+              <option value="REPARAÇÃO E MANUTENÇÃO DE EQUIPAMENTOS DE INFORMÁTICA E COMUNICAÇÃO E DE OBJETOS PESSOAIS E DOMÉSTICOS">REPARAÇÃO E MANUTENÇÃO DE EQUIPAMENTOS DE INFORMÁTICA E COMUNICAÇÃO E DE OBJETOS PESSOAIS E DOMÉSTICOS</option>
+              <option value="OUTRAS ATIVIDADES DE SERVIÇOS PESSOAIS">OUTRAS ATIVIDADES DE SERVIÇOS PESSOAIS</option>
+              <option value="SERVIÇOS DOMÉSTICOS">SERVIÇOS DOMÉSTICOS</option>
+              <option value="ORGANISMOS INTERNACIONAIS E OUTRAS INSTITUIÇÕES EXTRATERRITORIAIS">ORGANISMOS INTERNACIONAIS E OUTRAS INSTITUIÇÕES EXTRATERRITORIAIS</option>
             </select>
+
           </div>
         );
       case 2:
