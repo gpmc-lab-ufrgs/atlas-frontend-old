@@ -138,7 +138,7 @@ const Recommendation = () => {
             <label htmlFor="category"><b>Sector:</b></label>
           )}
           <select id="category" value={selectedCategory} onChange={handleCategoryChange} class="custom-select">
-            <option value="">Selecione um setor</option>
+            <option value=""></option>
             {Object.keys(data).map((category) => (
               <option key={category} value={category}>
                 {category}
@@ -153,7 +153,7 @@ const Recommendation = () => {
             <label htmlFor="description"><b>Description:</b></label>
           )}<br />
           <select id="description" value={selectedDescription} onChange={handleDescriptionChange} class="custom-select">
-            <option value="">Selecione uma descrição</option>
+            <option value=""></option>
             {data[selectedCategory]?.map((item) => (
               <option key={item.CNAE} value={item.DESCRIÇÃO}>
                 {item.DESCRIÇÃO}
