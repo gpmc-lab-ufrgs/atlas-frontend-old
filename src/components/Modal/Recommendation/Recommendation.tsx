@@ -132,7 +132,11 @@ const Recommendation = () => {
             <label htmlFor="businessType"><b>What is your business type?</b></label>
           )}
           <br /><br />
-          <label htmlFor="category"><b>Setor:</b></label><br />
+          {language === 'pt' ? (
+            <label htmlFor="category"><b>Setor:</b></label>
+          ) : (
+            <label htmlFor="category"><b>Sector:</b></label>
+          )}
           <select id="category" value={selectedCategory} onChange={handleCategoryChange} class="custom-select">
             <option value="">Selecione um setor</option>
             {Object.keys(data).map((category) => (
@@ -143,8 +147,11 @@ const Recommendation = () => {
           </select>
 
           <br /><br />
-
-          <label htmlFor="description"><b>Descrição:</b></label><br />
+          {language === 'pt' ? (
+            <label htmlFor="description"><b>Descrição:</b></label>
+          ) : (
+            <label htmlFor="description"><b>Description:</b></label>
+          )}<br />
           <select id="description" value={selectedDescription} onChange={handleDescriptionChange} class="custom-select">
             <option value="">Selecione uma descrição</option>
             {data[selectedCategory]?.map((item) => (
