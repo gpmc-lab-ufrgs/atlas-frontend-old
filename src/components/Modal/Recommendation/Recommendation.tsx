@@ -156,7 +156,7 @@ const Recommendation = () => {
             <option value="">Selecione a descrição</option>
             {data[selectedCategory]?.map((item) => (
               <option key={item.CNAE} value={item.DESCRIÇÃO}>
-                {item.DESCRIÇÃO}
+                {item.CNAE} - {item.DESCRIÇÃO}
               </option>
             ))}
           </select>
