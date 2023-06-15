@@ -1,0 +1,3 @@
+RewriteEngine On
+RewriteCond %{REQUEST_URI} ^/atlas-oportunidades/index\.html$
+RewriteRule ^(.*)$ /atlas-oportunidades/ [R=301,L]

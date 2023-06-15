@@ -28,6 +28,7 @@ const Main = () => {
   const [comparisonType, setComparisonType] = useState('table');
   const { isComparisonModeEnabled } = useMain();
 
+
   return (
     <Styles.MainContainer>
       <Modal />

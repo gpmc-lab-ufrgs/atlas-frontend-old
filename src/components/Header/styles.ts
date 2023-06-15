@@ -16,7 +16,7 @@ export const HeaderContainer = styled.header<HeaderProps>`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
 
-  pointer-events: none;
+  pointer-events: auto;
 
   padding: 15px 20px;
 
@@ -64,4 +64,20 @@ export const HeaderRightSide = styled.div`
   grid-column: 3;
   justify-self: end;
   align-self: center;
+
+  /* Custom CSS for HeaderRightSide component */
+  button {
+    background-color: #e0e0e0;
+    color: #333;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background-color: #ccc;
+  }
 `;
