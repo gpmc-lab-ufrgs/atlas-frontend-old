@@ -40,7 +40,7 @@ const Header: React.FC<Props> = ({ isComparisonModeOn, comparisonType, setCompar
 
           <Drawer open={openMenu} setOpen={setOpenMenu} anchor="right">
             <ProjectInformations setOpen={setOpenMenu} />
-          </Drawer>*/}
+          </Drawer>
         </Styles.HeaderRightSide>
       </Styles.HeaderContainer>
     );
@@ -56,14 +56,14 @@ const Header: React.FC<Props> = ({ isComparisonModeOn, comparisonType, setCompar
 
       <Styles.HeaderRightSide>
         <div aria-label="menu-button">
-          {/*<Styles.MenuButton onClick={() => setOpenMenu(true)} />*/}
+          {/* <Styles.MenuButton onClick={() => setOpenMenu(true)} /> */}
           <a href="https://www.ufrgs.br/atlas-oportunidades/" target="_blank" rel="noopener noreferrer"><button>Acessar Atlas website</button></a>
         </div>
 
         <Drawer open={openMenu} setOpen={setOpenMenu} anchor="right">
           <ProjectInformations setOpen={setOpenMenu} />
         </Drawer>
-      </Styles.HeaderRightSide>*/}
+      </Styles.HeaderRightSide>
     </Styles.HeaderContainer>
   );
 };
