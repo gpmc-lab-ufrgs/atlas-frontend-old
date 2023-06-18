@@ -64,6 +64,7 @@
 
 .background-div {
   background-color: #066ba8;
+  background-image: url('assets/images/vista-aerea-criativa-da-paisagem-urbana 1.png'); /* Replace 'image.jpg' with the path to your image */
   background-size: cover;
   background-position: center;
 }
@@ -72,7 +73,7 @@
   background-image: url("assets/images/banner_inicial_logo.png");
   background-size: cover;
   background-position: center;
-  height: 550px;
+  height: 620px;
 }
 
 body {
