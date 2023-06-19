@@ -4,6 +4,7 @@ import Collapsible from '@components/Collapsible';
 import { useComparison } from '@context/comparisonContext';
 import './recommendation.css';
 import data from '@data/cnae.json';
+import * as Styles from './styles';
 
 
 const Recommendation = () => {
@@ -275,9 +276,9 @@ const Recommendation = () => {
             )}
             <br />
 
-            <button onClick={() => { window.location.href = '/comparison/' + comparisonRegionIds.join('+'); }}>
+            <Styles.ComparisonButton to={'/comparison/' + comparisonRegionIds.join('+')}>
               <p>Mostrar comparação</p>
-            </button>
+            </Styles.ComparisonButton>
 
           </div>
         );
