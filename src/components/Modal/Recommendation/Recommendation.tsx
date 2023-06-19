@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { ModalContainer } from '@components/Modal';
+import Collapsible from '@components/Collapsible';
+import { useComparison } from '@context/comparisonContext';
 import './recommendation.css';
 import data from '@data/cnae.json';
-
 
 
 const Recommendation = () => {
@@ -11,6 +12,11 @@ const Recommendation = () => {
   const [sliderValue, setSliderValue] = useState(5);
   const [selectedCategory, setSelectedCategory] = useState('');
   const [selectedDescription, setSelectedDescription] = useState('');
+
+  const { comparison } = useComparison();
+  const comparisonRegionIds = comparison.map((feature) => feature.properties.CD_MUN);
+  comparisonRegionIds.push('3100203');
+  comparisonRegionIds.push('3303401');
 
   const handleSliderChange = (event) => {
     setSliderValue(event.target.value);
@@ -268,6 +274,11 @@ const Recommendation = () => {
               <label htmlFor="businessType"><b>Based on the information you provided, the following locations could be a good match:</b></label>
             )}
             <br />
+
+            <button onClick={() => { window.location.href = '/comparison/' + comparisonRegionIds.join('+'); }}>
+              <p>Mostrar comparação</p>
+            </button>
+
           </div>
         );
       default:
