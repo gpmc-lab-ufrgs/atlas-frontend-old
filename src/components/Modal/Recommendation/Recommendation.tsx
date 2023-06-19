@@ -19,6 +19,10 @@ const Recommendation = () => {
   comparisonRegionIds.push('3100203');
   comparisonRegionIds.push('3303401');
 
+  const comparisonRegionNames = comparison.map((feature) => feature.properties.CD_MUN);
+  comparisonRegionNames.push('Abaeté');
+  comparisonRegionNames.push('Nova Friburgo');
+
   const handleSliderChange = (event) => {
     setSliderValue(event.target.value);
   };
@@ -276,8 +280,15 @@ const Recommendation = () => {
             )}
             <br />
 
+            <ul>
+              {comparisonRegionNames.map((regionName, index) => (
+                <li key={index}>{regionName}</li>
+              ))}
+            </ul>
+
             <Styles.ComparisonButton to={'/comparison/' + comparisonRegionIds.join('+')}>
               <p>Mostrar comparação</p>
+              <Styles.ChevronIcon />
             </Styles.ComparisonButton>
 
           </div>

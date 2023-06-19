@@ -11,6 +11,8 @@ export const ComparisonButton = styled(Link)`
   align-self: center;
 
   margin-top: 20px;
+  margin-left: 200px;
+  margin-right: 200px;
   padding: 5px 15px;
 
   background: #ffffff;
