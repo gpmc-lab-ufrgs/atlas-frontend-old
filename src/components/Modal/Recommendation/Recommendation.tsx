@@ -5,13 +5,22 @@ import { useComparison } from '@context/comparisonContext';
 import './recommendation.css';
 import data from '@data/cnae.json';
 import * as Styles from './styles';
+import MyJSFile from './recommendation.js';
 
 
 const Recommendation = () => {
   const [currentScreen, setCurrentScreen] = useState(0);
   const [language, setLanguage] = useState('pt'); // Estado para controlar o idioma
-  const [sliderValue, setSliderValue] = useState(5);
+
+  const [errorMessage, setErrorMessage] = useState('');
+  const [uploadMessageVisible, setUploadMessageVisible] = useState(false);
+
+  const [state, setState] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('');
+  const [businessType, setBusinessType] = useState('');
+  const [sliderValue, setSliderValue] = useState(5);
+  const [sliderValue2, setSliderValue2] = useState(5);
+
   const [selectedDescription, setSelectedDescription] = useState('');
 
   const { comparison } = useComparison();
@@ -27,6 +36,10 @@ const Recommendation = () => {
     setSliderValue(event.target.value);
   };
 
+  const handleSlider2Change = (event) => {
+    setSliderValue2(event.target.value);
+  };
+
   const handleCategoryChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const category = event.target.value;
     setSelectedCategory(category);
@@ -38,6 +51,10 @@ const Recommendation = () => {
     setSelectedDescription(description);
   };
 
+  const handleStateChange = (event) => {
+    setState(event.target.value);
+  }
+
   const totalScreens = 4;
 
   const handleNext = () => {
@@ -48,93 +65,131 @@ const Recommendation = () => {
     setCurrentScreen(currentScreen - 1);
   };
 
+  const nextScreen = (next) => {
+    setCurrentScreen(next);
+  };
+
+  const previousScreen = (previous) => {
+    setCurrentScreen(previous);
+  };
+
   const handleTranslation = () => {
     // Alternar entre os idiomas inglês e português
     setLanguage(language === 'pt' ? 'en' : 'pt');
   };
 
-  const renderScreen = () => {
-    switch (currentScreen) {
-      case 0:
-        return (
-          <div>
-            <br /><br />
-            {language === 'pt' ? (
-              <label htmlFor="state"><b>Selecione o estado</b></label>
-            ) : (
-              <label htmlFor="state"><b>Select the state</b></label>
-            )}
-            <br />
-            <select id="state">
-              {language === 'pt' ? (
-                <>
-                  <option value="BR">Todo o Brasil</option>
-                  <option value="AC">Acre</option>
-                  <option value="AL">Alagoas</option>
-                  <option value="AP">Amapá</option>
-                  <option value="AM">Amazonas</option>
-                  <option value="BA">Bahia</option>
-                  <option value="CE">Ceará</option>
-                  <option value="DF">Distrito Federal</option>
-                  <option value="ES">Espírito Santo</option>
-                  <option value="GO">Goiás</option>
-                  <option value="MA">Maranhão</option>
-                  <option value="MT">Mato Grosso</option>
-                  <option value="MS">Mato Grosso do Sul</option>
-                  <option value="MG">Minas Gerais</option>
-                  <option value="PA">Pará</option>
-                  <option value="PB">Paraíba</option>
-                  <option value="PR">Paraná</option>
-                  <option value="PE">Pernambuco</option>
-                  <option value="PI">Piauí</option>
-                  <option value="RJ">Rio de Janeiro</option>
-                  <option value="RN">Rio Grande do Norte</option>
-                  <option value="RS">Rio Grande do Sul</option>
-                  <option value="RO">Rondônia</option>
-                  <option value="RR">Roraima</option>
-                  <option value="SC">Santa Catarina</option>
-                  <option value="SP">São Paulo</option>
-                  <option value="SE">Sergipe</option>
-                  <option value="TO">Tocantins</option>
-                </>
-              ) : (
-                <>
-                  <option value="BR">All Brazil</option>
-                  <option value="AC">Acre</option>
-                  <option value="AL">Alagoas</option>
-                  <option value="AP">Amapá</option>
-                  <option value="AM">Amazonas</option>
-                  <option value="BA">Bahia</option>
-                  <option value="CE">Ceará</option>
-                  <option value="DF">Distrito Federal</option>
-                  <option value="ES">Espírito Santo</option>
-                  <option value="GO">Goiás</option>
-                  <option value="MA">Maranhão</option>
-                  <option value="MT">Mato Grosso</option>
-                  <option value="MS">Mato Grosso do Sul</option>
-                  <option value="MG">Minas Gerais</option>
-                  <option value="PA">Pará</option>
-                  <option value="PB">Paraíba</option>
-                  <option value="PR">Paraná</option>
-                  <option value="PE">Pernambuco</option>
-                  <option value="PI">Piauí</option>
-                  <option value="RJ">Rio de Janeiro</option>
-                  <option value="RN">Rio Grande do Norte</option>
-                  <option value="RS">Rio Grande do Sul</option>
-                  <option value="RO">Rondônia</option>
-                  <option value="RR">Roraima</option>
-                  <option value="SC">Santa Catarina</option>
-                  <option value="SP">São Paulo</option>
-                  <option value="SE">Sergipe</option>
-                  <option value="TO">Tocantins</option>
-                </>
-              )}
-            </select>
-          </div>
-        );
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    setErrorMessage('');
+    const formData = new FormData();
+    formData.append('state', state);
+    formData.append('selectedCategory', selectedCategory);
+    formData.append('selectedDescription', selectedDescription);
+    formData.append('sliderValue', sliderValue);
+    formData.append('sliderValue2', sliderValue2);
+    setUploadMessageVisible(true); // set flag to show message
+    fetch('http://127.0.0.1:8000/recommendation_system/load_recommendation/recommendation_system/', { //http://0.0.0.0:8001/ http://54.163.63.53:8001/upload/load_data/upload/
+      method: 'POST',
+      body: formData,
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Failed.');
+        }
+        return response.json();
+      })
+      .then(data => {
+        console.log(data);
+        alert('Processing.');
+        setState('');
+        setBusinessType('');
+      })
+      .catch(error => setErrorMessage(error.message));
+  };
 
-      case 1:
-      return (
+  const renderScreen = () => {
+        return (
+        <form onSubmit={handleSubmit}>
+
+        <div id="screen-0" style={{ display: currentScreen === 0 ? 'block' : 'none' }}>
+          <div>
+              <br /><br />
+              {language === 'pt' ? (
+                <label htmlFor="state"><b>Selecione o estado</b></label>
+              ) : (
+                <label htmlFor="state"><b>Select the state</b></label>
+              )}
+              <br />
+              <select id="state" value={state} onChange={handleStateChange}>
+                {language === 'pt' ? (
+                  <>
+                    <option value="BR">Todo o Brasil</option>
+                    <option value="AC">Acre</option>
+                    <option value="AL">Alagoas</option>
+                    <option value="AP">Amapá</option>
+                    <option value="AM">Amazonas</option>
+                    <option value="BA">Bahia</option>
+                    <option value="CE">Ceará</option>
+                    <option value="DF">Distrito Federal</option>
+                    <option value="ES">Espírito Santo</option>
+                    <option value="GO">Goiás</option>
+                    <option value="MA">Maranhão</option>
+                    <option value="MT">Mato Grosso</option>
+                    <option value="MS">Mato Grosso do Sul</option>
+                    <option value="MG">Minas Gerais</option>
+                    <option value="PA">Pará</option>
+                    <option value="PB">Paraíba</option>
+                    <option value="PR">Paraná</option>
+                    <option value="PE">Pernambuco</option>
+                    <option value="PI">Piauí</option>
+                    <option value="RJ">Rio de Janeiro</option>
+                    <option value="RN">Rio Grande do Norte</option>
+                    <option value="RS">Rio Grande do Sul</option>
+                    <option value="RO">Rondônia</option>
+                    <option value="RR">Roraima</option>
+                    <option value="SC">Santa Catarina</option>
+                    <option value="SP">São Paulo</option>
+                    <option value="SE">Sergipe</option>
+                    <option value="TO">Tocantins</option>
+                  </>
+                ) : (
+                  <>
+                    <option value="BR">All Brazil</option>
+                    <option value="AC">Acre</option>
+                    <option value="AL">Alagoas</option>
+                    <option value="AP">Amapá</option>
+                    <option value="AM">Amazonas</option>
+                    <option value="BA">Bahia</option>
+                    <option value="CE">Ceará</option>
+                    <option value="DF">Distrito Federal</option>
+                    <option value="ES">Espírito Santo</option>
+                    <option value="GO">Goiás</option>
+                    <option value="MA">Maranhão</option>
+                    <option value="MT">Mato Grosso</option>
+                    <option value="MS">Mato Grosso do Sul</option>
+                    <option value="MG">Minas Gerais</option>
+                    <option value="PA">Pará</option>
+                    <option value="PB">Paraíba</option>
+                    <option value="PR">Paraná</option>
+                    <option value="PE">Pernambuco</option>
+                    <option value="PI">Piauí</option>
+                    <option value="RJ">Rio de Janeiro</option>
+                    <option value="RN">Rio Grande do Norte</option>
+                    <option value="RS">Rio Grande do Sul</option>
+                    <option value="RO">Rondônia</option>
+                    <option value="RR">Roraima</option>
+                    <option value="SC">Santa Catarina</option>
+                    <option value="SP">São Paulo</option>
+                    <option value="SE">Sergipe</option>
+                    <option value="TO">Tocantins</option>
+                  </>
+                )}
+              </select>
+
+          </div>
+      </div>
+
+      <div id="screen-1" style={{ display: currentScreen === 1 ? 'block' : 'none' }}>
         <div>
           <br /><br />
           {language === 'pt' ? (
@@ -172,10 +227,11 @@ const Recommendation = () => {
             ))}
           </select>
         </div>
-      );
-      case 2:
-        return (
-          <div>
+      </div>
+
+      <div id="screen-2" style={{ display: currentScreen === 2 ? 'block' : 'none' }} >
+
+      <div>
             <br /><br />
             {language === 'pt' ? (
               <label htmlFor="businessType"><b>Qual é a faixa de renda dos seus clientes que você gostaria de atingir?</b></label>
@@ -220,10 +276,12 @@ const Recommendation = () => {
               </div>
             </div>
           </div>
-        );
-      case 3:
-        return (
-          <div>
+
+      </div>
+
+      <div id="screen-3" style={{ display: currentScreen === 3 ? 'block' : 'none' }}>
+
+      <div>
             <br /><br />
             {language === 'pt' ? (
               <label htmlFor="businessType"><b>Qual é o máximo que você está disposto a pagar para alugar suas instalações comerciais?</b></label>
@@ -236,11 +294,11 @@ const Recommendation = () => {
                 type="range"
                 min="0"
                 max="9"
-                value={sliderValue}
+                value={sliderValue2}
                 step="1"
                 list="tickmarks"
                 className="slider"
-                onChange={handleSliderChange}
+                onChange={handleSlider2Change}
               />
               <datalist id="tickmarks">
                 <option value="0">R$0</option>
@@ -268,10 +326,18 @@ const Recommendation = () => {
               </div>
             </div>
           </div>
-        );
-      case 4:
-        return (
-          <div>
+
+          <div style={{ display: 'flex', justifyContent: 'center' }}>
+            <button type="submit" className="custom-button">
+              <b>{language === 'pt' ? 'Gerar Resultado' : 'Generate Result'}</b>
+            </button>
+          </div>
+
+      </div>
+
+      <div id="screen-4" style={{ display: currentScreen === 4 ? 'block' : 'none' }}>
+
+      <div>
             <br /><br />
             {language === 'pt' ? (
               <label htmlFor="businessType"><b>Baseado nas informações que você forneceu, os seguintes locais podem ser uma boa correspondência:</b></label>
@@ -292,10 +358,11 @@ const Recommendation = () => {
             </Styles.ComparisonButton>
 
           </div>
+
+      </div>
+
+        </form>
         );
-      default:
-        return null;
-    }
   };
 
   const renderProgressBar = () => {
@@ -390,17 +457,13 @@ const Recommendation = () => {
           </button>
         )}
 
-        {currentScreen === totalScreens - 1 && (
-          <button class="custom-button" onClick={handleNext} style={{ marginLeft: 'auto' }}>
-            <b>{language === 'pt' ? 'Gerar Resultado' : 'Generate Result'}</b>
-          </button>
-        )}
       </div>
         {/* Botão de tradução */}
         <br /><br />
         <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-          Translate to <button onClick={handleTranslation}>
-            {language === 'pt' ? 'English 🇬🇧' : 'Português 🇧🇷'}
+          Translate to
+          <button onClick={handleTranslation}>
+            <b>{language === 'pt' ? 'English' : 'Português'}</b>
           </button>
         </div>
 

@@ -51,3 +51,26 @@ function populateDescriptions() {
 // Call populateDescriptions() initially to set the default options
 populateDescriptions();
 
+
+
+
+let currentScreen = 0;
+
+function nextScreen(next) {
+  document.getElementById(`screen-${currentScreen}`).style.display = "none";
+  document.getElementById(`screen-${next}`).style.display = "block";
+  currentScreen = next;
+}
+
+function previousScreen(previous) {
+  document.getElementById(`screen-${currentScreen}`).style.display = "none";
+  document.getElementById(`screen-${previous}`).style.display = "block";
+  currentScreen = previous;
+}
+
+function handleSubmit(event) {
+  event.preventDefault();
+  // Handle form submission logic
+}
+
+
