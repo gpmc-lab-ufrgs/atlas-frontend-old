@@ -64,7 +64,8 @@
 
 .background-div {
   background-color: #066ba8;
-  background-image: url('assets/images/vista-aerea-criativa-da-paisagem-urbana 1.png'); /* Replace 'image.jpg' with the path to your image */
+  background-image: url('assets/images/vista-aerea-criativa-da-paisagem-urbana 1.png');
+  /* Replace 'image.jpg' with the path to your image */
   background-size: cover;
   background-position: center;
 }
@@ -130,6 +131,7 @@ h1,
 .h1 {
   font-size: 2.75em;
   line-height: 1.25;
+
 }
 
 h2,
@@ -137,7 +139,7 @@ h2,
   font-size: 2.25em;
   line-height: 1.25;
   margin-bottom: 25px;
-  color: var(--white);
+  color: #0A74A6;
 }
 
 h3,
@@ -188,7 +190,7 @@ p {
   font-size: 1em;
   font-weight: 400;
   line-height: 1.5;
-  color: var(--dark-3);
+  color: var(--white);
   margin: 0px;
 }
 
@@ -2384,103 +2386,108 @@ only screen and (min-width: 768px) and (max-width: 991px) {
 }
 
 /*===== FOOTER FIVE =====*/
-.footer-five {
-  background-color: var(--light-3);
+
+.footer-sec {
+  background-color: #01273C;
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
 }
 
-.footer-five .footer-logo {
-  margin-bottom: 30px;
+.logo-footer {
+  float: left;
 }
 
-.footer-five .social-title {
-  font-size: 18px;
-  font-weight: 600;
-  margin-top: 30px;
-  margin-bottom: 20px;
-}
-
-.footer-five .footer-top-content {
-  padding: 100px 0 60px 0;
-}
-
-@media only screen and (min-width: 768px) and (max-width: 991px) {
-  .footer-five .footer-top-content {
-    padding: 80px 0 60px 0;
-  }
-}
-
-@media (max-width: 767px) {
-  .footer-five .footer-top-content {
-    padding: 50px 0 50px 0;
-  }
-}
-
-.footer-five .social {
-  margin-top: 25px;
-}
-
-.footer-five .social li {
-  display: inline-block;
-  margin: 0 4px;
-}
-
-@media (max-width: 767px) {
-  .footer-five .social li {
-    margin: 4px;
-  }
-}
-
-.footer-five .social a {
-  font-size: 18px;
-  color: var(--dark-3);
-  -webkit-transition: all 0.3s ease-out 0s;
-  -moz-transition: all 0.3s ease-out 0s;
-  -ms-transition: all 0.3s ease-out 0s;
-  -o-transition: all 0.3s ease-out 0s;
-  transition: all 0.3s ease-out 0s;
-  height: 45px;
-  width: 45px;
-  line-height: 45px;
+.contact-footer {
   text-align: center;
-  border: 1px solid var(--gray-4);
-  border-radius: 50%;
 }
 
-.footer-five .social a:hover {
-  color: var(--white);
-  background-color: var(--primary);
-  border-color: transparent;
-  -webkit-transform: rotate(360deg);
-  -moz-transform: rotate(360deg);
-  -ms-transform: rotate(360deg);
-  -o-transform: rotate(360deg);
-  transform: rotate(360deg);
+.social-footer {
+  text-align: center;
 }
 
-.footer-five .footer-support {
-  padding-top: 21px;
+.footer-links {
+  list-style: none;
+  padding: 0;
 }
 
-.footer-five .footer-support span {
-  font-size: 16px;
-  line-height: 24px;
-  color: var(--black);
-  font-weight: 600;
-  margin-top: 9px;
+.footer-links li {
+  margin-bottom: 10px;
+}
+
+.footer-location {
+  display: flex;
+  align-items: center;
+}
+
+.footer-location img {
+  margin-right: 10px;
+}
+
+.footer-mail img,
+.footer-phone img {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  margin-right: 10px;
+}
+
+.social-links {
+  flex-direction: column;
+  display: flex;
+  justify-content: space-evenly;
+  list-style: none;
+  padding: 0;
+}
+
+.social-links li {
+  margin-bottom: 10px;
+}
+
+.nav-footer-links {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-link {
   display: block;
+  margin-bottom: 5px;
+  color: white;
+  text-decoration: none;
 }
 
-@media (max-width: 767px) {
-  .footer-five .footer-support span {
-    display: block;
+.atlas-btn {
+  display: block;
+  margin-top: 10px;
+  padding: 5px 10px;
+  background-color: #0A74A6;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.atlas-btn:hover {
+  background-color: #555;
+}
+
+.copyright {
+  flex-basis: 100%;
+  text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+  .footer-sec {
+    text-align: center;
+    flex-direction: column;
   }
-}
 
-.footer-five .footer-copyright {
-  padding: 25px 0;
-  border-top: 1px solid var(--gray-4);
-}
+  .logo-footer {
+    float: none;
+  }
 
-.footer-five .footer-copyright .copyright .text {
-  color: var(--dark-3);
+  .contact-footer,
+  .social-footer {
+    margin-top: 20px;
+  }
 }
