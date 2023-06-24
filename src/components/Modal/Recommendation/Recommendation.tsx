@@ -24,13 +24,14 @@ const Recommendation = () => {
   const [selectedDescription, setSelectedDescription] = useState('');
 
   const { comparison } = useComparison();
-  const comparisonRegionIds = comparison.map((feature) => feature.properties.CD_MUN);
-  comparisonRegionIds.push('3100203');
-  comparisonRegionIds.push('3303401');
+  const [comparisonRegionIds, setComparisonRegionIds] = useState(comparison.map((feature) => feature.properties.CD_MUN));
+  const [comparisonRegionNames, setComparisonRegionNames] = useState(comparison.map((feature) => feature.properties.CD_MUN));
+  //comparisonRegionIds.push('3100203');
+  //comparisonRegionIds.push('3303401');
 
-  const comparisonRegionNames = comparison.map((feature) => feature.properties.CD_MUN);
-  comparisonRegionNames.push('Abaeté');
-  comparisonRegionNames.push('Nova Friburgo');
+  //const comparisonRegionNames = comparison.map((feature) => feature.properties.CD_MUN);
+  //comparisonRegionNames.push('Abaeté');
+  //comparisonRegionNames.push('Nova Friburgo');
 
   const handleSliderChange = (event) => {
     setSliderValue(event.target.value);
@@ -88,7 +89,7 @@ const Recommendation = () => {
     formData.append('sliderValue', sliderValue);
     formData.append('sliderValue2', sliderValue2);
     setUploadMessageVisible(true); // set flag to show message
-    fetch('http://127.0.0.1:8000/recommendation_system/load_recommendation/recommendation_system/', { //http://0.0.0.0:8001/ http://54.163.63.53:8001/upload/load_data/upload/
+    fetch('http://0.0.0.0:8001/recommendation_system/load_recommendation/recommendation_system/', { //http://0.0.0.0:8001/ http://54.163.63.53:8001/upload/load_data/upload/
       method: 'POST',
       body: formData,
     })
@@ -99,13 +100,26 @@ const Recommendation = () => {
         return response.json();
       })
       .then(data => {
-        console.log(data);
-        alert('Processing.');
-        setState('');
-        setBusinessType('');
-      })
-      .catch(error => setErrorMessage(error.message));
-  };
+      console.log(data);
+
+      // Access the selected_districts data from the response
+      const selectedDistricts = data.districts;
+
+      const newRegionIds = selectedDistricts.map(district => district.CD_MUN);
+      const newRegionNames = selectedDistricts.map(district => district.name);
+      setComparisonRegionIds([...comparisonRegionIds, ...newRegionIds]);
+      setComparisonRegionNames([...comparisonRegionNames, ...newRegionNames]);
+
+      setState('');
+      setBusinessType('');
+
+      //alert(`comparisonRegionIds: ${comparisonRegionIds}\ncomparisonRegionNames: ${comparisonRegionNames}`);
+
+      handleNext();
+
+    })
+    .catch(error => setErrorMessage(error.message));
+};
 
   const renderScreen = () => {
         return (
@@ -328,7 +342,7 @@ const Recommendation = () => {
           </div>
 
           <div style={{ display: 'flex', justifyContent: 'center' }}>
-            <button type="submit" className="custom-button">
+            <button type="submit" onClick={handleSubmit} className="custom-button">
               <b>{language === 'pt' ? 'Gerar Resultado' : 'Generate Result'}</b>
             </button>
           </div>
@@ -351,6 +365,7 @@ const Recommendation = () => {
                 <li key={index}>{regionName}</li>
               ))}
             </ul>
+
 
             <Styles.ComparisonButton to={'/comparison/' + comparisonRegionIds.join('+')}>
               <p>Mostrar comparação</p>
