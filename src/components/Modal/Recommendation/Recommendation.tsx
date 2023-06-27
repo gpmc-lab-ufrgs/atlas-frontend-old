@@ -89,7 +89,7 @@ const Recommendation = () => {
     formData.append('sliderValue', sliderValue);
     formData.append('sliderValue2', sliderValue2);
     setUploadMessageVisible(true); // set flag to show message
-    fetch('http://3.92.188.34:8001/recommendation_system/load_recommendation/recommendation_system/', { //http://0.0.0.0:8001/ http://54.163.63.53:8001/upload/load_data/upload/
+    fetch('http://127.0.0.1:8000/recommendation_system/load_recommendation/recommendation_system/', { //http://3.92.188.34:8001/recommendation_system/load_recommendation/recommendation_system/
       method: 'POST',
       body: formData,
     })
@@ -256,8 +256,8 @@ const Recommendation = () => {
             <div className="slider-container">
               <input
                 type="range"
-                min="0"
-                max="4"
+                min="1"
+                max="5"
                 value={sliderValue}
                 step="1"
                 list="tickmarks"
