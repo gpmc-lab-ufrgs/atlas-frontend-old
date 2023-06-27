@@ -265,11 +265,11 @@ const Recommendation = () => {
                 onChange={handleSliderChange}
               />
               <datalist id="tickmarks">
-                <option value="0">1</option>
-                <option value="5">2</option>
-                <option value="10">3</option>
-                <option value="20">4</option>
-                <option value="30">5+</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5+</option>
 
               </datalist>
               <div className="slider-values">
@@ -281,9 +281,9 @@ const Recommendation = () => {
 
               </div>
               {language === 'pt' ? (
-              <b>salários mínimos</b>
+              <b>salários mínimos (Atualmente o salário mínimo no Brasil é de R$ 1.320)</b>
             ) : (
-              <b>minimum wages</b>
+              <b>minimum wages (Currently the minimum wage in Brazil is R$1,320)</b>
             )}
             </div>
           </div>
