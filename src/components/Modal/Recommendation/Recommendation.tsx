@@ -89,7 +89,7 @@ const Recommendation = () => {
     formData.append('sliderValue', sliderValue);
     formData.append('sliderValue2', sliderValue2);
     setUploadMessageVisible(true); // set flag to show message
-    fetch('http://127.0.0.1:8000/recommendation_system/load_recommendation/recommendation_system/', { //http://3.92.188.34:8001/recommendation_system/load_recommendation/recommendation_system/
+    fetch('http://3.92.188.34:8001/recommendation_system/load_recommendation/recommendation_system/', { //http://3.92.188.34:8001/recommendation_system/load_recommendation/recommendation_system/
       method: 'POST',
       body: formData,
     })
