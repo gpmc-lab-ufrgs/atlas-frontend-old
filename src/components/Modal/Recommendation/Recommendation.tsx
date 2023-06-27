@@ -257,7 +257,7 @@ const Recommendation = () => {
               <input
                 type="range"
                 min="0"
-                max="9"
+                max="4"
                 value={sliderValue}
                 step="1"
                 list="tickmarks"
@@ -265,29 +265,26 @@ const Recommendation = () => {
                 onChange={handleSliderChange}
               />
               <datalist id="tickmarks">
-                <option value="0">R$0</option>
-                <option value="5">R$5K</option>
-                <option value="10">R$10K</option>
-                <option value="20">R$20K</option>
-                <option value="30">R$30K</option>
-                <option value="40">R$40K</option>
-                <option value="50">R$50K</option>
-                <option value="100">R$100K</option>
-                <option value="200">R$200K</option>
-                <option value="500">R$500K+</option>
+                <option value="0">1</option>
+                <option value="5">2</option>
+                <option value="10">3</option>
+                <option value="20">4</option>
+                <option value="30">5+</option>
+
               </datalist>
               <div className="slider-values">
-                <span>R$00</span>
-                <span>&nbsp;R$5K</span>
-                <span>&nbsp;&nbsp;R$10K</span>
-                <span>&nbsp;R$20K</span>
-                <span>R$30K</span>
-                <span>&nbsp;&nbsp;R$40K</span>
-                <span>R$50K</span>
-                <span>R$100K</span>
-                <span>R$200K</span>
-                <span>R$500K+</span>
+                <span>1</span>
+                <span>&nbsp;&nbsp;&nbsp;&nbsp;2</span>
+                <span>&nbsp;&nbsp;3</span>
+                <span>&nbsp;&nbsp;4</span>
+                <span>5+</span>
+
               </div>
+              {language === 'pt' ? (
+              <b>salários mínimos</b>
+            ) : (
+              <b>minimum wages</b>
+            )}
             </div>
           </div>
 
