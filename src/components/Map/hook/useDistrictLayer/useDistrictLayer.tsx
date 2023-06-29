@@ -10,7 +10,7 @@ import { useSidebar } from '@context/sidebarContext';
 
 import { isStateLayerVisible } from '../useStateLayer/stateActions';
 
-import districtsSHAPE from '@data/states/mergedfile.json';
+import districtsSHAPE from '@data/states/mergedfile.json'; //arquivo com todos os shapes https://findthatpostcode.uk/tools/merge-geojson
 //import geojsonBA from '@data/states/BA_Municipios_2020_018.json';
 //import geojsonRS from '@data/states/RS_Municipios_2020_018.json';
 //import geojsonAC from '@data/states/AC_Municipios_2020_018.json';
