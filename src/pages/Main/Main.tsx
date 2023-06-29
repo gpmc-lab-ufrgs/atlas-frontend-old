@@ -13,7 +13,7 @@ import Header from '@components/Header';
 import Footer from '@components/Footer';
 import Sidebar from '@components/Sidebar';
 import InformationsBar from '@components/InformationsBar';
-import ComparisonMode from '@components/ComparisonMode';
+import CompatisonMode from '@components/ComparisonMode';
 
 import { useMain } from './hook';
 
