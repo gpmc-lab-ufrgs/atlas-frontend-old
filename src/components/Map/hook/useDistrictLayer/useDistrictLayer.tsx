@@ -10,33 +10,34 @@ import { useSidebar } from '@context/sidebarContext';
 
 import { isStateLayerVisible } from '../useStateLayer/stateActions';
 
-import geojsonBA from '@data/states/BA_Municipios_2020_018.json';
-import geojsonRS from '@data/states/RS_Municipios_2020_018.json';
-import geojsonAC from '@data/states/AC_Municipios_2020_018.json';
-import geojsonAL from '@data/states/AL_Municipios_2020_018.json';
-import geojsonAM from '@data/states/AM_Municipios_2020_018.json';
-import geojsonAP from '@data/states/AP_Municipios_2020_018.json';
-import geojsonCE from '@data/states/CE_Municipios_2020_018.json';
-import geojsonDF from '@data/states/DF_Municipios_2020_018.json';
-import geojsonES from '@data/states/ES_Municipios_2020_018.json';
-import geojsonGO from '@data/states/GO_Municipios_2020_018.json';
-import geojsonMA from '@data/states/MA_Municipios_2020_018.json';
-import geojsonMG from '@data/states/MG_Municipios_2020_018.json';
-import geojsonMS from '@data/states/MS_Municipios_2020_018.json';
-import geojsonMT from '@data/states/MT_Municipios_2020_018.json';
-import geojsonPA from '@data/states/PA_Municipios_2020_018.json';
-import geojsonPB from '@data/states/PB_Municipios_2020_018.json';
-import geojsonPE from '@data/states/PE_Municipios_2020_018.json';
-import geojsonPI from '@data/states/PI_Municipios_2020_018.json';
-import geojsonPR from '@data/states/PR_Municipios_2020_018.json';
-import geojsonRJ from '@data/states/RJ_Municipios_2020_018.json';
-import geojsonRN from '@data/states/RN_Municipios_2020_018.json';
-import geojsonRR from '@data/states/RR_Municipios_2020_018.json';
-import geojsonSC from '@data/states/SC_Municipios_2020_018.json';
-import geojsonSE from '@data/states/SE_Municipios_2020_018.json';
-import geojsonSP from '@data/states/SP_Municipios_2020_018.json';
-import geojsonTO from '@data/states/TO_Municipios_2020_018.json';
-import geojsonRO from '@data/states/RO_Municipios_2020_018.json';
+import districtsSHAPE from '@data/states/mergedfile.json';
+//import geojsonBA from '@data/states/BA_Municipios_2020_018.json';
+//import geojsonRS from '@data/states/RS_Municipios_2020_018.json';
+//import geojsonAC from '@data/states/AC_Municipios_2020_018.json';
+//import geojsonAL from '@data/states/AL_Municipios_2020_018.json';
+//import geojsonAM from '@data/states/AM_Municipios_2020_018.json';
+//import geojsonAP from '@data/states/AP_Municipios_2020_018.json';
+//import geojsonCE from '@data/states/CE_Municipios_2020_018.json';
+//import geojsonDF from '@data/states/DF_Municipios_2020_018.json';
+//import geojsonES from '@data/states/ES_Municipios_2020_018.json';
+//import geojsonGO from '@data/states/GO_Municipios_2020_018.json';
+//import geojsonMA from '@data/states/MA_Municipios_2020_018.json';
+//import geojsonMG from '@data/states/MG_Municipios_2020_018.json';
+//import geojsonMS from '@data/states/MS_Municipios_2020_018.json';
+//import geojsonMT from '@data/states/MT_Municipios_2020_018.json';
+//import geojsonPA from '@data/states/PA_Municipios_2020_018.json';
+//import geojsonPB from '@data/states/PB_Municipios_2020_018.json';
+//import geojsonPE from '@data/states/PE_Municipios_2020_018.json';
+//import geojsonPI from '@data/states/PI_Municipios_2020_018.json';
+//import geojsonPR from '@data/states/PR_Municipios_2020_018.json';
+//import geojsonRJ from '@data/states/RJ_Municipios_2020_018.json';
+//import geojsonRN from '@data/states/RN_Municipios_2020_018.json';
+//import geojsonRR from '@data/states/RR_Municipios_2020_018.json';
+//import geojsonSC from '@data/states/SC_Municipios_2020_018.json';
+//import geojsonSE from '@data/states/SE_Municipios_2020_018.json';
+//import geojsonSP from '@data/states/SP_Municipios_2020_018.json';
+//import geojsonTO from '@data/states/TO_Municipios_2020_018.json';
+//import geojsonRO from '@data/states/RO_Municipios_2020_018.json';
 
 
 import { findState } from '@components/Map/utils/actions';
@@ -60,7 +61,7 @@ const useDistrictLayer = () => {
 
   const allDistricts = {
     type: 'FeatureCollection',
-    features: [...geojsonRS.features, ...geojsonSC.features, ...geojsonPR.features, ...geojsonSP.features, ...geojsonRJ.features, ...geojsonMG.features, ...geojsonES.features, ...geojsonAM.features, ...geojsonMT.features, ...geojsonMA.features, ...geojsonPA.features, ...geojsonRR.features, ...geojsonAP.features, ...geojsonMS.features, ...geojsonGO.features, ...geojsonDF.features, ...geojsonTO.features, ...geojsonBA.features, ...geojsonPI.features, ...geojsonCE.features, ...geojsonRN.features, ...geojsonAC.features, ...geojsonSE.features, ...geojsonPE.features, ...geojsonAL.features, ...geojsonPB.features, ...geojsonRO.features],
+    features: [...districtsSHAPE.features],
   };
 
   function initLayers(reference: mapboxgl.Map) {
