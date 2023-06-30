@@ -72,7 +72,14 @@
   background-image: url("../assets/images/banner_inicial_logo.png");
   background-size: cover;
   background-position: center;
-  height: 620px;
+  height: 900px;
+}
+
+.background-div-inst {
+  background-image: url("../assets/images/instituicoes_glued_temp.png");
+  background-size: cover;
+  background-position: center;
+  height: 880px;
 }
 
 body {
@@ -2274,25 +2281,32 @@ only screen and (min-width: 768px) and (max-width: 991px) {
   background-color: #01273C;
   padding: 20px;
   display: flex;
-  flex-direction: row;
+  flex-wrap: wrap;
   justify-content: space-evenly;
 }
 
-.logo-footer {
-  float: left;
+.logo-footer,
+.contact-footer,
+.social-footer,
+.nav-footer-links {
+  flex-basis: 25%;
 }
 
-.contact-footer {
-  text-align: center;
-}
-
-.social-footer {
-  text-align: center;
+.contact-footer,
+.social-footer,
+.nav-footer-links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 0;
+  /* Add vertical padding */
 }
 
 .footer-links {
-  list-style: none;
-  padding: 0;
+  margin-top: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .footer-links li {
@@ -2302,26 +2316,28 @@ only screen and (min-width: 768px) and (max-width: 991px) {
 .footer-location {
   display: flex;
   align-items: center;
+  padding: 0px 10px;
+  /* Add horizontal padding */
 }
 
 .footer-location img {
   margin-right: 10px;
 }
 
-.footer-mail img,
-.footer-phone img {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  margin-right: 10px;
+.social-footer {
+  justify-content: center;
+  padding: 10px 0;
+  /* Add vertical padding */
 }
 
 .social-links {
-  flex-direction: column;
   display: flex;
+  flex-direction: column;
   justify-content: space-evenly;
-  list-style: none;
-  padding: 0;
+  align-items: center;
+  height: 120px;
+  padding: 10px 0;
+  /* Add vertical padding */
 }
 
 .social-links li {
@@ -2329,48 +2345,63 @@ only screen and (min-width: 768px) and (max-width: 991px) {
 }
 
 .nav-footer-links {
-  list-style: none;
-  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .footer-link {
-  display: block;
   margin-bottom: 5px;
   color: white;
   text-decoration: none;
-}
-
-.atlas-btn {
-  display: block;
-  margin-top: 10px;
-  padding: 5px 10px;
-  background-color: #0A74A6;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-}
-
-.atlas-btn:hover {
-  background-color: #555;
-}
-
-.copyright {
-  flex-basis: 100%;
   text-align: center;
 }
 
+.atlas-btn {
+  display: inline-block;
+}
+
+/* Adjustments for smaller screens */
 @media screen and (max-width: 768px) {
   .footer-sec {
     text-align: center;
     flex-direction: column;
   }
 
-  .logo-footer {
-    float: none;
+  .logo-footer,
+  .contact-footer,
+  .social-footer,
+  .nav-footer-links {
+    flex-basis: 100%;
   }
 
   .contact-footer,
   .social-footer {
     margin-top: 20px;
   }
+}
+
+/* Additional Modifications */
+.contact-footer h6 {
+  display: flex;
+  text-align: center;
+}
+
+.footer-location p {
+  margin-bottom: 5px;
+}
+
+.footer-location img {
+  display: inline-block;
+}
+
+/* Center the copyright text */
+.footer-sec>div:last-child {
+  text-align: center;
+  padding-top: 20px;
+}
+
+.copyright {
+  flex-basis: 100%;
+  text-align: center;
 }

@@ -215,13 +215,16 @@ const MetricDetails = ({ district, metric }: any) => {
           </div>
         );
 
-  default:
     return (
       <div key={district.properties.CD_MUN}>
-        <data value={rawValue} >{geosesData[district?.properties.CD_MUN][metric.label].value}</data>
+        {isNaN(geosesData[district?.properties.CD_MUN][metric.label].value) ? (
+          <div>NaN</div> // Replace with the desired action for NaN value
+        ) : (
+          <data value={rawValue}>{geosesData[district?.properties.CD_MUN][metric.label].value}</data>
+        )}
       </div>
     );
-}};
+  }};
 
 return <div>{renderSingleMetric()}</div>;
 };
