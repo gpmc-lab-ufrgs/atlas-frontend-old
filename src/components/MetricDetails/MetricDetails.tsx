@@ -118,6 +118,7 @@ const MetricDetails = ({ district, metric }: any) => {
         );
 
       case 'Int':
+      case 'int':
         const geosesDataValue = geosesData?.[district?.properties.CD_MUN]?.[metric.label]?.value;
         const parsedValue = parseInt(geosesDataValue);
         const displayValue = isNaN(parsedValue) ? '-----' : parsedValue;
