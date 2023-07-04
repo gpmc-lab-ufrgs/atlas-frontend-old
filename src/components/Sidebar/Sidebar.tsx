@@ -69,7 +69,7 @@ const Sidebar: React.FC<Props> = ({ isComparisonMode, title }) => {
         <Styles.Title>Atlas de Oportunidades</Styles.Title>
         <Styles.EmptyContent >
           {selectedStates.length === 0 ? (
-  <h4>Selecione uma região no mapa para ver seus detalhes</h4>
+  <h4 style={{ color: 'white' }}>Selecione uma região no mapa para ver seus detalhes</h4>
 ) : (
   <>
     <button onClick={handleClearSelection}>Limpar seleção</button>

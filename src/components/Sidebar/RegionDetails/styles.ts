@@ -13,7 +13,7 @@ export const ComparisonButton = styled(Link)`
   margin-top: 20px;
   padding: 5px 15px;
 
-  background: #00406F;
+  background-color: rgba(0, 64, 111, 0.9);
 
   text-decoration: none;
   text-align: center;

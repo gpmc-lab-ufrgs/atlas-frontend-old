@@ -5,8 +5,8 @@ import * as Styles from './styles';
 
 export default function CloroplethLegend() {
   return (
-    <Styles.Container>
-  <Box px="20px" py="15px" backgroundColor="#00406F" color="white">
+    <Styles.Container style={{ backgroundColor: 'rgba(0, 64, 111, 0.9)' }}>
+      <Box px="20px" py="15px"  color="white">
 
         <Box>
           <Styles.Title>População</Styles.Title>
