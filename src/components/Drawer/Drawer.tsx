@@ -2,6 +2,8 @@ import React from 'react';
 
 import * as Styles from './styles';
 
+import centeredImageLogo from './centeredImageLogo.png';
+
 type Anchor = 'right' | 'left';
 
 interface Props {
@@ -16,16 +18,21 @@ const Drawer: React.FC<Props> = ({ open, anchor, setOpen, hideBackdrop, children
   const handleCloseDrawer = () => setOpen(false);
 
   return (
-    <Styles.Drawer
-      anchor={anchor}
-      open={open}
-      onClose={() => handleCloseDrawer()}
-      hideBackdrop={hideBackdrop}
-      disableEnforceFocus
-    >
-      <Styles.DrawerContent>{children}</Styles.DrawerContent>
-    </Styles.Drawer>
-  );
+  <Styles.Drawer
+    anchor={anchor}
+    open={open}
+    onClose={() => handleCloseDrawer()}
+    hideBackdrop={hideBackdrop}
+    disableEnforceFocus
+  >
+    <Styles.DrawerContent>
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+        <img src={centeredImageLogo} alt="Centered Image" />
+      </div>
+      {children}
+    </Styles.DrawerContent>
+  </Styles.Drawer>
+);
 };
 
 export default Drawer;

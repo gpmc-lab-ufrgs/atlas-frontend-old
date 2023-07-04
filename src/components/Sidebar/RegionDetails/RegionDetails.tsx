@@ -24,7 +24,7 @@ const RegionDetails = () => {
     <Box>
       {comparison.length > 0 && <ComparisonSection />}
       {loading ? (
-        <p>Loading...</p>
+        <p style={{ color: 'white' }}>Loading...</p>
       ) : (
         data.map((section, id) => (
           <DataSection

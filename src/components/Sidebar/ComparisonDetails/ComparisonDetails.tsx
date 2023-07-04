@@ -23,8 +23,8 @@ const ComparisonDetails = () => {
 
   const Title = () => (
     <Styles.TitleWrapper>
-      <Styles.ArrowBackButton onClick={handleGoBack} />
-      <Styles.Title>Comparando Regiões</Styles.Title>
+      <Styles.ArrowBackButton style={{ color: 'white' }} onClick={handleGoBack} />
+      <Styles.Title style={{ color: 'white' }}>Comparando Regiões</Styles.Title>
     </Styles.TitleWrapper>
   );
 

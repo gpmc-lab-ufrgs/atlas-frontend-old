@@ -17,7 +17,7 @@ const ComparisonSection = () => {
   );
 
   return (
-    <Collapsible title="Comparação">
+    <Collapsible title="Comparação" >
       {comparison.map((feature: any) => (
         <Styles.ComparisonList key={feature.properties.CD_MUN}>
           {feature.properties['NM_MUN']}

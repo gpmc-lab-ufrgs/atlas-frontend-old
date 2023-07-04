@@ -11,7 +11,7 @@ export const ComparisonWrapper = styled.div`
 
   overflow: auto;
 
-  background-color: #00406F;
+  background-color: rgba(0, 64, 111, 0.9);
 
   z-index: 3;
 `;

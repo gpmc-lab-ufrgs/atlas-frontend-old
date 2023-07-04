@@ -71,7 +71,6 @@ export const DisclaimerText = styled.p`
   text-align: center;
   font-size: 14px;
   font-weight: 400;
-  color: #666666;
 
   margin: 20px 0px 10px;
 `;

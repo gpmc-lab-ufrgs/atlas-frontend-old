@@ -38,7 +38,7 @@ export const CollapsibleContent: React.FC<CollapsibleContentProps> = ({ props })
       ))}
 
       {!isSelectedOnComparison && hasSelectedDistrict && (
-        <Styles.ValueContent>
+        <Styles.ValueContent >
           <p>{selected?.properties.NM_MUN}</p>
           <MetricDetails district={selected} metric={props} />
         </Styles.ValueContent>
