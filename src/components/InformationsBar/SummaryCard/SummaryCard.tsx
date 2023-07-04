@@ -30,12 +30,12 @@ export default function SummaryCard() {
   return (
     <Styles.Container>
       <Box p="20px">
-        <Box display="flex" justifyContent="space-between" pb="10px">
+        <Box display="flex" justifyContent="space-between" pb="10px" >
           <Styles.Title>Atlas de Oportunidades</Styles.Title>
           <CloseIcon onClick={handleCloseCard} cursor="pointer" />
         </Box>
 
-        <Styles.Text>{summary}</Styles.Text>
+        <Styles.Text >{summary}</Styles.Text>
 
         <Button variant="outlined" color="primary" onClick={handleRedirect} aria-label="more-button">
           Saiba mais...

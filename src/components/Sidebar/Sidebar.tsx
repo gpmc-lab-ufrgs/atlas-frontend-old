@@ -20,6 +20,7 @@ interface Props {
 }
 
 const Sidebar: React.FC<Props> = ({ isComparisonMode, title }) => {
+
   const { comparison, addToComparison } = useComparison();
   const { selected } = useSelectedDistrict();
   const { isSidebarOpen, setIsSidebarOpen } = useSidebar();
@@ -66,7 +67,7 @@ const Sidebar: React.FC<Props> = ({ isComparisonMode, title }) => {
     return (
       <>
         <Styles.Title>Atlas de Oportunidades</Styles.Title>
-        <Styles.EmptyContent>
+        <Styles.EmptyContent >
           {selectedStates.length === 0 ? (
   <h4>Selecione uma região no mapa para ver seus detalhes</h4>
 ) : (
@@ -90,9 +91,9 @@ const Sidebar: React.FC<Props> = ({ isComparisonMode, title }) => {
     <Box>
       <Minimizer />
       <Drawer open={isSidebarOpen} setOpen={setIsSidebarOpen} anchor="left" hideBackdrop>
-        <Styles.SidebarContent>
+        <Styles.SidebarContent >
           <SidebarContent />
-        </Styles.SidebarContent>
+        </Styles.SidebarContent >
       </Drawer>
     </Box>
   );

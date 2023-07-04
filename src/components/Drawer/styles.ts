@@ -7,8 +7,10 @@ export const Drawer = styled(DrawerSkeleton)`
 
   .css-4t3x6l-MuiPaper-root-MuiDrawer-paper {
     overflow-y: auto;
+    background-color: #00406F;
   }
 `;
+
 
 export const DrawerContent = styled(Box)`
   min-width: 280px;

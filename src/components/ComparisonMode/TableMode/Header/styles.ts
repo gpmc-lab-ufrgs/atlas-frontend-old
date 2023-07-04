@@ -17,4 +17,6 @@ export const TableItens = styled.div<ITableItens>`
   align-self: center;
 
   font-weight: bold;
+  color: white;
+
 `;

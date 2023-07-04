@@ -6,9 +6,52 @@ interface ICollapsibleContainer {
 
 export const CollapsibleContainer = styled.div<ICollapsibleContainer>`
   .Collapsible__trigger {
-    background-color: ${({ isTitle }) => (isTitle ? '#4A7729' : '#f7f7f7')}!important;
-    color: ${({ isTitle }) => (isTitle ? '#ffffff' : '#000000')}!important;
-    padding: ${({ isTitle }) => (!isTitle ? '7px 10px 7px 7px' : '7px 10px')}!important;
+    ${({ title, isTitle }) => {
+      let backgroundColor = '#f7f7f7';
+      let color = '#000000';
+
+      switch (title) {
+        case 'Demográfica':
+          backgroundColor = '#7B4BB2';
+          break;
+        case 'Economia':
+          backgroundColor = '#147A99';
+          break;
+        case 'Empreendedorismo':
+          backgroundColor = '#F9B180';
+          break;
+        case 'Saúde':
+          backgroundColor = '#58DBAC';
+          break;
+        case 'Educação':
+          backgroundColor = '#BB8BEA';
+          break;
+        case 'Mobilidade':
+          backgroundColor = '#CC6262';
+          break;
+        case 'Segurança':
+          backgroundColor = '#157243';
+          break;
+        case 'Urbanismo':
+          backgroundColor = '#104799';
+          break;
+        case 'Meio Ambiente':
+          backgroundColor = '#B9DD58';
+          break;
+        case 'Tecnologia e Inovação':
+          backgroundColor = '#64ACED';
+          break;
+        default:
+          break;
+      }
+
+      return `
+        background-color: ${isTitle ? backgroundColor : '#f7f7f7'} !important;
+        color: ${isTitle ? '#ffffff' : color} !important;
+      `;
+    }}
+
+    padding: ${({ isTitle }) => (!isTitle ? '7px 10px 7px 7px' : '7px 10px')} !important;
   }
 
   .Collapsible__trigger:after {
@@ -16,3 +59,4 @@ export const CollapsibleContainer = styled.div<ICollapsibleContainer>`
       isTitle ? 'content: url(src/assets/utils/chevron_white.svg)' : 'content: url(src/assets/utils/chevron.svg)'}
   }
 `;
+

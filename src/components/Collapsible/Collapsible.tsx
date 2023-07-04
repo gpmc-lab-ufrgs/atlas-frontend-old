@@ -42,7 +42,7 @@ const Collapsible = ({ children, title, isTitle = false }: Props) => {
   const onClose = (key: any) => updateIsOpen(key, false);
 
   return (
-    <Styles.CollapsibleContainer isTitle={isTitle}>
+    <Styles.CollapsibleContainer isTitle={isTitle} title={title}>
       <Component
         trigger={title}
         open={isOpen(title)}

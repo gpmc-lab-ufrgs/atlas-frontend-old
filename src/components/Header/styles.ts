@@ -67,8 +67,8 @@ export const HeaderRightSide = styled.div`
 
   /* Custom CSS for HeaderRightSide component */
   button {
-    background-color: #e0e0e0;
-    color: #333;
+    background-color: #0A74A6;
+    color: #fff;
     border: none;
     padding: 10px 15px;
     border-radius: 5px;
@@ -78,6 +78,6 @@ export const HeaderRightSide = styled.div`
   }
 
   button:hover {
-    background-color: #ccc;
+    background-color: #00406F;
   }
 `;

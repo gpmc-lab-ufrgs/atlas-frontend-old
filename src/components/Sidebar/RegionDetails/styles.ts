@@ -13,16 +13,16 @@ export const ComparisonButton = styled(Link)`
   margin-top: 20px;
   padding: 5px 15px;
 
-  background: #ffffff;
+  background: #00406F;
 
   text-decoration: none;
   text-align: center;
   font-size: 14px;
   font-weight: 500;
-  color: #000000;
+  color: #fff;
 
   box-sizing: border-box;
-  border: 1px solid #000000;
+  border: 1px solid #000;
   border-radius: 100px;
 
   cursor: pointer;
@@ -33,7 +33,7 @@ export const ComparisonButton = styled(Link)`
 `;
 
 export const ChevronIcon = styled(ChevronRight)`
-  color: #000000;
+  color: #fff;
   margin-left: 10px;
 `;
 

@@ -6,7 +6,8 @@ import * as Styles from './styles';
 export default function CloroplethLegend() {
   return (
     <Styles.Container>
-      <Box px="20px" py="15px">
+  <Box px="20px" py="15px" backgroundColor="#00406F" color="white">
+
         <Box>
           <Styles.Title>População</Styles.Title>
         </Box>
