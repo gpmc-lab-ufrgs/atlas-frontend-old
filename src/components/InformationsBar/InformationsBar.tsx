@@ -15,7 +15,6 @@ export default function InformationBar() {
 
   return (
     <Styles.SideInformationsContainer theme={theme} isSidebarOpen={isSidebarOpen}>
-      <SummaryCard />
       <RecommendationCard />
       <CloroplethLegend />
     </Styles.SideInformationsContainer>
