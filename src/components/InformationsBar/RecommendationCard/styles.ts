@@ -2,7 +2,7 @@ import { Card } from '@mui/material';
 import styled from 'styled-components';
 
 export const Container = styled(Card)`
-  top: 525px;
+  top: 570px;
   position: fixed;
 
   font-size: 14px;
@@ -14,7 +14,7 @@ export const Container = styled(Card)`
 `;
 
 export const Title = styled.h2`
-  margin: 0px;
+  margin:0px;
 `;
 
 export const Text = styled.p`
