@@ -89,6 +89,7 @@ const Recommendation = () => {
     formData.append('sliderValue', sliderValue);
     formData.append('sliderValue2', sliderValue2);
     setUploadMessageVisible(true); // set flag to show message
+
     fetch('http://3.92.188.34:8001/recommendation_system/load_recommendation/recommendation_system/', { //http://3.92.188.34:8001/recommendation_system/load_recommendation/recommendation_system/
       method: 'POST',
       body: formData,
@@ -358,13 +359,17 @@ const Recommendation = () => {
             <br />
 
             <ul>
-              {comparisonRegionNames.map((regionName, index) => (
-                <li key={index}>{regionName}</li>
-              ))}
+              {comparisonRegionNames.slice(-4).map((regionName, index) => {
+                const regionNameInt = parseInt(regionName);
+                if (isNaN(regionNameInt)) {
+                  return <li key={index}>{regionName}</li>;
+                }
+                return null;
+              })}
             </ul>
 
 
-            <Styles.ComparisonButton to={'/comparison/' + comparisonRegionIds.join('+')}>
+            <Styles.ComparisonButton to={'/comparison/' + comparisonRegionIds.slice(-4).join('+')}>
               <p>Mostrar comparação</p>
               <Styles.ChevronIcon />
             </Styles.ComparisonButton>

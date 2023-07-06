@@ -6,12 +6,14 @@ export type ComparisonContext = {
   comparison: Array<District>;
   addComparisonDistrict: React.Dispatch<React.SetStateAction<any>>;
   removeComparisonDistrict: React.Dispatch<React.SetStateAction<any>>;
+  removeAllComparisons: () => void; // Add the removeAllComparisons function declaration
 };
 
-const DEFAULT_VALUE = {
+const DEFAULT_VALUE: ComparisonContext = {
   comparison: [],
   addComparisonDistrict: () => {},
   removeComparisonDistrict: () => {},
+  removeAllComparisons: () => {} // Initialize removeAllComparisons with an empty function
 };
 
 export const comparisonContext = createContext<ComparisonContext>(DEFAULT_VALUE);
@@ -33,8 +35,14 @@ export function ComparisonProvider({ children }: any) {
     );
   };
 
+  const removeAllComparisons = () => {
+    setComparison([]);
+  };
+
   return (
-    <comparisonContext.Provider value={{ comparison, addComparisonDistrict, removeComparisonDistrict }}>
+    <comparisonContext.Provider
+      value={{ comparison, addComparisonDistrict, removeComparisonDistrict, removeAllComparisons }}
+    >
       {children}
     </comparisonContext.Provider>
   );
@@ -42,6 +50,6 @@ export function ComparisonProvider({ children }: any) {
 
 export function useComparison() {
   const context = useContext(comparisonContext);
-  const { comparison, addComparisonDistrict, removeComparisonDistrict } = context;
-  return { comparison, addComparisonDistrict, removeComparisonDistrict };
+  const { comparison, addComparisonDistrict, removeComparisonDistrict, removeAllComparisons } = context;
+  return { comparison, addComparisonDistrict, removeComparisonDistrict, removeAllComparisons };
 }

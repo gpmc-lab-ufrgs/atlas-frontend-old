@@ -1,24 +1,20 @@
 import { useNavigate } from 'react-router';
-
 import { Box } from '@mui/material';
-
 import Collapsible from '@components/Collapsible';
-
 import { useComparison } from '@context/comparisonContext';
 import useMap from '@hook/useMap';
-
 import * as Styles from './styles';
-
 import './styles.css';
 
 const ComparisonDetails = () => {
-  const { comparison, removeComparisonDistrict } = useComparison();
+  const { comparison, removeComparisonDistrict, removeAllComparisons } = useComparison();
   const { resetMapValues } = useMap();
   const navigate = useNavigate();
 
   const handleGoBack = () => {
     navigate('');
     resetMapValues();
+    removeAllComparisons(); // Clear the comparison array
   };
 
   const Title = () => (
