@@ -138,6 +138,7 @@ const Recommendation = () => {
               <select id="state" value={state} onChange={handleStateChange}>
                 {language === 'pt' ? (
                   <>
+                    <option value="">Selecione a região</option>
                     <option value="BR">Todo o Brasil</option>
                     <option value="AC">Acre</option>
                     <option value="AL">Alagoas</option>
@@ -169,6 +170,7 @@ const Recommendation = () => {
                   </>
                 ) : (
                   <>
+                    <option value="">Select the region</option>
                     <option value="BR">All Brazil</option>
                     <option value="AC">Acre</option>
                     <option value="AL">Alagoas</option>
