@@ -40,7 +40,7 @@ const Collapsible = ({ children, title, isTitle = false }: Props) => {
   const [collapsible, setCollapsible] = useState<CollapsibleType>(CollapsibleDefaultValue);
 
   const isOpen = (key: string) => {
-    return key === 'Empreendedorismo';
+    return key === 'Empreendedorismo' || key === 'Comparação';
   };
 
 
