@@ -67,13 +67,13 @@ const supporterInstitutionLogoImages: Institutions[] = [
     size: 130,
   },
   {
-    name: 'Capes',
-    logoImage: logoCapes,
+    name: 'Cnpq',
+    logoImage: logoCnpq,
     size: 110,
   },
   {
-    name: 'Cnpq',
-    logoImage: logoCnpq,
+    name: 'Capes',
+    logoImage: logoCapes,
     size: 110,
   },
 ];
