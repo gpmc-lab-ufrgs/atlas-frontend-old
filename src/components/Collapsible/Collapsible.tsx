@@ -73,7 +73,7 @@ const Collapsible = ({ children, title, isTitle = false }: Props) => {
         open={isOpen(title)}
         onOpening={() => onOpen(title)}
         onClosing={() => onClose(title)}
-        lazyRender={true}
+        lazyRender={false}
         className={`${title}`}
       >
         {children}

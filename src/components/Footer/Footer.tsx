@@ -22,7 +22,7 @@ function Footer() {
       </Box>
 
       <Box display="flex" justifyContent="space-between" alignItems="center" >
-        <Styles.FooterText>&nbsp;&nbsp;Apoio:</Styles.FooterText>
+        <Styles.FooterText>&nbsp;&nbsp;<b>Apoio:</b></Styles.FooterText>
         {supporterInstitutionLogoImages.map((institution, id) => (
           <Styles.InstitutionsLogo
             key={id}

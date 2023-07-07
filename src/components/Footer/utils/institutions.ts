@@ -7,7 +7,9 @@ import logoMitNegative from '@assets/institutions/logoNegativaMIT.png';
 import logoBologna from '@assets/institutions/logoBologna.png';
 import logoUnb from '@assets/institutions/logoUnb.png';
 import logoNCF from '@assets/institutions/logoNCF.png';
-import logoApoio from '@assets/institutions/logoTramontina_cnpq_capes.png';
+import logoCapes from '@assets/institutions/CAPES.png';
+import logoCnpq from '@assets/institutions/CNPq.png';
+import logoTram from '@assets/institutions/TRAMONTINA.png';
 
 interface Institutions {
   name: string;
@@ -61,8 +63,18 @@ const developerInstitutionsLogoImages: Institutions[] = [
 const supporterInstitutionLogoImages: Institutions[] = [
   {
     name: 'Tramontina',
-    logoImage: logoApoio,
-    size: 30,
+    logoImage: logoTram,
+    size: 130,
+  },
+  {
+    name: 'Capes',
+    logoImage: logoCapes,
+    size: 110,
+  },
+  {
+    name: 'Cnpq',
+    logoImage: logoCnpq,
+    size: 110,
   },
 ];
 
