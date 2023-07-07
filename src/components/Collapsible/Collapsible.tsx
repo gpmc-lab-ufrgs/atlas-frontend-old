@@ -40,7 +40,7 @@ const Collapsible = ({ children, title, isTitle = false }: Props) => {
   const [collapsible, setCollapsible] = useState<CollapsibleType>(CollapsibleDefaultValue);
 
   const isOpen = (key: string) => {
-    return key === 'Comparação' ? true : false;
+    return key === 'Empreendedorismo';
   };
 
 
@@ -73,7 +73,7 @@ const Collapsible = ({ children, title, isTitle = false }: Props) => {
         open={isOpen(title)}
         onOpening={() => onOpen(title)}
         onClosing={() => onClose(title)}
-        lazyRender={false}
+        lazyRender={true}
         className={`${title}`}
       >
         {children}

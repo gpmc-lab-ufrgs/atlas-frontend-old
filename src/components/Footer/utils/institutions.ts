@@ -19,6 +19,16 @@ interface Institutions {
 
 const developerInstitutionsLogoImages: Institutions[] = [
   {
+    name: 'Federal University of Rio Grande do Sul',
+    logoImage: logoUfrgsNegative,
+    size: 40,
+   },
+   {
+    name: 'Massachusetts Institute of Technology',
+    logoImage: logoMitNegative,
+    size: 45,
+  },
+  {
     name: 'Federal University of Goiás',
     logoImage: logoUfgNegative,
     size: 40,
@@ -26,22 +36,12 @@ const developerInstitutionsLogoImages: Institutions[] = [
   {
     name: 'University of Bologna',
     logoImage: logoBologna,
-    size: 30,
+    size: 35,
   },
   {
     name: 'New College of Florida',
     logoImage: logoNCF,
     size: 25,
-  },
-  {
-    name: 'Federal University of Rio Grande do Sul',
-    logoImage: logoUfrgsNegative,
-    size: 25,
-  },
-  {
-    name: 'Massachusetts Institute of Technology',
-    logoImage: logoMitNegative,
-    size: 40,
   },
   {
     name: 'Sabanci University',
@@ -69,7 +69,7 @@ const supporterInstitutionLogoImages: Institutions[] = [
   {
     name: 'Cnpq',
     logoImage: logoCnpq,
-    size: 110,
+    size: 100,
   },
   {
     name: 'Capes',
