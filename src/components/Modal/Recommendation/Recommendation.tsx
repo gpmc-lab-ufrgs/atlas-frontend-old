@@ -209,55 +209,55 @@ const Recommendation = () => {
 
       <div id="screen-1" style={{ display: currentScreen === 1 ? 'block' : 'none' }}>
         <div>
-  <br /><br />
-  {language === 'pt' ? (
-    <label htmlFor="businessType"><b>Qual é o seu tipo de negócio?</b></label>
-  ) : (
-    <label htmlFor="businessType"><b>What is your business type?</b></label>
-  )}
-  <br /><br />
-  {language === 'pt' ? (
-    <label htmlFor="category"><b>Setor:</b></label>
-  ) : (
-    <label htmlFor="category"><b>Sector:</b></label>
-  )}
-  <select id="category" value={selectedCategory} onChange={handleCategoryChange} className="custom-select">
-    <option value="">{language === 'pt' ? 'Selecione o setor' : 'Select the sector'}</option>
-    {language === 'pt'
-      ? Object.keys(data).map((category) => (
-          <option key={category} value={category}>
-            {category}
-          </option>
-        ))
-      : Object.keys(data_en).map((category) => (
-          <option key={category} value={category}>
-            {category}
-          </option>
-        ))}
-  </select>
+            <br /><br />
+            {language === 'pt' ? (
+              <label htmlFor="businessType"><b>Qual é o seu tipo de negócio?</b></label>
+            ) : (
+              <label htmlFor="businessType"><b>What is your business type?</b></label>
+            )}
+            <br /><br />
+            {language === 'pt' ? (
+              <label htmlFor="category"><b>Setor:</b></label>
+            ) : (
+              <label htmlFor="category"><b>Sector:</b></label>
+            )}
+            <select id="category" value={selectedCategory} onChange={handleCategoryChange} className="custom-select">
+              <option value="">{language === 'pt' ? 'Selecione o setor' : 'Select the sector'}</option>
+              {language === 'pt'
+                ? Object.keys(data).map((category) => (
+                    <option key={category} value={category}>
+                      {category}
+                    </option>
+                  ))
+                : Object.keys(data_en).map((category) => (
+                    <option key={category} value={category}>
+                      {category}
+                    </option>
+                  ))}
+            </select>
 
-  <br /><br />
-  {language === 'pt' ? (
-    <label htmlFor="description"><b>Descrição:</b></label>
-  ) : (
-    <label htmlFor="description"><b>Description:</b></label>
-  )}
-  <br />
-  <select id="description" value={selectedDescription} onChange={handleDescriptionChange} className="custom-select">
-    <option value="">{language === 'pt' ? 'Selecione a descrição' : 'Select the description'}</option>
-    {language === 'pt'
-      ? (data[selectedCategory] || []).map((item) => (
-          <option key={item.CNAE} value={item.DESCRIÇÃO}>
-            {item.CNAE} - {item.DESCRIÇÃO}
-          </option>
-        ))
-      : (data_en[selectedCategory] || []).map((item) => (
-          <option key={item.CNAE} value={item.DESCRIPTION}>
-            {item.CNAE} - {item.DESCRIPTION}
-          </option>
-        ))}
-  </select>
-</div>
+            <br /><br />
+            {language === 'pt' ? (
+              <label htmlFor="description"><b>Descrição:</b></label>
+            ) : (
+              <label htmlFor="description"><b>Description:</b></label>
+            )}
+            <br />
+            <select id="description" value={selectedDescription} onChange={handleDescriptionChange} className="custom-select">
+              <option value="">{language === 'pt' ? 'Selecione a descrição' : 'Select the description'}</option>
+              {language === 'pt'
+                ? (data[selectedCategory] || []).map((item) => (
+                    <option key={item.CNAE} value={item.DESCRIÇÃO}>
+                      {item.CNAE} - {item.DESCRIÇÃO}
+                    </option>
+                  ))
+                : (data_en[selectedCategory] || []).map((item) => (
+                    <option key={item.CNAE} value={item.DESCRIPTION}>
+                      {item.CNAE} - {item.DESCRIPTION}
+                    </option>
+                  ))}
+            </select>
+          </div>
       </div>
 
       <div id="screen-2" style={{ display: currentScreen === 2 ? 'block' : 'none' }} >
