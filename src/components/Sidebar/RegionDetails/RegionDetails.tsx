@@ -21,12 +21,31 @@ const RegionDetails = () => {
   }, []);
 
   return (
-    <Box>
-      {comparison.length > 0 && <ComparisonSection />}
-      {loading ? (
-        <p style={{ color: 'white' }}>Loading...</p>
-      ) : (
-        data.map((section, id) => (
+  <Box>
+    {comparison.length > 0 && <ComparisonSection />}
+    {loading ? (
+      <p style={{ color: 'white' }}>Loading...</p>
+    ) : (
+      data
+        .sort((a, b) => {
+          // Define the order of sections
+          const sectionOrder = [
+            'Demográfica',
+            'Economia',
+            'Empreendedorismo',
+            'Educação',
+            'Saúde',
+            'Segurança',
+            'Urbanismo',
+            'Tecnologia e Inovação',
+            'Meio Ambiente',
+            'Mobilidade'
+          ];
+
+          // Compare the index of the sections in the predefined order
+          return sectionOrder.indexOf(a.title) - sectionOrder.indexOf(b.title);
+        })
+        .map((section, id) => (
           <DataSection
             key={id}
             title={section.title}
@@ -40,9 +59,9 @@ const RegionDetails = () => {
             }))}
           />
         ))
-      )}
-    </Box>
-  );
+    )}
+  </Box>
+);
 };
 
 export default RegionDetails;

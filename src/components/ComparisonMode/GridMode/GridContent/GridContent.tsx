@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Tooltip } from '@mui/material';
-
 import Collapsible from '@components/Collapsible';
 import MetricDetails from '@components/MetricDetails';
 import { MapPropsContentType, MapPropsSectionType } from '@customTypes/map';
 import { District } from '@customTypes/district';
-
 import * as Styles from './styles';
 
 interface Props {
@@ -29,9 +27,28 @@ const GridContent: React.FC<Props> = ({ comparison }) => {
     fetchData();
   }, []);
 
+  // Define the order of sections
+  const sectionOrder = [
+            'Demográfica',
+            'Economia',
+            'Empreendedorismo',
+            'Educação',
+            'Saúde',
+            'Segurança',
+            'Urbanismo',
+            'Tecnologia e Inovação',
+            'Meio Ambiente',
+            'Mobilidade'
+          ];
+
+  // Sort the sections based on the predefined order
+  const sortedSections = dictionaryData.sort((a, b) => {
+    return sectionOrder.indexOf(a.title) - sectionOrder.indexOf(b.title);
+  });
+
   return (
     <>
-      {dictionaryData.map((section: DictionaryData) => (
+      {sortedSections.map((section: DictionaryData) => (
         <Collapsible isTitle={true} title={section.title} key={section.title}>
           <Styles.GridContainer>
             {section.content.map((content: MapPropsContentType, id) => (
