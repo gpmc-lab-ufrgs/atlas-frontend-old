@@ -64,9 +64,11 @@ export const HeaderRightSide = styled.div`
   grid-column: 3;
   justify-self: end;
   align-self: center;
+  display: flex; /* Adicionado para usar flexbox */
+  align-items: center; /* Alinha verticalmente os elementos ao centro */
 
-  /* Custom CSS for HeaderRightSide component */
   button {
+    margin-right: 10px; /* Espaçamento entre os botões */
     background-color: #0A74A6;
     color: #fff;
     border: none;
@@ -79,5 +81,28 @@ export const HeaderRightSide = styled.div`
 
   button:hover {
     background-color: #00406F;
+  }
+`;
+
+export const HeaderRightSideLanguage = styled.div`
+  /* Removido o grid-column para não afetar a posição */
+  justify-self: flex-end;
+  align-self: right;
+
+  /* Custom CSS for HeaderRightSide component */
+  button {
+    margin-right: 10px; /* Espaçamento entre os botões */
+    backgroundColor: rgba(0, 64, 111, 0.5);
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  button:hover {
+    backgroundColor: rgba(0, 64, 111, 0.5);
   }
 `;
