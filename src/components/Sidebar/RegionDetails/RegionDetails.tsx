@@ -3,6 +3,7 @@ import { Box } from '@mui/material';
 import { useComparison } from '@context/comparisonContext';
 import ComparisonSection from './ComparisonSection';
 import DataSection from './DataSection';
+import { useLocation } from 'react-router-dom';
 
 const RegionDetails = () => {
   const { comparison } = useComparison();
@@ -20,48 +21,52 @@ const RegionDetails = () => {
     fetchData();
   }, []);
 
-  return (
-  <Box>
-    {comparison.length > 0 && <ComparisonSection />}
-    {loading ? (
-      <p style={{ color: 'white' }}>Loading...</p>
-    ) : (
-      data
-        .sort((a, b) => {
-          // Define the order of sections
-          const sectionOrder = [
-            'Demográfica',
-            'Economia',
-            'Empreendedorismo',
-            'Educação',
-            'Saúde',
-            'Segurança',
-            'Urbanismo',
-            'Tecnologia e Inovação',
-            'Meio Ambiente',
-            'Mobilidade'
-          ];
+  const location = useLocation();
+  const { pathname } = location;
+  const isEnglish = pathname.includes('/en');
 
-          // Compare the index of the sections in the predefined order
-          return sectionOrder.indexOf(a.title) - sectionOrder.indexOf(b.title);
-        })
-        .map((section, id) => (
-          <DataSection
-            key={id}
-            title={section.title}
-            content={section.content.map((item, idx) => ({
-              label: item.label,
-              title: item.title,
-              description: item.description,
-              format: item.format,
-              unit: item.unit,
-              type: item.type,
-            }))}
-          />
-        ))
-    )}
-  </Box>
-);
+  return (
+    <Box>
+      {comparison.length > 0 && <ComparisonSection />}
+      {loading ? (
+        <p style={{ color: 'white' }}>Loading...</p>
+      ) : (
+        data
+          .sort((a, b) => {
+            // Define the order of sections
+            const sectionOrder = [
+              'Demográfica',
+              'Economia',
+              'Empreendedorismo',
+              'Educação',
+              'Saúde',
+              'Segurança',
+              'Urbanismo',
+              'Tecnologia e Inovação',
+              'Meio Ambiente',
+              'Mobilidade'
+            ];
+
+            // Compare the index of the sections in the predefined order
+            return sectionOrder.indexOf(a.title) - sectionOrder.indexOf(b.title);
+          })
+          .map((section, id) => (
+            <DataSection
+              key={id}
+              title={section.title}
+              content={section.content.map((item, idx) => ({
+                label: item.label,
+                title: isEnglish ? item.title_en : item.title,
+                description: isEnglish ? item.description_en : item.description,
+                format: item.format,
+                unit: item.unit,
+                type: item.type,
+              }))}
+            />
+          ))
+      )}
+    </Box>
+  );
 };
 
 export default RegionDetails;

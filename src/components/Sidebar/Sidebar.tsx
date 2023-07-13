@@ -11,8 +11,7 @@ import ComparisonButton from './ComparisonButton';
 import ComparisonDetails from './ComparisonDetails';
 import * as Styles from './styles';
 import { selectedStates } from '../Map/hook/useStateLayer/stateActions';
-import { Link } from 'react-router-dom';
-
+import { Link, useLocation } from 'react-router-dom';
 
 interface Props {
   isComparisonMode: boolean;
@@ -20,10 +19,13 @@ interface Props {
 }
 
 const Sidebar: React.FC<Props> = ({ isComparisonMode, title }) => {
-
   const { comparison, addToComparison } = useComparison();
   const { selected } = useSelectedDistrict();
   const { isSidebarOpen, setIsSidebarOpen } = useSidebar();
+
+  const location = useLocation();
+  const { pathname } = location;
+  const isEnglish = pathname.includes('/en');
 
   const hasSelectedDistrict = Boolean(selected);
   const hasComparisonRegions = comparison.length !== 0;
@@ -34,30 +36,27 @@ const Sidebar: React.FC<Props> = ({ isComparisonMode, title }) => {
       setIsSidebarOpen(false);
     };
 
-
-  const handleAddToComparison = () => {
-    if (selectedStates.length > 1) {
-      const comparisonRegionIds = selectedStates.map((state) => state.id);
-      const comparisonUrl = '/comparison/' + comparisonRegionIds.join('+');
-      console.log('Selected states:', selectedStates);
-      console.log('Comparison URL:', comparisonUrl);
-      alert(`Comparing: ${selectedStates.map((state) => state.name).join(', ')}. URL: ${comparisonUrl}`);
-      return (
-        <Link to={comparisonUrl}>
-
-        </Link>
-      );
-    } else {
-      alert('Selecione pelo menos dois estados para comparar');
-    }
-  };
+    const handleAddToComparison = () => {
+      if (selectedStates.length > 1) {
+        const comparisonRegionIds = selectedStates.map((state) => state.id);
+        const comparisonUrl = '/comparison/' + comparisonRegionIds.join('+');
+        console.log('Selected states:', selectedStates);
+        console.log('Comparison URL:', comparisonUrl);
+        alert(`Comparing: ${selectedStates.map((state) => state.name).join(', ')}. URL: ${comparisonUrl}`);
+        return (
+          <Link to={comparisonUrl}></Link>
+        );
+      } else {
+        alert('Selecione pelo menos dois estados para comparar');
+      }
+    };
 
     if (isComparisonMode) {
       return <ComparisonDetails />;
     } else if (hasComparisonRegions || hasSelectedDistrict) {
       return (
         <>
-          <Styles.Title>{hasSelectedDistrict ? title : 'Atlas de Oportunidades'}</Styles.Title>
+          <Styles.Title>{hasSelectedDistrict ? title : (isEnglish ? 'Atlas of Opportunities' : 'Atlas de Oportunidades')}</Styles.Title>
           <ComparisonButton />
           <RegionDetails />
         </>
@@ -66,22 +65,22 @@ const Sidebar: React.FC<Props> = ({ isComparisonMode, title }) => {
 
     return (
       <>
-        <Styles.Title>Atlas de Oportunidades</Styles.Title>
-        <Styles.EmptyContent >
+        <Styles.Title>{isEnglish ? 'Atlas of Opportunities' : 'Atlas de Oportunidades'}</Styles.Title>
+        <Styles.EmptyContent>
           {selectedStates.length === 0 ? (
-  <h4 style={{ color: 'white' }}>Selecione uma região no mapa para ver seus detalhes</h4>
-) : (
-  <>
-    <button onClick={handleClearSelection}>Limpar seleção</button>
-    <Button variant="contained" onClick={handleAddToComparison}>Comparar</Button>
-    <br />
-    <ul>
-      {selectedStates.map((state, index) => (
-        <li key={index}>{state.name}</li>
-      ))}
-    </ul>
-  </>
-)}
+            <h4 style={{ color: 'white' }}>{isEnglish ? 'Select a region on the map to view its details' : 'Selecione uma região no mapa para ver seus detalhes'}</h4>
+          ) : (
+            <>
+              <button onClick={handleClearSelection}>{isEnglish ? 'Clear selection' : 'Limpar seleção'}</button>
+              <Button variant="contained" onClick={handleAddToComparison}>{isEnglish ? 'Compare' : 'Comparar'}</Button>
+              <br />
+              <ul>
+                {selectedStates.map((state, index) => (
+                  <li key={index}>{state.name}</li>
+                ))}
+              </ul>
+            </>
+          )}
         </Styles.EmptyContent>
       </>
     );
@@ -91,13 +90,12 @@ const Sidebar: React.FC<Props> = ({ isComparisonMode, title }) => {
     <Box>
       <Minimizer />
       <Drawer open={isSidebarOpen} setOpen={setIsSidebarOpen} anchor="left" hideBackdrop>
-        <Styles.SidebarContent >
+        <Styles.SidebarContent>
           <SidebarContent />
-        </Styles.SidebarContent >
+        </Styles.SidebarContent>
       </Drawer>
     </Box>
   );
 };
-
 
 export default Sidebar;
