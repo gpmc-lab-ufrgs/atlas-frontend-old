@@ -62,7 +62,7 @@ const Header: React.FC<Props> = ({ isComparisonModeOn, comparisonType, setCompar
         <div >
           {isEnglish ? (
             <>
-              <a href="http://localhost:3000/" rel="noopener noreferrer">
+              <a href="http://3.92.188.34:3000/" rel="noopener noreferrer">
                 <button><img src={ptImage} alt="Image" style={{ maxWidth: '25px'}} /></button>
               </a>
               <a href="https://www.ufrgs.br/atlas-oportunidades/" target="_blank" rel="noopener noreferrer">
@@ -71,7 +71,7 @@ const Header: React.FC<Props> = ({ isComparisonModeOn, comparisonType, setCompar
             </>
           ) : (
             <>
-              <a href="http://localhost:3000/en" rel="noopener noreferrer">
+              <a href="http://3.92.188.34:3000/en" rel="noopener noreferrer">
                 <button><img src={enImage} alt="Image" style={{ maxWidth: '25px'}} /></button>
               </a>
               <a href="https://www.ufrgs.br/atlas-oportunidades/" target="_blank" rel="noopener noreferrer">
