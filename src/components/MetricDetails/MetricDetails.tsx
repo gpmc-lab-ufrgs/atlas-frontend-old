@@ -171,50 +171,16 @@ const MetricDetails = ({ district, metric }: any) => {
           </div>
         );
 
-      case 'Graphicc':
+      case 'Graphic':
         // Get the value for the graphic
-        const gvalue = geosesData[district?.properties.CD_MUN][metric.label].value;
-
-        // Define a style for the graphic container
-        const graphicContainerStyle = {
-          width: '200px',
-          height: '200px',
-          border: '1px solid #ddd',
-          borderRadius: '5px',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          margin: '10px 0'
-        };
-
-        // Define a style for the graphic
-        const graphicStyle = {
-          width: '80%',
-          height: '80%',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'flex-end',
-          backgroundColor: '#F5F5F5',
-          padding: '10px',
-          borderRadius: '3px'
-        };
-
-        // Define a style for the line in the graphic
-        const lineStyle = {
-          height: `${gvalue}%`,
-          backgroundColor: '#87A96B',
-          borderRadius: '3px'
-        };
-
-        return (
-          <div key={district.properties.CD_MUN}>
-            <div style={graphicContainerStyle}>
-              <div style={graphicStyle}>
-                <div style={lineStyle}></div>
-              </div>
+        const geosesDataValue2 = geosesData?.[district?.properties.CD_MUN]?.[metric.label]?.value;
+          const parsedValue2 = parseFloat(geosesDataValue2);
+          const displayValue2 = isNaN(parsedValue2) ? '-----' : parsedValue2.toLocaleString('de-DE', { minimumFractionDigits: 3, maximumFractionDigits: 3 });
+          return (
+            <div key={district?.properties.CD_MUN}>
+              <data value={geosesDataValue2}>{displayValue2}</data>
             </div>
-          </div>
-        );
+          );
 
     return (
       <div key={district.properties.CD_MUN}>
