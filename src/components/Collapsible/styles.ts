@@ -14,31 +14,61 @@ export const CollapsibleContainer = styled.div<ICollapsibleContainer>`
         case 'Demográfica':
           backgroundColor = '#7B4BB2';
           break;
+        case 'Demographic':
+          backgroundColor = '#7B4BB2';
+          break;
         case 'Economia':
+          backgroundColor = '#147A99';
+          break;
+        case 'Economy':
           backgroundColor = '#147A99';
           break;
         case 'Empreendedorismo':
           backgroundColor = '#F9B180';
           break;
+        case 'Entrepreneurship':
+          backgroundColor = '#F9B180';
+          break;
         case 'Saúde':
+          backgroundColor = '#58DBAC';
+          break;
+        case 'Health':
           backgroundColor = '#58DBAC';
           break;
         case 'Educação':
           backgroundColor = '#BB8BEA';
           break;
+        case 'Education':
+          backgroundColor = '#BB8BEA';
+          break;
         case 'Mobilidade':
+          backgroundColor = '#CC6262';
+          break;
+        case 'Mobility':
           backgroundColor = '#CC6262';
           break;
         case 'Segurança':
           backgroundColor = '#157243';
           break;
+        case 'Safety':
+          backgroundColor = '#157243';
+          break;
         case 'Urbanismo':
+          backgroundColor = '#104799';
+          break;
+        case 'Urbanism':
           backgroundColor = '#104799';
           break;
         case 'Meio Ambiente':
           backgroundColor = '#B9DD58';
           break;
+        case 'Environment':
+          backgroundColor = '#B9DD58';
+          break;
         case 'Tecnologia e Inovação':
+          backgroundColor = '#64ACED';
+          break;
+        case 'Technology and inovation':
           backgroundColor = '#64ACED';
           break;
         default:

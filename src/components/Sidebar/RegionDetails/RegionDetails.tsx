@@ -34,18 +34,31 @@ const RegionDetails = () => {
         data
           .sort((a, b) => {
             // Define the order of sections
-            const sectionOrder = [
-              'Demográfica',
-              'Economia',
-              'Empreendedorismo',
-              'Educação',
-              'Saúde',
-              'Segurança',
-              'Urbanismo',
-              'Tecnologia e Inovação',
-              'Meio Ambiente',
-              'Mobilidade'
-            ];
+            const sectionOrder = isEnglish
+              ? [
+                  'Demographic',
+                  'Economy',
+                  'Entrepreneurship',
+                  'Education',
+                  'Health',
+                  'Safety',
+                  'Urbanism',
+                  'Technology and inovation',
+                  'Environment',
+                  'Mobility'
+                ]
+              : [
+                  'Demográfica',
+                  'Economia',
+                  'Empreendedorismo',
+                  'Educação',
+                  'Saúde',
+                  'Segurança',
+                  'Urbanismo',
+                  'Tecnologia e Inovação',
+                  'Meio Ambiente',
+                  'Mobilidade'
+                ];
 
             // Compare the index of the sections in the predefined order
             return sectionOrder.indexOf(a.title) - sectionOrder.indexOf(b.title);
@@ -53,7 +66,7 @@ const RegionDetails = () => {
           .map((section, id) => (
             <DataSection
               key={id}
-              title={section.title}
+              title={isEnglish ? section.title_english : section.title}
               content={section.content.map((item, idx) => ({
                 label: item.label,
                 title: isEnglish ? item.title_en : item.title,

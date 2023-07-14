@@ -40,7 +40,7 @@ const Collapsible = ({ children, title, isTitle = false }: Props) => {
   const [collapsible, setCollapsible] = useState<CollapsibleType>(CollapsibleDefaultValue);
 
   const isOpen = (key: string) => {
-    return key === 'Demográfica' || key === 'Comparação';
+    return key === 'Demográfica' || key === 'Demographic' || key === 'Comparação';
   };
 
 
@@ -57,16 +57,16 @@ const Collapsible = ({ children, title, isTitle = false }: Props) => {
       <Component
         trigger={
           <div style={{ display: 'flex', alignItems: 'center' }}>
-            {title === 'Demográfica' && <img src={demograficaImage} alt="Image" style={{ maxWidth: '35%', height: 'auto' }} />}
-            {title === 'Economia' && <img src={economiaImage} alt="Image" style={{ maxWidth: '35%', height: 'auto' }} />}
-            {title === 'Empreendedorismo' && <img src={empreendedorismoImage} alt="Image" style={{ maxWidth: '35%', height: 'auto' }} />}
-            {title === 'Urbanismo' && <img src={urbanismoImage} alt="Image" style={{ maxWidth: '35%', height: 'auto' }} />}
-            {title === 'Tecnologia e Inovação' && <img src={tiImage} alt="Image" style={{ maxWidth: '35%', height: 'auto' }} />}
-            {title === 'Educação' && <img src={educacaoImage} alt="Image" style={{ maxWidth: '35%', height: 'auto' }} />}
-            {title === 'Saúde' && <img src={saudeImage} alt="Image" style={{ maxWidth: '35%', height: 'auto' }} />}
-            {title === 'Mobilidade' && <img src={mobilidadeImage} alt="Image" style={{ maxWidth: '35%', height: 'auto' }} />}
-            {title === 'Segurança' && <img src={segurancaImage} alt="Image" style={{ maxWidth: '35%', height: 'auto' }} />}
-            {title === 'Meio Ambiente' && <img src={meioambienteImage} alt="Image" style={{ maxWidth: '35%', height: 'auto' }} />}
+            {(title === 'Demográfica' || title === 'Demographic') && <img src={demograficaImage} alt="Image" style={{ maxWidth: '35%', height: 'auto' }} />}
+            {(title === 'Economia' || title === 'Economy') && <img src={economiaImage} alt="Image" style={{ maxWidth: '35%', height: 'auto' }} />}
+            {(title === 'Empreendedorismo' || title === 'Entrepreneurship') && <img src={empreendedorismoImage} alt="Image" style={{ maxWidth: '35%', height: 'auto' }} />}
+            {(title === 'Urbanismo' || title === 'Urbanism') && <img src={urbanismoImage} alt="Image" style={{ maxWidth: '35%', height: 'auto' }} />}
+            {(title === 'Tecnologia e Inovação' || title === 'Technology and inovation') && <img src={tiImage} alt="Image" style={{ maxWidth: '35%', height: 'auto' }} />}
+            {(title === 'Educação' || title === 'Education') && <img src={educacaoImage} alt="Image" style={{ maxWidth: '35%', height: 'auto' }} />}
+            {(title === 'Saúde' || title === 'Health') && <img src={saudeImage} alt="Image" style={{ maxWidth: '35%', height: 'auto' }} />}
+            {(title === 'Mobilidade' || title === 'Mobility') && <img src={mobilidadeImage} alt="Image" style={{ maxWidth: '35%', height: 'auto' }} />}
+            {(title === 'Segurança' || title === 'Safety') && <img src={segurancaImage} alt="Image" style={{ maxWidth: '35%', height: 'auto' }} />}
+            {(title === 'Meio Ambiente' || title === 'Environment') && <img src={meioambienteImage} alt="Image" style={{ maxWidth: '35%', height: 'auto' }} />}
             {title}
           </div>
         }
