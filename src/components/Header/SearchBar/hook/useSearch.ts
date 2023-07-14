@@ -85,6 +85,8 @@ const useSearch = (featureSearched: District[]) => {
     reset();
   };
 
+  const isEnglish = window.location.href.includes('/en');
+
   const inputProps = {
     ...getInputProps({
       onFocus: () => {
@@ -92,7 +94,7 @@ const useSearch = (featureSearched: District[]) => {
           openMenu();
         }
       },
-      placeholder: 'Pesquise por cidades',
+      placeholder: isEnglish ? 'Search for cities' : 'Pesquise por cidades',
       spellCheck: 'false',
       ref: inputRef,
     }),
