@@ -16,8 +16,11 @@ const useMain = () => {
   const [isComparisonModeEnabled, setIsComparisonModeEnabled] = useState<boolean>(false);
 
   useEffect(() => {
-    if (comparison.length === 0 && location.pathname.startsWith('/comparison/')) {
-      const pathIds = location.pathname.replace('/comparison/', '');
+    if (
+      comparison.length === 0 &&
+      (location.pathname.startsWith('/comparison/') || location.pathname.startsWith('/comparisonn/'))
+    ) {
+      const pathIds = location.pathname.replace('/comparison/', '').replace('/comparisonn/', '');
       if (pathIds) {
         const ids = pathIds.split('+');
         const featuresFromUrl = all.filter((ft: any) => ids.includes(ft.properties['CD_MUN'].toString()));
@@ -27,7 +30,7 @@ const useMain = () => {
         navigate('');
       }
     }
-  }, [location, history, comparison]);
+  }, [location, comparison]);
 
   useEffect(() => {
     if (location.pathname.startsWith('/comparison/') && all.length !== 0) {
@@ -37,10 +40,12 @@ const useMain = () => {
         navigate(newPath);
       }
     }
-  }, [comparison, location, history]);
+  }, [comparison, location]);
 
   useEffect(() => {
-    setIsComparisonModeEnabled(location.pathname.startsWith('/comparison'));
+    setIsComparisonModeEnabled(
+      location.pathname.startsWith('/comparison') || location.pathname.startsWith('/comparisonn')
+    );
   }, [location]);
 
   return {

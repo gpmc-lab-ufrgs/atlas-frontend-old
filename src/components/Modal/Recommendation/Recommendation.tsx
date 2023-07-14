@@ -123,6 +123,8 @@ const Recommendation = () => {
     .catch(error => setErrorMessage(error.message));
 };
 
+  const isEnglish = window.location.href.includes('//');
+
   const renderScreen = () => {
         return (
         <form onSubmit={handleSubmit}>
@@ -385,8 +387,8 @@ const Recommendation = () => {
             </ul>
 
 
-            <Styles.ComparisonButton to={'/comparison/' + comparisonRegionIds.slice(-4).join('+')}>
-              <p>Mostrar comparação</p>
+            <Styles.ComparisonButton to={'/comparisonn/' + comparisonRegionIds.slice(-4).join('+')}>
+              <p>{language === 'pt' ? 'Mostrar comparação' : 'Show comparison'}</p>
               <Styles.ChevronIcon />
             </Styles.ComparisonButton>
 
