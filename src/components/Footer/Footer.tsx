@@ -6,6 +6,8 @@ import { Box } from '@mui/material';
 
 import * as Styles from './styles';
 
+const isEnglish = window.location.href.includes('/en');
+
 function Footer() {
   return (
     <Styles.FooterContainer>
