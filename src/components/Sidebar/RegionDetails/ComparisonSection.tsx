@@ -13,7 +13,7 @@ const ComparisonSection = () => {
   const isEnglish = pathname.includes('/en');
 
   const ComparisonResult = () => (
-    <Styles.ComparisonButton to={isEnglish ? '/comparisonn/' + comparisonRegionIds.join('+') : '/comparison/'}>
+    <Styles.ComparisonButton to={isEnglish ? '/comparison_en/' + comparisonRegionIds.join('+') : '/comparison/'}>
       <p>{isEnglish ? 'Show Comparison' : 'Mostrar comparação'}</p>
       <Styles.ChevronIcon />
     </Styles.ComparisonButton>

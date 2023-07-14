@@ -123,7 +123,7 @@ const Recommendation = () => {
     .catch(error => setErrorMessage(error.message));
 };
 
-  const isEnglish = window.location.href.includes('//');
+  const isEnglish = window.location.href.includes('recommendation/');
 
   const renderScreen = () => {
         return (
@@ -132,46 +132,14 @@ const Recommendation = () => {
         <div id="screen-0" style={{ display: currentScreen === 0 ? 'block' : 'none' }}>
           <div>
               <br /><br />
-              {language === 'pt' ? (
-                <label htmlFor="state"><b>Selecione o estado</b></label>
-              ) : (
+              {isEnglish ? (
                 <label htmlFor="state"><b>Select the state</b></label>
+              ) : (
+                <label htmlFor="state"><b>Selecione o estado</b></label>
               )}
               <br />
               <select id="state" value={state} onChange={handleStateChange}>
-                {language === 'pt' ? (
-                  <>
-                    <option value="">Selecione a região</option>
-                    <option value="BR">Todo o Brasil</option>
-                    <option value="AC">Acre</option>
-                    <option value="AL">Alagoas</option>
-                    <option value="AP">Amapá</option>
-                    <option value="AM">Amazonas</option>
-                    <option value="BA">Bahia</option>
-                    <option value="CE">Ceará</option>
-                    <option value="DF">Distrito Federal</option>
-                    <option value="ES">Espírito Santo</option>
-                    <option value="GO">Goiás</option>
-                    <option value="MA">Maranhão</option>
-                    <option value="MT">Mato Grosso</option>
-                    <option value="MS">Mato Grosso do Sul</option>
-                    <option value="MG">Minas Gerais</option>
-                    <option value="PA">Pará</option>
-                    <option value="PB">Paraíba</option>
-                    <option value="PR">Paraná</option>
-                    <option value="PE">Pernambuco</option>
-                    <option value="PI">Piauí</option>
-                    <option value="RJ">Rio de Janeiro</option>
-                    <option value="RN">Rio Grande do Norte</option>
-                    <option value="RS">Rio Grande do Sul</option>
-                    <option value="RO">Rondônia</option>
-                    <option value="RR">Roraima</option>
-                    <option value="SC">Santa Catarina</option>
-                    <option value="SP">São Paulo</option>
-                    <option value="SE">Sergipe</option>
-                    <option value="TO">Tocantins</option>
-                  </>
-                ) : (
+                {isEnglish ? (
                   <>
                     <option value="">Select the region</option>
                     <option value="BR">All Brazil</option>
@@ -203,6 +171,39 @@ const Recommendation = () => {
                     <option value="SE">Sergipe</option>
                     <option value="TO">Tocantins</option>
                   </>
+                ) : (
+                <>
+                    <option value="">Selecione a região</option>
+                    <option value="BR">Todo o Brasil</option>
+                    <option value="AC">Acre</option>
+                    <option value="AL">Alagoas</option>
+                    <option value="AP">Amapá</option>
+                    <option value="AM">Amazonas</option>
+                    <option value="BA">Bahia</option>
+                    <option value="CE">Ceará</option>
+                    <option value="DF">Distrito Federal</option>
+                    <option value="ES">Espírito Santo</option>
+                    <option value="GO">Goiás</option>
+                    <option value="MA">Maranhão</option>
+                    <option value="MT">Mato Grosso</option>
+                    <option value="MS">Mato Grosso do Sul</option>
+                    <option value="MG">Minas Gerais</option>
+                    <option value="PA">Pará</option>
+                    <option value="PB">Paraíba</option>
+                    <option value="PR">Paraná</option>
+                    <option value="PE">Pernambuco</option>
+                    <option value="PI">Piauí</option>
+                    <option value="RJ">Rio de Janeiro</option>
+                    <option value="RN">Rio Grande do Norte</option>
+                    <option value="RS">Rio Grande do Sul</option>
+                    <option value="RO">Rondônia</option>
+                    <option value="RR">Roraima</option>
+                    <option value="SC">Santa Catarina</option>
+                    <option value="SP">São Paulo</option>
+                    <option value="SE">Sergipe</option>
+                    <option value="TO">Tocantins</option>
+                  </>
+
                 )}
               </select>
 
@@ -212,26 +213,26 @@ const Recommendation = () => {
       <div id="screen-1" style={{ display: currentScreen === 1 ? 'block' : 'none' }}>
         <div>
             <br /><br />
-            {language === 'pt' ? (
-              <label htmlFor="businessType"><b>Qual é o seu tipo de negócio?</b></label>
-            ) : (
+            {isEnglish ? (
               <label htmlFor="businessType"><b>What is your business type?</b></label>
+            ) : (
+              <label htmlFor="businessType"><b>Qual é o seu tipo de negócio?</b></label>
             )}
             <br /><br />
-            {language === 'pt' ? (
-              <label htmlFor="category"><b>Setor:</b></label>
-            ) : (
+            {isEnglish ? (
               <label htmlFor="category"><b>Sector:</b></label>
+            ) : (
+              <label htmlFor="category"><b>Setor:</b></label>
             )}
             <select id="category" value={selectedCategory} onChange={handleCategoryChange} className="custom-select">
-              <option value="">{language === 'pt' ? 'Selecione o setor' : 'Select the sector'}</option>
-              {language === 'pt'
-                ? Object.keys(data).map((category) => (
+              <option value="">{isEnglish ? 'Select the sector' : 'Selecione o setor'}</option>
+              {isEnglish
+                ? Object.keys(data_en).map((category) => (
                     <option key={category} value={category}>
                       {category}
                     </option>
                   ))
-                : Object.keys(data_en).map((category) => (
+                : Object.keys(data).map((category) => (
                     <option key={category} value={category}>
                       {category}
                     </option>
@@ -239,23 +240,23 @@ const Recommendation = () => {
             </select>
 
             <br /><br />
-            {language === 'pt' ? (
-              <label htmlFor="description"><b>Descrição:</b></label>
-            ) : (
+            {isEnglish ? (
               <label htmlFor="description"><b>Description:</b></label>
+            ) : (
+              <label htmlFor="description"><b>Descrição:</b></label>
             )}
             <br />
             <select id="description" value={selectedDescription} onChange={handleDescriptionChange} className="custom-select">
               <option value="">{language === 'pt' ? 'Selecione a descrição' : 'Select the description'}</option>
-              {language === 'pt'
-                ? (data[selectedCategory] || []).map((item) => (
-                    <option key={item.CNAE} value={item.DESCRIÇÃO}>
-                      {item.CNAE} - {item.DESCRIÇÃO}
-                    </option>
-                  ))
-                : (data_en[selectedCategory] || []).map((item) => (
+              {isEnglish
+                ? (data_en[selectedCategory] || []).map((item) => (
                     <option key={item.CNAE} value={item.DESCRIPTION}>
                       {item.CNAE} - {item.DESCRIPTION}
+                    </option>
+                  ))
+                : (data[selectedCategory] || []).map((item) => (
+                    <option key={item.CNAE} value={item.DESCRIÇÃO}>
+                      {item.CNAE} - {item.DESCRIÇÃO}
                     </option>
                   ))}
             </select>
@@ -266,10 +267,10 @@ const Recommendation = () => {
 
       <div>
             <br /><br />
-            {language === 'pt' ? (
-              <label htmlFor="businessType"><b>Qual é a faixa de renda dos seus clientes que você gostaria de atingir?</b></label>
-            ) : (
+            {isEnglish ? (
               <label htmlFor="businessType"><b>What is the income range of the customers you would like to reach?</b></label>
+            ) : (
+              <label htmlFor="businessType"><b>Qual é a faixa de renda dos seus clientes que você gostaria de atingir?</b></label>
             )}
             <br />
             <div className="slider-container">
@@ -299,10 +300,10 @@ const Recommendation = () => {
                 <span>5+</span>
 
               </div>
-              {language === 'pt' ? (
-              <b>salários mínimos (Atualmente o salário mínimo no Brasil é de R$ 1.320)</b>
-            ) : (
+              {isEnglish ? (
               <b>minimum wages (Currently the minimum wage in Brazil is R$1,320)</b>
+            ) : (
+              <b>salários mínimos (Atualmente o salário mínimo no Brasil é de R$ 1.320)</b>
             )}
             </div>
           </div>
@@ -313,10 +314,10 @@ const Recommendation = () => {
 
       <div>
             <br /><br />
-            {language === 'pt' ? (
-              <label htmlFor="businessType"><b>Qual é o máximo que você está disposto a pagar para alugar suas instalações comerciais?</b></label>
-            ) : (
+            {isEnglish ? (
               <label htmlFor="businessType"><b>What is the most you are willing to pay to lease your commercial premises?</b></label>
+            ) : (
+              <label htmlFor="businessType"><b>Qual é o máximo que você está disposto a pagar para alugar suas instalações comerciais?</b></label>
             )}
             <br />
             <div className="slider-container">
@@ -359,7 +360,7 @@ const Recommendation = () => {
 
           <div style={{ display: 'flex', justifyContent: 'center' }}>
             <button type="submit" onClick={handleSubmit} className="custom-button">
-              <b>{language === 'pt' ? 'Gerar Resultado' : 'Generate Result'}</b>
+              <b>{isEnglish ? 'Generate Result' : 'Gerar Resultado'}</b>
             </button>
           </div>
 
@@ -369,10 +370,10 @@ const Recommendation = () => {
 
       <div>
             <br /><br />
-            {language === 'pt' ? (
-              <label htmlFor="businessType"><b>Baseado nas informações que você forneceu, os seguintes locais podem ser uma boa correspondência:</b></label>
-            ) : (
+            {isEnglish ? (
               <label htmlFor="businessType"><b>Based on the information you provided, the following locations could be a good match:</b></label>
+            ) : (
+              <label htmlFor="businessType"><b>Baseado nas informações que você forneceu, os seguintes locais podem ser uma boa correspondência:</b></label>
             )}
             <br />
 
@@ -387,8 +388,8 @@ const Recommendation = () => {
             </ul>
 
 
-            <Styles.ComparisonButton to={language === 'en' ? '/comparisonn/' + comparisonRegionIds.join('+') : '/comparison/' + comparisonRegionIds.join('+')}>
-              <p>{language === 'pt' ? 'Mostrar comparação' : 'Show comparison'}</p>
+            <Styles.ComparisonButton to={isEnglish ? '/comparison_en/' + comparisonRegionIds.join('+') : '/comparison/' + comparisonRegionIds.join('+')}>
+              <p>{isEnglish ? 'Show comparison' : 'Mostrar comparação'}</p>
               <Styles.ChevronIcon />
             </Styles.ComparisonButton>
 
@@ -411,26 +412,28 @@ const Recommendation = () => {
     ];
 
     const circles = screens.map((screen, index) => {
-      const isActive = index <= currentScreen;
-      const circleStyle = {
-        backgroundColor: isActive ? '#696969' : '#ccc',
-      };
+    const isActive = index <= currentScreen;
+    const circleStyle = {
+      backgroundColor: isActive ? '#696969' : '#ccc',
+    };
 
-      return (
-        <div className="progress-bar__line">
-          <div key={index} className="progress-bar__item">
-            <div className="progress-bar__circle" style={circleStyle} />
-            <h3 class="custom-h4" className="progress-bar__name">{screen[language]}</h3>
-          </div>
+    return (
+      <div className="progress-bar__line">
+        <div key={index} className="progress-bar__item">
+          <div className="progress-bar__circle" style={circleStyle} />
+          <h3 className="custom-h4 progress-bar__name">
+            {isEnglish ? screen.en : screen.pt}
+          </h3>
         </div>
-      );
-    });
+      </div>
+    );
+  });
 
     return <div className="progress-bar">{circles}</div>;
   };
 
   return (
-    <ModalContainer title={language === 'pt' ? 'Sistema de Recomendação' : 'Recommendation System'}>
+    <ModalContainer title={isEnglish ? 'Recommendation System' : 'Sistema de Recomendação'}>
       <style>
         {`
         /* Estilos do progress bar */
@@ -482,25 +485,19 @@ const Recommendation = () => {
       <div style={{ display: 'flex', justifyContent: 'space-between' }}>
         {currentScreen > 0 && (
           <button class="custom-button" onClick={handlePrevious} style={{ marginRight: 'auto' }}>
-            <b>{language === 'pt' ? 'Anterior' : 'Previous'}</b>
+            <b>{isEnglish ? 'Previous' : 'Anterior'}</b>
           </button>
         )}
 
         {currentScreen < totalScreens - 1 && (
           <button class="custom-button" onClick={handleNext} style={{ marginLeft: 'auto' }}>
-            <b>{language === 'pt' ? 'Próximo' : 'Next'}</b>
+            <b>{isEnglish ? 'Next' : 'Próximo'}</b>
           </button>
         )}
 
       </div>
         {/* Botão de tradução */}
         <br /><br />
-        <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-          Translate to
-          <button onClick={handleTranslation}>
-            <b>{language === 'pt' ? 'English' : 'Português'}</b>
-          </button>
-        </div>
 
     </ModalContainer>
   );

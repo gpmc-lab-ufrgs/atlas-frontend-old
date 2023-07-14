@@ -27,7 +27,7 @@ const GridContent: React.FC<Props> = ({ comparison }) => {
     fetchData();
   }, []);
 
-  const isEnglish = window.location.href.includes('/comparisonn');
+  const isEnglish = window.location.href.includes('/comparison_en');
 
   // Define the order of sections
   const sectionOrder = isEnglish

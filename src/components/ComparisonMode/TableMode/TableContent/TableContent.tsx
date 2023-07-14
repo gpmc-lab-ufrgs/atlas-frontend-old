@@ -35,7 +35,7 @@ const TableContent: React.FC<Props> = ({ comparison }) => {
     }
   }, []);
 
-  const isEnglish = window.location.href.includes('/comparisonn');
+  const isEnglish = window.location.href.includes('/comparison_en');
 
   // Define the order of sections
   const sectionOrder = isEnglish

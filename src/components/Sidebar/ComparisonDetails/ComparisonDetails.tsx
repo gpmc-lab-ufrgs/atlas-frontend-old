@@ -11,7 +11,7 @@ const ComparisonDetails = () => {
   const { resetMapValues } = useMap();
   const navigate = useNavigate();
 
-  const isEnglish = window.location.href.includes('/comparisonn');
+  const isEnglish = window.location.href.includes('/comparison_en');
 
   const handleGoBack = () => {
     if (isEnglish) {

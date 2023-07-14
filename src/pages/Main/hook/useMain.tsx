@@ -18,9 +18,9 @@ const useMain = () => {
   useEffect(() => {
     if (
       comparison.length === 0 &&
-      (location.pathname.startsWith('/comparison/') || location.pathname.startsWith('/comparisonn/'))
+      (location.pathname.startsWith('/comparison/') || location.pathname.startsWith('/comparison_en/'))
     ) {
-      const pathIds = location.pathname.replace('/comparison/', '').replace('/comparisonn/', '');
+      const pathIds = location.pathname.replace('/comparison/', '').replace('/comparison_en/', '');
       if (pathIds) {
         const ids = pathIds.split('+');
         const featuresFromUrl = all.filter((ft: any) => ids.includes(ft.properties['CD_MUN'].toString()));
@@ -44,7 +44,7 @@ const useMain = () => {
 
   useEffect(() => {
     setIsComparisonModeEnabled(
-      location.pathname.startsWith('/comparison') || location.pathname.startsWith('/comparisonn')
+      location.pathname.startsWith('/comparison') || location.pathname.startsWith('/comparison_en')
     );
   }, [location]);
 

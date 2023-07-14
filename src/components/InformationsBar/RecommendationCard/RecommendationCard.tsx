@@ -22,7 +22,7 @@ export default function RecommendationCard() {
   };
 
   const handleRedirect = () => {
-    navigate('recommendation');
+    navigate(isEnglish ? 'recommendation/' : 'recommendation');
   };
 
   if (!hasRecommendationCard) {
