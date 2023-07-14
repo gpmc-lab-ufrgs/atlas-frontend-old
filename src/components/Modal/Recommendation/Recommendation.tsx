@@ -387,7 +387,7 @@ const Recommendation = () => {
             </ul>
 
 
-            <Styles.ComparisonButton to={'/comparisonn/' + comparisonRegionIds.slice(-4).join('+')}>
+            <Styles.ComparisonButton to={language === 'en' ? '/comparisonn/' + comparisonRegionIds.join('+') : '/comparison/' + comparisonRegionIds.join('+')}>
               <p>{language === 'pt' ? 'Mostrar comparação' : 'Show comparison'}</p>
               <Styles.ChevronIcon />
             </Styles.ComparisonButton>
