@@ -13,6 +13,7 @@ interface Props {
 interface DictionaryData {
   title: string;
   content: Array<MapPropsContentType>;
+  title_english: string; // Added property for English title
 }
 
 const TableContent: React.FC<Props> = ({ comparison }) => {
@@ -34,19 +35,34 @@ const TableContent: React.FC<Props> = ({ comparison }) => {
     }
   }, []);
 
+  const isEnglish = window.location.href.includes('/comparisonn');
+
   // Define the order of sections
-  const sectionOrder = [
-            'Demográfica',
-            'Economia',
-            'Empreendedorismo',
-            'Educação',
-            'Saúde',
-            'Segurança',
-            'Urbanismo',
-            'Tecnologia e Inovação',
-            'Meio Ambiente',
-            'Mobilidade'
-          ];
+  const sectionOrder = isEnglish
+              ? [
+                  'Demographic',
+                  'Economy',
+                  'Entrepreneurship',
+                  'Education',
+                  'Health',
+                  'Safety',
+                  'Urbanism',
+                  'Technology and inovation',
+                  'Environment',
+                  'Mobility'
+                ]
+              : [
+                  'Demográfica',
+                  'Economia',
+                  'Empreendedorismo',
+                  'Educação',
+                  'Saúde',
+                  'Segurança',
+                  'Urbanismo',
+                  'Tecnologia e Inovação',
+                  'Meio Ambiente',
+                  'Mobilidade'
+                ];
 
   // Sort the sections based on the predefined order
   const sortedSections = dictionaryData.sort((a, b) => {
@@ -56,7 +72,11 @@ const TableContent: React.FC<Props> = ({ comparison }) => {
   return (
     <>
       {sortedSections.map((section: DictionaryData) => (
-        <Collapsible isTitle={true} title={section.title} key={section.title}>
+        <Collapsible
+          isTitle={true}
+          title={isEnglish ? section.title_english : section.title}
+          key={isEnglish ? section.title_english : section.title}
+        >
           {section.content.map((content: MapPropsContentType, id) => (
             <>
               {!content.nestedData ? (
@@ -64,11 +84,11 @@ const TableContent: React.FC<Props> = ({ comparison }) => {
                   <Tooltip
                     title={
                       <div>
-                        <div>{content.description}</div>
+                        <div>{isEnglish ? content.description_en : content.description}</div>
                       </div>
                     }
                   >
-                    <Styles.ColumnTitle>{content.title}</Styles.ColumnTitle>
+                    <Styles.ColumnTitle>{isEnglish ? content.title_en : content.title}</Styles.ColumnTitle>
                   </Tooltip>
                   {comparison.map((region, idx) => (
                     <Styles.Column gridColumnNumber={idx + 2} key={idx}>

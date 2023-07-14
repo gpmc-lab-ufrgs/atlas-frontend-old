@@ -27,19 +27,34 @@ const GridContent: React.FC<Props> = ({ comparison }) => {
     fetchData();
   }, []);
 
+  const isEnglish = window.location.href.includes('/comparisonn');
+
   // Define the order of sections
-  const sectionOrder = [
-            'Demográfica',
-            'Economia',
-            'Empreendedorismo',
-            'Educação',
-            'Saúde',
-            'Segurança',
-            'Urbanismo',
-            'Tecnologia e Inovação',
-            'Meio Ambiente',
-            'Mobilidade'
-          ];
+  const sectionOrder = isEnglish
+              ? [
+                  'Demographic',
+                  'Economy',
+                  'Entrepreneurship',
+                  'Education',
+                  'Health',
+                  'Safety',
+                  'Urbanism',
+                  'Technology and inovation',
+                  'Environment',
+                  'Mobility'
+                ]
+              : [
+                  'Demográfica',
+                  'Economia',
+                  'Empreendedorismo',
+                  'Educação',
+                  'Saúde',
+                  'Segurança',
+                  'Urbanismo',
+                  'Tecnologia e Inovação',
+                  'Meio Ambiente',
+                  'Mobilidade'
+                ];
 
   // Sort the sections based on the predefined order
   const sortedSections = dictionaryData.sort((a, b) => {
@@ -49,15 +64,15 @@ const GridContent: React.FC<Props> = ({ comparison }) => {
   return (
     <>
       {sortedSections.map((section: DictionaryData) => (
-        <Collapsible isTitle={true} title={section.title} key={section.title}>
+        <Collapsible isTitle={true} title={isEnglish ? section.title_english : section.title} key={isEnglish ? section.title_english : section.title}>
           <Styles.GridContainer>
             {section.content.map((content: MapPropsContentType, id) => (
               <>
                 {!content.nestedData ? (
                   <Styles.Grid key={id}>
-                    <Tooltip title={content.description}>
+                    <Tooltip title={isEnglish ? content.description_en : content.description}>
                       <Styles.Title>
-                        <h2>{content.title}</h2>
+                        <h2>{isEnglish ? content.title_en : content.title}</h2>
                       </Styles.Title>
                     </Tooltip>
                     <Styles.GridItem>

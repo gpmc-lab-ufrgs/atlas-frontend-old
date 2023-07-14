@@ -11,8 +11,14 @@ const ComparisonDetails = () => {
   const { resetMapValues } = useMap();
   const navigate = useNavigate();
 
+  const isEnglish = window.location.href.includes('/comparisonn');
+
   const handleGoBack = () => {
-    navigate('');
+    if (isEnglish) {
+      navigate('/en');
+    } else {
+      navigate('');
+    }
     resetMapValues();
     removeAllComparisons(); // Clear the comparison array
   };
@@ -20,7 +26,9 @@ const ComparisonDetails = () => {
   const Title = () => (
     <Styles.TitleWrapper>
       <Styles.ArrowBackButton style={{ color: 'white' }} onClick={handleGoBack} />
-      <Styles.Title style={{ color: 'white' }}>Comparando Regiões</Styles.Title>
+      <Styles.Title style={{ color: 'white' }}>
+       {isEnglish ? 'Comparing Regions' : 'Comparando Regiões'}
+      </Styles.Title>
     </Styles.TitleWrapper>
   );
 
@@ -28,7 +36,7 @@ const ComparisonDetails = () => {
     <Box>
       <Title />
       {comparison.length > 0 && (
-        <Collapsible title="Comparação">
+        <Collapsible title= {isEnglish ? 'Comparison' : 'Comparação'}>
           <>
             {comparison.map((feature: any, id) => (
               <Styles.ComparisonList key={id}>

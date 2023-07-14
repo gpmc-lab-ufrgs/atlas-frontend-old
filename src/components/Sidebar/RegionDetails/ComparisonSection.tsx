@@ -1,23 +1,26 @@
 import Collapsible from '@components/Collapsible';
-
 import { useComparison } from '@context/comparisonContext';
-
 import * as Styles from './styles';
+import { useLocation } from 'react-router-dom';
 
 const ComparisonSection = () => {
   const { comparison, removeComparisonDistrict } = useComparison();
 
   const comparisonRegionIds = comparison.map((feature: any) => feature.properties.CD_MUN);
 
+  const location = useLocation();
+  const { pathname } = location;
+  const isEnglish = pathname.includes('/en');
+
   const ComparisonResult = () => (
-    <Styles.ComparisonButton to={'/comparison/' + comparisonRegionIds.join('+')}>
-      <p>Mostrar comparação</p>
+    <Styles.ComparisonButton to={isEnglish ? '/comparisonn/' + comparisonRegionIds.join('+') : '/comparison/'}>
+      <p>{isEnglish ? 'Show Comparison' : 'Mostrar comparação'}</p>
       <Styles.ChevronIcon />
     </Styles.ComparisonButton>
   );
 
   return (
-    <Collapsible title="Comparação" >
+    <Collapsible title={isEnglish ? 'Comparison' : 'Comparação'}>
       {comparison.map((feature: any) => (
         <Styles.ComparisonList key={feature.properties.CD_MUN}>
           {feature.properties['NM_MUN']}
@@ -26,7 +29,7 @@ const ComparisonSection = () => {
       ))}
 
       {comparison.length > 0 && ComparisonResult()}
-      <Styles.DisclaimerText>Adicione até 4 regiões</Styles.DisclaimerText>
+      <Styles.DisclaimerText>{isEnglish ? 'Add up to 4 regions' : 'Adicione até 4 regiões'}</Styles.DisclaimerText>
     </Collapsible>
   );
 };
