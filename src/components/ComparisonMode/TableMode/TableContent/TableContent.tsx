@@ -20,19 +20,19 @@ const TableContent: React.FC<Props> = ({ comparison }) => {
   const [dictionaryData, setDictionaryData] = useState<Array<DictionaryData>>([]);
 
   useEffect(() => {
-    const cachedData = localStorage.getItem('dictionaryData');
+    async function fetchData() {
+      let apiUrl = 'http://3.92.188.34:8001/dictionary/dictionary/json/';
 
-    if (cachedData) {
-      setDictionaryData(JSON.parse(cachedData));
-    } else {
-      async function fetchData() {
-        const response = await fetch('http://3.92.188.34:8001/dictionary/dictionary/json/');
-        const data = await response.json();
-        setDictionaryData(data);
-        localStorage.setItem('dictionaryData', JSON.stringify(data));
+      if (window.location.pathname.includes('/comparison_state')) {
+        apiUrl = 'http://3.92.188.34:8001/dictionary/dictionary_state/json/';
       }
-      fetchData();
+
+      const response = await fetch(apiUrl);
+      const data = await response.json();
+      setDictionaryData(data);
     }
+
+    fetchData();
   }, []);
 
   const isEnglish = window.location.href.includes('/comparison_en');

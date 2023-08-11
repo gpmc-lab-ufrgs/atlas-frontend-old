@@ -16,26 +16,44 @@ const useMain = () => {
   const [isComparisonModeEnabled, setIsComparisonModeEnabled] = useState<boolean>(false);
 
   useEffect(() => {
-    if (
-      comparison.length === 0 &&
-      (location.pathname.startsWith('/comparison/') || location.pathname.startsWith('/comparison_en/'))
-    ) {
-      const pathIds = location.pathname.replace('/comparison/', '').replace('/comparison_en/', '');
-      if (pathIds) {
-        const ids = pathIds.split('+');
-        const featuresFromUrl = all.filter((ft: any) => ids.includes(ft.properties['CD_MUN'].toString()));
-        setIsSidebarOpen(true);
-        addComparisonDistrict(featuresFromUrl);
+  if (
+    comparison.length === 0 &&
+    (location.pathname.startsWith('/comparison/') || location.pathname.startsWith('/comparison_en/') || location.pathname.startsWith('/comparison_states/'))
+  ) {
+    const pathIds = location.pathname.replace('/comparison/', '').replace('/comparison_en/', '').replace('/comparison_states/', '');
+    if (pathIds) {
+      const ids = pathIds.split('+');
+      let featuresFromUrl;
+
+      if (location.pathname.startsWith('/comparison_states/')) {
+        featuresFromUrl = all.filter((ft: any) => ids.includes(ft.properties['CD_MUN'].toString()));
       } else {
-        navigate('');
+        featuresFromUrl = all.filter((ft: any) => ids.includes(ft.properties['CD_MUN'].toString()));
       }
+
+      setIsSidebarOpen(true);
+      addComparisonDistrict(featuresFromUrl);
+    } else {
+      navigate('');
     }
-  }, [location, comparison]);
+  }
+}, [location, comparison]);
+
 
   useEffect(() => {
     if (location.pathname.startsWith('/comparison/') && all.length !== 0) {
       const ids = comparison.map((feature: any) => feature.properties.CD_MUN);
       const newPath = '/comparison/' + ids.join('+');
+      if (location.pathname !== newPath) {
+        navigate(newPath);
+      }
+    }
+  }, [comparison, location]);
+
+  useEffect(() => {
+    if (location.pathname.startsWith('/comparison_states/') && all.length !== 0) {
+      const ids = comparison.map((feature: any) => feature.properties.CD_MUN);
+      const newPath = '/comparison_states/' + ids.join('+');
       if (location.pathname !== newPath) {
         navigate(newPath);
       }

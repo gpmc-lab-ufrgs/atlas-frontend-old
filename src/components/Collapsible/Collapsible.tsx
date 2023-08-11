@@ -18,16 +18,20 @@ import segurancaImage from './seguranca.png';
 import urbanismoImage from './urbanismo.png';
 import empreendedorismoImage from './empreendedorismo.png';
 
+
 const CollapsibleDefaultValue: Record<CollapsibleNames, boolean> = {
-  'Locations to Compare': true,
-  'Demographic Summary': true,
-  'Economic Summary': false,
-  'Growth Summary': false,
-  'Residential Housing Summary': false,
-  'Financial Transactions': false,
-  'Business Counts': false,
-  'Turnover vs. Cost of Sales': false,
-  'Business Rental Costs': false,
+  'Comparação': true,
+  'Demográfica': true,
+  'Economia': false,
+  'Empreendedorismo': false,
+  'Urbanismo': false,
+  'Tecnologia e Inovação': false,
+  'Educação': false,
+  'Saúde': false,
+  'Mobilidade': false,
+  'Segurança': false,
+  'Meio Ambiente': false,
+
 };
 
 interface Props {
@@ -42,7 +46,6 @@ const Collapsible = ({ children, title, isTitle = false }: Props) => {
   const isOpen = (key: string) => {
     return key === 'Demográfica' || key === 'Demographic' || key === 'Comparação' || key === 'Comparison';
   };
-
 
   const updateIsOpen = (key: any, value: any) => {
     const newValue = { ...collapsible, [key]: value };

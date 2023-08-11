@@ -18,7 +18,7 @@ const DataSection: React.FC<MapPropsSectionType> = ({ title, content }) => {
   const { selected } = useSelectedDistrict();
   const { comparison } = useComparison();
 
-  const isSelectedOnComparison = comparison.some((region) => region.properties.CD_MUN === selected?.properties.CD_MUN);
+  const isSelectedOnComparison = comparison.some((region) => region.properties.CD_UF === selected?.properties.CD_UF);
 
   const hasSelectedDistrict = Boolean(selected);
 
@@ -49,7 +49,7 @@ const DataSection: React.FC<MapPropsSectionType> = ({ title, content }) => {
                           <Styles.PropsTitle>{data.title}</Styles.PropsTitle>
                         </Tooltip>
                         <Styles.ValueContent>
-                          <p>{selected?.properties.NM_MUN}</p>
+                          <p>{selected?.properties.NM_UF}</p>
                           <MetricDetails district={selected} metric={data} />
                         </Styles.ValueContent>
                       </div>

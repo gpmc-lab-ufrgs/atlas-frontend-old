@@ -40,9 +40,9 @@ const Header: React.FC<Props> = ({ isComparisonModeOn, comparisonType, setCompar
         </Styles.HeaderCenterSide>
 
         <Styles.HeaderRightSide>
-          <div aria-label="menu-button">
+          {/*<div aria-label="menu-button">
             <Styles.MenuButton comparisonMode onClick={() => setOpenMenu(true)} />
-          </div>
+          </div> */}
 
           <Drawer open={openMenu} setOpen={setOpenMenu} anchor="right">
             <ProjectInformations setOpen={setOpenMenu} />

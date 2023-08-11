@@ -20,10 +20,17 @@ const GridContent: React.FC<Props> = ({ comparison }) => {
 
   useEffect(() => {
     async function fetchData() {
-      const response = await fetch('http://3.92.188.34:8001/dictionary/dictionary/json/');
+      let apiUrl = 'http://3.92.188.34:8001/dictionary/dictionary/json/';
+
+      if (window.location.pathname.includes('/comparison_state')) {
+        apiUrl = 'http://3.92.188.34:8001/dictionary/dictionary_state/json/';
+      }
+
+      const response = await fetch(apiUrl);
       const data = await response.json();
       setDictionaryData(data);
     }
+
     fetchData();
   }, []);
 
