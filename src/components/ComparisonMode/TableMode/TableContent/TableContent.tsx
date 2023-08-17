@@ -4,10 +4,20 @@ import Collapsible from '@components/Collapsible';
 import MetricDetails from '@components/MetricDetails';
 import { MapPropsContentType, MapPropsSectionType } from '@customTypes/map';
 import { District } from '@customTypes/district';
+import { State } from '@customTypes/state';
 import * as Styles from './styles';
 
-interface Props {
-  comparison: Array<District>;
+let comparison;
+const isState = window.location.href.includes('/comparison_states');
+
+if (isState) {
+  interface Props {
+    comparison: Array<State>;
+  }
+} else {
+  interface Props {
+    comparison: Array<District>;
+  }
 }
 
 interface DictionaryData {
@@ -23,7 +33,7 @@ const TableContent: React.FC<Props> = ({ comparison }) => {
     async function fetchData() {
       let apiUrl = 'http://3.92.188.34:8001/dictionary/dictionary/json/';
 
-      if (window.location.pathname.includes('/comparison_state')) {
+      if (window.location.pathname.includes('/comparison_states')) {
         apiUrl = 'http://3.92.188.34:8001/dictionary/dictionary_state/json/';
       }
 
@@ -92,7 +102,11 @@ const TableContent: React.FC<Props> = ({ comparison }) => {
                   </Tooltip>
                   {comparison.map((region, idx) => (
                     <Styles.Column gridColumnNumber={idx + 2} key={idx}>
-                      <MetricDetails district={region} metric={content} />
+                      {isState ? (
+                        <MetricDetails state={region} metric={content} />
+                      ) : (
+                        <MetricDetails district={region} metric={content} />
+                      )}
                     </Styles.Column>
                   ))}
                 </Styles.Table>
@@ -113,7 +127,11 @@ const TableContent: React.FC<Props> = ({ comparison }) => {
                         </Tooltip>
                         {comparison.map((region, idx) => (
                           <Styles.Column gridColumnNumber={idx + 2} key={idx}>
-                            <MetricDetails district={region} metric={data} />
+                            {isState ? (
+                              <MetricDetails state={region} metric={content} />
+                            ) : (
+                              <MetricDetails district={region} metric={content} />
+                            )}
                           </Styles.Column>
                         ))}
                       </Styles.Table>

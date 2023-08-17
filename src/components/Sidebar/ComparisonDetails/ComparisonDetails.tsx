@@ -2,12 +2,21 @@ import { useNavigate } from 'react-router';
 import { Box } from '@mui/material';
 import Collapsible from '@components/Collapsible';
 import { useComparison } from '@context/comparisonContext';
+import { useComparison as useComparisonState } from '@context/comparisonContextState';
 import useMap from '@hook/useMap';
 import * as Styles from './styles';
 import './styles.css';
 
 const ComparisonDetails = () => {
-  const { comparison, removeComparisonDistrict, removeAllComparisons } = useComparison();
+  let comparison, removeComparisonState, removeAllComparisons;
+
+  const isState = window.location.href.includes('/comparison_states');
+
+  if (isState) {
+    ({ comparison, removeComparisonState, removeAllComparisons } = useComparisonState());
+  } else {
+    ({ comparison, removeComparisonState, removeAllComparisons } = useComparison());
+  }
   const { resetMapValues } = useMap();
   const navigate = useNavigate();
 
@@ -40,8 +49,8 @@ const ComparisonDetails = () => {
           <>
             {comparison.map((feature: any, id) => (
               <Styles.ComparisonList key={id}>
-                {feature.properties.NM_MUN}
-                <Styles.CloseButton onClick={() => removeComparisonDistrict(feature)} />
+                {isState ? feature.properties.NM_UF : feature.properties.NM_MUN}
+                <Styles.CloseButton onClick={() => removeComparisonState(feature)} />
               </Styles.ComparisonList>
             ))}
           </>

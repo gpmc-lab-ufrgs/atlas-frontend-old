@@ -6,6 +6,7 @@ import { useTheme } from '@mui/material/styles';
 
 import { useSidebar } from '@context/sidebarContext';
 import { useSelectedDistrict } from '@context/district/selectedContext';
+import { useSelectedState } from '@context/state/selectedContext';
 
 import Map from '@components/Map';
 import Modal from '@components/Modal';
@@ -16,35 +17,54 @@ import InformationsBar from '@components/InformationsBar';
 import CompatisonMode from '@components/ComparisonMode';
 
 import { useMain } from './hook';
+import { useMainState } from './hook';
 
 import * as Styles from './styles';
 
 const Main = () => {
   const { isSidebarOpen } = useSidebar();
   const { selected } = useSelectedDistrict();
+  const { selected: selectedState } = useSelectedState();
 
   const theme = useTheme();
 
   const [comparisonType, setComparisonType] = useState('table');
-  const { isComparisonModeEnabled } = useMain();
 
+ const isState = window.location.href.includes('/comparison_states');
+  let isComparisonModeEnabledRegion;
+  let selectedRegion;
+
+  if (isState) {
+    const { isComparisonModeEnabled: mainStateComparisonEnabled } = useMainState();
+    const { selected: selectedMain } = useSelectedState();
+
+    isComparisonModeEnabledRegion = mainStateComparisonEnabled;
+    selectedRegion = selectedMain;
+
+  } else {
+    const { isComparisonModeEnabled: mainStateComparisonEnabled } = useMain();
+    const { selected: selectedMain } = useSelectedDistrict();
+
+    isComparisonModeEnabledRegion = mainStateComparisonEnabled;
+    selectedRegion = selectedMain;
+  }
 
   return (
     <Styles.MainContainer>
       <Modal />
 
-      <Sidebar isComparisonMode={isComparisonModeEnabled} title={selected?.properties.NM_MUN} />
+      <Sidebar isComparisonMode={isComparisonModeEnabledRegion} title={selectedRegion?.properties.NM_UF} />
 
       <InformationsBar />
 
       <Styles.ComparisonWrapper isSidebarOpen={isSidebarOpen} theme={theme}>
         <Header
-          isComparisonModeOn={isComparisonModeEnabled}
+          isComparisonModeOn={isComparisonModeEnabledRegion}
           comparisonType={comparisonType}
           setComparisonType={setComparisonType}
         />
 
-        {isComparisonModeEnabled && <CompatisonMode comparisonType={comparisonType} />}
+        {isComparisonModeEnabledRegion && <CompatisonMode comparisonType={comparisonType} />}
       </Styles.ComparisonWrapper>
 
       <Map />

@@ -9,6 +9,7 @@ import AtlasTheme from '@components/Theme';
 
 import { SidebarProvider } from '@context/sidebarContext';
 import { ComparisonProvider } from '@context/comparisonContext';
+import { ComparisonProviderState } from '@context/comparisonContextState';
 import { SelectedStatesProvider } from '@context/state/selectedContext';
 import { SelectedDistrictProvider } from '@context/district/selectedContext';
 import { HighlightedStatesProvider } from '@context/state/highlightedContext';
@@ -28,9 +29,11 @@ const mount = root.render(
             <SelectedStatesProvider>
               <HighlightedStatesProvider>
                 <ComparisonProvider>
+                <ComparisonProviderState>
                   <SidebarProvider>
                     <Main />
                   </SidebarProvider>
+                </ComparisonProviderState>
                 </ComparisonProvider>
               </HighlightedStatesProvider>
             </SelectedStatesProvider>

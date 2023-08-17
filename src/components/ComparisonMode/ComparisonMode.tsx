@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { useComparison } from '@context/comparisonContext';
+import { useComparison as useComparisonState } from '@context/comparisonContextState';
 
 import GridMode from './GridMode';
 import TableMode from './TableMode';
@@ -12,7 +13,16 @@ interface Props {
 }
 
 const ComparisonMode: React.FC<Props> = ({ comparisonType }) => {
-  const { comparison } = useComparison();
+
+  let comparison;
+
+  const isState = window.location.href.includes('/comparison_states');
+
+  if (isState) {
+    ({ comparison } = useComparisonState());
+  } else {
+    ({ comparison } = useComparison());
+  }
 
   function comparisonModeToggle() {
     switch (comparisonType) {
