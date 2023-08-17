@@ -1,35 +1,53 @@
 import React, { useState, useEffect } from 'react';
 import Bar from './Bar';
 
-const MetricDetails = ({ district, metric }: any) => {
+const MetricDetails = ({ region, metric }: any) => {
   const [geosesData, setGeosesData] = useState(null);
   const isState = window.location.href.includes('/comparison_states');
 
   useEffect(() => {
   let abortController = new AbortController();
-  const cachedData = localStorage.getItem(`geosesData_${district?.properties.CD_MUN}_${metric.label}`);
+  let cachedData;
+  if (isState) {
+    cachedData = localStorage.getItem(`geosesData_${region?.properties.CD_UF}_${metric.label}`);
+  } else {
+    cachedData = localStorage.getItem(`geosesData_${region?.properties.CD_MUN}_${metric.label}`);
+  }
 
   if (cachedData) {
     setGeosesData(JSON.parse(cachedData));
   } else {
-    if (district && district.properties && district.properties.SIGLA_UF) {
+    if (!isState && region && region.properties && region.properties.SIGLA_UF) {
       // Abort any ongoing fetch requests
       abortController.abort();
       abortController = new AbortController();
       const signal = abortController.signal;
 
-      fetch(`http://3.92.188.34:8001/data/data_city_dicio/json/?cd_mun=${district.properties.CD_MUN}`, { signal })
+      fetch(`http://3.92.188.34:8001/data/data_city_dicio/json/?cd_mun=${region.properties.CD_MUN}`, { signal })
         .then(response => response.json())
         .then(data => {
           setGeosesData(data);
-          localStorage.setItem(`geosesData_${district?.properties.CD_MUN}_${metric.label}`, JSON.stringify(data));
+          localStorage.setItem(`geosesData_${region?.properties.CD_MUN}_${metric.label}`, JSON.stringify(data));
+        })
+        .catch(error => console.log(error));
+    }else if (isState && region && region.properties && region.properties.SIGLA_UF) {
+      // Abort any ongoing fetch requests
+      abortController.abort();
+      abortController = new AbortController();
+      const signal = abortController.signal;
+
+      fetch(`http://3.92.188.34:8001/data/data_state_dicio/json/?cd_uf=${region.properties.CD_UF}`, { signal })
+        .then(response => response.json())
+        .then(data => {
+          setGeosesData(data);
+          localStorage.setItem(`geosesData_${region?.properties.CD_UF}_${metric.label}`, JSON.stringify(data));
         })
         .catch(error => console.log(error));
     }
   }
   // Clean up the AbortController when the effect is cleaned up
   return () => abortController.abort();
-}, [district, metric]);
+}, [region, metric]);
 
 
   const renderSingleMetric = () => {
@@ -37,107 +55,237 @@ const MetricDetails = ({ district, metric }: any) => {
       return <div>Loading data...</div>;
     }
 
-    const rawValue = geosesData[district?.properties.CD_MUN][metric.label];
+    let rawValue;
+    if (isState) {
+      rawValue = geosesData[region?.properties.CD_UF][metric.label];
+    } else {
+      rawValue = geosesData[region?.properties.CD_MUN][metric.label];
+    }
+
     const value = typeof metric.format === 'function' ? metric.format(rawValue) : rawValue;
-    const unit = geosesData?.[district?.properties.CD_MUN]?.[metric.label]?.unit;
+
+    let unit;
+    if (isState) {
+      unit = geosesData?.[region?.properties.CD_UF]?.[metric.label]?.unit;
+    } else {
+      unit = geosesData?.[region?.properties.CD_MUN]?.[metric.label]?.unit;
+    }
 
     switch (metric.format) {
       case 'bar':
-        return <Bar rawValue={rawValue} metric={metric} id={district.properties.CD_MUN} />;
+        return isState ? (
+          <Bar rawValue={rawValue} metric={metric} id={region.properties.CD_UF} />
+        ) : (
+          <Bar rawValue={rawValue} metric={metric} id={region.properties.CD_MUN} />
+        );
       case 'Float .2':
         if (unit === 'Número') {
-          const geosesDataValue2 = geosesData?.[district?.properties.CD_MUN]?.[metric.label]?.value;
+          let geosesDataValue2;
+          if (isState) {
+            geosesDataValue2 = geosesData?.[region?.properties.CD_UF]?.[metric.label]?.value;
+          } else {
+            geosesDataValue2 = geosesData?.[region?.properties.CD_MUN]?.[metric.label]?.value;
+          }
           const parsedValue2 = parseFloat(geosesDataValue2);
           const displayValue2 = isNaN(parsedValue2) ? '-----' : parsedValue2.toLocaleString('de-DE', { minimumFractionDigits: 3, maximumFractionDigits: 3 });
-          return (
-            <div key={district?.properties.CD_MUN}>
-              <data value={geosesDataValue2}>{displayValue2}</data>
-            </div>
-          );
-        }
+          if (isState) {
+            return (
+              <div key={region?.properties.CD_UF}>
+                <data value={geosesDataValue2}>{displayValue2}</data>
+              </div>
+            );
+          } else {
+            return (
+              <div key={region?.properties.CD_MUN}>
+                <data value={geosesDataValue2}>{displayValue2}</data>
+              </div>
+            );
+        }}
         if (unit === 'R$') {
-          const geosesDataValue2 = geosesData?.[district?.properties.CD_MUN]?.[metric.label]?.value;
+          let geosesDataValue2;
+          if (isState) {
+            geosesDataValue2 = geosesData?.[region?.properties.CD_UF]?.[metric.label]?.value;
+          } else {
+            geosesDataValue2 = geosesData?.[region?.properties.CD_MUN]?.[metric.label]?.value;
+          }
           const parsedValue2 = parseFloat(geosesDataValue2);
           const displayValue2 = isNaN(parsedValue2) ? '-----' : parsedValue2.toLocaleString('de-DE', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
+          if (isState) {
+            return (
+              <div key={region?.properties.CD_UF}>
+                <data value={geosesDataValue2}>R${displayValue2}</data>
+              </div>
+            );
+          } else {
           return (
-            <div key={district?.properties.CD_MUN}>
-              <data value={geosesDataValue2}>R${displayValue2}</data>
-            </div>
+              <div key={region?.properties.CD_MUN}>
+                <data value={geosesDataValue2}>R${displayValue2}</data>
+              </div>
           );
-        }
+        }}
         if (unit === 'Salários Mínimos') {
-          const geosesDataValue2 = geosesData?.[district?.properties.CD_MUN]?.[metric.label]?.value;
+          let geosesDataValue2;
+          if (isState) {
+            geosesDataValue2 = geosesData?.[region?.properties.CD_UF]?.[metric.label]?.value;
+          } else {
+            geosesDataValue2 = geosesData?.[region?.properties.CD_MUN]?.[metric.label]?.value;
+          }
           const parsedValue2 = parseFloat(geosesDataValue2);
           const displayValue2 = isNaN(parsedValue2) ? '-----' : parsedValue2.toLocaleString('de-DE', { minimumFractionDigits: 0, maximumFractionDigits: 1 });
-          return (
-            <div key={district?.properties.CD_MUN}>
+          if (isState) {
+            return (
+            <div key={region?.properties.CD_UF}>
               <data value={geosesDataValue2}>{displayValue2} salários mínimos</data>
             </div>
           );
-        }
+          } else {
+          return (
+            <div key={region?.properties.CD_MUN}>
+              <data value={geosesDataValue2}>{displayValue2} salários mínimos</data>
+            </div>
+          );
+        }}
         if (unit === 'Km²') {
-          const geosesDataValue2 = geosesData?.[district?.properties.CD_MUN]?.[metric.label]?.value;
+          let geosesDataValue2;
+          if (isState) {
+            geosesDataValue2 = geosesData?.[region?.properties.CD_UF]?.[metric.label]?.value;
+          } else {
+            geosesDataValue2 = geosesData?.[region?.properties.CD_MUN]?.[metric.label]?.value;
+          }
           const parsedValue2 = parseFloat(geosesDataValue2);
           const formattedValue2 = isNaN(parsedValue2) ? '-----' : parsedValue2.toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
-          return (
-            <div key={district?.properties.CD_MUN}>
+          if (isState) {
+            return (
+            <div key={region?.properties.CD_UF}>
               <data value={geosesDataValue2}>{formattedValue2} km²</data>
             </div>
           );
-        }
+          } else {
+          return (
+          <div key={region?.properties.CD_MUN}>
+              <data value={geosesDataValue2}>{formattedValue2} km²</data>
+            </div>
+         );
+        }}
         if (unit === 'Hab/km²') {
-          const geosesDataValue2 = geosesData?.[district?.properties.CD_MUN]?.[metric.label]?.value;
+          let geosesDataValue2;
+          if (isState) {
+            geosesDataValue2 = geosesData?.[region?.properties.CD_UF]?.[metric.label]?.value;
+          } else {
+            geosesDataValue2 = geosesData?.[region?.properties.CD_MUN]?.[metric.label]?.value;
+          }
           const parsedValue2 = parseFloat(geosesDataValue2);
           const formattedValue2 = isNaN(parsedValue2) ? '-----' : parsedValue2.toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 2 });
-          return (
-            <div key={district?.properties.CD_MUN}>
+          if (isState) {
+            return (
+            <div key={region?.properties.CD_UF}>
               <data value={geosesDataValue2}>{formattedValue2} Hab/km²</data>
             </div>
           );
-        }
+          } else {
+          return (
+          <div key={region?.properties.CD_MUN}>
+              <data value={geosesDataValue2}>{formattedValue2} Hab/km²</data>
+            </div>
+        );
+        }}
         if (unit === 'Mbps') {
-          const geosesDataValue2 = geosesData?.[district?.properties.CD_MUN]?.[metric.label]?.value;
+          let geosesDataValue2;
+          if (isState) {
+            geosesDataValue2 = geosesData?.[region?.properties.CD_UF]?.[metric.label]?.value;
+          } else {
+            geosesDataValue2 = geosesData?.[region?.properties.CD_MUN]?.[metric.label]?.value;
+          }
           const parsedValue2 = parseFloat(geosesDataValue2);
           const formattedValue2 = isNaN(parsedValue2) ? '-----' : parsedValue2.toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 2 });
-          return (
-            <div key={district?.properties.CD_MUN}>
+          if (isState) {
+            return (
+            <div key={region?.properties.CD_UF}>
               <data value={geosesDataValue2}>{formattedValue2} Mbps</data>
             </div>
           );
-        }
+          } else {
+          return (
+          <div key={region?.properties.CD_MUN}>
+              <data value={geosesDataValue2}>{formattedValue2} Mbps</data>
+            </div>
+            );
+        }}
       case 'Float .2 (-1 to +1)':
-        return (
-          <div key={district.properties.CD_MUN}>
-            <data value={rawValue} >{parseFloat(geosesData[district?.properties.CD_MUN][metric.label].value).toFixed(3)}</data>
+        if (isState) {
+         return (
+          <div key={region.properties.CD_UF}>
+            <data value={rawValue} >{parseFloat(geosesData[region?.properties.CD_UF][metric.label].value).toFixed(3)}</data>
           </div>
         );
+         } else {
+          return (
+          <div key={region.properties.CD_MUN}>
+            <data value={rawValue} >{parseFloat(geosesData[region?.properties.CD_MUN][metric.label].value).toFixed(3)}</data>
+          </div>
+          );
+        }
       case 'Float':
-        return (
-          <div key={district.properties.CD_MUN}>
-            <data value={rawValue} >{parseFloat(geosesData[district?.properties.CD_MUN][metric.label].value).toFixed(3)}</data>
+        if (isState) {
+         return (
+          <div key={region.properties.CD_UF}>
+            <data value={rawValue} >{parseFloat(geosesData[region?.properties.CD_UF][metric.label].value).toFixed(3)}</data>
           </div>
         );
+         } else {
+          return (
+          <div key={region.properties.CD_MUN}>
+            <data value={rawValue} >{parseFloat(geosesData[region?.properties.CD_MUN][metric.label].value).toFixed(3)}</data>
+          </div>
+        );
+        }
 
       case 'Int':
       case 'int':
-        const geosesDataValue = geosesData?.[district?.properties.CD_MUN]?.[metric.label]?.value;
+        let geosesDataValue;
+        if (isState) {
+          geosesDataValue = geosesData?.[region?.properties.CD_UF]?.[metric.label]?.value;
+        } else {
+          geosesDataValue = geosesData?.[region?.properties.CD_MUN]?.[metric.label]?.value;
+        }
         const parsedValue = parseInt(geosesDataValue);
         const displayValue = isNaN(parsedValue) ? '-----' : parsedValue;
-        return (
-          <div key={district?.properties.CD_MUN}>
+        if (isState) {
+         return (
+          <div key={region?.properties.CD_UF}>
             <data value={geosesDataValue}>{displayValue}</data>
           </div>
         );
+        } else {
+          return (
+          <div key={region?.properties.CD_MUN}>
+            <data value={geosesDataValue}>{displayValue}</data>
+          </div>
+          );
+        }
       case 'String':
-        return (
-          <div key={district.properties.CD_MUN}>
-            <data value={rawValue}>{geosesData[district?.properties.CD_MUN][metric.label].value}</data>
+        if (isState) {
+         return (
+          <div key={region.properties.CD_UF}>
+            <data value={rawValue}>{geosesData[region?.properties.CD_UF][metric.label].value}</data>
           </div>
         );
+        } else {
+          return (
+          <div key={region.properties.CD_MUN}>
+            <data value={rawValue}>{geosesData[region?.properties.CD_MUN][metric.label].value}</data>
+          </div>
+          );
+        }
 
       case 'Progress Bar':
         // Get the value for the progress bar
-        const value = geosesData[district?.properties.CD_MUN][metric.label].value;
+        let value;
+          if (isState) {
+            value = geosesData?.[region?.properties.CD_UF]?.[metric.label]?.value;
+          } else {
+            value = geosesData?.[region?.properties.CD_MUN]?.[metric.label]?.value;
+          }
 
         // Calculate the percentage value of the progress bar
         const percentage = parseFloat(((value / 100) * 100).toFixed(2));
@@ -164,31 +312,46 @@ const MetricDetails = ({ district, metric }: any) => {
           lineHeight: '20px'
         };
 
-        return (
-          <div key={district.properties.CD_MUN}>
+        if (isState) {
+         return (
+          <div key={region.properties.CD_UF}>
             <div style={progressBarStyle}>
               <div style={progressBarFilledStyle}>{value}%</div>
             </div>
           </div>
         );
+        }else{
+        return (
+          <div key={region.properties.CD_MUN}>
+            <div style={progressBarStyle}>
+              <div style={progressBarFilledStyle}>{value}%</div>
+            </div>
+          </div>
+        );
+        }
 
       case 'Graphic':
         // Get the value for the graphic
-        const geosesDataValue2 = geosesData?.[district?.properties.CD_MUN]?.[metric.label]?.value;
-          const parsedValue2 = parseFloat(geosesDataValue2);
-          const displayValue2 = isNaN(parsedValue2) ? '-----' : parsedValue2.toLocaleString('de-DE', { minimumFractionDigits: 3, maximumFractionDigits: 3 });
-          return (
-            <div key={district?.properties.CD_MUN}>
-              <data value={geosesDataValue2}>{displayValue2}</data>
-            </div>
-          );
+        let geosesDataValue2;
+        if (isState) {
+          geosesDataValue2 = geosesData?.[region?.properties.CD_UF]?.[metric.label]?.value;
+        } else {
+          geosesDataValue2 = geosesData?.[region?.properties.CD_MUN]?.[metric.label]?.value;
+        }
+        const parsedValue2 = parseFloat(geosesDataValue2);
+        const displayValue2 = isNaN(parsedValue2) ? '-----' : parsedValue2.toLocaleString('de-DE', { minimumFractionDigits: 3, maximumFractionDigits: 3 });
+        return (
+          <div key={region?.properties.CD_MUN}>
+            <data value={geosesDataValue2}>{displayValue2}</data>
+          </div>
+        );
 
     return (
-      <div key={district.properties.CD_MUN}>
-        {isNaN(geosesData[district?.properties.CD_MUN][metric.label].value) ? (
+      <div key={region.properties.CD_MUN}>
+        {isNaN(geosesData[region?.properties.CD_MUN][metric.label].value) ? (
           <div>-----</div> // Replace with the desired action for NaN value
         ) : (
-          <data value={rawValue}>{geosesData[district?.properties.CD_MUN][metric.label].value}</data>
+          <data value={rawValue}>{geosesData[region?.properties.CD_MUN][metric.label].value}</data>
         )}
       </div>
     );

@@ -33,14 +33,14 @@ export const CollapsibleContent: React.FC<CollapsibleContentProps> = ({ props })
       {comparison.map((district) => (
         <Styles.ValueContent key={district.properties.CD_MUN}>
           <p>{district.properties.NM_MUN}</p>
-          <MetricDetails district={district} metric={props} />
+          <MetricDetails region={district} metric={props} />
         </Styles.ValueContent>
       ))}
 
       {!isSelectedOnComparison && hasSelectedDistrict && (
         <Styles.ValueContent >
           <p>{selected?.properties.NM_MUN}</p>
-          <MetricDetails district={selected} metric={props} />
+          <MetricDetails region={selected} metric={props} />
         </Styles.ValueContent>
       )}
     </>

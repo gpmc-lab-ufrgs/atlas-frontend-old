@@ -103,9 +103,9 @@ const TableContent: React.FC<Props> = ({ comparison }) => {
                   {comparison.map((region, idx) => (
                     <Styles.Column gridColumnNumber={idx + 2} key={idx}>
                       {isState ? (
-                        <MetricDetails state={region} metric={content} />
+                        <MetricDetails region={region} metric={content} />
                       ) : (
-                        <MetricDetails district={region} metric={content} />
+                        <MetricDetails region={region} metric={content} />
                       )}
                     </Styles.Column>
                   ))}
@@ -128,9 +128,9 @@ const TableContent: React.FC<Props> = ({ comparison }) => {
                         {comparison.map((region, idx) => (
                           <Styles.Column gridColumnNumber={idx + 2} key={idx}>
                             {isState ? (
-                              <MetricDetails state={region} metric={content} />
+                              <MetricDetails region={region} metric={content} />
                             ) : (
-                              <MetricDetails district={region} metric={content} />
+                              <MetricDetails region={region} metric={content} />
                             )}
                           </Styles.Column>
                         ))}

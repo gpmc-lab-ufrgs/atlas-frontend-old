@@ -20,17 +20,15 @@ import empreendedorismoImage from './empreendedorismo.png';
 
 
 const CollapsibleDefaultValue: Record<CollapsibleNames, boolean> = {
-  'Comparação': true,
-  'Demográfica': true,
-  'Economia': false,
-  'Empreendedorismo': false,
-  'Urbanismo': false,
-  'Tecnologia e Inovação': false,
-  'Educação': false,
-  'Saúde': false,
-  'Mobilidade': false,
-  'Segurança': false,
-  'Meio Ambiente': false,
+  'Locations to Compare': true,
+  'Demographic Summary': true,
+  'Economic Summary': false,
+  'Growth Summary': false,
+  'Residential Housing Summary': false,
+  'Financial Transactions': false,
+  'Business Counts': false,
+  'Turnover vs. Cost of Sales': false,
+  'Business Rental Costs': false,
 
 };
 
