@@ -4,10 +4,20 @@ import Collapsible from '@components/Collapsible';
 import MetricDetails from '@components/MetricDetails';
 import { MapPropsContentType, MapPropsSectionType } from '@customTypes/map';
 import { District } from '@customTypes/district';
+import { State } from '@customTypes/state';
 import * as Styles from './styles';
 
-interface Props {
-  comparison: Array<District>;
+let comparison;
+const isState = window.location.href.includes('/comparison_states');
+
+if (isState) {
+  interface Props {
+    comparison: Array<State>;
+  }
+} else {
+  interface Props {
+    comparison: Array<District>;
+  }
 }
 
 interface DictionaryData {
@@ -34,7 +44,7 @@ const GridContent: React.FC<Props> = ({ comparison }) => {
     fetchData();
   }, []);
 
-  const isEnglish = window.location.href.includes('/comparison_en');
+  const isEnglish = window.location.href.includes('/comparison_en') || window.location.href.includes('/comparison_states_en');
 
   // Define the order of sections
   const sectionOrder = isEnglish
@@ -83,12 +93,18 @@ const GridContent: React.FC<Props> = ({ comparison }) => {
                       </Styles.Title>
                     </Tooltip>
                     <Styles.GridItem>
-                      {comparison.map((district, idx) => (
+                      {comparison.map((region, idx) => (
                         <Styles.ComparisonLabel key={idx}>
-                          <Tooltip title={district?.properties.NM_MUN}>
-                            <label>{district?.properties.NM_MUN}</label>
+                        {isState ? (
+                          <Tooltip title={region?.properties.NM_UF}>
+                            <label>{region?.properties.NM_UF}</label>
                           </Tooltip>
-                          <MetricDetails district={district} metric={content} />
+                          ) : (
+                          <Tooltip title={region?.properties.NM_MUN}>
+                            <label>{region?.properties.NM_MUN}</label>
+                          </Tooltip>
+                           )}
+                          <MetricDetails region={region} metric={content} />
                         </Styles.ComparisonLabel>
                       ))}
                     </Styles.GridItem>

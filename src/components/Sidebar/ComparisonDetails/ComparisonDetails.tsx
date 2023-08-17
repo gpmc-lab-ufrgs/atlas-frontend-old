@@ -20,7 +20,7 @@ const ComparisonDetails = () => {
   const { resetMapValues } = useMap();
   const navigate = useNavigate();
 
-  const isEnglish = window.location.href.includes('/comparison_en');
+  const isEnglish = window.location.href.includes('/comparison_en') || window.location.href.includes('/comparison_states_en');
 
   const handleGoBack = () => {
     if (isEnglish) {
