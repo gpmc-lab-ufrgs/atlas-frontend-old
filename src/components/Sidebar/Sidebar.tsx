@@ -36,6 +36,15 @@ const Sidebar: React.FC<Props> = ({ isComparisonMode, title }) => {
       setIsSidebarOpen(false);
     };
 
+    const handleDeleteState = (stateId) => {
+    const updatedSelectedStates = selectedStates.filter((state) => state.id !== stateId);
+    selectedStates.length = 0; // Clear the array
+    selectedStates.push(...updatedSelectedStates);
+
+    setIsSidebarOpen(false);
+  };
+
+
   const handleAddToComparison = () => {
   if (selectedStates.length > 0) {
     const comparisonRegionIds = selectedStates.map((state) => state.id);
@@ -65,22 +74,38 @@ const Sidebar: React.FC<Props> = ({ isComparisonMode, title }) => {
     return (
       <>
         <Styles.Title>{isEnglish ? 'Atlas of Opportunities' : 'Atlas de Oportunidades'}</Styles.Title>
-        <Styles.EmptyContent>
           {selectedStates.length === 0 ? (
-            <h4 style={{ color: 'white' }}>{isEnglish ? 'Select a region on the map to view its details' : 'Selecione uma região no mapa para ver seus detalhes'}</h4>
+            <h4 style={{ color: 'white' }}>
+              {isEnglish ? 'Select a region on the map to view its details' : 'Selecione uma região no mapa para ver seus detalhes'}
+            </h4>
           ) : (
             <>
-              <Button variant="contained" onClick={handleAddToComparison}>{isEnglish ? 'Compare' : 'Comparar'}</Button>
-              <button onClick={handleClearSelection}>{isEnglish ? 'Clear selection of states' : 'Limpar seleção de estados'}</button>
+            <div style={{ display: 'flex', marginTop: '20px', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
+                <Button variant="contained" onClick={handleClearSelection} style={{ backgroundColor: "#fff", color: "#000" }}>
+                  {isEnglish ? 'Clear selection of states' : 'Limpar seleção de estados'}
+                </Button>
+              </div><br /><br />
+              <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+                <ul>
+                  {selectedStates.map((state, index) => (
+                    <li style={{ color: 'white' }} key={index}>
+                      <b>{state.name}</b>
+                      {/*<button onClick={() => handleDeleteState(state.id)}>X</button>*/}
+                    </li>
 
-              <ul>
-                {selectedStates.map((state, index) => (
-                  <li style={{ color: 'white' }} key={index}>{state.name}</li>
-                ))}
-              </ul><br />
+                  ))}
+                </ul>
+              </div><br /><br />
+              <div style={{ display: 'flex', marginLeft: '20px', justifyContent: 'center', alignItems: 'center', flexDirection: 'column'}}>
+                <Button to={isEnglish ? '/comparison_states_en/' + comparisonRegionIds.join('+') : '/comparison_states/'} onClick={handleAddToComparison} style={{ backgroundColor: "#0A74A6", color: "#fff" }}>
+                  {isEnglish ? 'Show comparison' : 'Mostrar comparação'}
+                </Button>
+
+                </div>
+              <br /><br /><br />
+              <br />
             </>
           )}
-        </Styles.EmptyContent>
       </>
     );
   };

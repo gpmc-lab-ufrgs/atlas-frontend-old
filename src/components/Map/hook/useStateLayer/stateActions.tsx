@@ -40,7 +40,6 @@ function setFeatureClick(featureID: number, map: mapboxgl.Map, state: boolean) {
 }
 
 export function clickState(feature: Feature, map: mapboxgl.Map) {
-
   const stateID = feature?.properties?.CD_UF;
   const stateName = feature?.properties?.NM_UF;
 
@@ -50,6 +49,13 @@ export function clickState(feature: Feature, map: mapboxgl.Map) {
 
   // Check if stateID already exists in selectedStates
   if (selectedStates.some(state => state.id === stateID)) {
+    return;
+  }
+
+  // Limit the number of elements in selectedStates to a maximum of 4
+  if (selectedStates.length >= 4) {
+    // You can decide how to handle this situation, such as showing an error message
+    // or removing the oldest selected state before adding the new one
     return;
   }
 
@@ -79,6 +85,7 @@ export function clickState(feature: Feature, map: mapboxgl.Map) {
     clickedId = undefined;
   }
 }
+
 
 export function highlightState(feature: Feature, map: mapboxgl.Map) {
   const stateID = feature?.properties?.CD_UF;

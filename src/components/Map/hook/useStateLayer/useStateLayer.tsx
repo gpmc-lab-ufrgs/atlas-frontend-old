@@ -120,9 +120,9 @@ const useStateLayer = () => {
   useEffect(() => {
     if (stateReference && !selectedDistrict) {
       clickState(selectedState, stateReference);
-      setIsSidebarOpen(true);
 
       if (selectedState) {
+        setIsSidebarOpen(true);
         fitStateCenter(selectedState, stateReference);
         if (latLng) addPopup(selectedState, stateReference, latLng, 'Click');
       } else {
