@@ -7,6 +7,8 @@ import geojsonURL from '@data/BR_UF_2020_009.json';
 import { useSelectedState } from '@context/state/selectedContext';
 import { useHighlightedState } from '@context/state/highlightedContext';
 import { useSelectedDistrict } from '@context/district/selectedContext';
+import { fitStateBounds, handleCleanStateLayer, onAddStateToComparison } from './stateActions';
+
 
 import {
   highlightState,
@@ -23,6 +25,9 @@ import { fitCenter } from '../../utils/actions';
 import { lineOpacity, lineWidth, fillOpacity } from '../../utils/const';
 import { isDistrictLayerVisible } from '../useDistrictLayer/districtActions';
 
+import { useSidebar } from '@context/sidebarContext';
+
+
 const useStateLayer = () => {
   const [stateReference, setStateReference] = useState<mapboxgl.Map>();
   const [latLng, setLatLng] = useState<mapboxgl.LngLat>();
@@ -30,6 +35,8 @@ const useStateLayer = () => {
   const { setHighlighted: setHighlightedState, highlighted: highlightedState } = useHighlightedState();
   const { setSelected: setSelectedState, selected: selectedState } = useSelectedState();
   const { selected: selectedDistrict } = useSelectedDistrict();
+
+  const { setIsSidebarOpen } = useSidebar();
 
   function initLayers(reference: mapboxgl.Map) {
     reference.on('load', () => {
@@ -113,6 +120,7 @@ const useStateLayer = () => {
   useEffect(() => {
     if (stateReference && !selectedDistrict) {
       clickState(selectedState, stateReference);
+      setIsSidebarOpen(true);
 
       if (selectedState) {
         fitStateCenter(selectedState, stateReference);

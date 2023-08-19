@@ -29,14 +29,12 @@ export default function ClickablePopup({ regionName, reference, feature, onAddTo
       </Styles.ClickableSection>
 
       <Styles.PopupContent>
-        <Styles.PopupText>Population: {formatPopulationNumber(feature.properties?.POPULATION)} </Styles.PopupText>
-
+        <Styles.PopupText>Population: {formatPopulationNumber(feature.properties?.POPULATION)}</Styles.PopupText>
         {/* <Styles.ButtonWrapper>
           <Styles.Button onClick={() => {
           onAddStateToComparison(feature, reference);
         }}>Add state to comparison</Styles.Button>
         </Styles.ButtonWrapper> */}
-
       </Styles.PopupContent>
     </Styles.Popup>
   );

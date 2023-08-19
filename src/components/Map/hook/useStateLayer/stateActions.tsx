@@ -40,7 +40,24 @@ function setFeatureClick(featureID: number, map: mapboxgl.Map, state: boolean) {
 }
 
 export function clickState(feature: Feature, map: mapboxgl.Map) {
+
   const stateID = feature?.properties?.CD_UF;
+  const stateName = feature?.properties?.NM_UF;
+
+  if (!stateID) {
+    return;
+  }
+
+  // Check if stateID already exists in selectedStates
+  if (selectedStates.some(state => state.id === stateID)) {
+    return;
+  }
+
+  // Hide state layer and show district layer
+  isStateLayerVisible(map, true);
+
+  // Add stateID and stateName to selectedStates
+  selectedStates.push({ id: stateID, name: stateName });
 
   if (feature && feature.geometry) {
     if (stateID === clickedId) {
@@ -126,9 +143,11 @@ export const handleCleanStateLayer = (map: mapboxgl.Map) => {
 
 let selectedStates: { id: number, name: string }[] = [];
 
+
+
 export const onAddStateToComparison = (feature: Feature, map: mapboxgl.Map) => {
   const stateID = feature?.properties?.CD_UF;
-  const stateName = feature?.properties?.NM_UF
+  const stateName = feature?.properties?.NM_UF;
 
   if (!stateID) {
     return;
@@ -141,19 +160,10 @@ export const onAddStateToComparison = (feature: Feature, map: mapboxgl.Map) => {
 
   // Hide state layer and show district layer
   isStateLayerVisible(map, true);
-  //setIsSidebarOpen(true);
-  //isDistrictLayerVisible(map, true);
-
-
-  // Clean state actions
-  //cleanStateActions();
 
   // Add stateID and stateName to selectedStates
   selectedStates.push({ id: stateID, name: stateName });
 
-  // Create alert and print stateID
-  //alert(`Selected state ID: ${selectedStates}`);
-  //console.log(`Selected state ID: ${stateID}`);
 };
 
 export { selectedStates };

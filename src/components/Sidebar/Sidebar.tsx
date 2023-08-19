@@ -36,20 +36,19 @@ const Sidebar: React.FC<Props> = ({ isComparisonMode, title }) => {
       setIsSidebarOpen(false);
     };
 
-    const handleAddToComparison = () => {
-      if (selectedStates.length > 1) {
-        const comparisonRegionIds = selectedStates.map((state) => state.id);
-        const comparisonUrl = '/comparison/' + comparisonRegionIds.join('+');
-        console.log('Selected states:', selectedStates);
-        console.log('Comparison URL:', comparisonUrl);
-        alert(`Comparing: ${selectedStates.map((state) => state.name).join(', ')}. URL: ${comparisonUrl}`);
-        return (
-          <Link to={comparisonUrl}></Link>
-        );
-      } else {
-        alert('Selecione pelo menos dois estados para comparar');
-      }
-    };
+  const handleAddToComparison = () => {
+  if (selectedStates.length > 0) {
+    const comparisonRegionIds = selectedStates.map((state) => state.id);
+    const comparisonUrl = 'http://127.0.0.1:3000/comparison_states/' + comparisonRegionIds.join('+');
+
+    console.log('Selected states:', selectedStates);
+    console.log('Comparison URL:', comparisonUrl);
+
+    window.location.href = comparisonUrl; // Redirect the user to the external comparison page
+  } else {
+    alert('Selecione pelo menos um estados para comparar');
+  }
+};
 
     if (isComparisonMode) {
       return <ComparisonDetails />;
@@ -71,14 +70,14 @@ const Sidebar: React.FC<Props> = ({ isComparisonMode, title }) => {
             <h4 style={{ color: 'white' }}>{isEnglish ? 'Select a region on the map to view its details' : 'Selecione uma região no mapa para ver seus detalhes'}</h4>
           ) : (
             <>
-              <button onClick={handleClearSelection}>{isEnglish ? 'Clear selection' : 'Limpar seleção'}</button>
               <Button variant="contained" onClick={handleAddToComparison}>{isEnglish ? 'Compare' : 'Comparar'}</Button>
-              <br />
+              <button onClick={handleClearSelection}>{isEnglish ? 'Clear selection of states' : 'Limpar seleção de estados'}</button>
+
               <ul>
                 {selectedStates.map((state, index) => (
-                  <li key={index}>{state.name}</li>
+                  <li style={{ color: 'white' }} key={index}>{state.name}</li>
                 ))}
-              </ul>
+              </ul><br />
             </>
           )}
         </Styles.EmptyContent>
