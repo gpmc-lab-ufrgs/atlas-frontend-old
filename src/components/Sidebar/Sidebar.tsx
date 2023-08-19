@@ -48,7 +48,7 @@ const Sidebar: React.FC<Props> = ({ isComparisonMode, title }) => {
   const handleAddToComparison = () => {
   if (selectedStates.length > 0) {
     const comparisonRegionIds = selectedStates.map((state) => state.id);
-    const comparisonUrl = 'http://127.0.0.1:3000/comparison_states/' + comparisonRegionIds.join('+');
+    const comparisonUrl = 'http://3.92.188.34:3000/comparison_states/' + comparisonRegionIds.join('+');
 
     console.log('Selected states:', selectedStates);
     console.log('Comparison URL:', comparisonUrl);
