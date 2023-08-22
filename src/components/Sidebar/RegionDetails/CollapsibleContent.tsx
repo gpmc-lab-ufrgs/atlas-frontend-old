@@ -41,7 +41,7 @@ export const CollapsibleContent: React.FC<CollapsibleContentProps> = ({ props })
   let isSelectedOnComparison;
 
   if (isState) {
-    isSelectedOnComparison = comparison.some((region) => region.properties.CD_MUN === selected?.properties.CD_UF);
+    isSelectedOnComparison = comparison.some((region) => region.properties.CD_UF === selected?.properties.CD_UF);
   }else{
       isSelectedOnComparison = comparison.some((region) => region.properties.CD_MUN === selected?.properties.CD_MUN);
   }
@@ -58,7 +58,7 @@ export const CollapsibleContent: React.FC<CollapsibleContentProps> = ({ props })
         <Styles.PropsTitle>{title}</Styles.PropsTitle>
       </Tooltip>
       {comparison.map((region) => (
-        <Styles.ValueContent key={isState ? district.properties.CD_UF : district.properties.CD_MUN}>
+        <Styles.ValueContent key={isState ? region.properties.CD_UF : region.properties.CD_MUN}>
           <p>{isState ? region.properties.NM_UF : region.properties.NM_MUN}</p>
           <MetricDetails region={region} metric={props} />
         </Styles.ValueContent>
@@ -70,7 +70,7 @@ export const CollapsibleContent: React.FC<CollapsibleContentProps> = ({ props })
           <MetricDetails region={selected} metric={props} />
         </Styles.ValueContent>
       )}
-      )}
+
     </>
   );
 };

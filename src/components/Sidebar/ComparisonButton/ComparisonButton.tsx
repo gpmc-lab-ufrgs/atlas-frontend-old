@@ -1,24 +1,68 @@
 import { Box } from '@mui/material';
+
 import { useComparison } from '@context/comparisonContext';
+import { useComparison as useComparisonState } from '@context/comparisonContextState';
+
 import { useSelectedDistrict } from '@context/district/selectedContext';
+import { useSelectedState } from '@context/state/selectedContext';
+
 import { District } from '@customTypes/district';
+import { State } from '@customTypes/district';
+
 import { ReactComponent as CompareIcon } from '../../../assets/utils/compare.svg';
 import * as Styles from './styles';
 import { useLocation } from 'react-router-dom';
 
 const ComparisonButton = () => {
-  const { selected } = useSelectedDistrict();
-  const { comparison, addComparisonDistrict, removeComparisonDistrict } = useComparison();
+  const isState = window.location.href.includes('/state');
+  const isDistrict = window.location.href.includes('/district');
+
+  let comparison, selected, addComparisonDistrict, removeComparisonDistrict, addComparisonState, removeComparisonState;
+
+  if (isState) {
+    const { comparison: mainComparison, addComparisonState: mainComparison2, removeComparisonState: mainComparison3 } = useComparisonState();
+    const { selected: selectedMain } = useSelectedState();
+
+    comparison = mainComparison;
+    addComparisonState = mainComparison2;
+    removeComparisonState = mainComparison3;
+    selected = selectedMain;
+  } else {
+    const { comparison: mainComparison, addComparisonDistrict: mainComparison2, removeComparisonDistrict: mainComparison3 } = useComparison();
+    const { selected: selectedMain } = useSelectedDistrict();
+
+    comparison = mainComparison;
+    addComparisonDistrict = mainComparison2;
+    removeComparisonDistrict = mainComparison3;
+    selected = selectedMain;
+  }
 
   const isButtonOn = comparison.length >= 4;
-  const isSelectedOnComparison = comparison.some((region) => region.properties.CD_MUN === selected?.properties.CD_MUN);
+
+  let isSelectedOnComparison;
+
+  if (isState) {
+    isSelectedOnComparison = comparison.some((region) => region.properties.CD_UF === selected?.properties.CD_UF);
+  }else{
+      isSelectedOnComparison = comparison.some((region) => region.properties.CD_MUN === selected?.properties.CD_MUN);
+  }
 
   const comparisonClick = (feature: District | null) => {
-    if (isSelectedOnComparison) {
-      removeComparisonDistrict(feature);
-    } else {
-      addComparisonDistrict([feature]);
+
+    if (isState){
+      if (isSelectedOnComparison) {
+        removeComparisonState(feature);
+      } else {
+        addComparisonState([feature]);
+      }
+    }else{
+      if (isSelectedOnComparison) {
+        removeComparisonDistrict(feature);
+      } else {
+        addComparisonDistrict([feature]);
+      }
     }
+
   };
 
   const location = useLocation();
