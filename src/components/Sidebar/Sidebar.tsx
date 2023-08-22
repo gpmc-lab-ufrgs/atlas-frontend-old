@@ -3,8 +3,13 @@ import Drawer from '@components/Drawer';
 import { Box, Button } from '@mui/material';
 import { AutoStories } from '@mui/icons-material';
 import { useSidebar } from '@context/sidebarContext';
+
 import { useComparison } from '@context/comparisonContext';
+import { useComparison as useComparisonState } from '@context/comparisonContextState';
+
 import { useSelectedDistrict } from '@context/district/selectedContext';
+import { useSelectedState } from '@context/state/selectedContext';
+
 import Minimizer from './Minimizer';
 import RegionDetails from './RegionDetails';
 import ComparisonButton from './ComparisonButton';
@@ -19,8 +24,25 @@ interface Props {
 }
 
 const Sidebar: React.FC<Props> = ({ isComparisonMode, title }) => {
-  const { comparison, addToComparison } = useComparison();
-  const { selected } = useSelectedDistrict();
+
+  const isState = window.location.href.includes('/state');
+  const isDistrict = window.location.href.includes('/district');
+  let comparison, selected;
+
+  if (isState) {
+    const { comparison: mainComparison } = useComparisonState();
+    const { selected: selectedMain } = useSelectedState();
+
+    comparison = mainComparison;
+    selected = selectedMain;
+  } else {
+    const { comparison: mainComparison } = useComparison();
+    const { selected: selectedMain } = useSelectedDistrict();
+
+    comparison = mainComparison;
+    selected = selectedMain;
+  }
+
   const { isSidebarOpen, setIsSidebarOpen } = useSidebar();
 
   const location = useLocation();
@@ -80,7 +102,7 @@ const Sidebar: React.FC<Props> = ({ isComparisonMode, title }) => {
             </h4>
           ) : (
             <>
-            <div style={{ display: 'flex', marginTop: '20px', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
+            {/*<div style={{ display: 'flex', marginTop: '20px', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
                 <Button variant="contained" onClick={handleClearSelection} style={{ backgroundColor: "#fff", color: "#000" }}>
                   {isEnglish ? 'Clear selection of states' : 'Limpar seleção de estados'}
                 </Button>
@@ -90,18 +112,18 @@ const Sidebar: React.FC<Props> = ({ isComparisonMode, title }) => {
                   {selectedStates.map((state, index) => (
                     <li style={{ color: 'white' }} key={index}>
                       <b>{state.name}</b>
-                      {/*<button onClick={() => handleDeleteState(state.id)}>X</button>*/}
+                      <button onClick={() => handleDeleteState(state.id)}>X</button>
                     </li>
 
                   ))}
                 </ul>
               </div><br /><br />
               <div style={{ display: 'flex', marginLeft: '20px', justifyContent: 'center', alignItems: 'center', flexDirection: 'column'}}>
-                <Button to={isEnglish ? '/comparison_states_en/' + comparisonRegionIds.join('+') : '/comparison_states/'} onClick={handleAddToComparison} style={{ backgroundColor: "#0A74A6", color: "#fff" }}>
+                {/*<Button to={isEnglish ? '/comparison_states_en/' + comparisonRegionIds.join('+') : '/comparison_states/'} onClick={handleAddToComparison} style={{ backgroundColor: "#0A74A6", color: "#fff" }}>
                   {isEnglish ? 'Show comparison' : 'Mostrar comparação'}
                 </Button>
 
-                </div>
+                </div>*/}
               <br /><br /><br />
               <br />
             </>

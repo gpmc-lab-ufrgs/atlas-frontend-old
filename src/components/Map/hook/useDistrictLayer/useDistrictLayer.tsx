@@ -10,6 +10,9 @@ import { useSidebar } from '@context/sidebarContext';
 
 import { isStateLayerVisible } from '../useStateLayer/stateActions';
 
+import { useLocation, useNavigate } from 'react-router-dom';
+
+
 import districtsSHAPE from '@data/states/mergedfile.json'; //arquivo com todos os shapes https://findthatpostcode.uk/tools/merge-geojson
 //import geojsonBA from '@data/states/BA_Municipios_2020_018.json';
 //import geojsonRS from '@data/states/RS_Municipios_2020_018.json';
@@ -58,6 +61,9 @@ const useDistrictLayer = () => {
   const { selected: selectedState, setSelected: setSelectedState, all: allState } = useSelectedState();
 
   const { setIsSidebarOpen } = useSidebar();
+
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const allDistricts = {
     type: 'FeatureCollection',
@@ -116,6 +122,7 @@ const useDistrictLayer = () => {
         setSelectedDistrict(e.features[0]);
         setLatLng(e.lngLat);
       }
+      navigate('/district');
     });
 
     reference.on('mousemove', 'fill-district', (e: mapboxgl.EventData) => {

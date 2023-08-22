@@ -3,7 +3,8 @@ import Bar from './Bar';
 
 const MetricDetails = ({ region, metric }: any) => {
   const [geosesData, setGeosesData] = useState(null);
-  const isState = window.location.href.includes('/comparison_states');
+
+  const isState = window.location.href.includes('/comparison_states') || window.location.href.includes('/state');
 
   useEffect(() => {
   let abortController = new AbortController();

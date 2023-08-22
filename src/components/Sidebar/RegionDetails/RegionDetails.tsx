@@ -1,18 +1,38 @@
 import React, { useState, useEffect } from 'react';
 import { Box } from '@mui/material';
+
 import { useComparison } from '@context/comparisonContext';
+import { useComparison as useComparisonState } from '@context/comparisonContextState';
+
 import ComparisonSection from './ComparisonSection';
 import DataSection from './DataSection';
 import { useLocation } from 'react-router-dom';
 
 const RegionDetails = () => {
-  const { comparison } = useComparison();
+  const isState = window.location.href.includes('/comparison_states') || window.location.href.includes('/state');
+
+  let comparison;
+
+  if (isState) {
+    const { comparison: mainComparison } = useComparisonState();
+    comparison = mainComparison;
+  } else {
+    const { comparison: mainComparison } = useComparison();
+    comparison = mainComparison;
+  }
+
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
 
+
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch('http://3.92.188.34:8001/dictionary/dictionary/json/');
+      let response;
+      if (isState) {
+        response = await fetch('http://3.92.188.34:8001/dictionary/dictionary_state/json/');
+      } else {
+        response = await fetch('http://3.92.188.34:8001/dictionary/dictionary/json/');
+      }
       const json = await response.json();
       setData(json);
       setLoading(false);

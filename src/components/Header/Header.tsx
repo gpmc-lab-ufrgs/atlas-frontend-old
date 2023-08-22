@@ -28,6 +28,9 @@ const Header: React.FC<Props> = ({ isComparisonModeOn, comparisonType, setCompar
   const { pathname } = location;
   const isEnglish = pathname.includes('/en');
 
+  const isState = pathname.includes('/state');
+  const isDistrict = pathname.includes('/district');
+
   if (comparisonType !== 'table' && comparisonType !== 'grid') {
     return <div />;
   }
@@ -54,9 +57,21 @@ const Header: React.FC<Props> = ({ isComparisonModeOn, comparisonType, setCompar
 
   const handleLanguageChange = () => {
     if (isEnglish) {
-      navigate('/');
+      if(isState){
+        navigate('/state');
+      }else if(isDistrict){
+        navigate('/district');
+      }else{
+        navigate('/');
+      }
     } else {
-      navigate('/en');
+      if(isState){
+        navigate('/en/state');
+      }else if(isDistrict){
+        navigate('/en/district');
+      }else{
+        navigate('/en');
+      }
     }
   };
 

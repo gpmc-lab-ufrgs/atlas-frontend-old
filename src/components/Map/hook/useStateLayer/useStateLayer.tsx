@@ -9,6 +9,9 @@ import { useHighlightedState } from '@context/state/highlightedContext';
 import { useSelectedDistrict } from '@context/district/selectedContext';
 import { fitStateBounds, handleCleanStateLayer, onAddStateToComparison } from './stateActions';
 
+import { useLocation, useNavigate } from 'react-router-dom';
+
+
 
 import {
   highlightState,
@@ -37,6 +40,11 @@ const useStateLayer = () => {
   const { selected: selectedDistrict } = useSelectedDistrict();
 
   const { setIsSidebarOpen } = useSidebar();
+
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const { pathname } = location;
 
   function initLayers(reference: mapboxgl.Map) {
     reference.on('load', () => {
@@ -89,6 +97,7 @@ const useStateLayer = () => {
         setSelectedState(e.features[0]);
         setLatLng(e.lngLat);
       }
+      navigate('/state');
     });
 
     reference.on('mousemove', 'fill-state', (e: any) => {

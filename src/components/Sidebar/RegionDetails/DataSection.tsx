@@ -4,7 +4,9 @@ import Collapsible from '@components/Collapsible';
 import MetricDetails from '@components/MetricDetails';
 
 import { useSelectedDistrict } from '@context/district/selectedContext';
+import { useSelectedState } from '@context/state/selectedContext';
 import { useComparison } from '@context/comparisonContext';
+import { useComparison as useComparisonState } from '@context/comparisonContextState';
 
 import { MapPropsContentType, MapPropsSectionType } from '@customTypes/map';
 
@@ -15,10 +17,32 @@ import { CollapsibleContent } from './CollapsibleContent';
 import * as Styles from './styles';
 
 const DataSection: React.FC<MapPropsSectionType> = ({ title, content }) => {
-  const { selected } = useSelectedDistrict();
-  const { comparison } = useComparison();
+  const isState = window.location.href.includes('/state');
+  const isDistrict = window.location.href.includes('/district');
 
-  const isSelectedOnComparison = comparison.some((region) => region.properties.CD_MUN === selected?.properties.CD_MUN);
+  let comparison, selected;
+
+  if (isState) {
+    const { comparison: mainComparison } = useComparisonState();
+    const { selected: selectedMain } = useSelectedState();
+
+    comparison = mainComparison;
+    selected = selectedMain;
+  } else {
+    const { comparison: mainComparison } = useComparison();
+    const { selected: selectedMain } = useSelectedDistrict();
+
+    comparison = mainComparison;
+    selected = selectedMain;
+  }
+
+  let isSelectedOnComparison;
+
+  if (isState) {
+    isSelectedOnComparison = comparison.some((region) => region.properties.CD_MUN === selected?.properties.CD_UF);
+  }else{
+      isSelectedOnComparison = comparison.some((region) => region.properties.CD_MUN === selected?.properties.CD_MUN);
+  }
 
   const hasSelectedDistrict = Boolean(selected);
 
@@ -49,7 +73,11 @@ const DataSection: React.FC<MapPropsSectionType> = ({ title, content }) => {
                           <Styles.PropsTitle>{data.title}</Styles.PropsTitle>
                         </Tooltip>
                         <Styles.ValueContent>
-                          <p>{selected?.properties.NM_MUN}</p>
+                          {isState ? (
+                            <p>{selected?.properties.NM_UF}</p>
+                          ) : (
+                            <p>{selected?.properties.NM_MUN}</p>
+                          )}
                           <MetricDetails region={selected} metric={data} />
                         </Styles.ValueContent>
                       </div>
