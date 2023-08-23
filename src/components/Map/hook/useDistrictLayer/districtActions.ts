@@ -38,10 +38,17 @@ export function addPopup(
       : '';
 
   if (type === 'Click') {
-    clickedPopup.setLngLat(lngLat).setHTML(
-      `<div style="display: flex; flex-direction: column; cursor: default;
-      pointer-events: all;"><h5>${regionName}</h5><h5>População: ${formatPopulationNumber(population)}</h5></div>`,
-    );
+    if (window.location.href.includes('/en')){
+      clickedPopup.setLngLat(lngLat).setHTML(
+        `<div style="display: flex; flex-direction: column; cursor: default;
+        pointer-events: all;"><h5>${regionName}</h5><h5>Population: ${formatPopulationNumber(population)}</h5></div>`,
+      );
+    }else{
+      clickedPopup.setLngLat(lngLat).setHTML(
+        `<div style="display: flex; flex-direction: column; cursor: default;
+        pointer-events: all;"><h5>${regionName}</h5><h5>População: ${formatPopulationNumber(population)}</h5></div>`,
+      );
+    }
 
     clickedPopup.addTo(map);
   } else if (type === 'Hover') {

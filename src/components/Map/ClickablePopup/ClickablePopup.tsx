@@ -12,16 +12,17 @@ interface Props {
   onAddToComparison: () => void;
 }
 
-export default function ClickablePopup({ regionName, reference, feature, onAddToComparison }: Props) {
+const ClickablePopupContent = ({ regionName, reference, feature, onAddToComparison }: Props) => {
+  const isEnglish = window.location.href.includes('/en');
+
+  const handleClick = () => {
+    handleCleanStateLayer(reference);
+    fitStateBounds(feature, reference);
+  };
 
   return (
     <Styles.Popup>
-      <Styles.ClickableSection
-        onClick={() => {
-          handleCleanStateLayer(reference);
-          fitStateBounds(feature, reference);
-        }}
-      >
+      <Styles.ClickableSection onClick={handleClick}>
         <Styles.PopupText>{regionName}</Styles.PopupText>
         <Styles.IconWrapper className="iconAction">
           <ChevronRightIcon fontSize="small" />
@@ -29,13 +30,16 @@ export default function ClickablePopup({ regionName, reference, feature, onAddTo
       </Styles.ClickableSection>
 
       <Styles.PopupContent>
-        <Styles.PopupText>Population: {formatPopulationNumber(feature.properties?.POPULATION)}</Styles.PopupText>
-        {/* <Styles.ButtonWrapper>
+        <Styles.PopupText>
+          {isEnglish ? 'Population' : 'População'}: {formatPopulationNumber(feature.properties?.POPULATION)}
+        </Styles.PopupText>        {/* <Styles.ButtonWrapper>
           <Styles.Button onClick={() => {
-          onAddStateToComparison(feature, reference);
-        }}>Add state to comparison</Styles.Button>
+            onAddStateToComparison(feature, reference);
+          }}>Add state to comparison</Styles.Button>
         </Styles.ButtonWrapper> */}
       </Styles.PopupContent>
     </Styles.Popup>
   );
-}
+};
+
+export default ClickablePopupContent;

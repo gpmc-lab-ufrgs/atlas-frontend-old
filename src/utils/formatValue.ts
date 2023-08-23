@@ -7,7 +7,7 @@ export const formatPopulationNumber = (value: any) => {
   for (let i = numbers.length - 1, j = 1; i >= 0; i--, j++) {
     out.push(numbers[i]);
     if (j % 3 === 0 && i !== 0) {
-      out.push(',');
+      out.push('.');
     }
   }
 

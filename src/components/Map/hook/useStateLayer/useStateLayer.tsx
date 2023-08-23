@@ -32,6 +32,8 @@ import { useSidebar } from '@context/sidebarContext';
 
 
 const useStateLayer = () => {
+  const isEnglish = window.location.href.includes('/en');
+
   const [stateReference, setStateReference] = useState<mapboxgl.Map>();
   const [latLng, setLatLng] = useState<mapboxgl.LngLat>();
 
@@ -97,7 +99,11 @@ const useStateLayer = () => {
         setSelectedState(e.features[0]);
         setLatLng(e.lngLat);
       }
-      navigate('/state');
+      if (window.location.href.includes('/en')) {
+        navigate('/en/state');
+      }else{
+        navigate('/state');
+      }
     });
 
     reference.on('mousemove', 'fill-state', (e: any) => {

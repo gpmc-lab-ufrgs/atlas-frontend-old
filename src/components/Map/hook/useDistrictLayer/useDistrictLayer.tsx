@@ -122,7 +122,11 @@ const useDistrictLayer = () => {
         setSelectedDistrict(e.features[0]);
         setLatLng(e.lngLat);
       }
-      navigate('/district');
+      if (window.location.href.includes('/en')) {
+        navigate('/en/district');
+      }else{
+        navigate('/district');
+      }
     });
 
     reference.on('mousemove', 'fill-district', (e: mapboxgl.EventData) => {
