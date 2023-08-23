@@ -27,7 +27,7 @@ const ComparisonSection = () => {
   if (isState) {
     comparisonRegionIds = comparison.map((feature: any) => feature.properties.CD_UF);
   }else{
-      comparisonRegionIds = comparison.map((feature: any) => feature.properties.CD_MUN);
+    comparisonRegionIds = comparison.map((feature: any) => feature.properties.CD_MUN);
   }
 
 

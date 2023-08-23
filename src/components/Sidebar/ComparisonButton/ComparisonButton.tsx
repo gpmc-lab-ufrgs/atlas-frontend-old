@@ -28,6 +28,7 @@ const ComparisonButton = () => {
     removeComparisonState = mainComparison3;
     selected = selectedMain;
   } else {
+
     const { comparison: mainComparison, addComparisonDistrict: mainComparison2, removeComparisonDistrict: mainComparison3 } = useComparison();
     const { selected: selectedMain } = useSelectedDistrict();
 
@@ -44,7 +45,7 @@ const ComparisonButton = () => {
   if (isState) {
     isSelectedOnComparison = comparison.some((region) => region.properties.CD_UF === selected?.properties.CD_UF);
   }else{
-      isSelectedOnComparison = comparison.some((region) => region.properties.CD_MUN === selected?.properties.CD_MUN);
+    isSelectedOnComparison = comparison.some((region) => region.properties.CD_MUN === selected?.properties.CD_MUN);
   }
 
   const comparisonClick = (feature: District | null) => {

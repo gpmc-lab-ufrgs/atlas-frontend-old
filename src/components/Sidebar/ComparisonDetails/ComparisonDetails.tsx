@@ -8,19 +8,23 @@ import * as Styles from './styles';
 import './styles.css';
 
 const ComparisonDetails = () => {
-  let comparison, removeComparisonState, removeAllComparisons;
-
+  const isEnglish = window.location.href.includes('/comparison_en') || window.location.href.includes('/comparison_states_en');
   const isState = window.location.href.includes('/comparison_states');
 
+  let comparison, removeComparisonDistrict, removeComparisonState;
+
   if (isState) {
-    ({ comparison, removeComparisonState, removeAllComparisons } = useComparisonState());
+    const { comparison: mainComparison, removeComparisonState: mainComparison3 } = useComparisonState();
+    comparison = mainComparison;
+    removeComparisonState = mainComparison3;
   } else {
-    ({ comparison, removeComparisonState, removeAllComparisons } = useComparison());
+    const { comparison: mainComparison, removeComparisonDistrict: mainComparison3 } = useComparison();
+    comparison = mainComparison;
+    removeComparisonDistrict = mainComparison3;
   }
+
   const { resetMapValues } = useMap();
   const navigate = useNavigate();
-
-  const isEnglish = window.location.href.includes('/comparison_en') || window.location.href.includes('/comparison_states_en');
 
   const handleGoBack = () => {
     if (isEnglish) {
@@ -50,7 +54,11 @@ const ComparisonDetails = () => {
             {comparison.map((feature: any, id) => (
               <Styles.ComparisonList key={id}>
                 {isState ? feature.properties.NM_UF : feature.properties.NM_MUN}
-                <Styles.CloseButton onClick={() => removeComparisonState(feature)} />
+                {isState ? (
+                  <Styles.CloseButton onClick={() => removeComparisonState(feature)} />
+                ) : (
+                  <Styles.CloseButton onClick={() => removeComparisonDistrict(feature)} />
+                )}
               </Styles.ComparisonList>
             ))}
           </>
