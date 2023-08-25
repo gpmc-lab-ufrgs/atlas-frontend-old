@@ -32,6 +32,8 @@ export const formatValue = (value: any, format: string) => {
       return value ? `${parseFloat(String(value).replace(/,/g, '.')).toFixed(2)}` : '';
     case 'float .3':
       return value ? `${parseFloat(String(value).replace(/,/g, '.')).toFixed(3)}` : '';
+    case 'money':
+      return `R$ ${parseFloat(value).toFixed(2).replace('.', ',')}`;
     default:
       return value ? value + '' : '-';
   }

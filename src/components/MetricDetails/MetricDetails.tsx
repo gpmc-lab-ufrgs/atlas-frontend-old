@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Bar from './Bar';
+import { formatPopulationNumber, formatValue } from '@utils/formatValue';
 
 const MetricDetails = ({ region, metric }: any) => {
   const [geosesData, setGeosesData] = useState(null);
@@ -87,7 +88,7 @@ const MetricDetails = ({ region, metric }: any) => {
           } else {
             geosesDataValue2 = geosesData?.[region?.properties.CD_MUN]?.[metric.label]?.value;
           }
-          const parsedValue2 = parseFloat(geosesDataValue2);
+          const parsedValue2 = formatPopulationNumber(geosesDataValue2);
           const displayValue2 = isNaN(parsedValue2) ? '-----' : parsedValue2.toLocaleString('de-DE', { minimumFractionDigits: 3, maximumFractionDigits: 3 });
           if (isState) {
             return (
@@ -110,17 +111,17 @@ const MetricDetails = ({ region, metric }: any) => {
             geosesDataValue2 = geosesData?.[region?.properties.CD_MUN]?.[metric.label]?.value;
           }
           const parsedValue2 = parseFloat(geosesDataValue2);
-          const displayValue2 = isNaN(parsedValue2) ? '-----' : parsedValue2.toLocaleString('de-DE', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
+          const displayValue2 = isNaN(parsedValue2) ? '-----' : parsedValue2.toLocaleString('de-DE', { minimumFractionDigits: 0, maximumFractionDigits: 0 }).replace(/(\d{3})\.000/, '$1');
           if (isState) {
             return (
               <div key={region?.properties.CD_UF}>
-                <data value={geosesDataValue2}>R${displayValue2}</data>
+                R$<data value={geosesDataValue2}>{displayValue2}</data>
               </div>
             );
           } else {
           return (
               <div key={region?.properties.CD_MUN}>
-                <data value={geosesDataValue2}>R${displayValue2}</data>
+                R$<data value={geosesDataValue2}>{displayValue2}</data>
               </div>
           );
         }}
@@ -136,13 +137,13 @@ const MetricDetails = ({ region, metric }: any) => {
           if (isState) {
             return (
             <div key={region?.properties.CD_UF}>
-              <data value={geosesDataValue2}>{displayValue2} salários mínimos</data>
+              <data value={geosesDataValue2}>{displayValue2} </data>salários mínimos
             </div>
           );
           } else {
           return (
             <div key={region?.properties.CD_MUN}>
-              <data value={geosesDataValue2}>{displayValue2} salários mínimos</data>
+              <data value={geosesDataValue2}>{displayValue2} </data>salários mínimos
             </div>
           );
         }}
@@ -158,14 +159,14 @@ const MetricDetails = ({ region, metric }: any) => {
           if (isState) {
             return (
             <div key={region?.properties.CD_UF}>
-              <data value={geosesDataValue2}>{formattedValue2} km²</data>
+              <data value={geosesDataValue2}>{formattedValue2} </data>km²
             </div>
           );
           } else {
           return (
           <div key={region?.properties.CD_MUN}>
-              <data value={geosesDataValue2}>{formattedValue2} km²</data>
-            </div>
+            <data value={geosesDataValue2}>{formattedValue2} </data>km²
+          </div>
          );
         }}
         if (unit === 'Hab/km²') {
@@ -180,13 +181,13 @@ const MetricDetails = ({ region, metric }: any) => {
           if (isState) {
             return (
             <div key={region?.properties.CD_UF}>
-              <data value={geosesDataValue2}>{formattedValue2} Hab/km²</data>
+              <data value={geosesDataValue2}>{formattedValue2} </data>hab/km²
             </div>
           );
           } else {
           return (
           <div key={region?.properties.CD_MUN}>
-              <data value={geosesDataValue2}>{formattedValue2} Hab/km²</data>
+              <data value={geosesDataValue2}>{formattedValue2} </data>hab/km²
             </div>
         );
         }}
@@ -202,13 +203,13 @@ const MetricDetails = ({ region, metric }: any) => {
           if (isState) {
             return (
             <div key={region?.properties.CD_UF}>
-              <data value={geosesDataValue2}>{formattedValue2} Mbps</data>
+              <data value={geosesDataValue2}>{formattedValue2} </data>Mbps
             </div>
           );
           } else {
           return (
           <div key={region?.properties.CD_MUN}>
-              <data value={geosesDataValue2}>{formattedValue2} Mbps</data>
+              <data value={geosesDataValue2}>{formattedValue2} </data>Mbps
             </div>
             );
         }}
@@ -249,7 +250,7 @@ const MetricDetails = ({ region, metric }: any) => {
         } else {
           geosesDataValue = geosesData?.[region?.properties.CD_MUN]?.[metric.label]?.value;
         }
-        const parsedValue = parseInt(geosesDataValue);
+        const parsedValue = formatPopulationNumber(geosesDataValue);
         const displayValue = isNaN(parsedValue) ? '-----' : parsedValue;
         if (isState) {
          return (
