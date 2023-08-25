@@ -177,7 +177,7 @@ const MetricDetails = ({ region, metric }: any) => {
             geosesDataValue2 = geosesData?.[region?.properties.CD_MUN]?.[metric.label]?.value;
           }
           const parsedValue2 = parseFloat(geosesDataValue2);
-          const formattedValue2 = isNaN(parsedValue2) ? '-----' : parsedValue2.toLocaleString('pt-BR', { minimumFractionDigits: 1, maximumFractionDigits: 2 });
+          const formattedValue2 = isNaN(parsedValue2) ? '-----' : parsedValue2.toLocaleString('pt-BR', { minimumFractionDigits: 1, maximumFractionDigits: 2 }).replace(',', '.');
           if (isState) {
             return (
             <div key={region?.properties.CD_UF}>
