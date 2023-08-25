@@ -89,7 +89,7 @@ const MetricDetails = ({ region, metric }: any) => {
             geosesDataValue2 = geosesData?.[region?.properties.CD_MUN]?.[metric.label]?.value;
           }
           const parsedValue2 = formatPopulationNumber(geosesDataValue2);
-          const displayValue2 = isNaN(parsedValue2) ? '-----' : parsedValue2.toLocaleString('de-DE', { minimumFractionDigits: 3, maximumFractionDigits: 3 });
+          const displayValue2 = isNaN(parsedValue2) ? '-----' : parsedValue2.toLocaleString('pt-BR', { minimumFractionDigits: 3, maximumFractionDigits: 3 });
           if (isState) {
             return (
               <div key={region?.properties.CD_UF}>
@@ -111,7 +111,7 @@ const MetricDetails = ({ region, metric }: any) => {
             geosesDataValue2 = geosesData?.[region?.properties.CD_MUN]?.[metric.label]?.value;
           }
           const parsedValue2 = parseFloat(geosesDataValue2);
-          const displayValue2 = isNaN(parsedValue2) ? '-----' : parsedValue2.toLocaleString('de-DE', { minimumFractionDigits: 0, maximumFractionDigits: 0 }).replace(/(\d{3})\.000/, '$1');
+          const displayValue2 = isNaN(parsedValue2) ? '-----' : parsedValue2.toLocaleString('pt-BR', { minimumFractionDigits: 0, maximumFractionDigits: 0 }).replace(/(\d{3})\.000/, '$1');
           if (isState) {
             return (
               <div key={region?.properties.CD_UF}>
@@ -133,7 +133,7 @@ const MetricDetails = ({ region, metric }: any) => {
             geosesDataValue2 = geosesData?.[region?.properties.CD_MUN]?.[metric.label]?.value;
           }
           const parsedValue2 = parseFloat(geosesDataValue2);
-          const displayValue2 = isNaN(parsedValue2) ? '-----' : parsedValue2.toLocaleString('de-DE', { minimumFractionDigits: 0, maximumFractionDigits: 1 });
+          const displayValue2 = isNaN(parsedValue2) ? '-----' : parsedValue2.toLocaleString('pt-BR', { minimumFractionDigits: 0, maximumFractionDigits: 1 });
           if (isState) {
             return (
             <div key={region?.properties.CD_UF}>
@@ -155,7 +155,7 @@ const MetricDetails = ({ region, metric }: any) => {
             geosesDataValue2 = geosesData?.[region?.properties.CD_MUN]?.[metric.label]?.value;
           }
           const parsedValue2 = parseFloat(geosesDataValue2);
-          const formattedValue2 = isNaN(parsedValue2) ? '-----' : parsedValue2.toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+          const formattedValue2 = isNaN(parsedValue2) ? '-----' : parsedValue2.toLocaleString('pt-BR', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
           if (isState) {
             return (
             <div key={region?.properties.CD_UF}>
@@ -177,7 +177,7 @@ const MetricDetails = ({ region, metric }: any) => {
             geosesDataValue2 = geosesData?.[region?.properties.CD_MUN]?.[metric.label]?.value;
           }
           const parsedValue2 = parseFloat(geosesDataValue2);
-          const formattedValue2 = isNaN(parsedValue2) ? '-----' : parsedValue2.toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 2 });
+          const formattedValue2 = isNaN(parsedValue2) ? '-----' : parsedValue2.toLocaleString('pt-BR', { minimumFractionDigits: 1, maximumFractionDigits: 2 });
           if (isState) {
             return (
             <div key={region?.properties.CD_UF}>
@@ -199,7 +199,7 @@ const MetricDetails = ({ region, metric }: any) => {
             geosesDataValue2 = geosesData?.[region?.properties.CD_MUN]?.[metric.label]?.value;
           }
           const parsedValue2 = parseFloat(geosesDataValue2);
-          const formattedValue2 = isNaN(parsedValue2) ? '-----' : parsedValue2.toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 2 });
+          const formattedValue2 = isNaN(parsedValue2) ? '-----' : parsedValue2.toLocaleString('pt-BR', { minimumFractionDigits: 1, maximumFractionDigits: 2 }).replace(',', '.');
           if (isState) {
             return (
             <div key={region?.properties.CD_UF}>
@@ -250,21 +250,22 @@ const MetricDetails = ({ region, metric }: any) => {
         } else {
           geosesDataValue = geosesData?.[region?.properties.CD_MUN]?.[metric.label]?.value;
         }
-        const parsedValue = formatPopulationNumber(geosesDataValue);
-        const displayValue = isNaN(parsedValue) ? '-----' : parsedValue;
+        const parsedValue = parseFloat(geosesDataValue);
+        const formattedValue = isNaN(parsedValue) ? '-----' : parsedValue.toLocaleString('pt-BR', { useGrouping: true }).replace(',', '.') // Format to locale string
         if (isState) {
-         return (
-          <div key={region?.properties.CD_UF}>
-            <data value={geosesDataValue}>{displayValue}</data>
-          </div>
-        );
+          return (
+            <div key={region?.properties.CD_UF}>
+              <data value={geosesDataValue}>{formattedValue}</data>
+            </div>
+          );
         } else {
           return (
-          <div key={region?.properties.CD_MUN}>
-            <data value={geosesDataValue}>{displayValue}</data>
-          </div>
+            <div key={region?.properties.CD_MUN}>
+              <data value={geosesDataValue}>{formattedValue}</data>
+            </div>
           );
         }
+
       case 'String':
         if (isState) {
          return (
@@ -341,7 +342,7 @@ const MetricDetails = ({ region, metric }: any) => {
           geosesDataValue2 = geosesData?.[region?.properties.CD_MUN]?.[metric.label]?.value;
         }
         const parsedValue2 = parseFloat(geosesDataValue2);
-        const displayValue2 = isNaN(parsedValue2) ? '-----' : parsedValue2.toLocaleString('de-DE', { minimumFractionDigits: 3, maximumFractionDigits: 3 });
+        const displayValue2 = isNaN(parsedValue2) ? '-----' : parsedValue2.toLocaleString('pt-BR', { minimumFractionDigits: 3, maximumFractionDigits: 3 });
         return (
           <div key={region?.properties.CD_MUN}>
             <data value={geosesDataValue2}>{displayValue2}</data>

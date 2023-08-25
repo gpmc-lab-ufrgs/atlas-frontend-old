@@ -1,8 +1,9 @@
 export const formatPopulationNumber = (value: any) => {
-  const valueStr = value.toString();
+  const intValue = parseInt(value); // Convert value to an integer
+  const valueStr = intValue.toString();
   const src = valueStr.replace(/[^\d/]/g, '');
   const numbers = src.replace(/[^\d]/g, '');
-  const out: any = [];
+  const out = [];
 
   for (let i = numbers.length - 1, j = 1; i >= 0; i--, j++) {
     out.push(numbers[i]);
@@ -15,6 +16,7 @@ export const formatPopulationNumber = (value: any) => {
   const outString = out.join('');
   return outString;
 };
+
 
 export const formatValue = (value: any, format: string) => {
   if (value === undefined || value === null) {
