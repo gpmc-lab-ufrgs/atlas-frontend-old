@@ -37,6 +37,7 @@ export function ComparisonProviderState({ children }: any) {
     );
     console.log('removeComparisonState - New comparison:', newComparison); // Add this line to log the new comparison value
     setComparison(newComparison);
+
   };
 
   const removeAllComparisons = () => {
