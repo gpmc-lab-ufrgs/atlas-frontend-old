@@ -78,6 +78,8 @@ const GridContent: React.FC<Props> = ({ comparison }) => {
     return sectionOrder.indexOf(a.title) - sectionOrder.indexOf(b.title);
   });
 
+  const isStatee = window.location.href.includes('/comparison_states');
+
   return (
     <>
       {sortedSections.map((section: DictionaryData) => (
@@ -95,13 +97,13 @@ const GridContent: React.FC<Props> = ({ comparison }) => {
                     <Styles.GridItem>
                       {comparison.map((region, idx) => (
                         <Styles.ComparisonLabel key={idx}>
-                        {isState ? (
+                        {isStatee ? (
                           <Tooltip title={region?.properties.NM_UF}>
                             <label>{region?.properties.NM_UF}</label>
                           </Tooltip>
                           ) : (
                           <Tooltip title={region?.properties.NM_MUN}>
-                            <label>{region?.properties.NM_MUN}</label>
+                            <label>{region?.properties.NM_MUN} </label>
                           </Tooltip>
                            )}
                           <MetricDetails region={region} metric={content} />
