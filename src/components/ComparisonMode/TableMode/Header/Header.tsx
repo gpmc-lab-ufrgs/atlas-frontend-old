@@ -5,28 +5,20 @@ import { State } from '@customTypes/state';
 
 import * as Styles from './styles';
 
-let comparison;
-const isState = window.location.href.includes('/comparison_states');
-
-if (isState) {
-  interface Props {
-    comparison: Array<State>;
-  }
-} else {
-  interface Props {
-    comparison: Array<District>;
-  }
-}
-
 const Header: React.FC<Props> = ({ comparison }) => {
+  const isState = window.location.href.includes('/comparison_states');
+
   return (
     <Styles.TableHeader>
-      {comparison.map((region, id) => (
-        <Styles.TableItens key={id} gridColumnNumber={id + 2}>
+      {comparison.map((region, id) => {
+        const regionName = isState ? region.properties.NM_UF : region.properties.NM_MUN;
 
-          {isState ? region.properties.NM_UF : region.properties.NM_MUN}
-        </Styles.TableItens>
-      ))}
+        return (
+          <Styles.TableItens key={id} gridColumnNumber={id + 2}>
+            {regionName}
+          </Styles.TableItens>
+        );
+      })}
     </Styles.TableHeader>
   );
 };
