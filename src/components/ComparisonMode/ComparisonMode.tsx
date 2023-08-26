@@ -16,7 +16,7 @@ const ComparisonMode: React.FC<Props> = ({ comparisonType }) => {
 
   let comparison;
 
-  const isState = window.location.href.includes('/comparison_states');
+  const isState = window.location.href.includes('/comparison_states') || window.location.href.includes('/comparison_states_en');
 
   if (isState) {
     ({ comparison } = useComparisonState());
