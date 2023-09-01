@@ -79,6 +79,7 @@ const isEnglish = window.location.href.includes('/comparison_en') || window.loca
     return sectionOrder.indexOf(a.title) - sectionOrder.indexOf(b.title);
   });
 
+
   return (
     <>
       {sortedSections.map((section: DictionaryData) => (
@@ -89,7 +90,10 @@ const isEnglish = window.location.href.includes('/comparison_en') || window.loca
         >
           {section.content.map((content: MapPropsContentType, id) => (
             <>
-              {!content.nestedData ? (
+              {!content.nestedData && content.title !== "População Estimada em 2017" &&
+              content.title !== "População Estimada em 2018" &&
+              content.title !== "População Estimada em 2019" &&
+              content.title !== "População Estimada em 2020" ? (
                 <Styles.Table lineTableNumber={id} key={id}>
                   <Tooltip
                     title={
@@ -98,7 +102,7 @@ const isEnglish = window.location.href.includes('/comparison_en') || window.loca
                       </div>
                     }
                   >
-                    <Styles.ColumnTitle>{isEnglish ? content.title_en : content.title}</Styles.ColumnTitle>
+                  <Styles.ColumnTitle>{isEnglish ? content.title_en : content.title}</Styles.ColumnTitle>
                   </Tooltip>
                   {comparison.map((region, idx) => (
                     <Styles.Column gridColumnNumber={idx + 2} key={idx}>
@@ -111,33 +115,10 @@ const isEnglish = window.location.href.includes('/comparison_en') || window.loca
                   ))}
                 </Styles.Table>
               ) : (
-                <Collapsible isTitle={false} title={content.title}>
-                  {content.nestedData?.map((data, index) => (
-                    <div key={index}>
-                      <Styles.Table lineTableNumber={index} key={index}>
-                        <Tooltip
-                          title={
-                            <div>
-                              <div>{data.title}</div>
-                              <div>{data.description}</div>
-                            </div>
-                          }
-                        >
-                          <Styles.ColumnTitle>{data.title}</Styles.ColumnTitle>
-                        </Tooltip>
-                        {comparison.map((region, idx) => (
-                          <Styles.Column gridColumnNumber={idx + 2} key={idx}>
-                            {isState ? (
-                              <MetricDetails region={region} metric={content} />
-                            ) : (
-                              <MetricDetails region={region} metric={content} />
-                            )}
-                          </Styles.Column>
-                        ))}
-                      </Styles.Table>
-                    </div>
-                  ))}
-                </Collapsible>
+
+                <div >
+
+                </div>
               )}
             </>
           ))}

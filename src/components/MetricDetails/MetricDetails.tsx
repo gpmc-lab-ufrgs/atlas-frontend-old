@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
+
 import Bar from './Bar';
+import Graphic from './Graphic'; // Assuming Graphic component is in a separate file
+
 import { formatPopulationNumber, formatValue } from '@utils/formatValue';
 
 const MetricDetails = ({ region, metric }: any) => {
@@ -334,19 +337,18 @@ const MetricDetails = ({ region, metric }: any) => {
         }
 
       case 'Graphic':
-        // Get the value for the graphic
-        let geosesDataValue2;
-        if (isState) {
-          geosesDataValue2 = geosesData?.[region?.properties.CD_UF]?.[metric.label]?.value;
-        } else {
-          geosesDataValue2 = geosesData?.[region?.properties.CD_MUN]?.[metric.label]?.value;
-        }
-        const parsedValue2 = parseFloat(geosesDataValue2);
-        const displayValue2 = isNaN(parsedValue2) ? '-----' : parsedValue2.toLocaleString('pt-BR', { minimumFractionDigits: 3, maximumFractionDigits: 3 });
+        // Get the value for the graphic in the API
+        const regionData = {
+            properties: {
+                CD_MUN: region.properties.CD_MUN // Replace with actual value
+            }
+        };
+
         return (
-          <div key={region?.properties.CD_MUN}>
-            <data value={geosesDataValue2}>{displayValue2}</data>
-          </div>
+            <div>
+                {/* Other components */}
+                <Graphic region={regionData} />
+            </div>
         );
 
     return (

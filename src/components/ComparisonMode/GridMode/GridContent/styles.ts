@@ -41,7 +41,7 @@ export const GridItem = styled.div`
 
 export const ComparisonLabel = styled.div`
   display: flex;
-  justify-content: space-between;
+  align-items: flex-start; /* Adjust alignment as needed */
   font-size: 14px;
 
   label {

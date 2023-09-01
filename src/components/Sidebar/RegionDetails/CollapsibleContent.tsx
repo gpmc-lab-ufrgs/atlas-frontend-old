@@ -52,6 +52,12 @@ export const CollapsibleContent: React.FC<CollapsibleContentProps> = ({ props })
 
   const { description, title } = props;
 
+  if (
+  title !== "População Estimada em 2017" &&
+  title !== "População Estimada em 2018" &&
+  title !== "População Estimada em 2019" &&
+  title !== "População Estimada em 2020"
+) {
   return (
     <>
       <Tooltip title={description} arrow>
@@ -73,4 +79,5 @@ export const CollapsibleContent: React.FC<CollapsibleContentProps> = ({ props })
 
     </>
   );
+  }
 };
