@@ -7,6 +7,8 @@ This project was developed using React TS and yarn as package managers. To run i
 nodejs version =>12.0
 ```
 sudo apt-get install npm
+
+npm install chart.js
 ```
 
 #### 2 - Downloading the liblaries with yarn
