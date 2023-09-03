@@ -60,7 +60,10 @@ export const CollapsibleContent: React.FC<CollapsibleContentProps> = ({ props })
   title !== "Estimated Population in 2017" &&
   title !== "Estimated Population in 2018" &&
   title !== "Estimated Population in 2019" &&
-  title !== "Estimated Population in 2020"
+  title !== "Estimated Population in 2020" &&
+  title !== "População" &&
+  title !== "Population"
+
 ) {
   return (
     <>

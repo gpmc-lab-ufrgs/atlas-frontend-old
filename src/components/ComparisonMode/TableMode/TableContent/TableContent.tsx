@@ -97,7 +97,9 @@ const isEnglish = window.location.href.includes('/comparison_en') || window.loca
               content.title !== "Estimated Population in 2017" &&
               content.title !== "Estimated Population in 2018" &&
               content.title !== "Estimated Population in 2019" &&
-              content.title !== "Estimated Population in 2020" ? (
+              content.title !== "Estimated Population in 2020" &&
+              content.title !== "População" &&
+              content.title !== "Population" ? (
                 <Styles.Table lineTableNumber={id} key={id}>
                   <Tooltip
                     title={

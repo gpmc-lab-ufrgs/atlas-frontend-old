@@ -15,7 +15,7 @@ interface IInstitutionsLogo {
 
 export const InstitutionsLogo = styled.img<IInstitutionsLogo>`
   height: ${({ size }) => size}px;
-  padding-right: 30px;
+  padding-right: 20px;
 `;
 
 export const FooterText = styled.h2`

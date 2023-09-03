@@ -94,7 +94,9 @@ const GridContent: React.FC<Props> = ({ comparison }) => {
               content.title !== "Estimated Population in 2017" &&
               content.title !== "Estimated Population in 2018" &&
               content.title !== "Estimated Population in 2019" &&
-              content.title !== "Estimated Population in 2020" ? (
+              content.title !== "Estimated Population in 2020" &&
+              content.title !== "População" &&
+              content.title !== "Population" ? (
                   <Styles.Grid key={id}>
                     <Tooltip title={isEnglish ? content.description_en : content.description}>
                       <Styles.Title>
