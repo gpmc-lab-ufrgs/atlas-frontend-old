@@ -10,9 +10,10 @@ interface Props {
 }
 
 const ComparisonControl: React.FC<Props> = ({ comparisonType, setComparison }) => {
+  const isEnglish = window.location.href.includes('/comparison_en');
   const controls = [
-    { label: 'Table', value: 'table', icon: <TableChart /> },
-    { label: 'Grid', value: 'grid', icon: <Window /> },
+    { label: isEnglish ? 'Table' : 'Tabela', value: 'table', icon: <TableChart /> },
+    { label: isEnglish ? 'Grid' : 'Grade', value: 'grid', icon: <Window /> },
   ];
 
   return (
