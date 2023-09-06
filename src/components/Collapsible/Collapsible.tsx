@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import Component from 'react-collapsible';
 
@@ -29,7 +29,6 @@ const CollapsibleDefaultValue: Record<CollapsibleNames, boolean> = {
   'Business Counts': false,
   'Turnover vs. Cost of Sales': false,
   'Business Rental Costs': false,
-
 };
 
 interface Props {
@@ -41,13 +40,40 @@ interface Props {
 const Collapsible = ({ children, title, isTitle = false }: Props) => {
   const [collapsible, setCollapsible] = useState<CollapsibleType>(CollapsibleDefaultValue);
 
+  // Initialize openedCollapsibles with the desired values
+  const initialOpenedCollapsibles = ['Demográfica', 'Demographic', 'Comparação', 'Comparison'];
+
+  // Load opened collapsibles from localStorage when the component mounts
+  const [openedCollapsibles, setOpenedCollapsibles] = useState<string[]>(
+    JSON.parse(localStorage.getItem('openedCollapsibles')) || initialOpenedCollapsibles
+  );
+
+  useEffect(() => {
+    console.log('Opened Collapsibles:', openedCollapsibles);
+    // Save openedCollapsibles to localStorage whenever it changes
+    localStorage.setItem('openedCollapsibles', JSON.stringify(openedCollapsibles));
+  }, [openedCollapsibles]);
+
   const isOpen = (key: string) => {
-    return key === 'Demográfica' || key === 'Demographic' || key === 'Comparação' || key === 'Comparison';
+    return openedCollapsibles.includes(key);
   };
 
   const updateIsOpen = (key: any, value: any) => {
     const newValue = { ...collapsible, [key]: value };
     setCollapsible(newValue);
+
+    if (value && !openedCollapsibles.includes(key)) {
+      // If the collapsible is opened and not already in the list, add it to the list of opened collapsibles
+      setOpenedCollapsibles((prevOpenedCollapsibles) => [
+        ...prevOpenedCollapsibles,
+        key,
+      ]);
+    } else if (!value && openedCollapsibles.includes(key)) {
+      // If the collapsible is closed and is in the list, remove it from the list of opened collapsibles
+      setOpenedCollapsibles((prevOpenedCollapsibles) =>
+        prevOpenedCollapsibles.filter((item) => item !== key)
+      );
+    }
   };
 
   const onOpen = (key: any) => updateIsOpen(key, true);

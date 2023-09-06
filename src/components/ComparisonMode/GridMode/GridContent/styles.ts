@@ -7,7 +7,7 @@ export const GridContainer = styled.div`
 `;
 
 export const Grid = styled.div`
-  width: 260px;
+  width: 265px;
 
   display: inline-block;
 
