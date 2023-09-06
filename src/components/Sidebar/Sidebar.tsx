@@ -94,8 +94,8 @@ const Sidebar: React.FC<Props> = ({ isComparisonMode, title }) => {
     }
 
     return (
-      <>
-        <Styles.Title>{isEnglish ? 'Atlas of Opportunities' : 'Atlas de Oportunidades'}</Styles.Title>
+      <><br /><br /><br />
+        {/*<Styles.Title>{isEnglish ? 'Atlas of Opportunities' : 'Atlas de Oportunidades'}</Styles.Title>*/}
           {selectedStates.length === 0 ? (
             <h4 style={{ color: 'white' }}>
               {isEnglish ? 'Select a region on the map to view its details' : 'Selecione uma região no mapa para ver seus detalhes'}
