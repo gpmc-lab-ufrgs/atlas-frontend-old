@@ -12,6 +12,7 @@ import logoCnpq from '@assets/institutions/CNPq.png';
 import logoTram from '@assets/institutions/TRAMONTINA.png';
 import logogovaust from '@assets/institutions/GOVERNO SUL AUSTRALIA.png';
 import logobocconi from '@assets/institutions/BOCCONI.png';
+import logofapergs from '@assets/institutions/FAPERGS.png';
 
 interface Institutions {
   name: string;
@@ -23,12 +24,12 @@ const developerInstitutionsLogoImages: Institutions[] = [
   {
     name: 'Massachusetts Institute of Technology',
     logoImage: logoMitNegative,
-    size: 40,
+    size: 35,
   },
   {
     name: 'Federal University of Rio Grande do Sul',
     logoImage: logoUfrgsNegative,
-    size: 35,
+    size: 30,
    },
    {
     name: 'Sabanci University',
@@ -48,7 +49,7 @@ const developerInstitutionsLogoImages: Institutions[] = [
   {
     name: 'Federal University of Goiás',
     logoImage: logoUfgNegative,
-    size: 35,
+    size: 40,
   },
   {
     name: 'Federal University of Brasília',
@@ -71,17 +72,22 @@ const supporterInstitutionLogoImages: Institutions[] = [
   {
     name: 'Tramontina',
     logoImage: logoTram,
-    size: 120,
+    size: 110,
   },
   {
     name: 'Cnpq',
     logoImage: logoCnpq,
-    size: 100,
+    size: 80,
   },
   {
     name: 'Capes',
     logoImage: logoCapes,
-    size: 110,
+    size: 90,
+  },
+  {
+    name: 'Fapergs',
+    logoImage: logofapergs,
+    size: 35,
   },
 ];
 
