@@ -12,6 +12,8 @@ import LayerRoute from './LayerRoute';
 import ptImage from './icon_pt.png';
 import enImage from './icon_en.png';
 
+import atlasImage from './atlas_website.png'
+
 interface Props {
   isComparisonModeOn: boolean;
   comparisonType: string;
