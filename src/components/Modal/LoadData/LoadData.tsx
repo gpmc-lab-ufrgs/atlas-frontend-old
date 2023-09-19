@@ -41,7 +41,7 @@ function LoadData(props) {
     formData.append('password', password);
     formData.append('sheetType', sheetType);
     setUploadMessageVisible(true); // set flag to show message
-    fetch('http://3.92.188.34:8001/upload/load_data/upload/', { //http://0.0.0.0:8001/ http://3.92.188.34:8001/upload/load_data/upload/
+    fetch('http://127.0.0.1:8000/upload/load_data/upload/', { //http://0.0.0.0:8001/ http://3.92.188.34:8001/upload/load_data/upload/
       method: 'POST',
       body: formData,
     })
@@ -83,6 +83,7 @@ function LoadData(props) {
             <option value="state">State</option>
             <option value="city">City</option>
             <option value="sensus">Census</option>
+            <option value="cnaes">cnaes</option>
           </select>
         </label><br />
         <br />
