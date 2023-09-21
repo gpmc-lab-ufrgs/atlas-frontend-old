@@ -4,7 +4,7 @@ This project was developed using React TS and yarn as package managers. To run i
 
 ### 1 - Requirements
 
-nodejs version =>12.0
+nodejs version =>16.0
 ```
 sudo apt-get install npm
 
