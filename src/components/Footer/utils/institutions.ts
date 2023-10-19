@@ -13,6 +13,7 @@ import logoTram from '@assets/institutions/TRAMONTINA.png';
 import logogovaust from '@assets/institutions/GOVERNO SUL AUSTRALIA.png';
 import logobocconi from '@assets/institutions/BOCCONI.png';
 import logofapergs from '@assets/institutions/FAPERGS.png';
+import logoLogan from '@assets/institutions/LOGAN.png';
 
 interface Institutions {
   name: string;
@@ -73,6 +74,11 @@ const supporterInstitutionLogoImages: Institutions[] = [
     name: 'Tramontina',
     logoImage: logoTram,
     size: 110,
+  },
+  {
+    name: 'Logan',
+    logoImage: logoLogan,
+    size: 25,
   },
   {
     name: 'Cnpq',
