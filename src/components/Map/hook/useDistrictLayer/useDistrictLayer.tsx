@@ -12,39 +12,8 @@ import { isStateLayerVisible } from '../useStateLayer/stateActions';
 
 import { useLocation, useNavigate } from 'react-router-dom';
 
-
 import districtsSHAPE from '@data/states/mergedfile.json'; //arquivo com todos os shapes https://findthatpostcode.uk/tools/merge-geojson
-//import geojsonBA from '@data/states/BA_Municipios_2020_018.json';
-//import geojsonRS from '@data/states/RS_Municipios_2020_018.json';
-//import geojsonAC from '@data/states/AC_Municipios_2020_018.json';
-//import geojsonAL from '@data/states/AL_Municipios_2020_018.json';
-//import geojsonAM from '@data/states/AM_Municipios_2020_018.json';
-//import geojsonAP from '@data/states/AP_Municipios_2020_018.json';
-//import geojsonCE from '@data/states/CE_Municipios_2020_018.json';
-//import geojsonDF from '@data/states/DF_Municipios_2020_018.json';
-//import geojsonES from '@data/states/ES_Municipios_2020_018.json';
-//import geojsonGO from '@data/states/GO_Municipios_2020_018.json';
-//import geojsonMA from '@data/states/MA_Municipios_2020_018.json';
-//import geojsonMG from '@data/states/MG_Municipios_2020_018.json';
-//import geojsonMS from '@data/states/MS_Municipios_2020_018.json';
-//import geojsonMT from '@data/states/MT_Municipios_2020_018.json';
-//import geojsonPA from '@data/states/PA_Municipios_2020_018.json';
-//import geojsonPB from '@data/states/PB_Municipios_2020_018.json';
-//import geojsonPE from '@data/states/PE_Municipios_2020_018.json';
-//import geojsonPI from '@data/states/PI_Municipios_2020_018.json';
-//import geojsonPR from '@data/states/PR_Municipios_2020_018.json';
-//import geojsonRJ from '@data/states/RJ_Municipios_2020_018.json';
-//import geojsonRN from '@data/states/RN_Municipios_2020_018.json';
-//import geojsonRR from '@data/states/RR_Municipios_2020_018.json';
-//import geojsonSC from '@data/states/SC_Municipios_2020_018.json';
-//import geojsonSE from '@data/states/SE_Municipios_2020_018.json';
-//import geojsonSP from '@data/states/SP_Municipios_2020_018.json';
-//import geojsonTO from '@data/states/TO_Municipios_2020_018.json';
-//import geojsonRO from '@data/states/RO_Municipios_2020_018.json';
-
-
 import { findState } from '@components/Map/utils/actions';
-
 import { highlightDistrict, clickDistrict, cleanDistrictActions, fitDistrictBounds, addPopup } from './districtActions';
 
 import { RSColors } from './const';
@@ -77,6 +46,7 @@ const useDistrictLayer = () => {
 
       reference.addSource('district', {
         type: 'geojson',
+        //@ts-ignore
         data: allDistricts,
         promoteId: 'CD_MUN',
       });
@@ -124,7 +94,7 @@ const useDistrictLayer = () => {
       }
       if (window.location.href.includes('/en')) {
         navigate('/en/district');
-      }else{
+      } else {
         navigate('/district');
       }
     });
@@ -182,8 +152,8 @@ const useDistrictLayer = () => {
 
         const state = findState(allState, selectedDistrict.properties.SIGLA_UF);
 
-
         if (!selectedState || selectedState !== state) {
+          console.log(state);
           setSelectedState(state);
         }
       } else {

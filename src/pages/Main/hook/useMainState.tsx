@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router';
 
@@ -17,27 +18,25 @@ const useMain = () => {
 
   console.log('Comparison value at the beginning:', comparison);
 
-useEffect(() => {
-  if (
-    comparison.length === 0 &&
-    (location.pathname.startsWith('/comparison_states/') || location.pathname.startsWith('/comparison_states_en/'))
-  ) {
-    const pathIds = location.pathname.replace('/comparison_states/', '').replace('/comparison_states_en/', '');
-    console.log('Path IDs:', pathIds); // Temporary log
-    if (pathIds) {
-      const ids = pathIds.split('+');
-      console.log('All IDs:', ids); // Temporary log
-      const featuresFromUrl = all.filter((ft: any) => ids.includes(ft.properties['CD_UF'].toString()));
-      console.log('Features from URL:', featuresFromUrl); // Temporary log
-      setIsSidebarOpen(true);
-      addComparisonState(featuresFromUrl);
-    } else {
-      navigate('');
+  useEffect(() => {
+    if (
+      comparison.length === 0 &&
+      (location.pathname.startsWith('/comparison_states/') || location.pathname.startsWith('/comparison_states_en/'))
+    ) {
+      const pathIds = location.pathname.replace('/comparison_states/', '').replace('/comparison_states_en/', '');
+      console.log('Path IDs:', pathIds); // Temporary log
+      if (pathIds) {
+        const ids = pathIds.split('+');
+        console.log('All IDs:', ids); // Temporary log
+        const featuresFromUrl = all.filter((ft: any) => ids.includes(ft.properties['CD_UF'].toString()));
+        console.log('Features from URL:', featuresFromUrl); // Temporary log
+        setIsSidebarOpen(true);
+        addComparisonState(featuresFromUrl);
+      } else {
+        navigate('');
+      }
     }
-  }
-}, [location, comparison]);
-
-
+  }, [location, comparison]);
 
   useEffect(() => {
     if (location.pathname.startsWith('/comparison_states/') && all.length !== 0) {

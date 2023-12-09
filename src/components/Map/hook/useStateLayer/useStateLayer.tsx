@@ -1,18 +1,11 @@
+/* eslint-disable prettier/prettier */
 import { useEffect, useState } from 'react';
-
 import mapboxgl from 'mapbox-gl';
-
 import geojsonURL from '@data/BR_UF_2020_009.json';
-
 import { useSelectedState } from '@context/state/selectedContext';
 import { useHighlightedState } from '@context/state/highlightedContext';
 import { useSelectedDistrict } from '@context/district/selectedContext';
-import { fitStateBounds, handleCleanStateLayer, onAddStateToComparison } from './stateActions';
-
 import { useLocation, useNavigate } from 'react-router-dom';
-
-
-
 import {
   highlightState,
   clickState,
@@ -22,14 +15,16 @@ import {
   fitStateCenter,
   addPopup,
 } from './stateActions';
-
 import { stateColors } from './const';
 import { fitCenter } from '../../utils/actions';
 import { lineOpacity, lineWidth, fillOpacity } from '../../utils/const';
 import { isDistrictLayerVisible } from '../useDistrictLayer/districtActions';
-
 import { useSidebar } from '@context/sidebarContext';
-
+import { Estado } from 'src/interfaces/Estado.type';
+import { useAppDispatch, useAppSelector } from '@hook/hooks';
+import { estadosSelected, changeEstados } from 'src/features/estadosSlice';
+import { estadoSelected, changeEstado } from 'src/features/estadoSlice';
+import { ReturnEstadoPorId, groupBy } from 'src/helpers/Helpers';
 
 const useStateLayer = () => {
   const isEnglish = window.location.href.includes('/en');
@@ -48,13 +43,27 @@ const useStateLayer = () => {
 
   const { pathname } = location;
 
+  const dispatch = useAppDispatch();
+  const selectedEstados = useAppSelector(estadosSelected);
+  const selectedEstado = useAppSelector(estadoSelected);
+  const [lstEstados, setLstEstados] = useState<Estado[]>([]);
+  const [lstEstado, setLstEstado] = useState<Estado[]>([]);
+
+  // useEffect(() => {
+  //   setLstEstados([...selectedEstados]);
+  // }, [selectedEstados]);
+
+  // useEffect(() => {
+  //   const t = selectedEstado.map(({ nmClassificacaoPt, nmClassificacaoEn }) => nmClassificacaoPt);
+  //   console.log([...new Set(t)]);
+  // }, [selectedEstado]);
+
   function initLayers(reference: mapboxgl.Map) {
     reference.on('load', () => {
       reference.addSource('state', {
         type: 'geojson',
         //@ts-ignore
         data: geojsonURL,
-        //@ts-ignore
         promoteId: 'CD_UF',
       });
 
@@ -96,12 +105,16 @@ const useStateLayer = () => {
   function initActions(reference: mapboxgl.Map) {
     reference.on('click', 'fill-state', (e: any) => {
       if (e.features.length > 0) {
+        const id: number = e.features[0].id;
+        const estadoSel: Estado[] = ReturnEstadoPorId(id, selectedEstados);
+        console.log(estadoSel.length);
+        dispatch(changeEstado(estadoSel));
         setSelectedState(e.features[0]);
         setLatLng(e.lngLat);
       }
       if (window.location.href.includes('/en')) {
         navigate('/en/state');
-      }else{
+      } else {
         navigate('/state');
       }
     });

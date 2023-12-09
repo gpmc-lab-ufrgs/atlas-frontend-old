@@ -8,7 +8,7 @@ export const CollapsibleContainer = styled.div<ICollapsibleContainer>`
   .Collapsible__trigger {
     ${({ title, isTitle }) => {
       let backgroundColor = '#f7f7f7';
-      let color = '#000000';
+      const color = '#000000';
 
       switch (title) {
         case 'Demográfica':
@@ -90,4 +90,3 @@ export const CollapsibleContainer = styled.div<ICollapsibleContainer>`
       isTitle ? 'content: url(src/assets/utils/chevron_white.svg)' : 'content: url(src/assets/utils/chevron.svg)'}
   }
 `;
-

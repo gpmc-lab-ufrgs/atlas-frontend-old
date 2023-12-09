@@ -24,7 +24,6 @@ interface Props {
 }
 
 const Sidebar: React.FC<Props> = ({ isComparisonMode, title }) => {
-
   const isState = window.location.href.includes('/state');
   const isDistrict = window.location.href.includes('/district');
   let comparison, selected;
@@ -59,49 +58,55 @@ const Sidebar: React.FC<Props> = ({ isComparisonMode, title }) => {
     };
 
     const handleDeleteState = (stateId) => {
-    const updatedSelectedStates = selectedStates.filter((state) => state.id !== stateId);
-    selectedStates.length = 0; // Clear the array
-    selectedStates.push(...updatedSelectedStates);
+      const updatedSelectedStates = selectedStates.filter((state) => state.id !== stateId);
+      selectedStates.length = 0; // Clear the array
+      selectedStates.push(...updatedSelectedStates);
 
-    setIsSidebarOpen(false);
-  };
+      setIsSidebarOpen(false);
+    };
 
+    const handleAddToComparison = () => {
+      if (selectedStates.length > 0) {
+        const comparisonRegionIds = selectedStates.map((state) => state.id);
+        const comparisonUrl = 'http://3.92.188.34:3000/comparison_states/' + comparisonRegionIds.join('+');
 
-  const handleAddToComparison = () => {
-  if (selectedStates.length > 0) {
-    const comparisonRegionIds = selectedStates.map((state) => state.id);
-    const comparisonUrl = 'http://3.92.188.34:3000/comparison_states/' + comparisonRegionIds.join('+');
+        console.log('Selected states:', selectedStates);
+        console.log('Comparison URL:', comparisonUrl);
 
-    console.log('Selected states:', selectedStates);
-    console.log('Comparison URL:', comparisonUrl);
-
-    window.location.href = comparisonUrl; // Redirect the user to the external comparison page
-  } else {
-    alert('Selecione pelo menos um estados para comparar');
-  }
-};
+        window.location.href = comparisonUrl; // Redirect the user to the external comparison page
+      } else {
+        alert('Selecione pelo menos um estados para comparar');
+      }
+    };
 
     if (isComparisonMode) {
       return <ComparisonDetails />;
     } else if (hasComparisonRegions || hasSelectedDistrict) {
       return (
         <>
-          <Styles.Title>{hasSelectedDistrict ? title : (isEnglish ? 'Atlas of Opportunities' : 'Atlas de Oportunidades')}</Styles.Title>
-          <ComparisonButton />
+          <Styles.Title>
+            {hasSelectedDistrict ? title : isEnglish ? 'Atlas of Opportunities' : 'Atlas de Oportunidades'}
+          </Styles.Title>
+          {/* <ComparisonButton /> */}
           <RegionDetails />
         </>
       );
     }
 
     return (
-      <><br /><br /><br />
+      <>
+        <br />
+        <br />
+        <br />
         {/*<Styles.Title>{isEnglish ? 'Atlas of Opportunities' : 'Atlas de Oportunidades'}</Styles.Title>*/}
-          {selectedStates.length === 0 ? (
-            <h4 style={{ color: 'white' }}>
-              {isEnglish ? 'Select a region on the map to view its details' : 'Selecione uma região no mapa para ver seus detalhes'}
-            </h4>
-          ) : (
-            <>
+        {selectedStates.length === 0 ? (
+          <h4 style={{ color: 'white' }}>
+            {isEnglish
+              ? 'Select a region on the map to view its details'
+              : 'Selecione uma região no mapa para ver seus detalhes'}
+          </h4>
+        ) : (
+          <>
             {/*<div style={{ display: 'flex', marginTop: '20px', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
                 <Button variant="contained" onClick={handleClearSelection} style={{ backgroundColor: "#fff", color: "#000" }}>
                   {isEnglish ? 'Clear selection of states' : 'Limpar seleção de estados'}
@@ -124,10 +129,12 @@ const Sidebar: React.FC<Props> = ({ isComparisonMode, title }) => {
                 </Button>
 
                 </div>*/}
-              <br /><br /><br />
-              <br />
-            </>
-          )}
+            <br />
+            <br />
+            <br />
+            <br />
+          </>
+        )}
       </>
     );
   };

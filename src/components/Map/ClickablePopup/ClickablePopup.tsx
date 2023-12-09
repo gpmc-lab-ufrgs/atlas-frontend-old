@@ -32,7 +32,8 @@ const ClickablePopupContent = ({ regionName, reference, feature, onAddToComparis
       <Styles.PopupContent>
         <Styles.PopupText>
           {isEnglish ? 'Population' : 'População'}: {formatPopulationNumber(feature.properties?.POPULATION)}
-        </Styles.PopupText>        {/* <Styles.ButtonWrapper>
+        </Styles.PopupText>
+        {/* <Styles.ButtonWrapper>
           <Styles.Button onClick={() => {
             onAddStateToComparison(feature, reference);
           }}>Add state to comparison</Styles.Button>

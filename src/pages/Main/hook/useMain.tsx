@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router';
 
@@ -16,7 +17,7 @@ const useMain = () => {
   const [isComparisonModeEnabled, setIsComparisonModeEnabled] = useState<boolean>(false);
 
   useEffect(() => {
-  if (
+  if(
     comparison.length === 0 &&
     (location.pathname.startsWith('/comparison/') || location.pathname.startsWith('/comparison_en/') || location.pathname.startsWith('/comparison_states/'))
   ) {

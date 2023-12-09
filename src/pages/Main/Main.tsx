@@ -1,4 +1,5 @@
-import React from 'react';
+/* eslint-disable prettier/prettier */
+import React, { useEffect } from 'react';
 
 import { useState } from 'react';
 
@@ -18,11 +19,35 @@ import CompatisonMode from '@components/ComparisonMode';
 
 import { useMain } from './hook';
 import { useMainState } from './hook';
+import { Estado } from 'src/interfaces/Estado.type';
+import { getEstados } from 'src/services/atlasControl';
 
+import { useAppDispatch, useAppSelector } from '@hook/hooks';
+import { estadosSelected, changeEstados } from 'src/features/estadosSlice';
 import * as Styles from './styles';
 
 const Main = () => {
   const { isSidebarOpen } = useSidebar();
+  const selectedEstados = useAppSelector(estadosSelected);
+  const [lstEstados, setLstEstados] = useState<Estado[]>([]);
+  const dispatch = useAppDispatch();
+
+  const gtEstados = () => {
+    getEstados()
+      .then((dataRec) => {
+        const dtEs: Estado[] = dataRec.data;
+        dispatch(changeEstados(dtEs));
+      });
+  };
+
+  useEffect(() => {
+    gtEstados();
+  }, []);
+
+  useEffect(() => {
+    setLstEstados([...selectedEstados]);
+  }, [selectedEstados]);
+
   const { selected } = useSelectedDistrict();
   const { selected: selectedState } = useSelectedState();
 
@@ -30,7 +55,7 @@ const Main = () => {
 
   const [comparisonType, setComparisonType] = useState('table');
 
- const isState = window.location.href.includes('/comparison_states');
+  const isState = window.location.href.includes('/comparison_states');
   let isComparisonModeEnabledRegion;
   let selectedRegion;
 
@@ -40,7 +65,6 @@ const Main = () => {
 
     isComparisonModeEnabledRegion = mainStateComparisonEnabled;
     selectedRegion = selectedMain;
-
   } else {
     const { isComparisonModeEnabled: mainStateComparisonEnabled } = useMain();
     const { selected: selectedMain } = useSelectedDistrict();
@@ -52,9 +76,7 @@ const Main = () => {
   return (
     <Styles.MainContainer>
       <Modal />
-
       <Sidebar isComparisonMode={isComparisonModeEnabledRegion} title={selectedRegion?.properties.NM_UF} />
-
       <InformationsBar />
 
       <Styles.ComparisonWrapper isSidebarOpen={isSidebarOpen} theme={theme}>

@@ -1,5 +1,4 @@
 import React from 'react';
-
 import SolidBar from './SolidBar';
 import * as Styles from './styles';
 

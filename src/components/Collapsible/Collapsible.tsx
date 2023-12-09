@@ -1,12 +1,9 @@
+/* eslint-disable prettier/prettier */
 import React, { useState, useEffect } from 'react';
-
 import Component from 'react-collapsible';
-
 import { CollapsibleType, CollapsibleNames } from './type';
-
 import './styles.css';
 import * as Styles from './styles';
-
 import demograficaImage from './demografico.png';
 import economiaImage from './economia.png';
 import educacaoImage from './educacao.png';
@@ -17,7 +14,6 @@ import saudeImage from './saude.png';
 import segurancaImage from './seguranca.png';
 import urbanismoImage from './urbanismo.png';
 import empreendedorismoImage from './empreendedorismo.png';
-
 
 const CollapsibleDefaultValue: Record<CollapsibleNames, boolean> = {
   'Locations to Compare': true,
@@ -45,11 +41,12 @@ const Collapsible = ({ children, title, isTitle = false }: Props) => {
 
   // Load opened collapsibles from localStorage when the component mounts
   const [openedCollapsibles, setOpenedCollapsibles] = useState<string[]>(
-    JSON.parse(localStorage.getItem('openedCollapsibles')) || initialOpenedCollapsibles
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    JSON.parse(localStorage.getItem('openedCollapsibles')!) || initialOpenedCollapsibles,
   );
 
   useEffect(() => {
-    console.log('Opened Collapsibles:', openedCollapsibles);
+    //console.log('Opened Collapsibles:', openedCollapsibles);
     // Save openedCollapsibles to localStorage whenever it changes
     localStorage.setItem('openedCollapsibles', JSON.stringify(openedCollapsibles));
   }, [openedCollapsibles]);
@@ -64,15 +61,10 @@ const Collapsible = ({ children, title, isTitle = false }: Props) => {
 
     if (value && !openedCollapsibles.includes(key)) {
       // If the collapsible is opened and not already in the list, add it to the list of opened collapsibles
-      setOpenedCollapsibles((prevOpenedCollapsibles) => [
-        ...prevOpenedCollapsibles,
-        key,
-      ]);
+      setOpenedCollapsibles((prevOpenedCollapsibles) => [...prevOpenedCollapsibles, key]);
     } else if (!value && openedCollapsibles.includes(key)) {
       // If the collapsible is closed and is in the list, remove it from the list of opened collapsibles
-      setOpenedCollapsibles((prevOpenedCollapsibles) =>
-        prevOpenedCollapsibles.filter((item) => item !== key)
-      );
+      setOpenedCollapsibles((prevOpenedCollapsibles) => prevOpenedCollapsibles.filter((item) => item !== key));
     }
   };
 
@@ -84,16 +76,36 @@ const Collapsible = ({ children, title, isTitle = false }: Props) => {
       <Component
         trigger={
           <div style={{ display: 'flex', alignItems: 'center' }}>
-            {(title === 'Demográfica' || title === 'Demographic') && <img src={demograficaImage} alt="Image" style={{ maxWidth: '35%', height: 'auto' }} />}
-            {(title === 'Economia' || title === 'Economy') && <img src={economiaImage} alt="Image" style={{ maxWidth: '35%', height: 'auto' }} />}
-            {(title === 'Empreendedorismo' || title === 'Entrepreneurship') && <img src={empreendedorismoImage} alt="Image" style={{ maxWidth: '35%', height: 'auto' }} />}
-            {(title === 'Urbanismo' || title === 'Urbanism') && <img src={urbanismoImage} alt="Image" style={{ maxWidth: '35%', height: 'auto' }} />}
-            {(title === 'Tecnologia e Inovação' || title === 'Technology and inovation') && <img src={tiImage} alt="Image" style={{ maxWidth: '35%', height: 'auto' }} />}
-            {(title === 'Educação' || title === 'Education') && <img src={educacaoImage} alt="Image" style={{ maxWidth: '35%', height: 'auto' }} />}
-            {(title === 'Saúde' || title === 'Health') && <img src={saudeImage} alt="Image" style={{ maxWidth: '35%', height: 'auto' }} />}
-            {(title === 'Mobilidade' || title === 'Mobility') && <img src={mobilidadeImage} alt="Image" style={{ maxWidth: '35%', height: 'auto' }} />}
-            {(title === 'Segurança' || title === 'Safety') && <img src={segurancaImage} alt="Image" style={{ maxWidth: '35%', height: 'auto' }} />}
-            {(title === 'Meio Ambiente' || title === 'Environment') && <img src={meioambienteImage} alt="Image" style={{ maxWidth: '35%', height: 'auto' }} />}
+            {(title === 'Demográfica' || title === 'Demographic') && (
+              <img src={demograficaImage} alt="Image" style={{ maxWidth: '35%', height: 'auto', marginRight: 5 }} />
+            )}
+            {(title === 'Economia' || title === 'Economy') && (
+              <img src={economiaImage} alt="Image" style={{ maxWidth: '35%', height: 'auto', marginRight: 5 }} />
+            )}
+            {(title === 'Empreendedorismo' || title === 'Entrepreneurship') && (
+              <img src={empreendedorismoImage} alt="Image" style={{ maxWidth: '35%', height: 'auto', marginRight: 5 }} />
+            )}
+            {(title === 'Urbanismo' || title === 'Urbanism') && (
+              <img src={urbanismoImage} alt="Image" style={{ maxWidth: '35%', height: 'auto', marginRight: 5 }} />
+            )}
+            {(title === 'Tecnologia e Inovação' || title === 'Technology and inovation') && (
+              <img src={tiImage} alt="Image" style={{ maxWidth: '35%', height: 'auto', marginRight: 5 }} />
+            )}
+            {(title === 'Educação' || title === 'Education') && (
+              <img src={educacaoImage} alt="Image" style={{ maxWidth: '35%', height: 'auto', marginRight: 5 }} />
+            )}
+            {(title === 'Saúde' || title === 'Health') && (
+              <img src={saudeImage} alt="Image" style={{ maxWidth: '35%', height: 'auto', marginRight: 5 }} />
+            )}
+            {(title === 'Mobilidade' || title === 'Mobility') && (
+              <img src={mobilidadeImage} alt="Image" style={{ maxWidth: '35%', height: 'auto', marginRight: 5 }} />
+            )}
+            {(title === 'Segurança' || title === 'Safety') && (
+              <img src={segurancaImage} alt="Image" style={{ maxWidth: '35%', height: 'auto', marginRight: 5 }} />
+            )}
+            {(title === 'Meio Ambiente' || title === 'Environment') && (
+              <img src={meioambienteImage} alt="Image" style={{ maxWidth: '35%', height: 'auto', marginRight: 5 }} />
+            )}
             {title}
           </div>
         }

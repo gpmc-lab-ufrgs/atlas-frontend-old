@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /* eslint-disable @typescript-eslint/no-var-requires */
 const aliases = require('./config/alias').reduce((acc, alias) => {
   acc[`^${alias.name}(.*)$`] = `<rootDir>${alias.path}$1`;
@@ -17,4 +18,7 @@ module.exports = {
   },
   testEnvironment: 'jsdom',
   resetMocks: true,
+  rules: {
+    'prettier/prettier': 0,
+  },
 };

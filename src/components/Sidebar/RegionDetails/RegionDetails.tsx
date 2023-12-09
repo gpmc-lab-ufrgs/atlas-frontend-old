@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
+/* eslint-disable prettier/prettier */
 import React, { useState, useEffect } from 'react';
 import { Box } from '@mui/material';
 
@@ -7,9 +9,15 @@ import { useComparison as useComparisonState } from '@context/comparisonContextS
 import ComparisonSection from './ComparisonSection';
 import DataSection from './DataSection';
 import { useLocation } from 'react-router-dom';
+import { Estado } from 'src/interfaces/Estado.type';
+import { useAppDispatch, useAppSelector } from '@hook/hooks';
+import { estadoSelected, changeEstado } from 'src/features/estadoSlice';
 
 const RegionDetails = () => {
   const isState = window.location.href.includes('/comparison_states') || window.location.href.includes('/state');
+  const selectedEstado = useAppSelector(estadoSelected);
+  const [lstDadosEstado, setLstDadosEstado] = useState<Estado[]>([]);
+  const [lstDistinct, setLstDistinct] = useState<string[]>([]);
 
   let comparison;
 
@@ -21,83 +29,75 @@ const RegionDetails = () => {
     comparison = mainComparison;
   }
 
-  const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(true);
-
+  // const [data, setData] = useState([]);
+  // const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchData = async () => {
-      let response;
-      if (isState) {
-        response = await fetch('http://3.92.188.34:8001/dictionary/dictionary_state/json/');
-      } else {
-        response = await fetch('http://3.92.188.34:8001/dictionary/dictionary/json/');
-      }
-      const json = await response.json();
-      setData(json);
-      setLoading(false);
-    };
+    setLstDadosEstado(selectedEstado);
+    const t = selectedEstado.map(({ nmClassificacaoPt, nmClassificacaoEn }) => nmClassificacaoPt);
+    setLstDistinct([... new Set(t)]);
+  }, [selectedEstado]);
 
-    fetchData();
-  }, []);
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     let response;
+  //     if (isState) {
+  //       response = await fetch('http://3.92.188.34:8001/dictionary/dictionary_state/json/');
+  //     } else {
+  //       response = await fetch('http://3.92.188.34:8001/dictionary/dictionary/json/');
+  //     }
+  //     const json = await response.json();
+  //     setData(json);
+  //     setLoading(false);
+  //   };
+
+  //   fetchData();
+  // }, []);
 
   const location = useLocation();
   const { pathname } = location;
   const isEnglish = pathname.includes('/en');
 
+  const returnDataSection = () => {
+    if(lstDadosEstado.length > 0){
+      const distinctClass = lstDadosEstado.map(({ nmClassificacaoPt, nmClassificacaoEn }) => (isEnglish? nmClassificacaoEn : nmClassificacaoPt));
+      if(distinctClass.length > 0){
+        distinctClass.map((item) => {
+          const valoresPorClassificacao: Estado[] = lstDadosEstado.filter((i) => (isEnglish? (i.nmClassificacaoEn == item) : (i.nmClassificacaoPt == item)));
+          return (
+            <DataSection
+              key={`${item}`}
+              title={`${item}`}
+              props={valoresPorClassificacao}
+            />
+          );
+        });
+      } else {
+        return (
+          <></>
+        );
+      }
+    } else {
+      return (
+        <></>
+      );
+    }
+  };
+
   return (
     <Box>
-      {comparison.length > 0 && <ComparisonSection />}
-      {loading ? (
-        <p style={{ color: 'white' }}>Loading...</p>
-      ) : (
-        data
-          .sort((a, b) => {
-            // Define the order of sections
-            const sectionOrder = isEnglish
-              ? [
-                  'Demographic',
-                  'Economy',
-                  'Entrepreneurship',
-                  'Education',
-                  'Health',
-                  'Safety',
-                  'Urbanism',
-                  'Technology and inovation',
-                  'Environment',
-                  'Mobility'
-                ]
-              : [
-                  'Demográfica',
-                  'Economia',
-                  'Empreendedorismo',
-                  'Educação',
-                  'Saúde',
-                  'Segurança',
-                  'Urbanismo',
-                  'Tecnologia e Inovação',
-                  'Meio Ambiente',
-                  'Mobilidade'
-                ];
-
-            // Compare the index of the sections in the predefined order
-            return sectionOrder.indexOf(a.title) - sectionOrder.indexOf(b.title);
-          })
-          .map((section, id) => (
+      {
+        lstDistinct
+          .map((item, index) => (
             <DataSection
-              key={id}
-              title={isEnglish ? section.title_english : section.title}
-              content={section.content.map((item, idx) => ({
-                label: item.label,
-                title: isEnglish ? item.title_en : item.title,
-                description: isEnglish ? item.description_en : item.description,
-                format: item.format,
-                unit: item.unit,
-                type: item.type,
-              }))}
+              key={`${item}`}
+              title={`${item}`}
+              props={lstDadosEstado.filter((i) => (isEnglish? (i.nmClassificacaoEn == item) : (i.nmClassificacaoPt == item)))}
             />
           ))
-      )}
+      }
+      {/*comparison.length > 0 && <ComparisonSection />*/}
+      {/* {returnDataSection()} */}
     </Box>
   );
 };

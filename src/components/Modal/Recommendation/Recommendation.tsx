@@ -1,13 +1,13 @@
+/* eslint-disable prettier/prettier */
 import React, { useState } from 'react';
 import { ModalContainer } from '@components/Modal';
 import Collapsible from '@components/Collapsible';
 import { useComparison } from '@context/comparisonContext';
 import './recommendation.css';
-import data from '@data/cnae.json';
-import data_en from '@data/cnae_en.json';
+// import data from '@data/cnae.json';
+// import data_en from '@data/cnae_en.json';
 import * as Styles from './styles';
-import MyJSFile from './recommendation.js';
-
+//import MyJSFile from './recommendation.js';
 
 const Recommendation = () => {
   const [currentScreen, setCurrentScreen] = useState(0);
@@ -21,12 +21,13 @@ const Recommendation = () => {
   const [businessType, setBusinessType] = useState('');
   const [sliderValue, setSliderValue] = useState(5);
   const [sliderValue2, setSliderValue2] = useState(5);
+  const totalScreens = 4;
 
   const [selectedDescription, setSelectedDescription] = useState('');
 
   const { comparison } = useComparison();
-  const [comparisonRegionIds, setComparisonRegionIds] = useState(comparison.map((feature) => feature.properties.CD_MUN));
-  const [comparisonRegionNames, setComparisonRegionNames] = useState(comparison.map((feature) => feature.properties.CD_MUN));
+  const [comparisonRegionIds, setComparisonRegionIds] = useState([]); //useState(comparison.map((feature) => feature.properties.CD_MUN));
+  const [comparisonRegionNames, setComparisonRegionNames] = useState([]); //useState(comparison.map((feature) => feature.properties.CD_MUN));
   //comparisonRegionIds.push('3100203');
   //comparisonRegionIds.push('3303401');
 
@@ -34,11 +35,11 @@ const Recommendation = () => {
   //comparisonRegionNames.push('Abaeté');
   //comparisonRegionNames.push('Nova Friburgo');
 
-  const handleSliderChange = (event) => {
+  const handleSliderChange = (event: any) => {
     setSliderValue(event.target.value);
   };
 
-  const handleSlider2Change = (event) => {
+  const handleSlider2Change = (event: any) => {
     setSliderValue2(event.target.value);
   };
 
@@ -53,11 +54,9 @@ const Recommendation = () => {
     setSelectedDescription(description);
   };
 
-  const handleStateChange = (event) => {
+  const handleStateChange = (event: any) => {
     setState(event.target.value);
-  }
-
-  const totalScreens = 4;
+  };
 
   const handleNext = () => {
     setCurrentScreen(currentScreen + 1);
@@ -67,11 +66,11 @@ const Recommendation = () => {
     setCurrentScreen(currentScreen - 1);
   };
 
-  const nextScreen = (next) => {
+  const nextScreen = (next: any) => {
     setCurrentScreen(next);
   };
 
-  const previousScreen = (previous) => {
+  const previousScreen = (previous: any) => {
     setCurrentScreen(previous);
   };
 
@@ -80,22 +79,22 @@ const Recommendation = () => {
     setLanguage(language === 'pt' ? 'en' : 'pt');
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = (event: any) => {
     event.preventDefault();
     setErrorMessage('');
     const formData = new FormData();
     formData.append('state', state);
     formData.append('selectedCategory', selectedCategory);
     formData.append('selectedDescription', selectedDescription);
-    formData.append('sliderValue', sliderValue);
-    formData.append('sliderValue2', sliderValue2);
+    formData.append('sliderValue', sliderValue.toString());
+    formData.append('sliderValue2', sliderValue2.toString());
     setUploadMessageVisible(true); // set flag to show message
 
-    fetch('http://3.92.188.34:8001/recommendation_system/load_recommendation/recommendation_system/', { //http://3.92.188.34:8001/recommendation_system/load_recommendation/recommendation_system/
+    fetch('http://3.92.188.34:8001/recommendation_system/load_recommendation/recommendation_system/', {//http://3.92.188.34:8001/recommendation_system/load_recommendation/recommendation_system/
       method: 'POST',
       body: formData,
     })
-      .then(response => {
+      .then((response: any) => {
         if (!response.ok) {
           throw new Error('Failed.');
         }
@@ -107,10 +106,10 @@ const Recommendation = () => {
       // Access the selected_districts data from the response
       const selectedDistricts = data.districts;
 
-      const newRegionIds = selectedDistricts.map(district => district.CD_MUN);
-      const newRegionNames = selectedDistricts.map(district => district.name);
-      setComparisonRegionIds([...comparisonRegionIds, ...newRegionIds]);
-      setComparisonRegionNames([...comparisonRegionNames, ...newRegionNames]);
+      // const newRegionIds = selectedDistricts.map((district: any) => district.CD_MUN);
+      // const newRegionNames = selectedDistricts.map((district: any) => district.name);
+      // setComparisonRegionIds([...comparisonRegionIds, ...newRegionIds]);
+      // setComparisonRegionNames([...comparisonRegionNames, ...newRegionNames]);
 
       setState('');
       setBusinessType('');
@@ -224,7 +223,7 @@ const Recommendation = () => {
             ) : (
               <label htmlFor="category"><b>Setor:</b></label>
             )}
-            <select id="category" value={selectedCategory} onChange={handleCategoryChange} className="custom-select">
+            {/* <select id="category" value={selectedCategory} onChange={handleCategoryChange} className="custom-select">
               <option value="">{isEnglish ? 'Select the sector' : 'Selecione o setor'}</option>
               {isEnglish
                 ? Object.keys(data_en).map((category) => (
@@ -237,7 +236,7 @@ const Recommendation = () => {
                       {category}
                     </option>
                   ))}
-            </select>
+            </select> */}
 
             <br /><br />
             {isEnglish ? (
