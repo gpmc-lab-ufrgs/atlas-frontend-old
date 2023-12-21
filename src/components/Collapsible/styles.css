@@ -3,6 +3,7 @@
   font-size: 14px;
   margin: 10px 0;
   display: inline-block;
+  border-radius: 5px;
 }
 
 .Collapsible {
@@ -11,6 +12,7 @@
   align-items: flex-start;
   padding: 0px;
   align-items: stretch;
+  margin-bottom: 5px;  
 }
 
 .Collapsible__contentInner {

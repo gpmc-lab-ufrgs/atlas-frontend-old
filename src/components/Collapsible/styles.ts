@@ -68,7 +68,7 @@ export const CollapsibleContainer = styled.div<ICollapsibleContainer>`
         case 'Tecnologia e Inovação':
           backgroundColor = '#64ACED';
           break;
-        case 'Technology and inovation':
+        case 'Technology and Inovation':
           backgroundColor = '#64ACED';
           break;
         default:

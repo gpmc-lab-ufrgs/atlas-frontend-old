@@ -34,55 +34,19 @@ const RegionDetails = () => {
 
   useEffect(() => {
     setLstDadosEstado(selectedEstado);
-    const t = selectedEstado.map(({ nmClassificacaoPt, nmClassificacaoEn }) => nmClassificacaoPt);
-    setLstDistinct([... new Set(t)]);
+    let t = isEnglish? selectedEstado.map(({ nmClassificacaoEn }) => nmClassificacaoEn) : selectedEstado.map(({ nmClassificacaoPt }) => nmClassificacaoPt);
+    t = [... new Set(t)];
+    setLstDistinct(t!);
+
+
+    // const t = selectedEstado.map(({ nmClassificacaoPt, nmClassificacaoEn }) => isEnglish? nmClassificacaoEn : nmClassificacaoPt);
+    
+    // setLstDistinct([... new Set(t)]);
   }, [selectedEstado]);
-
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     let response;
-  //     if (isState) {
-  //       response = await fetch('http://3.92.188.34:8001/dictionary/dictionary_state/json/');
-  //     } else {
-  //       response = await fetch('http://3.92.188.34:8001/dictionary/dictionary/json/');
-  //     }
-  //     const json = await response.json();
-  //     setData(json);
-  //     setLoading(false);
-  //   };
-
-  //   fetchData();
-  // }, []);
 
   const location = useLocation();
   const { pathname } = location;
   const isEnglish = pathname.includes('/en');
-
-  const returnDataSection = () => {
-    if(lstDadosEstado.length > 0){
-      const distinctClass = lstDadosEstado.map(({ nmClassificacaoPt, nmClassificacaoEn }) => (isEnglish? nmClassificacaoEn : nmClassificacaoPt));
-      if(distinctClass.length > 0){
-        distinctClass.map((item) => {
-          const valoresPorClassificacao: Estado[] = lstDadosEstado.filter((i) => (isEnglish? (i.nmClassificacaoEn == item) : (i.nmClassificacaoPt == item)));
-          return (
-            <DataSection
-              key={`${item}`}
-              title={`${item}`}
-              props={valoresPorClassificacao}
-            />
-          );
-        });
-      } else {
-        return (
-          <></>
-        );
-      }
-    } else {
-      return (
-        <></>
-      );
-    }
-  };
 
   return (
     <Box>

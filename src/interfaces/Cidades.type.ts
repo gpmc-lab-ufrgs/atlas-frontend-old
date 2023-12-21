@@ -1,6 +1,7 @@
-export interface Estado {
+export interface Cidades {
   cdEstado: number;
-  nmEstado: string;
+  cdCidade: number;
+  nmCidade: string;
   cdAgencia: number;
   nmAgencia: string;
   cdUnidade: number;

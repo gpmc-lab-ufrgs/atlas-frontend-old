@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
@@ -85,28 +86,32 @@ const Header: React.FC<Props> = ({ isComparisonModeOn, comparisonType, setCompar
       </Styles.HeaderLeftSide>
 
       <Styles.HeaderRightSide>
-        <div>
-          {isEnglish ? (
-            <>
-              <button onClick={handleLanguageChange}>
-                <img src={ptImage} alt="Image" style={{ maxWidth: '25px' }} />
-              </button>
-              <a href="https://www.ufrgs.br/atlas-oportunidades/" target="_blank" rel="noopener noreferrer">
-                <button>Access Atlas website</button>
-              </a>
-            </>
-          ) : (
-            <>
-              <button onClick={handleLanguageChange}>
-                <img src={enImage} alt="Image" style={{ maxWidth: '25px' }} />
-              </button>
-              <a href="https://www.ufrgs.br/atlas-oportunidades/" target="_blank" rel="noopener noreferrer">
-                <button>Acessar Atlas website</button>
-              </a>
-            </>
-          )}
+        <div style={{ width: 216, display: 'flex', flexDirection: 'row', marginRight: 0 }}>
+          <button
+            onClick={handleLanguageChange}
+            style={{ 
+              height: 35, 
+              width: 35, 
+              border: 0,
+              padding: 0,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between' 
+            }}
+          >
+            <img 
+              src={isEnglish? ptImage : enImage} alt="Image" 
+              style={{ 
+                maxHeight: 14,
+                marginLeft: 'auto',
+                marginRight: 'auto'
+              }} 
+            />
+          </button>
+          <a href="https://www.ufrgs.br/atlas-oportunidades/" target="_blank" rel="noopener noreferrer">
+            <button style={{ height: 35, marginRight: 0 }} >{isEnglish ? 'Access Atlas website' : 'Acessar Atlas website' }</button>
+          </a>
         </div>
-
         <Drawer open={openMenu} setOpen={setOpenMenu} anchor="right">
           <ProjectInformations setOpen={setOpenMenu} />
         </Drawer>

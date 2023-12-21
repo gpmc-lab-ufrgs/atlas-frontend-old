@@ -88,7 +88,7 @@ const Collapsible = ({ children, title, isTitle = false }: Props) => {
             {(title === 'Urbanismo' || title === 'Urbanism') && (
               <img src={urbanismoImage} alt="Image" style={{ maxWidth: '35%', height: 'auto', marginRight: 5 }} />
             )}
-            {(title === 'Tecnologia e Inovação' || title === 'Technology and inovation') && (
+            {(title === 'Tecnologia e Inovação' || title === 'Technology and Inovation') && (
               <img src={tiImage} alt="Image" style={{ maxWidth: '35%', height: 'auto', marginRight: 5 }} />
             )}
             {(title === 'Educação' || title === 'Education') && (
@@ -109,7 +109,7 @@ const Collapsible = ({ children, title, isTitle = false }: Props) => {
             {title}
           </div>
         }
-        open={isOpen(title)}
+        // open={isOpen(title)}
         onOpening={() => onOpen(title)}
         onClosing={() => onClose(title)}
         lazyRender={true}

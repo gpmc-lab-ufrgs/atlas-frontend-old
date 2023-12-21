@@ -105,9 +105,9 @@ const useStateLayer = () => {
   function initActions(reference: mapboxgl.Map) {
     reference.on('click', 'fill-state', (e: any) => {
       if (e.features.length > 0) {
+        console.log(e.features[0].id);
         const id: number = e.features[0].id;
         const estadoSel: Estado[] = ReturnEstadoPorId(id, selectedEstados);
-        console.log(estadoSel.length);
         dispatch(changeEstado(estadoSel));
         setSelectedState(e.features[0]);
         setLatLng(e.lngLat);

@@ -50,7 +50,10 @@ const DataSection = (props: DataSectionProps) => {
   const hasSelectedDistrict = Boolean(selected);
 
   return (
-    <Collapsible isTitle={true} title={title}>
+    <Collapsible 
+      isTitle={true} 
+      title={title}
+    >
       {
         lstDadosEstado.map((estado: Estado, index: number) => (
           <CollapsibleContent key={`${index}`} props={estado} />
