@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import React, { useEffect, useState } from 'react';
 
 import mapboxgl from 'mapbox-gl';
@@ -19,8 +20,14 @@ import { highlightDistrict, clickDistrict, cleanDistrictActions, fitDistrictBoun
 import { RSColors } from './const';
 import { lineOpacity, lineWidth, fillOpacity } from '../../utils/const';
 import { fitStateBounds, handleCleanStateLayer } from '../useStateLayer/stateActions';
+import { Cidades } from 'src/interfaces/Cidades.type';
+import { getCidade } from 'src/services/atlasControl';
+
+import { useAppDispatch, useAppSelector } from '@hook/hooks';
+import { cidadeSelected, changeCidade } from 'src/features/cidadeSlice';
 
 const useDistrictLayer = () => {
+  const dispatch = useAppDispatch();
   const [districtReference, setDistrictReference] = useState<mapboxgl.Map>();
   const [latLng, setLatLng] = useState<mapboxgl.LngLat>();
 
@@ -133,8 +140,20 @@ const useDistrictLayer = () => {
     }
   }, [highlightedDistrict]);
 
+  const gtCidade = (idCidade: number | undefined) => {
+    if (idCidade){
+      getCidade(idCidade)
+      .then((dataRec) => {
+        const dtCt: Cidades[] = dataRec.data;
+        dispatch(changeCidade(dtCt));
+      });
+    }    
+  };
+
   useEffect(() => {
     if (districtReference) {
+      console.log(selectedDistrict?.properties.CD_MUN);
+      gtCidade(selectedDistrict?.properties.CD_MUN);
       clickDistrict(selectedDistrict, districtReference);
 
       if (selectedDistrict) {

@@ -11,35 +11,38 @@ import { Tooltip } from '@mui/material';
 import { CollapsibleContent } from './CollapsibleContent';
 import * as Styles from './styles';
 import { Estado } from 'src/interfaces/Estado.type';
+import { Cidades } from 'src/interfaces/Cidades.type';
 
 interface DataSectionProps {
   title: string;
-  props: Estado[];
+  propsEstado?: Estado[];
+  propsCidade?: Cidades[];
 }
 
 const DataSection = (props: DataSectionProps) => {
   const title = props.title;
-  const lstDadosEstado = props.props;
+  const lstDadosEstado = props.propsEstado;
+  const lstDadosCidade = props.propsCidade;
   const isState = window.location.href.includes('/state');
   const isDistrict = window.location.href.includes('/district');
 
-  let comparison, selected;
+  // let comparison, selected;
 
-  if (isState) {
-    const { comparison: mainComparison } = useComparisonState();
-    const { selected: selectedMain } = useSelectedState();
+  // if (isState) {
+  //   const { comparison: mainComparison } = useComparisonState();
+  //   const { selected: selectedMain } = useSelectedState();
 
-    comparison = mainComparison;
-    selected = selectedMain;
-  } else {
-    const { comparison: mainComparison } = useComparison();
-    const { selected: selectedMain } = useSelectedDistrict();
+  //   comparison = mainComparison;
+  //   selected = selectedMain;
+  // } else {
+  //   const { comparison: mainComparison } = useComparison();
+  //   const { selected: selectedMain } = useSelectedDistrict();
 
-    comparison = mainComparison;
-    selected = selectedMain;
-  }
+  //   comparison = mainComparison;
+  //   selected = selectedMain;
+  // }
 
-  let isSelectedOnComparison;
+  // let isSelectedOnComparison;
 
   // if (isState) {
   //   isSelectedOnComparison = comparison.some((region) => region.properties.CD_MUN === selected?.properties.CD_UF);
@@ -47,7 +50,7 @@ const DataSection = (props: DataSectionProps) => {
   //   isSelectedOnComparison = comparison.some((region) => region.properties.CD_MUN === selected?.properties.CD_MUN);
   // }
 
-  const hasSelectedDistrict = Boolean(selected);
+  //const hasSelectedDistrict = Boolean(selected);
 
   return (
     <Collapsible 
@@ -55,11 +58,19 @@ const DataSection = (props: DataSectionProps) => {
       title={title}
     >
       {
+        (isState && lstDadosEstado)?
         lstDadosEstado.map((estado: Estado, index: number) => (
-          <CollapsibleContent key={`${index}`} props={estado} />
+          <CollapsibleContent key={`${index}`} propsEstado={estado} />
         ))
-      }
-      
+        :
+        (
+          !isState && isDistrict && lstDadosCidade?
+          lstDadosCidade.map((cidade: Cidades, index: number) => (
+            <CollapsibleContent key={`${index}`} propsCidade={cidade} />
+          ))
+          : <></>
+        )
+      }      
     </Collapsible>
   );
 };

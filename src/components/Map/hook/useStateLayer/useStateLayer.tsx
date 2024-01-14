@@ -108,6 +108,7 @@ const useStateLayer = () => {
         console.log(e.features[0].id);
         const id: number = e.features[0].id;
         const estadoSel: Estado[] = ReturnEstadoPorId(id, selectedEstados);
+        
         dispatch(changeEstado(estadoSel));
         setSelectedState(e.features[0]);
         setLatLng(e.lngLat);

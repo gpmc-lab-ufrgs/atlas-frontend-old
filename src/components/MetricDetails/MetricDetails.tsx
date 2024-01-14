@@ -6,274 +6,160 @@ import Bar from './Bar';
 import Graphic from './Graphic'; // Assuming Graphic component is in a separate file
 import { formatPopulationNumber, formatValue } from '@utils/formatValue';
 import { Estado } from 'src/interfaces/Estado.type';
+import { Cidades } from 'src/interfaces/Cidades.type';
 
 interface MetricDetailsProps {
-  props: Estado;
+  propsEstado?: Estado;
+  propsCidade?: Cidades;
 }
 
 const MetricDetails = (props: MetricDetailsProps) => {
   //const [geosesData, setGeosesData] = useState(null);
-  const dadoEstado = props.props;
+  const dadoEstado = props.propsEstado;
+  const dadoCidade = props.propsCidade;
   const isState = window.location.href.includes('/comparison_states') || window.location.href.includes('/state');
 
   const { pathname } = location;
   const isEnglish = pathname.includes('/en');
 
-  // useEffect(() => {
-  //   let abortController = new AbortController();
-  //   let cachedData;
-  //   if (isState) {
-  //     cachedData = localStorage.getItem(`geosesData_${region?.properties.CD_UF}_${metric.label}`);
-  //   } else {
-  //     cachedData = localStorage.getItem(`geosesData_${region?.properties.CD_MUN}_${metric.label}`);
-  //   }
-
-  //   if (cachedData) {
-  //     setGeosesData(JSON.parse(cachedData));
-  //   } else {
-  //     if (!isState && region && region.properties && region.properties.SIGLA_UF) {
-  //       // Abort any ongoing fetch requests
-  //       abortController.abort();
-  //       abortController = new AbortController();
-  //       const signal = abortController.signal;
-
-  //       fetch(`http://3.92.188.34:8001/data/data_city_dicio/json/?cd_mun=${region.properties.CD_MUN}`, { signal })
-  //         .then((response) => response.json())
-  //         .then((data) => {
-  //           setGeosesData(data);
-  //           localStorage.setItem(`geosesData_${region?.properties.CD_MUN}_${metric.label}`, JSON.stringify(data));
-  //         })
-  //         .catch((error) => console.log(error));
-  //     }
-  //     else if (isState && region && region.properties && region.properties.SIGLA_UF) {
-  //       // Abort any ongoing fetch requests
-  //       abortController.abort();
-  //       abortController = new AbortController();
-  //       const signal = abortController.signal;
-
-  //       fetch(`http://3.92.188.34:8001/data/data_state_dicio/json/?cd_uf=${region.properties.CD_UF}`, { signal })
-  //         .then((response) => response.json())
-  //         .then((data) => {
-  //           setGeosesData(data);
-  //           localStorage.setItem(`geosesData_${region?.properties.CD_UF}_${metric.label}`, JSON.stringify(data));
-  //         })
-  //         .catch((error) => console.log(error));
-  //     }
-  //   }
-  //   // Clean up the AbortController when the effect is cleaned up
-  //   return () => abortController.abort();
-  // }, [region, metric]);
-
   const renderSingleMetric = () => {
-    // if (!geosesData) {
-    //   return <div>Loading data...</div>;
-    // }
+    const cdTitle = isState? dadoEstado?.cdEstado : dadoCidade?.cdCidade;
+    const nmFormato = isState? dadoEstado?.nmFormato : dadoCidade?.nmFormato;
+    const nmUnidade = isState? dadoEstado?.nmUnidade : dadoCidade?.nmUnidade;
+    const geosesDataValue = isState? dadoEstado?.vlPorCd : dadoCidade?.vlPorCd;
+    if (nmFormato === 'Float .2' || nmFormato === 'Float') {
+      const parsedValue2 = parseFloat(geosesDataValue!);
 
-    // let rawValue;
-    // if (isState) {
-    //   rawValue = [dadoEstado.nmEstado][metric.label];
-    // } else {
-    //   rawValue = geosesData[region?.properties.CD_MUN][metric.label];
-    // }
-
-    // const value = typeof metric.format === 'function' ? metric.format(rawValue) : rawValue;
-
-    // let unit;
-    // if (isState) {
-    //   unit = geosesData?.[region?.properties.CD_UF]?.[metric.label]?.unit;
-    // } else {
-    //   unit = geosesData?.[region?.properties.CD_MUN]?.[metric.label]?.unit;
-    // }
-
-    if (dadoEstado.nmFormato === 'Float .2') {
-      let geosesDataValue2 = '';
-      if (isState) {
-        geosesDataValue2 = dadoEstado.vlPorCd === undefined ? '' : dadoEstado.vlPorCd;
-      }
-      const parsedValue2 = parseFloat(geosesDataValue2);
-      // else {
-      //   geosesDataValue2 = geosesData?.[region?.properties.CD_MUN]?.[metric.label]?.value;
-      // }
-
-      if (dadoEstado.nmUnidade === 'Número') {
+      if (nmUnidade === 'Número') {
         const displayValue2 = isNaN(parsedValue2)
           ? '-----'
           : parsedValue2
               .toLocaleString('pt-BR', { minimumFractionDigits: 1, maximumFractionDigits: 3 })
               .replace(',', '.');
-        if (isState) {
-          return (
-            <div key={dadoEstado.cdEstado}>
-              <data value={geosesDataValue2}>{displayValue2}</data>
-            </div>
-          );
-        }
-        // else {
-        //   return (
-        //     <div key={region?.properties.CD_MUN}>
-        //       <data value={geosesDataValue2}>{displayValue2}</data>
-        //     </div>
-        //   );
-        // }
+
+        return (
+          <div key={cdTitle}>
+            <data value={geosesDataValue}>{displayValue2}</data>
+          </div>
+        );
       }
-      if (dadoEstado.nmUnidade === 'R$') {
+      if (nmUnidade === 'R$') {
         const displayValue2 = isNaN(parsedValue2)
           ? '-----'
           : parsedValue2
               .toLocaleString('pt-BR', { minimumFractionDigits: 0, maximumFractionDigits: 0 })
               .replace(/(\d{3})\.000/, '$1');
-        if (isState) {
-          return (
-            <div key={dadoEstado.cdEstado}>
-              R$<data value={geosesDataValue2}>{displayValue2}</data>
-            </div>
-          );
-        }
-        // else {
-        //   return (
-        //     <div key={region?.properties.CD_MUN}>
-        //       R$<data value={geosesDataValue2}>{displayValue2}</data>
-        //     </div>
-        //   );
-        // }
+
+        return (
+          <div key={cdTitle}>
+            R$<data value={geosesDataValue}>{displayValue2}</data>
+          </div>
+        );
       }
-      if (dadoEstado.nmUnidade === 'Salários Mínimos') {
+      if (nmUnidade === 'Salários Mínimos') {
         const displayValue2 = isNaN(parsedValue2)
           ? '-----'
           : parsedValue2.toLocaleString('pt-BR', { minimumFractionDigits: 0, maximumFractionDigits: 1 });
-        if (isState) {
-          return (
-            <div key={dadoEstado.cdEstado}>
-              <data value={geosesDataValue2}>{displayValue2} </data>salários mínimos
-            </div>
-          );
-        }
-        // else {
-        //   return (
-        //     <div key={region?.properties.CD_MUN}>
-        //       <data value={geosesDataValue2}>{displayValue2} </data>salários mínimos
-        //     </div>
-        //   );
-        // }
+        
+        return (
+          <div key={cdTitle}>
+            <data value={geosesDataValue}>{displayValue2} </data>salários mínimos
+          </div>
+        );
       }
-      if (dadoEstado.nmUnidade === 'Km²') {
+      if (nmUnidade === 'Km²') {
         const formattedValue2 = isNaN(parsedValue2)
           ? '-----'
           : parsedValue2
               .toLocaleString('pt-BR', { minimumFractionDigits: 1, maximumFractionDigits: 1 })
               .replace(',', '.')
               .replace(/(\d{3})\.0/, '$1');
-        if (isState) {
-          return (
-            <div key={dadoEstado.cdEstado}>
-              <data value={geosesDataValue2}>{formattedValue2} </data>km²
-            </div>
-          );
-        }
-        //  else {
-        //   return (
-        //     <div key={region?.properties.CD_MUN}>
-        //       <data value={geosesDataValue2}>{formattedValue2} </data>km²
-        //     </div>
-        //   );
-        // }
-      }
-      if (dadoEstado.nmUnidade === 'Habitante/ Km²') {
-        const formattedValue2 = isNaN(parsedValue2)
-          ? '-----'
-          : parsedValue2
-              .toLocaleString('pt-BR', { minimumFractionDigits: 1, maximumFractionDigits: 2 })
-              .replace(',', '.');
-        if (isState) {
-          return (
-            <div key={dadoEstado.cdEstado}>
-              <data value={geosesDataValue2}>{formattedValue2} </data>hab/km²
-            </div>
-          );
-        }
-        //  else {
-        //   return (
-        //     <div key={region?.properties.CD_MUN}>
-        //       <data value={geosesDataValue2}>{formattedValue2} </data>hab/km²
-        //     </div>
-        //   );
-        // }
-      }
-      if (dadoEstado.nmUnidade === 'Mbps') {
-        const formattedValue2 = isNaN(parsedValue2)
-          ? '-----'
-          : parsedValue2
-              .toLocaleString('pt-BR', { minimumFractionDigits: 1, maximumFractionDigits: 2 })
-              .replace(',', '.');
-        if (isState) {
-          return (
-            <div key={dadoEstado.cdEstado}>
-              <data value={geosesDataValue2}>{formattedValue2} </data>Mbps
-            </div>
-          );
-        }
-        //  else {
-        //   return (
-        //     <div key={region?.properties.CD_MUN}>
-        //       <data value={geosesDataValue2}>{formattedValue2} </data>Mbps
-        //     </div>
-        //   );
-        // }
-      } else if (dadoEstado.nmUnidade === '%'){  
+
         return (
-          <div key={dadoEstado.cdEstado}>
+          <div key={cdTitle}>
+            <data value={geosesDataValue}>{formattedValue2} </data>km²
+          </div>
+        );
+      }
+      if (nmUnidade === 'Habitante/ Km²' || nmUnidade === 'Hab/km²') {
+        const formattedValue2 = isNaN(parsedValue2)
+          ? '-----'
+          : parsedValue2
+              .toLocaleString('pt-BR', { minimumFractionDigits: 1, maximumFractionDigits: 2 })
+              .replace(',', '.');
+
+        return (
+          <div key={cdTitle}>
+            <data value={geosesDataValue}>{formattedValue2} </data>hab/km²
+          </div>
+        );
+      }
+      if (nmUnidade === 'Mbps') {
+        const formattedValue2 = isNaN(parsedValue2)
+          ? '-----'
+          : parsedValue2
+              .toLocaleString('pt-BR', { minimumFractionDigits: 1, maximumFractionDigits: 2 })
+              .replace(',', '.');
+
+        return (
+          <div key={cdTitle}>
+            <data value={geosesDataValue}>{formattedValue2} </data>Mbps
+          </div>
+        );
+      } else if (nmUnidade === '%'){  
+        return (
+          <div key={cdTitle}>
             {isNaN(parsedValue2)? (
               <div>-----</div> // Replace with the desired action for NaN value
             ) : (
-              <data value={geosesDataValue2}>{`${parsedValue2}%`}</data>
+              <data value={geosesDataValue}>{`${parsedValue2}%`}</data>
             )}
           </div>
         );
       } else {
         return (
-          <div key={dadoEstado.cdEstado}>
+          <div key={cdTitle}>
             {isNaN(parsedValue2)? (
               <div>-----</div> // Replace with the desired action for NaN value
             ) : (
-              <data value={geosesDataValue2}>{`${parsedValue2.toLocaleString('pt-BR', { minimumFractionDigits: 1, maximumFractionDigits: 2 }).replace(',', '.')}`}</data>
+              <data value={geosesDataValue}>{`${parsedValue2.toLocaleString('pt-BR', { minimumFractionDigits: 1, maximumFractionDigits: 2 }).replace(',', '.')}`}</data>
             )}
           </div>
         );
       }
-    } else if (dadoEstado.nmFormato === 'Int') {
-      let geosesDataValue = '';
-      if (isState) {
-        geosesDataValue = dadoEstado.vlPorCd === undefined ? '' : dadoEstado.vlPorCd;
-      }
-      // else {
-      //   geosesDataValue2 = geosesData?.[region?.properties.CD_MUN]?.[metric.label]?.value;
-      // }
-      const parsedValue = parseFloat(geosesDataValue);
+    } else if (nmFormato === 'Float .2 (-1 to +1)'){
+      const parsedValue2 = parseFloat(geosesDataValue!);
+      return (
+        <div key={cdTitle}>
+          <data value={parsedValue2}>
+            {parseFloat(geosesDataValue!).toFixed(3)}
+          </data>
+        </div>
+      );
+    } else if (nmFormato === 'Int') {
+      const geosesDataValue1 = geosesDataValue === undefined ? '' : geosesDataValue;
+
+      const parsedValue = parseFloat(geosesDataValue1);
       const formattedValue = isNaN(parsedValue)
         ? '-----'
         : parsedValue.toLocaleString('pt-BR', { useGrouping: true }).replace(',', '.'); // Format to locale string
-      if (isState) {
-        return (
-          <div key={dadoEstado.cdEstado}>
-            <data value={geosesDataValue}>{formattedValue}</data>
-          </div>
-        );
-      }
-      //  else {
-      //   return (
-      //     <div key={region?.properties.CD_MUN}>
-      //       <data value={geosesDataValue}>{formattedValue}</data>
-      //     </div>
-      //   );
-      // }
-    } else if (dadoEstado.nmFormato === 'Progress Bar') {
-      let geosesDataValue2 = '';
-      if (isState) {
-        geosesDataValue2 = dadoEstado.vlPorCd === undefined ? '0' : dadoEstado.vlPorCd;
-      }
+      
+      return (
+        <div key={cdTitle}>
+          <data value={geosesDataValue1}>{formattedValue}</data>
+        </div>
+      );
+    } else if (nmFormato === 'String'){
+      return (
+        <div key={cdTitle}>
+          <data value={geosesDataValue}>{geosesDataValue}</data>
+        </div>
+      );
+    } else if (nmFormato === 'Progress Bar') {
+      const geosesDataValue1 = geosesDataValue === undefined ? '0' : geosesDataValue;
 
       // Calculate the percentage value of the progress bar
-      const percentage = parseFloat(((parseFloat(geosesDataValue2) / 100) * 100).toFixed(2));
+      const percentage = parseFloat(((parseFloat(geosesDataValue1) / 100) * 100).toFixed(2));
 
       // Define a style for the progress bar
       const progressBarStyle = {
@@ -296,27 +182,27 @@ const MetricDetails = (props: MetricDetailsProps) => {
         lineHeight: '20px',
       };
 
-      if (isState) {
-        return (
-          <div key={dadoEstado.cdEstado}>
-            <div style={progressBarStyle}>
-              <div style={progressBarFilledStyle}>
-                {geosesDataValue2}%
-              </div>
+      return (
+        <div key={cdTitle}>
+          <div style={progressBarStyle}>
+            <div style={progressBarFilledStyle}>
+              {geosesDataValue1}%
             </div>
           </div>
-        );
-      }
-      // else {
-      //   return (
-      //     <div key={region.properties.CD_MUN}>
-      //       <div style={progressBarStyle}>
-      //         <div style={progressBarFilledStyle}>{value}%</div>
-      //       </div>
-      //     </div>
-      //   );
-      // }
-    } 
+        </div>
+      );
+    } else if (nmFormato === 'Graphic') {
+      const regionData = {
+        properties: {
+          CD_MUN: cdTitle, // Replace with actual value
+        },
+      };
+      return (
+        <div>
+          <Graphic region={regionData} />
+        </div>
+      );
+    }
   };
 
   return <div>{renderSingleMetric()}</div>;

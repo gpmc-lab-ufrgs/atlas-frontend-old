@@ -10,43 +10,63 @@ import ComparisonSection from './ComparisonSection';
 import DataSection from './DataSection';
 import { useLocation } from 'react-router-dom';
 import { Estado } from 'src/interfaces/Estado.type';
+import { Cidades } from 'src/interfaces/Cidades.type';
 import { useAppDispatch, useAppSelector } from '@hook/hooks';
 import { estadoSelected, changeEstado } from 'src/features/estadoSlice';
+import { cidadeSelected, changeCidade } from 'src/features/cidadeSlice';
 
 const RegionDetails = () => {
-  const isState = window.location.href.includes('/comparison_states') || window.location.href.includes('/state');
+  const isStateSel = window.location.href.includes('/state');
+  const isDistrictSel = window.location.href.includes('/district');
+  //const isState = window.location.href.includes('/comparison_states') || window.location.href.includes('/state');
   const selectedEstado = useAppSelector(estadoSelected);
+  const selectedCidade = useAppSelector(cidadeSelected);
   const [lstDadosEstado, setLstDadosEstado] = useState<Estado[]>([]);
+  const [lstDadosCidade, setLstDadosCidade] = useState<Cidades[]>([]);
   const [lstDistinct, setLstDistinct] = useState<string[]>([]);
+  const location = useLocation();
+  const { pathname } = location;
+  const isEnglish = pathname.includes('/en');
 
-  let comparison;
+  // let comparison;
 
-  if (isState) {
-    const { comparison: mainComparison } = useComparisonState();
-    comparison = mainComparison;
-  } else {
-    const { comparison: mainComparison } = useComparison();
-    comparison = mainComparison;
-  }
+  // if (isState) {
+  //   console.log(isState);
+  //   const { comparison: mainComparison } = useComparisonState();
+  //   comparison = mainComparison;
+  // } else {
+  //   const { comparison: mainComparison } = useComparison();
+  //   comparison = mainComparison;
+  // }
 
   // const [data, setData] = useState([]);
   // const [loading, setLoading] = useState(true);
 
+  // if(isStateSel && !isDistrictSel){
+  //   setLstDadosEstado(selectedEstado);
+  //   let t = isEnglish? selectedEstado.map(({ nmClassificacaoEn }) => nmClassificacaoEn) : selectedEstado.map(({ nmClassificacaoPt }) => nmClassificacaoPt);
+  //   t = [... new Set(t)];
+  //   setLstDistinct(t!);
+  // } else if(!isStateSel && isDistrictSel){
+  //   setLstDadosCidade(selectedCidade);
+  //   let t = isEnglish? selectedEstado.map(({ nmClassificacaoEn }) => nmClassificacaoEn) : selectedEstado.map(({ nmClassificacaoPt }) => nmClassificacaoPt);
+  //   t = [... new Set(t)];
+  //   setLstDistinct(t!);
+  // }
+
   useEffect(() => {
-    setLstDadosEstado(selectedEstado);
-    let t = isEnglish? selectedEstado.map(({ nmClassificacaoEn }) => nmClassificacaoEn) : selectedEstado.map(({ nmClassificacaoPt }) => nmClassificacaoPt);
-    t = [... new Set(t)];
-    setLstDistinct(t!);
-
-
-    // const t = selectedEstado.map(({ nmClassificacaoPt, nmClassificacaoEn }) => isEnglish? nmClassificacaoEn : nmClassificacaoPt);
-    
-    // setLstDistinct([... new Set(t)]);
-  }, [selectedEstado]);
-
-  const location = useLocation();
-  const { pathname } = location;
-  const isEnglish = pathname.includes('/en');
+    if(isStateSel){
+      setLstDadosEstado(selectedEstado);
+      let t = isEnglish? selectedEstado.map(({ nmClassificacaoEn }) => nmClassificacaoEn) : selectedEstado.map(({ nmClassificacaoPt }) => nmClassificacaoPt);
+      t = [... new Set(t)];
+      setLstDistinct(t!);
+    } else if(isDistrictSel){
+      setLstDadosCidade(selectedCidade);
+      let t = isEnglish? selectedEstado.map(({ nmClassificacaoEn }) => nmClassificacaoEn) : selectedEstado.map(({ nmClassificacaoPt }) => nmClassificacaoPt);
+      t = [... new Set(t)];
+      setLstDistinct(t!);
+    }
+  }, [selectedEstado, selectedCidade]);
 
   return (
     <Box>
@@ -56,7 +76,8 @@ const RegionDetails = () => {
             <DataSection
               key={`${item}`}
               title={`${item}`}
-              props={lstDadosEstado.filter((i) => (isEnglish? (i.nmClassificacaoEn == item) : (i.nmClassificacaoPt == item)))}
+              propsEstado={isStateSel && lstDadosEstado? lstDadosEstado.filter((i) => (isEnglish? (i.nmClassificacaoEn == item) : (i.nmClassificacaoPt == item))) : undefined}
+              propsCidade={isDistrictSel && lstDadosCidade? lstDadosCidade.filter((i) => (isEnglish? (i.nmClassificacaoEn == item) : (i.nmClassificacaoPt == item))) : undefined}
             />
           ))
       }
