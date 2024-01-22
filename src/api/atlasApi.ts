@@ -1,7 +1,8 @@
 import axios from 'axios';
 
 const APIAtlasV2 = axios.create({
-  baseURL: 'http://localhost:8080/',
+  //baseURL: 'http://localhost:8080/', local
+  baseURL: 'http://host.docker.internal:8080/',
   headers: {
     'Cache-Control': 'no-cache',
     Pragma: 'no-cache',
