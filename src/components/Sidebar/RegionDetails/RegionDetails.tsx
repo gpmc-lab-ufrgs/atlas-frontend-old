@@ -28,32 +28,6 @@ const RegionDetails = () => {
   const { pathname } = location;
   const isEnglish = pathname.includes('/en');
 
-  // let comparison;
-
-  // if (isState) {
-  //   console.log(isState);
-  //   const { comparison: mainComparison } = useComparisonState();
-  //   comparison = mainComparison;
-  // } else {
-  //   const { comparison: mainComparison } = useComparison();
-  //   comparison = mainComparison;
-  // }
-
-  // const [data, setData] = useState([]);
-  // const [loading, setLoading] = useState(true);
-
-  // if(isStateSel && !isDistrictSel){
-  //   setLstDadosEstado(selectedEstado);
-  //   let t = isEnglish? selectedEstado.map(({ nmClassificacaoEn }) => nmClassificacaoEn) : selectedEstado.map(({ nmClassificacaoPt }) => nmClassificacaoPt);
-  //   t = [... new Set(t)];
-  //   setLstDistinct(t!);
-  // } else if(!isStateSel && isDistrictSel){
-  //   setLstDadosCidade(selectedCidade);
-  //   let t = isEnglish? selectedEstado.map(({ nmClassificacaoEn }) => nmClassificacaoEn) : selectedEstado.map(({ nmClassificacaoPt }) => nmClassificacaoPt);
-  //   t = [... new Set(t)];
-  //   setLstDistinct(t!);
-  // }
-
   useEffect(() => {
     if(isStateSel){
       setLstDadosEstado(selectedEstado);

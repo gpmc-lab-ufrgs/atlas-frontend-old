@@ -45,18 +45,19 @@ const useStateLayer = () => {
 
   const dispatch = useAppDispatch();
   const selectedEstados = useAppSelector(estadosSelected);
-  const selectedEstado = useAppSelector(estadoSelected);
   const [lstEstados, setLstEstados] = useState<Estado[]>([]);
-  const [lstEstado, setLstEstado] = useState<Estado[]>([]);
+  const [cdEstado, setCdEstado] = useState<number>();
 
-  // useEffect(() => {
-  //   setLstEstados([...selectedEstados]);
-  // }, [selectedEstados]);
+  useEffect(() => {
+    setLstEstados([...selectedEstados]);
+  }, [selectedEstados]);
 
-  // useEffect(() => {
-  //   const t = selectedEstado.map(({ nmClassificacaoPt, nmClassificacaoEn }) => nmClassificacaoPt);
-  //   console.log([...new Set(t)]);
-  // }, [selectedEstado]);
+  useEffect(() => {
+    if(lstEstados && cdEstado){
+      const estadoSel: Estado[] = ReturnEstadoPorId(cdEstado, lstEstados);
+      dispatch(changeEstado(estadoSel)); 
+    }
+  }, [lstEstados, cdEstado]);
 
   function initLayers(reference: mapboxgl.Map) {
     reference.on('load', () => {
@@ -107,9 +108,7 @@ const useStateLayer = () => {
       if (e.features.length > 0) {
         console.log(e.features[0].id);
         const id: number = e.features[0].id;
-        const estadoSel: Estado[] = ReturnEstadoPorId(id, selectedEstados);
-        
-        dispatch(changeEstado(estadoSel));
+        setCdEstado(id);
         setSelectedState(e.features[0]);
         setLatLng(e.lngLat);
       }

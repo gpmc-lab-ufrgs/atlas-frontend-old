@@ -36,7 +36,9 @@ const Main = () => {
     getEstados()
       .then((dataRec) => {
         const dtEs: Estado[] = dataRec.data;
-        dispatch(changeEstados(dtEs));
+        if(dtEs){
+          dispatch(changeEstados(dtEs));
+        }        
       });
   };
 

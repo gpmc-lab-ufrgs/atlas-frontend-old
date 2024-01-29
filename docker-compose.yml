@@ -5,13 +5,12 @@ services:
     build:
       context: .
       dockerfile: ./docker/Dockerfile
-
     image: local-atlas:latest
-
-    command: ["yarn", "start" ]
-
+    command: ["npm", "start" ]
     ports:
-      - 3000:3000
+      - "3000:3000"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
 
     volumes:
        - .:/src/
