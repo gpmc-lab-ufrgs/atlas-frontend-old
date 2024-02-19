@@ -29,6 +29,6 @@
       "@tests/*": ["src/__test__/*"]
     }
   },
-  "include": ["src"],
+  "include": ["src", "main.tsx", "react-app-env.d.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

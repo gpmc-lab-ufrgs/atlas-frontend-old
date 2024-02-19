@@ -7,6 +7,6 @@ COPY . /atlas
 #ENV NODE_OPTIONS="--max-old-space-size=4096 --openssl-legacy-provider"
 ENV GENERATE_SOURCEMAP=false
 
-EXPOSE 3000
+EXPOSE 80
 
 RUN npm install --legacy-peer-deps
